@@ -1,0 +1,36 @@
+{
+	"drawerWidth": 240,
+	"mainMenu": [
+		{
+			"label": "School",
+			"icon": "school",
+			"menuItems": [
+				{
+					"label": "Birthday",
+					"icon": "birthday",
+					"path": "/birthdays"
+				},
+				{
+					"label": "Student",
+					"icon": "student",
+					"path": "/students"
+				},
+				{
+					"label": "Class",
+					"icon": "class",
+					"path": "/class"
+				}
+			]
+		},
+		{
+			"label": "Library",
+			"icon": "menu",
+			"path": "/library"
+		},
+		{
+			"label": "Admin",
+			"icon": "school",
+			"path": "/admin"
+		}
+	]
+}
