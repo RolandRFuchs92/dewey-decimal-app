@@ -4,6 +4,7 @@ const app = electron.app;
 // Module to create native browser window.
 const BrowserWindow = electron.BrowserWindow;
 
+const os = require('os');
 const path = require('path');
 const url = require('url');
 
@@ -12,12 +13,18 @@ const url = require('url');
 let mainWindow;
 
 function createWindow() {
+	BrowserWindow.addDevToolsExtension(
+		path.join(os.homedir(), `/AppData/Local/Google/Chrome/User Data/Default/Extensions/fmkadmapgofadopljbjfkapdkoienihi/4.4.0_0`)
+	)
+
 	// Create the browser window.
 	mainWindow = new BrowserWindow({
 		width: 1200,
 		height: 800,
 		webPreferences: { nodeIntegration: true },
 	});
+
+	
 
 	mainWindow.removeMenu();
 	// and load the index.html of the app.

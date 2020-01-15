@@ -1,8 +1,16 @@
-const createStudentTable = `CREATE TABLE student (
-	student_id INTEGER,
+const createStudentTable = `CREATE TABLE IF NOT EXISTS student ( 
+	student_id INTEGER PRIMARY KEY,
 	first_name TEXT NOT NULL,
 	last_name TEXT NOT NULL,
-	mobile_number TEXT,
+	birthdate TEXT NOT NULL,
+	year_started_primary_school INT NOT NULL,
+	current_grade INT,
+	mother_name text,
+	mother_mobile TEXT,
+	mother_email TEXT,
+	father_name TEXT,
+	father_mobile TEXT,
+	father_email TEXT,
 	class_id INTEGER NOT NULL
 );`;
 
