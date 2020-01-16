@@ -1,33 +1,22 @@
 import React, { useState, useEffect } from 'react';
-import { startCase } from 'lodash';
-import {
-	TextField,
-	makeStyles,
-	Grid,
-	Paper,
-	TableContainer,
-	TableSortLabel,
-	TableHead,
-	TableCell,
-	Table,
-	TableBody,
-	TableRow,
-} from '@material-ui/core';
-
+import { startCase, camelCase } from 'lodash';
+import { TextField, makeStyles, Grid, Paper } from '@material-ui/core';
+import MUIDataTable from 'mui-datatables';
 import { getStudentColumnNames, getStudentData } from './Student.repo';
 
 const useStyles = makeStyles(theme => ({
 	root: {
 		flexGrow: 1,
 	},
+	studentList: {
+		width: 600,
+	},
 }));
 
 export default () => {
-	const classes = useStyles();
 	const [student, setStudent] = useState({});
 
 	const handleChange = ({ target: { name, value } }) => {
-		debugger;
 		setStudent({ ...student, [name]: value });
 	};
 
@@ -55,9 +44,7 @@ export default () => {
 						<FormRow label='First name' name='firstName'></FormRow>
 						<FormRow label='Last name' name='lastName'></FormRow>
 						<FormRow label='Birthday' name='birthdate'></FormRow>
-						<FormRow label='Current Grade' name='currentGrade'></FormRow>
-						<FormRow label='Year started school' name='yearStarted'></FormRow>
-						<FormRow label='Class' name='class'></FormRow>
+						<FormRow label='Class' name='classId'></FormRow>
 					</Paper>
 					<Paper>
 						<FormRow label='Mother name' name='motherName'></FormRow>
@@ -78,74 +65,49 @@ export default () => {
 					justify='flex-start'
 					alignItems='flex-start'
 				>
-					<StudentList></StudentList>
+					<NewStudentList setStudent={setStudent}></NewStudentList>
 				</Grid>
 			</Grid>
 		</Grid>
 	);
 };
 
-function StudentList() {
-	const [columnHeaders, setColumnHeaders] = useState([]);
-	const method = async () => {
-		const result = await getStudentColumnNames();
-		setColumnHeaders(result);
-	};
-
-	method();
-
-	return (
-		<TableContainer>
-			<Table size='small'>
-				<StudentTableHead columnHeaders={columnHeaders}></StudentTableHead>
-				<StudentTableBody columnHeaders={columnHeaders}></StudentTableBody>
-			</Table>
-		</TableContainer>
-	);
-}
-
-function StudentTableBody({ columnHeaders }) {
-	const [tableData, setTableData] = useState([]);
+function NewStudentList({ setStudent }) {
+	const [columns, setColumns] = useState([]);
+	const [data, setData] = useState([]);
+	const [options, setOptions] = useState({});
+	const classes = useStyles();
 
 	useEffect(() => {
-		const addTableData = async () => {
-			setTableData(await getStudentData());
+		const method = async () => {
+			setColumns(await getStudentColumnNames());
+			setData(await getStudentData());
 		};
 
-		addTableData();
+		method();
 	}, []);
 
-	return (
-		<TableBody>
-			{tableData.length === 0 ? (
-				<TableRow>
-					<TableCell colSpan={columnHeaders.length} align='center'>
-						No data found.
-					</TableCell>
-				</TableRow>
-			) : (
-				tableData.map(i => (
-					<TableRow key={i.studentId}>
-						{Object.values(i).map(val => (
-							<TableCell>{val}</TableCell>
-						))}
-					</TableRow>
-				))
-			)}
-		</TableBody>
-	);
-}
+	useEffect(() => {
+		setOptions({
+			selectableRows: 'none',
+			onRowClick: rowData => {
+				const newStudent = Object.fromEntries(
+					Object.entries(rowData).map(([key, val]) => {
+						return [camelCase(columns[parseInt(key)]), val];
+					}),
+				);
+				setStudent({ ...newStudent });
+			},
+		});
+	}, [columns, setStudent]);
 
-function StudentTableHead({ columnHeaders }) {
 	return (
-		<TableHead>
-			<TableRow>
-				{columnHeaders.map(i => (
-					<TableCell key={i} size='small' padding='none'>
-						<TableSortLabel>{startCase(i)}</TableSortLabel>
-					</TableCell>
-				))}
-			</TableRow>
-		</TableHead>
+		<MUIDataTable
+			className={classes.studentList}
+			options={options}
+			title={'Student List'}
+			data={data}
+			columns={columns}
+		></MUIDataTable>
 	);
 }
