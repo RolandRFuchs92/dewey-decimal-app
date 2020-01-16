@@ -1,21 +1,20 @@
-import {database} from '../../package.json';
+import { database } from '../../package.json';
 
+export async function getColumnNames(tableName) {
+	let columnData = [];
 
-export function GetColumnNames(tableName) {
-    let columnData = [];
-    const getData = async () => {
-        const sqlite3 = window.require('sqlite3').verbose(); 
-        const db = new sqlite3.Database(database);
+	const sqlite3 = window.require('sqlite3').verbose();
+	const db = new sqlite3.Database(database);
 
-        db.serialize(() => {
-            db.all(`PRAGMA table_info(${tableName})`, (err, rows) => {
-                columnData = rows.map(i => i.name);
-            })
-        });
+	const promise = new Promise((res, rej) => {
+		db.serialize(() => {
+			db.all(`PRAGMA table_info(${tableName})`, (err, rows) => {
+				columnData = rows.map(i => i.name);
+				res(columnData);
+			});
+		});
+		db.close();
+	});
 
-        db.close();
-    }
-
-    getData();
-    return columnData;
+	return promise;
 }

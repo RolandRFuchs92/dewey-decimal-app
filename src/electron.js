@@ -12,10 +12,15 @@ const url = require('url');
 // be closed automatically when the JavaScript object is garbage collected.
 let mainWindow;
 
+// app.removeAllListeners('ready');
+
 function createWindow() {
 	BrowserWindow.addDevToolsExtension(
-		path.join(os.homedir(), `/AppData/Local/Google/Chrome/User Data/Default/Extensions/fmkadmapgofadopljbjfkapdkoienihi/4.4.0_0`)
-	)
+		path.join(
+			os.homedir(),
+			`/AppData/Local/Google/Chrome/User Data/Default/Extensions/fmkadmapgofadopljbjfkapdkoienihi/4.4.0_0`,
+		),
+	);
 
 	// Create the browser window.
 	mainWindow = new BrowserWindow({
@@ -23,8 +28,6 @@ function createWindow() {
 		height: 800,
 		webPreferences: { nodeIntegration: true },
 	});
-
-	
 
 	mainWindow.removeMenu();
 	// and load the index.html of the app.

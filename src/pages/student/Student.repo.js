@@ -1,13 +1,11 @@
-import {database} from '../../../package.json';
-import { GetColumnNames } from '../../db/utils';
+import { database } from '../../../package.json';
+import { getColumnNames } from '../../db/utils';
 
 const createStudentTable = `CREATE TABLE IF NOT EXISTS student ( 
 	student_id INTEGER PRIMARY KEY,
 	first_name TEXT NOT NULL,
 	last_name TEXT NOT NULL,
 	birthdate TEXT NOT NULL,
-	year_started_primary_school INT NOT NULL,
-	current_grade INT,
 	mother_name text,
 	mother_mobile TEXT,
 	mother_email TEXT,
@@ -17,8 +15,21 @@ const createStudentTable = `CREATE TABLE IF NOT EXISTS student (
 	class_id INTEGER NOT NULL
 );`;
 
-export const getStudentColumnNames = () => {
-	return GetColumnNames('student');
+export const getStudentColumnNames = async () => {
+	return await getColumnNames('student');
+};
+
+export async function getStudentData() {
+	const sqlite3 = window.require('sqlite3').verbose();
+	const db = new sqlite3.Database(database);
+
+	const promise = new Promise((res, rej) => {
+		db.all('SELECT * FROM student', (err, rows) => {
+			rows.length && res(rows.map(i => i));
+			res([]);
+		});
+	});
+	return promise;
 }
 
 export function ensureCreated() {

@@ -36,6 +36,7 @@ function MenuOptions(props) {
 		<List disablePadding>
 			{menuItems.map(({ label, icon, path, menuItems }) => (
 				<CreateListItem
+					key={label}
 					{...{ label, icon, path, menuItems, props }}
 				></CreateListItem>
 			))}
