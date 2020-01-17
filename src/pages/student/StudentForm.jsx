@@ -1,113 +1,140 @@
-import React, { useState, useEffect } from 'react';
-import { startCase, camelCase } from 'lodash';
-import { TextField, makeStyles, Grid, Paper } from '@material-ui/core';
-import MUIDataTable from 'mui-datatables';
-import { getStudentColumnNames, getStudentData } from './Student.repo';
+import React, { useEffect, useState } from 'react';
+import {
+	TextField,
+	makeStyles,
+	Grid,
+	Paper,
+	Divider,
+	Typography,
+	Button,
+} from '@material-ui/core';
+
+import { addOrUpdateStudent, getStudentData } from './Student.repo';
 
 const useStyles = makeStyles(theme => ({
 	root: {
 		flexGrow: 1,
 	},
-	studentList: {
-		width: 600,
+	paper: {
+		padding: 15,
+	},
+	baseTitle: {
+		marginTop: 10,
+		display: 'table',
+	},
+	submitButton: {
+		margin: 5,
+		marginTop: 15,
 	},
 }));
 
-export default () => {
-	const [student, setStudent] = useState({});
+let setStudentList;
 
+export default ({ /*student, setStudent,*/ setStudentData }) => {
+	const [student, setStudent] = useState({});
+	setStudentList = setStudentData;
+	const classes = useStyles();
 	const handleChange = ({ target: { name, value } }) => {
 		setStudent({ ...student, [name]: value });
 	};
 
-	const FormRow = ({ label, name }) => (
-		<Grid item xs>
-			<TextField
-				label={label}
-				name={name}
-				value={student[name]}
-				onChange={handleChange}
-			></TextField>
-		</Grid>
-	);
-
 	return (
-		<Grid container spacing={3}>
-			<Grid item>
-				<Grid
-					container
-					direction='column'
-					justify='flex-start'
-					alignItems='flex-start'
+		<Grid
+			container
+			direction='column'
+			justify='flex-start'
+			alignItems='flex-start'
+		>
+			<Paper className={classes.paper}>
+				<SplitStudentForm
+					label={`Student${student.studentId ? `(${student.studentId})` : ''}`}
+				/>
+				<FormRow label='First name' name='firstName'></FormRow>
+				<FormRow label='Last name' name='lastName'></FormRow>
+				<FormRow label='Birthday' name='birthdate'></FormRow>
+				<FormRow label='Class' name='classId'></FormRow>
+				<SplitStudentForm label='Mother' />
+				<FormRow label='Name' name='motherName'></FormRow>
+				<FormRow label='Mobile' name='motherMobile'></FormRow>
+				<FormRow label='Email' name='motherEmail'></FormRow>
+				<SplitStudentForm label='Father' />
+				<FormRow label='Name' name='motherName'></FormRow>
+				<FormRow label='Mobile' name='motherMobile'></FormRow>
+				<FormRow label='Email' name='motherEmail'></FormRow>
+				<Button
+					variant='outlined'
+					color='default'
+					className={classes.submitButton}
+					size='small'
+					onClick={() => handleReset(setStudent)}
 				>
-					<Paper>
-						<FormRow label='First name' name='firstName'></FormRow>
-						<FormRow label='Last name' name='lastName'></FormRow>
-						<FormRow label='Birthday' name='birthdate'></FormRow>
-						<FormRow label='Class' name='classId'></FormRow>
-					</Paper>
-					<Paper>
-						<FormRow label='Mother name' name='motherName'></FormRow>
-						<FormRow label='Mother mobile' name='motherMobile'></FormRow>
-						<FormRow label='Mother email' name='motherEmail'></FormRow>
-					</Paper>
-					<Paper>
-						<FormRow label='Father name' name='motherName'></FormRow>
-						<FormRow label='Father mobile' name='motherMobile'></FormRow>
-						<FormRow label='Father email' name='motherEmail'></FormRow>
-					</Paper>
-				</Grid>
-			</Grid>
-			<Grid item>
-				<Grid
-					container
-					direction='column'
-					justify='flex-start'
-					alignItems='flex-start'
+					Reset
+				</Button>
+				<Button
+					variant='contained'
+					color='primary'
+					className={classes.submitButton}
+					size='small'
+					onClick={() => handleSubmit(student)}
 				>
-					<NewStudentList setStudent={setStudent}></NewStudentList>
-				</Grid>
-			</Grid>
+					Submit
+				</Button>
+			</Paper>
 		</Grid>
 	);
 };
 
-function NewStudentList({ setStudent }) {
-	const [columns, setColumns] = useState([]);
-	const [data, setData] = useState([]);
-	const [options, setOptions] = useState({});
-	const classes = useStyles();
+const FormRow = ({ label, name }) => {
+	const [val, setVal] = useState(null);
 
-	useEffect(() => {
-		const method = async () => {
-			setColumns(await getStudentColumnNames());
-			setData(await getStudentData());
-		};
-
-		method();
-	}, []);
-
-	useEffect(() => {
-		setOptions({
-			selectableRows: 'none',
-			onRowClick: rowData => {
-				const newStudent = Object.fromEntries(
-					Object.entries(rowData).map(([key, val]) => {
-						return [camelCase(columns[parseInt(key)]), val];
-					}),
-				);
-				setStudent({ ...newStudent });
-			},
-		});
-	}, [columns, setStudent]);
+	const handleChange = ({ target: { name, value } }) => {
+		setVal(value);
+	};
 
 	return (
-		<MUIDataTable
-			className={classes.studentList}
-			options={options}
-			title={'Student List'}
-			data={data}
-			columns={columns}
-		></MUIDataTable>
+		<Grid item xs>
+			<TextField
+				label={label}
+				name={name}
+				// value={student[name]}
+				value={val}
+				onChange={handleChange}
+			></TextField>
+		</Grid>
+	);
+};
+
+function SplitStudentForm({ label }) {
+	const classes = useStyles();
+	const [displayLabel, setDisplayLabel] = useState(label);
+	useEffect(() => {
+		setDisplayLabel(label);
+	}, [label]);
+
+	return (
+		<>
+			<Typography
+				align='left'
+				color='textPrimary'
+				className={classes.baseTitle}
+				variant='overline'
+			>
+				{displayLabel}
+			</Typography>
+			<Divider className={classes.divider}></Divider>
+		</>
 	);
 }
+
+const handleSubmit = async student => {
+	try {
+		await addOrUpdateStudent(student);
+		setStudentList(await getStudentData());
+	} catch (error) {
+		alert(error);
+	}
+};
+
+const handleReset = setStudent => {
+	setStudent({});
+};

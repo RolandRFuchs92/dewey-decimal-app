@@ -1,8 +1,17 @@
 import { database } from '../../../package.json';
-import { getColumnNames } from '../../db/utils';
+import {
+	getColumnNames,
+	jsonToStatementObject,
+	getStatementColRefs,
+	objectKeysToSnakeCaseString,
+	objectToUpdateStatement,
+} from '../../db/utils';
+import { snakeCase } from 'lodash';
 
-const createStudentTable = `CREATE TABLE IF NOT EXISTS student ( 
-	student_id INTEGER PRIMARY KEY,
+const tableName = 'student';
+
+const createStudentTable = `CREATE TABLE IF NOT EXISTS ${tableName} ( 
+	${tableName}_id INTEGER PRIMARY KEY,
 	first_name TEXT NOT NULL,
 	last_name TEXT NOT NULL,
 	birthdate TEXT NOT NULL,
@@ -16,7 +25,7 @@ const createStudentTable = `CREATE TABLE IF NOT EXISTS student (
 );`;
 
 export const getStudentColumnNames = async () => {
-	return await getColumnNames('student');
+	return await getColumnNames(tableName);
 };
 
 export async function getStudentData() {
@@ -41,4 +50,49 @@ export function ensureCreated() {
 	});
 
 	db.close();
+}
+
+export function addOrUpdateStudent(student) {
+	if (student.studentId) return updateStudent(student);
+	else return addStudent(student);
+}
+
+function addStudent(student) {
+	const sqlite3 = window.require('sqlite3').verbose();
+	const db = new sqlite3.Database(database);
+
+	const cols = objectKeysToSnakeCaseString(student);
+	const colRefs = getStatementColRefs(student);
+	const statement = `
+		INSERT INTO ${tableName} (${cols})
+		VALUES (${colRefs})
+	`;
+
+	const studentModel = jsonToStatementObject(student);
+
+	const promise = new Promise((res, rej) => {
+		db.run(statement, studentModel, err => {
+			if (err === null) res('success');
+			rej(err);
+		});
+	});
+
+	return promise;
+}
+
+async function updateStudent(student) {
+	const sqlite3 = window.require('sqlite3').verbose();
+	const db = new sqlite3.Database(database);
+
+	const statement = objectToUpdateStatement(student, tableName);
+	const studentModel = jsonToStatementObject(student);
+
+	const promise = new Promise((res, rej) => {
+		db.run(statement, studentModel, err => {
+			if (err === null) res('success');
+			rej(err);
+		});
+	});
+
+	return promise;
 }
