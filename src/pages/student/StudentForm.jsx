@@ -29,14 +29,19 @@ const useStyles = makeStyles(theme => ({
 }));
 
 let setStudentList;
+let selectedStudent;
 
-export default ({ /*student, setStudent,*/ setStudentData }) => {
-	const [student, setStudent] = useState({});
+export default ({ student, setStudent, setStudentData }) => {
 	setStudentList = setStudentData;
+	const [newStudent, setSelectedStudent] = useState({});
+
+	useEffect(() => {
+		setSelectedStudent({...student});
+		selectedStudent = {...student};
+	},[student]);
+
+	const handleChange = name => value => setSelectedStudent({...newStudent, [name]: value});
 	const classes = useStyles();
-	const handleChange = ({ target: { name, value } }) => {
-		setStudent({ ...student, [name]: value });
-	};
 
 	return (
 		<Grid
@@ -47,26 +52,26 @@ export default ({ /*student, setStudent,*/ setStudentData }) => {
 		>
 			<Paper className={classes.paper}>
 				<SplitStudentForm
-					label={`Student${student.studentId ? `(${student.studentId})` : ''}`}
+					label={`Student${newStudent.studentId ? `(${newStudent.studentId})` : ''}`}
 				/>
-				<FormRow label='First name' name='firstName'></FormRow>
-				<FormRow label='Last name' name='lastName'></FormRow>
-				<FormRow label='Birthday' name='birthdate'></FormRow>
-				<FormRow label='Class' name='classId'></FormRow>
+				<FormRow label='First name' name='firstName' onChange={handleChange}></FormRow>
+				<FormRow label='Last name' name='lastName' onChange={handleChange}></FormRow>
+				<FormRow label='Birthday' name='birthdate' onChange={handleChange}></FormRow>
+				<FormRow label='Class' name='classId' onChange={handleChange}></FormRow>
 				<SplitStudentForm label='Mother' />
-				<FormRow label='Name' name='motherName'></FormRow>
-				<FormRow label='Mobile' name='motherMobile'></FormRow>
-				<FormRow label='Email' name='motherEmail'></FormRow>
+				<FormRow label='Name' name='motherName' onChange={handleChange}></FormRow>
+				<FormRow label='Mobile' name='motherMobile' onChange={handleChange}></FormRow>
+				<FormRow label='Email' name='motherEmail' onChange={handleChange}></FormRow>
 				<SplitStudentForm label='Father' />
-				<FormRow label='Name' name='motherName'></FormRow>
-				<FormRow label='Mobile' name='motherMobile'></FormRow>
-				<FormRow label='Email' name='motherEmail'></FormRow>
+				<FormRow label='Name' name='fatherName' onChange={handleChange}></FormRow>
+				<FormRow label='Mobile' name='fatherMobile' onChange={handleChange}></FormRow>
+				<FormRow label='Email' name='fatherEmail' onChange={handleChange}></FormRow>
 				<Button
 					variant='outlined'
 					color='default'
 					className={classes.submitButton}
 					size='small'
-					onClick={() => handleReset(setStudent)}
+					onClick={() => handleReset(setStudent,setSelectedStudent)}
 				>
 					Reset
 				</Button>
@@ -75,7 +80,7 @@ export default ({ /*student, setStudent,*/ setStudentData }) => {
 					color='primary'
 					className={classes.submitButton}
 					size='small'
-					onClick={() => handleSubmit(student)}
+					onClick={() => handleSubmit(newStudent, handleReset(setStudent))}
 				>
 					Submit
 				</Button>
@@ -84,19 +89,22 @@ export default ({ /*student, setStudent,*/ setStudentData }) => {
 	);
 };
 
-const FormRow = ({ label, name }) => {
-	const [val, setVal] = useState(null);
+const FormRow = ({ label, name, onChange}) => {
+	const [val, setVal] = useState('');
+	useEffect(() => {
+		if(!selectedStudent) return;
+		setVal(selectedStudent[name] || '');
+	}, [selectedStudent, name])
 
-	const handleChange = ({ target: { name, value } }) => {
+	const handleChange = ({ target: { value } }) => {
 		setVal(value);
+		onChange(name)(value);
 	};
 
 	return (
 		<Grid item xs>
 			<TextField
 				label={label}
-				name={name}
-				// value={student[name]}
 				value={val}
 				onChange={handleChange}
 			></TextField>
@@ -126,7 +134,7 @@ function SplitStudentForm({ label }) {
 	);
 }
 
-const handleSubmit = async student => {
+const handleSubmit = async (student, setStudent)=> {
 	try {
 		await addOrUpdateStudent(student);
 		setStudentList(await getStudentData());
@@ -135,6 +143,6 @@ const handleSubmit = async student => {
 	}
 };
 
-const handleReset = setStudent => {
+const handleReset = (setStudent)=> {
 	setStudent({});
 };
