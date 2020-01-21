@@ -6,6 +6,7 @@ import { CssBaseline, AppBar, Toolbar, Typography } from '@material-ui/core';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 import Student from '../../pages/student/Student';
+import Class from 'pages/class/Class';
 
 const useStyles = makeStyles(theme => ({
 	root: {
@@ -43,6 +44,9 @@ export default function PermanentDrawerLeft() {
 					<Switch>
 						<Route exact path='/students'>
 							<Student>Store</Student>
+						</Route>
+						<Route exact path='/school/class'>
+							<Class></Class>
 						</Route>
 						<Route exact path='/contactus'>
 							<p>Contact Us</p>

@@ -1,13 +1,16 @@
 import React from 'react';
-import {Grid} from '@material-ui/core';
+import {Grid, Typography} from '@material-ui/core';
 
-import {StandardTextFiled} from 'components/inputs'
+import {StandardTextFiled} from 'components/inputs/index';
+import FormButtons from 'components/buttons/FormButtons';
 
 export default () => {
     return (
-        <Grid container>
+        <Grid container direction="column">
+            <Grid item ><Typography >Class</Typography></Grid>
             <StandardTextFiled label="Class Name"></StandardTextFiled>
             <StandardTextFiled label="Grade"></StandardTextFiled>
+            <FormButtons></FormButtons>
         </Grid>
     )
 }
