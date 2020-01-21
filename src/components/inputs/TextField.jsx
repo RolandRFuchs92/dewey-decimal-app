@@ -12,7 +12,7 @@ export default ({label, defaultValue, onChange}) => {
     }
 
     return (<Grid item>
-            <TextField onChange={handleChange} value={val} label={label} variant="filled" />
+            <TextField fullWidth onChange={handleChange} value={val} label={label} variant="filled" />
         </Grid>
     )
 }

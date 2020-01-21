@@ -11,7 +11,7 @@ export default () => {
 
 	ensureCreated();
 	return (
-		<Grid container spacing={3}>
+		<Grid container spacing={2}>
 			<Grid item sm={2}>
 				<StudentForm
 					student={student}

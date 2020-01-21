@@ -49,6 +49,7 @@ export default ({ student, setStudent, setStudentData }) => {
 			direction='column'
 			justify='flex-start'
 			alignItems='flex-start'
+			spacing={2}
 		>
 			<Paper className={classes.paper}>
 				<SplitStudentForm

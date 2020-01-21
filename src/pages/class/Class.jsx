@@ -6,7 +6,7 @@ import FormButtons from 'components/buttons/FormButtons';
 
 export default () => {
     return (
-        <Grid container direction="column">
+        <Grid container direction="column" spacing={2}>
             <Grid item ><Typography >Class</Typography></Grid>
             <StandardTextFiled label="Class Name"></StandardTextFiled>
             <StandardTextFiled label="Grade"></StandardTextFiled>
