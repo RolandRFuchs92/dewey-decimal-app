@@ -6,7 +6,8 @@ import {StandardTextFiled} from 'components/inputs'
 export default () => {
     return (
         <Grid container>
-            <StandardTextFiled></StandardTextFiled>
+            <StandardTextFiled label="Class Name"></StandardTextFiled>
+            <StandardTextFiled label="Grade"></StandardTextFiled>
         </Grid>
     )
 }
