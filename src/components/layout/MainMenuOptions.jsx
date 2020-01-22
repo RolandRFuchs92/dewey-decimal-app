@@ -8,6 +8,7 @@ import {
 	makeStyles,
 } from '@material-ui/core';
 import {
+	AirlineSeatReclineExtra,
 	Home,
 	Code,
 	Store,
@@ -78,6 +79,8 @@ export default withRouter(MenuOptions);
 
 function Icon({ iconName }) {
 	switch (iconName) {
+		case 'teacher':
+			return <EmojiPeople />
 		case 'home':
 			return <Home></Home>;
 		case 'code':
@@ -93,7 +96,7 @@ function Icon({ iconName }) {
 		case 'school':
 			return <School />;
 		case 'student':
-			return <EmojiPeople></EmojiPeople>;
+			return <AirlineSeatReclineExtra/>;
 		case 'class':
 			return <SupervisedUserCircle></SupervisedUserCircle>;
 		default:

@@ -5,6 +5,7 @@ import Drawer from './Drawer';
 import { CssBaseline, AppBar, Toolbar, Typography } from '@material-ui/core';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
+import Teacher from 'pages/teacher/Teacher';
 import Student from '../../pages/student/Student';
 import Class from 'pages/class/Class';
 
@@ -47,6 +48,9 @@ export default function PermanentDrawerLeft() {
 						</Route>
 						<Route exact path='/school/class'>
 							<Class></Class>
+						</Route>
+						<Route exact path="/school/teacher">
+							<Teacher></Teacher>
 						</Route>
 						<Route exact path='/contactus'>
 							<p>Contact Us</p>

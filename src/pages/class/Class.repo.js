@@ -4,7 +4,7 @@ const queryEnsureClassCreated = `
     CREATE TABLE IF NOT EXISTS class(
         class_id INTEGER PRIMARY KEY,
         class_name TEXT,
-        grade INTEGER,
+        grade INTEGER
     )
 `;
 
