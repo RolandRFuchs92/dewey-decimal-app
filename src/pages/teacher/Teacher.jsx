@@ -15,8 +15,14 @@ export default () => {
         })();
     },[]);
 
+    useEffect(() => {},[teacher])
+
+    const handleSetTeacher = (teacher) => {
+        setTeacher(teacher);
+    }
+
     return <Grid container justify="center" spacing={2}>
-        <TeacherForm {...({teacher, setTeacher})}></TeacherForm>
-        <TeacherTable teachers={teachers} setTeacher={setTeacher}></TeacherTable>
+        <TeacherForm teacher={teacher} setTeacher={handleSetTeacher}></TeacherForm>
+        <TeacherTable teachers={teachers} setTeacher={handleSetTeacher}></TeacherTable>
     </ Grid>
 }

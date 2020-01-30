@@ -1,0 +1,264 @@
+{"message":"Opening database.","level":"info","service":"your-service-name","timestamp":"2020-01-30 22:03:21"}
+{"message":"Opening database.","level":"info","service":"your-service-name","timestamp":"2020-01-30 22:03:24"}
+{"message":"Opening database.","level":"info","service":"your-service-name","timestamp":"2020-01-30 22:03:25"}
+{"message":"Opening database.","level":"info","service":"your-service-name","timestamp":"2020-01-30 22:03:48"}
+{"message":"Opening database.","level":"info","service":"your-service-name","timestamp":"2020-01-30 22:03:48"}
+{"message":"Opening database.","level":"info","service":"your-service-name","timestamp":"2020-01-30 22:03:48"}
+{"message":"Opening database.","level":"info","service":"your-service-name","timestamp":"2020-01-30 22:12:41"}
+{"message":"Opening database.","level":"info","service":"your-service-name","timestamp":"2020-01-30 22:12:42"}
+{"message":"Opening database.","level":"info","service":"your-service-name","timestamp":"2020-01-30 22:12:42"}
+{"message":"Running statement SELECT * FROM student","level":"info","service":"your-service-name","timestamp":"2020-01-30 22:12:42"}
+{"message":"Returned 6 rows","level":"info","service":"your-service-name","timestamp":"2020-01-30 22:12:42"}
+{"message":"Opening database.","level":"info","service":"your-service-name","timestamp":"2020-01-30 22:12:42"}
+{"message":"Opening database.","level":"info","service":"your-service-name","timestamp":"2020-01-30 22:13:34"}
+{"message":"Opening database.","level":"info","service":"your-service-name","timestamp":"2020-01-30 22:13:34"}
+{"message":"Opening database.","level":"info","service":"your-service-name","timestamp":"2020-01-30 22:13:34"}
+{"message":"Running statement \n SELECT * FROM student","level":"info","service":"your-service-name","timestamp":"2020-01-30 22:13:34"}
+{"message":"Returned 6 rows","level":"info","service":"your-service-name","timestamp":"2020-01-30 22:13:34"}
+{"message":"Opening database.","level":"info","service":"your-service-name","timestamp":"2020-01-30 22:13:34"}
+{"message":"Opening database.","level":"info","service":"your-service-name","timestamp":"2020-01-30 22:13:54"}
+{"message":"Opening database.","level":"info","service":"your-service-name","timestamp":"2020-01-30 22:13:55"}
+{"message":"Opening database.","level":"info","service":"your-service-name","timestamp":"2020-01-30 22:13:55"}
+{"message":"Running statement SELECT * FROM student","level":"info","service":"your-service-name","timestamp":"2020-01-30 22:13:55"}
+{"message":"Returned 6 rows","level":"info","service":"your-service-name","timestamp":"2020-01-30 22:13:55"}
+{"message":"Opening database.","level":"info","service":"your-service-name","timestamp":"2020-01-30 22:13:55"}
+{"message":"Opening database.","level":"info","timestamp":"2020-01-30 22:14:16"}
+{"message":"Opening database.","level":"info","timestamp":"2020-01-30 22:14:16"}
+{"message":"Opening database.","level":"info","timestamp":"2020-01-30 22:14:16"}
+{"message":"Running statement SELECT * FROM student","level":"info","timestamp":"2020-01-30 22:14:16"}
+{"message":"Returned 6 rows","level":"info","timestamp":"2020-01-30 22:14:16"}
+{"message":"Opening database.","level":"info","timestamp":"2020-01-30 22:14:16"}
+{"message":"Opening database.","level":"info","timestamp":"2020-01-30 22:19:24"}
+{"message":"Opening database.","level":"info","timestamp":"2020-01-30 22:19:24"}
+{"message":"Opening database.","level":"info","timestamp":"2020-01-30 22:19:24"}
+{"message":"Running statement SELECT * FROM student","level":"info","timestamp":"2020-01-30 22:19:24"}
+{"message":"Returned 6 rows","level":"info","timestamp":"2020-01-30 22:19:24"}
+{"message":"Opening database.","level":"info","timestamp":"2020-01-30 22:19:24"}
+{"message":"Opening database.","level":"info","timestamp":"2020-01-30 22:19:34"}
+{"message":"Opening database.","level":"info","timestamp":"2020-01-30 22:19:35"}
+{"message":"Opening database.","level":"info","timestamp":"2020-01-30 22:19:35"}
+{"message":"Running statement SELECT * FROM student","level":"info","timestamp":"2020-01-30 22:19:45"}
+{"message":"Returned 6 rows","level":"info","timestamp":"2020-01-30 22:19:45"}
+{"message":"Opening database.","level":"info","timestamp":"2020-01-30 22:19:45"}
+{"message":"Opening database.","level":"info","timestamp":"2020-01-30 22:20:08"}
+{"message":"Opening database.","level":"info","timestamp":"2020-01-30 22:20:12"}
+{"message":"Opening database.","level":"info","timestamp":"2020-01-30 22:20:12"}
+{"message":"Opening database.","level":"info","timestamp":"2020-01-30 22:20:12"}
+{"message":"Running statement SELECT * FROM student","level":"info","timestamp":"2020-01-30 22:20:15"}
+{"message":"Returned 6 rows","level":"info","timestamp":"2020-01-30 22:20:15"}
+{"message":"Opening database.","level":"info","timestamp":"2020-01-30 22:20:15"}
+{"message":"Opening database.","level":"info","timestamp":"2020-01-30 22:20:34"}
+{"message":"Opening database.","level":"info","timestamp":"2020-01-30 22:20:34"}
+{"message":"Opening database.","level":"info","timestamp":"2020-01-30 22:20:34"}
+{"message":"Running statement SELECT * FROM student","level":"info","timestamp":"2020-01-30 22:22:08"}
+{"message":"Returned 6 rows","level":"info","timestamp":"2020-01-30 22:22:08"}
+{"message":"Opening database.","level":"info","timestamp":"2020-01-30 22:22:08"}
+{"message":"Opening database.","level":"info","timestamp":"2020-01-30 22:27:07"}
+{"message":"Opening database.","level":"info","timestamp":"2020-01-30 22:27:07"}
+{"message":"Opening database.","level":"info","timestamp":"2020-01-30 22:27:07"}
+{"message":"Running statement SELECT * FROM student","level":"info","timestamp":"2020-01-30 22:27:09"}
+{"message":"Returned 6 rows","level":"info","timestamp":"2020-01-30 22:27:09"}
+{"message":"Opening database.","level":"info","timestamp":"2020-01-30 22:27:09"}
+{"message":"Opening database.","level":"info","timestamp":"2020-01-30 22:28:58"}
+{"message":"Opening database.","level":"info","timestamp":"2020-01-30 22:28:58"}
+{"message":"Opening database.","level":"info","timestamp":"2020-01-30 22:28:58"}
+{"message":"Running statement SELECT * FROM student","level":"info","timestamp":"2020-01-30 22:29:38"}
+{"message":"Returned 6 rows","level":"info","timestamp":"2020-01-30 22:29:38"}
+{"message":"Opening database.","level":"info","timestamp":"2020-01-30 22:29:38"}
+{"message":"Opening database.","level":"info","timestamp":"2020-01-30 22:31:07"}
+{"message":"Opening database.","level":"info","timestamp":"2020-01-30 22:31:08"}
+{"message":"Opening database.","level":"info","timestamp":"2020-01-30 22:31:08"}
+{"message":"Running statement SELECT * FROM student","level":"info","timestamp":"2020-01-30 22:33:38"}
+{"message":"Returned 6 rows","level":"info","timestamp":"2020-01-30 22:33:38"}
+{"message":"Opening database.","level":"info","timestamp":"2020-01-30 22:33:40"}
+{"message":"Closed Db","level":"info","timestamp":"2020-01-30 22:33:40"}
+{"message":"ran statement - \n\nCREATE TABLE IF NOT EXISTS student ( \n\tstudent_id INTEGER PRIMARY KEY,\n\tfirst_name TEXT NOT NULL,\n\tlast_name TEXT NOT NULL,\n\tbirthdate TEXT NOT NULL,\n\tmother_name text,\n\tmother_mobile TEXT,\n\tmother_email TEXT,\n\tfather_name TEXT,\n\tfather_mobile TEXT,\n\tfather_email TEXT,\n\tclass_id INTEGER NOT NULL\n);\n\n with params undefined successfully.","level":"info","timestamp":"2020-01-30 22:33:40"}
+{"message":"Opening database.","level":"info","timestamp":"2020-01-30 22:33:40"}
+{"message":"Running statement SELECT * FROM student","level":"info","timestamp":"2020-01-30 22:33:40"}
+{"message":"Returned 6 rows","level":"info","timestamp":"2020-01-30 22:33:40"}
+{"message":"Opening database.","level":"info","timestamp":"2020-01-30 22:33:40"}
+{"message":"Closed Db","level":"info","timestamp":"2020-01-30 22:33:40"}
+{"message":"ran statement - \n\nCREATE TABLE IF NOT EXISTS student ( \n\tstudent_id INTEGER PRIMARY KEY,\n\tfirst_name TEXT NOT NULL,\n\tlast_name TEXT NOT NULL,\n\tbirthdate TEXT NOT NULL,\n\tmother_name text,\n\tmother_mobile TEXT,\n\tmother_email TEXT,\n\tfather_name TEXT,\n\tfather_mobile TEXT,\n\tfather_email TEXT,\n\tclass_id INTEGER NOT NULL\n);\n\n with params undefined successfully.","level":"info","timestamp":"2020-01-30 22:33:40"}
+{"message":"Opening database.","level":"info","timestamp":"2020-01-30 22:34:57"}
+{"message":"Closed Db","level":"info","timestamp":"2020-01-30 22:34:57"}
+{"message":"ran statement - \n\nCREATE TABLE IF NOT EXISTS student ( \n\tstudent_id INTEGER PRIMARY KEY,\n\tfirst_name TEXT NOT NULL,\n\tlast_name TEXT NOT NULL,\n\tbirthdate TEXT NOT NULL,\n\tmother_name text,\n\tmother_mobile TEXT,\n\tmother_email TEXT,\n\tfather_name TEXT,\n\tfather_mobile TEXT,\n\tfather_email TEXT,\n\tclass_id INTEGER NOT NULL\n);\n\n with params undefined successfully.","level":"info","timestamp":"2020-01-30 22:34:57"}
+{"message":"Opening database.","level":"info","timestamp":"2020-01-30 22:34:57"}
+{"message":"Running statement SELECT * FROM student","level":"info","timestamp":"2020-01-30 22:34:57"}
+{"message":"Returned 6 rows","level":"info","timestamp":"2020-01-30 22:34:58"}
+{"message":"Opening database.","level":"info","timestamp":"2020-01-30 22:34:58"}
+{"message":"Closed Db","level":"info","timestamp":"2020-01-30 22:34:58"}
+{"message":"ran statement - \n\nCREATE TABLE IF NOT EXISTS student ( \n\tstudent_id INTEGER PRIMARY KEY,\n\tfirst_name TEXT NOT NULL,\n\tlast_name TEXT NOT NULL,\n\tbirthdate TEXT NOT NULL,\n\tmother_name text,\n\tmother_mobile TEXT,\n\tmother_email TEXT,\n\tfather_name TEXT,\n\tfather_mobile TEXT,\n\tfather_email TEXT,\n\tclass_id INTEGER NOT NULL\n);\n\n with params undefined successfully.","level":"info","timestamp":"2020-01-30 22:34:58"}
+{"message":"Opening database.","level":"info","timestamp":"2020-01-30 22:35:09"}
+{"message":"Closed Db","level":"info","timestamp":"2020-01-30 22:35:09"}
+{"message":"ran statement - \n\nCREATE TABLE IF NOT EXISTS student ( \n\tstudent_id INTEGER PRIMARY KEY,\n\tfirst_name TEXT NOT NULL,\n\tlast_name TEXT NOT NULL,\n\tbirthdate TEXT NOT NULL,\n\tmother_name text,\n\tmother_mobile TEXT,\n\tmother_email TEXT,\n\tfather_name TEXT,\n\tfather_mobile TEXT,\n\tfather_email TEXT,\n\tclass_id INTEGER NOT NULL\n);\n\n with params undefined successfully.","level":"info","timestamp":"2020-01-30 22:35:09"}
+{"message":"Opening database.","level":"info","timestamp":"2020-01-30 22:35:09"}
+{"message":"Running statement SELECT * FROM student","level":"info","timestamp":"2020-01-30 22:35:09"}
+{"message":"Returned 6 rows","level":"info","timestamp":"2020-01-30 22:35:09"}
+{"message":"Opening database.","level":"info","timestamp":"2020-01-30 22:35:09"}
+{"message":"Closed Db","level":"info","timestamp":"2020-01-30 22:35:09"}
+{"message":"ran statement - \n\nCREATE TABLE IF NOT EXISTS student ( \n\tstudent_id INTEGER PRIMARY KEY,\n\tfirst_name TEXT NOT NULL,\n\tlast_name TEXT NOT NULL,\n\tbirthdate TEXT NOT NULL,\n\tmother_name text,\n\tmother_mobile TEXT,\n\tmother_email TEXT,\n\tfather_name TEXT,\n\tfather_mobile TEXT,\n\tfather_email TEXT,\n\tclass_id INTEGER NOT NULL\n);\n\n with params undefined successfully.","level":"info","timestamp":"2020-01-30 22:35:09"}
+{"message":"Opening database.","level":"info","timestamp":"2020-01-30 22:35:47"}
+{"message":"Closed Db","level":"info","timestamp":"2020-01-30 22:35:47"}
+{"message":"ran statement - \n\nCREATE TABLE IF NOT EXISTS student ( \n\tstudent_id INTEGER PRIMARY KEY,\n\tfirst_name TEXT NOT NULL,\n\tlast_name TEXT NOT NULL,\n\tbirthdate TEXT NOT NULL,\n\tmother_name text,\n\tmother_mobile TEXT,\n\tmother_email TEXT,\n\tfather_name TEXT,\n\tfather_mobile TEXT,\n\tfather_email TEXT,\n\tclass_id INTEGER NOT NULL\n);\n\n with params undefined successfully.","level":"info","timestamp":"2020-01-30 22:35:47"}
+{"message":"Opening database.","level":"info","timestamp":"2020-01-30 22:35:47"}
+{"message":"Running statement SELECT * FROM student","level":"info","timestamp":"2020-01-30 22:35:47"}
+{"message":"Returned 6 rows","level":"info","timestamp":"2020-01-30 22:35:47"}
+{"message":"Opening database.","level":"info","timestamp":"2020-01-30 22:35:47"}
+{"message":"Closed Db","level":"info","timestamp":"2020-01-30 22:35:47"}
+{"message":"ran statement - \n\nCREATE TABLE IF NOT EXISTS student ( \n\tstudent_id INTEGER PRIMARY KEY,\n\tfirst_name TEXT NOT NULL,\n\tlast_name TEXT NOT NULL,\n\tbirthdate TEXT NOT NULL,\n\tmother_name text,\n\tmother_mobile TEXT,\n\tmother_email TEXT,\n\tfather_name TEXT,\n\tfather_mobile TEXT,\n\tfather_email TEXT,\n\tclass_id INTEGER NOT NULL\n);\n\n with params undefined successfully.","level":"info","timestamp":"2020-01-30 22:35:47"}
+{"message":"Opening database.","level":"info","timestamp":"2020-01-30 22:36:17"}
+{"message":"Closed Db","level":"info","timestamp":"2020-01-30 22:36:17"}
+{"message":"ran statement - \n\nCREATE TABLE IF NOT EXISTS student ( \n\tstudent_id INTEGER PRIMARY KEY,\n\tfirst_name TEXT NOT NULL,\n\tlast_name TEXT NOT NULL,\n\tbirthdate TEXT NOT NULL,\n\tmother_name text,\n\tmother_mobile TEXT,\n\tmother_email TEXT,\n\tfather_name TEXT,\n\tfather_mobile TEXT,\n\tfather_email TEXT,\n\tclass_id INTEGER NOT NULL\n);\n\n with params undefined successfully.","level":"info","timestamp":"2020-01-30 22:36:18"}
+{"message":"Opening database.","level":"info","timestamp":"2020-01-30 22:36:18"}
+{"message":"Running statement SELECT * FROM student","level":"info","timestamp":"2020-01-30 22:36:18"}
+{"message":"Returned 6 rows","level":"info","timestamp":"2020-01-30 22:36:18"}
+{"message":"Opening database.","level":"info","timestamp":"2020-01-30 22:36:18"}
+{"message":"Closed Db","level":"info","timestamp":"2020-01-30 22:36:18"}
+{"message":"ran statement - \n\nCREATE TABLE IF NOT EXISTS student ( \n\tstudent_id INTEGER PRIMARY KEY,\n\tfirst_name TEXT NOT NULL,\n\tlast_name TEXT NOT NULL,\n\tbirthdate TEXT NOT NULL,\n\tmother_name text,\n\tmother_mobile TEXT,\n\tmother_email TEXT,\n\tfather_name TEXT,\n\tfather_mobile TEXT,\n\tfather_email TEXT,\n\tclass_id INTEGER NOT NULL\n);\n\n with params undefined successfully.","level":"info","timestamp":"2020-01-30 22:36:18"}
+{"message":"Opening database.","level":"info","timestamp":"2020-01-30 22:37:18"}
+{"message":"Closed Db","level":"info","timestamp":"2020-01-30 22:37:18"}
+{"message":"ran statement - \n\nCREATE TABLE IF NOT EXISTS student ( \n\tstudent_id INTEGER PRIMARY KEY,\n\tfirst_name TEXT NOT NULL,\n\tlast_name TEXT NOT NULL,\n\tbirthdate TEXT NOT NULL,\n\tmother_name text,\n\tmother_mobile TEXT,\n\tmother_email TEXT,\n\tfather_name TEXT,\n\tfather_mobile TEXT,\n\tfather_email TEXT,\n\tclass_id INTEGER NOT NULL\n);\n\n with params undefined successfully.","level":"info","timestamp":"2020-01-30 22:37:18"}
+{"message":"Opening database.","level":"info","timestamp":"2020-01-30 22:37:18"}
+{"message":"Running statement SELECT * FROM student","level":"info","timestamp":"2020-01-30 22:37:18"}
+{"message":"Returned 6 rows","level":"info","timestamp":"2020-01-30 22:37:18"}
+{"message":"Opening database.","level":"info","timestamp":"2020-01-30 22:37:18"}
+{"message":"Closed Db","level":"info","timestamp":"2020-01-30 22:37:18"}
+{"message":"ran statement - \n\nCREATE TABLE IF NOT EXISTS student ( \n\tstudent_id INTEGER PRIMARY KEY,\n\tfirst_name TEXT NOT NULL,\n\tlast_name TEXT NOT NULL,\n\tbirthdate TEXT NOT NULL,\n\tmother_name text,\n\tmother_mobile TEXT,\n\tmother_email TEXT,\n\tfather_name TEXT,\n\tfather_mobile TEXT,\n\tfather_email TEXT,\n\tclass_id INTEGER NOT NULL\n);\n\n with params undefined successfully.","level":"info","timestamp":"2020-01-30 22:37:18"}
+{"message":"Opening database.","level":"info","timestamp":"2020-01-30 22:37:29"}
+{"message":"Running statement \n    SELECT\n        teacher_id,\n        first_name,\n        last_name,\n        mobile,\n        email,\n        class_id,\n        is_active\n    FROM\n        teacher\n    WHERE\n        is_active = 1;\n","level":"info","timestamp":"2020-01-30 22:37:29"}
+{"message":"Returned 1 rows","level":"info","timestamp":"2020-01-30 22:37:29"}
+{"message":"Opening database.","level":"info","timestamp":"2020-01-30 22:37:40"}
+{"message":"Closed Db","level":"info","timestamp":"2020-01-30 22:37:40"}
+{"message":"ran statement - \n\nINSERT INTO teacher (first_name,last_name,mobile,email,class_id)\n\t\t\t\t\tVALUES ($first_name,$last_name,$mobile,$email,$class_id)\n\n with params {\"$first_name\":\"asdsa\",\"$last_name\":\"aaaa\",\"$mobile\":\"sda\",\"$email\":\"123\",\"$class_id\":\"1\"} successfully.","level":"info","timestamp":"2020-01-30 22:37:40"}
+{"message":"Opening database.","level":"info","timestamp":"2020-01-30 22:38:07"}
+{"message":"Running statement \n    SELECT\n        teacher_id,\n        first_name,\n        last_name,\n        mobile,\n        email,\n        class_id,\n        is_active\n    FROM\n        teacher\n    WHERE\n        is_active = 1;\n","level":"info","timestamp":"2020-01-30 22:38:07"}
+{"message":"Returned 1 rows","level":"info","timestamp":"2020-01-30 22:38:08"}
+{"message":"Opening database.","level":"info","timestamp":"2020-01-30 22:38:53"}
+{"message":"Running statement \n    SELECT\n        teacher_id,\n        first_name,\n        last_name,\n        mobile,\n        email,\n        class_id,\n        is_active\n    FROM\n        teacher\n    WHERE\n        is_active = 1;\n","level":"info","timestamp":"2020-01-30 22:38:53"}
+{"message":"Returned 1 rows","level":"info","timestamp":"2020-01-30 22:38:53"}
+{"message":"Opening database.","level":"info","timestamp":"2020-01-30 22:39:11"}
+{"message":"Closed Db","level":"info","timestamp":"2020-01-30 22:39:11"}
+{"message":"ran statement - \n\nINSERT INTO teacher (first_name,last_name,mobile,email,class_id)\n\t\t\t\t\tVALUES ($first_name,$last_name,$mobile,$email,$class_id)\n\n with params {\"$first_name\":\"aaaa\",\"$last_name\":\"ssss\",\"$mobile\":\"ddd\",\"$email\":\"111\",\"$class_id\":\"1\"} successfully.","level":"info","timestamp":"2020-01-30 22:39:11"}
+{"message":"Opening database.","level":"info","timestamp":"2020-01-30 22:39:51"}
+{"message":"Running statement \n    SELECT\n        teacher_id,\n        first_name,\n        last_name,\n        mobile,\n        email,\n        class_id,\n        is_active\n    FROM\n        teacher\n    WHERE\n        is_active = 1;\n","level":"info","timestamp":"2020-01-30 22:39:51"}
+{"message":"Returned 1 rows","level":"info","timestamp":"2020-01-30 22:39:52"}
+{"message":"Opening database.","level":"info","timestamp":"2020-01-30 22:40:11"}
+{"message":"Running statement \n    SELECT\n        teacher_id,\n        first_name,\n        last_name,\n        mobile,\n        email,\n        class_id,\n        is_active\n    FROM\n        teacher\n    WHERE\n        is_active = 1;\n","level":"info","timestamp":"2020-01-30 22:40:11"}
+{"message":"Returned 1 rows","level":"info","timestamp":"2020-01-30 22:40:11"}
+{"message":"Opening database.","level":"info","timestamp":"2020-01-30 22:40:46"}
+{"message":"Running statement \n    SELECT\n        teacher_id,\n        first_name,\n        last_name,\n        mobile,\n        email,\n        class_id,\n        is_active\n    FROM\n        teacher\n    WHERE\n        is_active = 1;\n","level":"info","timestamp":"2020-01-30 22:40:46"}
+{"message":"Returned 1 rows","level":"info","timestamp":"2020-01-30 22:40:46"}
+{"message":"Opening database.","level":"info","timestamp":"2020-01-30 22:41:05"}
+{"message":"Closed Db","level":"info","timestamp":"2020-01-30 22:41:05"}
+{"message":"ran statement - \n\nINSERT INTO teacher (first_name,last_name,mobile,email,class_id,is_active)\n\t\t\t\t\tVALUES ($first_name,$last_name,$mobile,$email,$class_id,$is_active)\n\n with params {\"$first_name\":\"aaasd\",\"$last_name\":\"dsss\",\"$mobile\":\"zzzx\",\"$email\":\"sazxz\",\"$class_id\":\"1\",\"$is_active\":1} successfully.","level":"info","timestamp":"2020-01-30 22:41:05"}
+{"message":"Opening database.","level":"info","timestamp":"2020-01-30 22:41:12"}
+{"message":"Running statement \n    SELECT\n        teacher_id,\n        first_name,\n        last_name,\n        mobile,\n        email,\n        class_id,\n        is_active\n    FROM\n        teacher\n    WHERE\n        is_active = 1;\n","level":"info","timestamp":"2020-01-30 22:41:12"}
+{"message":"Returned 2 rows","level":"info","timestamp":"2020-01-30 22:41:12"}
+{"message":"Opening database.","level":"info","timestamp":"2020-01-30 22:41:25"}
+{"message":"Running statement \n    SELECT\n        teacher_id,\n        first_name,\n        last_name,\n        mobile,\n        email,\n        class_id,\n        is_active\n    FROM\n        teacher\n    WHERE\n        is_active = 1;\n","level":"info","timestamp":"2020-01-30 22:41:25"}
+{"message":"Returned 2 rows","level":"info","timestamp":"2020-01-30 22:41:26"}
+{"message":"Opening database.","level":"info","timestamp":"2020-01-30 22:42:01"}
+{"message":"Running statement \n    SELECT\n        teacher_id,\n        first_name,\n        last_name,\n        mobile,\n        email,\n        class_id,\n        is_active\n    FROM\n        teacher\n    WHERE\n        is_active = 1;\n","level":"info","timestamp":"2020-01-30 22:42:01"}
+{"message":"Returned 2 rows","level":"info","timestamp":"2020-01-30 22:42:02"}
+{"message":"Opening database.","level":"info","timestamp":"2020-01-30 22:42:45"}
+{"message":"Running statement \n    SELECT\n        teacher_id,\n        first_name,\n        last_name,\n        mobile,\n        email,\n        class_id,\n        is_active\n    FROM\n        teacher\n    WHERE\n        is_active = 1;\n","level":"info","timestamp":"2020-01-30 22:42:45"}
+{"message":"Returned 2 rows","level":"info","timestamp":"2020-01-30 22:42:45"}
+{"message":"Opening database.","level":"info","timestamp":"2020-01-30 22:42:51"}
+{"message":"Closed Db","level":"info","timestamp":"2020-01-30 22:42:51"}
+{"message":"ran statement - \n\nINSERT INTO teacher (first_name,last_name,class_id,is_active)\n\t\t\t\t\tVALUES ($first_name,$last_name,$class_id,$is_active)\n\n with params {\"$first_name\":\"zz\",\"$last_name\":\"zz\",\"$class_id\":\"1\",\"$is_active\":1} successfully.","level":"info","timestamp":"2020-01-30 22:42:51"}
+{"message":"Opening database.","level":"info","timestamp":"2020-01-30 22:46:20"}
+{"message":"Running statement \n    SELECT\n        teacher_id,\n        first_name,\n        last_name,\n        mobile,\n        email,\n        class_id,\n        is_active\n    FROM\n        teacher\n    WHERE\n        is_active = 1;\n","level":"info","timestamp":"2020-01-30 22:46:20"}
+{"message":"Returned 3 rows","level":"info","timestamp":"2020-01-30 22:46:20"}
+{"message":"Opening database.","level":"info","timestamp":"2020-01-30 22:52:40"}
+{"message":"Running statement \n    SELECT\n        teacher_id,\n        first_name,\n        last_name,\n        mobile,\n        email,\n        class_id,\n        is_active\n    FROM\n        teacher\n    WHERE\n        is_active = 1;\n","level":"info","timestamp":"2020-01-30 22:52:40"}
+{"message":"Returned 3 rows","level":"info","timestamp":"2020-01-30 22:52:41"}
+{"message":"Opening database.","level":"info","timestamp":"2020-01-30 22:57:00"}
+{"message":"Running statement \n    SELECT\n        teacher_id,\n        first_name,\n        last_name,\n        mobile,\n        email,\n        class_id,\n        is_active\n    FROM\n        teacher\n    WHERE\n        is_active = 1;\n","level":"info","timestamp":"2020-01-30 22:57:00"}
+{"message":"Returned 3 rows","level":"info","timestamp":"2020-01-30 22:57:01"}
+{"message":"Opening database.","level":"info","timestamp":"2020-01-30 22:57:03"}
+{"message":"Closed Db","level":"info","timestamp":"2020-01-30 22:57:03"}
+{"message":"Opening database.","level":"info","timestamp":"2020-01-30 22:57:03"}
+{"message":"Running statement \n    SELECT\n        teacher_id,\n        first_name,\n        last_name,\n        mobile,\n        email,\n        class_id,\n        is_active\n    FROM\n        teacher\n    WHERE\n        is_active = 1;\n","level":"info","timestamp":"2020-01-30 22:57:03"}
+{"message":"Returned 3 rows","level":"info","timestamp":"2020-01-30 22:57:03"}
+{"message":"ran statement - \n\nINSERT INTO teacher (is_active)\n\t\t\t\t\tVALUES ($is_active)\n\n with params {\"$is_active\":1} successfully.","level":"info","timestamp":"2020-01-30 22:57:03"}
+{"message":"Opening database.","level":"info","timestamp":"2020-01-30 22:57:19"}
+{"message":"Closed Db","level":"info","timestamp":"2020-01-30 22:57:19"}
+{"message":"Opening database.","level":"info","timestamp":"2020-01-30 22:57:19"}
+{"message":"Running statement \n    SELECT\n        teacher_id,\n        first_name,\n        last_name,\n        mobile,\n        email,\n        class_id,\n        is_active\n    FROM\n        teacher\n    WHERE\n        is_active = 1;\n","level":"info","timestamp":"2020-01-30 22:57:19"}
+{"level":"error","timestamp":"2020-01-30 22:57:19","message":"Error: SQLITE_ERROR: near \"0\": syntax error","stack":"Error: Error: SQLITE_ERROR: near \"0\": syntax error\n    at Object.error (http://localhost:3000/static/js/main.chunk.js:2311:16)\n    at http://localhost:3000/static/js/main.chunk.js:922:62\n    at replacement (D:\\Playground\\Electron\\di\\dewey-decimal-app\\node_modules\\sqlite3\\lib\\trace.js:19:31)\n    at Statement.errBack (D:\\Playground\\Electron\\di\\dewey-decimal-app\\node_modules\\sqlite3\\lib\\sqlite3.js:16:21)"}
+{"message":"Returned 4 rows","level":"info","timestamp":"2020-01-30 22:57:19"}
+{"message":"Opening database.","level":"info","timestamp":"2020-01-30 22:57:57"}
+{"message":"Closed Db","level":"info","timestamp":"2020-01-30 22:57:57"}
+{"message":"Opening database.","level":"info","timestamp":"2020-01-30 22:57:57"}
+{"message":"Running statement \n    SELECT\n        teacher_id,\n        first_name,\n        last_name,\n        mobile,\n        email,\n        class_id,\n        is_active\n    FROM\n        teacher\n    WHERE\n        is_active = 1;\n","level":"info","timestamp":"2020-01-30 22:57:57"}
+{"level":"error","timestamp":"2020-01-30 22:57:57","message":"Error: SQLITE_ERROR: near \"0\": syntax error","stack":"Error: Error: SQLITE_ERROR: near \"0\": syntax error\n    at Object.error (http://localhost:3000/static/js/main.chunk.js:2311:16)\n    at http://localhost:3000/static/js/main.chunk.js:922:62\n    at replacement (D:\\Playground\\Electron\\di\\dewey-decimal-app\\node_modules\\sqlite3\\lib\\trace.js:19:31)\n    at Statement.errBack (D:\\Playground\\Electron\\di\\dewey-decimal-app\\node_modules\\sqlite3\\lib\\sqlite3.js:16:21)"}
+{"message":"Returned 4 rows","level":"info","timestamp":"2020-01-30 22:57:57"}
+{"message":"Opening database.","level":"info","timestamp":"2020-01-30 22:58:40"}
+{"message":"Closed Db","level":"info","timestamp":"2020-01-30 22:58:40"}
+{"message":"Opening database.","level":"info","timestamp":"2020-01-30 22:58:40"}
+{"message":"Running statement \n    SELECT\n        teacher_id,\n        first_name,\n        last_name,\n        mobile,\n        email,\n        class_id,\n        is_active\n    FROM\n        teacher\n    WHERE\n        is_active = 1;\n","level":"info","timestamp":"2020-01-30 22:58:40"}
+{"level":"error","timestamp":"2020-01-30 22:58:40","message":"Error: SQLITE_ERROR: near \"0\": syntax error","stack":"Error: Error: SQLITE_ERROR: near \"0\": syntax error\n    at Object.error (http://localhost:3000/static/js/main.chunk.js:2311:16)\n    at http://localhost:3000/static/js/main.chunk.js:922:62\n    at replacement (D:\\Playground\\Electron\\di\\dewey-decimal-app\\node_modules\\sqlite3\\lib\\trace.js:19:31)\n    at Statement.errBack (D:\\Playground\\Electron\\di\\dewey-decimal-app\\node_modules\\sqlite3\\lib\\sqlite3.js:16:21)"}
+{"message":"Returned 4 rows","level":"info","timestamp":"2020-01-30 22:58:40"}
+{"message":"Opening database.","level":"info","timestamp":"2020-01-30 23:00:07"}
+{"message":"Running statement \n    SELECT\n        teacher_id,\n        first_name,\n        last_name,\n        mobile,\n        email,\n        class_id,\n        is_active\n    FROM\n        teacher\n    WHERE\n        is_active = 1;\n","level":"info","timestamp":"2020-01-30 23:00:07"}
+{"message":"Returned 4 rows","level":"info","timestamp":"2020-01-30 23:00:07"}
+{"message":"Opening database.","level":"info","timestamp":"2020-01-30 23:00:24"}
+{"message":"Closed Db","level":"info","timestamp":"2020-01-30 23:00:24"}
+{"message":"ran statement - \n\nINSERT INTO teacher (first_name,last_name,mobile,email,class_id,is_active)\n\t\t\t\t\tVALUES ($first_name,$last_name,$mobile,$email,$class_id,$is_active)\n\n with params {\"$first_name\":\"asdasd\",\"$last_name\":\"sss\",\"$mobile\":\"zzzxzx\",\"$email\":\"asdas\",\"$class_id\":\"1123\",\"$is_active\":1} successfully.","level":"info","timestamp":"2020-01-30 23:00:25"}
+{"message":"Opening database.","level":"info","timestamp":"2020-01-30 23:00:33"}
+{"message":"Running statement \n    SELECT\n        teacher_id,\n        first_name,\n        last_name,\n        mobile,\n        email,\n        class_id,\n        is_active\n    FROM\n        teacher\n    WHERE\n        is_active = 1;\n","level":"info","timestamp":"2020-01-30 23:00:33"}
+{"message":"Returned 5 rows","level":"info","timestamp":"2020-01-30 23:00:33"}
+{"message":"Opening database.","level":"info","timestamp":"2020-01-30 23:03:58"}
+{"message":"Running statement \n    SELECT\n        teacher_id,\n        first_name,\n        last_name,\n        mobile,\n        email,\n        class_id,\n        is_active\n    FROM\n        teacher\n    WHERE\n        is_active = 1;\n","level":"info","timestamp":"2020-01-30 23:03:58"}
+{"message":"Returned 5 rows","level":"info","timestamp":"2020-01-30 23:03:58"}
+{"message":"Opening database.","level":"info","timestamp":"2020-01-30 23:04:06"}
+{"message":"Closed Db","level":"info","timestamp":"2020-01-30 23:04:07"}
+{"message":"Opening database.","level":"info","timestamp":"2020-01-30 23:04:07"}
+{"message":"Running statement \n    SELECT\n        teacher_id,\n        first_name,\n        last_name,\n        mobile,\n        email,\n        class_id,\n        is_active\n    FROM\n        teacher\n    WHERE\n        is_active = 1;\n","level":"info","timestamp":"2020-01-30 23:04:07"}
+{"message":"Returned 5 rows","level":"info","timestamp":"2020-01-30 23:04:07"}
+{"message":"ran statement - \n\nINSERT INTO teacher (first_name,last_name,mobile,email,class_id,is_active)\n\t\t\t\t\tVALUES ($first_name,$last_name,$mobile,$email,$class_id,$is_active)\n\n with params {\"$first_name\":\"zzz\",\"$last_name\":\"xxz\",\"$mobile\":\"123\",\"$email\":\"xz1\",\"$class_id\":\"1\",\"$is_active\":1} successfully.","level":"info","timestamp":"2020-01-30 23:04:08"}
+{"message":"Opening database.","level":"info","timestamp":"2020-01-30 23:04:40"}
+{"message":"Running statement \n    SELECT\n        teacher_id,\n        first_name,\n        last_name,\n        mobile,\n        email,\n        class_id,\n        is_active\n    FROM\n        teacher\n    WHERE\n        is_active = 1;\n","level":"info","timestamp":"2020-01-30 23:04:40"}
+{"message":"Returned 6 rows","level":"info","timestamp":"2020-01-30 23:04:40"}
+{"message":"Opening database.","level":"info","timestamp":"2020-01-30 23:04:47"}
+{"message":"Closed Db","level":"info","timestamp":"2020-01-30 23:04:48"}
+{"message":"Opening database.","level":"info","timestamp":"2020-01-30 23:04:48"}
+{"message":"Running statement \n    SELECT\n        teacher_id,\n        first_name,\n        last_name,\n        mobile,\n        email,\n        class_id,\n        is_active\n    FROM\n        teacher\n    WHERE\n        is_active = 1;\n","level":"info","timestamp":"2020-01-30 23:04:48"}
+{"message":"Returned 6 rows","level":"info","timestamp":"2020-01-30 23:04:48"}
+{"message":"ran statement - \n\nINSERT INTO teacher (first_name,last_name,mobile,email,class_id,is_active)\n\t\t\t\t\tVALUES ($first_name,$last_name,$mobile,$email,$class_id,$is_active)\n\n with params {\"$first_name\":\"asdsa\",\"$last_name\":\"zxzx\",\"$mobile\":\"asdzx\",\"$email\":\"axzxc\",\"$class_id\":\"1\",\"$is_active\":1} successfully.","level":"info","timestamp":"2020-01-30 23:04:48"}
+{"message":"Opening database.","level":"info","timestamp":"2020-01-30 23:05:55"}
+{"message":"Running statement \n    SELECT\n        teacher_id,\n        first_name,\n        last_name,\n        mobile,\n        email,\n        class_id,\n        is_active\n    FROM\n        teacher\n    WHERE\n        is_active = 1;\n","level":"info","timestamp":"2020-01-30 23:05:55"}
+{"message":"Returned 7 rows","level":"info","timestamp":"2020-01-30 23:05:56"}
+{"message":"Opening database.","level":"info","timestamp":"2020-01-30 23:06:16"}
+{"message":"Running statement \n    SELECT\n        teacher_id,\n        first_name,\n        last_name,\n        mobile,\n        email,\n        class_id,\n        is_active\n    FROM\n        teacher\n    WHERE\n        is_active = 1;\n","level":"info","timestamp":"2020-01-30 23:06:16"}
+{"message":"Returned 7 rows","level":"info","timestamp":"2020-01-30 23:06:16"}
+{"message":"Opening database.","level":"info","timestamp":"2020-01-30 23:06:30"}
+{"message":"Closed Db","level":"info","timestamp":"2020-01-30 23:06:30"}
+{"message":"Opening database.","level":"info","timestamp":"2020-01-30 23:06:30"}
+{"message":"Running statement \n    SELECT\n        teacher_id,\n        first_name,\n        last_name,\n        mobile,\n        email,\n        class_id,\n        is_active\n    FROM\n        teacher\n    WHERE\n        is_active = 1;\n","level":"info","timestamp":"2020-01-30 23:06:30"}
+{"message":"Returned 7 rows","level":"info","timestamp":"2020-01-30 23:06:30"}
+{"message":"ran statement - \n\nINSERT INTO teacher (first_name,last_name,mobile,email,class_id,is_active)\n\t\t\t\t\tVALUES ($first_name,$last_name,$mobile,$email,$class_id,$is_active)\n\n with params {\"$first_name\":\"aasdasd\",\"$last_name\":\"asdsa\",\"$mobile\":\"dasda\",\"$email\":\"zsdza\",\"$class_id\":\"1\",\"$is_active\":1} successfully.","level":"info","timestamp":"2020-01-30 23:06:31"}
+{"message":"Opening database.","level":"info","timestamp":"2020-01-30 23:06:48"}
+{"message":"Closed Db","level":"info","timestamp":"2020-01-30 23:06:50"}
+{"message":"Opening database.","level":"info","timestamp":"2020-01-30 23:06:50"}
+{"message":"Running statement \n    SELECT\n        teacher_id,\n        first_name,\n        last_name,\n        mobile,\n        email,\n        class_id,\n        is_active\n    FROM\n        teacher\n    WHERE\n        is_active = 1;\n","level":"info","timestamp":"2020-01-30 23:06:50"}
+{"level":"error","timestamp":"2020-01-30 23:06:50","message":"Error: SQLITE_ERROR: near \"0\": syntax error","stack":"Error: Error: SQLITE_ERROR: near \"0\": syntax error\n    at Object.error (http://localhost:3000/static/js/main.chunk.js:2321:16)\n    at http://localhost:3000/static/js/main.chunk.js:922:62\n    at replacement (D:\\Playground\\Electron\\di\\dewey-decimal-app\\node_modules\\sqlite3\\lib\\trace.js:19:31)\n    at Statement.errBack (D:\\Playground\\Electron\\di\\dewey-decimal-app\\node_modules\\sqlite3\\lib\\sqlite3.js:16:21)"}
+{"message":"Returned 8 rows","level":"info","timestamp":"2020-01-30 23:06:50"}
+{"message":"Opening database.","level":"info","timestamp":"2020-01-30 23:07:19"}
+{"message":"Running statement \n    SELECT\n        teacher_id,\n        first_name,\n        last_name,\n        mobile,\n        email,\n        class_id,\n        is_active\n    FROM\n        teacher\n    WHERE\n        is_active = 1;\n","level":"info","timestamp":"2020-01-30 23:07:19"}
+{"message":"Returned 8 rows","level":"info","timestamp":"2020-01-30 23:07:19"}
+{"message":"Opening database.","level":"info","timestamp":"2020-01-30 23:07:27"}
+{"message":"Closed Db","level":"info","timestamp":"2020-01-30 23:07:28"}
+{"message":"Opening database.","level":"info","timestamp":"2020-01-30 23:07:28"}
+{"message":"Running statement \n    SELECT\n        teacher_id,\n        first_name,\n        last_name,\n        mobile,\n        email,\n        class_id,\n        is_active\n    FROM\n        teacher\n    WHERE\n        is_active = 1;\n","level":"info","timestamp":"2020-01-30 23:07:28"}
+{"message":"ran statement - \n\nINSERT INTO teacher (first_name,last_name,class_id,email,is_active)\n\t\t\t\t\tVALUES ($first_name,$last_name,$class_id,$email,$is_active)\n\n with params {\"$first_name\":\"asdsa\",\"$last_name\":\"zzxd\",\"$class_id\":\"1\",\"$email\":\"asdasd\",\"$is_active\":1} successfully.","level":"info","timestamp":"2020-01-30 23:07:28"}
+{"message":"Returned 9 rows","level":"info","timestamp":"2020-01-30 23:07:28"}
+{"message":"Opening database.","level":"info","timestamp":"2020-01-30 23:09:16"}
+{"message":"Running statement \n    SELECT\n        teacher_id,\n        first_name,\n        last_name,\n        mobile,\n        email,\n        class_id,\n        is_active\n    FROM\n        teacher\n    WHERE\n        is_active = 1;\n","level":"info","timestamp":"2020-01-30 23:09:16"}
+{"message":"Returned 9 rows","level":"info","timestamp":"2020-01-30 23:09:16"}
+{"message":"Opening database.","level":"info","timestamp":"2020-01-30 23:09:20"}
+{"message":"Closed Db","level":"info","timestamp":"2020-01-30 23:09:20"}
+{"message":"Opening database.","level":"info","timestamp":"2020-01-30 23:09:20"}
+{"message":"Running statement \n    SELECT\n        teacher_id,\n        first_name,\n        last_name,\n        mobile,\n        email,\n        class_id,\n        is_active\n    FROM\n        teacher\n    WHERE\n        is_active = 1;\n","level":"info","timestamp":"2020-01-30 23:09:20"}
+{"message":"Returned 9 rows","level":"info","timestamp":"2020-01-30 23:09:20"}
+{"message":"ran statement - \n\nINSERT INTO teacher (email,is_active)\n\t\t\t\t\tVALUES ($email,$is_active)\n\n with params {\"$email\":\"ss\",\"$is_active\":1} successfully.","level":"info","timestamp":"2020-01-30 23:09:20"}

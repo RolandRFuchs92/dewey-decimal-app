@@ -1,5 +1,6 @@
 import { database } from '../../package.json';
 import { isNil, snakeCase, compact, lowerCase, camelCase } from 'lodash';
+import logger from 'utils/logger';
 
 export async function getColumnNames(tableName) {
 	let columnData = [];
@@ -9,7 +10,10 @@ export async function getColumnNames(tableName) {
 
 	const promise = new Promise((res, rej) => {
 		db.serialize(() => {
-			db.all(`PRAGMA table_info(${tableName})`, (err, rows) => {
+			const statement = `PRAGMA table_info(${tableName})`
+			// logger.info(`Getting data wth statement ${statement}`);
+
+			db.all(statement, (err, rows) => {
 				columnData = rows.map(i => i.name);
 				res(columnData);
 			});
@@ -23,6 +27,7 @@ export async function getColumnNames(tableName) {
 export function getDatabase() {
 	const sqlite3 = window.require('sqlite3').verbose();
 	const db = new sqlite3.Database(database);
+	logger.info('Opening database.');
 	return db;
 }
 
@@ -44,9 +49,7 @@ export function objectKeysToSnakeCaseString(obj) {
 		.join(',');
 }
 
-export function objectToUpdateStatement(obj, tableName, primaryKeyName) {
-	if (isNil(primaryKeyName)) primaryKeyName = `${tableName}_id`;
-
+export function objectToUpdateStatement(obj, tableName, primaryKeyName = `${tableName}_id`) {
 	const setConditions = compact(
 		Object.entries(obj).map(([key, val]) => {
 			if (lowerCase(key) !== lowerCase(primaryKeyName))
@@ -62,4 +65,13 @@ export function objectToUpdateStatement(obj, tableName, primaryKeyName) {
 		WHERE
 			${primaryKeyName}=$${camelCase(primaryKeyName)}
 	`;
+}
+
+
+export function objectToInsertStatement(obj, tableName){
+	const columns = objectKeysToSnakeCaseString(obj);
+	const statementColRefs = getStatementColRefs(obj);
+	let statement = `INSERT INTO ${tableName} (${columns})
+					VALUES (${statementColRefs})`
+	return statement;
 }

@@ -28,7 +28,7 @@ const columns = [{
 
 export default ({teachers, setTeacher}) => {
     const options = {
-        selectableRows: false,
+        selectableRows: 'none',
         onRowClick: (rowData) => {
             const obj = Object.fromEntries(columns.map(({name}, index) => [name, rowData[index]]));
             setTeacher(obj);

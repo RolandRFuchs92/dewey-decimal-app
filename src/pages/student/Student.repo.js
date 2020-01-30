@@ -1,4 +1,3 @@
-import { database } from '../../../package.json';
 import {
 	getColumnNames,
 	jsonToStatementObject,
@@ -7,6 +6,8 @@ import {
 	objectToUpdateStatement,
 } from '../../db/utils';
 import { snakeCase } from 'lodash';
+import {getDatabase} from 'db/utils';
+import {all, run} from 'db/repo';
 
 const tableName = 'student';
 
@@ -29,27 +30,11 @@ export const getStudentColumnNames = async () => {
 };
 
 export async function getStudentData() {
-	const sqlite3 = window.require('sqlite3').verbose();
-	const db = new sqlite3.Database(database);
-
-	const promise = new Promise((res, rej) => {
-		db.all('SELECT * FROM student', (err, rows) => {
-			rows.length && res(rows.map(i => i));
-			res([]);
-		});
-	});
-	return promise;
+	return all('SELECT * FROM student');
 }
 
 export function ensureCreated() {
-	const sqlite3 = window.require('sqlite3').verbose();
-	const db = new sqlite3.Database(database);
-
-	db.serialize(() => {
-		db.run(createStudentTable);
-	});
-
-	db.close();
+	run(createStudentTable);
 }
 
 export function addOrUpdateStudent(student) {
@@ -58,9 +43,6 @@ export function addOrUpdateStudent(student) {
 }
 
 function addStudent(student) {
-	const sqlite3 = window.require('sqlite3').verbose();
-	const db = new sqlite3.Database(database);
-
 	const cols = objectKeysToSnakeCaseString(student);
 	const colRefs = getStatementColRefs(student);
 	const statement = `
@@ -69,30 +51,12 @@ function addStudent(student) {
 	`;
 
 	const studentModel = jsonToStatementObject(student);
-
-	const promise = new Promise((res, rej) => {
-		db.run(statement, studentModel, err => {
-			if (err === null) res('success');
-			rej(err);
-		});
-	});
-
-	return promise;
+	return run(statement, studentModel);
 }
 
 async function updateStudent(student) {
-	const sqlite3 = window.require('sqlite3').verbose();
-	const db = new sqlite3.Database(database);
-
 	const statement = objectToUpdateStatement(student, tableName);
 	const studentModel = jsonToStatementObject(student);
 
-	const promise = new Promise((res, rej) => {
-		db.run(statement, studentModel, err => {
-			if (err === null) res('success');
-			rej(err);
-		});
-	});
-
-	return promise;
+	return run(statement, studentModel);
 }

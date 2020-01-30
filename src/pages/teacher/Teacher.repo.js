@@ -1,4 +1,5 @@
-import { getDatabase } from 'db/utils';
+import { getDatabase, objectToUpdateStatement, objectToInsertStatement, jsonToStatementObject } from 'db/utils';
+import { run, all } from '../../db/repo';
 
 const queryEnsureCreatedScript = `CREATE TABLE IF NOT EXISTS teacher (
 	teacher_id INTEGER PRIMARY KEY,
@@ -39,26 +40,31 @@ const queryAllTeachers = `
 `
 
 export async function getTeachersForSelect(){
-    const db = getDatabase();
-    return new Promise((res, rej) => {
-        db.all(querySelectListTeachers,(err, rows) => {
-            db.close();
-            if(err)
-                return rej(err);
-            return res(rows)
-        });
-    })
+    return all(querySelectListTeachers);
 }
 
 export async function getTeachers() {
-    const db = getDatabase();
+   return all(queryAllTeachers);
+}
 
-    return new Promise((res, rej) => {
-        db.all(queryAllTeachers,(err, rows) => {
-            db.close();
-            if(err)
-                return rej(err);
-            return res(rows)
-        });
-    });
+export async function createOrUpdateTeacher(teacher){
+    if(teacher.teacher_id)
+        return updateTeacher(teacher);
+    return createTeacher(teacher);
+}
+
+export async function updateTeacher(teacher){
+    const statement = objectToUpdateStatement(teacher);
+    const statementObject = objectToUpdateStatement(teacher);
+
+    return run(statement, statementObject);
+}
+
+export async function createTeacher(teacher) {
+    debugger;
+    teacher.is_active = 1;
+    const statement = objectToInsertStatement(teacher, 'teacher');
+    const statementObject = jsonToStatementObject(teacher);
+
+    return run(statement, statementObject);
 }
