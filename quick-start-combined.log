@@ -262,3 +262,21 @@
 {"message":"Running statement \n    SELECT\n        teacher_id,\n        first_name,\n        last_name,\n        mobile,\n        email,\n        class_id,\n        is_active\n    FROM\n        teacher\n    WHERE\n        is_active = 1;\n","level":"info","timestamp":"2020-01-30 23:09:20"}
 {"message":"Returned 9 rows","level":"info","timestamp":"2020-01-30 23:09:20"}
 {"message":"ran statement - \n\nINSERT INTO teacher (email,is_active)\n\t\t\t\t\tVALUES ($email,$is_active)\n\n with params {\"$email\":\"ss\",\"$is_active\":1} successfully.","level":"info","timestamp":"2020-01-30 23:09:20"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-03 19:34:53"}
+{"message":"Running statement \n    SELECT\n        teacher_id,\n        first_name,\n        last_name,\n        mobile,\n        email,\n        class_id,\n        is_active\n    FROM\n        teacher\n    WHERE\n        is_active = 1;\n","level":"info","timestamp":"2020-02-03 19:34:53"}
+{"message":"Returned 10 rows","level":"info","timestamp":"2020-02-03 19:34:53"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-03 19:34:57"}
+{"message":"Running statement \n    SELECT\n        teacher_id,\n        first_name,\n        last_name,\n        mobile,\n        email,\n        class_id,\n        is_active\n    FROM\n        teacher\n    WHERE\n        is_active = 1;\n","level":"info","timestamp":"2020-02-03 19:34:57"}
+{"message":"Returned 10 rows","level":"info","timestamp":"2020-02-03 19:34:57"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-03 19:35:08"}
+{"message":"Closed Db","level":"info","timestamp":"2020-02-03 19:35:13"}
+{"message":"ran statement - \n\nCREATE TABLE IF NOT EXISTS student ( \n\tstudent_id INTEGER PRIMARY KEY,\n\tfirst_name TEXT NOT NULL,\n\tlast_name TEXT NOT NULL,\n\tbirthdate TEXT NOT NULL,\n\tmother_name text,\n\tmother_mobile TEXT,\n\tmother_email TEXT,\n\tfather_name TEXT,\n\tfather_mobile TEXT,\n\tfather_email TEXT,\n\tclass_id INTEGER NOT NULL\n);\n\n with params undefined successfully.","level":"info","timestamp":"2020-02-03 19:35:13"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-03 19:35:13"}
+{"message":"Running statement SELECT * FROM student","level":"info","timestamp":"2020-02-03 19:35:13"}
+{"message":"Returned 6 rows","level":"info","timestamp":"2020-02-03 19:35:13"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-03 19:35:13"}
+{"message":"Closed Db","level":"info","timestamp":"2020-02-03 19:35:13"}
+{"message":"ran statement - \n\nCREATE TABLE IF NOT EXISTS student ( \n\tstudent_id INTEGER PRIMARY KEY,\n\tfirst_name TEXT NOT NULL,\n\tlast_name TEXT NOT NULL,\n\tbirthdate TEXT NOT NULL,\n\tmother_name text,\n\tmother_mobile TEXT,\n\tmother_email TEXT,\n\tfather_name TEXT,\n\tfather_mobile TEXT,\n\tfather_email TEXT,\n\tclass_id INTEGER NOT NULL\n);\n\n with params undefined successfully.","level":"info","timestamp":"2020-02-03 19:35:14"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-03 19:35:16"}
+{"message":"Running statement \n    SELECT\n        teacher_id,\n        first_name,\n        last_name,\n        mobile,\n        email,\n        class_id,\n        is_active\n    FROM\n        teacher\n    WHERE\n        is_active = 1;\n","level":"info","timestamp":"2020-02-03 19:35:16"}
+{"message":"Returned 10 rows","level":"info","timestamp":"2020-02-03 19:35:16"}

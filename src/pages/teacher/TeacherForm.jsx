@@ -6,7 +6,6 @@ import FormButtons from 'components/buttons/FormButtons';
 import {createTeacher, getTeachers } from './Teacher.repo';
 
 function Alert({ open, onClose, ...props}) {
-    debugger;
     useEffect(()=>{},[open])
     return <Snackbar open={open} autoHideDuration={6000} onClose={onClose}>
     <MuiAlert elevation={6} variant="filled" {...props} >Successfully saved a new teacher</MuiAlert>

@@ -61,7 +61,6 @@ export async function updateTeacher(teacher){
 }
 
 export async function createTeacher(teacher) {
-    debugger;
     teacher.is_active = 1;
     const statement = objectToInsertStatement(teacher, 'teacher');
     const statementObject = jsonToStatementObject(teacher);

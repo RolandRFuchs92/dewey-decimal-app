@@ -1,5 +1,5 @@
-import { getDatabase } from './utils';
 import log from 'utils/logger';
+import { database } from '../../package.json';
 
 export const run  = (statement, statementObject) => {
     return new Promise((res, rej) => {
@@ -34,4 +34,11 @@ export const all = (statement) => {
             res(rows);
         });
     })
+}
+
+export function getDatabase() {
+	const sqlite3 = window.require('sqlite3').verbose();
+	const db = new sqlite3.Database(database);
+	log.info('Opening database.');
+	return db;
 }
