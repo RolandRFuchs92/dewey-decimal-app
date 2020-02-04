@@ -39,6 +39,10 @@ export default () => {
         setIsOpen(true);
     }
 
+    const handleClose = () => {
+        debugger;
+        setIsOpen(false);
+    }
 
     useEffect(() => {
         (async () => {
@@ -51,7 +55,7 @@ export default () => {
         <Grid container direction="column" spacing={2}>
             <Grid item ><Typography >Class</Typography></Grid>
             <MUIDataTable title='Classes' options={tableOptions} columns={columns} data={data}/>
-            <Modal isOpen={isOpen} handleClose={() => setIsOpen(false)} modalData={modalData}></Modal>
+            <Grid item ><Modal isOpen={isOpen} handleClose={handleClose} modalData={modalData}></Modal></Grid>
         </Grid>
     )
 }

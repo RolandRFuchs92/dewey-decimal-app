@@ -455,3 +455,225 @@
 {"message":"Running statement \n        SELECT \n            * \n        FROM \n            class\n","level":"info","timestamp":"2020-02-04 19:27:12"}
 {"message":"ran statement - \n\n\n    CREATE TABLE IF NOT EXISTS class(\n        class_id INTEGER PRIMARY KEY,\n        class_name TEXT,\n        grade INTEGER,\n        is_active INTEGER\n    )\n\n\n with params undefined successfully.","level":"info","timestamp":"2020-02-04 19:27:12"}
 {"message":"Returned 1 rows","level":"info","timestamp":"2020-02-04 19:27:12"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-04 19:27:48"}
+{"message":"Closed Db","level":"info","timestamp":"2020-02-04 19:27:48"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-04 19:27:48"}
+{"message":"Running statement \n        SELECT \n            * \n        FROM \n            class\n","level":"info","timestamp":"2020-02-04 19:27:48"}
+{"message":"ran statement - \n\n\n    CREATE TABLE IF NOT EXISTS class(\n        class_id INTEGER PRIMARY KEY,\n        class_name TEXT,\n        grade INTEGER,\n        is_active INTEGER\n    )\n\n\n with params undefined successfully.","level":"info","timestamp":"2020-02-04 19:27:48"}
+{"message":"Returned 1 rows","level":"info","timestamp":"2020-02-04 19:27:48"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-04 19:30:33"}
+{"message":"Closed Db","level":"info","timestamp":"2020-02-04 19:30:33"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-04 19:30:33"}
+{"message":"Running statement \n        SELECT \n            * \n        FROM \n            class\n","level":"info","timestamp":"2020-02-04 19:30:33"}
+{"message":"ran statement - \n\n\n    CREATE TABLE IF NOT EXISTS class(\n        class_id INTEGER PRIMARY KEY,\n        class_name TEXT,\n        grade INTEGER,\n        is_active INTEGER\n    )\n\n\n with params undefined successfully.","level":"info","timestamp":"2020-02-04 19:30:33"}
+{"message":"Returned 1 rows","level":"info","timestamp":"2020-02-04 19:30:33"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-04 19:30:43"}
+{"message":"Closed Db","level":"info","timestamp":"2020-02-04 19:30:43"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-04 19:30:43"}
+{"message":"Running statement \n        SELECT \n            * \n        FROM \n            class\n","level":"info","timestamp":"2020-02-04 19:30:43"}
+{"message":"ran statement - \n\n\n    CREATE TABLE IF NOT EXISTS class(\n        class_id INTEGER PRIMARY KEY,\n        class_name TEXT,\n        grade INTEGER,\n        is_active INTEGER\n    )\n\n\n with params undefined successfully.","level":"info","timestamp":"2020-02-04 19:30:43"}
+{"message":"Returned 1 rows","level":"info","timestamp":"2020-02-04 19:30:43"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-04 19:32:05"}
+{"message":"Closed Db","level":"info","timestamp":"2020-02-04 19:32:05"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-04 19:32:05"}
+{"message":"Running statement \n        SELECT \n            * \n        FROM \n            class\n","level":"info","timestamp":"2020-02-04 19:32:05"}
+{"message":"Returned 1 rows","level":"info","timestamp":"2020-02-04 19:32:05"}
+{"message":"ran statement - \n\n\n    CREATE TABLE IF NOT EXISTS class(\n        class_id INTEGER PRIMARY KEY,\n        class_name TEXT,\n        grade INTEGER,\n        is_active INTEGER\n    )\n\n\n with params undefined successfully.","level":"info","timestamp":"2020-02-04 19:32:05"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-04 19:33:16"}
+{"message":"Closed Db","level":"info","timestamp":"2020-02-04 19:33:16"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-04 19:33:16"}
+{"message":"Running statement \n        SELECT \n            * \n        FROM \n            class\n","level":"info","timestamp":"2020-02-04 19:33:16"}
+{"message":"ran statement - \n\n\n    CREATE TABLE IF NOT EXISTS class(\n        class_id INTEGER PRIMARY KEY,\n        class_name TEXT,\n        grade INTEGER,\n        is_active INTEGER\n    )\n\n\n with params undefined successfully.","level":"info","timestamp":"2020-02-04 19:33:16"}
+{"message":"Returned 1 rows","level":"info","timestamp":"2020-02-04 19:33:16"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-04 19:33:36"}
+{"message":"Closed Db","level":"info","timestamp":"2020-02-04 19:33:36"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-04 19:33:36"}
+{"message":"Running statement \n        SELECT \n            * \n        FROM \n            class\n","level":"info","timestamp":"2020-02-04 19:33:36"}
+{"message":"ran statement - \n\n\n    CREATE TABLE IF NOT EXISTS class(\n        class_id INTEGER PRIMARY KEY,\n        class_name TEXT,\n        grade INTEGER,\n        is_active INTEGER\n    )\n\n\n with params undefined successfully.","level":"info","timestamp":"2020-02-04 19:33:36"}
+{"message":"Returned 1 rows","level":"info","timestamp":"2020-02-04 19:33:36"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-04 19:36:00"}
+{"message":"Closed Db","level":"info","timestamp":"2020-02-04 19:36:00"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-04 19:36:00"}
+{"message":"Running statement \n        SELECT \n            * \n        FROM \n            class\n","level":"info","timestamp":"2020-02-04 19:36:00"}
+{"message":"ran statement - \n\n\n    CREATE TABLE IF NOT EXISTS class(\n        class_id INTEGER PRIMARY KEY,\n        class_name TEXT,\n        grade INTEGER,\n        is_active INTEGER\n    )\n\n\n with params undefined successfully.","level":"info","timestamp":"2020-02-04 19:36:00"}
+{"message":"Returned 1 rows","level":"info","timestamp":"2020-02-04 19:36:00"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-04 19:36:39"}
+{"message":"Closed Db","level":"info","timestamp":"2020-02-04 19:36:39"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-04 19:36:39"}
+{"message":"Running statement \n        SELECT \n            * \n        FROM \n            class\n","level":"info","timestamp":"2020-02-04 19:36:39"}
+{"message":"ran statement - \n\n\n    CREATE TABLE IF NOT EXISTS class(\n        class_id INTEGER PRIMARY KEY,\n        class_name TEXT,\n        grade INTEGER,\n        is_active INTEGER\n    )\n\n\n with params undefined successfully.","level":"info","timestamp":"2020-02-04 19:36:39"}
+{"message":"Returned 1 rows","level":"info","timestamp":"2020-02-04 19:36:39"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-04 19:38:46"}
+{"message":"Closed Db","level":"info","timestamp":"2020-02-04 19:38:46"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-04 19:38:46"}
+{"message":"Running statement \n        SELECT \n            * \n        FROM \n            class\n","level":"info","timestamp":"2020-02-04 19:38:46"}
+{"message":"ran statement - \n\n\n    CREATE TABLE IF NOT EXISTS class(\n        class_id INTEGER PRIMARY KEY,\n        class_name TEXT,\n        grade INTEGER,\n        is_active INTEGER\n    )\n\n\n with params undefined successfully.","level":"info","timestamp":"2020-02-04 19:38:46"}
+{"message":"Returned 1 rows","level":"info","timestamp":"2020-02-04 19:38:46"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-04 19:40:01"}
+{"message":"Closed Db","level":"info","timestamp":"2020-02-04 19:40:01"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-04 19:40:01"}
+{"message":"Running statement \n        SELECT \n            * \n        FROM \n            class\n","level":"info","timestamp":"2020-02-04 19:40:02"}
+{"message":"ran statement - \n\n\n    CREATE TABLE IF NOT EXISTS class(\n        class_id INTEGER PRIMARY KEY,\n        class_name TEXT,\n        grade INTEGER,\n        is_active INTEGER\n    )\n\n\n with params undefined successfully.","level":"info","timestamp":"2020-02-04 19:40:02"}
+{"message":"Returned 1 rows","level":"info","timestamp":"2020-02-04 19:40:02"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-04 19:40:41"}
+{"message":"Closed Db","level":"info","timestamp":"2020-02-04 19:40:41"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-04 19:40:41"}
+{"message":"Running statement \n        SELECT \n            * \n        FROM \n            class\n","level":"info","timestamp":"2020-02-04 19:40:41"}
+{"message":"ran statement - \n\n\n    CREATE TABLE IF NOT EXISTS class(\n        class_id INTEGER PRIMARY KEY,\n        class_name TEXT,\n        grade INTEGER,\n        is_active INTEGER\n    )\n\n\n with params undefined successfully.","level":"info","timestamp":"2020-02-04 19:40:41"}
+{"message":"Returned 1 rows","level":"info","timestamp":"2020-02-04 19:40:41"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-04 19:41:42"}
+{"message":"Closed Db","level":"info","timestamp":"2020-02-04 19:41:42"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-04 19:41:42"}
+{"message":"Running statement \n        SELECT \n            * \n        FROM \n            class\n","level":"info","timestamp":"2020-02-04 19:41:42"}
+{"message":"ran statement - \n\n\n    CREATE TABLE IF NOT EXISTS class(\n        class_id INTEGER PRIMARY KEY,\n        class_name TEXT,\n        grade INTEGER,\n        is_active INTEGER\n    )\n\n\n with params undefined successfully.","level":"info","timestamp":"2020-02-04 19:41:42"}
+{"message":"Returned 1 rows","level":"info","timestamp":"2020-02-04 19:41:42"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-04 19:42:16"}
+{"message":"Closed Db","level":"info","timestamp":"2020-02-04 19:42:16"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-04 19:42:16"}
+{"message":"Running statement \n        SELECT \n            * \n        FROM \n            class\n","level":"info","timestamp":"2020-02-04 19:42:16"}
+{"message":"ran statement - \n\n\n    CREATE TABLE IF NOT EXISTS class(\n        class_id INTEGER PRIMARY KEY,\n        class_name TEXT,\n        grade INTEGER,\n        is_active INTEGER\n    )\n\n\n with params undefined successfully.","level":"info","timestamp":"2020-02-04 19:42:16"}
+{"message":"Returned 1 rows","level":"info","timestamp":"2020-02-04 19:42:16"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-04 19:42:18"}
+{"message":"Closed Db","level":"info","timestamp":"2020-02-04 19:42:18"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-04 19:42:18"}
+{"message":"Running statement \n        SELECT \n            * \n        FROM \n            class\n","level":"info","timestamp":"2020-02-04 19:42:18"}
+{"message":"ran statement - \n\n\n    CREATE TABLE IF NOT EXISTS class(\n        class_id INTEGER PRIMARY KEY,\n        class_name TEXT,\n        grade INTEGER,\n        is_active INTEGER\n    )\n\n\n with params undefined successfully.","level":"info","timestamp":"2020-02-04 19:42:18"}
+{"message":"Returned 1 rows","level":"info","timestamp":"2020-02-04 19:42:18"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-04 19:43:05"}
+{"message":"Closed Db","level":"info","timestamp":"2020-02-04 19:43:05"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-04 19:43:05"}
+{"message":"Running statement \n        SELECT \n            * \n        FROM \n            class\n","level":"info","timestamp":"2020-02-04 19:43:05"}
+{"message":"ran statement - \n\n\n    CREATE TABLE IF NOT EXISTS class(\n        class_id INTEGER PRIMARY KEY,\n        class_name TEXT,\n        grade INTEGER,\n        is_active INTEGER\n    )\n\n\n with params undefined successfully.","level":"info","timestamp":"2020-02-04 19:43:05"}
+{"message":"Returned 1 rows","level":"info","timestamp":"2020-02-04 19:43:05"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-04 19:43:55"}
+{"message":"Closed Db","level":"info","timestamp":"2020-02-04 19:43:55"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-04 19:43:55"}
+{"message":"Running statement \n        SELECT \n            * \n        FROM \n            class\n","level":"info","timestamp":"2020-02-04 19:43:55"}
+{"message":"ran statement - \n\n\n    CREATE TABLE IF NOT EXISTS class(\n        class_id INTEGER PRIMARY KEY,\n        class_name TEXT,\n        grade INTEGER,\n        is_active INTEGER\n    )\n\n\n with params undefined successfully.","level":"info","timestamp":"2020-02-04 19:43:55"}
+{"message":"Returned 1 rows","level":"info","timestamp":"2020-02-04 19:43:55"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-04 19:44:10"}
+{"message":"Closed Db","level":"info","timestamp":"2020-02-04 19:44:10"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-04 19:44:10"}
+{"message":"Running statement \n        SELECT \n            * \n        FROM \n            class\n","level":"info","timestamp":"2020-02-04 19:44:10"}
+{"message":"ran statement - \n\n\n    CREATE TABLE IF NOT EXISTS class(\n        class_id INTEGER PRIMARY KEY,\n        class_name TEXT,\n        grade INTEGER,\n        is_active INTEGER\n    )\n\n\n with params undefined successfully.","level":"info","timestamp":"2020-02-04 19:44:10"}
+{"message":"Returned 1 rows","level":"info","timestamp":"2020-02-04 19:44:10"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-04 20:01:41"}
+{"message":"Closed Db","level":"info","timestamp":"2020-02-04 20:01:41"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-04 20:01:42"}
+{"message":"Running statement \n        SELECT \n            * \n        FROM \n            class\n","level":"info","timestamp":"2020-02-04 20:01:42"}
+{"message":"ran statement - \n\n\n    CREATE TABLE IF NOT EXISTS class(\n        class_id INTEGER PRIMARY KEY,\n        class_name TEXT,\n        grade INTEGER,\n        is_active INTEGER\n    )\n\n\n with params undefined successfully.","level":"info","timestamp":"2020-02-04 20:01:42"}
+{"message":"Returned 1 rows","level":"info","timestamp":"2020-02-04 20:01:42"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-04 20:02:49"}
+{"message":"Closed Db","level":"info","timestamp":"2020-02-04 20:02:49"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-04 20:02:49"}
+{"message":"Running statement \n        SELECT \n            * \n        FROM \n            class\n","level":"info","timestamp":"2020-02-04 20:02:49"}
+{"message":"ran statement - \n\n\n    CREATE TABLE IF NOT EXISTS class(\n        class_id INTEGER PRIMARY KEY,\n        class_name TEXT,\n        grade INTEGER,\n        is_active INTEGER\n    )\n\n\n with params undefined successfully.","level":"info","timestamp":"2020-02-04 20:02:50"}
+{"message":"Returned 1 rows","level":"info","timestamp":"2020-02-04 20:02:50"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-04 20:03:29"}
+{"message":"Closed Db","level":"info","timestamp":"2020-02-04 20:03:29"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-04 20:03:29"}
+{"message":"Running statement \n        SELECT \n            * \n        FROM \n            class\n","level":"info","timestamp":"2020-02-04 20:03:29"}
+{"message":"ran statement - \n\n\n    CREATE TABLE IF NOT EXISTS class(\n        class_id INTEGER PRIMARY KEY,\n        class_name TEXT,\n        grade INTEGER,\n        is_active INTEGER\n    )\n\n\n with params undefined successfully.","level":"info","timestamp":"2020-02-04 20:03:29"}
+{"message":"Returned 1 rows","level":"info","timestamp":"2020-02-04 20:03:29"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-04 20:06:04"}
+{"message":"Closed Db","level":"info","timestamp":"2020-02-04 20:06:04"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-04 20:06:04"}
+{"message":"Running statement \n        SELECT \n            * \n        FROM \n            class\n","level":"info","timestamp":"2020-02-04 20:06:04"}
+{"message":"ran statement - \n\n\n    CREATE TABLE IF NOT EXISTS class(\n        class_id INTEGER PRIMARY KEY,\n        class_name TEXT,\n        grade INTEGER,\n        is_active INTEGER\n    )\n\n\n with params undefined successfully.","level":"info","timestamp":"2020-02-04 20:06:04"}
+{"message":"Returned 1 rows","level":"info","timestamp":"2020-02-04 20:06:04"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-04 20:07:38"}
+{"message":"Closed Db","level":"info","timestamp":"2020-02-04 20:07:38"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-04 20:07:38"}
+{"message":"Running statement \n        SELECT \n            * \n        FROM \n            class\n","level":"info","timestamp":"2020-02-04 20:07:38"}
+{"message":"ran statement - \n\n\n    CREATE TABLE IF NOT EXISTS class(\n        class_id INTEGER PRIMARY KEY,\n        class_name TEXT,\n        grade INTEGER,\n        is_active INTEGER\n    )\n\n\n with params undefined successfully.","level":"info","timestamp":"2020-02-04 20:07:38"}
+{"message":"Returned 1 rows","level":"info","timestamp":"2020-02-04 20:07:38"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-04 20:08:05"}
+{"message":"Closed Db","level":"info","timestamp":"2020-02-04 20:08:05"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-04 20:08:05"}
+{"message":"Running statement \n        SELECT \n            * \n        FROM \n            class\n","level":"info","timestamp":"2020-02-04 20:08:05"}
+{"message":"ran statement - \n\n\n    CREATE TABLE IF NOT EXISTS class(\n        class_id INTEGER PRIMARY KEY,\n        class_name TEXT,\n        grade INTEGER,\n        is_active INTEGER\n    )\n\n\n with params undefined successfully.","level":"info","timestamp":"2020-02-04 20:08:05"}
+{"message":"Returned 1 rows","level":"info","timestamp":"2020-02-04 20:08:05"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-04 20:08:46"}
+{"message":"Closed Db","level":"info","timestamp":"2020-02-04 20:08:46"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-04 20:08:46"}
+{"message":"Running statement \n        SELECT \n            * \n        FROM \n            class\n","level":"info","timestamp":"2020-02-04 20:08:46"}
+{"message":"ran statement - \n\n\n    CREATE TABLE IF NOT EXISTS class(\n        class_id INTEGER PRIMARY KEY,\n        class_name TEXT,\n        grade INTEGER,\n        is_active INTEGER\n    )\n\n\n with params undefined successfully.","level":"info","timestamp":"2020-02-04 20:08:46"}
+{"message":"Returned 1 rows","level":"info","timestamp":"2020-02-04 20:08:46"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-04 20:09:03"}
+{"message":"Closed Db","level":"info","timestamp":"2020-02-04 20:09:03"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-04 20:09:03"}
+{"message":"Running statement \n        SELECT \n            * \n        FROM \n            class\n","level":"info","timestamp":"2020-02-04 20:09:03"}
+{"message":"ran statement - \n\n\n    CREATE TABLE IF NOT EXISTS class(\n        class_id INTEGER PRIMARY KEY,\n        class_name TEXT,\n        grade INTEGER,\n        is_active INTEGER\n    )\n\n\n with params undefined successfully.","level":"info","timestamp":"2020-02-04 20:09:03"}
+{"message":"Returned 1 rows","level":"info","timestamp":"2020-02-04 20:09:03"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-04 20:09:23"}
+{"message":"Closed Db","level":"info","timestamp":"2020-02-04 20:09:23"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-04 20:09:23"}
+{"message":"Running statement \n        SELECT \n            * \n        FROM \n            class\n","level":"info","timestamp":"2020-02-04 20:09:23"}
+{"message":"ran statement - \n\n\n    CREATE TABLE IF NOT EXISTS class(\n        class_id INTEGER PRIMARY KEY,\n        class_name TEXT,\n        grade INTEGER,\n        is_active INTEGER\n    )\n\n\n with params undefined successfully.","level":"info","timestamp":"2020-02-04 20:09:23"}
+{"message":"Returned 1 rows","level":"info","timestamp":"2020-02-04 20:09:23"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-04 20:09:45"}
+{"message":"Closed Db","level":"info","timestamp":"2020-02-04 20:09:45"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-04 20:09:45"}
+{"message":"Running statement \n        SELECT \n            * \n        FROM \n            class\n","level":"info","timestamp":"2020-02-04 20:09:45"}
+{"message":"ran statement - \n\n\n    CREATE TABLE IF NOT EXISTS class(\n        class_id INTEGER PRIMARY KEY,\n        class_name TEXT,\n        grade INTEGER,\n        is_active INTEGER\n    )\n\n\n with params undefined successfully.","level":"info","timestamp":"2020-02-04 20:09:45"}
+{"message":"Returned 1 rows","level":"info","timestamp":"2020-02-04 20:09:45"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-04 20:15:46"}
+{"message":"Closed Db","level":"info","timestamp":"2020-02-04 20:15:46"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-04 20:15:46"}
+{"message":"Running statement \n        SELECT \n            * \n        FROM \n            class\n","level":"info","timestamp":"2020-02-04 20:15:46"}
+{"message":"ran statement - \n\n\n    CREATE TABLE IF NOT EXISTS class(\n        class_id INTEGER PRIMARY KEY,\n        class_name TEXT,\n        grade INTEGER,\n        is_active INTEGER\n    )\n\n\n with params undefined successfully.","level":"info","timestamp":"2020-02-04 20:15:46"}
+{"message":"Returned 1 rows","level":"info","timestamp":"2020-02-04 20:15:46"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-04 20:16:11"}
+{"message":"Closed Db","level":"info","timestamp":"2020-02-04 20:16:11"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-04 20:16:11"}
+{"message":"Running statement \n        SELECT \n            * \n        FROM \n            class\n","level":"info","timestamp":"2020-02-04 20:16:11"}
+{"message":"ran statement - \n\n\n    CREATE TABLE IF NOT EXISTS class(\n        class_id INTEGER PRIMARY KEY,\n        class_name TEXT,\n        grade INTEGER,\n        is_active INTEGER\n    )\n\n\n with params undefined successfully.","level":"info","timestamp":"2020-02-04 20:16:11"}
+{"message":"Returned 1 rows","level":"info","timestamp":"2020-02-04 20:16:11"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-04 20:19:53"}
+{"message":"Closed Db","level":"info","timestamp":"2020-02-04 20:19:53"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-04 20:19:53"}
+{"message":"Running statement \n        SELECT \n            * \n        FROM \n            class\n","level":"info","timestamp":"2020-02-04 20:19:54"}
+{"message":"ran statement - \n\n\n    CREATE TABLE IF NOT EXISTS class(\n        class_id INTEGER PRIMARY KEY,\n        class_name TEXT,\n        grade INTEGER,\n        is_active INTEGER\n    )\n\n\n with params undefined successfully.","level":"info","timestamp":"2020-02-04 20:19:54"}
+{"message":"Returned 1 rows","level":"info","timestamp":"2020-02-04 20:19:54"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-04 20:20:17"}
+{"message":"Closed Db","level":"info","timestamp":"2020-02-04 20:20:17"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-04 20:20:18"}
+{"message":"Running statement \n        SELECT \n            * \n        FROM \n            class\n","level":"info","timestamp":"2020-02-04 20:20:18"}
+{"message":"Returned 1 rows","level":"info","timestamp":"2020-02-04 20:20:18"}
+{"message":"ran statement - \n\n\n    CREATE TABLE IF NOT EXISTS class(\n        class_id INTEGER PRIMARY KEY,\n        class_name TEXT,\n        grade INTEGER,\n        is_active INTEGER\n    )\n\n\n with params undefined successfully.","level":"info","timestamp":"2020-02-04 20:20:18"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-04 20:20:33"}
+{"message":"Closed Db","level":"info","timestamp":"2020-02-04 20:20:33"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-04 20:20:33"}
+{"message":"Running statement \n        SELECT \n            * \n        FROM \n            class\n","level":"info","timestamp":"2020-02-04 20:20:33"}
+{"message":"ran statement - \n\n\n    CREATE TABLE IF NOT EXISTS class(\n        class_id INTEGER PRIMARY KEY,\n        class_name TEXT,\n        grade INTEGER,\n        is_active INTEGER\n    )\n\n\n with params undefined successfully.","level":"info","timestamp":"2020-02-04 20:20:33"}
+{"message":"Returned 1 rows","level":"info","timestamp":"2020-02-04 20:20:33"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-04 20:20:41"}
+{"message":"Closed Db","level":"info","timestamp":"2020-02-04 20:20:41"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-04 20:20:41"}
+{"message":"Running statement \n        SELECT \n            * \n        FROM \n            class\n","level":"info","timestamp":"2020-02-04 20:20:41"}
+{"message":"ran statement - \n\n\n    CREATE TABLE IF NOT EXISTS class(\n        class_id INTEGER PRIMARY KEY,\n        class_name TEXT,\n        grade INTEGER,\n        is_active INTEGER\n    )\n\n\n with params undefined successfully.","level":"info","timestamp":"2020-02-04 20:20:41"}
+{"message":"Returned 1 rows","level":"info","timestamp":"2020-02-04 20:20:41"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-04 20:23:28"}
+{"message":"Closed Db","level":"info","timestamp":"2020-02-04 20:23:28"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-04 20:23:28"}
+{"message":"Running statement \n        SELECT \n            * \n        FROM \n            class\n","level":"info","timestamp":"2020-02-04 20:23:28"}
+{"message":"ran statement - \n\n\n    CREATE TABLE IF NOT EXISTS class(\n        class_id INTEGER PRIMARY KEY,\n        class_name TEXT,\n        grade INTEGER,\n        is_active INTEGER\n    )\n\n\n with params undefined successfully.","level":"info","timestamp":"2020-02-04 20:23:28"}
+{"message":"Returned 1 rows","level":"info","timestamp":"2020-02-04 20:23:28"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-04 20:23:33"}
+{"message":"Closed Db","level":"info","timestamp":"2020-02-04 20:23:33"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-04 20:23:33"}
+{"message":"Running statement \n        SELECT \n            * \n        FROM \n            class\n","level":"info","timestamp":"2020-02-04 20:23:33"}
+{"message":"ran statement - \n\n\n    CREATE TABLE IF NOT EXISTS class(\n        class_id INTEGER PRIMARY KEY,\n        class_name TEXT,\n        grade INTEGER,\n        is_active INTEGER\n    )\n\n\n with params undefined successfully.","level":"info","timestamp":"2020-02-04 20:23:33"}
+{"message":"Returned 1 rows","level":"info","timestamp":"2020-02-04 20:23:33"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-04 20:23:44"}
+{"message":"Closed Db","level":"info","timestamp":"2020-02-04 20:23:44"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-04 20:23:44"}
+{"message":"Running statement \n        SELECT \n            * \n        FROM \n            class\n","level":"info","timestamp":"2020-02-04 20:23:44"}
+{"message":"ran statement - \n\n\n    CREATE TABLE IF NOT EXISTS class(\n        class_id INTEGER PRIMARY KEY,\n        class_name TEXT,\n        grade INTEGER,\n        is_active INTEGER\n    )\n\n\n with params undefined successfully.","level":"info","timestamp":"2020-02-04 20:23:44"}
+{"message":"Returned 1 rows","level":"info","timestamp":"2020-02-04 20:23:44"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-04 20:24:16"}
+{"message":"Closed Db","level":"info","timestamp":"2020-02-04 20:24:16"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-04 20:24:16"}
+{"message":"Running statement \n        SELECT \n            * \n        FROM \n            class\n","level":"info","timestamp":"2020-02-04 20:24:16"}
+{"message":"ran statement - \n\n\n    CREATE TABLE IF NOT EXISTS class(\n        class_id INTEGER PRIMARY KEY,\n        class_name TEXT,\n        grade INTEGER,\n        is_active INTEGER\n    )\n\n\n with params undefined successfully.","level":"info","timestamp":"2020-02-04 20:24:16"}
+{"message":"Returned 1 rows","level":"info","timestamp":"2020-02-04 20:24:16"}

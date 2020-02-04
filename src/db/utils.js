@@ -1,26 +1,15 @@
-import { database } from '../../package.json';
 import {  snakeCase, compact, lowerCase, camelCase } from 'lodash';
+import { all } from 'db/repo';
+
+const getColumnsStatement = tableName => `PRAGMA table_info(${tableName})`;
 
 export async function getColumnNames(tableName) {
-	let columnData = [];
-
-	const sqlite3 = window.require('sqlite3').verbose();
-	const db = new sqlite3.Database(database);
-
-	const promise = new Promise((res, rej) => {
-		db.serialize(() => {
-			const statement = `PRAGMA table_info(${tableName})`
-			// logger.info(`Getting data wth statement ${statement}`);
-
-			db.all(statement, (err, rows) => {
-				columnData = rows.map(i => i.name);
-				res(columnData);
-			});
-		});
-		db.close();
-	});
-
-	return promise;
+	try{
+		const columnStatement = getColumnsStatement(tableName);
+		return await all(columnStatement);
+	} catch(e) {
+		throw e;
+	}
 }
 
 export function jsonToStatementObject(obj) {
