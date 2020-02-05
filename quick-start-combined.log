@@ -704,3 +704,203 @@
 {"message":"Running statement \n        SELECT \n            * \n        FROM \n            class\n","level":"info","timestamp":"2020-02-05 21:07:58"}
 {"message":"ran statement - \n\n\n    CREATE TABLE IF NOT EXISTS class(\n        class_id INTEGER PRIMARY KEY,\n        class_name TEXT,\n        grade INTEGER,\n        is_active INTEGER\n    )\n\n\n with params undefined successfully.","level":"info","timestamp":"2020-02-05 21:07:58"}
 {"message":"Returned 0 rows","level":"info","timestamp":"2020-02-05 21:07:58"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-05 21:35:56"}
+{"message":"Closed Db","level":"info","timestamp":"2020-02-05 21:35:56"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-05 21:35:56"}
+{"message":"Running statement \n        SELECT \n            * \n        FROM \n            class\n","level":"info","timestamp":"2020-02-05 21:35:56"}
+{"message":"ran statement - \n\n\n    CREATE TABLE IF NOT EXISTS class(\n        class_id INTEGER PRIMARY KEY,\n        class_name TEXT,\n        grade INTEGER,\n        is_active INTEGER\n    )\n\n\n with params undefined successfully.","level":"info","timestamp":"2020-02-05 21:35:56"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-05 21:36:48"}
+{"message":"Closed Db","level":"info","timestamp":"2020-02-05 21:36:48"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-05 21:36:48"}
+{"message":"Running statement \n        SELECT \n            * \n        FROM \n            class\n","level":"info","timestamp":"2020-02-05 21:36:48"}
+{"message":"Returned 0 rows","level":"info","timestamp":"2020-02-05 21:36:48"}
+{"message":"ran statement - \n\n\n    CREATE TABLE IF NOT EXISTS class(\n        class_id INTEGER PRIMARY KEY,\n        class_name TEXT,\n        grade INTEGER,\n        is_active INTEGER\n    )\n\n\n with params undefined successfully.","level":"info","timestamp":"2020-02-05 21:36:48"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-05 21:42:09"}
+{"message":"Closed Db","level":"info","timestamp":"2020-02-05 21:42:09"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-05 21:42:09"}
+{"message":"Running statement \n        SELECT \n            * \n        FROM \n            class\n","level":"info","timestamp":"2020-02-05 21:42:09"}
+{"message":"ran statement - \n\n\n    CREATE TABLE IF NOT EXISTS class(\n        class_id INTEGER PRIMARY KEY,\n        class_name TEXT,\n        grade INTEGER,\n        is_active INTEGER\n    )\n\n\n with params undefined successfully.","level":"info","timestamp":"2020-02-05 21:42:09"}
+{"message":"Returned 0 rows","level":"info","timestamp":"2020-02-05 21:42:09"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-05 21:43:44"}
+{"message":"Closed Db","level":"info","timestamp":"2020-02-05 21:43:44"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-05 21:43:44"}
+{"message":"Running statement \n        SELECT \n            * \n        FROM \n            class\n","level":"info","timestamp":"2020-02-05 21:43:44"}
+{"message":"ran statement - \n\n\n    CREATE TABLE IF NOT EXISTS class(\n        class_id INTEGER PRIMARY KEY,\n        class_name TEXT,\n        grade INTEGER,\n        is_active INTEGER\n    )\n\n\n with params undefined successfully.","level":"info","timestamp":"2020-02-05 21:43:44"}
+{"message":"Returned 0 rows","level":"info","timestamp":"2020-02-05 21:43:44"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-05 21:45:06"}
+{"message":"Closed Db","level":"info","timestamp":"2020-02-05 21:45:06"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-05 21:45:06"}
+{"message":"Running statement \n        SELECT \n            * \n        FROM \n            class\n","level":"info","timestamp":"2020-02-05 21:45:06"}
+{"message":"ran statement - \n\n\n    CREATE TABLE IF NOT EXISTS class(\n        class_id INTEGER PRIMARY KEY,\n        class_name TEXT,\n        grade INTEGER,\n        is_active INTEGER\n    )\n\n\n with params undefined successfully.","level":"info","timestamp":"2020-02-05 21:45:06"}
+{"message":"Returned 0 rows","level":"info","timestamp":"2020-02-05 21:45:06"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-05 21:45:24"}
+{"message":"Closed Db","level":"info","timestamp":"2020-02-05 21:45:24"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-05 21:45:24"}
+{"message":"Running statement \n        SELECT \n            * \n        FROM \n            class\n","level":"info","timestamp":"2020-02-05 21:45:24"}
+{"message":"ran statement - \n\n\n    CREATE TABLE IF NOT EXISTS class(\n        class_id INTEGER PRIMARY KEY,\n        class_name TEXT,\n        grade INTEGER,\n        is_active INTEGER\n    )\n\n\n with params undefined successfully.","level":"info","timestamp":"2020-02-05 21:45:24"}
+{"message":"Returned 0 rows","level":"info","timestamp":"2020-02-05 21:45:24"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-05 21:45:35"}
+{"message":"Closed Db","level":"info","timestamp":"2020-02-05 21:45:35"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-05 21:45:35"}
+{"message":"Running statement \n        SELECT \n            * \n        FROM \n            class\n","level":"info","timestamp":"2020-02-05 21:45:35"}
+{"message":"ran statement - \n\n\n    CREATE TABLE IF NOT EXISTS class(\n        class_id INTEGER PRIMARY KEY,\n        class_name TEXT,\n        grade INTEGER,\n        is_active INTEGER\n    )\n\n\n with params undefined successfully.","level":"info","timestamp":"2020-02-05 21:45:35"}
+{"message":"Returned 0 rows","level":"info","timestamp":"2020-02-05 21:45:35"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-05 21:47:28"}
+{"message":"Closed Db","level":"info","timestamp":"2020-02-05 21:47:28"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-05 21:47:28"}
+{"message":"Running statement \n        SELECT \n            * \n        FROM \n            class\n","level":"info","timestamp":"2020-02-05 21:47:28"}
+{"message":"ran statement - \n\n\n    CREATE TABLE IF NOT EXISTS class(\n        class_id INTEGER PRIMARY KEY,\n        class_name TEXT,\n        grade INTEGER,\n        is_active INTEGER\n    )\n\n\n with params undefined successfully.","level":"info","timestamp":"2020-02-05 21:47:29"}
+{"message":"Returned 0 rows","level":"info","timestamp":"2020-02-05 21:47:29"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-05 21:48:15"}
+{"message":"Closed Db","level":"info","timestamp":"2020-02-05 21:48:15"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-05 21:48:15"}
+{"message":"Running statement \n        SELECT \n            * \n        FROM \n            class\n","level":"info","timestamp":"2020-02-05 21:48:15"}
+{"message":"Returned 0 rows","level":"info","timestamp":"2020-02-05 21:48:15"}
+{"message":"ran statement - \n\n\n    CREATE TABLE IF NOT EXISTS class(\n        class_id INTEGER PRIMARY KEY,\n        class_name TEXT,\n        grade INTEGER,\n        is_active INTEGER\n    )\n\n\n with params undefined successfully.","level":"info","timestamp":"2020-02-05 21:48:16"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-05 21:49:02"}
+{"message":"Closed Db","level":"info","timestamp":"2020-02-05 21:49:02"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-05 21:49:02"}
+{"message":"Running statement \n        SELECT \n            * \n        FROM \n            class\n","level":"info","timestamp":"2020-02-05 21:49:02"}
+{"message":"ran statement - \n\n\n    CREATE TABLE IF NOT EXISTS class(\n        class_id INTEGER PRIMARY KEY,\n        class_name TEXT,\n        grade INTEGER,\n        is_active INTEGER\n    )\n\n\n with params undefined successfully.","level":"info","timestamp":"2020-02-05 21:49:02"}
+{"message":"Returned 0 rows","level":"info","timestamp":"2020-02-05 21:49:02"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-05 21:50:22"}
+{"message":"Closed Db","level":"info","timestamp":"2020-02-05 21:50:22"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-05 21:50:22"}
+{"message":"Running statement \n        SELECT \n            * \n        FROM \n            class\n","level":"info","timestamp":"2020-02-05 21:50:22"}
+{"message":"Returned 0 rows","level":"info","timestamp":"2020-02-05 21:50:22"}
+{"message":"ran statement - \n\n\n    CREATE TABLE IF NOT EXISTS class(\n        class_id INTEGER PRIMARY KEY,\n        class_name TEXT,\n        grade INTEGER,\n        is_active INTEGER\n    )\n\n\n with params undefined successfully.","level":"info","timestamp":"2020-02-05 21:50:22"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-05 21:51:27"}
+{"message":"Closed Db","level":"info","timestamp":"2020-02-05 21:51:27"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-05 21:51:27"}
+{"message":"Running statement \n        SELECT \n            * \n        FROM \n            class\n","level":"info","timestamp":"2020-02-05 21:51:27"}
+{"message":"ran statement - \n\n\n    CREATE TABLE IF NOT EXISTS class(\n        class_id INTEGER PRIMARY KEY,\n        class_name TEXT,\n        grade INTEGER,\n        is_active INTEGER\n    )\n\n\n with params undefined successfully.","level":"info","timestamp":"2020-02-05 21:51:28"}
+{"message":"Returned 0 rows","level":"info","timestamp":"2020-02-05 21:51:28"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-05 21:51:56"}
+{"message":"Closed Db","level":"info","timestamp":"2020-02-05 21:51:56"}
+{"level":"error","timestamp":"2020-02-05 21:51:56","message":"Error: SQLITE_ERROR: near \"delete\": syntax error","stack":"Error: Error: SQLITE_ERROR: near \"delete\": syntax error\n    at Object.error (http://localhost:3000/static/js/main.chunk.js:2549:16)\n    at http://localhost:3000/static/js/main.chunk.js:793:62\n    at replacement (D:\\Playground\\Electron\\di\\dewey-decimal-app\\node_modules\\sqlite3\\lib\\trace.js:19:31)\n    at Statement.errBack (D:\\Playground\\Electron\\di\\dewey-decimal-app\\node_modules\\sqlite3\\lib\\sqlite3.js:16:21)"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-05 21:51:58"}
+{"message":"Closed Db","level":"info","timestamp":"2020-02-05 21:51:58"}
+{"level":"error","timestamp":"2020-02-05 21:51:58","message":"Error: SQLITE_ERROR: near \"delete\": syntax error","stack":"Error: Error: SQLITE_ERROR: near \"delete\": syntax error\n    at Object.error (http://localhost:3000/static/js/main.chunk.js:2549:16)\n    at http://localhost:3000/static/js/main.chunk.js:793:62\n    at replacement (D:\\Playground\\Electron\\di\\dewey-decimal-app\\node_modules\\sqlite3\\lib\\trace.js:19:31)\n    at Statement.errBack (D:\\Playground\\Electron\\di\\dewey-decimal-app\\node_modules\\sqlite3\\lib\\sqlite3.js:16:21)"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-05 21:51:58"}
+{"message":"Closed Db","level":"info","timestamp":"2020-02-05 21:51:58"}
+{"level":"error","timestamp":"2020-02-05 21:51:58","message":"Error: SQLITE_ERROR: near \"delete\": syntax error","stack":"Error: Error: SQLITE_ERROR: near \"delete\": syntax error\n    at Object.error (http://localhost:3000/static/js/main.chunk.js:2549:16)\n    at http://localhost:3000/static/js/main.chunk.js:793:62\n    at replacement (D:\\Playground\\Electron\\di\\dewey-decimal-app\\node_modules\\sqlite3\\lib\\trace.js:19:31)\n    at Statement.errBack (D:\\Playground\\Electron\\di\\dewey-decimal-app\\node_modules\\sqlite3\\lib\\sqlite3.js:16:21)"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-05 21:51:58"}
+{"message":"Closed Db","level":"info","timestamp":"2020-02-05 21:51:58"}
+{"level":"error","timestamp":"2020-02-05 21:51:58","message":"Error: SQLITE_ERROR: near \"delete\": syntax error","stack":"Error: Error: SQLITE_ERROR: near \"delete\": syntax error\n    at Object.error (http://localhost:3000/static/js/main.chunk.js:2549:16)\n    at http://localhost:3000/static/js/main.chunk.js:793:62\n    at replacement (D:\\Playground\\Electron\\di\\dewey-decimal-app\\node_modules\\sqlite3\\lib\\trace.js:19:31)\n    at Statement.errBack (D:\\Playground\\Electron\\di\\dewey-decimal-app\\node_modules\\sqlite3\\lib\\sqlite3.js:16:21)"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-05 21:51:58"}
+{"message":"Closed Db","level":"info","timestamp":"2020-02-05 21:51:58"}
+{"level":"error","timestamp":"2020-02-05 21:51:58","message":"Error: SQLITE_ERROR: near \"delete\": syntax error","stack":"Error: Error: SQLITE_ERROR: near \"delete\": syntax error\n    at Object.error (http://localhost:3000/static/js/main.chunk.js:2549:16)\n    at http://localhost:3000/static/js/main.chunk.js:793:62\n    at replacement (D:\\Playground\\Electron\\di\\dewey-decimal-app\\node_modules\\sqlite3\\lib\\trace.js:19:31)\n    at Statement.errBack (D:\\Playground\\Electron\\di\\dewey-decimal-app\\node_modules\\sqlite3\\lib\\sqlite3.js:16:21)"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-05 21:52:07"}
+{"message":"Closed Db","level":"info","timestamp":"2020-02-05 21:52:07"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-05 21:52:07"}
+{"message":"Running statement \n        SELECT \n            * \n        FROM \n            class\n","level":"info","timestamp":"2020-02-05 21:52:07"}
+{"message":"ran statement - \n\n\n    CREATE TABLE IF NOT EXISTS class(\n        class_id INTEGER PRIMARY KEY,\n        class_name TEXT,\n        grade INTEGER,\n        is_active INTEGER\n    )\n\n\n with params undefined successfully.","level":"info","timestamp":"2020-02-05 21:52:07"}
+{"message":"Returned 0 rows","level":"info","timestamp":"2020-02-05 21:52:07"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-05 21:52:44"}
+{"message":"Closed Db","level":"info","timestamp":"2020-02-05 21:52:44"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-05 21:52:44"}
+{"message":"Running statement \n        SELECT \n            * \n        FROM \n            class\n","level":"info","timestamp":"2020-02-05 21:52:44"}
+{"message":"ran statement - \n\n\n    CREATE TABLE IF NOT EXISTS class(\n        class_id INTEGER PRIMARY KEY,\n        class_name TEXT,\n        grade INTEGER,\n        is_active INTEGER\n    )\n\n\n with params undefined successfully.","level":"info","timestamp":"2020-02-05 21:52:44"}
+{"message":"Returned 0 rows","level":"info","timestamp":"2020-02-05 21:52:44"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-05 21:52:53"}
+{"message":"Closed Db","level":"info","timestamp":"2020-02-05 21:52:53"}
+{"level":"error","timestamp":"2020-02-05 21:52:53","message":"Error: SQLITE_ERROR: near \"delete\": syntax error","stack":"Error: Error: SQLITE_ERROR: near \"delete\": syntax error\n    at Object.error (http://localhost:3000/static/js/main.chunk.js:2549:16)\n    at http://localhost:3000/static/js/main.chunk.js:793:62\n    at replacement (D:\\Playground\\Electron\\di\\dewey-decimal-app\\node_modules\\sqlite3\\lib\\trace.js:19:31)\n    at Statement.errBack (D:\\Playground\\Electron\\di\\dewey-decimal-app\\node_modules\\sqlite3\\lib\\sqlite3.js:16:21)"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-05 21:52:56"}
+{"message":"Closed Db","level":"info","timestamp":"2020-02-05 21:52:56"}
+{"level":"error","timestamp":"2020-02-05 21:52:56","message":"Error: SQLITE_ERROR: near \"delete\": syntax error","stack":"Error: Error: SQLITE_ERROR: near \"delete\": syntax error\n    at Object.error (http://localhost:3000/static/js/main.chunk.js:2549:16)\n    at http://localhost:3000/static/js/main.chunk.js:793:62\n    at replacement (D:\\Playground\\Electron\\di\\dewey-decimal-app\\node_modules\\sqlite3\\lib\\trace.js:19:31)\n    at Statement.errBack (D:\\Playground\\Electron\\di\\dewey-decimal-app\\node_modules\\sqlite3\\lib\\sqlite3.js:16:21)"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-05 21:52:56"}
+{"message":"Closed Db","level":"info","timestamp":"2020-02-05 21:52:56"}
+{"level":"error","timestamp":"2020-02-05 21:52:56","message":"Error: SQLITE_ERROR: near \"delete\": syntax error","stack":"Error: Error: SQLITE_ERROR: near \"delete\": syntax error\n    at Object.error (http://localhost:3000/static/js/main.chunk.js:2549:16)\n    at http://localhost:3000/static/js/main.chunk.js:793:62\n    at replacement (D:\\Playground\\Electron\\di\\dewey-decimal-app\\node_modules\\sqlite3\\lib\\trace.js:19:31)\n    at Statement.errBack (D:\\Playground\\Electron\\di\\dewey-decimal-app\\node_modules\\sqlite3\\lib\\sqlite3.js:16:21)"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-05 21:52:56"}
+{"message":"Closed Db","level":"info","timestamp":"2020-02-05 21:52:56"}
+{"level":"error","timestamp":"2020-02-05 21:52:56","message":"Error: SQLITE_ERROR: near \"delete\": syntax error","stack":"Error: Error: SQLITE_ERROR: near \"delete\": syntax error\n    at Object.error (http://localhost:3000/static/js/main.chunk.js:2549:16)\n    at http://localhost:3000/static/js/main.chunk.js:793:62\n    at replacement (D:\\Playground\\Electron\\di\\dewey-decimal-app\\node_modules\\sqlite3\\lib\\trace.js:19:31)\n    at Statement.errBack (D:\\Playground\\Electron\\di\\dewey-decimal-app\\node_modules\\sqlite3\\lib\\sqlite3.js:16:21)"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-05 21:52:56"}
+{"message":"Closed Db","level":"info","timestamp":"2020-02-05 21:52:56"}
+{"level":"error","timestamp":"2020-02-05 21:52:57","message":"Error: SQLITE_ERROR: near \"delete\": syntax error","stack":"Error: Error: SQLITE_ERROR: near \"delete\": syntax error\n    at Object.error (http://localhost:3000/static/js/main.chunk.js:2549:16)\n    at http://localhost:3000/static/js/main.chunk.js:793:62\n    at replacement (D:\\Playground\\Electron\\di\\dewey-decimal-app\\node_modules\\sqlite3\\lib\\trace.js:19:31)\n    at Statement.errBack (D:\\Playground\\Electron\\di\\dewey-decimal-app\\node_modules\\sqlite3\\lib\\sqlite3.js:16:21)"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-05 21:52:57"}
+{"message":"Closed Db","level":"info","timestamp":"2020-02-05 21:52:57"}
+{"level":"error","timestamp":"2020-02-05 21:52:57","message":"Error: SQLITE_ERROR: near \"delete\": syntax error","stack":"Error: Error: SQLITE_ERROR: near \"delete\": syntax error\n    at Object.error (http://localhost:3000/static/js/main.chunk.js:2549:16)\n    at http://localhost:3000/static/js/main.chunk.js:793:62\n    at replacement (D:\\Playground\\Electron\\di\\dewey-decimal-app\\node_modules\\sqlite3\\lib\\trace.js:19:31)\n    at Statement.errBack (D:\\Playground\\Electron\\di\\dewey-decimal-app\\node_modules\\sqlite3\\lib\\sqlite3.js:16:21)"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-05 21:54:07"}
+{"message":"Closed Db","level":"info","timestamp":"2020-02-05 21:54:07"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-05 21:54:08"}
+{"message":"Running statement \n        SELECT \n            * \n        FROM \n            class\n","level":"info","timestamp":"2020-02-05 21:54:08"}
+{"message":"Returned 0 rows","level":"info","timestamp":"2020-02-05 21:54:08"}
+{"message":"ran statement - \n\n\n    CREATE TABLE IF NOT EXISTS class(\n        class_id INTEGER PRIMARY KEY,\n        class_name TEXT,\n        grade INTEGER,\n        is_active INTEGER\n    )\n\n\n with params undefined successfully.","level":"info","timestamp":"2020-02-05 21:54:08"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-05 21:54:43"}
+{"message":"Closed Db","level":"info","timestamp":"2020-02-05 21:54:43"}
+{"level":"error","timestamp":"2020-02-05 21:54:43","message":"Error: SQLITE_ERROR: near \"delete\": syntax error","stack":"Error: Error: SQLITE_ERROR: near \"delete\": syntax error\n    at Object.error (http://localhost:3000/static/js/main.chunk.js:2550:16)\n    at http://localhost:3000/static/js/main.chunk.js:793:62\n    at replacement (D:\\Playground\\Electron\\di\\dewey-decimal-app\\node_modules\\sqlite3\\lib\\trace.js:19:31)\n    at Statement.errBack (D:\\Playground\\Electron\\di\\dewey-decimal-app\\node_modules\\sqlite3\\lib\\sqlite3.js:16:21)"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-05 22:02:31"}
+{"message":"Closed Db","level":"info","timestamp":"2020-02-05 22:02:31"}
+{"level":"error","timestamp":"2020-02-05 22:02:31","message":"Error: SQLITE_ERROR: near \"delete\": syntax error","stack":"Error: Error: SQLITE_ERROR: near \"delete\": syntax error\n    at Object.error (http://localhost:3000/static/js/main.chunk.js:2550:16)\n    at http://localhost:3000/static/js/main.chunk.js:793:62\n    at replacement (D:\\Playground\\Electron\\di\\dewey-decimal-app\\node_modules\\sqlite3\\lib\\trace.js:19:31)\n    at Statement.errBack (D:\\Playground\\Electron\\di\\dewey-decimal-app\\node_modules\\sqlite3\\lib\\sqlite3.js:16:21)"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-05 22:02:34"}
+{"message":"Closed Db","level":"info","timestamp":"2020-02-05 22:02:34"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-05 22:02:34"}
+{"message":"Running statement \n        SELECT \n            * \n        FROM \n            class\n","level":"info","timestamp":"2020-02-05 22:02:34"}
+{"message":"ran statement - \n\n\n    CREATE TABLE IF NOT EXISTS class(\n        class_id INTEGER PRIMARY KEY,\n        class_name TEXT,\n        grade INTEGER,\n        is_active INTEGER\n    )\n\n\n with params undefined successfully.","level":"info","timestamp":"2020-02-05 22:02:34"}
+{"message":"Returned 0 rows","level":"info","timestamp":"2020-02-05 22:02:34"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-05 22:04:17"}
+{"message":"Closed Db","level":"info","timestamp":"2020-02-05 22:04:17"}
+{"level":"error","timestamp":"2020-02-05 22:04:17","message":"Error: SQLITE_ERROR: near \"delete\": syntax error","stack":"Error: Error: SQLITE_ERROR: near \"delete\": syntax error\n    at Object.error (http://localhost:3000/static/js/main.chunk.js:2553:16)\n    at http://localhost:3000/static/js/main.chunk.js:793:62\n    at replacement (D:\\Playground\\Electron\\di\\dewey-decimal-app\\node_modules\\sqlite3\\lib\\trace.js:19:31)\n    at Statement.errBack (D:\\Playground\\Electron\\di\\dewey-decimal-app\\node_modules\\sqlite3\\lib\\sqlite3.js:16:21)"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-05 22:04:19"}
+{"message":"Closed Db","level":"info","timestamp":"2020-02-05 22:04:19"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-05 22:04:19"}
+{"message":"Running statement \n        SELECT \n            * \n        FROM \n            class\n","level":"info","timestamp":"2020-02-05 22:04:19"}
+{"message":"ran statement - \n\n\n    CREATE TABLE IF NOT EXISTS class(\n        class_id INTEGER PRIMARY KEY,\n        class_name TEXT,\n        grade INTEGER,\n        is_active INTEGER\n    )\n\n\n with params undefined successfully.","level":"info","timestamp":"2020-02-05 22:04:20"}
+{"message":"Returned 0 rows","level":"info","timestamp":"2020-02-05 22:04:20"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-05 22:04:47"}
+{"message":"Closed Db","level":"info","timestamp":"2020-02-05 22:04:47"}
+{"message":"ran statement - \n\nINSERT INTO class (class_name,grade,is_active)\n\t\t\t\t\tVALUES ($class_name,$grade,$is_active)\n\n with params {\"$class_name\":\"asdsad\",\"$grade\":\"1\",\"$is_active\":\"1\"} successfully.","level":"info","timestamp":"2020-02-05 22:04:47"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-05 22:05:16"}
+{"message":"Closed Db","level":"info","timestamp":"2020-02-05 22:05:16"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-05 22:05:16"}
+{"message":"Running statement \n        SELECT \n            * \n        FROM \n            class\n","level":"info","timestamp":"2020-02-05 22:05:16"}
+{"message":"Returned 1 rows","level":"info","timestamp":"2020-02-05 22:05:17"}
+{"message":"ran statement - \n\n\n    CREATE TABLE IF NOT EXISTS class(\n        class_id INTEGER PRIMARY KEY,\n        class_name TEXT,\n        grade INTEGER,\n        is_active INTEGER\n    )\n\n\n with params undefined successfully.","level":"info","timestamp":"2020-02-05 22:05:17"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-05 22:07:42"}
+{"message":"Closed Db","level":"info","timestamp":"2020-02-05 22:07:42"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-05 22:07:42"}
+{"message":"Running statement \n        SELECT \n            * \n        FROM \n            class\n","level":"info","timestamp":"2020-02-05 22:07:42"}
+{"message":"ran statement - \n\n\n    CREATE TABLE IF NOT EXISTS class(\n        class_id INTEGER PRIMARY KEY,\n        class_name TEXT,\n        grade INTEGER,\n        is_active INTEGER\n    )\n\n\n with params undefined successfully.","level":"info","timestamp":"2020-02-05 22:07:42"}
+{"message":"Returned 1 rows","level":"info","timestamp":"2020-02-05 22:07:42"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-05 22:08:47"}
+{"message":"Closed Db","level":"info","timestamp":"2020-02-05 22:08:47"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-05 22:08:47"}
+{"message":"Running statement \n        SELECT \n            * \n        FROM \n            class\n","level":"info","timestamp":"2020-02-05 22:08:47"}
+{"message":"ran statement - \n\n\n    CREATE TABLE IF NOT EXISTS class(\n        class_id INTEGER PRIMARY KEY,\n        class_name TEXT,\n        grade INTEGER,\n        is_active INTEGER\n    )\n\n\n with params undefined successfully.","level":"info","timestamp":"2020-02-05 22:08:47"}
+{"message":"Returned 1 rows","level":"info","timestamp":"2020-02-05 22:08:47"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-05 22:09:39"}
+{"message":"Closed Db","level":"info","timestamp":"2020-02-05 22:09:39"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-05 22:09:39"}
+{"message":"Running statement \n        SELECT \n            * \n        FROM \n            class\n","level":"info","timestamp":"2020-02-05 22:09:39"}
+{"message":"ran statement - \n\n\n    CREATE TABLE IF NOT EXISTS class(\n        class_id INTEGER PRIMARY KEY,\n        class_name TEXT,\n        grade INTEGER,\n        is_active INTEGER\n    )\n\n\n with params undefined successfully.","level":"info","timestamp":"2020-02-05 22:09:39"}
+{"message":"Returned 1 rows","level":"info","timestamp":"2020-02-05 22:09:39"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-05 22:10:56"}
+{"message":"Closed Db","level":"info","timestamp":"2020-02-05 22:10:56"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-05 22:10:56"}
+{"message":"Running statement \n        SELECT \n            * \n        FROM \n            class\n","level":"info","timestamp":"2020-02-05 22:10:56"}
+{"message":"ran statement - \n\n\n    CREATE TABLE IF NOT EXISTS class(\n        class_id INTEGER PRIMARY KEY,\n        class_name TEXT,\n        grade INTEGER,\n        is_active INTEGER\n    )\n\n\n with params undefined successfully.","level":"info","timestamp":"2020-02-05 22:10:56"}
+{"message":"Returned 1 rows","level":"info","timestamp":"2020-02-05 22:10:56"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-05 22:16:28"}
+{"message":"Closed Db","level":"info","timestamp":"2020-02-05 22:16:28"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-05 22:16:28"}
+{"message":"Running statement \n        SELECT \n            * \n        FROM \n            class\n","level":"info","timestamp":"2020-02-05 22:16:28"}
+{"message":"Returned 1 rows","level":"info","timestamp":"2020-02-05 22:16:28"}
+{"message":"ran statement - \n\n\n    CREATE TABLE IF NOT EXISTS class(\n        class_id INTEGER PRIMARY KEY,\n        class_name TEXT,\n        grade INTEGER,\n        is_active INTEGER\n    )\n\n\n with params undefined successfully.","level":"info","timestamp":"2020-02-05 22:16:28"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-05 22:17:10"}
+{"message":"Closed Db","level":"info","timestamp":"2020-02-05 22:17:10"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-05 22:17:10"}
+{"message":"Running statement \n        SELECT \n            * \n        FROM \n            class\n","level":"info","timestamp":"2020-02-05 22:17:10"}
+{"message":"ran statement - \n\n\n    CREATE TABLE IF NOT EXISTS class(\n        class_id INTEGER PRIMARY KEY,\n        class_name TEXT,\n        grade INTEGER,\n        is_active INTEGER\n    )\n\n\n with params undefined successfully.","level":"info","timestamp":"2020-02-05 22:17:10"}
+{"message":"Returned 1 rows","level":"info","timestamp":"2020-02-05 22:17:10"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-05 22:17:51"}
+{"message":"Closed Db","level":"info","timestamp":"2020-02-05 22:17:51"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-05 22:17:51"}
+{"message":"Running statement \n        SELECT \n            * \n        FROM \n            class\n","level":"info","timestamp":"2020-02-05 22:17:51"}
+{"message":"ran statement - \n\n\n    CREATE TABLE IF NOT EXISTS class(\n        class_id INTEGER PRIMARY KEY,\n        class_name TEXT,\n        grade INTEGER,\n        is_active INTEGER\n    )\n\n\n with params undefined successfully.","level":"info","timestamp":"2020-02-05 22:17:51"}
+{"message":"Returned 1 rows","level":"info","timestamp":"2020-02-05 22:17:51"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-05 22:18:00"}
+{"message":"Closed Db","level":"info","timestamp":"2020-02-05 22:18:00"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-05 22:18:00"}
+{"message":"Running statement \n        SELECT \n            * \n        FROM \n            class\n","level":"info","timestamp":"2020-02-05 22:18:00"}
+{"message":"Returned 1 rows","level":"info","timestamp":"2020-02-05 22:18:00"}
+{"message":"ran statement - \n\n\n    CREATE TABLE IF NOT EXISTS class(\n        class_id INTEGER PRIMARY KEY,\n        class_name TEXT,\n        grade INTEGER,\n        is_active INTEGER\n    )\n\n\n with params undefined successfully.","level":"info","timestamp":"2020-02-05 22:18:01"}

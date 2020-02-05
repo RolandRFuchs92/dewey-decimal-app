@@ -32,6 +32,9 @@ export default ({isOpen = false, handleClose, modalData}) => {
     },[isOpen]);
 
     const handleSubmit = () => {
+        debugger;
+        delete data.Edit;
+        delete data.Delete;
         addOrUpdateClass(data);
     }
 

@@ -1,5 +1,6 @@
 import {run, all} from 'db/repo';
 import {objectToUpdateStatement, objectToInsertStatement, jsonToStatementObject} from 'db/utils';
+import { isNil } from 'lodash';
 
 const queryEnsureClassCreated = `
     CREATE TABLE IF NOT EXISTS class(
@@ -26,7 +27,7 @@ export async function getClasses(){
 }
 
 export async function addOrUpdateClass(classObj){
-    if(classObj.class_id)
+    if(isNil(classObj.class_id))
         return await addClass(classObj);
     return await updateClass(classObj);
 }

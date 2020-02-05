@@ -14,12 +14,13 @@ import {
 	ExpandMore,
 } from '@material-ui/icons';
 import { FontAwesomeIcon  } from '@fortawesome/react-fontawesome'
-import { faEdit } from '@fortawesome/free-solid-svg-icons';
+import { faEdit, faPlusSquare, faMinusSquare} from '@fortawesome/free-solid-svg-icons';
 
 const createIcon = icon => <FontAwesomeIcon icon={icon}></FontAwesomeIcon>
 
 const Edit = createIcon(faEdit);
-
+const Add = createIcon(faPlusSquare);
+const Delete = createIcon(faMinusSquare);
 export default { 
     Edit,
     Home,
@@ -34,5 +35,7 @@ export default {
 	Student: AirlineSeatReclineExtra,
 	Class: SupervisedUserCircle,
 	ExpandLess: ExpandLess,
-	ExpandMore: ExpandMore
+	ExpandMore: ExpandMore,
+	Add,
+	Delete
 }
