@@ -8,7 +8,8 @@ const queryEnsureCreatedScript = `CREATE TABLE IF NOT EXISTS teacher (
 	mobile TEXT,
 	email TEXT,
     class_id INTEGER,
-    is_active INTEGER
+    is_active INTEGER,
+    CONSTRAINT fk_class_id FOREIGN KEY(class_id) REFERENCES class(class_id)
 )
 `;
 

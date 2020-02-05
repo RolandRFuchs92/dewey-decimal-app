@@ -24,6 +24,7 @@ const columns = [
     },{
         name: 'is_active',
         label: 'Active'
+    },{
     }
 ]
 
@@ -40,7 +41,6 @@ export default () => {
     }
 
     const handleClose = () => {
-        debugger;
         setIsOpen(false);
     }
 
