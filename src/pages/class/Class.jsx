@@ -25,6 +25,8 @@ const columns = [
         name: 'is_active',
         label: 'Active'
     },{
+        name: 'Name',
+        label: '<'
     }
 ]
 
