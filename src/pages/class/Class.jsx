@@ -9,6 +9,7 @@ import Icons from 'components/icons';
 import {useAlert} from 'utils/snackbarAlerts'
 
 import YesNo from 'components/dialog/YesNo';
+import {useDialogs} from 'utils/dialog';
 
 const useStyles = makeStyles(theme => ({
     footer: {
@@ -50,10 +51,8 @@ export default () => {
     const [data, setData] = useState([]);
     const [modalData, setModalData] = useState({});
     const [isOpen, setIsOpen] = useState(false);
-    const [isDialogOpen, setIsDialogOpen] = useState(false);
-    const [deleteText, setDeleteText] = useState('');
-    const [classIdToDelete, setClassIdToDelete] = useState(0);
     const alert = useAlert();
+    const dialog = useDialogs();
 
     const getColumns = () => {
         return [
@@ -97,9 +96,7 @@ export default () => {
     
     const handleDelete = rowData => {
         const obj = Object.fromEntries(getColumns().map(({name}, index) => [name,rowData[index]]));
-        setDeleteText(`Are you sure about deleting Grade ${obj.grade} ${obj.class_name}?`);
-        setIsDialogOpen(true);
-        setClassIdToDelete(obj.class_id);
+        dialog({ title: 'Are you sure?', description: `Really delete grade ${obj.grade} - ${obj.class_name}?`, handleYes: () => handleYesForDelete(obj.class_id) })
     }
     const handleClick = rowData => {
         const obj = Object.fromEntries(getColumns().map(({name}, index) => [name,rowData[index]]));
@@ -112,7 +109,7 @@ export default () => {
         customFooter: () => <td className={classes.footer} onClick={handleClick}>{Icons.Add}</td>
     }
     
-    const handleYesForDelete = async () => {
+    const handleYesForDelete = async (classIdToDelete) => {
         try{
             await hideClass(classIdToDelete);
             await resetPage()
@@ -125,7 +122,6 @@ export default () => {
     const resetPage = async () => {
         setData(await getClasses());   
         setIsOpen(false);
-        setIsDialogOpen(false);
     }
 
     const handleClose = () => {
@@ -146,13 +142,6 @@ export default () => {
         <Grid container direction="column" spacing={2}>
             <MUIDataTable title='Classes' options={tableOptions} columns={getColumns()} data={data}/>
             <Grid item ><Modal isOpen={isOpen} handleClose={handleClose} modalData={modalData} updateTable={() => resetPage()}></Modal></Grid>
-            <YesNo
-                open={isDialogOpen} 
-                title='Really delete class?'
-                text={deleteText} 
-                handleClose={() => {setIsDialogOpen(false)}} 
-                handleYes={handleYesForDelete} 
-                handleNo={() => {setIsDialogOpen(false)}} />
         </Grid>
     )
 }
