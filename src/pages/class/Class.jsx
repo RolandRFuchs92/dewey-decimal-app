@@ -12,9 +12,10 @@ import YesNo from 'components/dialog/YesNo';
 const useStyles = makeStyles(theme => ({
     footer: {
         color: theme.palette.success.main,
-        fontSize: 20, 
+        fontSize: 30, 
         textAlign:'right', 
-        paddingRight:15
+        paddingRight:15,
+        alignSelf:'flex-end'
     },
     edit: {
         fontSize: 20,
@@ -106,15 +107,13 @@ export default () => {
 
     const tableOptions = {
         selectableRows: 'none',
-        customFooter: () => <span className={classes.footer} onClick={handleClick}>{Icons.Add}</span>
+        customFooter: () => <td className={classes.footer} onClick={handleClick}>{Icons.Add}</td>
     }
     
     const handleYesForDelete = async () => {
         try{
-            const result = await hideClass(classIdToDelete);
-            console.log(result);
-            setData(await getClasses());
-            setIsDialogOpen(false);
+            await hideClass(classIdToDelete);
+            await resetPage()
         } catch(e){
 
         }
@@ -142,7 +141,6 @@ export default () => {
 
     return (
         <Grid container direction="column" spacing={2}>
-            {JSON.stringify(data)}
             <MUIDataTable title='Classes' options={tableOptions} columns={getColumns()} data={data}/>
             <Grid item ><Modal isOpen={isOpen} handleClose={handleClose} modalData={modalData} updateTable={() => resetPage()}></Modal></Grid>
             <YesNo
