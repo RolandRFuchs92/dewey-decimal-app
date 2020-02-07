@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react';
 import { TextField, Modal, Grid, Fade, Paper, makeStyles, Typography, Backdrop} from '@material-ui/core';
 import FormButtons from 'components/buttons/FormButtons';
 
-import {addOrUpdateClass} from './Class.repo';
+import {addOrUpdateClass, getClasses} from './Class.repo';
 
 const useStyles = makeStyles(theme => ({
     paper: {
@@ -17,7 +17,7 @@ const useStyles = makeStyles(theme => ({
     }
 }));
 
-export default ({isOpen = false, handleClose, modalData}) => {
+export default ({isOpen = false, handleClose, modalData, updateTable}) => {
     const [data, setData] = useState({});
     const [open, setOpen] = useState(isOpen);
 
@@ -31,11 +31,11 @@ export default ({isOpen = false, handleClose, modalData}) => {
         setOpen(isOpen);
     },[isOpen]);
 
-    const handleSubmit = () => {
-        debugger;
+    const handleSubmit = async () => {
         delete data.Edit;
         delete data.Delete;
-        addOrUpdateClass(data);
+        await addOrUpdateClass(data);
+        await updateTable();
     }
 
     const handleChange = name => ({target: {value}}) => { setData({...data, [name]: value});}

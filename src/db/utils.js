@@ -34,7 +34,7 @@ export function objectToUpdateStatement(obj, tableName, primaryKeyName = `${tabl
 	const setConditions = compact(
 		Object.entries(obj).map(([key, val]) => {
 			if (lowerCase(key) !== lowerCase(primaryKeyName))
-				return `${snakeCase(key)}=$${key}`;
+				return `${snakeCase(key)}=$${snakeCase(key)}`;
 			return null;
 		}),
 	).join(',');
@@ -44,7 +44,7 @@ export function objectToUpdateStatement(obj, tableName, primaryKeyName = `${tabl
 		SET 
 			${setConditions}
 		WHERE
-			${primaryKeyName}=$${camelCase(primaryKeyName)}
+			${primaryKeyName}=$${snakeCase(primaryKeyName)}
 	`;
 }
 

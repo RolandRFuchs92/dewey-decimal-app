@@ -16,6 +16,18 @@ const queryGetClasses = `
             * 
         FROM 
             class
+        WHERE 
+            is_active = 1
+`
+
+const queryHideClass = `
+        UPDATE 
+            class 
+        SET 
+            is_active = 0
+        WHERE
+            class_id=$class_id
+        
 `
 
 export async function ensureCreated() {
@@ -23,7 +35,8 @@ export async function ensureCreated() {
 }
 
 export async function getClasses(){
-    return await all(queryGetClasses);
+    const classes = await all(queryGetClasses);
+    return classes;
 }
 
 export async function addOrUpdateClass(classObj){
@@ -42,4 +55,10 @@ async function updateClass(classObj){
     const statement = objectToUpdateStatement(classObj,'class');
     const statementObj = jsonToStatementObject(classObj);
     return run(statement, statementObj);
+}
+
+export async function hideClass(classId){
+    const statementObject = {$class_id: classId};
+    const statement = queryHideClass;
+    return await run(statement, statementObject)
 }
