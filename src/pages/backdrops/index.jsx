@@ -11,9 +11,11 @@ const useStyles= makeStyles(theme => ({
 }))
 
 export default () => {
-    const {yesNo} = useContext(context);
+    const {yesNo, alertSuccess, alertError } = useContext(context);
     const classes = useStyles();
-
+    alertSuccess.isOpen = true;
+    alertSuccess.title='Willy bum';
+    alertSuccess.body="welcome to the willy bum";
     return <div className={classes.parent}>
         <YesNo 
             open={context.isOpen} 
