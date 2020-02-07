@@ -37,18 +37,18 @@ function NewStudentList({ setStudent }) {
 	const classes = useStyles();
 
 	useEffect(() => {
-		const method = async () => {
-			const columnText = (await getStudentColumnNames()).map(i => ({
-				name: i,
-				label: startCase(lowerCase(i)),
+		(async () => {
+			const columnText = (await getStudentColumnNames()).map(({ name }) => ({
+				name,
+				label: startCase(lowerCase(name)),
 			}));
+
+			debugger;
 			setColumns(columnText);
 
 			const studentData = await getStudentData();
 			setData(studentData);
-		};
-
-		method();
+		})();
 	}, []);
 
 	useEffect(() => {

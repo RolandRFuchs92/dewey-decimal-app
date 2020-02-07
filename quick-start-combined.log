@@ -1876,3 +1876,219 @@
 {"message":"Stamp[1581054138872] - Returned 5 row(s)","level":"info","timestamp":"2020-02-07 07:42:18"}
 {"message":"Opening database.","level":"info","timestamp":"2020-02-07 07:42:55"}
 {"message":"Stamp[1581054175622] - Running statement - \n\n\n    CREATE TABLE IF NOT EXISTS class(\n        class_id INTEGER PRIMARY KEY,\n        class_name TEXT,\n        grade INTEGER,\n        is_active INTEGER\n    )\n\n\n with params undefined.","level":"info","timestamp":"2020-02-07 07:42:55"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-07 09:14:38"}
+{"message":"Stamp[1581059678535] - Running statement - \n\nCREATE TABLE IF NOT EXISTS student ( \n\tstudent_id INTEGER PRIMARY KEY,\n\tfirst_name TEXT NOT NULL,\n\tlast_name TEXT NOT NULL,\n\tbirthdate TEXT NOT NULL,\n\tmother_name text,\n\tmother_mobile TEXT,\n\tmother_email TEXT,\n\tfather_name TEXT,\n\tfather_mobile TEXT,\n\tfather_email TEXT,\n\tclass_id INTEGER NOT NULL,\n\tCONSTRAINT fk_class_id FOREIGN KEY(class_id) REFERENCES class(class_id)\n);\n\n with params undefined.","level":"info","timestamp":"2020-02-07 09:14:38"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-07 09:14:38"}
+{"message":"Stamp[1581059678643] - Running statement PRAGMA table_info(student)","level":"info","timestamp":"2020-02-07 09:14:38"}
+{"message":"Stamp[1581059678535] - Closed Db.","level":"info","timestamp":"2020-02-07 09:14:38"}
+{"message":"Stamp[1581059678535] - Returned Successfully.","level":"info","timestamp":"2020-02-07 09:14:38"}
+{"message":"Stamp[1581059678643] - Closed Db.","level":"info","timestamp":"2020-02-07 09:14:38"}
+{"message":"Stamp[1581059678643] - Returned 11 row(s)","level":"info","timestamp":"2020-02-07 09:14:38"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-07 09:14:38"}
+{"message":"Stamp[1581059678825] - Running statement SELECT * FROM student","level":"info","timestamp":"2020-02-07 09:14:38"}
+{"message":"Stamp[1581059678825] - Closed Db.","level":"info","timestamp":"2020-02-07 09:14:38"}
+{"message":"Stamp[1581059678825] - Returned 0 row(s)","level":"info","timestamp":"2020-02-07 09:14:38"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-07 09:14:38"}
+{"message":"Stamp[1581059678836] - Running statement - \n\nCREATE TABLE IF NOT EXISTS student ( \n\tstudent_id INTEGER PRIMARY KEY,\n\tfirst_name TEXT NOT NULL,\n\tlast_name TEXT NOT NULL,\n\tbirthdate TEXT NOT NULL,\n\tmother_name text,\n\tmother_mobile TEXT,\n\tmother_email TEXT,\n\tfather_name TEXT,\n\tfather_mobile TEXT,\n\tfather_email TEXT,\n\tclass_id INTEGER NOT NULL,\n\tCONSTRAINT fk_class_id FOREIGN KEY(class_id) REFERENCES class(class_id)\n);\n\n with params undefined.","level":"info","timestamp":"2020-02-07 09:14:38"}
+{"message":"Stamp[1581059678836] - Closed Db.","level":"info","timestamp":"2020-02-07 09:14:38"}
+{"message":"Stamp[1581059678836] - Returned Successfully.","level":"info","timestamp":"2020-02-07 09:14:38"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-07 09:14:43"}
+{"message":"Stamp[1581059683116] - Running statement - \n\n\n    CREATE TABLE IF NOT EXISTS class(\n        class_id INTEGER PRIMARY KEY,\n        class_name TEXT,\n        grade INTEGER,\n        is_active INTEGER\n    )\n\n\n with params undefined.","level":"info","timestamp":"2020-02-07 09:14:43"}
+{"message":"Stamp[1581059683116] - Closed Db.","level":"info","timestamp":"2020-02-07 09:14:43"}
+{"message":"Stamp[1581059683116] - Returned Successfully.","level":"info","timestamp":"2020-02-07 09:14:43"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-07 09:14:43"}
+{"message":"Stamp[1581059683142] - Running statement \n        SELECT \n            * \n        FROM \n            class\n        WHERE \n            is_active = 1\n","level":"info","timestamp":"2020-02-07 09:14:43"}
+{"message":"Stamp[1581059683142] - Closed Db.","level":"info","timestamp":"2020-02-07 09:14:43"}
+{"message":"Stamp[1581059683142] - Returned 5 row(s)","level":"info","timestamp":"2020-02-07 09:14:43"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-07 09:14:44"}
+{"message":"Stamp[1581059684769] - Running statement - \n\nCREATE TABLE IF NOT EXISTS student ( \n\tstudent_id INTEGER PRIMARY KEY,\n\tfirst_name TEXT NOT NULL,\n\tlast_name TEXT NOT NULL,\n\tbirthdate TEXT NOT NULL,\n\tmother_name text,\n\tmother_mobile TEXT,\n\tmother_email TEXT,\n\tfather_name TEXT,\n\tfather_mobile TEXT,\n\tfather_email TEXT,\n\tclass_id INTEGER NOT NULL,\n\tCONSTRAINT fk_class_id FOREIGN KEY(class_id) REFERENCES class(class_id)\n);\n\n with params undefined.","level":"info","timestamp":"2020-02-07 09:14:44"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-07 09:14:44"}
+{"message":"Stamp[1581059684839] - Running statement PRAGMA table_info(student)","level":"info","timestamp":"2020-02-07 09:14:44"}
+{"message":"Stamp[1581059684769] - Closed Db.","level":"info","timestamp":"2020-02-07 09:14:44"}
+{"message":"Stamp[1581059684769] - Returned Successfully.","level":"info","timestamp":"2020-02-07 09:14:44"}
+{"message":"Stamp[1581059684839] - Closed Db.","level":"info","timestamp":"2020-02-07 09:14:44"}
+{"message":"Stamp[1581059684839] - Returned 11 row(s)","level":"info","timestamp":"2020-02-07 09:14:44"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-07 09:14:44"}
+{"message":"Stamp[1581059684957] - Running statement SELECT * FROM student","level":"info","timestamp":"2020-02-07 09:14:44"}
+{"message":"Stamp[1581059684957] - Closed Db.","level":"info","timestamp":"2020-02-07 09:14:44"}
+{"message":"Stamp[1581059684957] - Returned 0 row(s)","level":"info","timestamp":"2020-02-07 09:14:44"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-07 09:14:44"}
+{"message":"Stamp[1581059684968] - Running statement - \n\nCREATE TABLE IF NOT EXISTS student ( \n\tstudent_id INTEGER PRIMARY KEY,\n\tfirst_name TEXT NOT NULL,\n\tlast_name TEXT NOT NULL,\n\tbirthdate TEXT NOT NULL,\n\tmother_name text,\n\tmother_mobile TEXT,\n\tmother_email TEXT,\n\tfather_name TEXT,\n\tfather_mobile TEXT,\n\tfather_email TEXT,\n\tclass_id INTEGER NOT NULL,\n\tCONSTRAINT fk_class_id FOREIGN KEY(class_id) REFERENCES class(class_id)\n);\n\n with params undefined.","level":"info","timestamp":"2020-02-07 09:14:44"}
+{"message":"Stamp[1581059684968] - Closed Db.","level":"info","timestamp":"2020-02-07 09:14:45"}
+{"message":"Stamp[1581059684968] - Returned Successfully.","level":"info","timestamp":"2020-02-07 09:14:45"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-07 09:14:47"}
+{"message":"Stamp[1581059687107] - Running statement \n    SELECT\n        teacher_id,\n        first_name,\n        last_name,\n        mobile,\n        email,\n        class_id,\n        is_active\n    FROM\n        teacher\n    WHERE\n        is_active = 1;\n","level":"info","timestamp":"2020-02-07 09:14:47"}
+{"message":"Stamp[1581059687107] - Closed Db.","level":"info","timestamp":"2020-02-07 09:14:47"}
+{"message":"Stamp[1581059687107] - Returned 0 row(s)","level":"info","timestamp":"2020-02-07 09:14:47"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-07 09:14:48"}
+{"message":"Stamp[1581059688804] - Running statement - \n\nCREATE TABLE IF NOT EXISTS student ( \n\tstudent_id INTEGER PRIMARY KEY,\n\tfirst_name TEXT NOT NULL,\n\tlast_name TEXT NOT NULL,\n\tbirthdate TEXT NOT NULL,\n\tmother_name text,\n\tmother_mobile TEXT,\n\tmother_email TEXT,\n\tfather_name TEXT,\n\tfather_mobile TEXT,\n\tfather_email TEXT,\n\tclass_id INTEGER NOT NULL,\n\tCONSTRAINT fk_class_id FOREIGN KEY(class_id) REFERENCES class(class_id)\n);\n\n with params undefined.","level":"info","timestamp":"2020-02-07 09:14:48"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-07 09:14:48"}
+{"message":"Stamp[1581059688873] - Running statement PRAGMA table_info(student)","level":"info","timestamp":"2020-02-07 09:14:48"}
+{"message":"Stamp[1581059688804] - Closed Db.","level":"info","timestamp":"2020-02-07 09:14:48"}
+{"message":"Stamp[1581059688804] - Returned Successfully.","level":"info","timestamp":"2020-02-07 09:14:48"}
+{"message":"Stamp[1581059688873] - Closed Db.","level":"info","timestamp":"2020-02-07 09:14:48"}
+{"message":"Stamp[1581059688873] - Returned 11 row(s)","level":"info","timestamp":"2020-02-07 09:14:48"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-07 09:14:48"}
+{"message":"Stamp[1581059688988] - Running statement SELECT * FROM student","level":"info","timestamp":"2020-02-07 09:14:48"}
+{"message":"Stamp[1581059688988] - Closed Db.","level":"info","timestamp":"2020-02-07 09:14:48"}
+{"message":"Stamp[1581059688988] - Returned 0 row(s)","level":"info","timestamp":"2020-02-07 09:14:48"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-07 09:14:48"}
+{"message":"Stamp[1581059688998] - Running statement - \n\nCREATE TABLE IF NOT EXISTS student ( \n\tstudent_id INTEGER PRIMARY KEY,\n\tfirst_name TEXT NOT NULL,\n\tlast_name TEXT NOT NULL,\n\tbirthdate TEXT NOT NULL,\n\tmother_name text,\n\tmother_mobile TEXT,\n\tmother_email TEXT,\n\tfather_name TEXT,\n\tfather_mobile TEXT,\n\tfather_email TEXT,\n\tclass_id INTEGER NOT NULL,\n\tCONSTRAINT fk_class_id FOREIGN KEY(class_id) REFERENCES class(class_id)\n);\n\n with params undefined.","level":"info","timestamp":"2020-02-07 09:14:48"}
+{"message":"Stamp[1581059688998] - Closed Db.","level":"info","timestamp":"2020-02-07 09:14:49"}
+{"message":"Stamp[1581059688998] - Returned Successfully.","level":"info","timestamp":"2020-02-07 09:14:49"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-07 09:15:02"}
+{"message":"Stamp[1581059702237] - Running statement - \n\n\n\t\tINSERT INTO student (first_name,last_name,birthdate,class_id,mother_name,mother_mobile,mother_email,father_name,father_mobile,father_email)\n\t\tVALUES ($firstName,$lastName,$birthdate,$classId,$motherName,$motherMobile,$motherEmail,$fatherName,$fatherMobile,$fatherEmail)\n\t\n\n with params {\"$firstName\":\"gafa\",\"$lastName\":\"asda\",\"$birthdate\":\"123\",\"$classId\":\"1\",\"$motherName\":\"asd\",\"$motherMobile\":\"123\",\"$motherEmail\":\"asd\",\"$fatherName\":\"123\",\"$fatherMobile\":\"123\",\"$fatherEmail\":\"123\"}.","level":"info","timestamp":"2020-02-07 09:15:02"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-07 09:15:02"}
+{"message":"Stamp[1581059702240] - Running statement - \n\nCREATE TABLE IF NOT EXISTS student ( \n\tstudent_id INTEGER PRIMARY KEY,\n\tfirst_name TEXT NOT NULL,\n\tlast_name TEXT NOT NULL,\n\tbirthdate TEXT NOT NULL,\n\tmother_name text,\n\tmother_mobile TEXT,\n\tmother_email TEXT,\n\tfather_name TEXT,\n\tfather_mobile TEXT,\n\tfather_email TEXT,\n\tclass_id INTEGER NOT NULL,\n\tCONSTRAINT fk_class_id FOREIGN KEY(class_id) REFERENCES class(class_id)\n);\n\n with params undefined.","level":"info","timestamp":"2020-02-07 09:15:02"}
+{"message":"Stamp[1581059702240] - Closed Db.","level":"info","timestamp":"2020-02-07 09:15:02"}
+{"message":"Stamp[1581059702240] - Returned Successfully.","level":"info","timestamp":"2020-02-07 09:15:02"}
+{"message":"Stamp[1581059702237] - Closed Db.","level":"info","timestamp":"2020-02-07 09:15:02"}
+{"message":"Stamp[1581059702237] - Returned Successfully.","level":"info","timestamp":"2020-02-07 09:15:02"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-07 09:15:02"}
+{"message":"Stamp[1581059702403] - Running statement SELECT * FROM student","level":"info","timestamp":"2020-02-07 09:15:02"}
+{"message":"Stamp[1581059702403] - Closed Db.","level":"info","timestamp":"2020-02-07 09:15:02"}
+{"message":"Stamp[1581059702403] - Returned 1 row(s)","level":"info","timestamp":"2020-02-07 09:15:02"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-07 09:15:02"}
+{"message":"Stamp[1581059702411] - Running statement - \n\nCREATE TABLE IF NOT EXISTS student ( \n\tstudent_id INTEGER PRIMARY KEY,\n\tfirst_name TEXT NOT NULL,\n\tlast_name TEXT NOT NULL,\n\tbirthdate TEXT NOT NULL,\n\tmother_name text,\n\tmother_mobile TEXT,\n\tmother_email TEXT,\n\tfather_name TEXT,\n\tfather_mobile TEXT,\n\tfather_email TEXT,\n\tclass_id INTEGER NOT NULL,\n\tCONSTRAINT fk_class_id FOREIGN KEY(class_id) REFERENCES class(class_id)\n);\n\n with params undefined.","level":"info","timestamp":"2020-02-07 09:15:02"}
+{"message":"Stamp[1581059702411] - Closed Db.","level":"info","timestamp":"2020-02-07 09:15:06"}
+{"message":"Stamp[1581059702411] - Returned Successfully.","level":"info","timestamp":"2020-02-07 09:15:06"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-07 09:15:09"}
+{"message":"Stamp[1581059709992] - Running statement - \n\nCREATE TABLE IF NOT EXISTS student ( \n\tstudent_id INTEGER PRIMARY KEY,\n\tfirst_name TEXT NOT NULL,\n\tlast_name TEXT NOT NULL,\n\tbirthdate TEXT NOT NULL,\n\tmother_name text,\n\tmother_mobile TEXT,\n\tmother_email TEXT,\n\tfather_name TEXT,\n\tfather_mobile TEXT,\n\tfather_email TEXT,\n\tclass_id INTEGER NOT NULL,\n\tCONSTRAINT fk_class_id FOREIGN KEY(class_id) REFERENCES class(class_id)\n);\n\n with params undefined.","level":"info","timestamp":"2020-02-07 09:15:09"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-07 09:15:10"}
+{"message":"Stamp[1581059710115] - Running statement PRAGMA table_info(student)","level":"info","timestamp":"2020-02-07 09:15:10"}
+{"message":"Stamp[1581059710115] - Closed Db.","level":"info","timestamp":"2020-02-07 09:15:10"}
+{"message":"Stamp[1581059710115] - Returned 11 row(s)","level":"info","timestamp":"2020-02-07 09:15:10"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-07 09:15:10"}
+{"message":"Stamp[1581059710353] - Running statement SELECT * FROM student","level":"info","timestamp":"2020-02-07 09:15:10"}
+{"message":"Stamp[1581059709992] - Closed Db.","level":"info","timestamp":"2020-02-07 09:15:10"}
+{"message":"Stamp[1581059709992] - Returned Successfully.","level":"info","timestamp":"2020-02-07 09:15:10"}
+{"message":"Stamp[1581059710353] - Closed Db.","level":"info","timestamp":"2020-02-07 09:15:10"}
+{"message":"Stamp[1581059710353] - Returned 1 row(s)","level":"info","timestamp":"2020-02-07 09:15:10"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-07 09:15:10"}
+{"message":"Stamp[1581059710380] - Running statement - \n\nCREATE TABLE IF NOT EXISTS student ( \n\tstudent_id INTEGER PRIMARY KEY,\n\tfirst_name TEXT NOT NULL,\n\tlast_name TEXT NOT NULL,\n\tbirthdate TEXT NOT NULL,\n\tmother_name text,\n\tmother_mobile TEXT,\n\tmother_email TEXT,\n\tfather_name TEXT,\n\tfather_mobile TEXT,\n\tfather_email TEXT,\n\tclass_id INTEGER NOT NULL,\n\tCONSTRAINT fk_class_id FOREIGN KEY(class_id) REFERENCES class(class_id)\n);\n\n with params undefined.","level":"info","timestamp":"2020-02-07 09:15:10"}
+{"message":"Stamp[1581059710380] - Closed Db.","level":"info","timestamp":"2020-02-07 09:15:13"}
+{"message":"Stamp[1581059710380] - Returned Successfully.","level":"info","timestamp":"2020-02-07 09:15:13"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-07 09:15:17"}
+{"message":"Stamp[1581059717101] - Running statement - \n\nCREATE TABLE IF NOT EXISTS student ( \n\tstudent_id INTEGER PRIMARY KEY,\n\tfirst_name TEXT NOT NULL,\n\tlast_name TEXT NOT NULL,\n\tbirthdate TEXT NOT NULL,\n\tmother_name text,\n\tmother_mobile TEXT,\n\tmother_email TEXT,\n\tfather_name TEXT,\n\tfather_mobile TEXT,\n\tfather_email TEXT,\n\tclass_id INTEGER NOT NULL,\n\tCONSTRAINT fk_class_id FOREIGN KEY(class_id) REFERENCES class(class_id)\n);\n\n with params undefined.","level":"info","timestamp":"2020-02-07 09:15:17"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-07 09:15:17"}
+{"message":"Stamp[1581059717216] - Running statement PRAGMA table_info(student)","level":"info","timestamp":"2020-02-07 09:15:17"}
+{"message":"Stamp[1581059717101] - Closed Db.","level":"info","timestamp":"2020-02-07 09:15:17"}
+{"message":"Stamp[1581059717101] - Returned Successfully.","level":"info","timestamp":"2020-02-07 09:15:17"}
+{"message":"Stamp[1581059717216] - Closed Db.","level":"info","timestamp":"2020-02-07 09:15:17"}
+{"message":"Stamp[1581059717216] - Returned 11 row(s)","level":"info","timestamp":"2020-02-07 09:15:17"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-07 09:15:17"}
+{"message":"Stamp[1581059717445] - Running statement SELECT * FROM student","level":"info","timestamp":"2020-02-07 09:15:17"}
+{"message":"Stamp[1581059717445] - Closed Db.","level":"info","timestamp":"2020-02-07 09:15:17"}
+{"message":"Stamp[1581059717445] - Returned 1 row(s)","level":"info","timestamp":"2020-02-07 09:15:17"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-07 09:15:17"}
+{"message":"Stamp[1581059717460] - Running statement - \n\nCREATE TABLE IF NOT EXISTS student ( \n\tstudent_id INTEGER PRIMARY KEY,\n\tfirst_name TEXT NOT NULL,\n\tlast_name TEXT NOT NULL,\n\tbirthdate TEXT NOT NULL,\n\tmother_name text,\n\tmother_mobile TEXT,\n\tmother_email TEXT,\n\tfather_name TEXT,\n\tfather_mobile TEXT,\n\tfather_email TEXT,\n\tclass_id INTEGER NOT NULL,\n\tCONSTRAINT fk_class_id FOREIGN KEY(class_id) REFERENCES class(class_id)\n);\n\n with params undefined.","level":"info","timestamp":"2020-02-07 09:15:17"}
+{"message":"Stamp[1581059717460] - Closed Db.","level":"info","timestamp":"2020-02-07 09:15:20"}
+{"message":"Stamp[1581059717460] - Returned Successfully.","level":"info","timestamp":"2020-02-07 09:15:20"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-07 09:15:34"}
+{"message":"Stamp[1581059734385] - Running statement - \n\nCREATE TABLE IF NOT EXISTS student ( \n\tstudent_id INTEGER PRIMARY KEY,\n\tfirst_name TEXT NOT NULL,\n\tlast_name TEXT NOT NULL,\n\tbirthdate TEXT NOT NULL,\n\tmother_name text,\n\tmother_mobile TEXT,\n\tmother_email TEXT,\n\tfather_name TEXT,\n\tfather_mobile TEXT,\n\tfather_email TEXT,\n\tclass_id INTEGER NOT NULL,\n\tCONSTRAINT fk_class_id FOREIGN KEY(class_id) REFERENCES class(class_id)\n);\n\n with params undefined.","level":"info","timestamp":"2020-02-07 09:15:34"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-07 09:15:34"}
+{"message":"Stamp[1581059734501] - Running statement PRAGMA table_info(student)","level":"info","timestamp":"2020-02-07 09:15:34"}
+{"message":"Stamp[1581059734385] - Closed Db.","level":"info","timestamp":"2020-02-07 09:15:34"}
+{"message":"Stamp[1581059734385] - Returned Successfully.","level":"info","timestamp":"2020-02-07 09:15:34"}
+{"message":"Stamp[1581059734501] - Closed Db.","level":"info","timestamp":"2020-02-07 09:15:34"}
+{"message":"Stamp[1581059734501] - Returned 11 row(s)","level":"info","timestamp":"2020-02-07 09:15:34"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-07 09:15:34"}
+{"message":"Stamp[1581059734735] - Running statement SELECT * FROM student","level":"info","timestamp":"2020-02-07 09:15:34"}
+{"message":"Stamp[1581059734735] - Closed Db.","level":"info","timestamp":"2020-02-07 09:15:34"}
+{"message":"Stamp[1581059734735] - Returned 0 row(s)","level":"info","timestamp":"2020-02-07 09:15:34"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-07 09:15:34"}
+{"message":"Stamp[1581059734754] - Running statement - \n\nCREATE TABLE IF NOT EXISTS student ( \n\tstudent_id INTEGER PRIMARY KEY,\n\tfirst_name TEXT NOT NULL,\n\tlast_name TEXT NOT NULL,\n\tbirthdate TEXT NOT NULL,\n\tmother_name text,\n\tmother_mobile TEXT,\n\tmother_email TEXT,\n\tfather_name TEXT,\n\tfather_mobile TEXT,\n\tfather_email TEXT,\n\tclass_id INTEGER NOT NULL,\n\tCONSTRAINT fk_class_id FOREIGN KEY(class_id) REFERENCES class(class_id)\n);\n\n with params undefined.","level":"info","timestamp":"2020-02-07 09:15:34"}
+{"message":"Stamp[1581059734754] - Closed Db.","level":"info","timestamp":"2020-02-07 09:15:34"}
+{"message":"Stamp[1581059734754] - Returned Successfully.","level":"info","timestamp":"2020-02-07 09:15:34"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-07 09:15:48"}
+{"message":"Stamp[1581059748765] - Running statement - \n\n\n    CREATE TABLE IF NOT EXISTS class(\n        class_id INTEGER PRIMARY KEY,\n        class_name TEXT,\n        grade INTEGER,\n        is_active INTEGER\n    )\n\n\n with params undefined.","level":"info","timestamp":"2020-02-07 09:15:48"}
+{"message":"Stamp[1581059748765] - Closed Db.","level":"info","timestamp":"2020-02-07 09:15:48"}
+{"message":"Stamp[1581059748765] - Returned Successfully.","level":"info","timestamp":"2020-02-07 09:15:48"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-07 09:15:48"}
+{"message":"Stamp[1581059748791] - Running statement \n        SELECT \n            * \n        FROM \n            class\n        WHERE \n            is_active = 1\n","level":"info","timestamp":"2020-02-07 09:15:48"}
+{"message":"Stamp[1581059748791] - Closed Db.","level":"info","timestamp":"2020-02-07 09:15:48"}
+{"message":"Stamp[1581059748791] - Returned 5 row(s)","level":"info","timestamp":"2020-02-07 09:15:48"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-07 10:36:40"}
+{"message":"Stamp[1581064600399] - Running statement - \n\nCREATE TABLE IF NOT EXISTS student ( \n\tstudent_id INTEGER PRIMARY KEY,\n\tfirst_name TEXT NOT NULL,\n\tlast_name TEXT NOT NULL,\n\tbirthdate TEXT NOT NULL,\n\tmother_name text,\n\tmother_mobile TEXT,\n\tmother_email TEXT,\n\tfather_name TEXT,\n\tfather_mobile TEXT,\n\tfather_email TEXT,\n\tclass_id INTEGER NOT NULL,\n\tCONSTRAINT fk_class_id FOREIGN KEY(class_id) REFERENCES class(class_id)\n);\n\n with params undefined.","level":"info","timestamp":"2020-02-07 10:36:40"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-07 10:36:40"}
+{"message":"Stamp[1581064600498] - Running statement PRAGMA table_info(student)","level":"info","timestamp":"2020-02-07 10:36:40"}
+{"message":"Stamp[1581064600399] - Closed Db.","level":"info","timestamp":"2020-02-07 10:36:40"}
+{"message":"Stamp[1581064600399] - Returned Successfully.","level":"info","timestamp":"2020-02-07 10:36:40"}
+{"message":"Stamp[1581064600498] - Closed Db.","level":"info","timestamp":"2020-02-07 10:36:40"}
+{"message":"Stamp[1581064600498] - Returned 11 row(s)","level":"info","timestamp":"2020-02-07 10:36:40"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-07 10:36:40"}
+{"message":"Stamp[1581064600610] - Running statement SELECT * FROM student","level":"info","timestamp":"2020-02-07 10:36:40"}
+{"message":"Stamp[1581064600610] - Closed Db.","level":"info","timestamp":"2020-02-07 10:36:40"}
+{"message":"Stamp[1581064600610] - Returned 0 row(s)","level":"info","timestamp":"2020-02-07 10:36:40"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-07 10:36:40"}
+{"message":"Stamp[1581064600621] - Running statement - \n\nCREATE TABLE IF NOT EXISTS student ( \n\tstudent_id INTEGER PRIMARY KEY,\n\tfirst_name TEXT NOT NULL,\n\tlast_name TEXT NOT NULL,\n\tbirthdate TEXT NOT NULL,\n\tmother_name text,\n\tmother_mobile TEXT,\n\tmother_email TEXT,\n\tfather_name TEXT,\n\tfather_mobile TEXT,\n\tfather_email TEXT,\n\tclass_id INTEGER NOT NULL,\n\tCONSTRAINT fk_class_id FOREIGN KEY(class_id) REFERENCES class(class_id)\n);\n\n with params undefined.","level":"info","timestamp":"2020-02-07 10:36:40"}
+{"message":"Stamp[1581064600621] - Closed Db.","level":"info","timestamp":"2020-02-07 10:36:40"}
+{"message":"Stamp[1581064600621] - Returned Successfully.","level":"info","timestamp":"2020-02-07 10:36:40"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-07 10:39:08"}
+{"message":"Stamp[1581064748904] - Running statement - \n\nCREATE TABLE IF NOT EXISTS student ( \n\tstudent_id INTEGER PRIMARY KEY,\n\tfirst_name TEXT NOT NULL,\n\tlast_name TEXT NOT NULL,\n\tbirthdate TEXT NOT NULL,\n\tmother_name text,\n\tmother_mobile TEXT,\n\tmother_email TEXT,\n\tfather_name TEXT,\n\tfather_mobile TEXT,\n\tfather_email TEXT,\n\tclass_id INTEGER NOT NULL,\n\tCONSTRAINT fk_class_id FOREIGN KEY(class_id) REFERENCES class(class_id)\n);\n\n with params undefined.","level":"info","timestamp":"2020-02-07 10:39:08"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-07 10:39:09"}
+{"message":"Stamp[1581064749009] - Running statement PRAGMA table_info(student)","level":"info","timestamp":"2020-02-07 10:39:09"}
+{"message":"Stamp[1581064748904] - Closed Db.","level":"info","timestamp":"2020-02-07 10:39:09"}
+{"message":"Stamp[1581064748904] - Returned Successfully.","level":"info","timestamp":"2020-02-07 10:39:09"}
+{"message":"Stamp[1581064749009] - Closed Db.","level":"info","timestamp":"2020-02-07 10:39:09"}
+{"message":"Stamp[1581064749009] - Returned 11 row(s)","level":"info","timestamp":"2020-02-07 10:39:09"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-07 10:39:09"}
+{"message":"Stamp[1581064749384] - Running statement SELECT * FROM student","level":"info","timestamp":"2020-02-07 10:39:09"}
+{"message":"Stamp[1581064749384] - Closed Db.","level":"info","timestamp":"2020-02-07 10:39:09"}
+{"message":"Stamp[1581064749384] - Returned 0 row(s)","level":"info","timestamp":"2020-02-07 10:39:09"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-07 10:39:09"}
+{"message":"Stamp[1581064749394] - Running statement - \n\nCREATE TABLE IF NOT EXISTS student ( \n\tstudent_id INTEGER PRIMARY KEY,\n\tfirst_name TEXT NOT NULL,\n\tlast_name TEXT NOT NULL,\n\tbirthdate TEXT NOT NULL,\n\tmother_name text,\n\tmother_mobile TEXT,\n\tmother_email TEXT,\n\tfather_name TEXT,\n\tfather_mobile TEXT,\n\tfather_email TEXT,\n\tclass_id INTEGER NOT NULL,\n\tCONSTRAINT fk_class_id FOREIGN KEY(class_id) REFERENCES class(class_id)\n);\n\n with params undefined.","level":"info","timestamp":"2020-02-07 10:39:09"}
+{"message":"Stamp[1581064749394] - Closed Db.","level":"info","timestamp":"2020-02-07 10:39:09"}
+{"message":"Stamp[1581064749394] - Returned Successfully.","level":"info","timestamp":"2020-02-07 10:39:09"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-07 10:39:33"}
+{"message":"Stamp[1581064773625] - Running statement - \n\nCREATE TABLE IF NOT EXISTS student ( \n\tstudent_id INTEGER PRIMARY KEY,\n\tfirst_name TEXT NOT NULL,\n\tlast_name TEXT NOT NULL,\n\tbirthdate TEXT NOT NULL,\n\tmother_name text,\n\tmother_mobile TEXT,\n\tmother_email TEXT,\n\tfather_name TEXT,\n\tfather_mobile TEXT,\n\tfather_email TEXT,\n\tclass_id INTEGER NOT NULL,\n\tCONSTRAINT fk_class_id FOREIGN KEY(class_id) REFERENCES class(class_id)\n);\n\n with params undefined.","level":"info","timestamp":"2020-02-07 10:39:33"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-07 10:39:33"}
+{"message":"Stamp[1581064773748] - Running statement PRAGMA table_info(student)","level":"info","timestamp":"2020-02-07 10:39:33"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-07 10:39:50"}
+{"message":"Stamp[1581064790730] - Running statement - \n\nCREATE TABLE IF NOT EXISTS student ( \n\tstudent_id INTEGER PRIMARY KEY,\n\tfirst_name TEXT NOT NULL,\n\tlast_name TEXT NOT NULL,\n\tbirthdate TEXT NOT NULL,\n\tmother_name text,\n\tmother_mobile TEXT,\n\tmother_email TEXT,\n\tfather_name TEXT,\n\tfather_mobile TEXT,\n\tfather_email TEXT,\n\tclass_id INTEGER NOT NULL,\n\tCONSTRAINT fk_class_id FOREIGN KEY(class_id) REFERENCES class(class_id)\n);\n\n with params undefined.","level":"info","timestamp":"2020-02-07 10:39:50"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-07 10:39:50"}
+{"message":"Stamp[1581064790838] - Running statement PRAGMA table_info(student)","level":"info","timestamp":"2020-02-07 10:39:50"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-07 10:41:36"}
+{"message":"Stamp[1581064896030] - Running statement - \n\nCREATE TABLE IF NOT EXISTS student ( \n\tstudent_id INTEGER PRIMARY KEY,\n\tfirst_name TEXT NOT NULL,\n\tlast_name TEXT NOT NULL,\n\tbirthdate TEXT NOT NULL,\n\tmother_name text,\n\tmother_mobile TEXT,\n\tmother_email TEXT,\n\tfather_name TEXT,\n\tfather_mobile TEXT,\n\tfather_email TEXT,\n\tclass_id INTEGER NOT NULL,\n\tCONSTRAINT fk_class_id FOREIGN KEY(class_id) REFERENCES class(class_id)\n);\n\n with params undefined.","level":"info","timestamp":"2020-02-07 10:41:36"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-07 10:41:36"}
+{"message":"Stamp[1581064896140] - Running statement PRAGMA table_info(student)","level":"info","timestamp":"2020-02-07 10:41:36"}
+{"message":"Stamp[1581064896030] - Closed Db.","level":"info","timestamp":"2020-02-07 10:41:36"}
+{"message":"Stamp[1581064896030] - Returned Successfully.","level":"info","timestamp":"2020-02-07 10:41:36"}
+{"message":"Stamp[1581064896140] - Closed Db.","level":"info","timestamp":"2020-02-07 10:41:36"}
+{"message":"Stamp[1581064896140] - Returned 11 row(s)","level":"info","timestamp":"2020-02-07 10:41:36"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-07 10:41:43"}
+{"message":"Stamp[1581064903170] - Running statement SELECT * FROM student","level":"info","timestamp":"2020-02-07 10:41:43"}
+{"message":"Stamp[1581064903170] - Closed Db.","level":"info","timestamp":"2020-02-07 10:41:43"}
+{"message":"Stamp[1581064903170] - Returned 0 row(s)","level":"info","timestamp":"2020-02-07 10:41:43"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-07 10:41:43"}
+{"message":"Stamp[1581064903209] - Running statement - \n\nCREATE TABLE IF NOT EXISTS student ( \n\tstudent_id INTEGER PRIMARY KEY,\n\tfirst_name TEXT NOT NULL,\n\tlast_name TEXT NOT NULL,\n\tbirthdate TEXT NOT NULL,\n\tmother_name text,\n\tmother_mobile TEXT,\n\tmother_email TEXT,\n\tfather_name TEXT,\n\tfather_mobile TEXT,\n\tfather_email TEXT,\n\tclass_id INTEGER NOT NULL,\n\tCONSTRAINT fk_class_id FOREIGN KEY(class_id) REFERENCES class(class_id)\n);\n\n with params undefined.","level":"info","timestamp":"2020-02-07 10:41:43"}
+{"message":"Stamp[1581064903209] - Closed Db.","level":"info","timestamp":"2020-02-07 10:41:43"}
+{"message":"Stamp[1581064903209] - Returned Successfully.","level":"info","timestamp":"2020-02-07 10:41:43"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-07 10:42:05"}
+{"message":"Stamp[1581064925688] - Running statement - \n\nCREATE TABLE IF NOT EXISTS student ( \n\tstudent_id INTEGER PRIMARY KEY,\n\tfirst_name TEXT NOT NULL,\n\tlast_name TEXT NOT NULL,\n\tbirthdate TEXT NOT NULL,\n\tmother_name text,\n\tmother_mobile TEXT,\n\tmother_email TEXT,\n\tfather_name TEXT,\n\tfather_mobile TEXT,\n\tfather_email TEXT,\n\tclass_id INTEGER NOT NULL,\n\tCONSTRAINT fk_class_id FOREIGN KEY(class_id) REFERENCES class(class_id)\n);\n\n with params undefined.","level":"info","timestamp":"2020-02-07 10:42:05"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-07 10:42:05"}
+{"message":"Stamp[1581064925808] - Running statement PRAGMA table_info(student)","level":"info","timestamp":"2020-02-07 10:42:05"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-07 10:42:15"}
+{"message":"Stamp[1581064935600] - Running statement - \n\nCREATE TABLE IF NOT EXISTS student ( \n\tstudent_id INTEGER PRIMARY KEY,\n\tfirst_name TEXT NOT NULL,\n\tlast_name TEXT NOT NULL,\n\tbirthdate TEXT NOT NULL,\n\tmother_name text,\n\tmother_mobile TEXT,\n\tmother_email TEXT,\n\tfather_name TEXT,\n\tfather_mobile TEXT,\n\tfather_email TEXT,\n\tclass_id INTEGER NOT NULL,\n\tCONSTRAINT fk_class_id FOREIGN KEY(class_id) REFERENCES class(class_id)\n);\n\n with params undefined.","level":"info","timestamp":"2020-02-07 10:42:15"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-07 10:42:15"}
+{"message":"Stamp[1581064935706] - Running statement PRAGMA table_info(student)","level":"info","timestamp":"2020-02-07 10:42:15"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-07 10:43:11"}
+{"message":"Stamp[1581064991517] - Running statement - \n\nCREATE TABLE IF NOT EXISTS student ( \n\tstudent_id INTEGER PRIMARY KEY,\n\tfirst_name TEXT NOT NULL,\n\tlast_name TEXT NOT NULL,\n\tbirthdate TEXT NOT NULL,\n\tmother_name text,\n\tmother_mobile TEXT,\n\tmother_email TEXT,\n\tfather_name TEXT,\n\tfather_mobile TEXT,\n\tfather_email TEXT,\n\tclass_id INTEGER NOT NULL,\n\tCONSTRAINT fk_class_id FOREIGN KEY(class_id) REFERENCES class(class_id)\n);\n\n with params undefined.","level":"info","timestamp":"2020-02-07 10:43:11"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-07 10:43:11"}
+{"message":"Stamp[1581064991622] - Running statement PRAGMA table_info(student)","level":"info","timestamp":"2020-02-07 10:43:11"}
+{"message":"Stamp[1581064991622] - Closed Db.","level":"info","timestamp":"2020-02-07 10:43:11"}
+{"message":"Stamp[1581064991622] - Returned 11 row(s)","level":"info","timestamp":"2020-02-07 10:43:11"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-07 10:43:14"}
+{"message":"Stamp[1581064994768] - Running statement SELECT * FROM student","level":"info","timestamp":"2020-02-07 10:43:14"}
+{"message":"Stamp[1581064991517] - Closed Db.","level":"info","timestamp":"2020-02-07 10:43:14"}
+{"message":"Stamp[1581064991517] - Returned Successfully.","level":"info","timestamp":"2020-02-07 10:43:14"}
+{"message":"Stamp[1581064994768] - Closed Db.","level":"info","timestamp":"2020-02-07 10:43:14"}
+{"message":"Stamp[1581064994768] - Returned 0 row(s)","level":"info","timestamp":"2020-02-07 10:43:14"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-07 10:43:14"}
+{"message":"Stamp[1581064994802] - Running statement - \n\nCREATE TABLE IF NOT EXISTS student ( \n\tstudent_id INTEGER PRIMARY KEY,\n\tfirst_name TEXT NOT NULL,\n\tlast_name TEXT NOT NULL,\n\tbirthdate TEXT NOT NULL,\n\tmother_name text,\n\tmother_mobile TEXT,\n\tmother_email TEXT,\n\tfather_name TEXT,\n\tfather_mobile TEXT,\n\tfather_email TEXT,\n\tclass_id INTEGER NOT NULL,\n\tCONSTRAINT fk_class_id FOREIGN KEY(class_id) REFERENCES class(class_id)\n);\n\n with params undefined.","level":"info","timestamp":"2020-02-07 10:43:14"}
+{"message":"Stamp[1581064994802] - Closed Db.","level":"info","timestamp":"2020-02-07 10:43:14"}
+{"message":"Stamp[1581064994802] - Returned Successfully.","level":"info","timestamp":"2020-02-07 10:43:14"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-07 10:43:27"}
+{"message":"Stamp[1581065007567] - Running statement \n    SELECT\n        teacher_id,\n        first_name,\n        last_name,\n        mobile,\n        email,\n        class_id,\n        is_active\n    FROM\n        teacher\n    WHERE\n        is_active = 1;\n","level":"info","timestamp":"2020-02-07 10:43:27"}
+{"message":"Stamp[1581065007567] - Closed Db.","level":"info","timestamp":"2020-02-07 10:43:27"}
+{"message":"Stamp[1581065007567] - Returned 0 row(s)","level":"info","timestamp":"2020-02-07 10:43:27"}
