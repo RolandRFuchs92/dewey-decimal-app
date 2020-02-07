@@ -4,13 +4,13 @@ import { drawerWidth } from './Layout.config.json';
 import Drawer from './Drawer';
 import { CssBaseline, AppBar, Toolbar, Typography } from '@material-ui/core';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import { useSnackbar } from 'notistack';
 
 import Teacher from 'pages/teacher/Teacher';
 import Student from '../../pages/student/Student';
 import Class from 'pages/class/Class';
 import { Provider } from 'utils/context';
 import Dialogs from 'pages/backdrops';
+import {useAlert} from 'utils';
 
 const useStyles = makeStyles(theme => ({
 	root: {
@@ -53,12 +53,11 @@ const contextDefault = {
 export default function PermanentDrawerLeft() {
 	const classes = useStyles();
 	const [context, setContext] = useState(contextDefault);
-	const {enqueueSnackbar} = useSnackbar();
+	const alerts = useAlert();
 	context.updateContext = state => setContext({...state});
 
 	useEffect(() => {
-		enqueueSnackbar('willybum', {variant:'success'})
-		
+		alerts.success('This is just some');
 	}, [])
 
 	return (
