@@ -23,6 +23,7 @@ const createStudentTable = `CREATE TABLE IF NOT EXISTS ${tableName} (
 	father_mobile TEXT,
 	father_email TEXT,
 	class_id INTEGER NOT NULL,
+	is_active INTEGER NOT NULL,
 	CONSTRAINT fk_class_id FOREIGN KEY(class_id) REFERENCES class(class_id)
 );`;
 

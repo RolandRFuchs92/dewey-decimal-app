@@ -1,6 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {Grid, Typography, makeStyles} from '@material-ui/core';
-
+import {Grid, makeStyles} from '@material-ui/core';
 import MUIDataTable from 'mui-datatables';
 
 import { getClasses, ensureCreated, hideClass } from './Class.repo';
@@ -8,51 +7,17 @@ import Modal from './Class.Modal';
 import Icons from 'components/icons';
 import {useAlert} from 'utils/snackbarAlerts'
 
-import YesNo from 'components/dialog/YesNo';
-import {useDialogs} from 'utils/dialog';
+import {useDialog} from 'utils/dialog';
+import EditDeleteCol, {useAddButton} from 'utils/tableButtons';
 
-const useStyles = makeStyles(theme => ({
-    footer: {
-        color: theme.palette.success.main,
-        fontSize: 30, 
-        textAlign:'right', 
-        paddingRight:15,
-        alignSelf:'flex-end'
-    },
-    edit: {
-        fontSize: 20,
-        color: theme.palette.info.main
-    },
-    delete: {
-        fontSize: 20,
-        color: theme.palette.error.main
-    }
-}))
-
-
-
-const DeleteComponent = ({handleClick}) => {
-    const classes = useStyles();
-    return <div onClick={handleClick} className={classes.delete}>
-                         {Icons.Delete}
-                    </div>
-}
-
-const EditComponent = ({handleClick}) => {
-    const classes = useStyles();
-    return <div onClick={handleClick} className={classes.edit}>
-                {Icons.Edit}
-        </div>
-}
 
 
 export default () => {
-    const classes = useStyles();
     const [data, setData] = useState([]);
     const [modalData, setModalData] = useState({});
     const [isOpen, setIsOpen] = useState(false);
     const alert = useAlert();
-    const dialog = useDialogs();
+    const dialog = useDialog();
 
     const getColumns = () => {
         return [
@@ -69,27 +34,7 @@ export default () => {
                 name: 'is_active',
                 label: 'Active'
             },
-            {
-                name: "Edit",
-                options: {
-                    filter: false,
-                    sort: false,
-                    empty: true,
-                    customBodyRender: (value, tableMeta, updateValue) => {
-                        return <EditComponent handleClick={() => handleClick(tableMeta.rowData)} />
-                    }
-                }
-            },  {
-            name: "Delete",
-            options: {
-                filter: false,
-                sort: false,
-                empty: true,
-                customBodyRender: (value, tableMeta, updateValue) => {
-                        return <DeleteComponent handleClick={() => handleDelete(tableMeta.rowData)} />
-                    }
-                }
-            },
+            ...(EditDeleteCol(handleEditAdd, handleDelete))
         ]
     }
     
@@ -98,7 +43,7 @@ export default () => {
         const obj = Object.fromEntries(getColumns().map(({name}, index) => [name,rowData[index]]));
         dialog({ title: 'Are you sure?', description: `Really delete grade ${obj.grade} - ${obj.class_name}?`, handleYes: () => handleYesForDelete(obj.class_id) })
     }
-    const handleClick = rowData => {
+    const handleEditAdd = rowData => {
         const obj = Object.fromEntries(getColumns().map(({name}, index) => [name,rowData[index]]));
         setModalData(obj);
         setIsOpen(true);
@@ -106,7 +51,7 @@ export default () => {
 
     const tableOptions = {
         selectableRows: 'none',
-        customFooter: () => <td className={classes.footer} onClick={handleClick}>{Icons.Add}</td>
+        ...(useAddButton(handleEditAdd))
     }
     
     const handleYesForDelete = async (classIdToDelete) => {

@@ -12,20 +12,16 @@ export default () => {
 	ensureCreated();
 	return (
 		<Grid container spacing={2}>
-			<Grid item sm={2}>
+			<StudentList
+				setStudent={setStudent}
+				studentData={studentData}
+				setStudentData={setStudentData}
+			></StudentList>
 				<StudentForm
-					student={student}
-					setStudent={setStudent}
-					setStudentData={setStudentData}
-				></StudentForm>
-			</Grid>
-			<Grid item sm={10}>
-				<StudentList
-					setStudent={setStudent}
-					studentData={studentData}
-					setStudentData={setStudentData}
-				></StudentList>
-			</Grid>
+				student={student}
+				setStudent={setStudent}
+				setStudentData={setStudentData}
+			></StudentForm>
 		</Grid>
 	);
 };

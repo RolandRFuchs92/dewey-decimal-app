@@ -7,6 +7,7 @@ import {
 	Divider,
 	Typography,
 	Button,
+	Modal
 } from '@material-ui/core';
 
 import { addOrUpdateStudent, getStudentData } from './Student.repo';
@@ -34,6 +35,7 @@ let selectedStudent;
 export default ({ student, setStudent, setStudentData }) => {
 	setStudentList = setStudentData;
 	const [newStudent, setSelectedStudent] = useState({});
+	const [open, setOpen] = useState(false);
 
 	useEffect(() => {
 		setSelectedStudent({...student});
@@ -41,52 +43,55 @@ export default ({ student, setStudent, setStudentData }) => {
 	},[student]);
 
 	const handleChange = name => value => setSelectedStudent({...newStudent, [name]: value});
+	const handleClose = () => setOpen(false);
 	const classes = useStyles();
 
 	return (
-		<Grid
-			container
-			direction='column'
-			justify='flex-start'
-			alignItems='flex-start'
-			spacing={2}
-		>
-			<Paper className={classes.paper}>
-				<SplitStudentForm
-					label={`Student${newStudent.studentId ? `(${newStudent.studentId})` : ''}`}
-				/>
-				<FormRow label='First name' name='firstName' onChange={handleChange}></FormRow>
-				<FormRow label='Last name' name='lastName' onChange={handleChange}></FormRow>
-				<FormRow label='Birthday' name='birthdate' onChange={handleChange}></FormRow>
-				<FormRow label='Class' name='classId' onChange={handleChange}></FormRow>
-				<SplitStudentForm label='Mother' />
-				<FormRow label='Name' name='motherName' onChange={handleChange}></FormRow>
-				<FormRow label='Mobile' name='motherMobile' onChange={handleChange}></FormRow>
-				<FormRow label='Email' name='motherEmail' onChange={handleChange}></FormRow>
-				<SplitStudentForm label='Father' />
-				<FormRow label='Name' name='fatherName' onChange={handleChange}></FormRow>
-				<FormRow label='Mobile' name='fatherMobile' onChange={handleChange}></FormRow>
-				<FormRow label='Email' name='fatherEmail' onChange={handleChange}></FormRow>
-				<Button
-					variant='outlined'
-					color='default'
-					className={classes.submitButton}
-					size='small'
-					onClick={() => handleReset(setStudent,setSelectedStudent)}
-				>
-					Reset
-				</Button>
-				<Button
-					variant='contained'
-					color='primary'
-					className={classes.submitButton}
-					size='small'
-					onClick={() => handleSubmit(newStudent, handleReset(setStudent))}
-				>
-					Submit
-				</Button>
-			</Paper>
-		</Grid>
+		<Modal open={open} onBackdropClick={handleClose} closeAfterTransition >
+			<Grid
+				container
+				direction='column'
+				justify='flex-start'
+				alignItems='flex-start'
+				spacing={2}
+			>
+				<Paper className={classes.paper}>
+					<SplitStudentForm
+						label={`Student${newStudent.studentId ? `(${newStudent.studentId})` : ''}`}
+					/>
+					<FormRow label='First name' name='firstName' onChange={handleChange}></FormRow>
+					<FormRow label='Last name' name='lastName' onChange={handleChange}></FormRow>
+					<FormRow label='Birthday' name='birthdate' onChange={handleChange}></FormRow>
+					<FormRow label='Class' name='classId' onChange={handleChange}></FormRow>
+					<SplitStudentForm label='Mother' />
+					<FormRow label='Name' name='motherName' onChange={handleChange}></FormRow>
+					<FormRow label='Mobile' name='motherMobile' onChange={handleChange}></FormRow>
+					<FormRow label='Email' name='motherEmail' onChange={handleChange}></FormRow>
+					<SplitStudentForm label='Father' />
+					<FormRow label='Name' name='fatherName' onChange={handleChange}></FormRow>
+					<FormRow label='Mobile' name='fatherMobile' onChange={handleChange}></FormRow>
+					<FormRow label='Email' name='fatherEmail' onChange={handleChange}></FormRow>
+					<Button
+						variant='outlined'
+						color='default'
+						className={classes.submitButton}
+						size='small'
+						onClick={() => handleReset(setStudent,setSelectedStudent)}
+					>
+						Reset
+					</Button>
+					<Button
+						variant='contained'
+						color='primary'
+						className={classes.submitButton}
+						size='small'
+						onClick={() => handleSubmit(newStudent, handleReset(setStudent))}
+					>
+						Submit
+					</Button>
+				</Paper>
+			</Grid>
+		</Modal>
 	);
 };
 

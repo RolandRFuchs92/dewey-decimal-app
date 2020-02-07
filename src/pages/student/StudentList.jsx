@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { Grid, makeStyles } from '@material-ui/core';
-import { startCase, lowerCase, camelCase } from 'lodash';
+import { startCase, lowerCase } from 'lodash';
+import MUIDataTable from 'mui-datatables';
 
 import { getStudentColumnNames, getStudentData } from './Student.repo';
-import MUIDataTable from 'mui-datatables';
+import EditDeleteCol, {useAddButton} from 'utils/tableButtons';
+import { useDialog } from 'utils/dialog';
 
 const useStyles = makeStyles(theme => ({
 	studentList: {},
@@ -35,6 +37,13 @@ function NewStudentList({ setStudent }) {
 	const [columns, setColumns] = useState([]);
 	const [options, setOptions] = useState({});
 	const classes = useStyles();
+	const dialog = useDialog();
+	let columnVar;
+	const handleEditAdd = (rowData) => {
+		const obj = Object.fromEntries(columns().map(({name}, index) => [name,rowData[index]]));
+		setStudent(obj);
+	}
+	const addButton = useAddButton(handleEditAdd);
 
 	useEffect(() => {
 		(async () => {
@@ -42,10 +51,10 @@ function NewStudentList({ setStudent }) {
 				name,
 				label: startCase(lowerCase(name)),
 			}));
-
-			debugger;
-			setColumns(columnText);
-
+		
+			const cols = [...columnText, ...(EditDeleteCol(() => {}, handleDeleteClick))];
+			columnVar = cols;
+			setColumns(cols);
 			const studentData = await getStudentData();
 			setData(studentData);
 		})();
@@ -54,16 +63,19 @@ function NewStudentList({ setStudent }) {
 	useEffect(() => {
 		setOptions({
 			selectableRows: 'none',
-			onRowClick: rowData => {
-				const newStudent = Object.fromEntries(
-					Object.entries(rowData).map(([key, val]) => {
-						return [camelCase(columns[parseInt(key)].name), val];
-					}),
-				);
-				setStudent({ ...newStudent });
-			},
+			...(addButton)
 		});
 	}, [columns, setStudent]);
+
+	const handleDeleteClick = rowData => {
+		const obj = Object.fromEntries(columnVar.map(({name}, index) => [name,rowData[index]]));
+		debugger;
+		dialog({ title: 'Are you sure?', description: `Really delete ${obj.first_name} ${obj.last_name}?`, handleYes: () => handleYesForDelete(obj.student_id) })
+	}
+
+	const handleYesForDelete = student_id => {
+
+	}
 
 	return (
 		<MUIDataTable
