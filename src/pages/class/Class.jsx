@@ -6,6 +6,7 @@ import MUIDataTable from 'mui-datatables';
 import { getClasses, ensureCreated, hideClass } from './Class.repo';
 import Modal from './Class.Modal';
 import Icons from 'components/icons';
+import {useAlert} from 'utils/snackbarAlerts'
 
 import YesNo from 'components/dialog/YesNo';
 
@@ -52,6 +53,7 @@ export default () => {
     const [isDialogOpen, setIsDialogOpen] = useState(false);
     const [deleteText, setDeleteText] = useState('');
     const [classIdToDelete, setClassIdToDelete] = useState(0);
+    const alert = useAlert();
 
     const getColumns = () => {
         return [
@@ -114,8 +116,9 @@ export default () => {
         try{
             await hideClass(classIdToDelete);
             await resetPage()
+            alert.success(`Successfully removed class[${classIdToDelete}]`);
         } catch(e){
-
+            alert.error(`Error removing class[${classIdToDelete}]`);
         }
     }
 

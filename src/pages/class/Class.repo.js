@@ -40,9 +40,12 @@ export async function getClasses(){
 }
 
 export async function addOrUpdateClass(classObj){
-    if(isNil(classObj.class_id))
-        return await addClass(classObj);
-    return await updateClass(classObj);
+    if(isNil(classObj.class_id)){
+        await addClass(classObj);
+        return 'add';
+    }
+    await updateClass(classObj);
+    return 'update';
 }
 
 async function addClass(classObj){ 

@@ -1,4 +1,4 @@
-import React, { useState,useEffect } from 'react';
+import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { drawerWidth } from './Layout.config.json';
 import Drawer from './Drawer';
@@ -10,7 +10,6 @@ import Student from '../../pages/student/Student';
 import Class from 'pages/class/Class';
 import { Provider } from 'utils/context';
 import Dialogs from 'pages/backdrops';
-import {useAlert} from 'utils';
 
 const useStyles = makeStyles(theme => ({
 	root: {
@@ -53,12 +52,7 @@ const contextDefault = {
 export default function PermanentDrawerLeft() {
 	const classes = useStyles();
 	const [context, setContext] = useState(contextDefault);
-	const alerts = useAlert();
 	context.updateContext = state => setContext({...state});
-
-	useEffect(() => {
-		alerts.success('This is just some');
-	}, [])
 
 	return (
 		<div className={classes.root}>

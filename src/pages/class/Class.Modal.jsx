@@ -3,6 +3,7 @@ import { TextField, Modal, Grid, Fade, Paper, makeStyles, Typography, Backdrop} 
 import FormButtons from 'components/buttons/FormButtons';
 
 import {addOrUpdateClass, getClasses} from './Class.repo';
+import {useAlert} from 'utils/snackbarAlerts';
 
 const useStyles = makeStyles(theme => ({
     paper: {
@@ -20,7 +21,7 @@ const useStyles = makeStyles(theme => ({
 export default ({isOpen = false, handleClose, modalData, updateTable}) => {
     const [data, setData] = useState({});
     const [open, setOpen] = useState(isOpen);
-
+    const alert = useAlert();
     const classes = useStyles();
 
     useEffect(() => {
@@ -32,10 +33,17 @@ export default ({isOpen = false, handleClose, modalData, updateTable}) => {
     },[isOpen]);
 
     const handleSubmit = async () => {
-        delete data.Edit;
-        delete data.Delete;
-        await addOrUpdateClass(data);
-        await updateTable();
+        try{
+            delete data.Edit;
+            delete data.Delete;
+            const action = await addOrUpdateClass(data);
+            await updateTable();
+            alert.success(`Successfully ${action === 'add' ? 'added' : 'updated'} Grade ${data.grade} - ${data.class_name}`);
+        }
+        catch(e){
+            alert.error(`There was an error `);
+        }
+        
     }
 
     const handleChange = name => ({target: {value}}) => { setData({...data, [name]: value});}

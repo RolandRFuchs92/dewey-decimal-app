@@ -2344,3 +2344,107 @@
 {"message":"Stamp[1581090672232] - Running statement \n        SELECT \n            * \n        FROM \n            class\n        WHERE \n            is_active = 1\n","level":"info","timestamp":"2020-02-07 17:51:12"}
 {"message":"Stamp[1581090672232] - Closed Db.","level":"info","timestamp":"2020-02-07 17:51:12"}
 {"message":"Stamp[1581090672232] - Returned 5 row(s)","level":"info","timestamp":"2020-02-07 17:51:12"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-07 21:18:19"}
+{"message":"Stamp[1581103099774] - Running statement - \n\n\n    CREATE TABLE IF NOT EXISTS class(\n        class_id INTEGER PRIMARY KEY,\n        class_name TEXT,\n        grade INTEGER,\n        is_active INTEGER\n    )\n\n\n with params undefined.","level":"info","timestamp":"2020-02-07 21:18:19"}
+{"message":"Stamp[1581103099774] - Closed Db.","level":"info","timestamp":"2020-02-07 21:18:19"}
+{"message":"Stamp[1581103099774] - Returned Successfully.","level":"info","timestamp":"2020-02-07 21:18:19"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-07 21:18:19"}
+{"message":"Stamp[1581103099869] - Running statement \n        SELECT \n            * \n        FROM \n            class\n        WHERE \n            is_active = 1\n","level":"info","timestamp":"2020-02-07 21:18:19"}
+{"message":"Stamp[1581103099869] - Closed Db.","level":"info","timestamp":"2020-02-07 21:18:19"}
+{"message":"Stamp[1581103099869] - Returned 5 row(s)","level":"info","timestamp":"2020-02-07 21:18:19"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-07 21:18:35"}
+{"message":"Stamp[1581103115418] - Running statement - \n\n\n    CREATE TABLE IF NOT EXISTS class(\n        class_id INTEGER PRIMARY KEY,\n        class_name TEXT,\n        grade INTEGER,\n        is_active INTEGER\n    )\n\n\n with params undefined.","level":"info","timestamp":"2020-02-07 21:18:35"}
+{"message":"Stamp[1581103115418] - Closed Db.","level":"info","timestamp":"2020-02-07 21:18:35"}
+{"message":"Stamp[1581103115418] - Returned Successfully.","level":"info","timestamp":"2020-02-07 21:18:35"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-07 21:18:35"}
+{"message":"Stamp[1581103115582] - Running statement \n        SELECT \n            * \n        FROM \n            class\n        WHERE \n            is_active = 1\n","level":"info","timestamp":"2020-02-07 21:18:35"}
+{"message":"Stamp[1581103115582] - Closed Db.","level":"info","timestamp":"2020-02-07 21:18:35"}
+{"message":"Stamp[1581103115582] - Returned 5 row(s)","level":"info","timestamp":"2020-02-07 21:18:35"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-07 21:18:37"}
+{"message":"Stamp[1581103117512] - Running statement - \n\n\n        UPDATE \n            class \n        SET \n            is_active = 0\n        WHERE\n            class_id=$class_id\n        \n\n\n with params {\"$class_id\":3}.","level":"info","timestamp":"2020-02-07 21:18:37"}
+{"message":"Stamp[1581103117512] - Closed Db.","level":"info","timestamp":"2020-02-07 21:18:37"}
+{"message":"Stamp[1581103117512] - Returned Successfully.","level":"info","timestamp":"2020-02-07 21:18:37"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-07 21:18:37"}
+{"message":"Stamp[1581103117656] - Running statement \n        SELECT \n            * \n        FROM \n            class\n        WHERE \n            is_active = 1\n","level":"info","timestamp":"2020-02-07 21:18:37"}
+{"message":"Stamp[1581103117656] - Closed Db.","level":"info","timestamp":"2020-02-07 21:18:37"}
+{"message":"Stamp[1581103117656] - Returned 4 row(s)","level":"info","timestamp":"2020-02-07 21:18:37"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-07 21:21:30"}
+{"message":"Stamp[1581103290736] - Running statement - \n\n\n    CREATE TABLE IF NOT EXISTS class(\n        class_id INTEGER PRIMARY KEY,\n        class_name TEXT,\n        grade INTEGER,\n        is_active INTEGER\n    )\n\n\n with params undefined.","level":"info","timestamp":"2020-02-07 21:21:30"}
+{"message":"Stamp[1581103290736] - Closed Db.","level":"info","timestamp":"2020-02-07 21:21:30"}
+{"message":"Stamp[1581103290736] - Returned Successfully.","level":"info","timestamp":"2020-02-07 21:21:30"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-07 21:21:30"}
+{"message":"Stamp[1581103290956] - Running statement \n        SELECT \n            * \n        FROM \n            class\n        WHERE \n            is_active = 1\n","level":"info","timestamp":"2020-02-07 21:21:30"}
+{"message":"Stamp[1581103290956] - Closed Db.","level":"info","timestamp":"2020-02-07 21:21:30"}
+{"message":"Stamp[1581103290956] - Returned 4 row(s)","level":"info","timestamp":"2020-02-07 21:21:30"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-07 21:23:21"}
+{"message":"Stamp[1581103401741] - Running statement - \n\n\n    CREATE TABLE IF NOT EXISTS class(\n        class_id INTEGER PRIMARY KEY,\n        class_name TEXT,\n        grade INTEGER,\n        is_active INTEGER\n    )\n\n\n with params undefined.","level":"info","timestamp":"2020-02-07 21:23:21"}
+{"message":"Stamp[1581103401741] - Closed Db.","level":"info","timestamp":"2020-02-07 21:23:22"}
+{"message":"Stamp[1581103401741] - Returned Successfully.","level":"info","timestamp":"2020-02-07 21:23:22"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-07 21:23:22"}
+{"message":"Stamp[1581103402044] - Running statement \n        SELECT \n            * \n        FROM \n            class\n        WHERE \n            is_active = 1\n","level":"info","timestamp":"2020-02-07 21:23:22"}
+{"message":"Stamp[1581103402044] - Closed Db.","level":"info","timestamp":"2020-02-07 21:23:22"}
+{"message":"Stamp[1581103402044] - Returned 4 row(s)","level":"info","timestamp":"2020-02-07 21:23:22"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-07 21:23:54"}
+{"message":"Stamp[1581103434808] - Running statement - \n\n\n    CREATE TABLE IF NOT EXISTS class(\n        class_id INTEGER PRIMARY KEY,\n        class_name TEXT,\n        grade INTEGER,\n        is_active INTEGER\n    )\n\n\n with params undefined.","level":"info","timestamp":"2020-02-07 21:23:54"}
+{"message":"Stamp[1581103434808] - Closed Db.","level":"info","timestamp":"2020-02-07 21:23:54"}
+{"message":"Stamp[1581103434808] - Returned Successfully.","level":"info","timestamp":"2020-02-07 21:23:54"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-07 21:23:54"}
+{"message":"Stamp[1581103434992] - Running statement \n        SELECT \n            * \n        FROM \n            class\n        WHERE \n            is_active = 1\n","level":"info","timestamp":"2020-02-07 21:23:54"}
+{"message":"Stamp[1581103434992] - Closed Db.","level":"info","timestamp":"2020-02-07 21:23:54"}
+{"message":"Stamp[1581103434992] - Returned 4 row(s)","level":"info","timestamp":"2020-02-07 21:23:55"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-07 21:24:01"}
+{"message":"Stamp[1581103441297] - Running statement - \n\n\n\t\tUPDATE class\n\t\tSET \n\t\t\tclass_name=$class_name,grade=$grade,is_active=$is_active\n\t\tWHERE\n\t\t\tclass_id=$class_id\n\t\n\n with params {\"$class_id\":5,\"$class_name\":\"Mr Stinky Pants\",\"$grade\":1,\"$is_active\":1}.","level":"info","timestamp":"2020-02-07 21:24:01"}
+{"message":"Stamp[1581103441297] - Closed Db.","level":"info","timestamp":"2020-02-07 21:24:01"}
+{"message":"Stamp[1581103441297] - Returned Successfully.","level":"info","timestamp":"2020-02-07 21:24:01"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-07 21:24:01"}
+{"message":"Stamp[1581103441308] - Running statement \n        SELECT \n            * \n        FROM \n            class\n        WHERE \n            is_active = 1\n","level":"info","timestamp":"2020-02-07 21:24:01"}
+{"message":"Stamp[1581103441308] - Closed Db.","level":"info","timestamp":"2020-02-07 21:24:01"}
+{"message":"Stamp[1581103441308] - Returned 4 row(s)","level":"info","timestamp":"2020-02-07 21:24:01"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-07 21:24:09"}
+{"message":"Stamp[1581103449227] - Running statement - \n\n\n\t\tUPDATE class\n\t\tSET \n\t\t\tclass_name=$class_name,grade=$grade,is_active=$is_active\n\t\tWHERE\n\t\t\tclass_id=$class_id\n\t\n\n with params {\"$class_id\":5,\"$class_name\":\"Mr Stinky Pants\",\"$grade\":1,\"$is_active\":1}.","level":"info","timestamp":"2020-02-07 21:24:09"}
+{"message":"Stamp[1581103449227] - Closed Db.","level":"info","timestamp":"2020-02-07 21:24:09"}
+{"message":"Stamp[1581103449227] - Returned Successfully.","level":"info","timestamp":"2020-02-07 21:24:09"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-07 21:24:09"}
+{"message":"Stamp[1581103449236] - Running statement \n        SELECT \n            * \n        FROM \n            class\n        WHERE \n            is_active = 1\n","level":"info","timestamp":"2020-02-07 21:24:09"}
+{"message":"Stamp[1581103449236] - Closed Db.","level":"info","timestamp":"2020-02-07 21:24:09"}
+{"message":"Stamp[1581103449236] - Returned 4 row(s)","level":"info","timestamp":"2020-02-07 21:24:09"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-07 21:24:23"}
+{"message":"Stamp[1581103463403] - Running statement - \n\n\n    CREATE TABLE IF NOT EXISTS class(\n        class_id INTEGER PRIMARY KEY,\n        class_name TEXT,\n        grade INTEGER,\n        is_active INTEGER\n    )\n\n\n with params undefined.","level":"info","timestamp":"2020-02-07 21:24:23"}
+{"message":"Stamp[1581103463403] - Closed Db.","level":"info","timestamp":"2020-02-07 21:24:23"}
+{"message":"Stamp[1581103463403] - Returned Successfully.","level":"info","timestamp":"2020-02-07 21:24:23"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-07 21:24:23"}
+{"message":"Stamp[1581103463646] - Running statement \n        SELECT \n            * \n        FROM \n            class\n        WHERE \n            is_active = 1\n","level":"info","timestamp":"2020-02-07 21:24:23"}
+{"message":"Stamp[1581103463646] - Closed Db.","level":"info","timestamp":"2020-02-07 21:24:23"}
+{"message":"Stamp[1581103463646] - Returned 4 row(s)","level":"info","timestamp":"2020-02-07 21:24:23"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-07 21:24:25"}
+{"message":"Stamp[1581103465860] - Running statement - \n\n\n    CREATE TABLE IF NOT EXISTS class(\n        class_id INTEGER PRIMARY KEY,\n        class_name TEXT,\n        grade INTEGER,\n        is_active INTEGER\n    )\n\n\n with params undefined.","level":"info","timestamp":"2020-02-07 21:24:25"}
+{"message":"Stamp[1581103465860] - Closed Db.","level":"info","timestamp":"2020-02-07 21:24:26"}
+{"message":"Stamp[1581103465860] - Returned Successfully.","level":"info","timestamp":"2020-02-07 21:24:26"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-07 21:24:26"}
+{"message":"Stamp[1581103466030] - Running statement \n        SELECT \n            * \n        FROM \n            class\n        WHERE \n            is_active = 1\n","level":"info","timestamp":"2020-02-07 21:24:26"}
+{"message":"Stamp[1581103466030] - Closed Db.","level":"info","timestamp":"2020-02-07 21:24:26"}
+{"message":"Stamp[1581103466030] - Returned 4 row(s)","level":"info","timestamp":"2020-02-07 21:24:26"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-07 21:24:28"}
+{"message":"Stamp[1581103468585] - Running statement - \n\n\n\t\tUPDATE class\n\t\tSET \n\t\t\tclass_name=$class_name,grade=$grade,is_active=$is_active\n\t\tWHERE\n\t\t\tclass_id=$class_id\n\t\n\n with params {\"$class_id\":5,\"$class_name\":\"Mr Stinky Pants\",\"$grade\":1,\"$is_active\":1}.","level":"info","timestamp":"2020-02-07 21:24:28"}
+{"message":"Stamp[1581103468585] - Closed Db.","level":"info","timestamp":"2020-02-07 21:24:28"}
+{"message":"Stamp[1581103468585] - Returned Successfully.","level":"info","timestamp":"2020-02-07 21:24:28"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-07 21:24:28"}
+{"message":"Stamp[1581103468591] - Running statement \n        SELECT \n            * \n        FROM \n            class\n        WHERE \n            is_active = 1\n","level":"info","timestamp":"2020-02-07 21:24:28"}
+{"message":"Stamp[1581103468591] - Closed Db.","level":"info","timestamp":"2020-02-07 21:24:28"}
+{"message":"Stamp[1581103468591] - Returned 4 row(s)","level":"info","timestamp":"2020-02-07 21:24:28"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-07 21:24:44"}
+{"message":"Stamp[1581103484828] - Running statement - \n\n\n    CREATE TABLE IF NOT EXISTS class(\n        class_id INTEGER PRIMARY KEY,\n        class_name TEXT,\n        grade INTEGER,\n        is_active INTEGER\n    )\n\n\n with params undefined.","level":"info","timestamp":"2020-02-07 21:24:44"}
+{"message":"Stamp[1581103484828] - Closed Db.","level":"info","timestamp":"2020-02-07 21:24:44"}
+{"message":"Stamp[1581103484828] - Returned Successfully.","level":"info","timestamp":"2020-02-07 21:24:44"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-07 21:24:44"}
+{"message":"Stamp[1581103484978] - Running statement \n        SELECT \n            * \n        FROM \n            class\n        WHERE \n            is_active = 1\n","level":"info","timestamp":"2020-02-07 21:24:44"}
+{"message":"Stamp[1581103484978] - Closed Db.","level":"info","timestamp":"2020-02-07 21:24:44"}
+{"message":"Stamp[1581103484978] - Returned 4 row(s)","level":"info","timestamp":"2020-02-07 21:24:44"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-07 21:24:48"}
+{"message":"Stamp[1581103488404] - Running statement - \n\n\n\t\tUPDATE class\n\t\tSET \n\t\t\tclass_name=$class_name,grade=$grade,is_active=$is_active\n\t\tWHERE\n\t\t\tclass_id=$class_id\n\t\n\n with params {\"$class_id\":5,\"$class_name\":\"Mr Stinky Pants\",\"$grade\":1,\"$is_active\":1}.","level":"info","timestamp":"2020-02-07 21:24:48"}
+{"message":"Stamp[1581103488404] - Closed Db.","level":"info","timestamp":"2020-02-07 21:24:48"}
+{"message":"Stamp[1581103488404] - Returned Successfully.","level":"info","timestamp":"2020-02-07 21:24:48"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-07 21:24:48"}
+{"message":"Stamp[1581103488418] - Running statement \n        SELECT \n            * \n        FROM \n            class\n        WHERE \n            is_active = 1\n","level":"info","timestamp":"2020-02-07 21:24:48"}
+{"message":"Stamp[1581103488418] - Closed Db.","level":"info","timestamp":"2020-02-07 21:24:48"}
+{"message":"Stamp[1581103488418] - Returned 4 row(s)","level":"info","timestamp":"2020-02-07 21:24:48"}
