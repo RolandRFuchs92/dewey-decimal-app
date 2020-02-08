@@ -6,8 +6,6 @@ const getLabel = function (callingModule) {
   return parts[parts.length - 2] + '/' + parts.pop();
 };
 
-console.log(settings);
-
 const logger = createLogger({
     level: 'info',
     format: format.combine(

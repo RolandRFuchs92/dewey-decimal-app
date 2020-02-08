@@ -57,9 +57,16 @@ export function ensureCreated() {
 	run(createStudentTable);
 }
 
-export function addOrUpdateStudent(student) {
-	if (student.studentId) return updateStudent(student);
-	else return addStudent(student);
+export async function addOrUpdateStudent(student) {
+	debugger;
+	delete student.Edit;
+	delete student.Delete;
+	if (student.student_id) {
+		await updateStudent(student);
+		return 'update'
+	}
+	await addStudent(student);
+	return 'add';
 }
 
 export async function hideStudent($student_id){
@@ -67,6 +74,7 @@ export async function hideStudent($student_id){
 }
 
 function addStudent(student) {
+	student.is_active = 1;
 	const cols = objectKeysToSnakeCaseString(student);
 	const colRefs = getStatementColRefs(student);
 	const statement = `

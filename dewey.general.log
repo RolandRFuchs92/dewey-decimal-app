@@ -1,0 +1,535 @@
+{"message":"Opening database.","level":"info","timestamp":"2020-02-08 09:29:33"}
+{"message":"Stamp[1581146973366] - Running statement PRAGMA table_info(student)","level":"info","timestamp":"2020-02-08 09:29:33"}
+{"message":"Stamp[1581146973366] - Closed Db.","level":"info","timestamp":"2020-02-08 09:29:33"}
+{"message":"Stamp[1581146973366] - Returned 12 row(s)","level":"info","timestamp":"2020-02-08 09:29:33"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-08 09:29:33"}
+{"message":"Stamp[1581146973650] - Running statement \n\tSELECT\n\t\t*\n\tFROM \n\t\tstudent s\n\tWHERE\n\t\ts.is_active = 1;\n","level":"info","timestamp":"2020-02-08 09:29:33"}
+{"message":"Stamp[1581146973650] - Closed Db.","level":"info","timestamp":"2020-02-08 09:29:33"}
+{"message":"Stamp[1581146973650] - Returned 2 row(s)","level":"info","timestamp":"2020-02-08 09:29:33"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-08 09:29:39"}
+{"message":"Stamp[1581146979329] - Running statement - \n\n\n\tUPDATE \n\t\tstudent\n\tSET\n\t\tis_active = 0\n\tWHERE\n\t\tstudent_id=$student_id;\n\n\n with params 1.","level":"info","timestamp":"2020-02-08 09:29:39"}
+{"message":"Stamp[1581146979329] - Closed Db.","level":"info","timestamp":"2020-02-08 09:29:39"}
+{"message":"Stamp[1581146979329] - Returned Successfully.","level":"info","timestamp":"2020-02-08 09:29:39"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-08 09:29:39"}
+{"message":"Stamp[1581146979475] - Running statement \n\tSELECT\n\t\t*\n\tFROM \n\t\tstudent s\n\tWHERE\n\t\ts.is_active = 1;\n","level":"info","timestamp":"2020-02-08 09:29:39"}
+{"message":"Stamp[1581146979475] - Closed Db.","level":"info","timestamp":"2020-02-08 09:29:39"}
+{"message":"Stamp[1581146979475] - Returned 1 row(s)","level":"info","timestamp":"2020-02-08 09:29:39"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-08 09:30:00"}
+{"message":"Stamp[1581147000736] - Running statement PRAGMA table_info(student)","level":"info","timestamp":"2020-02-08 09:30:00"}
+{"message":"Stamp[1581147000736] - Closed Db.","level":"info","timestamp":"2020-02-08 09:30:00"}
+{"message":"Stamp[1581147000736] - Returned 12 row(s)","level":"info","timestamp":"2020-02-08 09:30:00"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-08 09:30:01"}
+{"message":"Stamp[1581147001192] - Running statement \n\tSELECT\n\t\t*\n\tFROM \n\t\tstudent s\n\tWHERE\n\t\ts.is_active = 1;\n","level":"info","timestamp":"2020-02-08 09:30:01"}
+{"message":"Stamp[1581147001192] - Closed Db.","level":"info","timestamp":"2020-02-08 09:30:01"}
+{"message":"Stamp[1581147001192] - Returned 1 row(s)","level":"info","timestamp":"2020-02-08 09:30:01"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-08 09:31:49"}
+{"message":"Stamp[1581147109768] - Running statement PRAGMA table_info(student)","level":"info","timestamp":"2020-02-08 09:31:49"}
+{"message":"Stamp[1581147109768] - Closed Db.","level":"info","timestamp":"2020-02-08 09:31:49"}
+{"message":"Stamp[1581147109768] - Returned 12 row(s)","level":"info","timestamp":"2020-02-08 09:31:49"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-08 09:31:50"}
+{"message":"Stamp[1581147110094] - Running statement \n\tSELECT\n\t\t*\n\tFROM \n\t\tstudent s\n\tWHERE\n\t\ts.is_active = 1;\n","level":"info","timestamp":"2020-02-08 09:31:50"}
+{"message":"Stamp[1581147110094] - Closed Db.","level":"info","timestamp":"2020-02-08 09:31:50"}
+{"message":"Stamp[1581147110094] - Returned 1 row(s)","level":"info","timestamp":"2020-02-08 09:31:50"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-08 09:33:34"}
+{"message":"Stamp[1581147214994] - Running statement PRAGMA table_info(student)","level":"info","timestamp":"2020-02-08 09:33:34"}
+{"message":"Stamp[1581147214994] - Closed Db.","level":"info","timestamp":"2020-02-08 09:33:35"}
+{"message":"Stamp[1581147214994] - Returned 12 row(s)","level":"info","timestamp":"2020-02-08 09:33:35"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-08 09:33:35"}
+{"message":"Stamp[1581147215253] - Running statement \n\tSELECT\n\t\t*\n\tFROM \n\t\tstudent s\n\tWHERE\n\t\ts.is_active = 1;\n","level":"info","timestamp":"2020-02-08 09:33:35"}
+{"message":"Stamp[1581147215253] - Closed Db.","level":"info","timestamp":"2020-02-08 09:33:35"}
+{"message":"Stamp[1581147215253] - Returned 1 row(s)","level":"info","timestamp":"2020-02-08 09:33:35"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-08 09:33:50"}
+{"message":"Stamp[1581147230100] - Running statement PRAGMA table_info(student)","level":"info","timestamp":"2020-02-08 09:33:50"}
+{"message":"Stamp[1581147230100] - Closed Db.","level":"info","timestamp":"2020-02-08 09:33:50"}
+{"message":"Stamp[1581147230100] - Returned 12 row(s)","level":"info","timestamp":"2020-02-08 09:33:50"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-08 09:33:50"}
+{"message":"Stamp[1581147230429] - Running statement \n\tSELECT\n\t\t*\n\tFROM \n\t\tstudent s\n\tWHERE\n\t\ts.is_active = 1;\n","level":"info","timestamp":"2020-02-08 09:33:50"}
+{"message":"Stamp[1581147230429] - Closed Db.","level":"info","timestamp":"2020-02-08 09:33:50"}
+{"message":"Stamp[1581147230429] - Returned 1 row(s)","level":"info","timestamp":"2020-02-08 09:33:50"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-08 09:35:50"}
+{"message":"Stamp[1581147350679] - Running statement PRAGMA table_info(student)","level":"info","timestamp":"2020-02-08 09:35:50"}
+{"message":"Stamp[1581147350679] - Closed Db.","level":"info","timestamp":"2020-02-08 09:35:50"}
+{"message":"Stamp[1581147350679] - Returned 12 row(s)","level":"info","timestamp":"2020-02-08 09:35:50"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-08 09:35:50"}
+{"message":"Stamp[1581147350955] - Running statement \n\tSELECT\n\t\t*\n\tFROM \n\t\tstudent s\n\tWHERE\n\t\ts.is_active = 1;\n","level":"info","timestamp":"2020-02-08 09:35:50"}
+{"message":"Stamp[1581147350955] - Closed Db.","level":"info","timestamp":"2020-02-08 09:35:50"}
+{"message":"Stamp[1581147350955] - Returned 1 row(s)","level":"info","timestamp":"2020-02-08 09:35:50"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-08 09:37:13"}
+{"message":"Stamp[1581147433951] - Running statement PRAGMA table_info(student)","level":"info","timestamp":"2020-02-08 09:37:13"}
+{"message":"Stamp[1581147433951] - Closed Db.","level":"info","timestamp":"2020-02-08 09:37:14"}
+{"message":"Stamp[1581147433951] - Returned 12 row(s)","level":"info","timestamp":"2020-02-08 09:37:14"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-08 09:37:14"}
+{"message":"Stamp[1581147434308] - Running statement \n\tSELECT\n\t\t*\n\tFROM \n\t\tstudent s\n\tWHERE\n\t\ts.is_active = 1;\n","level":"info","timestamp":"2020-02-08 09:37:14"}
+{"message":"Stamp[1581147434308] - Closed Db.","level":"info","timestamp":"2020-02-08 09:37:14"}
+{"message":"Stamp[1581147434308] - Returned 1 row(s)","level":"info","timestamp":"2020-02-08 09:37:14"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-08 09:37:21"}
+{"message":"Stamp[1581147441892] - Running statement PRAGMA table_info(student)","level":"info","timestamp":"2020-02-08 09:37:21"}
+{"message":"Stamp[1581147441892] - Closed Db.","level":"info","timestamp":"2020-02-08 09:37:22"}
+{"message":"Stamp[1581147441892] - Returned 12 row(s)","level":"info","timestamp":"2020-02-08 09:37:22"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-08 09:37:22"}
+{"message":"Stamp[1581147442186] - Running statement \n\tSELECT\n\t\t*\n\tFROM \n\t\tstudent s\n\tWHERE\n\t\ts.is_active = 1;\n","level":"info","timestamp":"2020-02-08 09:37:22"}
+{"message":"Stamp[1581147442186] - Closed Db.","level":"info","timestamp":"2020-02-08 09:37:22"}
+{"message":"Stamp[1581147442186] - Returned 1 row(s)","level":"info","timestamp":"2020-02-08 09:37:22"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-08 09:38:06"}
+{"message":"Stamp[1581147486399] - Running statement PRAGMA table_info(student)","level":"info","timestamp":"2020-02-08 09:38:06"}
+{"message":"Stamp[1581147486399] - Closed Db.","level":"info","timestamp":"2020-02-08 09:38:06"}
+{"message":"Stamp[1581147486399] - Returned 12 row(s)","level":"info","timestamp":"2020-02-08 09:38:06"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-08 09:38:06"}
+{"message":"Stamp[1581147486678] - Running statement \n\tSELECT\n\t\t*\n\tFROM \n\t\tstudent s\n\tWHERE\n\t\ts.is_active = 1;\n","level":"info","timestamp":"2020-02-08 09:38:06"}
+{"message":"Stamp[1581147486678] - Closed Db.","level":"info","timestamp":"2020-02-08 09:38:06"}
+{"message":"Stamp[1581147486678] - Returned 1 row(s)","level":"info","timestamp":"2020-02-08 09:38:06"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-08 09:38:25"}
+{"message":"Stamp[1581147505966] - Running statement PRAGMA table_info(student)","level":"info","timestamp":"2020-02-08 09:38:25"}
+{"message":"Stamp[1581147505966] - Closed Db.","level":"info","timestamp":"2020-02-08 09:38:26"}
+{"message":"Stamp[1581147505966] - Returned 12 row(s)","level":"info","timestamp":"2020-02-08 09:38:26"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-08 09:38:26"}
+{"message":"Stamp[1581147506289] - Running statement \n\tSELECT\n\t\t*\n\tFROM \n\t\tstudent s\n\tWHERE\n\t\ts.is_active = 1;\n","level":"info","timestamp":"2020-02-08 09:38:26"}
+{"message":"Stamp[1581147506289] - Closed Db.","level":"info","timestamp":"2020-02-08 09:38:26"}
+{"message":"Stamp[1581147506289] - Returned 1 row(s)","level":"info","timestamp":"2020-02-08 09:38:26"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-08 09:39:19"}
+{"message":"Stamp[1581147559282] - Running statement PRAGMA table_info(student)","level":"info","timestamp":"2020-02-08 09:39:19"}
+{"message":"Stamp[1581147559282] - Closed Db.","level":"info","timestamp":"2020-02-08 09:39:19"}
+{"message":"Stamp[1581147559282] - Returned 12 row(s)","level":"info","timestamp":"2020-02-08 09:39:19"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-08 09:39:19"}
+{"message":"Stamp[1581147559574] - Running statement \n\tSELECT\n\t\t*\n\tFROM \n\t\tstudent s\n\tWHERE\n\t\ts.is_active = 1;\n","level":"info","timestamp":"2020-02-08 09:39:19"}
+{"message":"Stamp[1581147559574] - Closed Db.","level":"info","timestamp":"2020-02-08 09:39:19"}
+{"message":"Stamp[1581147559574] - Returned 1 row(s)","level":"info","timestamp":"2020-02-08 09:39:19"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-08 09:40:11"}
+{"message":"Stamp[1581147611659] - Running statement PRAGMA table_info(student)","level":"info","timestamp":"2020-02-08 09:40:11"}
+{"message":"Stamp[1581147611659] - Closed Db.","level":"info","timestamp":"2020-02-08 09:40:11"}
+{"message":"Stamp[1581147611659] - Returned 12 row(s)","level":"info","timestamp":"2020-02-08 09:40:11"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-08 09:40:11"}
+{"message":"Stamp[1581147611965] - Running statement \n\tSELECT\n\t\t*\n\tFROM \n\t\tstudent s\n\tWHERE\n\t\ts.is_active = 1;\n","level":"info","timestamp":"2020-02-08 09:40:11"}
+{"message":"Stamp[1581147611965] - Closed Db.","level":"info","timestamp":"2020-02-08 09:40:11"}
+{"message":"Stamp[1581147611965] - Returned 1 row(s)","level":"info","timestamp":"2020-02-08 09:40:11"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-08 09:40:25"}
+{"message":"Stamp[1581147625993] - Running statement PRAGMA table_info(student)","level":"info","timestamp":"2020-02-08 09:40:25"}
+{"message":"Stamp[1581147625993] - Closed Db.","level":"info","timestamp":"2020-02-08 09:40:26"}
+{"message":"Stamp[1581147625993] - Returned 12 row(s)","level":"info","timestamp":"2020-02-08 09:40:26"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-08 09:40:26"}
+{"message":"Stamp[1581147626252] - Running statement \n\tSELECT\n\t\t*\n\tFROM \n\t\tstudent s\n\tWHERE\n\t\ts.is_active = 1;\n","level":"info","timestamp":"2020-02-08 09:40:26"}
+{"message":"Stamp[1581147626252] - Closed Db.","level":"info","timestamp":"2020-02-08 09:40:26"}
+{"message":"Stamp[1581147626252] - Returned 1 row(s)","level":"info","timestamp":"2020-02-08 09:40:26"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-08 09:41:12"}
+{"message":"Stamp[1581147672096] - Running statement PRAGMA table_info(student)","level":"info","timestamp":"2020-02-08 09:41:12"}
+{"message":"Stamp[1581147672096] - Closed Db.","level":"info","timestamp":"2020-02-08 09:41:12"}
+{"message":"Stamp[1581147672096] - Returned 12 row(s)","level":"info","timestamp":"2020-02-08 09:41:12"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-08 09:41:12"}
+{"message":"Stamp[1581147672426] - Running statement \n\tSELECT\n\t\t*\n\tFROM \n\t\tstudent s\n\tWHERE\n\t\ts.is_active = 1;\n","level":"info","timestamp":"2020-02-08 09:41:12"}
+{"message":"Stamp[1581147672426] - Closed Db.","level":"info","timestamp":"2020-02-08 09:41:12"}
+{"message":"Stamp[1581147672426] - Returned 1 row(s)","level":"info","timestamp":"2020-02-08 09:41:12"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-08 09:41:56"}
+{"message":"Stamp[1581147716605] - Running statement PRAGMA table_info(student)","level":"info","timestamp":"2020-02-08 09:41:56"}
+{"message":"Stamp[1581147716605] - Closed Db.","level":"info","timestamp":"2020-02-08 09:41:56"}
+{"message":"Stamp[1581147716605] - Returned 12 row(s)","level":"info","timestamp":"2020-02-08 09:41:56"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-08 09:41:56"}
+{"message":"Stamp[1581147716876] - Running statement \n\tSELECT\n\t\t*\n\tFROM \n\t\tstudent s\n\tWHERE\n\t\ts.is_active = 1;\n","level":"info","timestamp":"2020-02-08 09:41:56"}
+{"message":"Stamp[1581147716876] - Closed Db.","level":"info","timestamp":"2020-02-08 09:41:56"}
+{"message":"Stamp[1581147716876] - Returned 1 row(s)","level":"info","timestamp":"2020-02-08 09:41:56"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-08 09:42:34"}
+{"message":"Stamp[1581147754785] - Running statement PRAGMA table_info(student)","level":"info","timestamp":"2020-02-08 09:42:34"}
+{"message":"Stamp[1581147754785] - Closed Db.","level":"info","timestamp":"2020-02-08 09:42:34"}
+{"message":"Stamp[1581147754785] - Returned 12 row(s)","level":"info","timestamp":"2020-02-08 09:42:34"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-08 09:42:35"}
+{"message":"Stamp[1581147755057] - Running statement \n\tSELECT\n\t\t*\n\tFROM \n\t\tstudent s\n\tWHERE\n\t\ts.is_active = 1;\n","level":"info","timestamp":"2020-02-08 09:42:35"}
+{"message":"Stamp[1581147755057] - Closed Db.","level":"info","timestamp":"2020-02-08 09:42:35"}
+{"message":"Stamp[1581147755057] - Returned 1 row(s)","level":"info","timestamp":"2020-02-08 09:42:35"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-08 09:43:22"}
+{"message":"Stamp[1581147802552] - Running statement PRAGMA table_info(student)","level":"info","timestamp":"2020-02-08 09:43:22"}
+{"message":"Stamp[1581147802552] - Closed Db.","level":"info","timestamp":"2020-02-08 09:43:22"}
+{"message":"Stamp[1581147802552] - Returned 12 row(s)","level":"info","timestamp":"2020-02-08 09:43:22"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-08 09:43:23"}
+{"message":"Stamp[1581147803014] - Running statement \n\tSELECT\n\t\t*\n\tFROM \n\t\tstudent s\n\tWHERE\n\t\ts.is_active = 1;\n","level":"info","timestamp":"2020-02-08 09:43:23"}
+{"message":"Stamp[1581147803014] - Closed Db.","level":"info","timestamp":"2020-02-08 09:43:23"}
+{"message":"Stamp[1581147803014] - Returned 1 row(s)","level":"info","timestamp":"2020-02-08 09:43:23"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-08 09:43:27"}
+{"message":"Stamp[1581147807637] - Running statement PRAGMA table_info(student)","level":"info","timestamp":"2020-02-08 09:43:27"}
+{"message":"Stamp[1581147807637] - Closed Db.","level":"info","timestamp":"2020-02-08 09:43:27"}
+{"message":"Stamp[1581147807637] - Returned 12 row(s)","level":"info","timestamp":"2020-02-08 09:43:27"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-08 09:43:27"}
+{"message":"Stamp[1581147807906] - Running statement \n\tSELECT\n\t\t*\n\tFROM \n\t\tstudent s\n\tWHERE\n\t\ts.is_active = 1;\n","level":"info","timestamp":"2020-02-08 09:43:27"}
+{"message":"Stamp[1581147807906] - Closed Db.","level":"info","timestamp":"2020-02-08 09:43:27"}
+{"message":"Stamp[1581147807906] - Returned 1 row(s)","level":"info","timestamp":"2020-02-08 09:43:27"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-08 09:43:51"}
+{"message":"Stamp[1581147831792] - Running statement PRAGMA table_info(student)","level":"info","timestamp":"2020-02-08 09:43:51"}
+{"message":"Stamp[1581147831792] - Closed Db.","level":"info","timestamp":"2020-02-08 09:43:51"}
+{"message":"Stamp[1581147831792] - Returned 12 row(s)","level":"info","timestamp":"2020-02-08 09:43:51"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-08 09:43:52"}
+{"message":"Stamp[1581147832092] - Running statement \n\tSELECT\n\t\t*\n\tFROM \n\t\tstudent s\n\tWHERE\n\t\ts.is_active = 1;\n","level":"info","timestamp":"2020-02-08 09:43:52"}
+{"message":"Stamp[1581147832092] - Closed Db.","level":"info","timestamp":"2020-02-08 09:43:52"}
+{"message":"Stamp[1581147832092] - Returned 1 row(s)","level":"info","timestamp":"2020-02-08 09:43:52"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-08 09:45:48"}
+{"message":"Stamp[1581147948607] - Running statement PRAGMA table_info(student)","level":"info","timestamp":"2020-02-08 09:45:48"}
+{"message":"Stamp[1581147948607] - Closed Db.","level":"info","timestamp":"2020-02-08 09:45:48"}
+{"message":"Stamp[1581147948607] - Returned 12 row(s)","level":"info","timestamp":"2020-02-08 09:45:48"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-08 09:45:48"}
+{"message":"Stamp[1581147948869] - Running statement \n\tSELECT\n\t\t*\n\tFROM \n\t\tstudent s\n\tWHERE\n\t\ts.is_active = 1;\n","level":"info","timestamp":"2020-02-08 09:45:48"}
+{"message":"Stamp[1581147948869] - Closed Db.","level":"info","timestamp":"2020-02-08 09:45:48"}
+{"message":"Stamp[1581147948869] - Returned 1 row(s)","level":"info","timestamp":"2020-02-08 09:45:48"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-08 09:48:14"}
+{"message":"Stamp[1581148094168] - Running statement PRAGMA table_info(student)","level":"info","timestamp":"2020-02-08 09:48:14"}
+{"message":"Stamp[1581148094168] - Closed Db.","level":"info","timestamp":"2020-02-08 09:48:14"}
+{"message":"Stamp[1581148094168] - Returned 12 row(s)","level":"info","timestamp":"2020-02-08 09:48:14"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-08 09:48:14"}
+{"message":"Stamp[1581148094645] - Running statement \n\tSELECT\n\t\t*\n\tFROM \n\t\tstudent s\n\tWHERE\n\t\ts.is_active = 1;\n","level":"info","timestamp":"2020-02-08 09:48:14"}
+{"message":"Stamp[1581148094645] - Closed Db.","level":"info","timestamp":"2020-02-08 09:48:14"}
+{"message":"Stamp[1581148094645] - Returned 1 row(s)","level":"info","timestamp":"2020-02-08 09:48:14"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-08 09:51:26"}
+{"message":"Stamp[1581148286629] - Running statement PRAGMA table_info(student)","level":"info","timestamp":"2020-02-08 09:51:26"}
+{"message":"Stamp[1581148286629] - Closed Db.","level":"info","timestamp":"2020-02-08 09:51:26"}
+{"message":"Stamp[1581148286629] - Returned 12 row(s)","level":"info","timestamp":"2020-02-08 09:51:26"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-08 09:51:26"}
+{"message":"Stamp[1581148286981] - Running statement \n\tSELECT\n\t\t*\n\tFROM \n\t\tstudent s\n\tWHERE\n\t\ts.is_active = 1;\n","level":"info","timestamp":"2020-02-08 09:51:26"}
+{"message":"Stamp[1581148286981] - Closed Db.","level":"info","timestamp":"2020-02-08 09:51:27"}
+{"message":"Stamp[1581148286981] - Returned 1 row(s)","level":"info","timestamp":"2020-02-08 09:51:27"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-08 09:52:29"}
+{"message":"Stamp[1581148349681] - Running statement PRAGMA table_info(student)","level":"info","timestamp":"2020-02-08 09:52:29"}
+{"message":"Stamp[1581148349681] - Closed Db.","level":"info","timestamp":"2020-02-08 09:52:29"}
+{"message":"Stamp[1581148349681] - Returned 12 row(s)","level":"info","timestamp":"2020-02-08 09:52:29"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-08 09:52:29"}
+{"message":"Stamp[1581148349948] - Running statement \n\tSELECT\n\t\t*\n\tFROM \n\t\tstudent s\n\tWHERE\n\t\ts.is_active = 1;\n","level":"info","timestamp":"2020-02-08 09:52:29"}
+{"message":"Stamp[1581148349948] - Closed Db.","level":"info","timestamp":"2020-02-08 09:52:29"}
+{"message":"Stamp[1581148349948] - Returned 1 row(s)","level":"info","timestamp":"2020-02-08 09:52:29"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-08 09:52:35"}
+{"message":"Stamp[1581148355995] - Running statement PRAGMA table_info(student)","level":"info","timestamp":"2020-02-08 09:52:35"}
+{"message":"Stamp[1581148355995] - Closed Db.","level":"info","timestamp":"2020-02-08 09:52:36"}
+{"message":"Stamp[1581148355995] - Returned 12 row(s)","level":"info","timestamp":"2020-02-08 09:52:36"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-08 09:52:36"}
+{"message":"Stamp[1581148356259] - Running statement \n\tSELECT\n\t\t*\n\tFROM \n\t\tstudent s\n\tWHERE\n\t\ts.is_active = 1;\n","level":"info","timestamp":"2020-02-08 09:52:36"}
+{"message":"Stamp[1581148356259] - Closed Db.","level":"info","timestamp":"2020-02-08 09:52:36"}
+{"message":"Stamp[1581148356259] - Returned 1 row(s)","level":"info","timestamp":"2020-02-08 09:52:36"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-08 09:52:51"}
+{"message":"Stamp[1581148371651] - Running statement PRAGMA table_info(student)","level":"info","timestamp":"2020-02-08 09:52:51"}
+{"message":"Stamp[1581148371651] - Closed Db.","level":"info","timestamp":"2020-02-08 09:52:51"}
+{"message":"Stamp[1581148371651] - Returned 12 row(s)","level":"info","timestamp":"2020-02-08 09:52:51"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-08 09:52:51"}
+{"message":"Stamp[1581148371933] - Running statement \n\tSELECT\n\t\t*\n\tFROM \n\t\tstudent s\n\tWHERE\n\t\ts.is_active = 1;\n","level":"info","timestamp":"2020-02-08 09:52:51"}
+{"message":"Stamp[1581148371933] - Closed Db.","level":"info","timestamp":"2020-02-08 09:52:51"}
+{"message":"Stamp[1581148371933] - Returned 1 row(s)","level":"info","timestamp":"2020-02-08 09:52:51"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-08 09:53:41"}
+{"message":"Stamp[1581148421266] - Running statement PRAGMA table_info(student)","level":"info","timestamp":"2020-02-08 09:53:41"}
+{"message":"Stamp[1581148421266] - Closed Db.","level":"info","timestamp":"2020-02-08 09:53:41"}
+{"message":"Stamp[1581148421266] - Returned 12 row(s)","level":"info","timestamp":"2020-02-08 09:53:41"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-08 09:53:41"}
+{"message":"Stamp[1581148421554] - Running statement \n\tSELECT\n\t\t*\n\tFROM \n\t\tstudent s\n\tWHERE\n\t\ts.is_active = 1;\n","level":"info","timestamp":"2020-02-08 09:53:41"}
+{"message":"Stamp[1581148421554] - Closed Db.","level":"info","timestamp":"2020-02-08 09:53:41"}
+{"message":"Stamp[1581148421554] - Returned 1 row(s)","level":"info","timestamp":"2020-02-08 09:53:41"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-08 09:55:36"}
+{"message":"Stamp[1581148536818] - Running statement PRAGMA table_info(student)","level":"info","timestamp":"2020-02-08 09:55:36"}
+{"message":"Stamp[1581148536818] - Closed Db.","level":"info","timestamp":"2020-02-08 09:55:36"}
+{"message":"Stamp[1581148536818] - Returned 12 row(s)","level":"info","timestamp":"2020-02-08 09:55:36"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-08 09:55:37"}
+{"message":"Stamp[1581148537208] - Running statement \n\tSELECT\n\t\t*\n\tFROM \n\t\tstudent s\n\tWHERE\n\t\ts.is_active = 1;\n","level":"info","timestamp":"2020-02-08 09:55:37"}
+{"message":"Stamp[1581148537208] - Closed Db.","level":"info","timestamp":"2020-02-08 09:55:37"}
+{"message":"Stamp[1581148537208] - Returned 1 row(s)","level":"info","timestamp":"2020-02-08 09:55:37"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-08 09:57:10"}
+{"message":"Stamp[1581148630244] - Running statement PRAGMA table_info(student)","level":"info","timestamp":"2020-02-08 09:57:10"}
+{"message":"Stamp[1581148630244] - Closed Db.","level":"info","timestamp":"2020-02-08 09:57:10"}
+{"message":"Stamp[1581148630244] - Returned 12 row(s)","level":"info","timestamp":"2020-02-08 09:57:10"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-08 09:57:10"}
+{"message":"Stamp[1581148630505] - Running statement \n\tSELECT\n\t\t*\n\tFROM \n\t\tstudent s\n\tWHERE\n\t\ts.is_active = 1;\n","level":"info","timestamp":"2020-02-08 09:57:10"}
+{"message":"Stamp[1581148630505] - Closed Db.","level":"info","timestamp":"2020-02-08 09:57:10"}
+{"message":"Stamp[1581148630505] - Returned 1 row(s)","level":"info","timestamp":"2020-02-08 09:57:10"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-08 09:58:39"}
+{"message":"Stamp[1581148719084] - Running statement PRAGMA table_info(student)","level":"info","timestamp":"2020-02-08 09:58:39"}
+{"message":"Stamp[1581148719084] - Closed Db.","level":"info","timestamp":"2020-02-08 09:58:39"}
+{"message":"Stamp[1581148719084] - Returned 12 row(s)","level":"info","timestamp":"2020-02-08 09:58:39"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-08 09:58:39"}
+{"message":"Stamp[1581148719357] - Running statement \n\tSELECT\n\t\t*\n\tFROM \n\t\tstudent s\n\tWHERE\n\t\ts.is_active = 1;\n","level":"info","timestamp":"2020-02-08 09:58:39"}
+{"message":"Stamp[1581148719357] - Closed Db.","level":"info","timestamp":"2020-02-08 09:58:39"}
+{"message":"Stamp[1581148719357] - Returned 1 row(s)","level":"info","timestamp":"2020-02-08 09:58:39"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-08 09:59:41"}
+{"message":"Stamp[1581148781686] - Running statement PRAGMA table_info(student)","level":"info","timestamp":"2020-02-08 09:59:41"}
+{"message":"Stamp[1581148781686] - Closed Db.","level":"info","timestamp":"2020-02-08 09:59:41"}
+{"message":"Stamp[1581148781686] - Returned 12 row(s)","level":"info","timestamp":"2020-02-08 09:59:41"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-08 09:59:41"}
+{"message":"Stamp[1581148781954] - Running statement \n\tSELECT\n\t\t*\n\tFROM \n\t\tstudent s\n\tWHERE\n\t\ts.is_active = 1;\n","level":"info","timestamp":"2020-02-08 09:59:41"}
+{"message":"Stamp[1581148781954] - Closed Db.","level":"info","timestamp":"2020-02-08 09:59:41"}
+{"message":"Stamp[1581148781954] - Returned 1 row(s)","level":"info","timestamp":"2020-02-08 09:59:41"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-08 10:00:32"}
+{"message":"Stamp[1581148832182] - Running statement PRAGMA table_info(student)","level":"info","timestamp":"2020-02-08 10:00:32"}
+{"message":"Stamp[1581148832182] - Closed Db.","level":"info","timestamp":"2020-02-08 10:00:32"}
+{"message":"Stamp[1581148832182] - Returned 12 row(s)","level":"info","timestamp":"2020-02-08 10:00:32"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-08 10:00:32"}
+{"message":"Stamp[1581148832441] - Running statement \n\tSELECT\n\t\t*\n\tFROM \n\t\tstudent s\n\tWHERE\n\t\ts.is_active = 1;\n","level":"info","timestamp":"2020-02-08 10:00:32"}
+{"message":"Stamp[1581148832441] - Closed Db.","level":"info","timestamp":"2020-02-08 10:00:32"}
+{"message":"Stamp[1581148832441] - Returned 1 row(s)","level":"info","timestamp":"2020-02-08 10:00:32"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-08 10:01:50"}
+{"message":"Stamp[1581148910878] - Running statement PRAGMA table_info(student)","level":"info","timestamp":"2020-02-08 10:01:50"}
+{"message":"Stamp[1581148910878] - Closed Db.","level":"info","timestamp":"2020-02-08 10:01:51"}
+{"message":"Stamp[1581148910878] - Returned 12 row(s)","level":"info","timestamp":"2020-02-08 10:01:51"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-08 10:01:51"}
+{"message":"Stamp[1581148911146] - Running statement \n\tSELECT\n\t\t*\n\tFROM \n\t\tstudent s\n\tWHERE\n\t\ts.is_active = 1;\n","level":"info","timestamp":"2020-02-08 10:01:51"}
+{"message":"Stamp[1581148911146] - Closed Db.","level":"info","timestamp":"2020-02-08 10:01:51"}
+{"message":"Stamp[1581148911146] - Returned 1 row(s)","level":"info","timestamp":"2020-02-08 10:01:51"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-08 10:04:10"}
+{"message":"Stamp[1581149050363] - Running statement PRAGMA table_info(student)","level":"info","timestamp":"2020-02-08 10:04:10"}
+{"message":"Stamp[1581149050363] - Closed Db.","level":"info","timestamp":"2020-02-08 10:04:10"}
+{"message":"Stamp[1581149050363] - Returned 12 row(s)","level":"info","timestamp":"2020-02-08 10:04:10"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-08 10:04:10"}
+{"message":"Stamp[1581149050621] - Running statement \n\tSELECT\n\t\t*\n\tFROM \n\t\tstudent s\n\tWHERE\n\t\ts.is_active = 1;\n","level":"info","timestamp":"2020-02-08 10:04:10"}
+{"message":"Stamp[1581149050621] - Closed Db.","level":"info","timestamp":"2020-02-08 10:04:10"}
+{"message":"Stamp[1581149050621] - Returned 1 row(s)","level":"info","timestamp":"2020-02-08 10:04:10"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-08 10:08:26"}
+{"message":"Stamp[1581149306440] - Running statement PRAGMA table_info(student)","level":"info","timestamp":"2020-02-08 10:08:26"}
+{"message":"Stamp[1581149306440] - Closed Db.","level":"info","timestamp":"2020-02-08 10:08:26"}
+{"message":"Stamp[1581149306440] - Returned 12 row(s)","level":"info","timestamp":"2020-02-08 10:08:26"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-08 10:08:26"}
+{"message":"Stamp[1581149306752] - Running statement \n\tSELECT\n\t\t*\n\tFROM \n\t\tstudent s\n\tWHERE\n\t\ts.is_active = 1;\n","level":"info","timestamp":"2020-02-08 10:08:26"}
+{"message":"Stamp[1581149306752] - Closed Db.","level":"info","timestamp":"2020-02-08 10:08:26"}
+{"message":"Stamp[1581149306752] - Returned 1 row(s)","level":"info","timestamp":"2020-02-08 10:08:26"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-08 10:11:03"}
+{"message":"Stamp[1581149463868] - Running statement PRAGMA table_info(student)","level":"info","timestamp":"2020-02-08 10:11:03"}
+{"message":"Stamp[1581149463868] - Closed Db.","level":"info","timestamp":"2020-02-08 10:11:04"}
+{"message":"Stamp[1581149463868] - Returned 12 row(s)","level":"info","timestamp":"2020-02-08 10:11:04"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-08 10:11:04"}
+{"message":"Stamp[1581149464213] - Running statement \n\tSELECT\n\t\t*\n\tFROM \n\t\tstudent s\n\tWHERE\n\t\ts.is_active = 1;\n","level":"info","timestamp":"2020-02-08 10:11:04"}
+{"message":"Stamp[1581149464213] - Closed Db.","level":"info","timestamp":"2020-02-08 10:11:04"}
+{"message":"Stamp[1581149464213] - Returned 1 row(s)","level":"info","timestamp":"2020-02-08 10:11:04"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-08 10:11:36"}
+{"message":"Stamp[1581149496438] - Running statement PRAGMA table_info(student)","level":"info","timestamp":"2020-02-08 10:11:36"}
+{"message":"Stamp[1581149496438] - Closed Db.","level":"info","timestamp":"2020-02-08 10:11:36"}
+{"message":"Stamp[1581149496438] - Returned 12 row(s)","level":"info","timestamp":"2020-02-08 10:11:36"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-08 10:11:36"}
+{"message":"Stamp[1581149496744] - Running statement \n\tSELECT\n\t\t*\n\tFROM \n\t\tstudent s\n\tWHERE\n\t\ts.is_active = 1;\n","level":"info","timestamp":"2020-02-08 10:11:36"}
+{"message":"Stamp[1581149496744] - Closed Db.","level":"info","timestamp":"2020-02-08 10:11:36"}
+{"message":"Stamp[1581149496744] - Returned 1 row(s)","level":"info","timestamp":"2020-02-08 10:11:36"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-08 10:13:02"}
+{"message":"Stamp[1581149582276] - Running statement PRAGMA table_info(student)","level":"info","timestamp":"2020-02-08 10:13:02"}
+{"message":"Stamp[1581149582276] - Closed Db.","level":"info","timestamp":"2020-02-08 10:13:02"}
+{"message":"Stamp[1581149582276] - Returned 12 row(s)","level":"info","timestamp":"2020-02-08 10:13:02"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-08 10:13:02"}
+{"message":"Stamp[1581149582535] - Running statement \n\tSELECT\n\t\t*\n\tFROM \n\t\tstudent s\n\tWHERE\n\t\ts.is_active = 1;\n","level":"info","timestamp":"2020-02-08 10:13:02"}
+{"message":"Stamp[1581149582535] - Closed Db.","level":"info","timestamp":"2020-02-08 10:13:02"}
+{"message":"Stamp[1581149582535] - Returned 1 row(s)","level":"info","timestamp":"2020-02-08 10:13:02"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-08 10:13:24"}
+{"message":"Stamp[1581149604709] - Running statement PRAGMA table_info(student)","level":"info","timestamp":"2020-02-08 10:13:24"}
+{"message":"Stamp[1581149604709] - Closed Db.","level":"info","timestamp":"2020-02-08 10:13:24"}
+{"message":"Stamp[1581149604709] - Returned 12 row(s)","level":"info","timestamp":"2020-02-08 10:13:24"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-08 10:13:24"}
+{"message":"Stamp[1581149604976] - Running statement \n\tSELECT\n\t\t*\n\tFROM \n\t\tstudent s\n\tWHERE\n\t\ts.is_active = 1;\n","level":"info","timestamp":"2020-02-08 10:13:24"}
+{"message":"Stamp[1581149604976] - Closed Db.","level":"info","timestamp":"2020-02-08 10:13:24"}
+{"message":"Stamp[1581149604976] - Returned 1 row(s)","level":"info","timestamp":"2020-02-08 10:13:24"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-08 10:13:43"}
+{"message":"Stamp[1581149623658] - Running statement PRAGMA table_info(student)","level":"info","timestamp":"2020-02-08 10:13:43"}
+{"message":"Stamp[1581149623658] - Closed Db.","level":"info","timestamp":"2020-02-08 10:13:43"}
+{"message":"Stamp[1581149623658] - Returned 12 row(s)","level":"info","timestamp":"2020-02-08 10:13:43"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-08 10:13:43"}
+{"message":"Stamp[1581149623925] - Running statement \n\tSELECT\n\t\t*\n\tFROM \n\t\tstudent s\n\tWHERE\n\t\ts.is_active = 1;\n","level":"info","timestamp":"2020-02-08 10:13:43"}
+{"message":"Stamp[1581149623925] - Closed Db.","level":"info","timestamp":"2020-02-08 10:13:43"}
+{"message":"Stamp[1581149623925] - Returned 1 row(s)","level":"info","timestamp":"2020-02-08 10:13:43"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-08 10:14:15"}
+{"message":"Stamp[1581149655554] - Running statement PRAGMA table_info(student)","level":"info","timestamp":"2020-02-08 10:14:15"}
+{"message":"Stamp[1581149655554] - Closed Db.","level":"info","timestamp":"2020-02-08 10:14:15"}
+{"message":"Stamp[1581149655554] - Returned 12 row(s)","level":"info","timestamp":"2020-02-08 10:14:15"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-08 10:14:15"}
+{"message":"Stamp[1581149655850] - Running statement \n\tSELECT\n\t\t*\n\tFROM \n\t\tstudent s\n\tWHERE\n\t\ts.is_active = 1;\n","level":"info","timestamp":"2020-02-08 10:14:15"}
+{"message":"Stamp[1581149655850] - Closed Db.","level":"info","timestamp":"2020-02-08 10:14:15"}
+{"message":"Stamp[1581149655850] - Returned 1 row(s)","level":"info","timestamp":"2020-02-08 10:14:15"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-08 10:14:39"}
+{"message":"Stamp[1581149679865] - Running statement PRAGMA table_info(student)","level":"info","timestamp":"2020-02-08 10:14:39"}
+{"message":"Stamp[1581149679865] - Closed Db.","level":"info","timestamp":"2020-02-08 10:14:40"}
+{"message":"Stamp[1581149679865] - Returned 12 row(s)","level":"info","timestamp":"2020-02-08 10:14:40"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-08 10:14:40"}
+{"message":"Stamp[1581149680140] - Running statement \n\tSELECT\n\t\t*\n\tFROM \n\t\tstudent s\n\tWHERE\n\t\ts.is_active = 1;\n","level":"info","timestamp":"2020-02-08 10:14:40"}
+{"message":"Stamp[1581149680140] - Closed Db.","level":"info","timestamp":"2020-02-08 10:14:40"}
+{"message":"Stamp[1581149680140] - Returned 1 row(s)","level":"info","timestamp":"2020-02-08 10:14:40"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-08 10:14:49"}
+{"message":"Stamp[1581149689625] - Running statement PRAGMA table_info(student)","level":"info","timestamp":"2020-02-08 10:14:49"}
+{"message":"Stamp[1581149689625] - Closed Db.","level":"info","timestamp":"2020-02-08 10:14:49"}
+{"message":"Stamp[1581149689625] - Returned 12 row(s)","level":"info","timestamp":"2020-02-08 10:14:49"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-08 10:14:49"}
+{"message":"Stamp[1581149689878] - Running statement \n\tSELECT\n\t\t*\n\tFROM \n\t\tstudent s\n\tWHERE\n\t\ts.is_active = 1;\n","level":"info","timestamp":"2020-02-08 10:14:49"}
+{"message":"Stamp[1581149689878] - Closed Db.","level":"info","timestamp":"2020-02-08 10:14:49"}
+{"message":"Stamp[1581149689878] - Returned 1 row(s)","level":"info","timestamp":"2020-02-08 10:14:49"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-08 10:18:43"}
+{"message":"Stamp[1581149923684] - Running statement PRAGMA table_info(student)","level":"info","timestamp":"2020-02-08 10:18:43"}
+{"message":"Stamp[1581149923684] - Closed Db.","level":"info","timestamp":"2020-02-08 10:18:43"}
+{"message":"Stamp[1581149923684] - Returned 12 row(s)","level":"info","timestamp":"2020-02-08 10:18:43"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-08 10:18:43"}
+{"message":"Stamp[1581149923935] - Running statement \n\tSELECT\n\t\t*\n\tFROM \n\t\tstudent s\n\tWHERE\n\t\ts.is_active = 1;\n","level":"info","timestamp":"2020-02-08 10:18:43"}
+{"message":"Stamp[1581149923935] - Closed Db.","level":"info","timestamp":"2020-02-08 10:18:43"}
+{"message":"Stamp[1581149923935] - Returned 1 row(s)","level":"info","timestamp":"2020-02-08 10:18:43"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-08 10:20:39"}
+{"message":"Stamp[1581150039502] - Running statement PRAGMA table_info(student)","level":"info","timestamp":"2020-02-08 10:20:39"}
+{"message":"Stamp[1581150039502] - Closed Db.","level":"info","timestamp":"2020-02-08 10:20:39"}
+{"message":"Stamp[1581150039502] - Returned 12 row(s)","level":"info","timestamp":"2020-02-08 10:20:39"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-08 10:20:39"}
+{"message":"Stamp[1581150039780] - Running statement \n\tSELECT\n\t\t*\n\tFROM \n\t\tstudent s\n\tWHERE\n\t\ts.is_active = 1;\n","level":"info","timestamp":"2020-02-08 10:20:39"}
+{"message":"Stamp[1581150039780] - Closed Db.","level":"info","timestamp":"2020-02-08 10:20:39"}
+{"message":"Stamp[1581150039780] - Returned 1 row(s)","level":"info","timestamp":"2020-02-08 10:20:39"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-08 10:20:42"}
+{"message":"Stamp[1581150042988] - Running statement PRAGMA table_info(student)","level":"info","timestamp":"2020-02-08 10:20:42"}
+{"message":"Stamp[1581150042988] - Closed Db.","level":"info","timestamp":"2020-02-08 10:20:43"}
+{"message":"Stamp[1581150042988] - Returned 12 row(s)","level":"info","timestamp":"2020-02-08 10:20:43"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-08 10:20:43"}
+{"message":"Stamp[1581150043250] - Running statement \n\tSELECT\n\t\t*\n\tFROM \n\t\tstudent s\n\tWHERE\n\t\ts.is_active = 1;\n","level":"info","timestamp":"2020-02-08 10:20:43"}
+{"message":"Stamp[1581150043250] - Closed Db.","level":"info","timestamp":"2020-02-08 10:20:43"}
+{"message":"Stamp[1581150043250] - Returned 1 row(s)","level":"info","timestamp":"2020-02-08 10:20:43"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-08 10:22:10"}
+{"message":"Stamp[1581150130750] - Running statement PRAGMA table_info(student)","level":"info","timestamp":"2020-02-08 10:22:10"}
+{"message":"Stamp[1581150130750] - Closed Db.","level":"info","timestamp":"2020-02-08 10:22:10"}
+{"message":"Stamp[1581150130750] - Returned 12 row(s)","level":"info","timestamp":"2020-02-08 10:22:10"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-08 10:22:11"}
+{"message":"Stamp[1581150131007] - Running statement \n\tSELECT\n\t\t*\n\tFROM \n\t\tstudent s\n\tWHERE\n\t\ts.is_active = 1;\n","level":"info","timestamp":"2020-02-08 10:22:11"}
+{"message":"Stamp[1581150131007] - Closed Db.","level":"info","timestamp":"2020-02-08 10:22:11"}
+{"message":"Stamp[1581150131007] - Returned 1 row(s)","level":"info","timestamp":"2020-02-08 10:22:11"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-08 10:27:04"}
+{"message":"Stamp[1581150424410] - Running statement PRAGMA table_info(student)","level":"info","timestamp":"2020-02-08 10:27:04"}
+{"message":"Stamp[1581150424410] - Closed Db.","level":"info","timestamp":"2020-02-08 10:27:04"}
+{"message":"Stamp[1581150424410] - Returned 12 row(s)","level":"info","timestamp":"2020-02-08 10:27:04"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-08 10:27:04"}
+{"message":"Stamp[1581150424664] - Running statement \n\tSELECT\n\t\t*\n\tFROM \n\t\tstudent s\n\tWHERE\n\t\ts.is_active = 1;\n","level":"info","timestamp":"2020-02-08 10:27:04"}
+{"message":"Stamp[1581150424664] - Closed Db.","level":"info","timestamp":"2020-02-08 10:27:04"}
+{"message":"Stamp[1581150424664] - Returned 1 row(s)","level":"info","timestamp":"2020-02-08 10:27:04"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-08 10:27:50"}
+{"message":"Stamp[1581150470525] - Running statement PRAGMA table_info(student)","level":"info","timestamp":"2020-02-08 10:27:50"}
+{"message":"Stamp[1581150470525] - Closed Db.","level":"info","timestamp":"2020-02-08 10:27:50"}
+{"message":"Stamp[1581150470525] - Returned 12 row(s)","level":"info","timestamp":"2020-02-08 10:27:50"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-08 10:27:50"}
+{"message":"Stamp[1581150470799] - Running statement \n\tSELECT\n\t\t*\n\tFROM \n\t\tstudent s\n\tWHERE\n\t\ts.is_active = 1;\n","level":"info","timestamp":"2020-02-08 10:27:50"}
+{"message":"Stamp[1581150470799] - Closed Db.","level":"info","timestamp":"2020-02-08 10:27:50"}
+{"message":"Stamp[1581150470799] - Returned 1 row(s)","level":"info","timestamp":"2020-02-08 10:27:50"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-08 10:27:59"}
+{"message":"Stamp[1581150479882] - Running statement PRAGMA table_info(student)","level":"info","timestamp":"2020-02-08 10:27:59"}
+{"message":"Stamp[1581150479882] - Closed Db.","level":"info","timestamp":"2020-02-08 10:28:00"}
+{"message":"Stamp[1581150479882] - Returned 12 row(s)","level":"info","timestamp":"2020-02-08 10:28:00"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-08 10:28:00"}
+{"message":"Stamp[1581150480193] - Running statement \n\tSELECT\n\t\t*\n\tFROM \n\t\tstudent s\n\tWHERE\n\t\ts.is_active = 1;\n","level":"info","timestamp":"2020-02-08 10:28:00"}
+{"message":"Stamp[1581150480193] - Closed Db.","level":"info","timestamp":"2020-02-08 10:28:00"}
+{"message":"Stamp[1581150480193] - Returned 1 row(s)","level":"info","timestamp":"2020-02-08 10:28:00"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-08 10:28:07"}
+{"message":"Stamp[1581150487662] - Running statement PRAGMA table_info(student)","level":"info","timestamp":"2020-02-08 10:28:07"}
+{"message":"Stamp[1581150487662] - Closed Db.","level":"info","timestamp":"2020-02-08 10:28:07"}
+{"message":"Stamp[1581150487662] - Returned 12 row(s)","level":"info","timestamp":"2020-02-08 10:28:07"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-08 10:28:08"}
+{"message":"Stamp[1581150488021] - Running statement \n\tSELECT\n\t\t*\n\tFROM \n\t\tstudent s\n\tWHERE\n\t\ts.is_active = 1;\n","level":"info","timestamp":"2020-02-08 10:28:08"}
+{"message":"Stamp[1581150488021] - Closed Db.","level":"info","timestamp":"2020-02-08 10:28:08"}
+{"message":"Stamp[1581150488021] - Returned 1 row(s)","level":"info","timestamp":"2020-02-08 10:28:08"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-08 10:28:56"}
+{"message":"Stamp[1581150536535] - Running statement PRAGMA table_info(student)","level":"info","timestamp":"2020-02-08 10:28:56"}
+{"message":"Stamp[1581150536535] - Closed Db.","level":"info","timestamp":"2020-02-08 10:28:56"}
+{"message":"Stamp[1581150536535] - Returned 12 row(s)","level":"info","timestamp":"2020-02-08 10:28:56"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-08 10:28:56"}
+{"message":"Stamp[1581150536820] - Running statement \n\tSELECT\n\t\t*\n\tFROM \n\t\tstudent s\n\tWHERE\n\t\ts.is_active = 1;\n","level":"info","timestamp":"2020-02-08 10:28:56"}
+{"message":"Stamp[1581150536820] - Closed Db.","level":"info","timestamp":"2020-02-08 10:28:56"}
+{"message":"Stamp[1581150536820] - Returned 1 row(s)","level":"info","timestamp":"2020-02-08 10:28:56"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-08 10:29:13"}
+{"message":"Stamp[1581150553767] - Running statement PRAGMA table_info(student)","level":"info","timestamp":"2020-02-08 10:29:13"}
+{"message":"Stamp[1581150553767] - Closed Db.","level":"info","timestamp":"2020-02-08 10:29:13"}
+{"message":"Stamp[1581150553767] - Returned 12 row(s)","level":"info","timestamp":"2020-02-08 10:29:13"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-08 10:29:14"}
+{"message":"Stamp[1581150554033] - Running statement \n\tSELECT\n\t\t*\n\tFROM \n\t\tstudent s\n\tWHERE\n\t\ts.is_active = 1;\n","level":"info","timestamp":"2020-02-08 10:29:14"}
+{"message":"Stamp[1581150554033] - Closed Db.","level":"info","timestamp":"2020-02-08 10:29:14"}
+{"message":"Stamp[1581150554033] - Returned 1 row(s)","level":"info","timestamp":"2020-02-08 10:29:14"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-08 10:29:26"}
+{"message":"Stamp[1581150566199] - Running statement PRAGMA table_info(student)","level":"info","timestamp":"2020-02-08 10:29:26"}
+{"message":"Stamp[1581150566199] - Closed Db.","level":"info","timestamp":"2020-02-08 10:29:26"}
+{"message":"Stamp[1581150566199] - Returned 12 row(s)","level":"info","timestamp":"2020-02-08 10:29:26"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-08 10:29:26"}
+{"message":"Stamp[1581150566456] - Running statement \n\tSELECT\n\t\t*\n\tFROM \n\t\tstudent s\n\tWHERE\n\t\ts.is_active = 1;\n","level":"info","timestamp":"2020-02-08 10:29:26"}
+{"message":"Stamp[1581150566456] - Closed Db.","level":"info","timestamp":"2020-02-08 10:29:26"}
+{"message":"Stamp[1581150566456] - Returned 1 row(s)","level":"info","timestamp":"2020-02-08 10:29:26"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-08 10:30:37"}
+{"message":"Stamp[1581150637482] - Running statement - \n\n\n\t\tINSERT INTO student (student_id,first_name,last_name,birthdate,mother_name,mother_mobile,mother_email,father_name,father_mobile,father_email,class_id,is_active,edit,delete,birthday)\n\t\tVALUES ($student_id,$first_name,$last_name,$birthdate,$mother_name,$mother_mobile,$mother_email,$father_name,$father_mobile,$father_email,$class_id,$is_active,$Edit,$Delete,$birthday)\n\t\n\n with params {\"$first_name\":\"asdasd\",\"$last_name\":\"asdasda\",\"$mother_name\":\"asdads\",\"$class_id\":\"1\",\"$birthday\":\"1\"}.","level":"info","timestamp":"2020-02-08 10:30:37"}
+{"message":"Stamp[1581150637482] - Closed Db.","level":"info","timestamp":"2020-02-08 10:30:37"}
+{"level":"error","timestamp":"2020-02-08 10:30:37","message":"Stamp[1581150637482] - Error: SQLITE_ERROR: near \"delete\": syntax error","stack":"Error: Stamp[1581150637482] - Error: SQLITE_ERROR: near \"delete\": syntax error\n    at Object.error (http://localhost:3000/static/js/main.chunk.js:2833:16)\n    at http://localhost:3000/static/js/main.chunk.js:976:62\n    at replacement (D:\\Playground\\Electron\\di\\dewey-decimal-app\\node_modules\\sqlite3\\lib\\trace.js:19:31)\n    at Statement.errBack (D:\\Playground\\Electron\\di\\dewey-decimal-app\\node_modules\\sqlite3\\lib\\sqlite3.js:16:21)"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-08 10:30:39"}
+{"message":"Stamp[1581150639770] - Running statement PRAGMA table_info(student)","level":"info","timestamp":"2020-02-08 10:30:39"}
+{"message":"Stamp[1581150639770] - Closed Db.","level":"info","timestamp":"2020-02-08 10:30:39"}
+{"message":"Stamp[1581150639770] - Returned 12 row(s)","level":"info","timestamp":"2020-02-08 10:30:39"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-08 10:30:40"}
+{"message":"Stamp[1581150640014] - Running statement \n\tSELECT\n\t\t*\n\tFROM \n\t\tstudent s\n\tWHERE\n\t\ts.is_active = 1;\n","level":"info","timestamp":"2020-02-08 10:30:40"}
+{"message":"Stamp[1581150640014] - Closed Db.","level":"info","timestamp":"2020-02-08 10:30:40"}
+{"message":"Stamp[1581150640014] - Returned 1 row(s)","level":"info","timestamp":"2020-02-08 10:30:40"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-08 10:32:03"}
+{"message":"Stamp[1581150723440] - Running statement - \n\n\n\t\tINSERT INTO student (student_id,first_name,last_name,birthdate,mother_name,mother_mobile,mother_email,father_name,father_mobile,father_email,class_id,is_active,birthday)\n\t\tVALUES ($student_id,$first_name,$last_name,$birthdate,$mother_name,$mother_mobile,$mother_email,$father_name,$father_mobile,$father_email,$class_id,$is_active,$birthday)\n\t\n\n with params {\"$first_name\":\"aaaa\",\"$last_name\":\"ssss\",\"$class_id\":\"1\",\"$birthday\":\"dddd\"}.","level":"info","timestamp":"2020-02-08 10:32:03"}
+{"message":"Stamp[1581150723440] - Closed Db.","level":"info","timestamp":"2020-02-08 10:32:03"}
+{"level":"error","timestamp":"2020-02-08 10:32:03","message":"Stamp[1581150723440] - Error: SQLITE_ERROR: table student has no column named birthday","stack":"Error: Stamp[1581150723440] - Error: SQLITE_ERROR: table student has no column named birthday\n    at Object.error (http://localhost:3000/static/js/main.chunk.js:2835:16)\n    at http://localhost:3000/static/js/main.chunk.js:976:62\n    at replacement (D:\\Playground\\Electron\\di\\dewey-decimal-app\\node_modules\\sqlite3\\lib\\trace.js:19:31)\n    at Statement.errBack (D:\\Playground\\Electron\\di\\dewey-decimal-app\\node_modules\\sqlite3\\lib\\sqlite3.js:16:21)"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-08 10:32:05"}
+{"message":"Stamp[1581150725361] - Running statement PRAGMA table_info(student)","level":"info","timestamp":"2020-02-08 10:32:05"}
+{"message":"Stamp[1581150725361] - Closed Db.","level":"info","timestamp":"2020-02-08 10:32:05"}
+{"message":"Stamp[1581150725361] - Returned 12 row(s)","level":"info","timestamp":"2020-02-08 10:32:05"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-08 10:32:05"}
+{"message":"Stamp[1581150725645] - Running statement \n\tSELECT\n\t\t*\n\tFROM \n\t\tstudent s\n\tWHERE\n\t\ts.is_active = 1;\n","level":"info","timestamp":"2020-02-08 10:32:05"}
+{"message":"Stamp[1581150725645] - Closed Db.","level":"info","timestamp":"2020-02-08 10:32:05"}
+{"message":"Stamp[1581150725645] - Returned 1 row(s)","level":"info","timestamp":"2020-02-08 10:32:05"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-08 10:32:48"}
+{"message":"Stamp[1581150768811] - Running statement - \n\n\n\t\tINSERT INTO student (student_id,first_name,last_name,birthdate,mother_name,mother_mobile,mother_email,father_name,father_mobile,father_email,class_id,is_active)\n\t\tVALUES ($student_id,$first_name,$last_name,$birthdate,$mother_name,$mother_mobile,$mother_email,$father_name,$father_mobile,$father_email,$class_id,$is_active)\n\t\n\n with params {\"$first_name\":\"asdada\",\"$last_name\":\"asdasd\",\"$birthdate\":\"asdasd\"}.","level":"info","timestamp":"2020-02-08 10:32:48"}
+{"message":"Stamp[1581150768811] - Closed Db.","level":"info","timestamp":"2020-02-08 10:32:48"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-08 10:32:50"}
+{"message":"Stamp[1581150770528] - Running statement PRAGMA table_info(student)","level":"info","timestamp":"2020-02-08 10:32:50"}
+{"message":"Stamp[1581150770528] - Closed Db.","level":"info","timestamp":"2020-02-08 10:32:50"}
+{"message":"Stamp[1581150770528] - Returned 12 row(s)","level":"info","timestamp":"2020-02-08 10:32:50"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-08 10:32:50"}
+{"message":"Stamp[1581150770801] - Running statement \n\tSELECT\n\t\t*\n\tFROM \n\t\tstudent s\n\tWHERE\n\t\ts.is_active = 1;\n","level":"info","timestamp":"2020-02-08 10:32:50"}
+{"message":"Stamp[1581150770801] - Closed Db.","level":"info","timestamp":"2020-02-08 10:32:50"}
+{"message":"Stamp[1581150770801] - Returned 1 row(s)","level":"info","timestamp":"2020-02-08 10:32:50"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-08 10:33:45"}
+{"message":"Stamp[1581150825749] - Running statement PRAGMA table_info(student)","level":"info","timestamp":"2020-02-08 10:33:45"}
+{"message":"Stamp[1581150825749] - Closed Db.","level":"info","timestamp":"2020-02-08 10:33:45"}
+{"message":"Stamp[1581150825749] - Returned 12 row(s)","level":"info","timestamp":"2020-02-08 10:33:45"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-08 10:33:46"}
+{"message":"Stamp[1581150826044] - Running statement \n\tSELECT\n\t\t*\n\tFROM \n\t\tstudent s\n\tWHERE\n\t\ts.is_active = 1;\n","level":"info","timestamp":"2020-02-08 10:33:46"}
+{"message":"Stamp[1581150826044] - Closed Db.","level":"info","timestamp":"2020-02-08 10:33:46"}
+{"message":"Stamp[1581150826044] - Returned 1 row(s)","level":"info","timestamp":"2020-02-08 10:33:46"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-08 10:35:15"}
+{"message":"Stamp[1581150915527] - Running statement - \n\n\n\t\tINSERT INTO student (student_id,first_name,last_name,birthdate,mother_name,mother_mobile,mother_email,father_name,father_mobile,father_email,class_id,is_active)\n\t\tVALUES ($student_id,$first_name,$last_name,$birthdate,$mother_name,$mother_mobile,$mother_email,$father_name,$father_mobile,$father_email,$class_id,$is_active)\n\t\n\n with params {\"$first_name\":\"aaaaa\",\"$last_name\":\"ssss\",\"$birthdate\":\"ddd\",\"$is_active\":1}.","level":"info","timestamp":"2020-02-08 10:35:15"}
+{"message":"Stamp[1581150915527] - Closed Db.","level":"info","timestamp":"2020-02-08 10:35:15"}
+{"level":"error","timestamp":"2020-02-08 10:35:15","message":"Stamp[1581150915527] - Error: SQLITE_CONSTRAINT: NOT NULL constraint failed: student.class_id","stack":"Error: Stamp[1581150915527] - Error: SQLITE_CONSTRAINT: NOT NULL constraint failed: student.class_id\n    at Object.error (http://localhost:3000/static/js/main.chunk.js:2836:16)\n    at Statement.<anonymous> (http://localhost:3000/static/js/main.chunk.js:976:62)\n    at Statement.replacement (D:\\Playground\\Electron\\di\\dewey-decimal-app\\node_modules\\sqlite3\\lib\\trace.js:19:31)\n    at Statement.replacement (D:\\Playground\\Electron\\di\\dewey-decimal-app\\node_modules\\sqlite3\\lib\\trace.js:19:31)\n    at addStudent (http://localhost:3000/static/js/main.chunk.js:2202:87)\n    at addOrUpdateStudent (http://localhost:3000/static/js/main.chunk.js:2186:9)\n    at handleSubmit (http://localhost:3000/static/js/main.chunk.js:1870:94)\n    at HTMLUnknownElement.callCallback (http://localhost:3000/static/js/1.chunk.js:232023:18)\n    at Object.invokeGuardedCallbackDev (http://localhost:3000/static/js/1.chunk.js:232072:20)\n    at invokeGuardedCallback (http://localhost:3000/static/js/1.chunk.js:232125:35)\n    at invokeGuardedCallbackAndCatchFirstError (http://localhost:3000/static/js/1.chunk.js:232140:29)\n    at executeDispatch (http://localhost:3000/static/js/1.chunk.js:232271:7)\n    at executeDispatchesInOrder (http://localhost:3000/static/js/1.chunk.js:232296:9)\n    at executeDispatchesAndRelease (http://localhost:3000/static/js/1.chunk.js:232399:9)\n    at executeDispatchesAndReleaseTopLevel (http://localhost:3000/static/js/1.chunk.js:232408:14)\n    at forEachAccumulated (http://localhost:3000/static/js/1.chunk.js:232380:12)\n    at runEventsInBatch (http://localhost:3000/static/js/1.chunk.js:232425:7)\n    at runExtractedPluginEventsInBatch (http://localhost:3000/static/js/1.chunk.js:232567:7)\n    at handleTopLevel (http://localhost:3000/static/js/1.chunk.js:237517:9)\n    at batchedEventUpdates$1 (http://localhost:3000/static/js/1.chunk.js:256064:16)\n    at batchedEventUpdates (http://localhost:3000/static/js/1.chunk.js:233100:16)\n    at dispatchEventForPluginEventSystem (http://localhost:3000/static/js/1.chunk.js:237613:9)\n    at attemptToDispatchEvent (http://localhost:3000/static/js/1.chunk.js:237730:9)\n    at dispatchEvent (http://localhost:3000/static/js/1.chunk.js:237633:23)\n    at unstable_runWithPriority (http://localhost:3000/static/js/1.chunk.js:268880:16)\n    at runWithPriority$2 (http://localhost:3000/static/js/1.chunk.js:243917:14)\n    at discreteUpdates$1 (http://localhost:3000/static/js/1.chunk.js:256081:16)\n    at discreteUpdates (http://localhost:3000/static/js/1.chunk.js:233125:16)\n    at dispatchDiscreteEvent (http://localhost:3000/static/js/1.chunk.js:237600:7)"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-08 10:35:49"}
+{"message":"Stamp[1581150949528] - Running statement - \n\n\n\t\tINSERT INTO student (student_id,first_name,last_name,birthdate,mother_name,mother_mobile,mother_email,father_name,father_mobile,father_email,class_id,is_active)\n\t\tVALUES ($student_id,$first_name,$last_name,$birthdate,$mother_name,$mother_mobile,$mother_email,$father_name,$father_mobile,$father_email,$class_id,$is_active)\n\t\n\n with params {\"$first_name\":\"aaaaa\",\"$last_name\":\"ssss\",\"$birthdate\":\"ddd\",\"$class_id\":\"1\",\"$is_active\":1}.","level":"info","timestamp":"2020-02-08 10:35:49"}
+{"message":"Stamp[1581150949528] - Closed Db.","level":"info","timestamp":"2020-02-08 10:35:49"}
+{"message":"Stamp[1581150949528] - Returned Successfully.","level":"info","timestamp":"2020-02-08 10:35:49"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-08 10:36:14"}
+{"message":"Stamp[1581150974580] - Running statement PRAGMA table_info(student)","level":"info","timestamp":"2020-02-08 10:36:14"}
+{"message":"Stamp[1581150974580] - Closed Db.","level":"info","timestamp":"2020-02-08 10:36:14"}
+{"message":"Stamp[1581150974580] - Returned 12 row(s)","level":"info","timestamp":"2020-02-08 10:36:14"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-08 10:36:14"}
+{"message":"Stamp[1581150974817] - Running statement \n\tSELECT\n\t\t*\n\tFROM \n\t\tstudent s\n\tWHERE\n\t\ts.is_active = 1;\n","level":"info","timestamp":"2020-02-08 10:36:14"}
+{"message":"Stamp[1581150974817] - Closed Db.","level":"info","timestamp":"2020-02-08 10:36:14"}
+{"message":"Stamp[1581150974817] - Returned 2 row(s)","level":"info","timestamp":"2020-02-08 10:36:14"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-08 10:36:50"}
+{"message":"Stamp[1581151010609] - Running statement - \n\n\n\t\tINSERT INTO student (student_id,first_name,last_name,birthdate,mother_name,mother_mobile,mother_email,father_name,father_mobile,father_email,class_id,is_active)\n\t\tVALUES ($student_id,$first_name,$last_name,$birthdate,$mother_name,$mother_mobile,$mother_email,$father_name,$father_mobile,$father_email,$class_id,$is_active)\n\t\n\n with params {\"$first_name\":\"fffff\",\"$last_name\":\"aaaa\",\"$birthdate\":\"abbbbb\",\"$class_id\":\"1\",\"$is_active\":1}.","level":"info","timestamp":"2020-02-08 10:36:50"}
+{"message":"Stamp[1581151010609] - Closed Db.","level":"info","timestamp":"2020-02-08 10:36:50"}
+{"message":"Stamp[1581151010609] - Returned Successfully.","level":"info","timestamp":"2020-02-08 10:36:50"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-08 10:37:22"}
+{"message":"Stamp[1581151042126] - Running statement PRAGMA table_info(student)","level":"info","timestamp":"2020-02-08 10:37:22"}
+{"message":"Stamp[1581151042126] - Closed Db.","level":"info","timestamp":"2020-02-08 10:37:22"}
+{"message":"Stamp[1581151042126] - Returned 12 row(s)","level":"info","timestamp":"2020-02-08 10:37:22"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-08 10:37:22"}
+{"message":"Stamp[1581151042465] - Running statement \n\tSELECT\n\t\t*\n\tFROM \n\t\tstudent s\n\tWHERE\n\t\ts.is_active = 1;\n","level":"info","timestamp":"2020-02-08 10:37:22"}
+{"message":"Stamp[1581151042465] - Closed Db.","level":"info","timestamp":"2020-02-08 10:37:22"}
+{"message":"Stamp[1581151042465] - Returned 3 row(s)","level":"info","timestamp":"2020-02-08 10:37:22"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-08 10:38:35"}
+{"message":"Stamp[1581151115306] - Running statement PRAGMA table_info(student)","level":"info","timestamp":"2020-02-08 10:38:35"}
+{"message":"Stamp[1581151115306] - Closed Db.","level":"info","timestamp":"2020-02-08 10:38:35"}
+{"message":"Stamp[1581151115306] - Returned 12 row(s)","level":"info","timestamp":"2020-02-08 10:38:35"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-08 10:38:35"}
+{"message":"Stamp[1581151115545] - Running statement \n\tSELECT\n\t\t*\n\tFROM \n\t\tstudent s\n\tWHERE\n\t\ts.is_active = 1;\n","level":"info","timestamp":"2020-02-08 10:38:35"}
+{"message":"Stamp[1581151115545] - Closed Db.","level":"info","timestamp":"2020-02-08 10:38:35"}
+{"message":"Stamp[1581151115545] - Returned 3 row(s)","level":"info","timestamp":"2020-02-08 10:38:35"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-08 10:39:15"}
+{"message":"Stamp[1581151155135] - Running statement PRAGMA table_info(student)","level":"info","timestamp":"2020-02-08 10:39:15"}
+{"message":"Stamp[1581151155135] - Closed Db.","level":"info","timestamp":"2020-02-08 10:39:15"}
+{"message":"Stamp[1581151155135] - Returned 12 row(s)","level":"info","timestamp":"2020-02-08 10:39:15"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-08 10:39:15"}
+{"message":"Stamp[1581151155471] - Running statement \n\tSELECT\n\t\t*\n\tFROM \n\t\tstudent s\n\tWHERE\n\t\ts.is_active = 1;\n","level":"info","timestamp":"2020-02-08 10:39:15"}
+{"message":"Stamp[1581151155471] - Closed Db.","level":"info","timestamp":"2020-02-08 10:39:15"}
+{"message":"Stamp[1581151155471] - Returned 3 row(s)","level":"info","timestamp":"2020-02-08 10:39:15"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-08 10:39:32"}
+{"message":"Stamp[1581151172033] - Running statement PRAGMA table_info(student)","level":"info","timestamp":"2020-02-08 10:39:32"}
+{"message":"Stamp[1581151172033] - Closed Db.","level":"info","timestamp":"2020-02-08 10:39:32"}
+{"message":"Stamp[1581151172033] - Returned 12 row(s)","level":"info","timestamp":"2020-02-08 10:39:32"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-08 10:39:32"}
+{"message":"Stamp[1581151172316] - Running statement \n\tSELECT\n\t\t*\n\tFROM \n\t\tstudent s\n\tWHERE\n\t\ts.is_active = 1;\n","level":"info","timestamp":"2020-02-08 10:39:32"}
+{"message":"Stamp[1581151172316] - Closed Db.","level":"info","timestamp":"2020-02-08 10:39:32"}
+{"message":"Stamp[1581151172316] - Returned 3 row(s)","level":"info","timestamp":"2020-02-08 10:39:32"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-08 10:40:09"}
+{"message":"Stamp[1581151209732] - Running statement PRAGMA table_info(student)","level":"info","timestamp":"2020-02-08 10:40:09"}
+{"message":"Stamp[1581151209732] - Closed Db.","level":"info","timestamp":"2020-02-08 10:40:09"}
+{"message":"Stamp[1581151209732] - Returned 12 row(s)","level":"info","timestamp":"2020-02-08 10:40:09"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-08 10:40:10"}
+{"message":"Stamp[1581151210011] - Running statement \n\tSELECT\n\t\t*\n\tFROM \n\t\tstudent s\n\tWHERE\n\t\ts.is_active = 1;\n","level":"info","timestamp":"2020-02-08 10:40:10"}
+{"message":"Stamp[1581151210011] - Closed Db.","level":"info","timestamp":"2020-02-08 10:40:10"}
+{"message":"Stamp[1581151210011] - Returned 3 row(s)","level":"info","timestamp":"2020-02-08 10:40:10"}

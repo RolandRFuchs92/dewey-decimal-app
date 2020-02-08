@@ -10,14 +10,21 @@ import {
 	Modal
 } from '@material-ui/core';
 
-import { addOrUpdateStudent, getStudentData } from './Student.repo';
+import { addOrUpdateStudent } from './Student.repo';
+import FormButtons from 'components/buttons/FormButtons';
+import {useAlert} from 'utils/snackbarAlerts';
 
 const useStyles = makeStyles(theme => ({
 	root: {
 		flexGrow: 1,
 	},
 	paper: {
-		padding: 15,
+		position: 'absolute',
+        top: '50%',
+        left: '50%',
+        transform: 'translate(-50%, -50%)',
+		padding:15,
+		width:300
 	},
 	baseTitle: {
 		marginTop: 10,
@@ -29,66 +36,48 @@ const useStyles = makeStyles(theme => ({
 	},
 }));
 
-let setStudentList;
-let selectedStudent;
-
-export default ({ student, setStudentData }) => {
-	setStudentList = setStudentData;
+export default ({ isOpen = false, handleClose, student, reset }) => {
 	const [newStudent, setSelectedStudent] = useState({});
-	const [open, setOpen] = useState(false);
-
+	const alerts = useAlert();
 	useEffect(() => {
-		setSelectedStudent({...student});
-		selectedStudent = {...student};
+		setSelectedStudent(student);
 	},[student]);
 
-	const handleChange = name => value => setSelectedStudent({...newStudent, [name]: value});
-	const handleClose = () => setOpen(false);
+	const handleSubmit = async () => {
+		let isAdd;
+		const studentName = `${newStudent.first_name || 'empty'} ${newStudent.last_name || ''}`; 
+		try {
+			isAdd = await addOrUpdateStudent(newStudent) === 'add';
+			alerts.success(`Successfully ${isAdd ? 'added' : 'updated'} ${studentName}`);
+			reset();	
+		} catch (error) {
+			alerts.error(`There was an error ${isAdd? 'adding' : 'update'} ${studentName}`);
+		}
+	}
+	const handleChange = name => ({target:{value}}) =>{ setSelectedStudent({...newStudent, [name]: value})};
 	const classes = useStyles();
 
+
 	return (
-		<Modal open={open} onBackdropClick={handleClose} closeAfterTransition >
-			<Grid
-				container
-				direction='column'
-				justify='flex-start'
-				alignItems='flex-start'
-				spacing={2}
-			>
+		<Modal open={isOpen} onBackdropClick={handleClose} closeAfterTransition >
+			<Grid container>
 				<Paper className={classes.paper}>
 					<SplitStudentForm
 						label={`Student${newStudent.studentId ? `(${newStudent.studentId})` : ''}`}
 					/>
-					<FormRow label='First name' name='firstName' onChange={handleChange}></FormRow>
-					<FormRow label='Last name' name='lastName' onChange={handleChange}></FormRow>
-					<FormRow label='Birthday' name='birthdate' onChange={handleChange}></FormRow>
-					<FormRow label='Class' name='classId' onChange={handleChange}></FormRow>
+					<TextField fullWidth label='First name' value={newStudent.first_name || ''} onChange={handleChange('first_name')} />
+					<TextField fullWidth label='Last name' value={newStudent.last_name || ''} onChange={handleChange('last_name')} />
+					<TextField fullWidth label='Birthday' value={newStudent.birthdate || ''} onChange={handleChange('birthdate')} />
+					<TextField fullWidth label='Class' value={newStudent.class_id || ''} onChange={handleChange('class_id')} />
 					<SplitStudentForm label='Mother' />
-					<FormRow label='Name' name='motherName' onChange={handleChange}></FormRow>
-					<FormRow label='Mobile' name='motherMobile' onChange={handleChange}></FormRow>
-					<FormRow label='Email' name='motherEmail' onChange={handleChange}></FormRow>
+					<TextField fullWidth label='Name' value={newStudent.mother_name || ''} onChange={handleChange('mother_name')} />
+					<TextField fullWidth label='Mobile' value={newStudent.mother_mobile || ''} onChange={handleChange('mother_mobile')} />
+					<TextField fullWidth label='Email' value={newStudent.mother_email || ''} onChange={handleChange('mother_email')} />
 					<SplitStudentForm label='Father' />
-					<FormRow label='Name' name='fatherName' onChange={handleChange}></FormRow>
-					<FormRow label='Mobile' name='fatherMobile' onChange={handleChange}></FormRow>
-					<FormRow label='Email' name='fatherEmail' onChange={handleChange}></FormRow>
-					<Button
-						variant='outlined'
-						color='default'
-						className={classes.submitButton}
-						size='small'
-						onClick={() => handleReset(setStudent,setSelectedStudent)}
-					>
-						Reset
-					</Button>
-					<Button
-						variant='contained'
-						color='primary'
-						className={classes.submitButton}
-						size='small'
-						onClick={() => handleSubmit(newStudent, handleReset(setStudent))}
-					>
-						Submit
-					</Button>
+					<TextField fullWidth label='Name' value={newStudent.father_name || ''} onChange={handleChange('father_name')} />
+					<TextField fullWidth label='Mobile' value={newStudent.father_mobile || ''} onChange={handleChange('father_mobile')} />
+					<TextField fullWidth label='Email' value={newStudent.father_email || ''} onChange={handleChange('father_email')} />
+					<FormButtons onReset={() => setSelectedStudent({})} onSubmit={handleSubmit}></FormButtons>
 				</Paper>
 			</Grid>
 		</Modal>
@@ -98,9 +87,7 @@ export default ({ student, setStudentData }) => {
 const FormRow = ({ label, name, onChange}) => {
 	const [val, setVal] = useState('');
 	useEffect(() => {
-		if(!selectedStudent) return;
-		setVal(selectedStudent[name] || '');
-	}, [selectedStudent, name])
+	}, [name])
 
 	const handleChange = ({ target: { value } }) => {
 		setVal(value);
@@ -135,20 +122,6 @@ function SplitStudentForm({ label }) {
 			>
 				{displayLabel}
 			</Typography>
-			<Divider className={classes.divider}></Divider>
 		</>
 	);
 }
-
-const handleSubmit = async (student, setStudent)=> {
-	try {
-		await addOrUpdateStudent(student);
-		setStudentList(await getStudentData());
-	} catch (error) {
-		alert(error);
-	}
-};
-
-const handleReset = (setStudent)=> {
-	setStudent({});
-};

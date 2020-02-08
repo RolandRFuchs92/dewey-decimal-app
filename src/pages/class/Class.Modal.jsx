@@ -50,7 +50,7 @@ export default ({isOpen = false, handleClose, modalData, updateTable}) => {
 
     return <Modal open={open} onBackdropClick={handleClose} closeAfterTransition >
         <Fade in={open}>
-            <Grid  container >
+            <Grid container >
                 <Paper className={classes.paper}>
                     <Grid item >
                         <Typography variant='h6'>{data.class_id ? `Class (${data.class_id})` : 'Teacher'}</Typography>
