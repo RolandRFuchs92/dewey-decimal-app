@@ -21,7 +21,6 @@ export default function () {
 
 	const handleEditAdd = (rowData) => {
 		const obj = Object.fromEntries(columnVar.map(({name}, index) => [name,rowData[index]]));
-		debugger;
 		setStudent(obj);
 		setIsOpen(true);
 	}
@@ -39,15 +38,12 @@ export default function () {
 			columnVar = cols;
 			setColumns(cols);
 			resetStudentList();
+			setOptions({
+				selectableRows: 'none',
+				...(addButton)
+			});
 		})();
 	}, []);
-
-	useEffect(() => {
-		setOptions({
-			selectableRows: 'none',
-			...(addButton)
-		});
-	}, [columns, setStudent]);
 
 	const resetStudentList = async () => {
 		const studentData = await getStudentData();

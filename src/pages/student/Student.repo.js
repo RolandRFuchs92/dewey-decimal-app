@@ -58,7 +58,6 @@ export function ensureCreated() {
 }
 
 export async function addOrUpdateStudent(student) {
-	debugger;
 	delete student.Edit;
 	delete student.Delete;
 	if (student.student_id) {
