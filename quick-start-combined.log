@@ -3759,3 +3759,36 @@
 {"message":"Opening database.","level":"info","timestamp":"2020-02-08 08:45:44"}
 {"message":"Stamp[1581144344388] - Running statement - \n\n\n\tUPDATE \n\t\tstudent\n\tSET\n\t\tis_active = 0\n\tWHERE\n\t\tstudent_id=$student_id;\n\n\n with params 2.","level":"info","timestamp":"2020-02-08 08:45:44"}
 {"message":"Stamp[1581144344388] - Closed Db.","level":"info","timestamp":"2020-02-08 08:45:44"}
+{"message":"Stamp[1581144344388] - Returned Successfully.","level":"info","timestamp":"2020-02-08 08:45:44"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-08 08:45:44"}
+{"message":"Stamp[1581144344522] - Running statement \n\tSELECT\n\t\t*\n\tFROM \n\t\tstudent s\n\tWHERE\n\t\ts.is_active = 1;\n","level":"info","timestamp":"2020-02-08 08:45:44"}
+{"message":"Stamp[1581144344522] - Closed Db.","level":"info","timestamp":"2020-02-08 08:45:44"}
+{"message":"Stamp[1581144344522] - Returned 0 row(s)","level":"info","timestamp":"2020-02-08 08:45:44"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-08 08:45:44"}
+{"message":"Stamp[1581144344543] - Running statement - \n\nCREATE TABLE IF NOT EXISTS student ( \n\tstudent_id INTEGER PRIMARY KEY,\n\tfirst_name TEXT NOT NULL,\n\tlast_name TEXT NOT NULL,\n\tbirthdate TEXT NOT NULL,\n\tmother_name text,\n\tmother_mobile TEXT,\n\tmother_email TEXT,\n\tfather_name TEXT,\n\tfather_mobile TEXT,\n\tfather_email TEXT,\n\tclass_id INTEGER NOT NULL,\n\tis_active INTEGER NOT NULL,\n\tCONSTRAINT fk_class_id FOREIGN KEY(class_id) REFERENCES class(class_id)\n);\n\n with params undefined.","level":"info","timestamp":"2020-02-08 08:45:44"}
+{"message":"Stamp[1581144344543] - Closed Db.","level":"info","timestamp":"2020-02-08 08:45:44"}
+{"message":"Stamp[1581144344543] - Returned Successfully.","level":"info","timestamp":"2020-02-08 08:45:44"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-08 08:51:16"}
+{"message":"Stamp[1581144676829] - Running statement PRAGMA table_info(student)","level":"info","timestamp":"2020-02-08 08:51:16"}
+{"message":"Stamp[1581144676829] - Closed Db.","level":"info","timestamp":"2020-02-08 08:51:16"}
+{"message":"Stamp[1581144676829] - Returned 12 row(s)","level":"info","timestamp":"2020-02-08 08:51:16"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-08 08:51:17"}
+{"message":"Stamp[1581144677073] - Running statement \n\tSELECT\n\t\t*\n\tFROM \n\t\tstudent s\n\tWHERE\n\t\ts.is_active = 1;\n","level":"info","timestamp":"2020-02-08 08:51:17"}
+{"message":"Stamp[1581144677073] - Closed Db.","level":"info","timestamp":"2020-02-08 08:51:17"}
+{"message":"Stamp[1581144677073] - Returned 0 row(s)","level":"info","timestamp":"2020-02-08 08:51:17"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-08 08:51:21"}
+{"message":"Stamp[1581144681897] - Running statement PRAGMA table_info(student)","level":"info","timestamp":"2020-02-08 08:51:21"}
+{"message":"Stamp[1581144681897] - Closed Db.","level":"info","timestamp":"2020-02-08 08:51:22"}
+{"message":"Stamp[1581144681897] - Returned 12 row(s)","level":"info","timestamp":"2020-02-08 08:51:22"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-08 08:51:22"}
+{"message":"Stamp[1581144682268] - Running statement \n\tSELECT\n\t\t*\n\tFROM \n\t\tstudent s\n\tWHERE\n\t\ts.is_active = 1;\n","level":"info","timestamp":"2020-02-08 08:51:22"}
+{"message":"Stamp[1581144682268] - Closed Db.","level":"info","timestamp":"2020-02-08 08:51:22"}
+{"message":"Stamp[1581144682268] - Returned 0 row(s)","level":"info","timestamp":"2020-02-08 08:51:22"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-08 08:52:16"}
+{"message":"Stamp[1581144736025] - Running statement PRAGMA table_info(student)","level":"info","timestamp":"2020-02-08 08:52:16"}
+{"message":"Stamp[1581144736025] - Closed Db.","level":"info","timestamp":"2020-02-08 08:52:16"}
+{"message":"Stamp[1581144736025] - Returned 12 row(s)","level":"info","timestamp":"2020-02-08 08:52:16"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-08 08:52:16"}
+{"message":"Stamp[1581144736279] - Running statement \n\tSELECT\n\t\t*\n\tFROM \n\t\tstudent s\n\tWHERE\n\t\ts.is_active = 1;\n","level":"info","timestamp":"2020-02-08 08:52:16"}
+{"message":"Stamp[1581144736279] - Closed Db.","level":"info","timestamp":"2020-02-08 08:52:16"}
+{"message":"Stamp[1581144736279] - Returned 0 row(s)","level":"info","timestamp":"2020-02-08 08:52:16"}

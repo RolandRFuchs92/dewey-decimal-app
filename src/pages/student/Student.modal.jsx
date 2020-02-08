@@ -32,7 +32,7 @@ const useStyles = makeStyles(theme => ({
 let setStudentList;
 let selectedStudent;
 
-export default ({ student, setStudent, setStudentData }) => {
+export default ({ student, setStudentData }) => {
 	setStudentList = setStudentData;
 	const [newStudent, setSelectedStudent] = useState({});
 	const [open, setOpen] = useState(false);
