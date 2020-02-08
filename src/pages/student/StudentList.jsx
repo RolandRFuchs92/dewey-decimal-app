@@ -3,9 +3,10 @@ import { Grid, makeStyles } from '@material-ui/core';
 import { startCase, lowerCase } from 'lodash';
 import MUIDataTable from 'mui-datatables';
 
-import { getStudentColumnNames, getStudentData } from './Student.repo';
+import { getStudentColumnNames, getStudentData, hideStudent } from './Student.repo';
 import EditDeleteCol, {useAddButton} from 'utils/tableButtons';
 import { useDialog } from 'utils/dialog';
+import { useAlert } from 'utils/snackbarAlerts'
 
 const useStyles = makeStyles(theme => ({
 	studentList: {},
@@ -38,6 +39,7 @@ function NewStudentList({ setStudent }) {
 	const [options, setOptions] = useState({});
 	const classes = useStyles();
 	const dialog = useDialog();
+	const alert = useAlert();
 	let columnVar;
 	const handleEditAdd = (rowData) => {
 		const obj = Object.fromEntries(columns().map(({name}, index) => [name,rowData[index]]));
@@ -55,10 +57,14 @@ function NewStudentList({ setStudent }) {
 			const cols = [...columnText, ...(EditDeleteCol(() => {}, handleDeleteClick))];
 			columnVar = cols;
 			setColumns(cols);
-			const studentData = await getStudentData();
-			setData(studentData);
+			resetStudentList();
 		})();
 	}, []);
+
+	const resetStudentList = async () => {
+		const studentData = await getStudentData();
+		setData(studentData);
+	}
 
 	useEffect(() => {
 		setOptions({
@@ -68,13 +74,19 @@ function NewStudentList({ setStudent }) {
 	}, [columns, setStudent]);
 
 	const handleDeleteClick = rowData => {
-		const obj = Object.fromEntries(columnVar.map(({name}, index) => [name,rowData[index]]));
-		debugger;
-		dialog({ title: 'Are you sure?', description: `Really delete ${obj.first_name} ${obj.last_name}?`, handleYes: () => handleYesForDelete(obj.student_id) })
+		const selectedStudent = Object.fromEntries(columnVar.map(({name}, index) => [name,rowData[index]]));
+		dialog({ title: 'Are you sure?', description: `Really delete ${selectedStudent.first_name} ${selectedStudent.last_name}?`, handleYes: () => handleYesForDelete(selectedStudent) })
 	}
 
-	const handleYesForDelete = student_id => {
-
+	const handleYesForDelete = async (student) => {
+		const studentName = `${student.first_name} ${student.last_name}`;
+		try {
+			await hideStudent(student.student_id);
+			await resetStudentList();
+			alert.success(`Successfully deleted ${studentName}`);
+		} catch(e) {
+			alert.error(`There was an error deleteing ${studentName}.`);
+		}
 	}
 
 	return (

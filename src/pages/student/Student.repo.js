@@ -27,12 +27,30 @@ const createStudentTable = `CREATE TABLE IF NOT EXISTS ${tableName} (
 	CONSTRAINT fk_class_id FOREIGN KEY(class_id) REFERENCES class(class_id)
 );`;
 
+const queryHideStudent = `
+	UPDATE 
+		student
+	SET
+		is_active = 0
+	WHERE
+		student_id=$student_id;
+`;
+
+const queryGetAllStudents = `
+	SELECT
+		*
+	FROM 
+		student s
+	WHERE
+		s.is_active = 1;
+`;
+
 export const getStudentColumnNames = async () => {
 	return await getColumnNames(tableName);
 };
 
 export async function getStudentData() {
-	return all('SELECT * FROM student');
+	return all(queryGetAllStudents);
 }
 
 export function ensureCreated() {
@@ -42,6 +60,10 @@ export function ensureCreated() {
 export function addOrUpdateStudent(student) {
 	if (student.studentId) return updateStudent(student);
 	else return addStudent(student);
+}
+
+export async function hideStudent($student_id){
+	return run(queryHideStudent, $student_id);
 }
 
 function addStudent(student) {
