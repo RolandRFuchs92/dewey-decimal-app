@@ -39,6 +39,15 @@ const queryAllTeachers = `
     WHERE
         is_active = 1;
 `
+const queryHideTeacher = `
+    UPDATE 
+        teacher
+    SET
+        is_active = 0
+    WHERE
+        teacher_id = $teacher_id
+`;
+
 
 export async function getTeachersForSelect(){
     return all(querySelectListTeachers);
@@ -66,5 +75,11 @@ export async function createTeacher(teacher) {
     const statement = objectToInsertStatement(teacher, 'teacher');
     const statementObject = jsonToStatementObject(teacher);
 
+    return run(statement, statementObject);
+}
+
+export async function hideTeacher(teacherId) {
+    const statement = queryHideTeacher;
+    const statementObject = {$teacher_id: teacherId}
     return run(statement, statementObject);
 }

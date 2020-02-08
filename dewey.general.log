@@ -715,3 +715,78 @@
 {"message":"Stamp[1581182513973] - Running statement \n    SELECT\n        teacher_id,\n        first_name,\n        last_name,\n        mobile,\n        email,\n        class_id,\n        is_active\n    FROM\n        teacher\n    WHERE\n        is_active = 1;\n","level":"info","timestamp":"2020-02-08 19:21:53"}
 {"message":"Stamp[1581182513973] - Closed Db.","level":"info","timestamp":"2020-02-08 19:21:54"}
 {"message":"Stamp[1581182513973] - Returned 1 row(s)","level":"info","timestamp":"2020-02-08 19:21:54"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-08 19:22:11"}
+{"message":"Stamp[1581182531594] - Running statement \n    SELECT\n        teacher_id,\n        first_name,\n        last_name,\n        mobile,\n        email,\n        class_id,\n        is_active\n    FROM\n        teacher\n    WHERE\n        is_active = 1;\n","level":"info","timestamp":"2020-02-08 19:22:11"}
+{"message":"Stamp[1581182531594] - Closed Db.","level":"info","timestamp":"2020-02-08 19:22:11"}
+{"message":"Stamp[1581182531594] - Returned 1 row(s)","level":"info","timestamp":"2020-02-08 19:22:11"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-08 19:23:35"}
+{"message":"Stamp[1581182615307] - Running statement \n    SELECT\n        teacher_id,\n        first_name,\n        last_name,\n        mobile,\n        email,\n        class_id,\n        is_active\n    FROM\n        teacher\n    WHERE\n        is_active = 1;\n","level":"info","timestamp":"2020-02-08 19:23:35"}
+{"message":"Stamp[1581182615307] - Closed Db.","level":"info","timestamp":"2020-02-08 19:23:36"}
+{"message":"Stamp[1581182615307] - Returned 1 row(s)","level":"info","timestamp":"2020-02-08 19:23:36"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-08 19:23:55"}
+{"message":"Stamp[1581182635303] - Running statement \n    SELECT\n        teacher_id,\n        first_name,\n        last_name,\n        mobile,\n        email,\n        class_id,\n        is_active\n    FROM\n        teacher\n    WHERE\n        is_active = 1;\n","level":"info","timestamp":"2020-02-08 19:23:55"}
+{"message":"Stamp[1581182635303] - Closed Db.","level":"info","timestamp":"2020-02-08 19:23:55"}
+{"message":"Stamp[1581182635303] - Returned 1 row(s)","level":"info","timestamp":"2020-02-08 19:23:55"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-08 19:24:57"}
+{"message":"Stamp[1581182697582] - Running statement \n    SELECT\n        teacher_id,\n        first_name,\n        last_name,\n        mobile,\n        email,\n        class_id,\n        is_active\n    FROM\n        teacher\n    WHERE\n        is_active = 1;\n","level":"info","timestamp":"2020-02-08 19:24:57"}
+{"message":"Stamp[1581182697582] - Closed Db.","level":"info","timestamp":"2020-02-08 19:24:57"}
+{"message":"Stamp[1581182697582] - Returned 1 row(s)","level":"info","timestamp":"2020-02-08 19:24:57"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-08 19:27:20"}
+{"message":"Stamp[1581182840771] - Running statement \n    SELECT\n        teacher_id,\n        first_name,\n        last_name,\n        mobile,\n        email,\n        class_id,\n        is_active\n    FROM\n        teacher\n    WHERE\n        is_active = 1;\n","level":"info","timestamp":"2020-02-08 19:27:20"}
+{"message":"Stamp[1581182840771] - Closed Db.","level":"info","timestamp":"2020-02-08 19:27:20"}
+{"message":"Stamp[1581182840771] - Returned 1 row(s)","level":"info","timestamp":"2020-02-08 19:27:20"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-08 19:28:15"}
+{"message":"Stamp[1581182895987] - Running statement \n    SELECT\n        teacher_id,\n        first_name,\n        last_name,\n        mobile,\n        email,\n        class_id,\n        is_active\n    FROM\n        teacher\n    WHERE\n        is_active = 1;\n","level":"info","timestamp":"2020-02-08 19:28:15"}
+{"message":"Stamp[1581182895987] - Closed Db.","level":"info","timestamp":"2020-02-08 19:28:16"}
+{"message":"Stamp[1581182895987] - Returned 1 row(s)","level":"info","timestamp":"2020-02-08 19:28:16"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-08 19:28:28"}
+{"message":"Stamp[1581182908066] - Running statement \n    SELECT\n        teacher_id,\n        first_name,\n        last_name,\n        mobile,\n        email,\n        class_id,\n        is_active\n    FROM\n        teacher\n    WHERE\n        is_active = 1;\n","level":"info","timestamp":"2020-02-08 19:28:28"}
+{"message":"Stamp[1581182908066] - Closed Db.","level":"info","timestamp":"2020-02-08 19:28:28"}
+{"message":"Stamp[1581182908066] - Returned 1 row(s)","level":"info","timestamp":"2020-02-08 19:28:28"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-08 19:29:25"}
+{"message":"Stamp[1581182965556] - Running statement \n    SELECT\n        teacher_id,\n        first_name,\n        last_name,\n        mobile,\n        email,\n        class_id,\n        is_active\n    FROM\n        teacher\n    WHERE\n        is_active = 1;\n","level":"info","timestamp":"2020-02-08 19:29:25"}
+{"message":"Stamp[1581182965556] - Closed Db.","level":"info","timestamp":"2020-02-08 19:29:25"}
+{"message":"Stamp[1581182965556] - Returned 1 row(s)","level":"info","timestamp":"2020-02-08 19:29:25"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-08 19:30:06"}
+{"message":"Stamp[1581183006904] - Running statement \n    SELECT\n        teacher_id,\n        first_name,\n        last_name,\n        mobile,\n        email,\n        class_id,\n        is_active\n    FROM\n        teacher\n    WHERE\n        is_active = 1;\n","level":"info","timestamp":"2020-02-08 19:30:06"}
+{"message":"Stamp[1581183006904] - Closed Db.","level":"info","timestamp":"2020-02-08 19:30:06"}
+{"message":"Stamp[1581183006904] - Returned 1 row(s)","level":"info","timestamp":"2020-02-08 19:30:06"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-08 19:30:13"}
+{"message":"Stamp[1581183013293] - Running statement \n    SELECT\n        teacher_id,\n        first_name,\n        last_name,\n        mobile,\n        email,\n        class_id,\n        is_active\n    FROM\n        teacher\n    WHERE\n        is_active = 1;\n","level":"info","timestamp":"2020-02-08 19:30:13"}
+{"message":"Stamp[1581183013293] - Closed Db.","level":"info","timestamp":"2020-02-08 19:30:13"}
+{"message":"Stamp[1581183013293] - Returned 1 row(s)","level":"info","timestamp":"2020-02-08 19:30:13"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-08 19:30:50"}
+{"message":"Stamp[1581183050681] - Running statement \n    SELECT\n        teacher_id,\n        first_name,\n        last_name,\n        mobile,\n        email,\n        class_id,\n        is_active\n    FROM\n        teacher\n    WHERE\n        is_active = 1;\n","level":"info","timestamp":"2020-02-08 19:30:50"}
+{"message":"Stamp[1581183050681] - Closed Db.","level":"info","timestamp":"2020-02-08 19:30:50"}
+{"message":"Stamp[1581183050681] - Returned 1 row(s)","level":"info","timestamp":"2020-02-08 19:30:50"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-08 19:32:28"}
+{"message":"Stamp[1581183148137] - Running statement \n    SELECT\n        teacher_id,\n        first_name,\n        last_name,\n        mobile,\n        email,\n        class_id,\n        is_active\n    FROM\n        teacher\n    WHERE\n        is_active = 1;\n","level":"info","timestamp":"2020-02-08 19:32:28"}
+{"message":"Stamp[1581183148137] - Closed Db.","level":"info","timestamp":"2020-02-08 19:32:28"}
+{"message":"Stamp[1581183148137] - Returned 1 row(s)","level":"info","timestamp":"2020-02-08 19:32:28"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-08 19:32:43"}
+{"message":"Stamp[1581183163806] - Running statement \n    SELECT\n        teacher_id,\n        first_name,\n        last_name,\n        mobile,\n        email,\n        class_id,\n        is_active\n    FROM\n        teacher\n    WHERE\n        is_active = 1;\n","level":"info","timestamp":"2020-02-08 19:32:43"}
+{"message":"Stamp[1581183163806] - Closed Db.","level":"info","timestamp":"2020-02-08 19:32:43"}
+{"message":"Stamp[1581183163806] - Returned 1 row(s)","level":"info","timestamp":"2020-02-08 19:32:43"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-08 19:33:34"}
+{"message":"Stamp[1581183214637] - Running statement \n    SELECT\n        teacher_id,\n        first_name,\n        last_name,\n        mobile,\n        email,\n        class_id,\n        is_active\n    FROM\n        teacher\n    WHERE\n        is_active = 1;\n","level":"info","timestamp":"2020-02-08 19:33:34"}
+{"message":"Stamp[1581183214637] - Closed Db.","level":"info","timestamp":"2020-02-08 19:33:34"}
+{"message":"Stamp[1581183214637] - Returned 1 row(s)","level":"info","timestamp":"2020-02-08 19:33:34"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-08 19:36:17"}
+{"message":"Stamp[1581183377026] - Running statement \n    SELECT\n        teacher_id,\n        first_name,\n        last_name,\n        mobile,\n        email,\n        class_id,\n        is_active\n    FROM\n        teacher\n    WHERE\n        is_active = 1;\n","level":"info","timestamp":"2020-02-08 19:36:17"}
+{"message":"Stamp[1581183377026] - Closed Db.","level":"info","timestamp":"2020-02-08 19:36:17"}
+{"message":"Stamp[1581183377026] - Returned 1 row(s)","level":"info","timestamp":"2020-02-08 19:36:17"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-08 19:36:31"}
+{"message":"Stamp[1581183391680] - Running statement \n    SELECT\n        teacher_id,\n        first_name,\n        last_name,\n        mobile,\n        email,\n        class_id,\n        is_active\n    FROM\n        teacher\n    WHERE\n        is_active = 1;\n","level":"info","timestamp":"2020-02-08 19:36:31"}
+{"message":"Stamp[1581183391680] - Closed Db.","level":"info","timestamp":"2020-02-08 19:36:31"}
+{"message":"Stamp[1581183391680] - Returned 1 row(s)","level":"info","timestamp":"2020-02-08 19:36:31"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-08 19:36:57"}
+{"message":"Stamp[1581183417818] - Running statement \n    SELECT\n        teacher_id,\n        first_name,\n        last_name,\n        mobile,\n        email,\n        class_id,\n        is_active\n    FROM\n        teacher\n    WHERE\n        is_active = 1;\n","level":"info","timestamp":"2020-02-08 19:36:57"}
+{"message":"Stamp[1581183417818] - Closed Db.","level":"info","timestamp":"2020-02-08 19:36:57"}
+{"message":"Stamp[1581183417818] - Returned 1 row(s)","level":"info","timestamp":"2020-02-08 19:36:57"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-08 19:37:35"}
+{"message":"Stamp[1581183455688] - Running statement \n    SELECT\n        teacher_id,\n        first_name,\n        last_name,\n        mobile,\n        email,\n        class_id,\n        is_active\n    FROM\n        teacher\n    WHERE\n        is_active = 1;\n","level":"info","timestamp":"2020-02-08 19:37:35"}
+{"message":"Stamp[1581183455688] - Closed Db.","level":"info","timestamp":"2020-02-08 19:37:35"}
+{"message":"Stamp[1581183455688] - Returned 1 row(s)","level":"info","timestamp":"2020-02-08 19:37:35"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-08 19:37:40"}
+{"message":"Stamp[1581183460704] - Running statement - \n\n\n    UPDATE \n        teacher\n    SET\n        is_active = 0\n    WHERE\n        teacher_id = $teacher_id\n\n\n with params {\"$teacher_id\":1}.","level":"info","timestamp":"2020-02-08 19:37:40"}
+{"message":"Stamp[1581183460704] - Closed Db.","level":"info","timestamp":"2020-02-08 19:37:40"}
