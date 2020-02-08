@@ -1,4 +1,8 @@
-import { getDatabase, objectToUpdateStatement, objectToInsertStatement, jsonToStatementObject } from 'db/utils';
+import { 
+    objectToUpdateStatement, 
+    objectToInsertStatement, 
+    jsonToStatementObject 
+} from 'db/utils';
 import { run, all } from '../../db/repo';
 
 const queryEnsureCreatedScript = `CREATE TABLE IF NOT EXISTS teacher (
@@ -58,14 +62,19 @@ export async function getTeachers() {
 }
 
 export async function createOrUpdateTeacher(teacher){
-    if(teacher.teacher_id)
-        return updateTeacher(teacher);
-    return createTeacher(teacher);
+    delete teacher.Delete;
+    delete teacher.Edit;
+    if(teacher.teacher_id){
+         await updateTeacher(teacher);
+         return 'add';
+    }
+    await createTeacher(teacher);
+    return 'update'
 }
 
 export async function updateTeacher(teacher){
-    const statement = objectToUpdateStatement(teacher);
-    const statementObject = objectToUpdateStatement(teacher);
+    const statement = objectToUpdateStatement(teacher, 'teacher');
+    const statementObject = jsonToStatementObject(teacher);
 
     return run(statement, statementObject);
 }

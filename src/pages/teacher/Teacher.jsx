@@ -21,7 +21,7 @@ const columnConfig = [{
     name: 'mobile',
     label: 'Mobile',
 },{
-    name: 'Email',
+    name: 'email',
     label: 'Email',
 },{
     name: 'is_active',
@@ -38,34 +38,36 @@ const  tableOptions = {
 export default () => {
     const [columns, setColumns] = useState([]);
     const [data, setData] = useState([]);
+    const [options, setOptions] = useState({});
     const [isOpen, setIsOpen] = useState(false);
     const [teacher, setTeacher] = useState({});
+    const alert = useAlert();
+    const dialog = useDialog();
+    let columnsVar;
+
+    const handleEditAdd = (rowData) => {
+		const obj = Object.fromEntries(columnsVar.map(({name}, index) => [name,rowData[index]]));
+		setTeacher(obj);
+		setIsOpen(true);
+	}
     
+    const tableAddButton = useAddButton(handleEditAdd);
     useEffect(() => {
         (async () => {
-            let editButtons = await AddUpdate(() => {}, handleDelete);
+            let editButtons = await AddUpdate(handleEditAdd, handleDelete);
+            setOptions({
+                ...tableOptions,
+                ...tableAddButton
+            })
             const columns = [...columnConfig, ...editButtons];
-            setColumns(columns)
+            columnsVar = columns;
+            setColumns(columns);
             reset();
         })();
     },[]);
 
-    const handleEditAdd = (rowData) => {
-		const obj = Object.fromEntries(columns.map(({name}, index) => [name,rowData[index]]));
-		setTeacher(obj);
-		setIsOpen(true);
-	}
-    const tableAddButton = useAddButton(handleEditAdd);
-    const options = {
-        ...tableOptions,
-        ...tableAddButton
-    }
-
-    const alert = useAlert();
-    const dialog = useDialog();
-
     const handleDelete = rowData => {
-		const teacher = Object.fromEntries(columns.map(({name}, index) => [name,rowData[index]]));
+		const teacher = Object.fromEntries(columnsVar.map(({name}, index) => [name,rowData[index]]));
 		dialog({ title: 'Are you sure?', description: `Really delete ${teacher.first_name} ${teacher.last_name}?`, handleYes: () => handleYesForDelete(teacher) })
 	}
 
