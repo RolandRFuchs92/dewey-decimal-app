@@ -3,6 +3,7 @@ import MUIDataTable from 'mui-datatables';
 
 import AddUpdate from 'utils/tableButtons';
 import { getTeachers, hideTeacher } from './Teacher.repo';
+import TeacherModal from './Teacher.modal';
 import { useAddButton } from 'utils/tableButtons';
 import { useAlert } from 'utils/snackbarAlerts';
 import { useDialog } from 'utils/dialog';
@@ -38,27 +39,33 @@ export default () => {
     const [columns, setColumns] = useState([]);
     const [data, setData] = useState([]);
     const [isOpen, setIsOpen] = useState(false);
-    const tableAddButton = useAddButton();
-    const options = {
-        ...tableOptions,
-        ...tableAddButton
-    }
-    const alert = useAlert();
-    const dialog = useDialog();
-    let columnVar;
-
+    const [teacher, setTeacher] = useState({});
+    
     useEffect(() => {
         (async () => {
             let editButtons = await AddUpdate(() => {}, handleDelete);
             const columns = [...columnConfig, ...editButtons];
-            columnVar = columns;
             setColumns(columns)
             reset();
         })();
     },[]);
 
+    const handleEditAdd = (rowData) => {
+		const obj = Object.fromEntries(columns.map(({name}, index) => [name,rowData[index]]));
+		setTeacher(obj);
+		setIsOpen(true);
+	}
+    const tableAddButton = useAddButton(handleEditAdd);
+    const options = {
+        ...tableOptions,
+        ...tableAddButton
+    }
+
+    const alert = useAlert();
+    const dialog = useDialog();
+
     const handleDelete = rowData => {
-		const teacher = Object.fromEntries(columnVar.map(({name}, index) => [name,rowData[index]]));
+		const teacher = Object.fromEntries(columns.map(({name}, index) => [name,rowData[index]]));
 		dialog({ title: 'Are you sure?', description: `Really delete ${teacher.first_name} ${teacher.last_name}?`, handleYes: () => handleYesForDelete(teacher) })
 	}
 
@@ -73,6 +80,8 @@ export default () => {
         }
     }
 
+    const handleClose = () => setIsOpen(false);
+
     const reset = async () => {
         setData(await getTeachers());
         setIsOpen(false);
@@ -81,6 +90,7 @@ export default () => {
     return (
         <>
             <MUIDataTable title='Teachers' data={data} columns={columns} options={options} />
+            <TeacherModal {...{isOpen,  handleClose, reset, teacher}}></TeacherModal>
         </>
     );
 }
