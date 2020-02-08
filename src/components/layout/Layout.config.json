@@ -2,14 +2,14 @@
 	"drawerWidth": 240,
 	"mainMenu": [
 		{
+			"label": "Home",
+			"icon": "Home",
+			"path": "/home"
+		},
+		{
 			"label": "School",
 			"icon": "school",
 			"menuItems": [
-				{
-					"label": "Birthday",
-					"icon": "birthday",
-					"path": "/birthdays"
-				},
 				{
 					"label": "Student",
 					"icon": "student",

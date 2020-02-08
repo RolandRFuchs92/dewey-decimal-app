@@ -1,15 +1,15 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { drawerWidth } from './Layout.config.json';
 import Drawer from './Drawer';
 import { CssBaseline, AppBar, Toolbar, Typography } from '@material-ui/core';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
 
 import Teacher from 'pages/teacher/Teacher';
 import Student from '../../pages/student/Student';
 import Class from 'pages/class/Class';
+import Home from 'pages/home';
 import { Provider } from 'utils/context';
-import Dialogs from 'pages/backdrops';
 
 const useStyles = makeStyles(theme => ({
 	root: {
@@ -28,26 +28,10 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const contextDefault = {
-	yesNo: {
-		isOpen: false,
-		title: '',
-		text: '',
-		handleYes: () => {},
-		handleNo: () => {},
-		handleClose: () => {}
-	},
-	alertSuccess: {
-		isOpen: false,
-		title: '',
-		text: '',
-	},
-	alertError:{
-		isOpen: false,
-		title: '',
-		text: '',
-	},
 	updateContext: () => {}
-};
+}
+
+
 
 export default function PermanentDrawerLeft() {
 	const classes = useStyles();
@@ -70,8 +54,14 @@ export default function PermanentDrawerLeft() {
 					<main className={classes.content}>
 						<div className={classes.toolbar} />
 						<Switch>
+							<Route exact path="/">
+								<Redirect to="/home"></Redirect>
+							</Route>
+							<Route exact path='/home'>
+								<Home></Home>
+							</Route>
 							<Route exact path='/students'>
-								<Student>Store</Student>
+								<Student></Student>
 							</Route>
 							<Route exact path='/school/class'>
 								<Class></Class>
@@ -91,7 +81,6 @@ export default function PermanentDrawerLeft() {
 						</Route>
 					</main>
 				</Router>
-				<Dialogs></Dialogs>
 			</Provider>
 		</div>
 	);

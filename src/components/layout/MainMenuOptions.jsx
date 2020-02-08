@@ -7,20 +7,7 @@ import {
 	Collapse,
 	makeStyles,
 } from '@material-ui/core';
-// import {
-// 	AirlineSeatReclineExtra,
-// 	Home,
-// 	Code,
-// 	Store,
-// 	Rowing,
-// 	Cake,
-// 	MenuBook,
-// 	School,
-// 	EmojiPeople,
-// 	SupervisedUserCircle,
-// 	ExpandLess,
-// 	ExpandMore,
-// } from '@material-ui/icons';
+
 import { withRouter } from 'react-router-dom';
 import { isNil, upperFirst } from 'lodash';
 import icons from 'components/icons';
@@ -81,30 +68,3 @@ function CreateListItem({ label, icon, path, menuItems, props }) {
 }
 
 export default withRouter(MenuOptions);
-
-// function Icon({ iconName }) {
-// 	switch (iconName) {
-// 		case 'teacher':
-// 			return <EmojiPeople />
-// 		case 'home':
-// 			return <Home></Home>;
-// 		case 'code':
-// 			return <Code></Code>;
-// 		case 'store':
-// 			return <Store></Store>;
-// 		case 'rowing':
-// 			return <Rowing></Rowing>;
-// 		case 'birthday':
-// 			return <Cake></Cake>;
-// 		case 'menu':
-// 			return <MenuBook></MenuBook>;
-// 		case 'school':
-// 			return <School />;
-// 		case 'student':
-// 			return <AirlineSeatReclineExtra/>;
-// 		case 'class':
-// 			return <SupervisedUserCircle></SupervisedUserCircle>;
-// 		default:
-// 			return null;
-// 	}
-// }

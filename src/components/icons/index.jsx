@@ -23,13 +23,12 @@ const Add = createIcon(faPlusSquare);
 const Delete = createIcon(faMinusSquare);
 export default { 
     Edit,
-    Home,
     Code,
     Store,
     Birthday: Cake,
 	Class: School,
 	Teacher: EmojiPeople,
-	Home: Home,
+	Home,
 	Menu: MenuBook,
 	School,
 	Student: AirlineSeatReclineExtra,
