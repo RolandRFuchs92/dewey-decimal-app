@@ -48,8 +48,12 @@ export default function () {
 	const resetStudentList = async () => {
 		const studentData = await getStudentData();
 		setData(studentData);
+		setIsOpen(false);
 	}
-	const handleClose = () => setIsOpen(false);
+	const handleClose = () => {
+		setIsOpen(false);
+	}
+
 	const handleDeleteClick = rowData => {
 		const selectedStudent = Object.fromEntries(columnVar.map(({name}, index) => [name,rowData[index]]));
 		dialog({ title: 'Are you sure?', description: `Really delete ${selectedStudent.first_name} ${selectedStudent.last_name}?`, handleYes: () => handleYesForDelete(selectedStudent) })
@@ -73,7 +77,7 @@ export default function () {
 				data={data}
 				columns={columns}
 			></MUIDataTable>
-			<StudentModal {...({ isOpen, student, handleClose})}></StudentModal>
+			<StudentModal {...({ isOpen, student, handleClose, reset: resetStudentList})}></StudentModal>
 		</>
 	);
 }

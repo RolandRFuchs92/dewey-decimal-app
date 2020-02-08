@@ -585,3 +585,87 @@
 {"message":"Stamp[1581151583766] - Running statement \n\tSELECT\n\t\t*\n\tFROM \n\t\tstudent s\n\tWHERE\n\t\ts.is_active = 1;\n","level":"info","timestamp":"2020-02-08 10:46:23"}
 {"message":"Stamp[1581151583766] - Closed Db.","level":"info","timestamp":"2020-02-08 10:46:23"}
 {"message":"Stamp[1581151583766] - Returned 3 row(s)","level":"info","timestamp":"2020-02-08 10:46:23"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-08 10:46:28"}
+{"message":"Stamp[1581151588889] - Running statement PRAGMA table_info(student)","level":"info","timestamp":"2020-02-08 10:46:28"}
+{"message":"Stamp[1581151588889] - Closed Db.","level":"info","timestamp":"2020-02-08 10:46:29"}
+{"message":"Stamp[1581151588889] - Returned 12 row(s)","level":"info","timestamp":"2020-02-08 10:46:29"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-08 10:46:29"}
+{"message":"Stamp[1581151589118] - Running statement \n\tSELECT\n\t\t*\n\tFROM \n\t\tstudent s\n\tWHERE\n\t\ts.is_active = 1;\n","level":"info","timestamp":"2020-02-08 10:46:29"}
+{"message":"Stamp[1581151589118] - Closed Db.","level":"info","timestamp":"2020-02-08 10:46:29"}
+{"message":"Stamp[1581151589118] - Returned 3 row(s)","level":"info","timestamp":"2020-02-08 10:46:29"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-08 10:47:10"}
+{"message":"Stamp[1581151630251] - Running statement \n    SELECT\n        teacher_id,\n        first_name,\n        last_name,\n        mobile,\n        email,\n        class_id,\n        is_active\n    FROM\n        teacher\n    WHERE\n        is_active = 1;\n","level":"info","timestamp":"2020-02-08 10:47:10"}
+{"message":"Stamp[1581151630251] - Closed Db.","level":"info","timestamp":"2020-02-08 10:47:10"}
+{"message":"Stamp[1581151630251] - Returned 0 row(s)","level":"info","timestamp":"2020-02-08 10:47:10"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-08 18:52:18"}
+{"message":"Stamp[1581180738874] - Running statement PRAGMA table_info(student)","level":"info","timestamp":"2020-02-08 18:52:18"}
+{"message":"Stamp[1581180738874] - Closed Db.","level":"info","timestamp":"2020-02-08 18:52:19"}
+{"message":"Stamp[1581180738874] - Returned 12 row(s)","level":"info","timestamp":"2020-02-08 18:52:19"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-08 18:52:19"}
+{"message":"Stamp[1581180739214] - Running statement \n\tSELECT\n\t\t*\n\tFROM \n\t\tstudent s\n\tWHERE\n\t\ts.is_active = 1;\n","level":"info","timestamp":"2020-02-08 18:52:19"}
+{"message":"Stamp[1581180739214] - Closed Db.","level":"info","timestamp":"2020-02-08 18:52:19"}
+{"message":"Stamp[1581180739214] - Returned 3 row(s)","level":"info","timestamp":"2020-02-08 18:52:19"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-08 18:52:29"}
+{"message":"Stamp[1581180749610] - Running statement - \n\n\n\t\tUPDATE student\n\t\tSET \n\t\t\tfirst_name=$first_name,last_name=$last_name,birthdate=$birthdate,mother_name=$mother_name,mother_mobile=$mother_mobile,mother_email=$mother_email,father_name=$father_name,father_mobile=$father_mobile,father_email=$father_email,class_id=$class_id,is_active=$is_active\n\t\tWHERE\n\t\t\tstudent_id=$student_id\n\t\n\n with params {\"$student_id\":3,\"$first_name\":\"xxxx\",\"$last_name\":\"ssss\",\"$birthdate\":\"ddd\",\"$mother_name\":null,\"$mother_mobile\":null,\"$mother_email\":null,\"$father_name\":null,\"$father_mobile\":null,\"$father_email\":null,\"$class_id\":1,\"$is_active\":1}.","level":"info","timestamp":"2020-02-08 18:52:29"}
+{"message":"Stamp[1581180749610] - Closed Db.","level":"info","timestamp":"2020-02-08 18:52:29"}
+{"message":"Stamp[1581180749610] - Returned Successfully.","level":"info","timestamp":"2020-02-08 18:52:29"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-08 18:53:05"}
+{"message":"Stamp[1581180785707] - Running statement PRAGMA table_info(student)","level":"info","timestamp":"2020-02-08 18:53:05"}
+{"message":"Stamp[1581180785707] - Closed Db.","level":"info","timestamp":"2020-02-08 18:53:05"}
+{"message":"Stamp[1581180785707] - Returned 12 row(s)","level":"info","timestamp":"2020-02-08 18:53:05"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-08 18:53:05"}
+{"message":"Stamp[1581180785878] - Running statement \n\tSELECT\n\t\t*\n\tFROM \n\t\tstudent s\n\tWHERE\n\t\ts.is_active = 1;\n","level":"info","timestamp":"2020-02-08 18:53:05"}
+{"message":"Stamp[1581180785878] - Closed Db.","level":"info","timestamp":"2020-02-08 18:53:05"}
+{"message":"Stamp[1581180785878] - Returned 3 row(s)","level":"info","timestamp":"2020-02-08 18:53:05"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-08 18:53:13"}
+{"message":"Stamp[1581180793814] - Running statement - \n\n\n\t\tUPDATE student\n\t\tSET \n\t\t\tfirst_name=$first_name,last_name=$last_name,birthdate=$birthdate,mother_name=$mother_name,mother_mobile=$mother_mobile,mother_email=$mother_email,father_name=$father_name,father_mobile=$father_mobile,father_email=$father_email,class_id=$class_id,is_active=$is_active\n\t\tWHERE\n\t\t\tstudent_id=$student_id\n\t\n\n with params {\"$student_id\":3,\"$first_name\":\"asdadad\",\"$last_name\":\"ssss\",\"$birthdate\":\"ddd\",\"$mother_name\":null,\"$mother_mobile\":null,\"$mother_email\":null,\"$father_name\":null,\"$father_mobile\":null,\"$father_email\":null,\"$class_id\":1,\"$is_active\":1}.","level":"info","timestamp":"2020-02-08 18:53:13"}
+{"message":"Stamp[1581180793814] - Closed Db.","level":"info","timestamp":"2020-02-08 18:53:13"}
+{"message":"Stamp[1581180793814] - Returned Successfully.","level":"info","timestamp":"2020-02-08 18:53:13"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-08 18:53:18"}
+{"message":"Stamp[1581180798363] - Running statement \n    SELECT\n        teacher_id,\n        first_name,\n        last_name,\n        mobile,\n        email,\n        class_id,\n        is_active\n    FROM\n        teacher\n    WHERE\n        is_active = 1;\n","level":"info","timestamp":"2020-02-08 18:53:18"}
+{"message":"Stamp[1581180798363] - Closed Db.","level":"info","timestamp":"2020-02-08 18:53:18"}
+{"message":"Stamp[1581180798363] - Returned 0 row(s)","level":"info","timestamp":"2020-02-08 18:53:18"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-08 18:53:18"}
+{"message":"Stamp[1581180798689] - Running statement PRAGMA table_info(student)","level":"info","timestamp":"2020-02-08 18:53:18"}
+{"message":"Stamp[1581180798689] - Closed Db.","level":"info","timestamp":"2020-02-08 18:53:18"}
+{"message":"Stamp[1581180798689] - Returned 12 row(s)","level":"info","timestamp":"2020-02-08 18:53:18"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-08 18:53:18"}
+{"message":"Stamp[1581180798882] - Running statement \n\tSELECT\n\t\t*\n\tFROM \n\t\tstudent s\n\tWHERE\n\t\ts.is_active = 1;\n","level":"info","timestamp":"2020-02-08 18:53:18"}
+{"message":"Stamp[1581180798882] - Closed Db.","level":"info","timestamp":"2020-02-08 18:53:18"}
+{"message":"Stamp[1581180798882] - Returned 3 row(s)","level":"info","timestamp":"2020-02-08 18:53:18"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-08 18:54:59"}
+{"message":"Stamp[1581180899655] - Running statement - \n\n\n\t\tUPDATE student\n\t\tSET \n\t\t\tfirst_name=$first_name,last_name=$last_name,birthdate=$birthdate,mother_name=$mother_name,mother_mobile=$mother_mobile,mother_email=$mother_email,father_name=$father_name,father_mobile=$father_mobile,father_email=$father_email,class_id=$class_id,is_active=$is_active\n\t\tWHERE\n\t\t\tstudent_id=$student_id\n\t\n\n with params {\"$student_id\":3,\"$first_name\":\"A\",\"$last_name\":\"ssss\",\"$birthdate\":\"ddd\",\"$mother_name\":null,\"$mother_mobile\":null,\"$mother_email\":null,\"$father_name\":null,\"$father_mobile\":null,\"$father_email\":null,\"$class_id\":1,\"$is_active\":1}.","level":"info","timestamp":"2020-02-08 18:54:59"}
+{"message":"Stamp[1581180899655] - Closed Db.","level":"info","timestamp":"2020-02-08 18:54:59"}
+{"message":"Stamp[1581180899655] - Returned Successfully.","level":"info","timestamp":"2020-02-08 18:54:59"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-08 18:56:24"}
+{"message":"Stamp[1581180984751] - Running statement PRAGMA table_info(student)","level":"info","timestamp":"2020-02-08 18:56:24"}
+{"message":"Stamp[1581180984751] - Closed Db.","level":"info","timestamp":"2020-02-08 18:56:24"}
+{"message":"Stamp[1581180984751] - Returned 12 row(s)","level":"info","timestamp":"2020-02-08 18:56:24"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-08 18:56:24"}
+{"message":"Stamp[1581180984980] - Running statement \n\tSELECT\n\t\t*\n\tFROM \n\t\tstudent s\n\tWHERE\n\t\ts.is_active = 1;\n","level":"info","timestamp":"2020-02-08 18:56:24"}
+{"message":"Stamp[1581180984980] - Closed Db.","level":"info","timestamp":"2020-02-08 18:56:25"}
+{"message":"Stamp[1581180984980] - Returned 3 row(s)","level":"info","timestamp":"2020-02-08 18:56:25"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-08 18:56:32"}
+{"message":"Stamp[1581180992022] - Running statement - \n\n\n\t\tUPDATE student\n\t\tSET \n\t\t\tfirst_name=$first_name,last_name=$last_name,birthdate=$birthdate,mother_name=$mother_name,mother_mobile=$mother_mobile,mother_email=$mother_email,father_name=$father_name,father_mobile=$father_mobile,father_email=$father_email,class_id=$class_id,is_active=$is_active\n\t\tWHERE\n\t\t\tstudent_id=$student_id\n\t\n\n with params {\"$student_id\":3,\"$first_name\":\"X\",\"$last_name\":\"ssss\",\"$birthdate\":\"ddd\",\"$mother_name\":null,\"$mother_mobile\":null,\"$mother_email\":null,\"$father_name\":null,\"$father_mobile\":null,\"$father_email\":null,\"$class_id\":1,\"$is_active\":1}.","level":"info","timestamp":"2020-02-08 18:56:32"}
+{"message":"Stamp[1581180992022] - Closed Db.","level":"info","timestamp":"2020-02-08 18:56:32"}
+{"message":"Stamp[1581180992022] - Returned Successfully.","level":"info","timestamp":"2020-02-08 18:56:32"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-08 18:56:32"}
+{"message":"Stamp[1581180992179] - Running statement \n\tSELECT\n\t\t*\n\tFROM \n\t\tstudent s\n\tWHERE\n\t\ts.is_active = 1;\n","level":"info","timestamp":"2020-02-08 18:56:32"}
+{"message":"Stamp[1581180992179] - Closed Db.","level":"info","timestamp":"2020-02-08 18:56:32"}
+{"message":"Stamp[1581180992179] - Returned 3 row(s)","level":"info","timestamp":"2020-02-08 18:56:32"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-08 18:56:38"}
+{"message":"Stamp[1581180998377] - Running statement - \n\n\n\tUPDATE \n\t\tstudent\n\tSET\n\t\tis_active = 0\n\tWHERE\n\t\tstudent_id=$student_id;\n\n\n with params 4.","level":"info","timestamp":"2020-02-08 18:56:38"}
+{"message":"Stamp[1581180998377] - Closed Db.","level":"info","timestamp":"2020-02-08 18:56:38"}
+{"message":"Stamp[1581180998377] - Returned Successfully.","level":"info","timestamp":"2020-02-08 18:56:38"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-08 18:56:38"}
+{"message":"Stamp[1581180998523] - Running statement \n\tSELECT\n\t\t*\n\tFROM \n\t\tstudent s\n\tWHERE\n\t\ts.is_active = 1;\n","level":"info","timestamp":"2020-02-08 18:56:38"}
+{"message":"Stamp[1581180998523] - Closed Db.","level":"info","timestamp":"2020-02-08 18:56:38"}
+{"message":"Stamp[1581180998523] - Returned 2 row(s)","level":"info","timestamp":"2020-02-08 18:56:38"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-08 18:56:44"}
+{"message":"Stamp[1581181004889] - Running statement - \n\n\n\t\tINSERT INTO student (student_id,first_name,last_name,birthdate,mother_name,mother_mobile,mother_email,father_name,father_mobile,father_email,class_id,is_active)\n\t\tVALUES ($student_id,$first_name,$last_name,$birthdate,$mother_name,$mother_mobile,$mother_email,$father_name,$father_mobile,$father_email,$class_id,$is_active)\n\t\n\n with params {\"$first_name\":\"A\",\"$last_name\":\"A\",\"$birthdate\":\"A\",\"$class_id\":\"1\",\"$is_active\":1}.","level":"info","timestamp":"2020-02-08 18:56:44"}
+{"message":"Stamp[1581181004889] - Closed Db.","level":"info","timestamp":"2020-02-08 18:56:44"}
+{"message":"Stamp[1581181004889] - Returned Successfully.","level":"info","timestamp":"2020-02-08 18:56:44"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-08 18:56:44"}
+{"message":"Stamp[1581181004991] - Running statement \n\tSELECT\n\t\t*\n\tFROM \n\t\tstudent s\n\tWHERE\n\t\ts.is_active = 1;\n","level":"info","timestamp":"2020-02-08 18:56:44"}
+{"message":"Stamp[1581181004991] - Closed Db.","level":"info","timestamp":"2020-02-08 18:56:45"}
+{"message":"Stamp[1581181004991] - Returned 3 row(s)","level":"info","timestamp":"2020-02-08 18:56:45"}

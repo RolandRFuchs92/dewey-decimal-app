@@ -48,10 +48,10 @@ export default ({ isOpen = false, handleClose, student, reset }) => {
 		const studentName = `${newStudent.first_name || 'empty'} ${newStudent.last_name || ''}`; 
 		try {
 			isAdd = await addOrUpdateStudent(newStudent) === 'add';
-			alerts.success(`Successfully ${isAdd ? 'added' : 'updated'} ${studentName}`);
 			reset();	
+			alerts.success(`Successfully ${isAdd ? 'added' : 'updated'} ${studentName}`);
 		} catch (error) {
-			alerts.error(`There was an error ${isAdd? 'adding' : 'update'} ${studentName}`);
+			alerts.error(`There was an error ${isAdd? 'adding' : 'updating'} ${studentName}`);
 		}
 	}
 	const handleChange = name => ({target:{value}}) =>{ setSelectedStudent({...newStudent, [name]: value})};
