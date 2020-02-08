@@ -1,28 +1,65 @@
 import React, {useEffect, useState} from 'react';
-import { Grid } from '@material-ui/core';
+import MUIDataTable from 'mui-datatables';
 
-import TeacherForm from './TeacherForm';
-import TeacherTable from './TeacherTable';
-import {getTeachers} from './Teacher.repo';
+import AddUpdate from 'utils/tableButtons';
+import { getTeachers } from './Teacher.repo';
+import { useAddButton } from 'utils/tableButtons';
+
+const columnConfig = [{
+    name: 'teacher_id',
+    label: 'Id',
+},{
+    name: 'first_name',
+    label: 'Name',
+},{
+    name: 'last_name',
+    label: 'Surname',
+},{
+    name: 'mobile',
+    label: 'Mobile',
+},{
+    name: 'Email',
+    label: 'Email',
+},{
+    name: 'is_active',
+    label: 'Active',
+},{
+    name: 'class_id',
+    label: 'Class',
+}];
+
+const  tableOptions = {
+    selectableRows: 'none',
+}
 
 export default () => {
-    const [teachers, setTeachers] = useState([]);
-    const [teacher, setTeacher] = useState({});
-    useEffect(() => {
-        (async () => {
-            const result = await getTeachers();
-            setTeachers(result);
-        })();
-    },[]);
-
-    useEffect(() => {},[teacher])
-
-    const handleSetTeacher = (teacher) => {
-        setTeacher(teacher);
+    const [columns, setColumns] = useState([]);
+    const [data, setData] = useState([]);
+    const [isOpen, setIsOpen] = useState(false);
+    const tableAddButton = useAddButton();
+    const options = {
+        ...tableOptions,
+        ...tableAddButton
     }
 
-    return <Grid container justify="center" spacing={2}>
-        <TeacherForm teacher={teacher} setTeacher={handleSetTeacher}></TeacherForm>
-        <TeacherTable teachers={teachers} setTeacher={handleSetTeacher}></TeacherTable>
-    </ Grid>
+    useEffect(() => {
+       
+        (async () => {
+            let editButtons = await AddUpdate(() => {}, () => {});
+            setColumns([...columnConfig, ...editButtons])
+            reset();
+        })();
+      
+    },[]);
+
+    const reset = async () => {
+        setData(await getTeachers());
+        setIsOpen(false);
+    }
+
+    return (
+        <>
+            <MUIDataTable title='Teachers' data={data} columns={columns} options={options} />
+        </>
+    );
 }
