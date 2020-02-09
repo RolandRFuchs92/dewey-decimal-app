@@ -1,4 +1,3 @@
--- 0 Hundreds
 INSERT INTO dewey_summary_3 (summary_2_id, summary_3_id, name)
 VALUES (001,000,'Knowledge'),
 (002,000,'The book'),
