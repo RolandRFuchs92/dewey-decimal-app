@@ -21,12 +21,17 @@ import {
 	faBarcode, 
 	faWifi, 
 	faFeatherAlt, 
-	faBookReader, 
-	faSitemap
+	faBookOpen, 
+	faSitemap,
+	faSchool,
+	faUserCog,
+	faUserGraduate,
+	faChalkboardTeacher,
+	faUsers
 } from '@fortawesome/free-solid-svg-icons';
 
 function createIcon(icon){ 
-	return <FontAwesomeIcon icon={icon}></FontAwesomeIcon>
+	return <FontAwesomeIcon icon={icon} style={{fontSize:18}}></FontAwesomeIcon>
 }
 
 const Edit = createIcon(faEdit);
@@ -35,25 +40,26 @@ const Delete = createIcon(faMinusSquare);
 const Barcode = createIcon(faBarcode);
 const Scan = createIcon(faWifi);
 const Author = createIcon(faFeatherAlt);
-const Books = createIcon(faBookReader);
+const Books = createIcon(faBookOpen);
 const DeweySystem = createIcon(faSitemap);
-
-const Thing = <>{<Rowing></Rowing>}</>;
+const FaSchool = createIcon(faSchool);
+const Admin = createIcon(faUserCog);
+const Student = createIcon(faUserGraduate);
+const Teacher = createIcon(faChalkboardTeacher);
+const studentClass = createIcon(faUsers);
 
 export default { 
     Code: <Code />,
     Store: <Store />,
     Birthday: <Cake />,
 	Class: <School/>,
-	Teacher: <EmojiPeople/>,
 	Home: <Home />, 
 	Menu: <MenuBook/>,
-	School: <School/>,
-	Student: <AirlineSeatReclineExtra />,
-	Class: <SupervisedUserCircle />,
+	Class: studentClass,
+
 	ExpandLess,
 	ExpandMore,
-
+	School: FaSchool,
     Edit,
 	Add,
 	Delete,
@@ -61,5 +67,8 @@ export default {
 	Scan,
 	Author,
 	Books,
-	DeweySystem 
+	DeweySystem,
+	Admin,
+	Student,
+	Teacher
 }

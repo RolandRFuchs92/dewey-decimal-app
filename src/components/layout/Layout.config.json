@@ -31,7 +31,16 @@
 			"label": "Library",
 			"icon": "menu",
 			"menuItems": [
-				
+				{
+					"label": "Authors",
+					"icon": "author",
+					"path": "/library/author"
+				},
+				{
+					"label": "Book",
+					"icon": "books",
+					"path": "/library/books"
+				},
 				{
 					"label": "Dewey System",
 					"icon": "deweySystem",
@@ -41,7 +50,7 @@
 		},
 		{
 			"label": "Admin",
-			"icon": "school",
+			"icon": "admin",
 			"path": "/admin"
 		}
 	]
