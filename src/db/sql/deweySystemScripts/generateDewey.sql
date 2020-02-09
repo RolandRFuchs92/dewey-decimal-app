@@ -46,15 +46,3 @@ CREATE TABLE IF NOT EXISTS book (
 	CONSTRAINT fk_author_id FOREIGN KEY(author_id) REFERENCES author(author_id),
 	CONSTRAINT fk_dewey_decimal_id FOREIGN KEY(dewey_decimal_id) REFERENCES dewey_decimal(dewey_decimal_id),
 );
-
-INSERT INTO dewey_classification(classification_id, name)
-VALUES(000, 'Computer science, information & general works'),
-(100, 'Philosophy & psychology'),
-(200, 'Religion'),
-(300, 'Social sciences'),
-(400, 'Language'),
-(500, 'Pure science'),
-(600, 'Technology'),
-(700, 'Arts & recreation'),
-(800, 'Literature'),
-(900, 'History & geography')
