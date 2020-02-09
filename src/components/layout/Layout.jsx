@@ -6,9 +6,12 @@ import { CssBaseline, AppBar, Toolbar, Typography } from '@material-ui/core';
 import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
 
 import Teacher from 'pages/teacher/Teacher';
-import Student from '../../pages/student/Student';
+import Student from 'pages/student/Student';
 import Class from 'pages/class/Class';
 import Home from 'pages/home';
+import DeweySystem from 'pages/deweySystem';
+import Authours from 'pages/authors'
+import Books from 'pages/books';
 import { Provider } from 'utils/context';
 
 const useStyles = makeStyles(theme => ({
@@ -69,11 +72,14 @@ export default function PermanentDrawerLeft() {
 							<Route exact path="/school/teacher">
 								<Teacher></Teacher>
 							</Route>
-							<Route exact path='/contactus'>
-								<p>Contact Us</p>
+							<Route exact path='/library/dewey'>
+								<DeweySystem></DeweySystem>
 							</Route>
-							<Route exact path='/aboutus'>
-								<p>About us</p>
+							<Route exact path='/library/author'>
+								<Authours></Authours>	
+							</Route>
+							<Route exact path='/library/books'>
+								<Books></Books>
 							</Route>
 						</Switch>
 						<Route exact path='/checkout'>

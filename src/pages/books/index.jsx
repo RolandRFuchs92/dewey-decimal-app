@@ -1,5 +1,5 @@
 import React from 'react';
 
 export default () => {
-    return <h1> dewey System page</h1>
+    return <h1>Books Page</h1>
 }
