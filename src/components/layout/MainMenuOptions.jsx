@@ -53,7 +53,7 @@ function CreateListItem({ label, icon, path, menuItems, props }) {
 		<>
 			<ListItem button key={label} onClick={() => pushPath(path)}>
 				<ListItemIcon>
-					<Icon></Icon>
+					{Icon}
 				</ListItemIcon>
 				<ListItemText primary={label} />
 				{hasMenuItems ? isOpen ? <ExpandLess /> : <ExpandMore /> : null}

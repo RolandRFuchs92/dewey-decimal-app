@@ -30,7 +30,14 @@
 		{
 			"label": "Library",
 			"icon": "menu",
-			"path": "/library"
+			"menuItems": [
+				
+				{
+					"label": "Dewey System",
+					"icon": "deweySystem",
+					"path": "/library/dewey"
+				}
+			]
 		},
 		{
 			"label": "Admin",
