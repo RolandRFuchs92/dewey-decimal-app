@@ -14,12 +14,11 @@ const tableHasDataQuery = table => `
         *
     FROM
         ${table}
-    LIMMIT 1;
+    LIMIT 1;
 `;
 
 export default async function setupDatabase(){
     try {
-        debugger;
         await createDatabase();
         await seedDatabase();
         log.info(`Database successfully checked, initialized and seeded.`);
@@ -50,10 +49,10 @@ const createDatabase = async () => {
  */
 const hasData = async (table) => {
     try {
-        const result = await all(tableHasDataQuery);
-        if(result)
-            return true;
-        return false;
+        const result = await all(tableHasDataQuery(table));
+        if(result.length === 0)
+            return false;
+        return true;
     } catch (error) {
         log.error(`There was an error checking if the table[${table}] has data.`);        
         throw error;
@@ -62,13 +61,13 @@ const hasData = async (table) => {
 
 
 const seedDatabase = async () => {
-    const summary1Files = getScriptsInFolder('summary1');
-    const summary2Files = getScriptsInFolder('summary2');
-    const summary3Files = getScriptsInFolder('summary3');
+    const summary1Queries = getScriptsInFolder('summary1');
+    const summary2Queries = getScriptsInFolder('summary2');
+    const summary3Queries = getScriptsInFolder('summary3');
 
-    await seedTable(tableDeweySummary1Name, summary1Files);
-    await seedTable(tableDeweySummary2Name, summary2Files);
-    await Promise.all(executeParallelDbQuery(deweySummary3Name, summary3Files));
+    await executeParallelDbQuery(tableDeweySummary1Name, await summary1Queries);
+    await executeParallelDbQuery(tableDeweySummary2Name, await summary2Queries);
+    await executeParallelDbQuery(deweySummary3Name, await summary3Queries);
 }
 
 /**
@@ -78,7 +77,8 @@ const seedDatabase = async () => {
  */
 const seedTable = async (tableName, query) => {
     try {
-        if(!hasData(tableName)) {
+        const tableHasData = await hasData(tableName);
+        if(!tableHasData) {
             await run(query);
             log.info(`table[${tableName}] has been populated.`);
             return;
@@ -97,7 +97,7 @@ const seedTable = async (tableName, query) => {
  * @param {string[]} files 
  */
 const executeParallelDbQuery = async ( tableName, files) => {
-    return files.map(file => seedTable(tableName, file));
+    return await Promise.all(files.map(file => seedTable(tableName, file)));
 }
 
 const getScriptsInFolder = async folderInDbFolder => {

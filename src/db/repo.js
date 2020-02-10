@@ -9,7 +9,7 @@ const getStamp = () => `Stamp[${new Date().getTime()}] -`;
  * @param {string} statement 
  * @param {JSON} statementObject 
  */
-export const run  = (statement, statementObject) => {
+export const run  = (statement, statementObject = {}) => {
     return new Promise((res, rej) => {
         const db = getDatabase();
         const stamp = getStamp();
@@ -38,7 +38,7 @@ export const run  = (statement, statementObject) => {
 export const all = (statement, statementObject) => {
     const db = getDatabase();
     const stamp = getStamp();
-    log.info(`${stamp} Running statement ${statement} with params ${JSON.stringify(statementObject)}.`);
+    log.info(`${stamp} Running statement ${statement.substr(0,200)} with params ${JSON.stringify(statementObject)}.`);
     return new Promise((res, rej) => {
         db.all(statement, statementObject, (err, rows) => {
             db.close();

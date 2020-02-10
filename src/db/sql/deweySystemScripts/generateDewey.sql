@@ -7,7 +7,7 @@ CREATE TABLE IF NOT EXISTS dewey_summary (
 CREATE TABLE IF NOT EXISTS dewey_summary_2(
 	dewey_summary_2_id INTEGER PRIMARY KEY,
 	summary_2_id INTEGER,
-	summary_id INTEGER
+	summary_id INTEGER,
 	name TEXT,
 	CONSTRAINT fk_summary_id FOREIGN KEY(summary_id) REFERENCES dewey_summary(summary_id)
 );
@@ -25,7 +25,7 @@ CREATE TABLE IF NOT EXISTS dewey_decimal(
 	summary_3_id INTEGER,
 	decimal_id INTEGER,
 	name TEXT,
-	CONSTRAINT fk_section_id FOREIGN KEY(section_id) REFERENCES dewey_section(section_id)
+	CONSTRAINT fk_summary_3_id FOREIGN KEY(summary_3_id) REFERENCES dewey_summary_3(summary_3_id)
 );
 
 CREATE TABLE IF NOT EXISTS author (
