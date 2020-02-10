@@ -1,13 +1,13 @@
-const fs = window.require('fs');
-const log = window.require('winston');
+import log from 'utils/logger';
 
+const fs = window.require('fs');
 const dbRoot = `src\\db\\`;
 
 export const loadSingleFileFromDbFolder = fileFromDbSqlFolder => {
     return new Promise((res, rej) => {
         fs.readFile(`${dbRoot}${fileFromDbSqlFolder}`, 'utf8',(err, data) => {
             if(err) {
-                log.error(`There was an error loading file ${fileFromDbSqlFolder} - ${JSON.stringify(err)}`);
+                log.error(`There was an error loading file ${fileFromDbSqlFolder}`);
                 rej(false);
             }
             res(data);

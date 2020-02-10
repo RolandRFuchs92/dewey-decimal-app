@@ -3,6 +3,10 @@ import './App.css';
 import MainLayout from './components/layout/Layout';
 import {SnackbarProvider } from 'notistack';
 import {ConfirmProvider} from 'material-ui-confirm';
+import initializeDb from 'db/initializeDb';
+
+initializeDb();
+
 function App() {
 	return (
 		<div className='App'>

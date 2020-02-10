@@ -44,5 +44,5 @@ CREATE TABLE IF NOT EXISTS book (
 	publisher TEXT, 
 	created_on TEXT,
 	CONSTRAINT fk_author_id FOREIGN KEY(author_id) REFERENCES author(author_id),
-	CONSTRAINT fk_dewey_decimal_id FOREIGN KEY(dewey_decimal_id) REFERENCES dewey_decimal(dewey_decimal_id),
+	CONSTRAINT fk_dewey_decimal_id FOREIGN KEY(dewey_decimal_id) REFERENCES dewey_decimal(dewey_decimal_id)
 );
