@@ -1,7 +1,16 @@
 import {  snakeCase, compact, lowerCase, camelCase } from 'lodash';
 import { all } from 'db/repo';
+import { preGypFixRun } from 'electron-rebuild';
 
 const getColumnsStatement = tableName => `PRAGMA table_info(${tableName})`;
+const getTablesStatement = `
+	SELECT
+		name
+	FROM 
+		sqlite_master
+	WHERE
+		type='table'
+`
 
 export async function getColumnNames(tableName) {
 	try{
@@ -55,4 +64,8 @@ export function objectToInsertStatement(obj, tableName){
 	let statement = `INSERT INTO ${tableName} (${columns})
 					VALUES (${statementColRefs})`
 	return statement;
+}
+
+export async function getAllTablesInDb(){
+	return await all(getTablesStatement);
 }
