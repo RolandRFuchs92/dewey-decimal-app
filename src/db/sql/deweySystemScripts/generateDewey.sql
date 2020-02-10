@@ -1,28 +1,28 @@
-CREATE TABLE IF NOT EXISTS dewey_classification (
-	dewey_classification_id INTEGER PRIMARY KEY,
-	classification_id INTEGER,
+CREATE TABLE IF NOT EXISTS dewey_summary (
+	dewey_summary_id INTEGER PRIMARY KEY,
+	summary_id INTEGER,
 	name TEXT
 );
 
-CREATE TABLE IF NOT EXISTS dewey_subdivision_1(
-	dewey_subdivision_id INTEGER PRIMARY KEY,
-	classification_id INTEGER,
-	sub_division_id INTEGER
+CREATE TABLE IF NOT EXISTS dewey_summary_2(
+	dewey_summary_2_id INTEGER PRIMARY KEY,
+	summary_2_id INTEGER,
+	summary_id INTEGER
 	name TEXT,
-	CONSTRAINT fk_classification_id FOREIGN KEY(classification_id) REFERENCES dewey_classification(classification_id)
+	CONSTRAINT fk_summary_id FOREIGN KEY(summary_id) REFERENCES dewey_summary(summary_id)
 );
 
-CREATE TABLE IF NOT EXISTS dewey_section(
-	dewey_section_id INTEGER PRIMARY KEY,
-	sub_division_id INTEGER,
-	section_id INTEGER,
+CREATE TABLE IF NOT EXISTS dewey_summary_3(
+	dewey_summary_3_id INTEGER PRIMARY KEY,
+	summary_3_id INTEGER,
+	summary_2_id INTEGER,
 	name TEXT,
-	CONSTRAINT fk_subdivision_id FOREIGN KEY(sub_division_id) REFERENCES dewey_subdivision_1(sub_division_id)
+	CONSTRAINT fk_summary_2_id FOREIGN KEY(summary_2_id) REFERENCES dewey_summary_2(summary_2_id)
 );
 
 CREATE TABLE IF NOT EXISTS dewey_decimal(
 	dewey_decimal_id INTEGER PRIMARY KEY,
-	section_id INTEGER,
+	summary_3_id INTEGER,
 	decimal_id INTEGER,
 	name TEXT,
 	CONSTRAINT fk_section_id FOREIGN KEY(section_id) REFERENCES dewey_section(section_id)

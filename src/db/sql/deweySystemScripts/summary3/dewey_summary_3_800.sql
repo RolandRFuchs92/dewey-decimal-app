@@ -1,4 +1,4 @@
-INSERT INTO dewey_summary_3 (summary_2_id, summary_3_id, name)
+INSERT INTO dewey_summary_3 (summary_3_id, summary_2_id, name)
 VALUES (801,800,'Philosophy and theory'),
 (802,800,'Miscellany'),
 (803,800,'Dictionaries & encyclopedias'),

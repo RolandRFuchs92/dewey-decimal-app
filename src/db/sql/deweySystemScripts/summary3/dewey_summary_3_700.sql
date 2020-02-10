@@ -1,4 +1,4 @@
-INSERT INTO dewey_summary_3 (summary_2_id, summary_3_id, name)
+INSERT INTO dewey_summary_3 (summary_3_id, summary_2_id, name)
 VALUES (701,700,'Philosophy of fine & decorative arts'),
 (702,700,'Miscellany of fine and decorative arts'),
 (703,700,'Dictionaries of fine & decorative arts'),

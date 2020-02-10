@@ -1,4 +1,4 @@
-INSERT INTO dewey_summary_3 (summary_2_id, summary_3_id, name)
+INSERT INTO dewey_summary_3 (summary_3_id, summary_2_id, name)
 VALUES (301,300,'Sociology and anthropology'),
 (302,300,'Social interaction'),
 (303,300,'Social processes'),

@@ -1,4 +1,4 @@
-INSERT INTO dewey_summary_3 (summary_2_id, summary_3_id, name)
+INSERT INTO dewey_summary_3 (summary_3_id, summary_2_id, name)
 VALUES (201,200,'Religious mythology & social theology'),
 (202,200,'Doctrines'),
 (203,200,'Public worship and other practices'),
