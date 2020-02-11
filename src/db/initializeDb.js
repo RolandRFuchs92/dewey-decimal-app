@@ -34,11 +34,11 @@ const deweySqlRoot = 'sql\\deweySystemScripts';
 const createDatabase = async () => {
     try {
         log.info(`Initializing Database.`);
-        const createDbScript = await loadSingleFileFromDbFolder(`${deweySqlRoot}\\${appSettings.deweyScript}`);
+        const createDbScript = await loadSingleFileFromDbFolder(`${deweySqlRoot}\\${appSettings.databaseScriptName}`);
         await exec(createDbScript);
         log.info(`Database successfully initialized.`);
     } catch (error) {
-        log.error(`There was an error creating the database.`,[error]);
+        log.error(`There was an error creating the database. \n ${JSON.stringify(error)}`);
         throw error;
     }
 }
@@ -54,7 +54,7 @@ const hasData = async (table) => {
             return false;
         return true;
     } catch (error) {
-        log.error(`There was an error checking if the table[${table}] has data.`);        
+        log.error(`There was an error checking if the table[${table}] has data. ${JSON.stringify(error)}`);        
         throw error;
     }
 }
@@ -81,11 +81,12 @@ const seedTable = async (tableName, query) => {
         if(!tableHasData) {
             await run(query);
             log.info(`table[${tableName}] has been populated.`);
-            return;
+            return true;
         }
         log.info(`table[${tableName}] already has data. Skipping seed.`);
+        return false;
     } catch (error) {
-        log.error(`An error occured while adding data to table[${tableName}]`,{error});
+        log.error(`An error occured while adding data to table[${tableName}] \n${error}`);
         throw error;
     }
 }
@@ -96,11 +97,18 @@ const seedTable = async (tableName, query) => {
  * @param {string} tableName 
  * @param {string[]} files 
  */
-const executeParallelDbQuery = async ( tableName, files) => {
-    return await Promise.all(files.map(file => seedTable(tableName, file)));
+const executeParallelDbQuery = (tableName, files) => {
+    //be tea dubs, used this cause i read somewhere that map/foreach/reduce is faster than foreach, but all does the same thing
+    files.reduce(async (previousQuery, file) => {
+        const hasPopulated = await previousQuery;
+        if(!hasPopulated)
+            return;
+
+        await seedTable(tableName, file);
+    });
 }
 
 const getScriptsInFolder = async folderInDbFolder => {
     const filesInDbFolder = (await getAllFilesInFolder(`${deweySqlRoot}\\${folderInDbFolder}`)).filter(i => endsWith(i, '.sql'));
-    return Promise.all(filesInDbFolder.map(fileName => loadSingleFileFromDbFolder(`${deweySqlRoot}\\${folderInDbFolder}\\${fileName}`)));
+    return await Promise.all(filesInDbFolder.map(fileName => loadSingleFileFromDbFolder(`${deweySqlRoot}\\${folderInDbFolder}\\${fileName}`)));
 }

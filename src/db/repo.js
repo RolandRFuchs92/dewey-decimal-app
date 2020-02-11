@@ -9,8 +9,8 @@ const getStamp = () => `Stamp[${new Date().getTime()}] -`;
  * @param {string} statement 
  * @param {JSON} statementObject 
  */
-export const run  = (statement, statementObject = {}) => {
-    return new Promise((res, rej) => {
+export const run  = async (statement, statementObject = {}) => {
+    return await new Promise((res, rej) => {
         const db = getDatabase();
         const stamp = getStamp();
         log.info(`${stamp} Running statement - \n\n${statement}\n\n with params ${JSON.stringify(statementObject)}.`);
