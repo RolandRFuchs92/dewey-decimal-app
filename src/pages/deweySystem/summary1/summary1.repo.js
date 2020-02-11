@@ -22,8 +22,8 @@ export const getAll = async () => {
     return await all(getAllData);
 }
 
-export const addOrUpdate = async () => {    
-    
+export const addOrUpdate = async (summary1Object ) => {    
+    return await addOrUpdateGeneric(summary1Object, 'dewey_summary')
 }
 export const deleteRow = async id => {
     return await run(deleteRowQuery, {$id:id});

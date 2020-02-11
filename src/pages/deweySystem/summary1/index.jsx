@@ -5,6 +5,7 @@ import EditDeleteCol, {useAddButton} from 'utils/tableButtons';
 import { getAll, deleteRow} from './summary1.repo';
 import { useDialog } from 'utils/dialog';
 import { useAlert } from 'utils/snackbarAlerts';
+import Modal from './Summary1.modal';
 
 const defaultColumns = [
     {
@@ -25,10 +26,18 @@ export default () => {
     const [options, setOptions] = useState({});
     const [columns, setColumns] = useState(defaultColumns);
     const [data, setData] = useState([]);
+    const [openModal, setOpenModal] = useState(false);
+    const [modalData, setModalData] = useState({});
 
     const showDialog = useDialog();
     const alert = useAlert();
-    const handleEditAdd = () => {};
+    
+    const handleEditAdd = (rowData) => {
+        let obj = null;
+        rowData && (obj = objectFromRowData(rowData));
+        setModalData(obj);
+        setOpenModal(true);
+    };
 
     const handleYesOnDelete = async rowData => {
         try {
@@ -39,14 +48,18 @@ export default () => {
             alert.error(`There was an error deleting ${rowData.name}!`);
         }
     }
+
+    const objectFromRowData = (rowData) => Object.fromEntries(columns.map(({name}, index) => [name,rowData[index]]));
     const handleDelete = rowData => {
-        const obj = Object.fromEntries(columns.map(({name}, index) => [name,rowData[index]]));
+        const obj = objectFromRowData(rowData);
         showDialog({ title: 'Are you sure?', description: `Really delete ${obj.name}?`, handleYes:() => handleYesOnDelete(obj)})
     }
-    const addButton = useAddButton(handleEditAdd);
 
+    const handleClose = () => setOpenModal(false);
+    const addButton = useAddButton(handleEditAdd);
     const reset = async () => {
         setData(await getAll());
+        setOpenModal(false);
     }
 
     useEffect(() => {
@@ -57,7 +70,7 @@ export default () => {
 
         setColumns([
             ...defaultColumns,
-            ...EditDeleteCol(() => {}, handleDelete)
+            ...EditDeleteCol(handleEditAdd, handleDelete)
         ]);
 
         (async () => {
@@ -68,5 +81,6 @@ export default () => {
 
     return <>
         <MUIDataTable {...({options, columns, data})}></MUIDataTable>
+        <Modal {...{open:openModal, modalData, handleClose, reset}}></Modal>
     </>
 }

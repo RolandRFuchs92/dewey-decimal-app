@@ -79,7 +79,7 @@ export async function getAllTablesInDb(){
 export async function addOrUpdate(object, tableName, pkField =`${tableName}_id`) {
 	object.Edit && delete object.Edit;
 	object.Delete && delete object.Delete;
-	if(pkField){ 
+	if(object[pkField]){ 
 		await updateDb(object, tableName, pkField);
 		return 'update';
 	}
