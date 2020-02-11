@@ -77,14 +77,7 @@ const seedDatabase = async () => {
  */
 const seedTable = async (tableName, query) => {
     try {
-        const tableHasData = await hasData(tableName);
-        if(!tableHasData) {
-            await run(query);
-            log.info(`table[${tableName}] has been populated.`);
-            return true;
-        }
-        log.info(`table[${tableName}] already has data. Skipping seed.`);
-        return false;
+        await run(query);
     } catch (error) {
         log.error(`An error occured while adding data to table[${tableName}] \n${error}`);
         throw error;
@@ -97,15 +90,18 @@ const seedTable = async (tableName, query) => {
  * @param {string} tableName 
  * @param {string[]} files 
  */
-const executeParallelDbQuery = (tableName, files) => {
-    //be tea dubs, used this cause i read somewhere that map/foreach/reduce is faster than foreach, but all does the same thing
-    files.reduce(async (previousQuery, file) => {
-        const hasPopulated = await previousQuery;
-        if(!hasPopulated)
-            return;
+const executeParallelDbQuery = async (tableName, files) => {
+    const tableHasData = await hasData(tableName);
+    if(tableHasData) {
+        log.info(`table[${tableName}] already has data. Skipping seed.`);
+        return;
+    }
 
+    for(const file of files) {
         await seedTable(tableName, file);
-    });
+    };
+
+    log.info(`table[${tableName}] has been populated.`);      
 }
 
 const getScriptsInFolder = async folderInDbFolder => {
