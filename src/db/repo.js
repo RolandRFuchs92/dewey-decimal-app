@@ -4,7 +4,7 @@ import { database } from '../../package.json';
 const getStamp = () => `Stamp[${new Date().getTime()}] -`;
 
 /**
- * Will execute a single sql state in a given query
+ * Will execute a single sql statement in a given query (UPDATE, INSERT, DELETE, etc)
  * 
  * @param {string} statement 
  * @param {JSON} statementObject 
@@ -30,7 +30,7 @@ export const run  = async (statement, statementObject = {}) => {
 }
 
 /**
- * Will return data rows as a result of a query
+ * Will return data rows as a result of a query (SELECT)
  * 
  * @param {string} statement 
  * @param {JSON} statementObject
@@ -54,7 +54,7 @@ export const all = (statement, statementObject) => {
 }
 
 /**
- * Executes each statement in an sql statement.
+ * Executes each statement in an sql statement. (EVERYTHING)
  * @param {string} statement 
  */
 export const exec = (statement) => {
@@ -77,6 +77,9 @@ export const exec = (statement) => {
     });
 }
 
+/**
+ * Will initialize and return a database object.
+ */
 export function getDatabase() {
 	const sqlite3 = window.require('sqlite3').verbose();
 	const db = new sqlite3.Database(database);

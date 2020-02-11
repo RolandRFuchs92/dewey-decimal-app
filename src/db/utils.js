@@ -1,6 +1,6 @@
 import {  snakeCase, compact, lowerCase, camelCase } from 'lodash';
-import { all } from 'db/repo';
-import { preGypFixRun } from 'electron-rebuild';
+import { all, run } from 'db/repo';
+import log from 'utils/logger';
 
 const getColumnsStatement = tableName => `PRAGMA table_info(${tableName})`;
 const getTablesStatement = `
@@ -68,4 +68,38 @@ export function objectToInsertStatement(obj, tableName){
 
 export async function getAllTablesInDb(){
 	return await all(getTablesStatement);
+}
+
+/**
+ * Generic add or update.
+ * @param {json} object 
+ * @param {string} tableName
+ * @param {string} pkField 
+ */
+export async function addOrUpdate(object, tableName, pkField =`${tableName}_id`) {
+	object.Edit && delete object.Edit;
+	object.Delete && delete object.Delete;
+	if(pkField){ 
+		await updateDb(object, tableName, pkField);
+		return 'update';
+	}
+
+	await addToDb(object, tableName);
+	return 'add'
+}
+
+export async function addToDb(object, tableName) {
+	const statement = objectToInsertStatement(object, tableName);
+	const statementObject = jsonToStatementObject(object);
+
+	log.info('Running generic addToDb command.');
+	return await run(statement, statementObject)
+}
+
+export async function updateDb(object, tableName, pkField = `${tableName}_id`){
+	const statement = objectToUpdateStatement(object, tableName, pkField);
+	const statementObject = jsonToStatementObject(object);
+
+	log.info('Running generic updateDb command.');
+	return await run(statement, statementObject);
 }
