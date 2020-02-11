@@ -2,15 +2,6 @@ import {run, all} from 'db/repo';
 import {objectToUpdateStatement, objectToInsertStatement, jsonToStatementObject} from 'db/utils';
 import { isNil } from 'lodash';
 
-const queryEnsureClassCreated = `
-    CREATE TABLE IF NOT EXISTS class(
-        class_id INTEGER PRIMARY KEY,
-        class_name TEXT,
-        grade INTEGER,
-        is_active INTEGER
-    )
-`;
-
 const queryGetClasses = `
         SELECT 
             * 
@@ -29,10 +20,6 @@ const queryHideClass = `
             class_id=$class_id
         
 `
-
-export async function ensureCreated() {
-    return await run(queryEnsureClassCreated);    
-}
 
 export async function getClasses(){
     const classes = await all(queryGetClasses);

@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import {Grid, makeStyles} from '@material-ui/core';
 import MUIDataTable from 'mui-datatables';
 
-import { getClasses, ensureCreated, hideClass } from './Class.repo';
+import { getClasses, hideClass } from './Class.repo';
 import Modal from './Class.Modal';
 import Icons from 'components/icons';
 import {useAlert} from 'utils/snackbarAlerts'
@@ -75,7 +75,6 @@ export default () => {
 
     useEffect(() => {
         (async () => {
-            await ensureCreated();
             await resetPage();
         })();
     },[]);

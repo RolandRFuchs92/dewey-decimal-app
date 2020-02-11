@@ -5,18 +5,6 @@ import {
 } from 'db/utils';
 import { run, all } from '../../db/repo';
 
-const queryEnsureCreatedScript = `CREATE TABLE IF NOT EXISTS teacher (
-	teacher_id INTEGER PRIMARY KEY,
-	first_name TEXT,
-	last_name TEXT,
-	mobile TEXT,
-	email TEXT,
-    class_id INTEGER,
-    is_active INTEGER,
-    CONSTRAINT fk_class_id FOREIGN KEY(class_id) REFERENCES class(class_id)
-)
-`;
-
 const querySelectListTeachers = `
     SELECT
         teacher_id,
