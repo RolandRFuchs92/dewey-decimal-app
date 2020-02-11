@@ -1,28 +1,30 @@
-import { all } from 'db/repo';
-import { addOrUpdate } from 'db/utils';
+import { all, run } from 'db/repo';
+import { addOrUpdate as addOrUpdateGeneric } from 'db/utils';
 
 const getAllData = `
     SELECT
+        dewey_summary_id,
         summary_id,
         name
     FROM 
         dewey_summary
 `;
 
+const deleteRowQuery = `
+    DELETE
+    FROM
+        dewey_summary
+    WHERE
+        dewey_summary_id=$id
+`;
+
 export const getAll = async () => {
     return await all(getAllData);
 }
 
-export const updateOrDelete = async () => {    
+export const addOrUpdate = async () => {    
     
 }
-
-const add = async(data) => {
-    delete data.Edit;
-    delete data.Delete;
-    return await all();
-}
-
-const edit = async (data) => {
-    return await all(getAll);
+export const deleteRow = async id => {
+    return await run(deleteRowQuery, {$id:id});
 }
