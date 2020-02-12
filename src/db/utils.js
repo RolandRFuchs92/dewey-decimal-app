@@ -88,18 +88,73 @@ export async function addOrUpdate(object, tableName, pkField =`${tableName}_id`)
 	return 'add'
 }
 
+/**
+ * will add to database based on json and tablename
+ * @param {json} object 
+ * @param {string} tableName 
+ */
 export async function addToDb(object, tableName) {
 	const statement = objectToInsertStatement(object, tableName);
 	const statementObject = jsonToStatementObject(object);
 
-	log.info('Running generic addToDb command.');
+	log.info('Running generic addToDb statement.');
 	return await run(statement, statementObject)
 }
 
+/**
+ * Will update database based on json and tablename
+ * @param {json} object 
+ * @param {string} tableName 
+ * @param {string} pkField 
+ */
 export async function updateDb(object, tableName, pkField = `${tableName}_id`){
 	const statement = objectToUpdateStatement(object, tableName, pkField);
 	const statementObject = jsonToStatementObject(object);
 
-	log.info('Running generic updateDb command.');
+	log.info('Running generic updateDb statement.');
 	return await run(statement, statementObject);
+}
+
+/**
+ * 
+ * @param {string} tableName The table against which to execute select
+ * @param {string} where your where statement if needed. 
+ */
+export async function getAll(tableName, where='') {
+	const statement = `
+		SELECT
+			*
+		FROM
+			${tableName}
+		${where}
+	`
+	log.info(`Running generic select statement.`);
+	return await all(statement);
+}
+
+
+/**
+ * Return a curried function that takes 1 argument.
+ *  
+ * @param {string} tableName 
+ * @param {string} pkField 
+ */
+export function deleteRow(tableName, pkField){
+	const buildStatement = `
+		DELETE
+		FROM
+			${tableName}
+		WHERE
+			${pkField}=
+	`;
+
+	return async (id) => {
+		const statement = `${buildStatement}${id}`;
+		log.info(`Running generic DELETE statement.`);
+		return await run(statement);
+	}
+}
+
+export async function hideRow()	{
+
 }
