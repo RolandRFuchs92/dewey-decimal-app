@@ -43,7 +43,6 @@ export default ({columns, open, handleClose, handleEditAddRow, modalData, reset}
 
 function convertJsonToModalFields(columns, handleOnChange, modalData){
     const result = columns.map((column)=> {
-        debugger;
         const child = getElement({...column, onChange:handleOnChange, value:modalData[column.name]});
         const el = <Grid item>
             {child}

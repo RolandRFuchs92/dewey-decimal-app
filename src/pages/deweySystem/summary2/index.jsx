@@ -3,8 +3,6 @@ import React from 'react';
 import PageBase from 'components/page/PageBase';
 import repo from './summary2.repo';
 
-
-
 const defaultColumns= [
     {
         name:'dewey_summary_2_id',
