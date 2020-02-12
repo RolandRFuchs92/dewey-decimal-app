@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import MUIDataTable from 'mui-datatables';
+import {Slide} from '@material-ui/core';
 
 import EditDeleteCol, {useAddButton} from 'utils/tableButtons';
 import { getAll, deleteRow} from './summary1.repo';
@@ -80,7 +81,11 @@ export default () => {
     },[])
 
     return <>
-        <MUIDataTable {...({options, columns, data})}></MUIDataTable>
-        <Modal {...{open:openModal, modalData, handleClose, reset}}></Modal>
+        <Slide in={true} direction="up" timeout={500}> 
+            <div>
+            <MUIDataTable {...({options, columns, data})}></MUIDataTable>
+            <Modal {...{open:openModal, modalData, handleClose, reset}}></Modal>
+            </div>
+        </Slide>
     </>
 }
