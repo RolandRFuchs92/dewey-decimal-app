@@ -1,31 +1,13 @@
 import React, {useState, useEffect} from 'react';
 import MUIDataTable from 'mui-datatables';
-import {Fade} from '@material-ui/core';
+import {Fade, Slide} from '@material-ui/core';
 
 import EditDeleteCol, {useAddButton} from 'utils/tableButtons';
-import { getAll, deleteRow} from './summary1.repo';
+import Modal from './ModalBase';
 import { useDialog } from 'utils/dialog';
 import { useAlert } from 'utils/snackbarAlerts';
-import Modal from './Summary1.modal';
 
-import appSettings from 'appSettings';
-
-const defaultColumns = [
-    {
-        label: 'Id',
-        name: 'dewey_summary_id'
-    },
-    {
-        label: "Name",
-        name: 'name'
-    },
-    {
-        label: 'Summary Id',
-        name: 'summary_id'
-    },
-]
-
-export default () => {
+export default ({defaultColumns, getAll, handleDeleteRow, handleEditAddRow, modal = null }) => {
     const [options, setOptions] = useState({});
     const [columns, setColumns] = useState(defaultColumns);
     const [data, setData] = useState([]);
@@ -44,7 +26,7 @@ export default () => {
 
     const handleYesOnDelete = async rowData => {
         try {
-            await deleteRow(rowData.dewey_summary_id);
+            await handleDeleteRow(rowData.dewey_summary_id);
             await reset();
             alert.success(`Successfully deleted ${rowData.name}`);
         } catch  {
@@ -68,6 +50,7 @@ export default () => {
     useEffect(() => {
         setOptions({
             selectableRows: 'none',
+            pagination: true,
             ...addButton
         });
 
@@ -83,10 +66,13 @@ export default () => {
     },[])
 
     return <>
-        <Fade in={true} timeout={appSettings.fadeTransitionDuration}> 
+        <Fade in={true} direction="up" timeout={800}> 
             <div>
-            <MUIDataTable {...({options, columns, data})}></MUIDataTable>
-            <Modal {...{open:openModal, modalData, handleClose, reset}}></Modal>
+                <MUIDataTable {...({options, columns, data})}></MUIDataTable>
+                {
+                    modal 
+                    || <Modal {...{columns, open:openModal, handleClose, handleEditAddRow, modalData, reset}}></Modal>
+                }
             </div>
         </Fade>
     </>

@@ -1,8 +1,8 @@
 import { endsWith } from 'lodash';
 
 import { loadSingleFileFromDbFolder, getAllFilesInFolder } from 'utils/sqlScriptLoader';
+import appSettings from 'appSettings';
 import { run, exec, all } from './repo'
-import appSettings from 'appSettings.js';
 import log from  'utils/logger';
 
 const tableDeweySummary1Name = `dewey_summary`;

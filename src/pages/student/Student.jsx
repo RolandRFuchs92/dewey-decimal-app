@@ -8,6 +8,7 @@ import {
 	hideStudent,
 } from './Student.repo';
 import EditDeleteCol, { useAddButton } from 'utils/tableButtons';
+import { Fade } from '@material-ui/core';
 import { useDialog } from 'utils/dialog';
 import { useAlert } from 'utils/snackbarAlerts';
 
@@ -88,16 +89,18 @@ export default function() {
 	};
 
 	return (
-		<>
-			<MUIDataTable
-				options={options}
-				title={'Student List'}
-				data={data}
-				columns={columns}
-			></MUIDataTable>
-			<StudentModal
-				{...{ isOpen, student, handleClose, reset: resetStudentList }}
-			></StudentModal>
-		</>
+		<Fade in={true} timeout={800}>
+			<div>
+				<MUIDataTable
+					options={options}
+					title={'Student List'}
+					data={data}
+					columns={columns}
+				></MUIDataTable>
+				<StudentModal
+					{...{ isOpen, student, handleClose, reset: resetStudentList }}
+				></StudentModal>
+			</div>
+		</Fade>
 	);
 }

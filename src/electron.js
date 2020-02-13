@@ -6,12 +6,17 @@ const BrowserWindow = electron.BrowserWindow;
 
 const os = require('os');
 const path = require('path');
+const { ipcMain } = require( "electron" );
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
 let mainWindow;
 
 // app.removeAllListeners('ready');
+
+ipcMain.on( "setMyGlobalVariable", ( event, myGlobalVariableValue ) => {
+	global.myGlobalVariable = myGlobalVariableValue;
+});
 
 function createWindow() {
 	BrowserWindow.addDevToolsExtension(

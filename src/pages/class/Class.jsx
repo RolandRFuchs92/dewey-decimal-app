@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {Grid, makeStyles} from '@material-ui/core';
+import {Grid, makeStyles, Fade} from '@material-ui/core';
 import MUIDataTable from 'mui-datatables';
 
 import { getClasses, hideClass } from './Class.repo';
@@ -9,7 +9,7 @@ import {useAlert} from 'utils/snackbarAlerts'
 
 import {useDialog} from 'utils/dialog';
 import EditDeleteCol, {useAddButton} from 'utils/tableButtons';
-
+import appSettings from 'appSettings';
 
 
 export default () => {
@@ -84,8 +84,12 @@ export default () => {
 
     return (
         <Grid container direction="column" spacing={2}>
-            <MUIDataTable title='Classes' options={tableOptions} columns={getColumns()} data={data}/>
-            <Grid item ><Modal isOpen={isOpen} handleClose={handleClose} modalData={modalData} updateTable={() => resetPage()}></Modal></Grid>
+            <Fade in={true} timeout={appSettings.fadeTransitionDuration}>
+                <div>
+                    <MUIDataTable title='Classes' options={tableOptions} columns={getColumns()} data={data}/>
+                    <Grid item ><Modal isOpen={isOpen} handleClose={handleClose} modalData={modalData} updateTable={() => resetPage()}></Modal></Grid>
+                </div>
+            </Fade>
         </Grid>
     )
 }

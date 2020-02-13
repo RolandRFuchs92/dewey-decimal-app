@@ -13,6 +13,7 @@ import {
 	ExpandLess,
 	ExpandMore,
 } from '@material-ui/icons';
+import { makeStyles } from '@material-ui/core';
 import { FontAwesomeIcon  } from '@fortawesome/react-fontawesome'
 import { 
 	faEdit, 
@@ -30,23 +31,29 @@ import {
 	faUsers
 } from '@fortawesome/free-solid-svg-icons';
 
-function createIcon(icon){ 
-	return <FontAwesomeIcon icon={icon} style={{fontSize:18}}></FontAwesomeIcon>
+const useStyles = makeStyles(theme => ({
+	faIcons: {
+		fontSize: 18
+	}
+}));
+
+function CreateIcon(icon){ 
+	return <FontAwesomeIcon icon={icon}></FontAwesomeIcon>
 }
 
-const Edit = createIcon(faEdit);
-const Add = createIcon(faPlusSquare);
-const Delete = createIcon(faMinusSquare);
-const Barcode = createIcon(faBarcode);
-const Scan = createIcon(faWifi);
-const Author = createIcon(faFeatherAlt);
-const Books = createIcon(faBookOpen);
-const DeweySystem = createIcon(faSitemap);
-const FaSchool = createIcon(faSchool);
-const Admin = createIcon(faUserCog);
-const Student = createIcon(faUserGraduate);
-const Teacher = createIcon(faChalkboardTeacher);
-const studentClass = createIcon(faUsers);
+const Edit = CreateIcon(faEdit);
+const Add = CreateIcon(faPlusSquare);
+const Delete = CreateIcon(faMinusSquare);
+const Barcode = CreateIcon(faBarcode);
+const Scan = CreateIcon(faWifi);
+const Author = CreateIcon(faFeatherAlt);
+const Books = CreateIcon(faBookOpen);
+const DeweySystem = CreateIcon(faSitemap);
+const FaSchool = CreateIcon(faSchool);
+const Admin = CreateIcon(faUserCog);
+const Student = CreateIcon(faUserGraduate);
+const Teacher = CreateIcon(faChalkboardTeacher);
+const studentClass = CreateIcon(faUsers);
 
 export default { 
     Code: <Code />,

@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import MUIDataTable from 'mui-datatables';
+import {Fade} from '@material-ui/core';
 
 import AddUpdate from 'utils/tableButtons';
 import { getTeachers, hideTeacher } from './Teacher.repo';
@@ -7,6 +8,7 @@ import TeacherModal from './Teacher.modal';
 import { useAddButton } from 'utils/tableButtons';
 import { useAlert } from 'utils/snackbarAlerts';
 import { useDialog } from 'utils/dialog';
+import appSettings from 'appSettings';
 
 const columnConfig = [{
     name: 'teacher_id',
@@ -91,8 +93,12 @@ export default () => {
 
     return (
         <>
-            <MUIDataTable title='Teachers' data={data} columns={columns} options={options} />
-            <TeacherModal {...{isOpen,  handleClose, reset, teacher}}></TeacherModal>
+            <Fade in={true} timeout={appSettings.fadeTransitionDuration}>
+                <div>   
+                    <MUIDataTable title='Teachers' data={data} columns={columns} options={options} />
+                    <TeacherModal {...{isOpen,  handleClose, reset, teacher}}></TeacherModal>
+                </div>
+            </Fade>
         </>
     );
 }

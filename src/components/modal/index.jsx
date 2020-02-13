@@ -1,6 +1,7 @@
 import React from 'react';
 
 import {Modal, Grid, Paper, Fade, makeStyles} from '@material-ui/core';
+import appSettings from 'appSettings';
 
 const useStyles = makeStyles(theme => ({
     paper: {
@@ -18,7 +19,7 @@ const useStyles = makeStyles(theme => ({
 export default ({handleClose, open = false, ...rest}) => {
     const classes = useStyles();
     return <Modal open={open}  onBackdropClick={handleClose} closeAfterTransition>
-        <Fade in={open}>
+        <Fade in={open} timeout={appSettings.fadeTransitionDuration}>
             <Grid container>
                 <Paper className={classes.paper}>
                     {rest.children}

@@ -1,4 +1,4 @@
-import settings from 'appSettings.js';
+import appSettings from 'appSettings';
 const {createLogger, format, transports} = window.require('winston');
 
 const getLabel = function (callingModule) {
@@ -22,8 +22,8 @@ const logger = createLogger({
       // - Write to all logs with level `info` and below to `quick-start-combined.log`.
       // - Write all logs error (and below) to `quick-start-error.log`.
       //
-      new transports.File({ filename: `${settings.appName}.error.log`, level: 'error' }),
-      new transports.File({ filename: `${settings.appName}.general.log`})
+      new transports.File({ filename: `${appSettings.appName}.error.log`, level: 'error' }),
+      new transports.File({ filename: `${appSettings.appName}.general.log`})
     ]
 });
 
