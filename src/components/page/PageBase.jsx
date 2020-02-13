@@ -34,7 +34,7 @@ export default ({defaultColumns, getAll, handleDeleteRow, handleEditAddRow, moda
         }
     }
 
-    const objectFromRowData = (rowData) => Object.fromEntries(columns.map(({name}, index) => [name,rowData[index]]));
+    const objectFromRowData = (rowData) => Object.fromEntries(columns.map(({name}, index) => [name,rowData[index] || '']));
     const handleDelete = rowData => {
         const obj = objectFromRowData(rowData);
         showDialog({ title: 'Are you sure?', description: `Really delete ${obj.name}?`, handleYes:() => handleYesOnDelete(obj)})

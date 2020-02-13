@@ -12,6 +12,7 @@ export default ({columns, open, handleClose, handleEditAddRow, modalData, reset}
     const alert = useAlert();
 
     const handleOnChange = name => ({target: {value}}) =>{
+        // debugger;
         setVal({...val, [name]: value});
     }
 
@@ -42,9 +43,9 @@ export default ({columns, open, handleClose, handleEditAddRow, modalData, reset}
 
 
 function convertJsonToModalFields(columns, handleOnChange, modalData){
-    const result = columns.map((column)=> {
-        const child = getElement({...column, onChange:handleOnChange, value:modalData[column.name]});
-        const el = <Grid item>
+    const result = columns.map((column,index)=> {
+        const child = getElement({...column, onChange:handleOnChange(column.name), value:(modalData[column.name])});
+        const el = <Grid item key={`${column.label}${index}`}>
             {child}
         </Grid>
         return el;

@@ -1,4 +1,4 @@
-import {  snakeCase, compact, lowerCase, camelCase } from 'lodash';
+import {  snakeCase, compact, lowerCase, camelCase, is } from 'lodash';
 import { all, run } from 'db/repo';
 import log from 'utils/logger';
 
@@ -79,13 +79,14 @@ export async function getAllTablesInDb(){
 export async function addOrUpdate(object, tableName, pkField =`${tableName}_id`) {
 	object.Edit && delete object.Edit;
 	object.Delete && delete object.Delete;
-	if(object[pkField]){ 
-		await updateDb(object, tableName, pkField);
-		return 'update';
+	if(!object[pkField]){ 
+		object[pkField] === "" && delete object[pkField];
+		await addToDb(object, tableName);
+		return 'add'
 	}
-
-	await addToDb(object, tableName);
-	return 'add'
+	await updateDb(object, tableName, pkField);
+	return 'update';
+	
 }
 
 /**
