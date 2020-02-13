@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react';
 import MUIDataTable from 'mui-datatables';
 import {Fade, Slide} from '@material-ui/core';
 
+import log from 'utils/logger';
 import EditDeleteCol, {useAddButton} from 'utils/tableButtons';
 import Modal from './ModalBase';
 import { useDialog } from 'utils/dialog';
@@ -26,11 +27,12 @@ export default ({defaultColumns, getAll, handleDeleteRow, handleEditAddRow, moda
 
     const handleYesOnDelete = async rowData => {
         try {
-            await handleDeleteRow(rowData.dewey_summary_id);
+            await handleDeleteRow(rowData);
             await reset();
             alert.success(`Successfully deleted ${rowData.name}`);
-        } catch  {
+        } catch(error)  {
             alert.error(`There was an error deleting ${rowData.name}!`);
+            log.error(error);
         }
     }
 
