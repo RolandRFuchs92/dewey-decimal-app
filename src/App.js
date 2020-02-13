@@ -5,9 +5,11 @@ import {SnackbarProvider } from 'notistack';
 import {ConfirmProvider} from 'material-ui-confirm';
 import initializeDb from 'db/initializeDb';
 
-initializeDb();
+const { ipcRenderer, remote } = window.require( "electron" );
+ipcRenderer.send( "setMyGlobalVariable", "Hi There!" );
 
 function App() {
+	initializeDb();
 	return (
 		<div className='App'>
 			<ConfirmProvider>

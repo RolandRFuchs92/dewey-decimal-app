@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import MUIDataTable from 'mui-datatables';
-import {Slide} from '@material-ui/core';
+import {Fade, Slide} from '@material-ui/core';
 
 import EditDeleteCol, {useAddButton} from 'utils/tableButtons';
 import Modal from './ModalBase';
@@ -50,6 +50,7 @@ export default ({defaultColumns, getAll, handleDeleteRow, handleEditAddRow, moda
     useEffect(() => {
         setOptions({
             selectableRows: 'none',
+            pagination: true,
             ...addButton
         });
 
@@ -65,14 +66,14 @@ export default ({defaultColumns, getAll, handleDeleteRow, handleEditAddRow, moda
     },[])
 
     return <>
-        <Slide in={true} direction="up" timeout={500}> 
+        <Fade in={true} direction="up" timeout={800}> 
             <div>
-            <MUIDataTable {...({options, columns, data})}></MUIDataTable>
-            {
-                modal 
-                || <Modal {...{columns, open:openModal, handleClose, handleEditAddRow, modalData, reset}}></Modal>
-            }
+                <MUIDataTable {...({options, columns, data})}></MUIDataTable>
+                {
+                    modal 
+                    || <Modal {...{columns, open:openModal, handleClose, handleEditAddRow, modalData, reset}}></Modal>
+                }
             </div>
-        </Slide>
+        </Fade>
     </>
 }

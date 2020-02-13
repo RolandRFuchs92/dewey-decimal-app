@@ -1,12 +1,14 @@
 import React, {useState, useEffect} from 'react';
 import MUIDataTable from 'mui-datatables';
-import {Slide} from '@material-ui/core';
+import {Fade} from '@material-ui/core';
 
 import EditDeleteCol, {useAddButton} from 'utils/tableButtons';
 import { getAll, deleteRow} from './summary1.repo';
 import { useDialog } from 'utils/dialog';
 import { useAlert } from 'utils/snackbarAlerts';
 import Modal from './Summary1.modal';
+
+import appSettings from 'appSettings';
 
 const defaultColumns = [
     {
@@ -81,11 +83,11 @@ export default () => {
     },[])
 
     return <>
-        <Slide in={true} direction="up" timeout={500}> 
+        <Fade in={true} timeout={appSettings.fadeTransitionDuration}> 
             <div>
             <MUIDataTable {...({options, columns, data})}></MUIDataTable>
             <Modal {...{open:openModal, modalData, handleClose, reset}}></Modal>
             </div>
-        </Slide>
+        </Fade>
     </>
 }
