@@ -4,7 +4,6 @@
 	"private": true,
 	"homepage": "./",
 	"main": "src/electron.js",
-	"database": "willy",
 	"dependencies": {
 		"@fortawesome/fontawesome-svg-core": "^1.2.27",
 		"@fortawesome/free-solid-svg-icons": "^5.12.1",

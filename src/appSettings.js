@@ -3,6 +3,7 @@ const remote = window.require('electron').remote;
 
 const appSettings =  new function(){
     this.appName = data.name;
+    this.databaseName = `${this.appName}.Database`;
     this.databaseScriptName = 'createDatabase.sql';
     this.transitionDuration = 800;
     this.fadeTransitionDuration = this.transitionDuration;

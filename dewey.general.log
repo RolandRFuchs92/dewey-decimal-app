@@ -14,7 +14,7 @@
 {"message":"Stamp[1581398732375] - Completed successfully.","level":"info","timestamp":"2020-02-11 07:25:32"}
 {"message":"table[dewey_summary] has been populated.","level":"info","timestamp":"2020-02-11 07:25:32"}
 {"message":"Opening database.","level":"info","timestamp":"2020-02-11 07:25:32"}
-{"message":"Stamp[1581398732521] - Running statement \n    SELECT\n        *\n    FROM\n        dewey_summary_2\n    LIMIT 1;\n with params undefined.","level":"info","timestamp":"2020-02-11 07:25:32"}
+{"message":"Stamp[158139873252s1] - Running statement \n    SELECT\n        *\n    FROM\n        dewey_summary_2\n    LIMIT 1;\n with params undefined.","level":"info","timestamp":"2020-02-11 07:25:32"}
 {"message":"Stamp[1581398732521] - Closed Db.","level":"info","timestamp":"2020-02-11 07:25:32"}
 {"message":"Stamp[1581398732521] - Returned 0 row(s)","level":"info","timestamp":"2020-02-11 07:25:32"}
 {"message":"Opening database.","level":"info","timestamp":"2020-02-11 07:25:32"}
