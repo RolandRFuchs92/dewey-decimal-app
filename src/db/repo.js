@@ -1,5 +1,5 @@
 import log from 'utils/logger';
-import { database } from '../../package.json';
+import appSettings  from 'appSettings';
 
 const getStamp = () => `Stamp[${new Date().getTime()}] -`;
 
@@ -82,7 +82,7 @@ export const exec = (statement) => {
  */
 export function getDatabase() {
 	const sqlite3 = window.require('sqlite3').verbose();
-	const db = new sqlite3.Database(database);
+	const db = new sqlite3.Database(appSettings.databaseName);
 	log.info('Opening database.');
 	return db;
 }
