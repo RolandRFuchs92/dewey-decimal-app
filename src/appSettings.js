@@ -19,6 +19,10 @@ const appSettings =  new function(){
         dewey_summary_3: {
             pk: `dewey_summary_3_id`,
             name: `dewey_summary_3`
+        },
+        book: {
+            pk: `book_id`,
+            name: `book`
         }
     };
     this.logs= {

@@ -7553,3 +7553,50 @@
 {"message":"Opening database.","level":"info","timestamp":"2020-02-13 22:53:22"}
 {"message":"Stamp[1581627202143] - Running statement - \n\n\n\t\tUPDATE author\n\t\tSET \n\t\t\tname=$name,second_name=$second_name,surname=$surname\n\t\tWHERE\n\t\t\tauthor_id=$author_id\n\t\n\n with params {\"$author_id\":1,\"$name\":\"xx\",\"$second_name\":\"dd\",\"$surname\":\"rr\"}.","level":"info","timestamp":"2020-02-13 22:53:22"}
 {"message":"Stamp[1581627202143] - Closed Db.","level":"info","timestamp":"2020-02-13 22:53:22"}
+{"message":"Stamp[1581627202143] - Completed successfully.","level":"info","timestamp":"2020-02-13 22:53:22"}
+{"message":"Running generic select statement.","level":"info","timestamp":"2020-02-13 22:53:22"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-13 22:53:22"}
+{"message":"Stamp[1581627202257] - Running statement \n\t\tSELECT\n\t\t\t*\n\t\tFROM\n\t\t\tauthor\n\t\t\n\t with params undefined.","level":"info","timestamp":"2020-02-13 22:53:22"}
+{"message":"Stamp[1581627202257] - Closed Db.","level":"info","timestamp":"2020-02-13 22:53:22"}
+{"message":"Stamp[1581627202257] - Returned 1 row(s)","level":"info","timestamp":"2020-02-13 22:53:22"}
+{"message":"Initializing Database.","level":"info","timestamp":"2020-02-13 22:58:40"}
+{"message":"Running generic select statement.","level":"info","timestamp":"2020-02-13 22:58:41"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-13 22:58:41"}
+{"message":"Stamp[1581627521361] - Running statement \n\t\tSELECT\n\t\t\t*\n\t\tFROM\n\t\t\tbook\n\t\t\n\t with params undefined.","level":"info","timestamp":"2020-02-13 22:58:41"}
+{"message":"Stamp[1581627521361] - Closed Db.","level":"info","timestamp":"2020-02-13 22:58:41"}
+{"message":"Stamp[1581627521361] - Returned 0 row(s)","level":"info","timestamp":"2020-02-13 22:58:41"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-13 22:58:41"}
+{"message":"Stamp[1581627521768] - Running statement - \n\n\r\n\r\nCREATE TABLE IF NOT EXISTS dewey_summary (\r\n\tdewey_summary_id INTEGER PRIMARY KEY,\r\n\tsummary_id INTEGER,\r\n\tname TEXT\r\n);\r\n\r\nCREATE TABLE IF NOT EXISTS dewey_summary_2 (\r\n\tdewey_summary_2_id INTEGER PRIMARY KEY,\r\n\tsummary_2_id INTEGER,\r\n\tsummary_id INTEGER,\r\n\tname TEXT,\r\n\tCONSTRAINT fk_summary_id FOREIGN KEY(summary_id) REFERENCES dewey_summary(summary_id)\r\n);\r\n\r\nCREATE TABLE IF NOT EXISTS dewey_summary_3 (\r\n\tdewey_summary_3_id INTEGER PRIMARY KEY,\r\n\tsummary_3_id INTEGER,\r\n\tsummary_2_id INTEGER,\r\n\tname TEXT,\r\n\tCONSTRAINT fk_summary_2_id FOREIGN KEY(summary_2_id) REFERENCES dewey_summary_2(summary_2_id)\r\n);\r\n\r\nCREATE TABLE IF NOT EXISTS dewey_decimal (\r\n\tdewey_decimal_id INTEGER PRIMARY KEY,\r\n\tsummary_3_id INTEGER,\r\n\tdecimal_id INTEGER,\r\n\tname TEXT,\r\n\tCONSTRAINT fk_summary_3_id FOREIGN KEY(summary_3_id) REFERENCES dewey_summary_3(summary_3_id)\r\n);\r\n\r\nCREATE TABLE IF NOT EXISTS author (\r\n\tauthor_id INTEGER PRIMARY KEY,\r\n\tname TEXT,\r\n\tsecond_name TEXT,\r\n\tsurname TEXT\r\n);\r\n\r\nCREATE TABLE IF NOT EXISTS book (\r\n\tbook_id INTEGER PRIMARY KEY,\r\n\tauthor_id INTEGER,\r\n\tdewey_decimal_id INTEGER,\r\n\tcall_number TEXT,\r\n\tname TEXT,\r\n\tpublisher TEXT, \r\n\tcreated_on TEXT,\r\n\tCONSTRAINT fk_author_id FOREIGN KEY(author_id) REFERENCES author(author_id),\r\n\tCONSTRAINT fk_dewey_decimal_id FOREIGN KEY(dewey_decimal_id) REFERENCES dewey_decimal(dewey_decimal_id)\r\n);\r\n\r\nCREATE TABLE IF NOT EXISTS student ( \r\n\tstudent_id INTEGER PRIMARY KEY,\r\n\tfirst_name TEXT NOT NULL,\r\n\tlast_name TEXT NOT NULL,\r\n\tbirthdate TEXT NOT NULL,\r\n\tmother_name text,\r\n\tmother_mobile TEXT,\r\n\tmother_email TEXT,\r\n\tfather_name TEXT,\r\n\tfather_mobile TEXT,\r\n\tfather_email TEXT,\r\n\tclass_id INTEGER NOT NULL,\r\n\tis_active INTEGER NOT NULL,\r\n\tCONSTRAINT fk_class_id FOREIGN KEY(class_id) REFERENCES class(class_id)\r\n);\r\n\r\nCREATE TABLE IF NOT EXISTS teacher (\r\n\tteacher_id INTEGER PRIMARY KEY,\r\n\tfirst_name TEXT,\r\n\tlast_name TEXT,\r\n\tmobile TEXT,\r\n\temail TEXT,\r\n    class_id INTEGER,\r\n    is_active INTEGER,\r\n    CONSTRAINT fk_class_id FOREIGN KEY(class_id) REFERENCES class(class_id)\r\n);\r\n\r\n CREATE TABLE IF NOT EXISTS class (\r\n\tclass_id INTEGER PRIMARY KEY,\r\n\tclass_name TEXT,\r\n\tgrade INTEGER,\r\n\tis_active INTEGER\r\n);\n\n with params.","level":"info","timestamp":"2020-02-13 22:58:41"}
+{"message":"Stamp[1581627521768] - Closed Db.","level":"info","timestamp":"2020-02-13 22:58:41"}
+{"message":"Stamp[1581627521768] - Completed successfully.","level":"info","timestamp":"2020-02-13 22:58:41"}
+{"message":"Database successfully initialized.","level":"info","timestamp":"2020-02-13 22:58:41"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-13 22:58:41"}
+{"message":"Stamp[1581627521807] - Running statement \n    SELECT\n        *\n    FROM\n        dewey_summary\n    LIMIT 1;\n with params undefined.","level":"info","timestamp":"2020-02-13 22:58:41"}
+{"message":"Stamp[1581627521807] - Closed Db.","level":"info","timestamp":"2020-02-13 22:58:41"}
+{"message":"Stamp[1581627521807] - Returned 1 row(s)","level":"info","timestamp":"2020-02-13 22:58:41"}
+{"message":"table[dewey_summary] already has data. Skipping seed.","level":"info","timestamp":"2020-02-13 22:58:41"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-13 22:58:41"}
+{"message":"Stamp[1581627521813] - Running statement \n    SELECT\n        *\n    FROM\n        dewey_summary_2\n    LIMIT 1;\n with params undefined.","level":"info","timestamp":"2020-02-13 22:58:41"}
+{"message":"Stamp[1581627521813] - Closed Db.","level":"info","timestamp":"2020-02-13 22:58:41"}
+{"message":"Stamp[1581627521813] - Returned 1 row(s)","level":"info","timestamp":"2020-02-13 22:58:41"}
+{"message":"table[dewey_summary_2] already has data. Skipping seed.","level":"info","timestamp":"2020-02-13 22:58:41"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-13 22:58:41"}
+{"message":"Stamp[1581627521825] - Running statement \n    SELECT\n        *\n    FROM\n        dewey_summary_3\n    LIMIT 1;\n with params undefined.","level":"info","timestamp":"2020-02-13 22:58:41"}
+{"message":"Stamp[1581627521825] - Closed Db.","level":"info","timestamp":"2020-02-13 22:58:41"}
+{"message":"Stamp[1581627521825] - Returned 1 row(s)","level":"info","timestamp":"2020-02-13 22:58:41"}
+{"message":"table[dewey_summary_3] already has data. Skipping seed.","level":"info","timestamp":"2020-02-13 22:58:41"}
+{"message":"Database successfully checked, initialized and seeded.","level":"info","timestamp":"2020-02-13 22:58:41"}
+{"message":"Running generic select statement.","level":"info","timestamp":"2020-02-13 22:58:47"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-13 22:58:47"}
+{"message":"Stamp[1581627527699] - Running statement \n\t\tSELECT\n\t\t\t*\n\t\tFROM\n\t\t\tauthor\n\t\t\n\t with params undefined.","level":"info","timestamp":"2020-02-13 22:58:47"}
+{"message":"Stamp[1581627527699] - Closed Db.","level":"info","timestamp":"2020-02-13 22:58:47"}
+{"message":"Stamp[1581627527699] - Returned 1 row(s)","level":"info","timestamp":"2020-02-13 22:58:47"}
+{"message":"Running generic select statement.","level":"info","timestamp":"2020-02-13 22:58:48"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-13 22:58:48"}
+{"message":"Stamp[1581627528644] - Running statement \n\t\tSELECT\n\t\t\t*\n\t\tFROM\n\t\t\tbook\n\t\t\n\t with params undefined.","level":"info","timestamp":"2020-02-13 22:58:48"}
+{"message":"Stamp[1581627528644] - Closed Db.","level":"info","timestamp":"2020-02-13 22:58:48"}
+{"message":"Stamp[1581627528644] - Returned 0 row(s)","level":"info","timestamp":"2020-02-13 22:58:48"}
+{"message":"Running generic addToDb statement.","level":"info","timestamp":"2020-02-13 22:58:55"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-13 22:58:55"}
+{"message":"Stamp[1581627535164] - Running statement - \n\nINSERT INTO book (author_id,dewey_decimal_id,call_number,name,publisher)\n\t\t\t\t\tVALUES ($author_id,$dewey_decimal_id,$call_number,$name,$publisher)\n\n with params {\"$author_id\":\"1\",\"$dewey_decimal_id\":\"1\",\"$call_number\":\"1\",\"$name\":\"1\",\"$publisher\":\"1\"}.","level":"info","timestamp":"2020-02-13 22:58:55"}
+{"message":"Stamp[1581627535164] - Closed Db.","level":"info","timestamp":"2020-02-13 22:58:55"}
