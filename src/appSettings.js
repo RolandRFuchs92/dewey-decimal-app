@@ -7,6 +7,24 @@ const appSettings =  new function(){
     this.transitionDuration = 800;
     this.fadeTransitionDuration = this.transitionDuration;
     this.slideTransitionDuration = this.transitionDuration;
+    this.tables= {
+        author: {
+            pk: 'author_id',
+            name: 'author'
+        },
+        dewey_summary_2: {
+            pk: `dewey_summary_2_id`,
+            name: `dewey_summary_2`
+        },
+        dewey_summary_3: {
+            pk: `dewey_summary_3_id`,
+            name: `dewey_summary_3`
+        },
+        book: {
+            pk: `book_id`,
+            name: `book`
+        }
+    };
     this.logs= {
         error: `${this.appName}.error.log`,
         general: `${this.appName}.log`,
