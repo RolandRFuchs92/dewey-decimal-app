@@ -5,18 +5,32 @@ import repo from './booksout.repo';
 
 const defaultColumns= [
     {
-        name:'dewey_summary_3_id',
+        name:'books_out_id',
         label: 'Id',
         type: {
             header : 'Dewey Summar 3'
         }
     },
     {
-        name: 'summary_3_id',
-        label: 'Summary 3 Id',
+        name: 'book_id',
+        label: 'Book Id',
         type: 'textfield'
     },
-  
+    {
+        name: 'student_id',
+        label: 'Student',
+        type: 'textfield'
+    },
+    {
+        name: 'check_out_date',
+        label: 'Checked out on',
+        type: 'textfield'
+    },
+    {
+        name: 'check_in_date',
+        label: 'Checked in on',
+        type: 'textfield'
+    },
 ]
 
 export default () => {
