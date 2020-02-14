@@ -82,3 +82,14 @@ CREATE TABLE IF NOT EXISTS teacher (
 	grade INTEGER,
 	is_active INTEGER
 );
+
+
+CREATE TABLE IF NOT EXISTS  books_out(
+	books_out_id INTEGER PRIMARY KEY,
+	book_id INTEGER NOT NULL,
+	student_id INTEGER NOT NULL,
+	check_out_date INTEGER NOT NULL,
+	check_in_date INTEGER,
+	CONSTRAINT fk_book_id FOREIGN KEY (book_id) REFERENCES book(book_id),
+	CONSTRAINT fk_student_id FOREIGN KEY (student_id) REFERENCES student(student_id)
+)

@@ -32,6 +32,11 @@
 			"icon": "menu",
 			"menuItems": [
 				{
+					"label": "Books Out",
+					"icon": "bookOut",
+					"path": "/library/booksout"
+				},
+				{
 					"label": "Authors",
 					"icon": "author",
 					"path": "/library/author"
