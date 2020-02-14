@@ -16,3 +16,4 @@ export default (tableReference) => {
         addOrUpdate: async val => await addOrUpdate(val, tableName, pkFieldName) 
     };
 };
+

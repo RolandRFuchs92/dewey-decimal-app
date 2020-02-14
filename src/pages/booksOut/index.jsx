@@ -14,22 +14,22 @@ const defaultColumns= [
     {
         name: 'book_id',
         label: 'Book Id',
-        type: 'textfield'
+        type: 'selectbox'
     },
     {
         name: 'student_id',
         label: 'Student',
-        type: 'textfield'
+        type: 'selectbox'
     },
     {
         name: 'check_out_date',
         label: 'Checked out on',
-        type: 'textfield'
+        type: 'datetime'
     },
     {
         name: 'check_in_date',
         label: 'Checked in on',
-        type: 'textfield'
+        type: 'datetime'
     },
 ]
 

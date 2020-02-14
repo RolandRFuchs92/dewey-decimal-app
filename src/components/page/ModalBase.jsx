@@ -1,18 +1,17 @@
 import React,{useEffect, useState} from 'react';
-import {TextField, Typography, Grid} from '@material-ui/core';
+import { TextField, Typography, Grid, MenuItem } from '@material-ui/core';
 import { toLower, isPlainObject } from 'lodash';
 
 import Modal from 'components/modal';
 import FormButtons from 'components/buttons/FormButtons';
 import log from 'utils/logger';
-import {useAlert} from 'utils/snackbarAlerts';
+import { useAlert } from 'utils/snackbarAlerts';
 
 export default ({columns, open, handleClose, handleEditAddRow, modalData, reset}) => {
     const [val, setVal] = useState(modalData);
     const alert = useAlert();
 
     const handleOnChange = name => ({target: {value}}) =>{
-        // debugger;
         setVal({...val, [name]: value});
     }
 
@@ -53,7 +52,7 @@ function convertJsonToModalFields(columns, handleOnChange, modalData){
     return result;
 } 
 
-function getElement({type, label, value, onChange}){
+function getElement({type, label, value, onChange, dropdownItems}){
     if(isPlainObject(type))
         return <Typography variant="h5">{type.header} {!!value && `(${value})`}</Typography>
 
@@ -61,7 +60,17 @@ function getElement({type, label, value, onChange}){
         case `textfield`:
             return <TextField fullWidth label={label} value={value || ''} onChange={onChange}></TextField>;
         case `typography`:
-            return;
+            return <TextField fullWidth label={label} value={value || ''} onChange={onChange}></TextField>;
+        case 'datetime':
+            const data = (async () => {
+                return await dropdownItems();
+            })();
+
+            return <TextField fullWidth label={label} value={value || ''} onChange={onChange}>
+                {data.map(row => <MenuItem key={row.value} value={row.value}>{row.text}</MenuItem>)}
+            </TextField>;
+        case 'selectbox':
+            return <TextField select fullWidth label={label} value={value || ''} onChange={onChange}></TextField>;
         default:
             return null;
     }
