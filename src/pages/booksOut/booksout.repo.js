@@ -1,8 +1,6 @@
 import repoBase from 'components/page/repo.base';
-import { getSelectList as getAuthors } from "pages/authors.repo";
-
+import { getBookSelectList } from 'pages/books/book.repo';
 
 export default repoBase(`books_out`);
+export const getBooksForSelect = getBookSelectList;
 
-
-export const getAuthorsSelectList = getAuthors;
