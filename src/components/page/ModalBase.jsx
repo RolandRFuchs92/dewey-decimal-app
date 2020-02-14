@@ -1,5 +1,6 @@
 import React,{useEffect, useState} from 'react';
 import { TextField, Typography, Grid, MenuItem } from '@material-ui/core';
+import { KeyboardDatePicker } from '@material-ui/pickers';
 import { toLower, isPlainObject } from 'lodash';
 
 import Modal from 'components/modal';
@@ -68,6 +69,26 @@ function getElement({type, label, value, onChange, dropdownItems}){
         default:
             return null;
     }
+}
+
+
+function DatePicker () {
+    const handleDateChange = props => {
+        console.log(props);
+    }
+    return  <KeyboardDatePicker
+    disableToolbar
+    variant="inline"
+    format="MM/dd/yyyy"
+    margin="normal"
+    id="date-picker-inline"
+    label="Date picker inline"
+    value='2020/1/1'
+    onChange={handleDateChange}
+    KeyboardButtonProps={{
+      'aria-label': 'change date',
+    }}
+  />
 }
 
 
