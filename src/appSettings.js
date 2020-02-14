@@ -25,7 +25,7 @@ const appSettings =  new function(){
             pk: `book_id`,
             name: `book`
         },
-        bookOut: {
+        books_out: {
             pk: `books_out_id`,
             name: 'books_out'
         }

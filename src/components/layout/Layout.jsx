@@ -12,6 +12,7 @@ import Home from 'pages/home';
 import DeweySystem from 'pages/deweySystem';
 import Authours from 'pages/authors'
 import Books from 'pages/books';
+import BooksOut from 'pages/booksOut';
 import { Provider } from 'utils/context';
 
 const useStyles = makeStyles(theme => ({
@@ -80,6 +81,9 @@ export default function PermanentDrawerLeft() {
 							</Route>
 							<Route exact path='/library/books'>
 								<Books></Books>
+							</Route>
+							<Route exact path='/library/booksout'>
+								<BooksOut></BooksOut>
 							</Route>
 						</Switch>
 						<Route exact path='/checkout'>

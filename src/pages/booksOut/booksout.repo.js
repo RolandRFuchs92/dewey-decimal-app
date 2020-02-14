@@ -1,3 +1,3 @@
-import repoBase from 'components/pages/repo.base';
+import repoBase from 'components/page/repo.base';
 
 export default repoBase(`books_out`);
