@@ -5,7 +5,9 @@ import {
 	objectKeysToSnakeCaseString,
 	objectToUpdateStatement,
 } from '../../db/utils';
-import { snakeCase } from 'lodash';
+import { startCase, snakeCase } from 'lodash';
+
+import appSettings from 'appSettings';
 import {getDatabase} from 'db/utils';
 import {all, run} from 'db/repo';
 
@@ -27,6 +29,22 @@ const queryGetAllStudents = `
 		student s
 	WHERE
 		s.is_active = 1;
+`;
+
+const queryStudentDropdown = `
+	SELECT
+		${appSettings.tables.student.pk},
+		first_name,
+		last_name,
+		class_name
+	FROM
+		student s
+	JOIN
+		class c
+		ON s.class_id = c.class_id
+	WHERE
+		s.is_active = 1
+		AND c.is_active = 1
 `;
 
 export const getStudentColumnNames = async () => {
@@ -70,4 +88,15 @@ async function updateStudent(student) {
 	const studentModel = jsonToStatementObject(student);
 
 	return run(statement, studentModel);
+}
+
+
+export async function getStudentSelectList() {
+	const data = await all(queryStudentDropdown);
+	return data.map(({[appSettings.tables.student.pk]: pk,first_name, last_name, class_name, grade}) => {
+		return {
+			value: pk,
+			text: `${startCase(first_name)} ${last_name} - Grade ${grade}${class_name.substr(0,1)}`
+		}
+	});
 }
