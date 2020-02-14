@@ -1,6 +1,6 @@
 import React,{useEffect, useState} from 'react';
 import { TextField, Typography, Grid, MenuItem } from '@material-ui/core';
-import { KeyboardDatePicker } from '@material-ui/pickers';
+import { DatePicker as DatePickerImport} from '@material-ui/pickers';
 import { toLower, isPlainObject } from 'lodash';
 
 import Modal from 'components/modal';
@@ -63,7 +63,7 @@ function getElement({type, label, value, onChange, dropdownItems}){
         case `typography`:
             return <TextField fullWidth label={label} value={value || ''} onChange={onChange}></TextField>;
         case 'datetime':
-            return <TextField fullWidth label={label} value={value || ''} onChange={onChange}></TextField>;
+            return <DatePicker {...{label, value = new Date(), onChange}}></DatePicker>
         case 'selectbox':
             return <SelectBox {...{label, onChange, value, getDropdownItems: dropdownItems}}></SelectBox>
         default:
@@ -72,23 +72,16 @@ function getElement({type, label, value, onChange, dropdownItems}){
 }
 
 
-function DatePicker () {
-    const handleDateChange = props => {
-        console.log(props);
+function DatePicker ({label, value, onChange}) {
+    const handleDateChange = date => {
+        onChange(date);
     }
-    return  <KeyboardDatePicker
-    disableToolbar
-    variant="inline"
-    format="MM/dd/yyyy"
-    margin="normal"
-    id="date-picker-inline"
-    label="Date picker inline"
-    value='2020/1/1'
-    onChange={handleDateChange}
-    KeyboardButtonProps={{
-      'aria-label': 'change date',
-    }}
-  />
+    return  <DatePicker
+        label={label}
+        value={value}
+        onChange={handleDateChange}
+        animateYearScrolling
+      />
 }
 
 
