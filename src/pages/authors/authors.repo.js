@@ -2,7 +2,7 @@ import {startCase, isEmpty} from 'lodash';
 
 import repoBase from 'components/page/repo.base';
 import appSettings from 'appSettings';
-import {all} from 'db/repo';
+import { all } from 'db/repo';
 
 export default repoBase(`author`);
 

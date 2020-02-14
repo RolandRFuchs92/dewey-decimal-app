@@ -8,11 +8,11 @@ export default repoBase(`book`);
 
 const getBooksSelectListQuery = `
     SELECT
-        ${appSettings.tables.books.pk},
+        ${appSettings.tables.book.pk},
         name,
         call_number
     FROM
-        ${appSettings.tables.books.name}
+        ${appSettings.tables.book.name}
 `;
 
 export const getBooksSelectList = async () => {

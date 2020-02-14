@@ -1,7 +1,7 @@
 import React from 'react';
 
 import PageBase from 'components/page/PageBase';
-import repo from './booksout.repo';
+import repo, { getBooksForSelect, getStudentsForSelect } from './booksout.repo';
 
 const defaultColumns= [
     {
@@ -14,12 +14,14 @@ const defaultColumns= [
     {
         name: 'book_id',
         label: 'Book Id',
-        type: 'selectbox'
+        type: 'selectbox',
+        dropdownItems: getBooksForSelect
     },
     {
         name: 'student_id',
         label: 'Student',
-        type: 'selectbox'
+        type: 'selectbox',
+        dropdownItems: getStudentsForSelect
     },
     {
         name: 'check_out_date',
@@ -29,7 +31,7 @@ const defaultColumns= [
     {
         name: 'check_in_date',
         label: 'Checked in on',
-        type: 'datetime'
+        type: 'datetime',
     },
 ]
 

@@ -28,6 +28,10 @@ const appSettings =  new function(){
         books_out: {
             pk: `books_out_id`,
             name: 'books_out'
+        },
+        student: {
+            pk: 'student_id',
+            name: 'student'
         }
     };
     this.logs= {
