@@ -62,16 +62,27 @@ function getElement({type, label, value, onChange, dropdownItems}){
         case `typography`:
             return <TextField fullWidth label={label} value={value || ''} onChange={onChange}></TextField>;
         case 'datetime':
-            const data = (async () => {
-                return await dropdownItems();
-            })();
-
-            return <TextField fullWidth label={label} value={value || ''} onChange={onChange}>
-                {data.map(row => <MenuItem key={row.value} value={row.value}>{row.text}</MenuItem>)}
-            </TextField>;
+            return <TextField fullWidth label={label} value={value || ''} onChange={onChange}></TextField>;
         case 'selectbox':
-            return <TextField select fullWidth label={label} value={value || ''} onChange={onChange}></TextField>;
+            return <SelectBox {...{label, onChange, value, getDropdownItems: dropdownItems}}></SelectBox>
         default:
             return null;
     }
+}
+
+
+function SelectBox({label, onChange,value,getDropdownItems}) {
+    const [rows, setRows] = useState([]);
+    
+    useEffect(() => {
+        (async () => {
+            setRows(await getDropdownItems());
+        })()
+    },[])
+    
+    
+            
+    return <TextField select fullWidth label={label} value={value || ''} onChange={onChange}>
+        {rows.map(row => <MenuItem key={row.value} value={row.value}>{row.text}</MenuItem>)}
+    </TextField>;
 }
