@@ -63,7 +63,7 @@ function getElement({type, label, value, onChange, dropdownItems}){
         case `typography`:
             return <TextField fullWidth label={label} value={value || ''} onChange={onChange}></TextField>;
         case 'datetime':
-            return <DatePicker {...{label, value = new Date(), onChange}}></DatePicker>
+            return <DatePicker {...{label, value, onChange}}></DatePicker>
         case 'selectbox':
             return <SelectBox {...{label, onChange, value, getDropdownItems: dropdownItems}}></SelectBox>
         default:
@@ -73,10 +73,13 @@ function getElement({type, label, value, onChange, dropdownItems}){
 
 
 function DatePicker ({label, value, onChange}) {
-    const handleDateChange = date => {
-        onChange(date);
+
+    const handleDateChange = props => {
+        onChange(props);
     }
-    return  <DatePicker
+
+    return  <DatePickerImport
+        format='dd MMM yyyy'
         label={label}
         value={value}
         onChange={handleDateChange}
