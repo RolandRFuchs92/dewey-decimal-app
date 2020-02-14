@@ -28,7 +28,8 @@ import {
 	faUserCog,
 	faUserGraduate,
 	faChalkboardTeacher,
-	faUsers
+	faUsers,
+	faBookReader
 } from '@fortawesome/free-solid-svg-icons';
 
 const useStyles = makeStyles(theme => ({
@@ -54,6 +55,7 @@ const Admin = CreateIcon(faUserCog);
 const Student = CreateIcon(faUserGraduate);
 const Teacher = CreateIcon(faChalkboardTeacher);
 const studentClass = CreateIcon(faUsers);
+const BookOut = CreateIcon(faBookReader);
 
 export default { 
     Code: <Code />,
@@ -77,5 +79,6 @@ export default {
 	DeweySystem,
 	Admin,
 	Student,
-	Teacher
+	Teacher,
+	BookOut
 }

@@ -24,6 +24,10 @@ const appSettings =  new function(){
         book: {
             pk: `book_id`,
             name: `book`
+        },
+        books_out: {
+            pk: `books_out_id`,
+            name: 'books_out'
         }
     };
     this.logs= {
