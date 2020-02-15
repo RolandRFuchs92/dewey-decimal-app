@@ -36,7 +36,8 @@ const queryStudentDropdown = `
 		${appSettings.tables.student.pk},
 		first_name,
 		last_name,
-		class_name
+		class_name, 
+		grade
 	FROM
 		student s
 	JOIN
@@ -96,7 +97,7 @@ export async function getStudentSelectList() {
 	return data.map(({[appSettings.tables.student.pk]: pk,first_name, last_name, class_name, grade}) => {
 		return {
 			value: pk,
-			text: `${startCase(first_name)} ${last_name} - Grade ${grade}${class_name.substr(0,1)}`
+			text: `${startCase(first_name)} ${last_name} - Grade ${grade}${startCase(class_name.substr(0,2))}`
 		}
 	});
 }

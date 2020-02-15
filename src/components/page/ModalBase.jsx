@@ -2,6 +2,7 @@ import React,{useEffect, useState} from 'react';
 import { TextField, Typography, Grid, MenuItem } from '@material-ui/core';
 import { DatePicker as DatePickerImport} from '@material-ui/pickers';
 import { toLower, isPlainObject } from 'lodash';
+import { format } from 'date-fns';
 
 import Modal from 'components/modal';
 import FormButtons from 'components/buttons/FormButtons';
@@ -49,7 +50,7 @@ function convertJsonToModalFields(columns, handleOnChange, modalData){
             {child}
         </Grid>
         return el;
-    });
+    }); 
     return result;
 } 
 
@@ -73,15 +74,15 @@ function getElement({type, label, value, onChange, dropdownItems}){
 
 
 function DatePicker ({label, value, onChange}) {
-
-    const handleDateChange = props => {
-        onChange(props);
+    const handleDateChange = date => {
+        const formattedDate = format(date,'dd MMM yyyy');
+        onChange({ target: {value: formattedDate}});
     }
 
     return  <DatePickerImport
         format='dd MMM yyyy'
         label={label}
-        value={value}
+        value={value || null}
         onChange={handleDateChange}
         animateYearScrolling
       />

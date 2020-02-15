@@ -17,7 +17,7 @@ const getBooksSelectListQuery = `
 
 export const getBooksSelectList = async () => {
     const data = await all(getBooksSelectListQuery);
-    return data.map(({pk, name, call_number}) => {
+    return data.map(({[appSettings.tables.book.pk] :pk, name, call_number}) => {
         return {
             value: pk,
             text: `${name.substr(0,20)} - ${call_number}`
