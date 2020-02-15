@@ -81,6 +81,8 @@ function DatePicker ({label, value, onChange}) {
 
     return  <DatePickerImport
         format='dd MMM yyyy'
+        variant="inline"
+        disableToolbar
         label={label}
         value={value || null}
         onChange={handleDateChange}

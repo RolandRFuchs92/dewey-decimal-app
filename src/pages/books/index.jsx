@@ -14,12 +14,12 @@ const defaultColumns= [
     {
         name: 'author_id',
         label: 'Author Id',
-        type: 'textfield'
+        type: 'selectbox',
     },
     {
         name: 'dewey_decimal_id',
         label: 'Decimal Id',
-        type: 'textfield'
+        type: 'selectbox'
     },
     {
         name: 'call_number',
