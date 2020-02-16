@@ -14,7 +14,8 @@ export default ({columns, open, handleClose, handleEditAddRow, modalData, reset}
     const alert = useAlert();
 
     const handleOnChange = name => ({target: {value}}) =>{
-        setVal({...val, [name]: value});
+        const key = columns.filter(({name: colName}) => colName === name )[0].ref
+        setVal({...val, [key]: value});
     }
 
     const handleSubmit = async () => {
