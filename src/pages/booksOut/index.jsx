@@ -41,6 +41,11 @@ const defaultColumns= [
         dropdownItems: getStudentsForSelect
     },
     {
+        name: 'return_on',
+        label: 'Return On',
+        type: 'date'
+    },
+    {
         name: 'check_out_date',
         label: 'Checked out on',
         type: 'date'

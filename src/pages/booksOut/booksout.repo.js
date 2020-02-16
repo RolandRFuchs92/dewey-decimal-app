@@ -12,7 +12,8 @@ SELECT
     bo.check_out_date,
     bo.check_in_date,
     s.first_name || ' ' || s.last_name as student_name,
-	b.name book_name
+    b.name book_name,
+    bo.return_on
 FROM
     ${appSettings.tables.books_out.name} bo
 JOIN

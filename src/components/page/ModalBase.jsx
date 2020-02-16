@@ -14,7 +14,7 @@ export default ({columns, open, handleClose, handleEditAddRow, modalData, reset}
     const alert = useAlert();
 
     const handleOnChange = name => ({target: {value}}) =>{
-        const key = columns.filter(({name: colName}) => colName === name )[0].ref
+        const key = columns.filter(({name: colName}) => colName === name )[0].ref || name;
         setVal({...val, [key]: value});
     }
 
@@ -84,6 +84,7 @@ function getElement({type, label, value, onChange, dropdownItems}){
 function DatePicker ({label, value, onChange}) {
     const handleDateChange = date => {
         const formattedDate = format(date,'dd MMM yyyy');
+        debugger;
         onChange({ target: {value: formattedDate}});
     }
 

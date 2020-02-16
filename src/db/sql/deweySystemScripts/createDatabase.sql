@@ -88,6 +88,7 @@ CREATE TABLE IF NOT EXISTS  books_out(
 	books_out_id INTEGER PRIMARY KEY,
 	book_id INTEGER NOT NULL,
 	student_id INTEGER NOT NULL,
+	return_on INTEGER,
 	check_out_date INTEGER NOT NULL,
 	check_in_date INTEGER,
 	CONSTRAINT fk_book_id FOREIGN KEY (book_id) REFERENCES book(book_id),

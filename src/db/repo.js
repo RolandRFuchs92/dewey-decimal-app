@@ -38,7 +38,7 @@ export const run  = async (statement, statementObject = {}) => {
 export const all = (statement, statementObject) => {
     const db = getDatabase();
     const stamp = getStamp();
-    log.info(`${stamp} Running statement ${statement.substr(0,200)} with params ${JSON.stringify(statementObject)}.`);
+    log.info(`${stamp} Running statement ${statement.substr(0,1024)} with params ${JSON.stringify(statementObject)}.`);
     return new Promise((res, rej) => {
         db.all(statement, statementObject, (err, rows) => {
             db.close();
