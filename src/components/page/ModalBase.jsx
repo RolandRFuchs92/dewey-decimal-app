@@ -19,7 +19,10 @@ export default ({columns, open, handleClose, handleEditAddRow, modalData, reset}
 
     const handleSubmit = async () => {
         try {
-            const result = await handleEditAddRow(val);        
+            const statementObject = {...val};
+            const refColumns = columns.filter(column => column.ref);
+            refColumns.forEach(({ name }) => delete statementObject[name]);
+            const result = await handleEditAddRow(statementObject);        
             alert.success(`Successfully ${result === 'add' ? 'added' : 'updated'} ${val.name}!`);
             reset();
         } catch (error) {
@@ -45,7 +48,8 @@ export default ({columns, open, handleClose, handleEditAddRow, modalData, reset}
 
 function convertJsonToModalFields(columns, handleOnChange, modalData){
     const result = columns.map((column,index)=> {
-        const child = getElement({...column, onChange:handleOnChange(column.name), value:(modalData[column.name])});
+        const value = column.ref === undefined ? modalData[column.name] : modalData[column.ref];
+        const child = getElement({...column, onChange:handleOnChange(column.name), value});
         const el = <Grid item key={`${column.label}${index}`}>
             {child}
         </Grid>

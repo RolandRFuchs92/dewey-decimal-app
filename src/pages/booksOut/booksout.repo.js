@@ -24,7 +24,6 @@ JOIN
 
 const repo = repoBase(`books_out`);
 repo.getAll = async () => {
-    debugger;
     const result =  await all(getAllQuery);
     return result;
 };

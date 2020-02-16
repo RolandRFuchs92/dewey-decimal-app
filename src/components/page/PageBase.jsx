@@ -55,7 +55,6 @@ export default ({defaultColumns, getAll, handleDeleteRow, handleEditAddRow, moda
             pagination: true,
             ...addButton
         });
-
         setColumns([
             ...defaultColumns,
             ...EditDeleteCol(handleEditAdd, handleDelete)

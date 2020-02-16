@@ -1,31 +1,34 @@
 import React from 'react';
+import appSettings from 'appSettings';
 
 import PageBase from 'components/page/PageBase';
 import repo, { getBooksForSelect, getStudentsForSelect } from './booksout.repo';
+const {tables: { books_out, book, student }} = appSettings;
+
 
 const defaultColumns= [
     {
-        name:'books_out_id',
+        name:books_out.pk,
         label: 'Id',
         type: {
-            header : 'Dewey Summar 3'
+            header : 'Dewey Summary 3'
         }
     },
     {
-        name: 'book_id',
+        name: book.pk, 
         options: {
             display: 'false'
         },
     },
     {
-        name: `book_name`,
+        name: 'book_name',
         label: `Book`,
-        ref: `book_id`,
+        ref: book.pk,
         type: 'select',
         dropdownItems: getBooksForSelect
     },
     {
-        name: 'student_id',
+        name: student.pk,
         options: {
             display: 'false'
         }        
@@ -34,7 +37,7 @@ const defaultColumns= [
         name: 'student_name',
         label: 'Student',
         type: 'select',
-        ref: 'student_id',
+        ref: student.pk,
         dropdownItems: getStudentsForSelect
     },
     {
