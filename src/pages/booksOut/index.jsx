@@ -13,25 +13,38 @@ const defaultColumns= [
     },
     {
         name: 'book_id',
-        label: 'Book Id',
-        type: 'selectbox',
+        options: {
+            display: 'false'
+        },
+    },
+    {
+        name: `book_name`,
+        label: `Book`,
+        ref: `book_id`,
+        type: 'select',
         dropdownItems: getBooksForSelect
     },
     {
         name: 'student_id',
-        label: 'Student',
-        type: 'selectbox',
+        options: {
+            display: 'false'
+        }        
+    },
+    {
+        name: 'student_name',
+        type: 'select',
+        ref: 'student_id',
         dropdownItems: getStudentsForSelect
     },
     {
         name: 'check_out_date',
         label: 'Checked out on',
-        type: 'datetime'
+        type: 'date'
     },
     {
         name: 'check_in_date',
         label: 'Checked in on',
-        type: 'datetime',
+        type: 'date',
     },
 ]
 

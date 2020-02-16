@@ -59,12 +59,15 @@ function getElement({type, label, value, onChange, dropdownItems}){
         return <Typography variant="h5">{type.header} {!!value && `(${value})`}</Typography>
 
     switch (toLower(type)) {
+        case 'text':
         case `textfield`:
             return <TextField fullWidth label={label} value={value || ''} onChange={onChange}></TextField>;
         case `typography`:
             return <TextField fullWidth label={label} value={value || ''} onChange={onChange}></TextField>;
+        case 'date':
         case 'datetime':
             return <DatePicker {...{label, value, onChange}}></DatePicker>
+        case 'select':
         case 'selectbox':
             return <SelectBox {...{label, onChange, value, getDropdownItems: dropdownItems}}></SelectBox>
         default:
