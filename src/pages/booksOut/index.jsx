@@ -32,6 +32,7 @@ const defaultColumns= [
     },
     {
         name: 'student_name',
+        label: 'Student',
         type: 'select',
         ref: 'student_id',
         dropdownItems: getStudentsForSelect
