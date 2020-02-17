@@ -18,6 +18,14 @@ const deleteRowQuery = `
         dewey_summary_id=$id
 `;
 
+const getSelectListQuery = `
+    SELECT
+        summary_id as value,
+        name as text
+    FROM
+        dewey_summary
+`
+
 export const getAll = async () => {
     return await all(getAllData);
 }
@@ -27,4 +35,8 @@ export const addOrUpdate = async (summary1Object ) => {
 }
 export const deleteRow = async id => {
     return await run(deleteRowQuery, {$id:id});
+}
+
+export const getSelectList = async () => {
+    return await all(getSelectListQuery);
 }
