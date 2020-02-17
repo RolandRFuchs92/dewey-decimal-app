@@ -1,8 +1,10 @@
 import React from 'react';
-
+import appSettings from 'appSettings';
 import PageBase from 'components/page/PageBase';
 import repo from './book.repo';
-import getAuthorsSelect from 'pages/authors/authors.repo';
+
+import { getSelectList as getAuthorsSelectList } from 'pages/authors/authors.repo';
+import { getSelectList as getDecimalSelectList } from 'pages/deweySystem/decimal/decimal.repo';
 
 const defaultColumns= [
     {
@@ -15,13 +17,16 @@ const defaultColumns= [
     {
         name: 'author_id',
         label: 'Author Id',
-        type: 'select',
-        getDropdownItems: getAuthorsSelect
+        options: {
+            display: 'false'
+        },
     },
     {
         name: 'decimal_id',
         label: 'Decimal Id',
-        type: 'select'
+        options: {
+            display: 'false'
+        },
     },
     {
         name: 'call_number',
@@ -34,9 +39,22 @@ const defaultColumns= [
         type: 'textField'
     },
     {
+        name:'author',
+        label: 'Author',
+        type: 'select',
+        dropdownItems: getAuthorsSelectList
+    },
+    {
+        name: 'dewey_decimal',
+        label: 'Deciaml Name',
+        ref: 'decimal_id',
+        type: 'select',
+        dropdownItems: getDecimalSelectList
+    },
+    {
         name: 'publisher',
         label: 'Publisher',
-        type: 'textField'
+        type: 'text'
     },
 ]
 

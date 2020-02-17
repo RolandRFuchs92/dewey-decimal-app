@@ -84,7 +84,6 @@ function getElement({type, label, value, onChange, dropdownItems}){
 function DatePicker ({label, value, onChange}) {
     const handleDateChange = date => {
         const formattedDate = format(date,'dd MMM yyyy');
-        debugger;
         onChange({ target: {value: formattedDate}});
     }
 
@@ -110,8 +109,7 @@ function SelectBox({label, onChange,value,getDropdownItems}) {
     },[])
     
     
-            
     return <TextField select fullWidth label={label} value={value || ''} onChange={onChange}>
-        {rows.map(row => <MenuItem key={row.value} value={row.value}>{row.text}</MenuItem>)}
+        {Array.isArray(rows) && rows.map(row => <MenuItem key={row.value} value={row.value}>{row.text}</MenuItem>)}
     </TextField>;
 }

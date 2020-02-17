@@ -10,9 +10,9 @@ export default repoBase(`author`);
 const querySelectList =  `
     SELECT
         ${appSettings.tables.author.pk},
-        name.
+        name,
         second_name,
-        surname,
+        surname
     FROM
         ${appSettings.tables.author.name}
 `;
