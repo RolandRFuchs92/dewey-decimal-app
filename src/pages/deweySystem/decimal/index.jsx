@@ -1,3 +1,4 @@
+import React from 'react';
 import PageBase from 'components/page/PageBase';
 
 import repo from './decimal.repo';
@@ -27,6 +28,5 @@ const defaultColumns = [
 
 export default () => {
     const {getAll, deleteRow:handleDeleteRow, addOrUpdate: handleEditAddRow} = repo;
-
     return <PageBase {...{defaultColumns, getAll, handleDeleteRow, handleEditAddRow}}></PageBase>
 }
