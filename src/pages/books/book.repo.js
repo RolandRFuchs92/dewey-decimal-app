@@ -3,14 +3,14 @@ import appSettings from 'appSettings';
 import repoBase from 'components/page/repo.base';
 import {all} from 'db/repo';
 
-const {tables: {book, author, dewey_summary_3}} = appSettings;
+const {tables: {book, author, dewey_decimal}} = appSettings;
 
 const getAllQuery = `
 SELECT	
     b.${book.pk},
     a.${author.pk},
-    ds3.decimal_id,
-    ds3.name as dewey_decimal_name,
+    dd.decimal_id,
+    dd.name as dewey_decimal_name,
     a.name || ' ' || a.surname as author_name,
     b.call_number,
     b.name,
@@ -21,8 +21,8 @@ JOIN
     ${author.name} a
     ON b.${author.pk} = a.${author.pk}
 JOIN
-    ${dewey_summary_3.name} ds3
-    ON b.decimal_id = ds3.decimal_id
+    ${dewey_decimal.name} dd
+    ON b.decimal_id = dd.decimal_id
 `
 const repo = repoBase(`book`);
 
