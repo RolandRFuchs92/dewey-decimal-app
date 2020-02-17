@@ -9,7 +9,7 @@ const getAllQuery = `
 SELECT	
     b.${book.pk},
     a.${author.pk},
-    ds3.summary_3_id,
+    ds3.decimal_id,
     ds3.name as dewey_decimal_name,
     a.name || ' ' || a.surname as author_name,
     b.call_number,
@@ -22,7 +22,7 @@ JOIN
     ON b.${author.pk} = a.${author.pk}
 JOIN
     ${dewey_summary_3.name} ds3
-    ON b.summary_3_id = ds3.summary_3_id
+    ON b.decimal_id = ds3.decimal_id
 `
 const repo = repoBase(`book`);
 

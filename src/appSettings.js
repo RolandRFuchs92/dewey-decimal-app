@@ -21,6 +21,10 @@ const appSettings =  new function(){
             pk: `dewey_summary_3_id`,
             name: `dewey_summary_3`
         },
+        dewey_decimal: {
+            pk: 'dewey_decimal_id',
+            name: 'dewey_decimal'
+        },
         book: {
             pk: `book_id`,
             name: `book`
