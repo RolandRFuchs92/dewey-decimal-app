@@ -2,6 +2,7 @@ import React from 'react';
 
 import PageBase from 'components/page/PageBase';
 import repo from './book.repo';
+import getAuthorsSelect from 'pages/authors/authors.repo';
 
 const defaultColumns= [
     {
@@ -14,12 +15,13 @@ const defaultColumns= [
     {
         name: 'author_id',
         label: 'Author Id',
-        type: 'selectbox',
+        type: 'select',
+        getDropdownItems: getAuthorsSelect
     },
     {
-        name: 'dewey_decimal_id',
+        name: 'decimal_id',
         label: 'Decimal Id',
-        type: 'selectbox'
+        type: 'select'
     },
     {
         name: 'call_number',
