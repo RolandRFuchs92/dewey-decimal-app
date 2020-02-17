@@ -24,8 +24,14 @@ repo.getAll = async () => {
 export default repo;
 
 
+const getSelectListQuery = `
+SELECT
+    summary_2_id as value,
+    name as text
+FROM 
+    dewey_summary_2
+`
 
-export const getSelectList = () => {
-
-
+export const getSelectList = async () => {
+    return await all(getSelectListQuery);
 }
