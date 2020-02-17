@@ -3,16 +3,42 @@ import appSettings from 'appSettings';
 import repoBase from 'components/page/repo.base';
 import {all} from 'db/repo';
 
-export default repoBase(`book`);
+const {tables: {book, author, dewey_summary_3}} = appSettings;
 
+const getAllQuery = `
+SELECT	
+    b.${book.pk},
+    a.${author.pk},
+    ds3.summary_3_id,
+    ds3.name as dewey_decimal_name,
+    a.name || ' ' || a.surname as author_name,
+    b.call_number,
+    b.name,
+    b.publisher
+FROM
+    ${book.name} b
+JOIN
+    ${author.name} a
+    ON b.${author.pk} = a.${author.pk}
+JOIN
+    ${dewey_summary_3.name} ds3
+    ON b.summary_3_id = ds3.summary_3_id
+`
+const repo = repoBase(`book`);
+
+repo.getAll = async () => {
+    return await all(getAllQuery);
+}
+
+export default repo;
 
 const getBooksSelectListQuery = `
     SELECT
-        ${appSettings.tables.book.pk},
+        ${book.pk},
         name,
         call_number
     FROM
-        ${appSettings.tables.book.name}
+        ${book.name}
 `;
 
 export const getBooksSelectList = async () => {
