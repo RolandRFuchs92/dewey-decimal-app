@@ -6,6 +6,7 @@ import {
 	ListItemText,
 	Collapse,
 	makeStyles,
+	withStyles
 } from '@material-ui/core';
 import { withRouter } from 'react-router-dom';
 import { isNil, upperFirst } from 'lodash';
@@ -17,11 +18,24 @@ const useStyles = makeStyles(theme => ({
 	nested: {
 		paddingLeft: theme.spacing(4),
 	},
+	menuItem: {
+		'&.Mui-selected': {
+			borderWidth: '0px 0px 1px 0px',
+			border: '1px solid black',
+			backgroundColor: 'white'
+		}
+	}
 }));
+
+const StyledListItem = withStyles({
+	
+})(ListItem);
 
 const ExpandLess = icons.ExpandLess;
 const ExpandMore = icons.ExpandMore;
 let prevSelected;
+
+
 
 function MenuOptions(props) {
 	const { menuItems } = props;
@@ -52,7 +66,6 @@ function CreateListItem({ label, icon, path, menuItems, props, handleSelected })
 
 	const handleMenuItemClick = path => {
 		if(!hasMenuItems){
-			debugger;
 			appContext.setState({...appContext, pageTitle: label});
 			handleSelected(setSelected);
 		}
@@ -66,7 +79,7 @@ function CreateListItem({ label, icon, path, menuItems, props, handleSelected })
 	const Icon = icons[upperFirst(icon)]
 	return (
 		<>
-			<ListItem selected={selected} button key={label} onClick={() => handleMenuItemClick(path)}>
+			<ListItem selected={selected} button key={label} onClick={() => handleMenuItemClick(path)} className={classes.menuItem} >
 				<ListItemIcon>
 					{Icon}
 				</ListItemIcon>
