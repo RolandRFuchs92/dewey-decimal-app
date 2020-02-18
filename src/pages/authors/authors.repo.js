@@ -19,10 +19,10 @@ const querySelectList =  `
 
 export const getSelectList = async () => {
     const selectData = await all(querySelectList);
-    return selectData.map(({pk, name, second_name, surname}) => {
+    return selectData.map(({[appSettings.tables.author.pk]: pk, name, second_name, surname}) => {
         return {
             text: `${startCase(name)} ${!isEmpty(second_name) && `${second_name.substr(0,1)}.`} ${startCase(surname)}`,
-            value: pk
+            value: `${pk}`
         };
     });
 }

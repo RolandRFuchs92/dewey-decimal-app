@@ -16,14 +16,12 @@ const defaultColumns= [
     },
     {
         name: 'author_id',
-        label: 'Author Id',
         options: {
             display: 'false'
         },
     },
     {
         name: 'decimal_id',
-        label: 'Decimal Id',
         options: {
             display: 'false'
         },
@@ -41,6 +39,7 @@ const defaultColumns= [
     {
         name:'author',
         label: 'Author',
+        ref: 'author_id',
         type: 'select',
         dropdownItems: getAuthorsSelectList
     },
