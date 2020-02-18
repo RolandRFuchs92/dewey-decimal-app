@@ -37,14 +37,14 @@ const defaultColumns= [
         type: 'textField'
     },
     {
-        name:'author',
+        name:'author_name',
         label: 'Author',
         ref: 'author_id',
         type: 'select',
         dropdownItems: getAuthorsSelectList
     },
     {
-        name: 'dewey_decimal',
+        name: 'dewey_decimal_name',
         label: 'Deciaml Name',
         ref: 'decimal_id',
         type: 'select',

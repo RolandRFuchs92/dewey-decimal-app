@@ -27,7 +27,7 @@ const {tables: {dewey_decimal}} = appSettings;
 
 const getSelectQuery = `
     SELECT
-        ${dewey_decimal.pk} as value,
+        decimal_id as value,
         summary_3_id || '-' || decimal_id || ': ' ||name as text
     FROM
         ${dewey_decimal.name}
