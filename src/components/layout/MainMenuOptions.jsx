@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import {
 	List,
 	ListItem,
@@ -7,10 +7,11 @@ import {
 	Collapse,
 	makeStyles,
 } from '@material-ui/core';
-
 import { withRouter } from 'react-router-dom';
 import { isNil, upperFirst } from 'lodash';
+
 import icons from 'components/icons';
+import context from 'utils/context';
 
 const useStyles = makeStyles(theme => ({
 	nested: {
@@ -23,6 +24,7 @@ const ExpandMore = icons.ExpandMore;
 
 function MenuOptions(props) {
 	const { menuItems } = props;
+	
 
 	return (
 		<List disablePadding>
@@ -40,8 +42,11 @@ function CreateListItem({ label, icon, path, menuItems, props }) {
 	const classes = useStyles();
 	const [isOpen, setIsOpen] = useState(false);
 	const hasMenuItems = !isNil(menuItems);
+	const appContext = useContext(context);
 
-	const pushPath = path => {
+	const handleMenuItemClick = path => {
+		!hasMenuItems && appContext.setState({...appContext, pageTitle: label});
+
 		if (isNil(path)) {
 			setIsOpen(!isOpen);
 			return;
@@ -51,7 +56,7 @@ function CreateListItem({ label, icon, path, menuItems, props }) {
 	const Icon = icons[upperFirst(icon)]
 	return (
 		<>
-			<ListItem button key={label} onClick={() => pushPath(path)}>
+			<ListItem button key={label} onClick={() => handleMenuItemClick(path)}>
 				<ListItemIcon>
 					{Icon}
 				</ListItemIcon>
