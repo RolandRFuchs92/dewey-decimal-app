@@ -104,12 +104,13 @@ function SelectBox({label, onChange,value,getDropdownItems}) {
     
     useEffect(() => {
         (async () => {
-            setRows(await getDropdownItems());
+            const result  = await getDropdownItems();
+            setRows(result);
         })()
     },[])
     
     
     return <TextField select fullWidth label={label} value={value || ''} onChange={onChange}>
-        {Array.isArray(rows) && rows.map(row => <MenuItem key={row.value} value={row.value}>{row.text}</MenuItem>)}
+        {rows.map(row => <MenuItem key={row.value} value={row.value}>{row.text}</MenuItem>)}
     </TextField>;
 }

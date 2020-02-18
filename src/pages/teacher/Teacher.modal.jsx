@@ -35,7 +35,6 @@ export default ({isOpen, teacher, reset, handleClose}) => {
         const teacherName = `${newTeacher.first_name} ${newTeacher.last_name}`;
         let isCreate;
         try{
-            debugger;
             isCreate = await createOrUpdateTeacher(newTeacher) === 'add';
             reset();
             alert.success(`Successfully ${isCreate ? 'created' : 'updated'} teacher ${teacherName}!`);

@@ -9,7 +9,7 @@ const defaultColumns= [
         name:'dewey_summary_3_id',
         label: 'Id',
         type: {
-            header : 'Dewey Summar 3'
+            header : 'Dewey Summary 3'
         }
     },
     {
