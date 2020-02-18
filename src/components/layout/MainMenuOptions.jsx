@@ -21,32 +21,42 @@ const useStyles = makeStyles(theme => ({
 
 const ExpandLess = icons.ExpandLess;
 const ExpandMore = icons.ExpandMore;
+let prevSelected;
 
 function MenuOptions(props) {
 	const { menuItems } = props;
-	
+	const handleSelected = setSelected => {
+		prevSelected && prevSelected(false);
+		setSelected(true);
+		prevSelected = setSelected;
+	}
 
 	return (
 		<List disablePadding>
 			{menuItems.map(({ label, icon, path, menuItems }) => (
 				<CreateListItem
 					key={label}
-					{...{ label, icon, path, menuItems, props }}
+					{...{ label, icon, path, menuItems, props, handleSelected }}
 				></CreateListItem>
 			))}
 		</List>
 	);
 }
 
-function CreateListItem({ label, icon, path, menuItems, props }) {
+function CreateListItem({ label, icon, path, menuItems, props, handleSelected }) {
 	const classes = useStyles();
 	const [isOpen, setIsOpen] = useState(false);
 	const hasMenuItems = !isNil(menuItems);
 	const appContext = useContext(context);
+	const [selected, setSelected] = useState(false);
 
 	const handleMenuItemClick = path => {
-		!hasMenuItems && appContext.setState({...appContext, pageTitle: label});
-
+		if(!hasMenuItems){
+			debugger;
+			appContext.setState({...appContext, pageTitle: label});
+			handleSelected(setSelected);
+		}
+		
 		if (isNil(path)) {
 			setIsOpen(!isOpen);
 			return;
@@ -56,7 +66,7 @@ function CreateListItem({ label, icon, path, menuItems, props }) {
 	const Icon = icons[upperFirst(icon)]
 	return (
 		<>
-			<ListItem button key={label} onClick={() => handleMenuItemClick(path)}>
+			<ListItem selected={selected} button key={label} onClick={() => handleMenuItemClick(path)}>
 				<ListItemIcon>
 					{Icon}
 				</ListItemIcon>
