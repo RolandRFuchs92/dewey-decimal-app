@@ -16635,3 +16635,65 @@
 {"message":"Stamp[1582056879547] - Running statement \nSELECT \n\tdc.dewey_decimal_id,\n\tdc.summary_3_id,\n\tdc.decimal_id,\n\tdc.name,\n\tds3.name as dewey_summary_3_name\nFROM\n\tdewey_decimal dc\nJOIN\n\tdewey_summary_3 ds3\n\tON dc.summary_3_id = ds3.summary_3_id\n with params undefined.","level":"info","timestamp":"2020-02-18 22:14:39"}
 {"message":"Stamp[1582056879547] - Closed Db.","level":"info","timestamp":"2020-02-18 22:14:39"}
 {"message":"Stamp[1582056879547] - Returned 1 row(s)","level":"info","timestamp":"2020-02-18 22:14:39"}
+{"message":"Initializing Database.","level":"info","timestamp":"2020-02-18 22:14:42"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-18 22:14:42"}
+{"message":"Stamp[1582056882776] - Running statement - \n\n\r\n\r\nCREATE TABLE IF NOT EXISTS dewey_summary (\r\n\tdewey_summary_id INTEGER PRIMARY KEY,\r\n\tsummary_id INTEGER,\r\n\tname TEXT\r\n);\r\n\r\nCREATE TABLE IF NOT EXISTS dewey_summary_2 (\r\n\tdewey_summary_2_id INTEGER PRIMARY KEY,\r\n\tsummary_2_id INTEGER,\r\n\tsummary_id INTEGER,\r\n\tname TEXT,\r\n\tCONSTRAINT fk_summary_id FOREIGN KEY(summary_id) REFERENCES dewey_summary(summary_id)\r\n);\r\n\r\nCREATE TABLE IF NOT EXISTS dewey_summary_3 (\r\n\tdewey_summary_3_id INTEGER PRIMARY KEY,\r\n\tsummary_3_id INTEGER,\r\n\tsummary_2_id INTEGER,\r\n\tname TEXT,\r\n\tCONSTRAINT fk_summary_2_id FOREIGN KEY(summary_2_id) REFERENCES dewey_summary_2(summary_2_id)\r\n);\r\n\r\nCREATE TABLE IF NOT EXISTS dewey_decimal (\r\n\tdewey_decimal_id INTEGER PRIMARY KEY,\r\n\tsummary_3_id INTEGER,\r\n\tdecimal_id INTEGER,\r\n\tname TEXT,\r\n\tCONSTRAINT fk_summary_3_id FOREIGN KEY(summary_3_id) REFERENCES dewey_summary_3(summary_3_id)\r\n);\r\n\r\nCREATE TABLE IF NOT EXISTS author (\r\n\tauthor_id INTEGER PRIMARY KEY,\r\n\tname TEXT,\r\n\tsecond_name TEXT,\r\n\tsurname TEXT\r\n);\r\n\r\nCREATE TABLE IF NOT EXISTS book (\r\n\tbook_id INTEGER PRIMARY KEY,\r\n\tauthor_id INTEGER,\r\n\tdecimal_id INTEGER,\r\n\tcall_number TEXT,\r\n\tname TEXT,\r\n\tpublisher TEXT, \r\n\tcreated_on TEXT,\r\n\tCONSTRAINT fk_author_id FOREIGN KEY(author_id) REFERENCES author(author_id),\r\n\tCONSTRAINT fk_decimal_id FOREIGN KEY(decimal_id) REFERENCES dewey_decimal(decimal_id)\r\n);\r\n\r\nCREATE TABLE IF NOT EXISTS student ( \r\n\tstudent_id INTEGER PRIMARY KEY,\r\n\tfirst_name TEXT NOT NULL,\r\n\tlast_name TEXT NOT NULL,\r\n\tbirthdate TEXT NOT NULL,\r\n\tmother_name text,\r\n\tmother_mobile TEXT,\r\n\tmother_email TEXT,\r\n\tfather_name TEXT,\r\n\tfather_mobile TEXT,\r\n\tfather_email TEXT,\r\n\tclass_id INTEGER NOT NULL,\r\n\tis_active INTEGER NOT NULL,\r\n\tCONSTRAINT fk_class_id FOREIGN KEY(class_id) REFERENCES class(class_id)\r\n);\r\n\r\nCREATE TABLE IF NOT EXISTS teacher (\r\n\tteacher_id INTEGER PRIMARY KEY,\r\n\tfirst_name TEXT,\r\n\tlast_name TEXT,\r\n\tmobile TEXT,\r\n\temail TEXT,\r\n    class_id INTEGER,\r\n    is_active INTEGER,\r\n    CONSTRAINT fk_class_id FOREIGN KEY(class_id) REFERENCES class(class_id)\r\n);\r\n\r\n CREATE TABLE IF NOT EXISTS class (\r\n\tclass_id INTEGER PRIMARY KEY,\r\n\tclass_name TEXT,\r\n\tgrade INTEGER,\r\n\tis_active INTEGER\r\n);\r\n\r\n\r\nCREATE TABLE IF NOT EXISTS  books_out(\r\n\tbooks_out_id INTEGER PRIMARY KEY,\r\n\tbook_id INTEGER NOT NULL,\r\n\tstudent_id INTEGER NOT NULL,\r\n\treturn_on INTEGER,\r\n\tcheck_out_date INTEGER NOT NULL,\r\n\tcheck_in_date INTEGER,\r\n\tCONSTRAINT fk_book_id FOREIGN KEY (book_id) REFERENCES book(book_id),\r\n\tCONSTRAINT fk_student_id FOREIGN KEY (student_id) REFERENCES student(student_id)\r\n)\n\n with params.","level":"info","timestamp":"2020-02-18 22:14:42"}
+{"message":"Stamp[1582056882776] - Closed Db.","level":"info","timestamp":"2020-02-18 22:14:42"}
+{"message":"Stamp[1582056882776] - Completed successfully.","level":"info","timestamp":"2020-02-18 22:14:42"}
+{"message":"Database successfully initialized.","level":"info","timestamp":"2020-02-18 22:14:42"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-18 22:14:42"}
+{"message":"Stamp[1582056882797] - Running statement \n    SELECT\n        *\n    FROM\n        dewey_summary\n    LIMIT 1;\n with params undefined.","level":"info","timestamp":"2020-02-18 22:14:42"}
+{"message":"Stamp[1582056882797] - Closed Db.","level":"info","timestamp":"2020-02-18 22:14:42"}
+{"message":"Stamp[1582056882797] - Returned 1 row(s)","level":"info","timestamp":"2020-02-18 22:14:42"}
+{"message":"table[dewey_summary] already has data. Skipping seed.","level":"info","timestamp":"2020-02-18 22:14:42"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-18 22:14:42"}
+{"message":"Stamp[1582056882805] - Running statement \n    SELECT\n        *\n    FROM\n        dewey_summary_2\n    LIMIT 1;\n with params undefined.","level":"info","timestamp":"2020-02-18 22:14:42"}
+{"message":"Stamp[1582056882805] - Closed Db.","level":"info","timestamp":"2020-02-18 22:14:42"}
+{"message":"Stamp[1582056882805] - Returned 1 row(s)","level":"info","timestamp":"2020-02-18 22:14:42"}
+{"message":"table[dewey_summary_2] already has data. Skipping seed.","level":"info","timestamp":"2020-02-18 22:14:42"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-18 22:14:42"}
+{"message":"Stamp[1582056882812] - Running statement \n    SELECT\n        *\n    FROM\n        dewey_summary_3\n    LIMIT 1;\n with params undefined.","level":"info","timestamp":"2020-02-18 22:14:42"}
+{"message":"Stamp[1582056882812] - Closed Db.","level":"info","timestamp":"2020-02-18 22:14:42"}
+{"message":"Stamp[1582056882812] - Returned 1 row(s)","level":"info","timestamp":"2020-02-18 22:14:42"}
+{"message":"table[dewey_summary_3] already has data. Skipping seed.","level":"info","timestamp":"2020-02-18 22:14:42"}
+{"message":"Database successfully checked, initialized and seeded.","level":"info","timestamp":"2020-02-18 22:14:42"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-18 22:14:47"}
+{"message":"Stamp[1582056887449] - Running statement \nSELECT \n\tdc.dewey_decimal_id,\n\tdc.summary_3_id,\n\tdc.decimal_id,\n\tdc.name,\n\tds3.name as dewey_summary_3_name\nFROM\n\tdewey_decimal dc\nJOIN\n\tdewey_summary_3 ds3\n\tON dc.summary_3_id = ds3.summary_3_id\n with params undefined.","level":"info","timestamp":"2020-02-18 22:14:47"}
+{"message":"Stamp[1582056887449] - Closed Db.","level":"info","timestamp":"2020-02-18 22:14:47"}
+{"message":"Stamp[1582056887449] - Returned 1 row(s)","level":"info","timestamp":"2020-02-18 22:14:47"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-18 22:14:49"}
+{"message":"Stamp[1582056889968] - Running statement \n    SELECT\n        ds2.dewey_summary_2_id,\n        ds2.summary_2_id,\n        ds2.summary_id,\n        ds2.name,\n        ds.name as dewey_summary_name\n    FROM\n        dewey_summary_2 ds2\n    JOIN\n        dewey_summary ds\n        ON ds2.summary_id = ds.summary_id\n with params undefined.","level":"info","timestamp":"2020-02-18 22:14:49"}
+{"message":"Stamp[1582056889968] - Closed Db.","level":"info","timestamp":"2020-02-18 22:14:50"}
+{"message":"Stamp[1582056889968] - Returned 100 row(s)","level":"info","timestamp":"2020-02-18 22:14:50"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-18 22:14:52"}
+{"message":"Stamp[1582056892082] - Running statement \n    SELECT\n        summary_id as value,\n        name as text\n    FROM\n        dewey_summary\n with params undefined.","level":"info","timestamp":"2020-02-18 22:14:52"}
+{"message":"Stamp[1582056892082] - Closed Db.","level":"info","timestamp":"2020-02-18 22:14:52"}
+{"message":"Stamp[1582056892082] - Returned 10 row(s)","level":"info","timestamp":"2020-02-18 22:14:52"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-18 22:14:54"}
+{"message":"Stamp[1582056894098] - Running statement \n    SELECT\n        summary_id as value,\n        name as text\n    FROM\n        dewey_summary\n with params undefined.","level":"info","timestamp":"2020-02-18 22:14:54"}
+{"message":"Stamp[1582056894098] - Closed Db.","level":"info","timestamp":"2020-02-18 22:14:54"}
+{"message":"Stamp[1582056894098] - Returned 10 row(s)","level":"info","timestamp":"2020-02-18 22:14:54"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-18 22:15:22"}
+{"message":"Stamp[1582056922493] - Running statement \nSELECT\n    ds3.dewey_summary_3_id,\n    ds3.summary_3_id,\n    ds3.name,\n    ds2.name as dewey_summary_2_name\nFROM\t\n    dewey_summary_3 ds3\nJOIN\t\n    dewey_summary_2 ds2\n    on ds3.summary_2_id = ds2.summary_2_id\n with params undefined.","level":"info","timestamp":"2020-02-18 22:15:22"}
+{"message":"Stamp[1582056922493] - Closed Db.","level":"info","timestamp":"2020-02-18 22:15:22"}
+{"message":"Stamp[1582056922493] - Returned 891 row(s)","level":"info","timestamp":"2020-02-18 22:15:22"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-18 22:15:25"}
+{"message":"Stamp[1582056925596] - Running statement \nSELECT\n    summary_2_id as value,\n    name as text\nFROM \n    dewey_summary_2\n with params undefined.","level":"info","timestamp":"2020-02-18 22:15:25"}
+{"message":"Stamp[1582056925596] - Closed Db.","level":"info","timestamp":"2020-02-18 22:15:25"}
+{"message":"Stamp[1582056925596] - Returned 100 row(s)","level":"info","timestamp":"2020-02-18 22:15:25"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-18 22:15:31"}
+{"message":"Stamp[1582056931537] - Running statement \nSELECT\n    summary_2_id as value,\n    name as text\nFROM \n    dewey_summary_2\n with params undefined.","level":"info","timestamp":"2020-02-18 22:15:31"}
+{"message":"Stamp[1582056931537] - Closed Db.","level":"info","timestamp":"2020-02-18 22:15:31"}
+{"message":"Stamp[1582056931537] - Returned 100 row(s)","level":"info","timestamp":"2020-02-18 22:15:31"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-18 22:15:34"}
+{"message":"Stamp[1582056934186] - Running statement \nSELECT\n    summary_2_id as value,\n    name as text\nFROM \n    dewey_summary_2\n with params undefined.","level":"info","timestamp":"2020-02-18 22:15:34"}
+{"message":"Stamp[1582056934186] - Closed Db.","level":"info","timestamp":"2020-02-18 22:15:34"}
+{"message":"Stamp[1582056934186] - Returned 100 row(s)","level":"info","timestamp":"2020-02-18 22:15:34"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-18 22:15:37"}
+{"message":"Stamp[1582056937053] - Running statement \nSELECT\n    summary_2_id as value,\n    name as text\nFROM \n    dewey_summary_2\n with params undefined.","level":"info","timestamp":"2020-02-18 22:15:37"}
+{"message":"Stamp[1582056937053] - Closed Db.","level":"info","timestamp":"2020-02-18 22:15:37"}
+{"message":"Stamp[1582056937053] - Returned 100 row(s)","level":"info","timestamp":"2020-02-18 22:15:37"}
+{"message":"Opening database.","level":"info","timestamp":"2020-02-18 22:15:40"}
+{"message":"Stamp[1582056940612] - Running statement \nSELECT\n    summary_2_id as value,\n    name as text\nFROM \n    dewey_summary_2\n with params undefined.","level":"info","timestamp":"2020-02-18 22:15:40"}
+{"message":"Stamp[1582056940612] - Closed Db.","level":"info","timestamp":"2020-02-18 22:15:40"}
+{"message":"Stamp[1582056940612] - Returned 100 row(s)","level":"info","timestamp":"2020-02-18 22:15:40"}

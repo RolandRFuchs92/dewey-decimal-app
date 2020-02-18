@@ -7,6 +7,7 @@ const getAllQuery = `
 SELECT
     ds3.dewey_summary_3_id,
     ds3.summary_3_id,
+    ds3.summary_2_id,
     ds3.name,
     ds2.name as dewey_summary_2_name
 FROM	
