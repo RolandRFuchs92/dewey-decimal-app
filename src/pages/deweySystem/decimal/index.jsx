@@ -19,13 +19,7 @@ const defaultColumns = [
             display: 'false'
         }
     },
-    {
-        name: 'summary',
-        ref: 'summary_3_id',
-        label: 'Summary',
-        type:'select',
-        dropdownItems: getSelectList
-    },
+  
     {
         name: 'decimal_id',
         label: 'Decimal Id',
@@ -35,6 +29,13 @@ const defaultColumns = [
         name: 'name',
         label: 'Name',
         type: 'textfield'
+    },
+    {
+        name: 'dewey_summary_3_name',
+        ref: 'summary_3_id',
+        label: 'Summary',
+        type:'select',
+        dropdownItems: getSelectList
     },
 ]
 
