@@ -93,7 +93,6 @@ export default function() {
 			<div>
 				<MUIDataTable
 					options={options}
-					title={'Student List'}
 					data={data}
 					columns={columns}
 				></MUIDataTable>
