@@ -7,7 +7,7 @@ import Modal from 'components/modal'
 import Icons from 'components/icons';
 
 export default (props) => {
-    const {modalData, columns, barcodeText} = props;
+    const {modalData, columns, barcodeText, barcodeDescription} = props;
     const componentRef = useRef();
 
 
