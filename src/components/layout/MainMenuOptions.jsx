@@ -27,15 +27,17 @@ const useStyles = makeStyles(theme => ({
 				bottom:0,
 				backgroundImage: 'linear-gradient(white)',
 				backgroundColor: 'white',
-				transition: 'all .4s linear',
-				right:-15
+				transition: 'all cubic-bezier(0, 0, 0.2, 1) 1s',
+				right: -200,
+				opacity: 0
 		},
 		'&.Mui-selected': {
 			backgroundColor: 'white',
 			
 			'&:after': {
-				backgroundColor: theme.palette.primary.dark
-				// backgroundImage: `linear-gradient(to right, white, yellow, blue)`,
+				background: `linear-gradient(to right, white 15px, ${theme.palette.primary.light} 50%, ${theme.palette.primary.main} 85%, ${theme.palette.primary.dark})`,
+				right:0,
+				opacity: 1
 			}
 		}
 	}
