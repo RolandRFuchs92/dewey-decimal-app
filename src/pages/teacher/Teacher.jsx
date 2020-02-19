@@ -95,7 +95,7 @@ export default () => {
         <>
             <Fade in={true} timeout={appSettings.fadeTransitionDuration}>
                 <div>   
-                    <MUIDataTable title='Teachers' data={data} columns={columns} options={options} />
+                    <MUIDataTable data={data} columns={columns} options={options} />
                     <TeacherModal {...{isOpen,  handleClose, reset, teacher}}></TeacherModal>
                 </div>
             </Fade>

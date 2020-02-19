@@ -2,13 +2,14 @@ import React from 'react';
 
 import PageBase from 'components/page/PageBase';
 import repo from './summary2.repo';
+import {getSelectList} from 'pages/deweySystem/summary1/summary1.repo';
 
 const defaultColumns= [
     {
         name:'dewey_summary_2_id',
         label: 'Id',
         type: {
-            header : 'Dewey Summar 2'
+            header : 'Dewey Summary 2'
         }
     },
     {
@@ -18,13 +19,21 @@ const defaultColumns= [
     },
     {
         name: 'summary_id',
-        label: 'Summary Id',
-        type: 'textfield'
+        options: {
+            display: 'false'
+        }
     },
     {
         name: 'name',
         label: 'Name',
         type: 'textField'
+    },
+    {
+        name: 'dewey_summary_name',
+        label: 'Summary',
+        type: 'select',
+        ref: 'summary_id',
+        dropdownItems: getSelectList
     },
 ]
 

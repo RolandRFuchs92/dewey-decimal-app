@@ -40,13 +40,13 @@ CREATE TABLE IF NOT EXISTS author (
 CREATE TABLE IF NOT EXISTS book (
 	book_id INTEGER PRIMARY KEY,
 	author_id INTEGER,
-	dewey_decimal_id INTEGER,
+	decimal_id INTEGER,
 	call_number TEXT,
 	name TEXT,
 	publisher TEXT, 
 	created_on TEXT,
 	CONSTRAINT fk_author_id FOREIGN KEY(author_id) REFERENCES author(author_id),
-	CONSTRAINT fk_dewey_decimal_id FOREIGN KEY(dewey_decimal_id) REFERENCES dewey_decimal(dewey_decimal_id)
+	CONSTRAINT fk_decimal_id FOREIGN KEY(decimal_id) REFERENCES dewey_decimal(decimal_id)
 );
 
 CREATE TABLE IF NOT EXISTS student ( 
@@ -88,6 +88,7 @@ CREATE TABLE IF NOT EXISTS  books_out(
 	books_out_id INTEGER PRIMARY KEY,
 	book_id INTEGER NOT NULL,
 	student_id INTEGER NOT NULL,
+	return_on INTEGER,
 	check_out_date INTEGER NOT NULL,
 	check_in_date INTEGER,
 	CONSTRAINT fk_book_id FOREIGN KEY (book_id) REFERENCES book(book_id),

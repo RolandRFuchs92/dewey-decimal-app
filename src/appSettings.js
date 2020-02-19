@@ -5,7 +5,7 @@ const appSettings =  new function(){
     this.appName = data.name;
     this.databaseName = `${this.appName}.Database`;
     this.databaseScriptName = 'createDatabase.sql';
-    this.transitionDuration = 800;
+    this.transitionDuration = 400;
     this.fadeTransitionDuration = this.transitionDuration;
     this.slideTransitionDuration = this.transitionDuration;
     this.tables= {
@@ -21,6 +21,10 @@ const appSettings =  new function(){
             pk: `dewey_summary_3_id`,
             name: `dewey_summary_3`
         },
+        dewey_decimal: {
+            pk: 'dewey_decimal_id',
+            name: 'dewey_decimal'
+        },
         book: {
             pk: `book_id`,
             name: `book`
@@ -28,6 +32,10 @@ const appSettings =  new function(){
         books_out: {
             pk: `books_out_id`,
             name: 'books_out'
+        },
+        student: {
+            pk: 'student_id',
+            name: 'student'
         }
     };
     this.logs= {

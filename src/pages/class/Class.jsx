@@ -23,7 +23,7 @@ export default () => {
         return [
             {
                 name: 'class_id',
-                label: 'Class Id' 
+                label: 'Id' 
             },{
                 name: 'class_name',
                 label: 'Name' 
@@ -86,7 +86,7 @@ export default () => {
         <Grid container direction="column" spacing={2}>
             <Fade in={true} timeout={appSettings.fadeTransitionDuration}>
                 <div>
-                    <MUIDataTable title='Classes' options={tableOptions} columns={getColumns()} data={data}/>
+                    <MUIDataTable options={tableOptions} columns={getColumns()} data={data}/>
                     <Grid item ><Modal isOpen={isOpen} handleClose={handleClose} modalData={modalData} updateTable={() => resetPage()}></Modal></Grid>
                 </div>
             </Fade>

@@ -21,7 +21,6 @@ export default ({open, handleClose, modalData, reset}) => {
             alert.success(`Successfully ${result === 'add' ? 'added' : 'updated'} ${val.name}!`);
             reset();
         } catch (error) {
-            debugger;
             alert.error(`There was an error ${val.dewey_summary_id ? 'updating' : 'adding'} a field. - ${JSON.stringify(error)}`);
         }
     }

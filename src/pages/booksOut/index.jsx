@@ -1,35 +1,59 @@
 import React from 'react';
+import appSettings from 'appSettings';
 
 import PageBase from 'components/page/PageBase';
-import repo from './booksout.repo';
+import repo, { getBooksForSelect, getStudentsForSelect } from './booksout.repo';
+const {tables: { books_out, book, student }} = appSettings;
+
 
 const defaultColumns= [
     {
-        name:'books_out_id',
+        name:books_out.pk,
         label: 'Id',
         type: {
-            header : 'Dewey Summar 3'
+            header : 'Dewey Summary 3'
         }
     },
     {
-        name: 'book_id',
-        label: 'Book Id',
-        type: 'textfield'
+        name: book.pk, 
+        options: {
+            display: 'false'
+        },
     },
     {
-        name: 'student_id',
+        name: 'book_name',
+        label: `Book`,
+        ref: book.pk,
+        type: 'select',
+        dropdownItems: getBooksForSelect
+    },
+    {
+        name: student.pk,
+        options: {
+            display: 'false'
+        }        
+    },
+    {
+        name: 'student_name',
         label: 'Student',
-        type: 'textfield'
+        type: 'select',
+        ref: student.pk,
+        dropdownItems: getStudentsForSelect
+    },
+    {
+        name: 'return_on',
+        label: 'Return On',
+        type: 'date'
     },
     {
         name: 'check_out_date',
         label: 'Checked out on',
-        type: 'textfield'
+        type: 'date'
     },
     {
         name: 'check_in_date',
         label: 'Checked in on',
-        type: 'textfield'
+        type: 'date',
     },
 ]
 

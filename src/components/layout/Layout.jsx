@@ -13,7 +13,8 @@ import DeweySystem from 'pages/deweySystem';
 import Authours from 'pages/authors'
 import Books from 'pages/books';
 import BooksOut from 'pages/booksOut';
-import { Provider } from 'utils/context';
+import context from 'utils/context';
+import { useContext } from 'react';
 
 const useStyles = makeStyles(theme => ({
 	root: {
@@ -31,25 +32,18 @@ const useStyles = makeStyles(theme => ({
 	},
 }));
 
-const contextDefault = {
-	updateContext: () => {}
-}
-
-
-
 export default function PermanentDrawerLeft() {
 	const classes = useStyles();
-	const [context, setContext] = useState(contextDefault);
-	context.updateContext = state => setContext({...state});
+	const state = useContext(context);
+	
 
 	return (
 		<div className={classes.root}>
 			<CssBaseline />
-			<Provider value={context}>
 				<AppBar position='fixed' className={classes.appBar}>
 					<Toolbar>
 						<Typography variant='h6' noWrap>
-							Permanent drawer
+							{state.pageTitle}
 						</Typography>
 					</Toolbar>
 				</AppBar>
@@ -91,7 +85,6 @@ export default function PermanentDrawerLeft() {
 						</Route>
 					</main>
 				</Router>
-			</Provider>
 		</div>
 	);
 }

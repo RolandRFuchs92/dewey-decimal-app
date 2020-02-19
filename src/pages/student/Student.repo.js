@@ -1,73 +1,59 @@
-import {
-	getColumnNames,
-	jsonToStatementObject,
-	getStatementColRefs,
-	objectKeysToSnakeCaseString,
-	objectToUpdateStatement,
-} from '../../db/utils';
-import { snakeCase } from 'lodash';
-import {getDatabase} from 'db/utils';
-import {all, run} from 'db/repo';
+import { startCase } from 'lodash';
 
-const tableName = 'student';
+import repoBase from 'components/page/repo.base';
+import appSettings from 'appSettings';
+import { all } from 'db/repo';
 
-const queryHideStudent = `
-	UPDATE 
-		student
-	SET
-		is_active = 0
-	WHERE
-		student_id=$student_id;
-`;
+const {tables: {student: {pk, name}}} = appSettings;
+const repo = repoBase(name);
 
-const queryGetAllStudents = `
+const getAllQuery = `
+    SELECT
+        s.student_id,
+        s.first_name,
+        s.last_name,
+        s.birthdate,
+        s.mother_name,
+        s.mother_mobile,
+        s.mother_email,
+        s.father_name,
+        s.father_mobile,
+        s.father_email,
+        s.class_id,
+        s.is_active,
+        c.class_name
+    FROM
+        student s
+    JOIN
+        class c
+        on s.class_id = c.class_id
+`
+
+repo.getAll = async () => {
+    return await all(getAllQuery);
+}
+export default repo;
+
+const queryStudentDropdown = `
 	SELECT
-		*
-	FROM 
+		${appSettings.tables.student.pk},
+		first_name,
+		last_name,
+		class_name, 
+		grade
+	FROM
 		student s
-	WHERE
-		s.is_active = 1;
+	JOIN
+		class c
+		ON s.class_id = c.class_id
 `;
 
-export const getStudentColumnNames = async () => {
-	return await getColumnNames(tableName);
-};
-
-export async function getStudentData() {
-	return all(queryGetAllStudents);
-}
-
-export async function addOrUpdateStudent(student) {
-	delete student.Edit;
-	delete student.Delete;
-	if (student.student_id) {
-		await updateStudent(student);
-		return 'update'
-	}
-	await addStudent(student);
-	return 'add';
-}
-
-export async function hideStudent($student_id){
-	return run(queryHideStudent, $student_id);
-}
-
-function addStudent(student) {
-	student.is_active = 1;
-	const cols = objectKeysToSnakeCaseString(student);
-	const colRefs = getStatementColRefs(student);
-	const statement = `
-		INSERT INTO ${tableName} (${cols})
-		VALUES (${colRefs})
-	`;
-
-	const studentModel = jsonToStatementObject(student);
-	return run(statement, studentModel);
-}
-
-async function updateStudent(student) {
-	const statement = objectToUpdateStatement(student, tableName);
-	const studentModel = jsonToStatementObject(student);
-
-	return run(statement, studentModel);
+export async function getSelectList() {
+	const data = await all(queryStudentDropdown);
+	return data.map(({[appSettings.tables.student.pk]: pk,first_name, last_name, class_name, grade}) => {
+		return {
+			value: pk,
+			text: `${startCase(first_name)} ${last_name} - Grade ${grade}${startCase(class_name.substr(0,2))}`
+		}
+	});
 }
