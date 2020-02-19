@@ -1,105 +1,86 @@
-import React, { useState, useEffect } from 'react';
-import { startCase, lowerCase } from 'lodash';
-import MUIDataTable from 'mui-datatables';
+import React from 'react';
 
-import {
-	getStudentColumnNames,
-	getStudentData,
-	hideStudent,
-} from './Student.repo';
-import EditDeleteCol, { useAddButton } from 'utils/tableButtons';
-import { Fade } from '@material-ui/core';
-import { useDialog } from 'utils/dialog';
-import { useAlert } from 'utils/snackbarAlerts';
+import PageBase from 'components/page/PageBase';
+import repo from './summary3.repo';
+import { getSelectList } from 'pages/deweySystem/summary2/summary2.repo';
 
-import StudentModal from './Student.modal';
+const defaultColumns= [
+    {
+        name:'student_id',
+        label: 'Id',
+        type: {
+            header : 'Student'
+        }
+    },
+    {
+        name: 'first_name',
+        label: 'Name',
+        type: 'textfield'
+    },
+    {
+        name: 'last_name',
+        label: 'Surname',
+        type: 'textField'
+    },
+    {
+        name: 'birthdate',
+        label:'Birthday',
+        type: 'date'
+    },
+    {
+        name: 'mother_name',
+        label:'Mom',
+        type: 'text'
+    },
+    {
+        name: 'mother_mobile',
+        label:'Mom No.',
+        type: 'text'
+    },
+    {
+        name: 'mother_email',
+        label:'Mom email',
+        type: 'text'
+    },
+    {
+        name: 'father_name',
+        label:'Dad',
+        type: 'text'
+    },
+    {
+        name: 'father_mobile',
+        label:'Dad No.',
+        type: 'text'
+    },
+    {
+        name: 'father_email',
+        label:'Dad email',
+        type: 'text'
+    },
+    {
+        name: 'class_id',
+        options:{
+            display:false
+        }
+    },
+    {
+        name:'class_name',
+        label:'Class',
+        ref: 'class_id',
+        type:'text',
+        dropdownItems: getSelectList
+    },
+    {
+        name:'is_active',
+        label: 'Active',
+        type: 'check'
+    }
+]
 
-//new comment
+export default () => {
+    const handleDeleteRow = repo.deleteRow;
+    const handleEditAddRow = repo.addOrUpdate;
+    const getAll = repo.getAll;
 
-export default function() {
-	const [columns, setColumns] = useState([]);
-	const [options, setOptions] = useState({});
-	const [data, setData] = useState([]);
-	const [student, setStudent] = useState({});
-	const [isOpen, setIsOpen] = useState(false);
-	const dialog = useDialog();
-	const alert = useAlert();
-	let columnVar;
-
-	const handleEditAdd = rowData => {
-		const obj = Object.fromEntries(
-			columnVar.map(({ name }, index) => [name, rowData[index]]),
-		);
-		setStudent(obj);
-		setIsOpen(true);
-	};
-
-	const addButton = useAddButton(handleEditAdd);
-
-	useEffect(() => {
-		(async () => {
-			const columnText = (await getStudentColumnNames()).map(({ name }) => ({
-				name,
-				label: startCase(lowerCase(name)),
-			}));
-
-			const cols = [
-				...columnText,
-				...EditDeleteCol(handleEditAdd, handleDeleteClick),
-			];
-			columnVar = cols;
-			setColumns(cols);
-			resetStudentList();
-			setOptions({
-				selectableRows: 'none',
-				...addButton,
-			});
-		})();
-	}, []);
-
-	const resetStudentList = async () => {
-		const studentData = await getStudentData();
-		setData(studentData);
-		setIsOpen(false);
-	};
-	const handleClose = () => {
-		setIsOpen(false);
-	};
-
-	const handleDeleteClick = rowData => {
-		const selectedStudent = Object.fromEntries(
-			columnVar.map(({ name }, index) => [name, rowData[index]]),
-		);
-		dialog({
-			title: 'Are you sure?',
-			description: `Really delete ${selectedStudent.first_name} ${selectedStudent.last_name}?`,
-			handleYes: () => handleYesForDelete(selectedStudent),
-		});
-	};
-
-	const handleYesForDelete = async student => {
-		const studentName = `${student.first_name} ${student.last_name}`;
-		try {
-			await hideStudent(student.student_id);
-			await resetStudentList();
-			alert.success(`Successfully deleted ${studentName}`);
-		} catch (e) {
-			alert.error(`There was an error deleteing ${studentName}.`);
-		}
-	};
-
-	return (
-		<Fade in={true} timeout={800}>
-			<div>
-				<MUIDataTable
-					options={options}
-					data={data}
-					columns={columns}
-				></MUIDataTable>
-				<StudentModal
-					{...{ isOpen, student, handleClose, reset: resetStudentList }}
-				></StudentModal>
-			</div>
-		</Fade>
-	);
+    return <PageBase {...{defaultColumns, getAll, handleDeleteRow, handleEditAddRow}}></PageBase>
 }
