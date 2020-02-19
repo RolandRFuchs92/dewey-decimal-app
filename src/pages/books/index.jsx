@@ -1,7 +1,7 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { makeStyles } from '@material-ui/core'; 
 
-import appSettings from 'appSettings';
+import BarcodePage from './Book.barcode';
 import PageBase from 'components/page/PageBase';
 import repo from './book.repo';
 import Icons from 'components/icons';
@@ -67,17 +67,28 @@ const defaultColumns= [
 ]
 
 export default () => {
+    const [barcodeIsOpen, setBarcodeIsOpen] = useState(false);
+    const [barcodeText, setBarcodeText] = useState('');
     const handleDeleteRow = repo.deleteRow;
     const handleEditAddRow = repo.addOrUpdate;
     const getAll = repo.getAll;
 
-    const columns = defaultColumns.concat(createBarcodeButton());
+    const handleBarcodeClose = () => setBarcodeIsOpen(false);
+    const handleBarcodeOpen = rowData => {
+        const data = objectFromRowData(rowData);
+        setBarcodeText(data.call_number);
+        setBarcodeIsOpen(true);
+    }
+    const columns = defaultColumns.concat(createBarcodeButton(handleBarcodeOpen));
+    const objectFromRowData = (rowData) => Object.fromEntries(columns.map(({name}, index) => [name,rowData[index] || '']));
 
-
-    return <PageBase {...{defaultColumns: columns, getAll, handleDeleteRow, handleEditAddRow}}></PageBase>
+    return <>
+        <PageBase {...{defaultColumns: columns, getAll, handleDeleteRow, handleEditAddRow}}></PageBase>
+        <BarcodePage open={barcodeIsOpen} handleClose={handleBarcodeClose} barcodeText={barcodeText}></BarcodePage>
+    </>
 }
 
-const createBarcodeButton = () => {
+const createBarcodeButton = (handleBarcodeOpen) => {
     const newColumn =  {
         name: "Barcode",
         options: {
@@ -85,8 +96,9 @@ const createBarcodeButton = () => {
           sort: false,
           empty: true,
           customBodyRender: (value, tableMeta, updateValue) => {
+            
             return (
-              <BarcodeComponent onClick={() => {}} >
+              <BarcodeComponent onClick={() =>{handleBarcodeOpen(tableMeta.rowData)}} >
               </BarcodeComponent>
             );
           }
@@ -95,9 +107,9 @@ const createBarcodeButton = () => {
     return newColumn;
 }
 
-const BarcodeComponent = ({handleClick}) => {
+const BarcodeComponent = ({onClick}) => {
     const classes = useStyles();
-    return <div onClick={handleClick} className={classes.barcode}>
+    return <div onClick={() => onClick(true)} className={classes.barcode}>
         {Icons.Barcode}
     </div>
 }

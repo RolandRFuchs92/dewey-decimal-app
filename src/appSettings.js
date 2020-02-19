@@ -8,6 +8,11 @@ const appSettings =  new function(){
     this.transitionDuration = 400;
     this.fadeTransitionDuration = this.transitionDuration;
     this.slideTransitionDuration = this.transitionDuration;
+    this.barcode = {
+        format: 'CODE128',
+        width: 2,
+        height: 100
+    };
     this.tables= {
         author: {
             pk: 'author_id',

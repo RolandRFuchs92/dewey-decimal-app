@@ -21,7 +21,10 @@ export default ({columns, open, handleClose, handleEditAddRow, modalData, reset}
     const handleSubmit = async () => {
         try {
             const statementObject = {...val};
-            const refColumns = columns.filter(column => column.ref);
+            const refColumns = columns.filter(column => {
+               const firstChar = column.name.substr(0,1);
+               return column.ref || firstChar === firstChar.toUpperCase();
+            });
             refColumns.forEach(({ name }) => delete statementObject[name]);
             const result = await handleEditAddRow(statementObject);        
             alert.success(`Successfully ${result === 'add' ? 'added' : 'updated'} ${val.name}!`);
