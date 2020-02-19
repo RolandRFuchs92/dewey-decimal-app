@@ -1,15 +1,11 @@
 import React from 'react';
 import {
-	AirlineSeatReclineExtra,
 	Home,
 	Code,
 	Store,
-	Rowing,
 	Cake,
 	MenuBook,
 	School,
-	EmojiPeople,
-	SupervisedUserCircle,
 	ExpandLess,
 	ExpandMore,
 } from '@material-ui/icons';
