@@ -19,10 +19,24 @@ const useStyles = makeStyles(theme => ({
 		paddingLeft: theme.spacing(4),
 	},
 	menuItem: {
+		'&:after': {
+			content: '""',
+				height: 3,
+				width: '100%',
+				position: 'absolute',
+				bottom:0,
+				backgroundImage: 'linear-gradient(white)',
+				backgroundColor: 'white',
+				transition: 'all .4s linear',
+				right:-15
+		},
 		'&.Mui-selected': {
-			borderWidth: '0px 0px 1px 0px',
-			border: '1px solid black',
-			backgroundColor: 'white'
+			backgroundColor: 'white',
+			
+			'&:after': {
+				backgroundColor: theme.palette.primary.dark
+				// backgroundImage: `linear-gradient(to right, white, yellow, blue)`,
+			}
 		}
 	}
 }));
