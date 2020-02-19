@@ -1,6 +1,6 @@
 import repoBase from 'components/page/repo.base';
 import { getBooksSelectList } from 'pages/books/book.repo';
-import { getStudentSelectList } from 'pages/student/Student.repo';
+import { getSelectList } from 'pages/student/Student.repo';
 import { all } from 'db/repo';
 import appSettings from 'appSettings';
 
@@ -31,5 +31,5 @@ repo.getAll = async () => {
 
 export default repo;
 export const getBooksForSelect = getBooksSelectList;
-export const getStudentsForSelect = getStudentSelectList;
+export const getStudentsForSelect = getSelectList;
 

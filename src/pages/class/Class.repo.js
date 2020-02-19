@@ -21,6 +21,14 @@ const queryHideClass = `
         
 `
 
+const getSelectListQuery = `
+    SELECT
+        class_id value,
+        grade || ' - ' || class_name as text
+    FROM
+        class
+`;
+
 export async function getClasses(){
     const classes = await all(queryGetClasses);
     return classes;
@@ -51,4 +59,8 @@ export async function hideClass(classId){
     const statementObject = {$class_id: classId};
     const statement = queryHideClass;
     return await run(statement, statementObject)
+}
+
+export async function getSelectList() {
+    return await all(getSelectListQuery);
 }

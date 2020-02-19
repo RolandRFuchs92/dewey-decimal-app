@@ -1,8 +1,8 @@
 import React from 'react';
 
 import PageBase from 'components/page/PageBase';
-import repo from './summary3.repo';
-import { getSelectList } from 'pages/deweySystem/summary2/summary2.repo';
+import repo from './Student.repo';
+import { getSelectList } from 'pages/class/Class.repo';
 
 const defaultColumns= [
     {
@@ -67,7 +67,7 @@ const defaultColumns= [
         name:'class_name',
         label:'Class',
         ref: 'class_id',
-        type:'text',
+        type:'select',
         dropdownItems: getSelectList
     },
     {
