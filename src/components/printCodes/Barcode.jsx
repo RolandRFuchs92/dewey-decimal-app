@@ -5,11 +5,13 @@ import appSettings from 'appSettings';
 
 const useStyles = makeStyles(theme => ({
     container: {
+        margin:20,
         position:'relative'
     },
     description:{
         font: '14px monospace',
-        top: -18,
+        top: -10,
+        zIndex: 1,
         textOverflow:'ellipsis',
         width:'100%',
         position:'absolute'
@@ -19,7 +21,7 @@ const useStyles = makeStyles(theme => ({
 export default ({value, description}) => {
     const classes = useStyles();
     return <div className={classes.container}>    
-            <Typography variant="body1" align="center" className={classes.description}>Hello world</Typography>
+            <Typography variant="body1" align="center" className={classes.description}>{description}</Typography>
             <Barcode value={value} {...appSettings.Barcode} ></Barcode>
         </div>
 }

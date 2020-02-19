@@ -68,7 +68,7 @@ const defaultColumns= [
 
 export default () => {
     const [barcodeIsOpen, setBarcodeIsOpen] = useState(false);
-    const [barcodeText, setBarcodeText] = useState('');
+    const [barcode, setBarcode] = useState({});
     const handleDeleteRow = repo.deleteRow;
     const handleEditAddRow = repo.addOrUpdate;
     const getAll = repo.getAll;
@@ -76,7 +76,10 @@ export default () => {
     const handleBarcodeClose = () => setBarcodeIsOpen(false);
     const handleBarcodeOpen = rowData => {
         const data = objectFromRowData(rowData);
-        setBarcodeText(data.call_number);
+        setBarcode({
+            value: data.call_number,
+            description: data.name
+        });
         setBarcodeIsOpen(true);
     }
     const columns = defaultColumns.concat(createBarcodeButton(handleBarcodeOpen));
@@ -84,7 +87,7 @@ export default () => {
 
     return <>
         <PageBase {...{defaultColumns: columns, getAll, handleDeleteRow, handleEditAddRow}}></PageBase>
-        <BarcodePage open={barcodeIsOpen} handleClose={handleBarcodeClose} barcodeText={barcodeText}></BarcodePage>
+        <BarcodePage open={barcodeIsOpen} handleClose={handleBarcodeClose} value={barcode.value} description={barcode.description}></BarcodePage>
     </>
 }
 
