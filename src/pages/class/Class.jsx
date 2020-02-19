@@ -23,7 +23,7 @@ export default () => {
         return [
             {
                 name: 'class_id',
-                label: 'Class Id' 
+                label: 'Id' 
             },{
                 name: 'class_name',
                 label: 'Name' 
