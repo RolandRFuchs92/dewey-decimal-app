@@ -8,6 +8,7 @@ import {
 	School,
 	ExpandLess,
 	ExpandMore,
+	Print
 } from '@material-ui/icons';
 import { makeStyles } from '@material-ui/core';
 import { FontAwesomeIcon  } from '@fortawesome/react-fontawesome'
@@ -61,6 +62,7 @@ export default {
 	Home: <Home />, 
 	Menu: <MenuBook/>,
 	Class: studentClass,
+	Print: <Print/>,
 
 	ExpandLess,
 	ExpandMore,
@@ -76,5 +78,6 @@ export default {
 	Admin,
 	Student,
 	Teacher,
-	BookOut
+	BookOut,
+
 }

@@ -1,16 +1,24 @@
-import React, {useEffect} from 'react';
+import React, {useRef} from 'react';
+import ReactToPrint from 'react-to-print';
+import {IconButton, makeStyles, Grid } from '@material-ui/core';
+
 import Barcode from 'components/printCodes/Barcode';
 import Modal from 'components/modal'
+import Icons from 'components/icons';
 
 export default (props) => {
     const {modalData, columns, barcodeText} = props;
+    const componentRef = useRef();
 
-    const objectFromRowData = (rowData) => Object.fromEntries(columns.map(({name}, index) => [name,rowData[index] || '']));
-    useEffect(() => {
-
-    },[]);
 
     return <Modal {...props}>
-        <Barcode value={barcodeText}></Barcode>
+        <Grid container direction="column" >
+            <Grid item>
+                <ReactToPrint content={() => componentRef.current} trigger={() =><IconButton >{Icons.Print}</IconButton > }></ReactToPrint>
+            </Grid>
+            <Grid item ref={componentRef}>
+                <Barcode value={barcodeText}></Barcode>
+            </Grid>
+        </Grid>
     </Modal>
 }
