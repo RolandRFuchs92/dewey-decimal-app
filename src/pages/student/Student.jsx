@@ -1,8 +1,10 @@
-import React from 'react';
+import React, {useState} from 'react';
 
 import PageBase from 'components/page/PageBase';
 import repo from './Student.repo';
 import { getSelectList } from 'pages/class/Class.repo';
+import TableButton from 'components/buttons/TableButtons';
+import Icons from 'components/icons';
 
 const defaultColumns= [
     {
@@ -78,9 +80,15 @@ const defaultColumns= [
 ]
 
 export default () => {
+    const [open, setOpen] = useState(false);
     const handleDeleteRow = repo.deleteRow;
     const handleEditAddRow = repo.addOrUpdate;
     const getAll = repo.getAll;
 
-    return <PageBase {...{defaultColumns, getAll, handleDeleteRow, handleEditAddRow}}></PageBase>
+    const columns = defaultColumns.concat(TableButton(() => setOpen(true), 'Profile', Icons.Student));
+
+    return <>
+        <PageBase {...{defaultColumns: columns, getAll, handleDeleteRow, handleEditAddRow}}></PageBase>
+        
+    </>
 }
