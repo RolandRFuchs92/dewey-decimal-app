@@ -1,8 +1,10 @@
-import React, {useState} from 'react';
+import React, { useState, useEffect } from 'react';
 import {Grid, Divider, makeStyles, Typography} from '@material-ui/core';
+import {trim } from 'lodash';
 
 import Modal from 'components/modal';
 import Icons from 'components/icons';
+import { getStudentProfileData } from './Student.repo';
 
 const useStyles = makeStyles( theme => ({
     container: {
@@ -59,9 +61,21 @@ const useStyles = makeStyles( theme => ({
     }
 }));
 
-export default ({open, handleClose, studentId}) => {
+export default ({open, handleClose, studentId = 1}) => {
     const [isFront, setIsFront] = useState(true);
+    const [studentData, setStudentData] = useState({});
+    const [historyData, setHistoryData] = useState([]);
+
+    useEffect(() => {
+        (async () => {
+            const result = await getStudentProfileData(studentId);
+            setStudentData(result.studentData[0]);
+            setHistoryData(result.historyData);
+        })();
+    }, []);
+
     const classes = useStyles();
+
     return <Modal {...{open, handleClose}} >
         <div className={classes.container}>
             <div className={classes.studentHistory} onClick={() => setIsFront(!isFront)}>
@@ -71,7 +85,7 @@ export default ({open, handleClose, studentId}) => {
                 <div className={classes.profileDataContainer}>
                 {
                     isFront ? 
-                    <StudentCard></StudentCard> :
+                    <StudentCard studentData={studentData}></StudentCard> :
                     <BooksHistory></BooksHistory>
                 }
                 </div>
@@ -89,20 +103,34 @@ const BooksHistory = () => {
     return <h1>HISTORY!!!</h1>
 }
 
-const StudentCard = () => {
+const StudentCard = ({studentData ={}}) => {
     const classes = useStyles();
+    const {
+        first_name, 
+        last_name,
+        birthdate,
+        mother_mobile, 
+        mother_email,
+        mother_name, 
+        father_name, 
+        father_mobile, 
+        father_email,
+        grade,
+        class_name
+        } = studentData;
+
     return <Grid container alignContent="space-between" style={{height: '100%'}}>
             <Grid item>
-                <Typography variant="h5">Nana Korengten Apigei John Bob Ross</Typography>
+                <Typography variant="h5">{first_name} {last_name}</Typography>
                 <Divider></Divider>
             </Grid>
             
             <Grid container item>
                 <Grid item sm={6}>
-                    <Typography variant="body1">Birthday: 1 Jan 1992</Typography>
+                    <Typography variant="body1">Birthday: {birthdate}</Typography>
                 </Grid>
                 <Grid item sm={6}>
-                    <Typography variant="body1">Grade 1 Smart</Typography>
+                    <Typography variant="body1">Grade: {grade} {class_name}</Typography>
                 </Grid>
             </Grid>
 
@@ -111,13 +139,13 @@ const StudentCard = () => {
                     <Typography variant="h5">Mother</Typography>
                 </Grid>
                 <Grid item sm={6}>
-                    <Typography variant="body1">Sharon Fuchs</Typography>
+                    <Typography variant="body1">{mother_name}</Typography>
                 </Grid>
                 <Grid item sm={6}>
-                    <Typography variant="body1">031 123 1234</Typography>
+                    <Typography variant="body1">{mother_mobile}</Typography>
                 </Grid>
                 <Grid item sm={12}>
-                    <Typography variant="body1">sharon@somesortofbizmail.org.co.uk</Typography>
+                    <Typography variant="body1"><a href={`mailto:${{mother_email}}`}>{mother_email}</a></Typography>
                 </Grid>
             </Grid>
             <Grid container item sm={12}>
@@ -125,13 +153,13 @@ const StudentCard = () => {
                     <Typography variant="h5">Father</Typography>
                 </Grid>
                 <Grid item sm={6}>
-                    <Typography variant="body1">John Fuchs</Typography>
+                    <Typography variant="body1">{father_name}</Typography>
                 </Grid>
                 <Grid item sm={6}>
-                    <Typography variant="body1">031 123 1234</Typography>
+                    <Typography variant="body1">{father_mobile}</Typography>
                 </Grid>
                 <Grid item sm={12}>
-                    <Typography variant="body1">john@somesortofbizmail.org.co.uk</Typography>
+                    <Typography variant="body1"><a href={`mailto:${father_email}`}>{father_email}</a></Typography>
                 </Grid>
             </Grid>
 
