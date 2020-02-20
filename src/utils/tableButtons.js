@@ -7,11 +7,13 @@ import Icons from 'components/icons';
 const useStyles = makeStyles(theme => ({
     edit: {
         fontSize: 20,
-        color: theme.palette.info.main
+        color: theme.palette.info.main,
+        cursor: 'pointer'
     },
     delete: {
         fontSize: 20,
-        color: theme.palette.error.main
+        color: theme.palette.error.main,
+        cursor: 'pointer'
     },
     addButton: {
         color: theme.palette.success.main,

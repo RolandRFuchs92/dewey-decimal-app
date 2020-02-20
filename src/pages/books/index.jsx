@@ -1,10 +1,19 @@
-import React from 'react';
-import appSettings from 'appSettings';
+import React, {useState} from 'react';
+import { makeStyles } from '@material-ui/core'; 
+
+import BarcodePage from './Book.barcode';
 import PageBase from 'components/page/PageBase';
 import repo from './book.repo';
-
+import Icons from 'components/icons';
 import { getSelectList as getAuthorsSelectList } from 'pages/authors/authors.repo';
 import { getSelectList as getDecimalSelectList } from 'pages/deweySystem/decimal/decimal.repo';
+
+const useStyles = makeStyles(theme => ({
+    barcode: {
+        fontSize:25,
+        cursor: 'pointer'
+    }
+}));
 
 const defaultColumns= [
     {
@@ -58,9 +67,52 @@ const defaultColumns= [
 ]
 
 export default () => {
+    const [barcodeIsOpen, setBarcodeIsOpen] = useState(false);
+    const [barcode, setBarcode] = useState({});
     const handleDeleteRow = repo.deleteRow;
     const handleEditAddRow = repo.addOrUpdate;
     const getAll = repo.getAll;
 
-    return <PageBase {...{defaultColumns, getAll, handleDeleteRow, handleEditAddRow}}></PageBase>
+    const handleBarcodeClose = () => setBarcodeIsOpen(false);
+    const handleBarcodeOpen = rowData => {
+        const data = objectFromRowData(rowData);
+        setBarcode({
+            value: data.call_number,
+            description: data.name
+        });
+        setBarcodeIsOpen(true);
+    }
+    const columns = defaultColumns.concat(createBarcodeButton(handleBarcodeOpen));
+    const objectFromRowData = (rowData) => Object.fromEntries(columns.map(({name}, index) => [name,rowData[index] || '']));
+
+    return <>
+        <PageBase {...{defaultColumns: columns, getAll, handleDeleteRow, handleEditAddRow}}></PageBase>
+        <BarcodePage open={barcodeIsOpen} handleClose={handleBarcodeClose} value={barcode.value} description={barcode.description}></BarcodePage>
+    </>
+}
+
+const createBarcodeButton = (handleBarcodeOpen) => {
+    const newColumn =  {
+        name: "Barcode",
+        options: {
+          filter: false,
+          sort: false,
+          empty: true,
+          customBodyRender: (value, tableMeta, updateValue) => {
+            
+            return (
+              <BarcodeComponent onClick={() =>{handleBarcodeOpen(tableMeta.rowData)}} >
+              </BarcodeComponent>
+            );
+          }
+        }
+      }
+    return newColumn;
+}
+
+const BarcodeComponent = ({onClick}) => {
+    const classes = useStyles();
+    return <div onClick={() => onClick(true)} className={classes.barcode}>
+        {Icons.Barcode}
+    </div>
 }
