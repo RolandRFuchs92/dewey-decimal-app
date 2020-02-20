@@ -6,7 +6,9 @@ import appSettings from 'appSettings';
 const useStyles = makeStyles(theme => ({
     container: {
         margin:20,
-        position:'relative'
+        position:'relative',
+        display: 'flex',
+        justifyContent: 'center'
     },
     description:{
         font: '14px monospace',
@@ -18,9 +20,9 @@ const useStyles = makeStyles(theme => ({
     }
 }));
 
-export default ({value, description}) => {
+export default ({value, description, className}) => {
     const classes = useStyles();
-    return <div className={classes.container}>    
+    return <div className={`${classes.container} ${className}`}>    
             <Typography variant="body1" align="center" className={classes.description}>{description}</Typography>
             <Barcode value={value} {...appSettings.Barcode} ></Barcode>
         </div>
