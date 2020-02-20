@@ -5,6 +5,7 @@ import repo from './Student.repo';
 import { getSelectList } from 'pages/class/Class.repo';
 import TableButton from 'components/buttons/TableButtons';
 import Icons from 'components/icons';
+import StudentProfile from './StudentProfile';
 
 const defaultColumns= [
     {
@@ -80,7 +81,7 @@ const defaultColumns= [
 ]
 
 export default () => {
-    const [open, setOpen] = useState(false);
+    const [open, setOpen] = useState(true);
     const handleDeleteRow = repo.deleteRow;
     const handleEditAddRow = repo.addOrUpdate;
     const getAll = repo.getAll;
@@ -89,6 +90,6 @@ export default () => {
 
     return <>
         <PageBase {...{defaultColumns: columns, getAll, handleDeleteRow, handleEditAddRow}}></PageBase>
-        
+        <StudentProfile open={open} handleClose={() => setOpen(false)}></StudentProfile>
     </>
 }
