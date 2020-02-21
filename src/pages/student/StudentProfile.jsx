@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import {Grid, Divider, makeStyles, Typography} from '@material-ui/core';
-import {trim } from 'lodash';
+import {trim  } from 'lodash';
+import {compareAsc, parse} from 'date-fns';
 
 import Modal from 'components/modal';
 import Icons from 'components/icons';
@@ -63,8 +64,8 @@ const useStyles = makeStyles( theme => ({
 
 export default ({open, handleClose, studentId = 1}) => {
     const [isFront, setIsFront] = useState(true);
-    const [studentData, setStudentData] = useState({});
     const [historyData, setHistoryData] = useState([]);
+    const [studentData, setStudentData] = useState({});
 
     useEffect(() => {
         (async () => {
@@ -85,7 +86,7 @@ export default ({open, handleClose, studentId = 1}) => {
                 <div className={classes.profileDataContainer}>
                 {
                     isFront ? 
-                    <StudentCard studentData={studentData}></StudentCard> :
+                    <StudentCard studentData={studentData} historyData={historyData}></StudentCard> :
                     <BooksHistory></BooksHistory>
                 }
                 </div>
@@ -103,7 +104,7 @@ const BooksHistory = () => {
     return <h1>HISTORY!!!</h1>
 }
 
-const StudentCard = ({studentData ={}}) => {
+const StudentCard = ({studentData = {}, historyData}) => {
     const classes = useStyles();
     const {
         first_name, 
@@ -167,19 +168,31 @@ const StudentCard = ({studentData ={}}) => {
                 <Grid item sm={12}>
                     <Typography variant="h5">Next books due</Typography>
                 </Grid>
-                <Grid item sm={8}>
-                    <Typography variant="body1">The Magic Finger - Rahl Dahl</Typography>
-                </Grid>
-                <Grid item sm={4}>
-                    <Typography variant="body1" align="right">Due: 12 Feb 2020</Typography>
-                </Grid>
-                <Grid item sm={8}>
-                    <Typography variant="body1">The Twits - Rahl Dahl</Typography>
-                </Grid>
-                <Grid item sm={4}>
-                    <Typography variant="body1" align="right">Due: 12 Feb 2020</Typography>
-                </Grid>
+                <FrontPageHistory {...{ first_name, last_name}} hst={historyData}></FrontPageHistory>
             </Grid>
             
         </Grid>
 }
+
+const FrontPageHistory = ({hst =[], first_name, last_name}) => {
+    const newBooks = hst.filter(i => i.check_in_date == null).sort((a, b) => {
+        const dateFormat = 'dd MMM yyyy';
+        const dateA = parse(a.return_on, dateFormat, new Date());
+        const dateB = parse(b.return_on, dateFormat, new Date());
+        return compareAsc(dateA, dateB)
+    }).slice(0, 2);
+
+    if(!hst.length)
+        return <Typography variant="body1">{first_name} {last_name} has no overdue books.</Typography>
+
+    return newBooks.map(({book_name, author_name, return_on}) => {
+        return <>
+            <Grid item sm={8}>
+                <Typography variant="body1">{book_name} - {author_name}</Typography>
+            </Grid>
+            <Grid item sm={4}>
+                <Typography variant="body1" align="right">Due: {return_on}</Typography>
+            </Grid>
+        </>
+    })
+}   

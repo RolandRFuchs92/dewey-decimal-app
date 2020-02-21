@@ -67,7 +67,7 @@ export async function getStudentProfileData(student_id) {
             s.student_id = student_id
     `;
     const studentData = await all(studentProfileDataQuery);
-    const historyData = await getStudentBooksHistory();
+    const historyData = await getStudentBooksHistory(student_id);
 
     return { studentData, historyData}
 

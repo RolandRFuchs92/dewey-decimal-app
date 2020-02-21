@@ -69,9 +69,11 @@ JOIN
     author a
     on b.author_id = a.author_id
 WHERE
-    student_id = 1
+    student_id = $student_id
+ORDER by 
+	bo.check_out_date DESC
 `;
-export const getStudentBooksHistory = async () => {
-    const data = await all(getStudentBooksHistoryQuery);
+export const getStudentBooksHistory = async (student_id) => {
+    const data = await all(getStudentBooksHistoryQuery, {$student_id: student_id});
     return data;
 }
