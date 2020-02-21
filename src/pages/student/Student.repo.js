@@ -3,6 +3,7 @@ import { startCase } from 'lodash';
 import repoBase from 'components/page/repo.base';
 import appSettings from 'appSettings';
 import { all } from 'db/repo';
+import { getStudentBooksHistory } from 'pages/books/book.repo';
 
 const {tables: {student: {pk, name}}} = appSettings;
 const repo = repoBase(name);
@@ -21,7 +22,8 @@ const getAllQuery = `
         s.father_email,
         s.class_id,
         s.is_active,
-        c.class_name
+        c.class_name,
+        c.grade
     FROM
         student s
     JOIN
@@ -56,4 +58,17 @@ export async function getSelectList() {
 			text: `${startCase(first_name)} ${last_name} - Grade ${grade}${startCase(class_name.substr(0,2))}`
 		}
 	});
+}
+
+export async function getStudentProfileData(student_id) {
+    const studentProfileDataQuery = `
+        ${getAllQuery} 
+        WHERE
+            s.student_id = student_id
+    `;
+    const studentData = await all(studentProfileDataQuery);
+    const historyData = await getStudentBooksHistory(student_id);
+
+    return { studentData, historyData}
+
 }

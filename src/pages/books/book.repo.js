@@ -50,3 +50,30 @@ export const getBooksSelectList = async () => {
         };
     });
 }
+
+
+const getStudentBooksHistoryQuery = `
+SELECT	
+    bo.student_id,
+    a.name || ' ' || a.second_name || ' '|| a.surname author_name,
+    b.name as book_name,
+    bo.check_out_date,
+    bo.check_in_date,
+    bo.return_on
+FROM	
+    books_out bo
+JOIN
+    book b
+    on bo.book_id = b.book_id	
+JOIN
+    author a
+    on b.author_id = a.author_id
+WHERE
+    student_id = $student_id
+ORDER by 
+	bo.check_out_date DESC
+`;
+export const getStudentBooksHistory = async (student_id) => {
+    const data = await all(getStudentBooksHistoryQuery, {$student_id: student_id});
+    return data;
+}

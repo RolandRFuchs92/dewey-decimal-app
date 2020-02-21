@@ -26,7 +26,8 @@ import {
 	faUserGraduate,
 	faChalkboardTeacher,
 	faUsers,
-	faBookReader
+	faBookReader,
+	faHistory
 } from '@fortawesome/free-solid-svg-icons';
 
 const useStyles = makeStyles(theme => ({
@@ -39,6 +40,7 @@ function CreateIcon(icon){
 	return <FontAwesomeIcon icon={icon}></FontAwesomeIcon>
 }
 
+const History = CreateIcon(faHistory);
 const Edit = CreateIcon(faEdit);
 const Add = CreateIcon(faPlusSquare);
 const Delete = CreateIcon(faMinusSquare);
@@ -79,5 +81,5 @@ export default {
 	Student,
 	Teacher,
 	BookOut,
-
+	History
 }
