@@ -59,7 +59,13 @@ const useStyles = makeStyles( theme => ({
         fontSize: 25,
         borderTopLeftRadius: theme.shape.borderRadius,
         borderTopRightRadius: theme.shape.borderRadius,
-    }
+    },
+    historySplit: {
+        width: '50%'
+    },
+    fullWidth: {
+        width:'100%'
+    },
 }));
 
 export default ({open, handleClose, studentId = 1}) => {
@@ -87,7 +93,7 @@ export default ({open, handleClose, studentId = 1}) => {
                 {
                     isFront ? 
                     <StudentCard studentData={studentData} historyData={historyData}></StudentCard> :
-                    <BooksHistory></BooksHistory>
+                    <BooksHistory studentData={studentData} historyData={historyData}></BooksHistory>
                 }
                 </div>
                 <Grid container item justify="center" alignItems="center" className={classes.studentProfile}>
@@ -100,8 +106,26 @@ export default ({open, handleClose, studentId = 1}) => {
     </Modal>
 }
 
-const BooksHistory = () => {
-    return <h1>HISTORY!!!</h1>
+const BooksHistory = ({historyData, studentData: {first_name, last_name}}) => {
+    const classes = useStyles();
+    return <Grid container alignContent="space-between" style={{height: '100%'}}>
+            <Grid item>
+                <Typography variant="h5">{first_name} {last_name} Book history</Typography>
+                <Divider></Divider>
+            </Grid>
+            {historyData.map(({book_name, author_name, check_out_date, check_in_date, return_on},index) => {
+                return <>
+                    <Grid item container key={`${book_name}${check_out_date}${index}`}>
+                        <Typography variant="body1" className={classes.fullWidth}>Book: {book_name}</Typography>
+                        <Typography variant="body1" className={classes.historySplit}>Author: {author_name}</Typography>
+                        <Typography variant="body1" className={classes.historySplit}>Check out: {check_out_date}</Typography>
+                        <Typography variant="body1" className={classes.historySplit}>Check in: {check_in_date || 'Not returned'}</Typography>
+                        <Typography variant="body1" className={classes.historySplit}>Returned on: {return_on }</Typography>
+                    </Grid>
+                    <Divider className={classes.fullWidth}></Divider>
+                </>
+            })}
+    </Grid>
 }
 
 const StudentCard = ({studentData = {}, historyData}) => {
@@ -185,14 +209,14 @@ const FrontPageHistory = ({hst =[], first_name, last_name}) => {
     if(!hst.length)
         return <Typography variant="body1">{first_name} {last_name} has no overdue books.</Typography>
 
-    return newBooks.map(({book_name, author_name, return_on}) => {
-        return <>
+    return newBooks.map(({book_name, author_name, return_on}, index) => {
+        return <React.Fragment key={`${book_name}${index}`}>
             <Grid item sm={8}>
                 <Typography variant="body1">{book_name} - {author_name}</Typography>
             </Grid>
             <Grid item sm={4}>
                 <Typography variant="body1" align="right">Due: {return_on}</Typography>
             </Grid>
-        </>
+        </React.Fragment>
     })
 }   
