@@ -111,5 +111,6 @@ WHERE
 `
 
 export const getBookByCallNumber = async (call_number) => {
-    const data = await all(getBookByCallNumber, { $call_number: call_number });
+    const data = await all(getBookByCallNumberQuery, { $call_number: call_number });
+    return data;
 }

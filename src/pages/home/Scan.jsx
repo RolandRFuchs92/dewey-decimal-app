@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { TextField, Paper, makeStyles, InputAdornment, Typography, Button } from '@material-ui/core';
 
 import Modal from 'components/modal';
@@ -13,24 +13,30 @@ const useStyles = makeStyles(theme => ({
 
 export default ({open, handleClose}) => {
   const classes = useStyles();
+  const input = useRef(null);
   const [ barcodeResult, setBarcodeResult] =useState({});
+  const [ barcode, setBarcode] = useState('');
 
   const handleSubmit = async e =>{
+    if(e.key !== 'Enter'){
+      return;
+    }
+    
     const { target: { value } } = e; 
+    setBarcode(value);
+    input.current.focus();
+    debugger;
     setBarcodeResult((await getBookByCallNumber(value))[0]);
-    e.preventDefault();
   }
 
     return <Modal open={open} handleClose={handleClose}>
-      <form onSubmit={handleSubmit}>
-        <TextField label="Barcode" variant="outlined" InputProps={{
+        <TextField tabIndex="1" ref={input} label="Barcode" autoFocus variant="outlined" onKeyDown={handleSubmit} InputProps={{
           startAdornment: (
-            <InputAdornment position="start" className={classes.barcode}>
+            <InputAdornment position="start" className={classes.barcode} >
               {Icons.Barcode}
-            </InputAdornment>
+            </InputAdornment> 
           ),
         }}></TextField>
-      </form>
         <div>
             <Typography variant="h6">Check in</Typography>
             <p>Author: {barcodeResult.author_name}</p>

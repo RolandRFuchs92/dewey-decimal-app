@@ -23,7 +23,7 @@ const useStyles = makeStyles(theme => ({
 }));
 
 export default () => {
-    const [open, setOpen] = useState(false);
+    const [open, setOpen] = useState(true);
     const classes = useStyles();
 
     return <Grid container className={classes.container}>
