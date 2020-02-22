@@ -80,8 +80,7 @@ const getStudentsWithBirthdaysQuery = `
         s.birthdate,
         c.grade,
         c.class_name,
-        t.first_name,
-        t.last_name
+        t.first_name || ' ' || t.last_name as teacher
     FROM	
         student s
     JOIN
