@@ -7,6 +7,20 @@ import Modal from 'components/modal';
 import Icons from 'components/icons';
 import { getStudentProfileData } from './Student.repo';
 
+const cardCfg = new function () {
+    this.container = {
+        height: 345,
+        width: 680
+    };
+    this.overlayCard = {
+        height: 375,
+        width: this.container.width - 15 - 215
+    };
+    this.image = {
+        width: 245
+    }
+};
+
 const useStyles = makeStyles( theme => ({
     container: {
         width: 680,
@@ -15,17 +29,17 @@ const useStyles = makeStyles( theme => ({
     },
     backgroundSetting: {
         position: 'absolute',
-        height: 345,
-        width:680,
+        height: cardCfg.container.height,
+        width: cardCfg.container.width,
         top: -15,
         left: -15,
         borderTopLeftRadius: theme.shape.borderRadius,
         background: `linear-gradient(to top, white 15px, ${theme.palette.primary.light} 50%, ${theme.palette.primary.main} 85%, ${theme.palette.primary.dark})`,
     },
-    studentProfile: {
+    studentProfileImage: {
         backgroundColor: theme.palette.primary.light,
-        height: 375,
-        width:245,
+        height: cardCfg.overlayCard.height,
+        width: cardCfg.image.width,
         position: 'absolute',
         right: -30,
         top: 0,
@@ -37,11 +51,12 @@ const useStyles = makeStyles( theme => ({
         fontSize: 180
     },
     profileDataContainer: {
-        height:'100%', 
-        width: 680-15-215,
+        height: cardCfg.overlayCard.height, 
+        width: cardCfg.overlayCard.width,
         backgroundColor: 'white',
         marginLeft: 15,
-        padding: 15
+        padding: 15,
+        overflowY: 'auto'
     },
     studentHistory: {
         position:'absolute',
@@ -96,10 +111,11 @@ export default ({open, handleClose, studentId = 1}) => {
                     <BooksHistory studentData={studentData} historyData={historyData}></BooksHistory>
                 }
                 </div>
-                <Grid container item justify="center" alignItems="center" className={classes.studentProfile}>
+                <Grid container item justify="center" alignItems="center" className={classes.studentProfileImage}>
                     <div className={classes.studentPreImage}>
                         {Icons.Student}
                     </div>
+                    <input type="file" accept="capture=camera;image/*" />
                 </Grid>
             </Grid>
         </div>
@@ -114,8 +130,8 @@ const BooksHistory = ({historyData, studentData: {first_name, last_name}}) => {
                 <Divider></Divider>
             </Grid>
             {historyData.map(({book_name, author_name, check_out_date, check_in_date, return_on},index) => {
-                return <>
-                    <Grid item container key={`${book_name}${check_out_date}${index}`}>
+                return <div key={`${book_name}${check_out_date}${index}`}>
+                    <Grid item container >
                         <Typography variant="body1" className={classes.fullWidth}>Book: {book_name}</Typography>
                         <Typography variant="body1" className={classes.historySplit}>Author: {author_name}</Typography>
                         <Typography variant="body1" className={classes.historySplit}>Check out: {check_out_date}</Typography>
@@ -123,7 +139,7 @@ const BooksHistory = ({historyData, studentData: {first_name, last_name}}) => {
                         <Typography variant="body1" className={classes.historySplit}>Returned on: {return_on }</Typography>
                     </Grid>
                     <Divider className={classes.fullWidth}></Divider>
-                </>
+                </div>
             })}
     </Grid>
 }
