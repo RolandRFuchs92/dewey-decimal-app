@@ -77,3 +77,39 @@ export const getStudentBooksHistory = async (student_id) => {
     const data = await all(getStudentBooksHistoryQuery, {$student_id: student_id});
     return data;
 }
+
+const getBookByCallNumberQuery = `
+SELECT
+    b.name book_name,
+    a.name || ' ' || a.second_name || ' ' || a.surname author_name,
+    b.call_number,
+    s.first_name || ' ' || s.last_name student_name,
+    c.grade || ' ' || c.class_name,
+    t.first_name || ' ' || t.last_name teacher_name,
+    bo.check_out_date,
+    bo.return_on,
+    bo.check_in_date
+FROM	
+    book b
+JOIN
+    books_out bo
+    ON b.book_id = bo.book_id
+JOIN
+    author a
+    ON b.author_id = a.author_id
+JOIN
+    student s
+    ON bo.student_id = s.student_id
+JOIN
+    class c
+    ON s.class_id = c.class_id
+JOIN
+    teacher t
+    ON c.class_id = t.class_id
+WHERE	
+    b.call_number = $call_number
+`
+
+export const getBookByCallNumber = async (call_number) => {
+    const data = await all(getBookByCallNumber, { $call_number: call_number });
+}

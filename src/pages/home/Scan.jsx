@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { TextField, Paper, makeStyles, InputAdornment, Typography, Button } from '@material-ui/core';
 
 import Modal from 'components/modal';
 import Icons from 'components/icons';
+import { getBookByCallNumber } from './Home.repo';
 
 const useStyles = makeStyles(theme => ({
     barcode: {
@@ -11,9 +12,17 @@ const useStyles = makeStyles(theme => ({
 }));
 
 export default ({open, handleClose}) => {
-    const classes = useStyles();
+  const classes = useStyles();
+  const [ barcodeResult, setBarcodeResult] =useState({});
+
+  const handleSubmit = async e =>{
+    const { target: { value } } = e; 
+    setBarcodeResult((await getBookByCallNumber(value))[0]);
+    e.preventDefault();
+  }
 
     return <Modal open={open} handleClose={handleClose}>
+      <form onSubmit={handleSubmit}>
         <TextField label="Barcode" variant="outlined" InputProps={{
           startAdornment: (
             <InputAdornment position="start" className={classes.barcode}>
@@ -21,11 +30,12 @@ export default ({open, handleClose}) => {
             </InputAdornment>
           ),
         }}></TextField>
+      </form>
         <div>
             <Typography variant="h6">Check in</Typography>
-            <p>Author: Rahl Dahl</p>
-            <p>Title: Matilda</p>
-            <p>Call Number: 123.456 RD</p>
+            <p>Author: {barcodeResult.author_name}</p>
+            <p>Title: {barcodeResult.book_name}</p>
+            <p>Call Number: {barcodeResult.call_number}</p>
             <hr></hr>
             <p>Student Name: Roland Fuchs</p>
             <p>Class: 1S</p>

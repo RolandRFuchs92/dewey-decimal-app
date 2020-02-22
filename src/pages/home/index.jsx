@@ -29,11 +29,13 @@ export default () => {
     return <Grid container className={classes.container}>
         <Button variant="contained" color="primary" onClick={() => setOpen(true)} startIcon={<div>{Icons.Barcode}</div>} fullWidth className={classes.barcodeButton}>Check-in/out</Button>
         <Grid item className={classes.items}>
-            <ScansToday ></ScansToday>
-        </Grid>
-        <Grid item className={classes.items}>
             <BirthdaysToday></BirthdaysToday>
         </Grid>
+
+        <Grid item className={classes.items}>
+            <ScansToday ></ScansToday>
+        </Grid>
+
         <Grid className={classes.items}>
             <Overdue></Overdue>
         </Grid>
