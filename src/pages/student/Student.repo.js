@@ -72,3 +72,29 @@ export async function getStudentProfileData(student_id) {
     return { studentData, historyData}
 
 }
+
+const getStudentsWithBirthdaysQuery = `
+    SELECT
+        s.first_name,
+        s.last_name,
+        s.birthdate,
+        c.grade,
+        c.class_name,
+        t.first_name,
+        t.last_name
+    FROM	
+        student s
+    JOIN
+        class c
+        on s.class_id = c.class_id
+    JOIN
+        teacher t
+        on c.class_id = t.class_id
+    WHERE
+        strftime('%d %m', s.birthdate) = STRFTIME('%d %m', $date)
+`
+
+export async function getStudentsWithBirthdays(date) {
+    const statementObject = { $date: date };
+    return await all(getStudentsWithBirthdaysQuery, statementObject);
+}
