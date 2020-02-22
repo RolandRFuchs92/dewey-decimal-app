@@ -129,8 +129,8 @@ const BooksHistory = ({historyData, studentData: {first_name, last_name}}) => {
                 <Divider></Divider>
             </Grid>
             {historyData.map(({book_name, author_name, check_out_date, check_in_date, return_on},index) => {
-                return <>
-                    <Grid item container key={`${book_name}${check_out_date}${index}`}>
+                return <div key={`${book_name}${check_out_date}${index}`}>
+                    <Grid item container >
                         <Typography variant="body1" className={classes.fullWidth}>Book: {book_name}</Typography>
                         <Typography variant="body1" className={classes.historySplit}>Author: {author_name}</Typography>
                         <Typography variant="body1" className={classes.historySplit}>Check out: {check_out_date}</Typography>
@@ -138,7 +138,7 @@ const BooksHistory = ({historyData, studentData: {first_name, last_name}}) => {
                         <Typography variant="body1" className={classes.historySplit}>Returned on: {return_on }</Typography>
                     </Grid>
                     <Divider className={classes.fullWidth}></Divider>
-                </>
+                </div>
             })}
     </Grid>
 }
