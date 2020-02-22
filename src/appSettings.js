@@ -47,6 +47,14 @@ const appSettings =  new function(){
         error: `${this.appName}.error.log`,
         general: `${this.appName}.log`,
     }
+    this.fines = {
+        isEnabled: true,
+        rate: 5        
+    };
+    this.formatDate = {
+        from: 'yyyy-MM-dd',
+        to: 'dd MMM yyyy'
+    }
 }
 
 export default appSettings;

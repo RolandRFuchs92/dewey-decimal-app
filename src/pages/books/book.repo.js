@@ -84,7 +84,7 @@ SELECT
     a.name || ' ' || a.second_name || ' ' || a.surname author_name,
     b.call_number,
     s.first_name || ' ' || s.last_name student_name,
-    c.grade || ' ' || c.class_name,
+    c.grade || ' ' || c.class_name class_name,
     t.first_name || ' ' || t.last_name teacher_name,
     bo.check_out_date,
     bo.return_on,
