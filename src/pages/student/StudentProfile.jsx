@@ -36,7 +36,7 @@ const useStyles = makeStyles( theme => ({
         borderTopLeftRadius: theme.shape.borderRadius,
         background: `linear-gradient(to top, white 15px, ${theme.palette.primary.light} 50%, ${theme.palette.primary.main} 85%, ${theme.palette.primary.dark})`,
     },
-    studentProfile: {
+    studentProfileImage: {
         backgroundColor: theme.palette.primary.light,
         height: cardCfg.overlayCard.height,
         width: cardCfg.image.width,
@@ -111,10 +111,11 @@ export default ({open, handleClose, studentId = 1}) => {
                     <BooksHistory studentData={studentData} historyData={historyData}></BooksHistory>
                 }
                 </div>
-                <Grid container item justify="center" alignItems="center" className={classes.studentProfile}>
+                <Grid container item justify="center" alignItems="center" className={classes.studentProfileImage}>
                     <div className={classes.studentPreImage}>
                         {Icons.Student}
                     </div>
+                    <input type="file" accept="capture=camera;image/*" />
                 </Grid>
             </Grid>
         </div>
