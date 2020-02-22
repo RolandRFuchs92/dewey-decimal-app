@@ -7,6 +7,20 @@ import Modal from 'components/modal';
 import Icons from 'components/icons';
 import { getStudentProfileData } from './Student.repo';
 
+const cardCfg = new function () {
+    this.container = {
+        height: 345,
+        width: 680
+    };
+    this.overlayCard = {
+        height: 375,
+        width: this.container.width - 15 - 215
+    };
+    this.image = {
+        width: 245
+    }
+};
+
 const useStyles = makeStyles( theme => ({
     container: {
         width: 680,
@@ -15,8 +29,8 @@ const useStyles = makeStyles( theme => ({
     },
     backgroundSetting: {
         position: 'absolute',
-        height: 345,
-        width:680,
+        height: cardCfg.container.height,
+        width: cardCfg.container.width,
         top: -15,
         left: -15,
         borderTopLeftRadius: theme.shape.borderRadius,
@@ -24,8 +38,8 @@ const useStyles = makeStyles( theme => ({
     },
     studentProfile: {
         backgroundColor: theme.palette.primary.light,
-        height: 375,
-        width:245,
+        height: cardCfg.overlayCard.height,
+        width: cardCfg.image.width,
         position: 'absolute',
         right: -30,
         top: 0,
@@ -37,11 +51,12 @@ const useStyles = makeStyles( theme => ({
         fontSize: 180
     },
     profileDataContainer: {
-        height:'100%', 
-        width: 680-15-215,
+        height: cardCfg.overlayCard.height, 
+        width: cardCfg.overlayCard.width,
         backgroundColor: 'white',
         marginLeft: 15,
-        padding: 15
+        padding: 15,
+        overflowY: 'auto'
     },
     studentHistory: {
         position:'absolute',
