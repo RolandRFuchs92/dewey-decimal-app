@@ -5,9 +5,11 @@ import ScansToday from './ScansToday';
 import BirthdaysToday from './BirthdaysToday';
 import Icons from 'components/icons';
 import Scan from './Scan';
+import Overdue from './Overdue';
 
 const useStyles = makeStyles(theme => ({
     items: {
+        width:500,
         height: 350,
         margin: '0px 15px 15px 0px'
     },
@@ -21,7 +23,7 @@ const useStyles = makeStyles(theme => ({
 }));
 
 export default () => {
-    const [open, setOpen] = useState(true);
+    const [open, setOpen] = useState(false);
     const classes = useStyles();
 
     return <Grid container className={classes.container}>
@@ -31,6 +33,9 @@ export default () => {
         </Grid>
         <Grid item className={classes.items}>
             <BirthdaysToday></BirthdaysToday>
+        </Grid>
+        <Grid className={classes.items}>
+            <Overdue></Overdue>
         </Grid>
         <Scan open={open} handleClose={() => setOpen(false)}></Scan>
     </Grid>;

@@ -8,7 +8,6 @@ import { getBirthdays } from './Home.repo';
 const useStyles = makeStyles(theme => {
     return {
         container: {
-            minWidth: 300,
             padding: 15,
             height: '100%',
             overflow: 'overlay'
