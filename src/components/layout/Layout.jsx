@@ -16,39 +16,44 @@ import BooksOut from 'pages/booksOut';
 import context from 'utils/context';
 import Icons from 'components/icons';
 
-const useStyles = makeStyles(theme => ({
-	root: {
-		display: 'flex',
-	},
-	toolbarRoot: {
-		display: 'flex',
-		width: '100%',
-		justifyContent: 'space-between',
-		alignSelf: 'center'
-	},
-	appBar: {
-		width: `calc(100% - ${drawerWidth}px)`,
-		marginLeft: drawerWidth,
-	},
-	toolbar: theme.mixins.toolbar,
-	toolbarCenter: {
-		alignSelf: 'center'
-	},
-	toggleMode: {
-		fontSize:30
-	},
-	
-	content: {
-		flexGrow: 1,
-		backgroundColor: theme.palette.background.default,
-		padding: theme.spacing(3),
-	},
-}));
+const useStyles = makeStyles(theme => {
+	return {
+		root: {
+			display: 'flex',
+		},
+		toolbarRoot: {
+			display: 'flex',
+			width: '100%',
+			justifyContent: 'space-between',
+			alignSelf: 'center'
+		},
+		appBar: {
+			width: `calc(100% - ${drawerWidth}px)`,
+			marginLeft: drawerWidth,
+		},
+		toolbar: theme.mixins.toolbar,
+		toolbarCenter: {
+			color: theme.palette.primary.contrastText,
+			alignSelf: 'center'
+		},
+		toggleMode: {
+			fontSize:30
+		},
+		
+		content: {
+			flexGrow: 1,
+			backgroundColor: theme.palette.background.default,
+			padding: theme.spacing(3),
+		},
+		iconText: {
+			color: theme.palette.primary.contrastText,
+		}
+	}
+});
 
 export default function PermanentDrawerLeft() {
 	const classes = useStyles();
-	const {state, toggleTheme} = useContext(context);
-	
+	const {state, toggleTheme, toggleScan} = useContext(context);
 
 	return (
 		<div className={classes.root}>
@@ -59,11 +64,11 @@ export default function PermanentDrawerLeft() {
 							<Typography variant='h5' noWrap className={classes.toolbarCenter}>
 								{state.pageTitle}
 							</Typography>
-							<div className={classes.toggleMode}>
-								<IconButton aria-label="delete" >
+							<div className={classes.toggleMode} >
+								<IconButton aria-label="delete" className={classes.iconText} onClick={toggleScan}>
 									{Icons.Barcode}
 								</IconButton>
-								<IconButton aria-label="Toggle light/dark mode" onClick={toggleTheme}>
+								<IconButton aria-label="Toggle light/dark mode" onClick={toggleTheme} className={classes.iconText}>
 									{Icons.DarkLight}
 								</IconButton>
 							</div>

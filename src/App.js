@@ -9,6 +9,7 @@ import MainLayout from './components/layout/Layout';
 import {SnackbarProvider } from 'notistack';
 import initializeDb from 'db/initializeDb';
 import { Provider } from 'utils/context';
+import Scan from 'pages/home/Scan';
 
 const initialState = {
 	pageTitle: 'Home',
@@ -17,6 +18,7 @@ const initialState = {
 
 function App() {
 	const [state, setState] = React.useState(initialState);
+	const [showScan, setShowScan] = React.useState(false);
 	const [theme, setTheme] = React.useState({
 		palette: {
 			type: 'light'
@@ -33,6 +35,10 @@ function App() {
 		});
 	}
 
+	const toggleScan = () => {
+		setShowScan(!showScan);
+	}
+
 	state.setState = state => setState({...state});
 	initializeDb();
 	const muiTheme = createMuiTheme(theme);
@@ -40,7 +46,7 @@ function App() {
 	return (
 		<div className='App'>
 			<MuiThemeProvider theme={muiTheme}>
-				<Provider value={{state, toggleTheme}}>
+				<Provider value={{state, toggleTheme, toggleScan}}>
 					<MuiPickersUtilsProvider utils={DateFnsUtils}>
 						<ConfirmProvider>
 							<SnackbarProvider anchorOrigin={{
@@ -48,6 +54,7 @@ function App() {
 									horizontal: 'center',
 								}}> 
 								<MainLayout></MainLayout>
+            					<Scan open={showScan} handleClose={() => setShowScan(false)}></Scan>
 							</SnackbarProvider>
 						</ConfirmProvider>
 					</MuiPickersUtilsProvider>

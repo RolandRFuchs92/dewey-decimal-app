@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import { Button, makeStyles, Grid, Paper, Typography } from '@material-ui/core';
 
 import { Provider, reducer, constants} from './Context';
@@ -9,7 +9,7 @@ import Icons from 'components/icons';
 import Scan from './Scan';
 import Overdue from './Overdue';
 import { formatDateForDbInsert } from 'utils/businessRules'
-
+import rootContext from 'utils/context';
 
 const useStyles = makeStyles(theme => ({
     container: {
@@ -47,6 +47,7 @@ export default () => {
     const classes = useStyles();
     const [open, setOpen] = useState(false);
     const [scans, setScans] = useState({});
+    const { toggleScan } = useContext(rootContext);
 
     useEffect(() => {
         (async () => {
@@ -66,7 +67,7 @@ export default () => {
 
     return <Provider value={resetScansToday}>
         <Grid container className={classes.container}>
-            <Button variant="contained" color="primary" onClick={() => setOpen(true)} startIcon={<div>{Icons.Barcode}</div>} fullWidth className={classes.barcodeButton}>Checkin / Checkout</Button>
+            <Button variant="contained" color="primary" onClick={() => toggleScan()} startIcon={<div>{Icons.Barcode}</div>} fullWidth className={classes.barcodeButton}>Checkin / Checkout</Button>
             
             <HomePageTile title="Checkins Today">
                 <ScansToday scans={scans.checkins} ></ScansToday>
@@ -84,7 +85,6 @@ export default () => {
                 <BirthdaysToday></BirthdaysToday>
             </HomePageTile>
 
-            <Scan open={open} handleClose={() => setOpen(false)}></Scan>
         </Grid>
     </Provider>
 }
