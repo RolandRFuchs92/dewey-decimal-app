@@ -1,11 +1,13 @@
-import React, { useState, useContext } from 'react';
+import React, { useEffect, useState, useReducer } from 'react';
 import { Button, makeStyles, Grid } from '@material-ui/core';
 
+import { Provider, reducer, constants} from './Context';
 import ScansToday from './ScansToday';
 import BirthdaysToday from './BirthdaysToday';
 import Icons from 'components/icons';
 import Scan from './Scan';
 import Overdue from './Overdue';
+
 
 const useStyles = makeStyles(theme => ({
     items: {
@@ -23,22 +25,31 @@ const useStyles = makeStyles(theme => ({
 }));
 
 export default () => {
-    const [open, setOpen] = useState(true);
     const classes = useStyles();
+    const [open, setOpen] = useState(true);
+    const [state, dispatch] = useReducer(reducer, []);
 
-    return <Grid container className={classes.container}>
-        <Button variant="contained" color="primary" onClick={() => setOpen(true)} startIcon={<div>{Icons.Barcode}</div>} fullWidth className={classes.barcodeButton}>Check-in/out</Button>
-        <Grid item className={classes.items}>
-            <BirthdaysToday></BirthdaysToday>
-        </Grid>
+    useEffect(() => {
+        (async () => {
+            await dispatch({ type: constants.SCANSTODAY });
+        })()
+    },[])
 
-        <Grid item className={classes.items}>
-            <ScansToday ></ScansToday>
-        </Grid>
+    return <Provider value={[state, dispatch]}>
+        <Grid container className={classes.container}>
+            <Button variant="contained" color="primary" onClick={() => setOpen(true)} startIcon={<div>{Icons.Barcode}</div>} fullWidth className={classes.barcodeButton}>Checkin / Checkout</Button>
+            <Grid item className={classes.items}>
+                <BirthdaysToday></BirthdaysToday>
+            </Grid>
 
-        <Grid className={classes.items}>
-            <Overdue></Overdue>
+            <Grid item className={classes.items}>
+                <ScansToday ></ScansToday>
+            </Grid>
+
+            <Grid className={classes.items}>
+                <Overdue></Overdue>
+            </Grid>
+            <Scan open={open} handleClose={() => setOpen(false)}></Scan>
         </Grid>
-        <Scan open={open} handleClose={() => setOpen(false)}></Scan>
-    </Grid>;
+    </Provider>
 }
