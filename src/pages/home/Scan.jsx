@@ -3,6 +3,7 @@ import { TextField, Paper, makeStyles, InputAdornment, Typography, Button } from
 import { Autocomplete } from '@material-ui/lab';
 import { isNil } from 'lodash';
 
+import { checkout, checkin } from 'pages/booksOut/booksout.repo';
 import { useAlert } from 'utils/snackbarAlerts';
 import Modal from 'components/modal';
 import Icons from 'components/icons';
@@ -104,10 +105,11 @@ const GenerateCheckout = ({data}) => {
   
   const getSelection = (e,value) => {
     if(isNil(value)) return;
-    setSelection({class: value.class, teacher: value.teacher});
+    setSelection({class: value.class, teacher: value.teacher, student_id: value.student_id});
   }
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
+    await checkout(selection.student_id, data.book_id);
   }
 
   return <div className={classes.statContainer}>

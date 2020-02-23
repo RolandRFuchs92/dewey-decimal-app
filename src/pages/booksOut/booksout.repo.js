@@ -3,10 +3,10 @@ import {format, addBusinessDays, addDays} from 'date-fns';
 import repoBase from 'components/page/repo.base';
 import { getBooksSelectList } from 'pages/books/book.repo';
 import { getSelectList } from 'pages/student/Student.repo';
-import { all } from 'db/repo';
+import { all, run } from 'db/repo';
 import appSettings from 'appSettings';
+import { calculateReturnOnDateForDbInsert, formatDateForDbInsert } from 'utils/businessRules';
 
-const {formatDate, checkout} = appSettings;
 const getAllQuery = `
 SELECT
 	bo.${appSettings.tables.books_out.pk},
@@ -32,12 +32,26 @@ repo.getAll = async () => {
     return result;
 };
 
+const checkoutBookQuery = `
+    INSERT INTO book_outs(book_id, student_id, return_on, check_out_date)
+    VALUES($book_id, $student_id, $return_on, $check_out_date);
+`;
+
+export const checkout = async (student_id, book_id) => {
+    const statementObject = {
+        $student_id: student_id,
+        $book_id: book_id,
+        $return_on: calculateReturnOnDateForDbInsert(),
+        $check_out_date: formatDateForDbInsert()
+    };
+    await run(checkoutBookQuery, statementObject);
+}
+
+export const checkin = async (call_number) => {
+
+}
+
 export default repo;
 export const getBooksForSelect = getBooksSelectList;
 export const getStudentsForSelect = getSelectList;
-export const calculateReturnOnDateForDbInsert = (date = new Date()) => {
-    const finalDate = checkout.isBusinessDays 
-        ? addBusinessDays(date, checkout.daysAllowedOut) 
-        : addDays(checkout.daysAllowedOut);
-    return format(finalDate, formatDate.from);
-}
+

@@ -81,6 +81,7 @@ export const getStudentBooksHistory = async (student_id) => {
 
 const getBookByCallNumberQuery = `
 SELECT
+    b.book_id,
 	b.name book_name,
 	a.name || ' ' || a.second_name || ' ' || a.surname author_name,
 	b.call_number,

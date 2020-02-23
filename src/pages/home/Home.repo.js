@@ -60,21 +60,3 @@ export const searchForStudentsSelect = async value => {
         
     return await getStudentSelectListSearch(value);
 }
-
-export const checkout = async (student_id, book_id) => {
-    const statement = `
-        INSERT INTO book_outs(book_id, student_id, return_on, check_out_date)
-        VALUES($book_id, $student_id, $return_on, $check_out_date);
-    `;
-    const statementObject = {
-        $student_id: student_id,
-        $book_id: book_id,
-        $return_on: calculateReturnOnDateForDbInsert(),
-        $check_out_date: check_out_date
-    };
-    await run();
-}
-
-export const checkin = async state => {
-    await run(b);
-}
