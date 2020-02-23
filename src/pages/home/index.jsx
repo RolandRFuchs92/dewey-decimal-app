@@ -8,6 +8,7 @@ import BirthdaysToday from './BirthdaysToday';
 import Icons from 'components/icons';
 import Scan from './Scan';
 import Overdue from './Overdue';
+import { formatDateForDbInsert } from 'utils/businessRules'
 
 
 const useStyles = makeStyles(theme => ({
@@ -28,27 +29,42 @@ const useStyles = makeStyles(theme => ({
 export default () => {
     const classes = useStyles();
     const [open, setOpen] = useState(false);
-    const [state, setState] = useState([]);
+    const [scans, setScans] = useState({});
 
     useEffect(() => {
         (async () => {
-            setState(await getScans());
+            await resetScansToday();
         })()
     },[])
 
-    return <Provider value={[state, setState]}>
+    const resetScansToday = async () => {
+        const rawScans = await getScans();
+        const checkins = rawScans.filter(({check_out_date}) => check_out_date === formatDateForDbInsert());
+        const checkouts = rawScans.filter(({check_in_date}) => check_in_date === formatDateForDbInsert());   
+        setScans({
+            checkins,
+            checkouts
+        });
+    }
+
+    return <Provider value={resetScansToday}>
         <Grid container className={classes.container}>
             <Button variant="contained" color="primary" onClick={() => setOpen(true)} startIcon={<div>{Icons.Barcode}</div>} fullWidth className={classes.barcodeButton}>Checkin / Checkout</Button>
+            
             <Grid item className={classes.items}>
-                <BirthdaysToday></BirthdaysToday>
+                <ScansToday scans={scans.checkins} title="Checkins Today"></ScansToday>
             </Grid>
 
             <Grid item className={classes.items}>
-                <ScansToday ></ScansToday>
+                <ScansToday scans={scans.checkouts} title="Checkouts Today"></ScansToday>
             </Grid>
-
+            
             <Grid className={classes.items}>
                 <Overdue></Overdue>
+            </Grid>
+
+            <Grid item className={classes.items}>
+                <BirthdaysToday></BirthdaysToday>
             </Grid>
             <Scan open={open} handleClose={() => setOpen(false)}></Scan>
         </Grid>

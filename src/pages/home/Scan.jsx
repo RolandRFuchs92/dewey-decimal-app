@@ -34,7 +34,7 @@ export default ({open, handleClose}) => {
   const [ barcodeResult, setBarcodeResult] = useState({});
   const [ barcode, setBarcode] = useState('');
   const [ isCheckout, setIsCheckout] = useState(null);
-  const [ , setScans] = useContext(Context);
+  const resetScans = useContext(Context);
   const alert = useAlert();
 
   const handleSubmit = async e => {
@@ -54,7 +54,7 @@ export default ({open, handleClose}) => {
   }
 
   const reset = () => {
-    getScans().then(result => setScans(result));
+    resetScans();
     setBarcode('')
     setIsCheckout(null);
     setBarcodeResult({});
