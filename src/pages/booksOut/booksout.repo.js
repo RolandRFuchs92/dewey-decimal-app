@@ -126,7 +126,7 @@ WHERE
 
 export const getBooksOverdue = async (date = new Date()) => {
     const statementObject = {
-        $date: date
+        $date: formatDateForDbInsert(date)
     };
     return await all(booksOverdueQuery, statementObject);
 }
