@@ -99,6 +99,37 @@ export const getScans = async (date = new Date()) => {
     return await all(scannsQuery, statementObject);
 }
 
+const booksOverdueQuery = `
+SELECT
+	s.first_name || ' ' || s.last_name student_name,
+	b.name book_name,
+	a.name || ' ' || a.second_name || ' ' || a.surname author_name,
+	bo.return_on
+FROM	
+	books_out bo
+JOIN	
+	book b
+	ON bo.book_id = b.book_id
+JOIN
+	student s
+	ON s.student_id = bo.student_id
+JOIN
+ 	class c
+	ON s.class_id = c.class_id
+JOIN
+	author a
+	on b.author_id = a.author_id
+WHERE
+	STRFTIME('%Y-%m-%d',bo.return_on) <= STRFTIME('%Y-%m-%d', $date)
+	AND bo.check_in_date IS NULL 
+`;
+
+export const getBooksOverdue = async (date = new Date()) => {
+    const statementObject = {
+        $date: date
+    };
+    return await all(booksOverdueQuery, statementObject);
+}
 
 export default repo;
 export const getBooksForSelect = getBooksSelectList;
