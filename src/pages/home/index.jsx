@@ -38,6 +38,7 @@ const useStyles = makeStyles(theme => ({
         }
     },
     content: {
+        textAlign: 'left',
         overflow: 'overlay',
     }
 }));
