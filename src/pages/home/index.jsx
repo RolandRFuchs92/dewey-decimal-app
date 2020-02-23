@@ -2,6 +2,7 @@ import React, { useEffect, useState, useReducer } from 'react';
 import { Button, makeStyles, Grid } from '@material-ui/core';
 
 import { Provider, reducer, constants} from './Context';
+import { getScans } from 'pages/booksOut/booksout.repo';
 import ScansToday from './ScansToday';
 import BirthdaysToday from './BirthdaysToday';
 import Icons from 'components/icons';
@@ -26,16 +27,16 @@ const useStyles = makeStyles(theme => ({
 
 export default () => {
     const classes = useStyles();
-    const [open, setOpen] = useState(true);
-    const [state, dispatch] = useReducer(reducer, []);
+    const [open, setOpen] = useState(false);
+    const [state, setState] = useState([]);
 
     useEffect(() => {
         (async () => {
-            await dispatch({ type: constants.SCANSTODAY });
+            setState(await getScans());
         })()
     },[])
 
-    return <Provider value={[state, dispatch]}>
+    return <Provider value={[state, setState]}>
         <Grid container className={classes.container}>
             <Button variant="contained" color="primary" onClick={() => setOpen(true)} startIcon={<div>{Icons.Barcode}</div>} fullWidth className={classes.barcodeButton}>Checkin / Checkout</Button>
             <Grid item className={classes.items}>

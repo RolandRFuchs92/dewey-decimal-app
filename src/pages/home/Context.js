@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { getScanns } from 'pages/booksOut';
+import { getScans } from 'pages/booksOut/booksout.repo';
 const context = React.createContext([]);
 
 export default context;
@@ -11,7 +11,7 @@ export const reducer = async (state, action) => {
     debugger;
     switch(action.type){
         case constants.SCANSTODAY:
-            return await getScanns();
+            return await getScans();
         default: 
             return state;
     }

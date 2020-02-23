@@ -90,9 +90,9 @@ JOIN
 WHERE
     STRFTIME('%Y-%m-%d', bo.check_in_date) = STRFTIME('%Y-%m-%d', $date)
 `;
-export const getScanns = async (date = new Date()) => {
+export const getScans = async (date = new Date()) => {
     const statementObject = {
-        $date: date
+        $date: formatDateForDbInsert(date)
     };
     return await all(scannsQuery, statementObject);
 }

@@ -14,10 +14,6 @@ export default () => {
     const classes = useStyles();
     const [state] = useContext(context);
 
-    useEffect(() => {
-
-    },[state]);
-
     return <Paper className={classes.container}>
         <Typography variant="h5">Scans Today</Typography>
         {state.map((i) => {
