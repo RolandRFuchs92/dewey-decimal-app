@@ -1,11 +1,12 @@
 import React, { useState, useRef } from 'react';
 import { TextField, Paper, makeStyles, InputAdornment, Typography, Button } from '@material-ui/core';
 import { Autocomplete } from '@material-ui/lab';
+import { isNil } from 'lodash';
 
 import { useAlert } from 'utils/snackbarAlerts';
 import Modal from 'components/modal';
 import Icons from 'components/icons';
-import { getBookByCallNumber } from './Home.repo';
+import { getBookByCallNumber, searchForStudentsSelect } from './Home.repo';
 
 const useStyles = makeStyles(theme => ({
     barcode: {
@@ -92,21 +93,52 @@ const GenerateCheckin = ({data}) => {
 }
 
 const GenerateCheckout = ({data}) => {
+  const [selectList, setSelectList] = useState([]);
+  const [selection, setSelection] = useState({});
   const classes = useStyles();
+
+  const handleSearch = async e => {
+    const { target: {value}} = e;
+    setSelectList(await searchForStudentsSelect(value));
+  };
+  
+  const getSelection = (e,value) => {
+    if(isNil(value)) return;
+    setSelection({class: value.class, teacher: value.teacher});
+  }
+
+  const handleSubmit = () => {
+  }
+
   return <div className={classes.statContainer}>
     <Typography variant="h6">Check in</Typography>
     <p>Author: <b>{data.author_name}</b></p>
     <p>Title: <b>{data.book_name}</b></p>
     <p>Call Number: <b>{data.call_number}</b></p>
     <hr></hr>
-    <Autocomplete label="Student" onChange={findStudent}></Autocomplete>
-    <p>Class: <b>{data.class}</b></p>
-    <p>Teacher: <b>{data.teacher_name}</b></p>
+    <Autocomplete 
+      label="Student" 
+      options={selectList} 
+      onChange={getSelection}
+      getOptionLabel={option => option.text}
+      ListboxProps={{onClick:getSelection}}
+      noOptionsText="No students found"
+      selectOnFocus={true}
+      renderInput={params => (
+        <TextField
+          {...params}
+          onChange={handleSearch} 
+          label="Student"
+          fullWidth
+          variant="outlined"
+        />)
+    }></Autocomplete>
+    <p>Class: <b>{selection.class}</b></p>
+    <p>Teacher: <b>{selection.teacher}</b></p>
     <hr></hr>
     <p>Check out on: <b>{data.check_out_date}</b></p>
-    <p>Check in on: <b>{data.check_in_on}</b></p>
     <p>Due by:<b>{data.return_on}</b></p>
-    <p>Fine due: <b>{data.fine}</b></p>
-    <Button variant="contained" fullWidth>Checkout</Button>
-  </div>
+    <Button variant="contained" fullWidth onClick={handleSubmit}>Checkout</Button>
+  </div> 
 }
+

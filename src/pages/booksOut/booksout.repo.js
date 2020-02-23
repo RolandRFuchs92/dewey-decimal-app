@@ -1,9 +1,12 @@
+import {format, addBusinessDays, addDays} from 'date-fns';
+
 import repoBase from 'components/page/repo.base';
 import { getBooksSelectList } from 'pages/books/book.repo';
 import { getSelectList } from 'pages/student/Student.repo';
 import { all } from 'db/repo';
 import appSettings from 'appSettings';
 
+const {formatDate, checkout} = appSettings;
 const getAllQuery = `
 SELECT
 	bo.${appSettings.tables.books_out.pk},
@@ -32,4 +35,9 @@ repo.getAll = async () => {
 export default repo;
 export const getBooksForSelect = getBooksSelectList;
 export const getStudentsForSelect = getSelectList;
-
+export const calculateReturnOnDateForDbInsert = (date = new Date()) => {
+    const finalDate = checkout.isBusinessDays 
+        ? addBusinessDays(date, checkout.daysAllowedOut) 
+        : addDays(checkout.daysAllowedOut);
+    return format(finalDate, formatDate.from);
+}

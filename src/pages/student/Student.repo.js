@@ -100,18 +100,23 @@ export async function getStudentsWithBirthdays(date) {
 
 const getStudentSelectListSearchQuery = `
     SELECT
-        c.grade || c.class_name || ' - ' || first_name || ' '  || last_name as text,
-        s.student_id value
+        c.grade || c.class_name || ' - ' || s.first_name || ' '  || s.last_name as text,
+        s.student_id value,
+        c.grade || c.class_name class,
+        t.first_name || ' ' || t.last_name teacher
     FROM
         student s 
     JOIN
         class c
         ON s.class_id = c.class_id
+    JOIN
+        teacher t
+        ON c.class_id = t.class_id
     WHERE
-        (c.grade || c.class_name || ' - ' || first_name || ' '  || last_name) LIKE '%$searchTerm%'
+        (c.grade || c.class_name || ' - ' || s.first_name || ' '  || s.last_name) LIKE $searchTerm
 `;
 
 export const getStudentSelectListSearch = async value => {
-    const result = await all(getStudentSelectListSearchQuery, { $searchTerm : value })
+    const result = await all(getStudentSelectListSearchQuery, { $searchTerm : `%${value}%` })
     return result;
 }

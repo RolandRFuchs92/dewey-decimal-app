@@ -1,8 +1,10 @@
 import { format, parse, addBusinessDays, addDays, differenceInBusinessDays } from 'date-fns';
 
+import { run } from 'db/repo';
 import { getStudentsWithBirthdays } from 'pages/student/Student.repo';
 import { getBookByCallNumber as findBookByBarcode } from 'pages/books/book.repo';
-import { getSelectList } from 'pages/student';
+import { getSelectList, getStudentSelectListSearch } from 'pages/student/Student.repo';
+import { calculateReturnOnDateForDbInsert } from 'pages/booksOut/booksout.repo';
 import appSettings from 'appSettings';
 
 const { fines, formatDate, checkout } = appSettings;
@@ -44,18 +46,35 @@ const calculateCheckin = (data) => {
     data.check_in_on = data.check_in_on && format(parse(data.check_in_on, formatDate.to, new Date()))
     data.return_on = format(return_on, formatDate.to, new Date());
 
-    if(!data.check_in_date && fines.isEnabled) {
+    if(!data.check_in_date && fines.isEnabled) 
         data.fine = diffDays > 0 ? `R${diffDays * fines.rate}` : 'None';
-    } else {
+    else 
         data.fine = 'None';
-    }
 
     return data;
 }
 
 
-export const findStudent = async ({target: {value}}) => {
-    if (value.length < 3) return null;
+export const searchForStudentsSelect = async value => {
+    if (value.length < 3) return [];
+        
+    return await getStudentSelectListSearch(value);
+}
 
-    
+export const checkout = async (student_id, book_id) => {
+    const statement = `
+        INSERT INTO book_outs(book_id, student_id, return_on, check_out_date)
+        VALUES($book_id, $student_id, $return_on, $check_out_date);
+    `;
+    const statementObject = {
+        $student_id: student_id,
+        $book_id: book_id,
+        $return_on: calculateReturnOnDateForDbInsert(),
+        $check_out_date: check_out_date
+    };
+    await run();
+}
+
+export const checkin = async state => {
+    await run(b);
 }
