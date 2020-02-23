@@ -13,6 +13,7 @@ import {
 import { makeStyles } from '@material-ui/core';
 import { FontAwesomeIcon  } from '@fortawesome/react-fontawesome'
 import { 
+	faAdjust,
 	faEdit, 
 	faPlusSquare, 
 	faMinusSquare, 
@@ -55,6 +56,7 @@ const Student = CreateIcon(faUserGraduate);
 const Teacher = CreateIcon(faChalkboardTeacher);
 const studentClass = CreateIcon(faUsers);
 const BookOut = CreateIcon(faBookReader);
+const DarkLight = CreateIcon(faAdjust);
 
 export default { 
     Code: <Code />,
@@ -81,5 +83,6 @@ export default {
 	Student,
 	Teacher,
 	BookOut,
-	History
+	History,
+	DarkLight
 }

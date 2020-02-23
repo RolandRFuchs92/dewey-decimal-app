@@ -15,16 +15,30 @@ import Books from 'pages/books';
 import BooksOut from 'pages/booksOut';
 import context from 'utils/context';
 import { useContext } from 'react';
+import Icons from 'components/icons';
 
 const useStyles = makeStyles(theme => ({
 	root: {
 		display: 'flex',
+	},
+	toolbarRoot: {
+		display: 'flex',
+		width: '100%',
+		justifyContent: 'space-between',
+		alignSelf: 'center'
 	},
 	appBar: {
 		width: `calc(100% - ${drawerWidth}px)`,
 		marginLeft: drawerWidth,
 	},
 	toolbar: theme.mixins.toolbar,
+	toolbarCenter: {
+		alignSelf: 'center'
+	},
+	toggleMode: {
+		fontSize:30
+	},
+	
 	content: {
 		flexGrow: 1,
 		backgroundColor: theme.palette.background.default,
@@ -42,9 +56,14 @@ export default function PermanentDrawerLeft() {
 			<CssBaseline />
 				<AppBar position='fixed' className={classes.appBar}>
 					<Toolbar>
-						<Typography variant='h6' noWrap>
-							{state.pageTitle}
-						</Typography>
+						<div className={classes.toolbarRoot}>
+							<Typography variant='h5' noWrap className={classes.toolbarCenter}>
+								{state.pageTitle}
+							</Typography>
+							<div className={classes.toggleMode}>
+								{Icons.DarkLight}
+							</div>
+						</div>
 					</Toolbar>
 				</AppBar>
 				<Router>
