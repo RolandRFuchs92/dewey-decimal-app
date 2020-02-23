@@ -97,3 +97,21 @@ export async function getStudentsWithBirthdays(date) {
     const statementObject = { $date: date };
     return await all(getStudentsWithBirthdaysQuery, statementObject);
 }
+
+const getStudentSelectListSearchQuery = `
+    SELECT
+        c.grade || c.class_name || ' - ' || first_name || ' '  || last_name as text,
+        s.student_id value
+    FROM
+        student s 
+    JOIN
+        class c
+        ON s.class_id = c.class_id
+    WHERE
+        (c.grade || c.class_name || ' - ' || first_name || ' '  || last_name) LIKE '%$searchTerm%'
+`;
+
+export const getStudentSelectListSearch = async value => {
+    const result = await all(getStudentSelectListSearchQuery, { $searchTerm : value })
+    return result;
+}

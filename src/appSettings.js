@@ -47,6 +47,10 @@ const appSettings =  new function(){
         error: `${this.appName}.error.log`,
         general: `${this.appName}.log`,
     }
+    this.checkout = {
+        daysAllowedOut: 5,
+        isBusinessDays: true
+    };
     this.fines = {
         isEnabled: true,
         rate: 5        

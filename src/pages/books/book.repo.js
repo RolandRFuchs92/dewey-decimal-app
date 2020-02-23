@@ -1,11 +1,9 @@
-import { differenceInBusinessDays } from 'date-fns';
-import { format, parse } from 'date-fns';
-
 import repoBase from 'components/page/repo.base';
 import {all} from 'db/repo';
 import appSettings from 'appSettings';
 
-const { fines, formatDate } = appSettings;
+
+const { fines, formatDate, checkout } = appSettings;
 const {tables: {book, author, dewey_decimal}} = appSettings;
 
 const getAllQuery = `
@@ -115,28 +113,5 @@ WHERE
 
 export const getBookByCallNumber = async (call_number) => {
     const [data] = await all(getBookByCallNumberQuery, { $call_number: call_number });
-
-    if(data.student_name) 
-        return calculateCheckin(data);
-    return calculateCheckout(data);
-}
-
-const calculateCheckin = (data) => {
     return data;
-}
-
-const calculateCheckout = (data) => { 
-    if(data && !data.check_in_date && fines.isEnabled) {
-        let {check_out_date, return_on} = data;
-        check_out_date = parse(data.check_out_date, formatDate.from, new Date());
-        return_on = parse(data.return_on, formatDate.from, new Date());
-        const diffDays = differenceInBusinessDays(check_out_date, return_on);
-        data.check_out_date = format(check_out_date, formatDate.to, new Date());
-        data.check_in_on = data.check_in_on && format(parse(data.check_in_on, formatDate.to, new Date()))
-        data.return_on = format(return_on, formatDate.to, new Date());
-        data.fine = diffDays > 0 ? `R${diffDays * fines.rate}` : 'None';
-    } else {
-        data.fine = 'None';
-    }
-    return data;
-}
+}   
