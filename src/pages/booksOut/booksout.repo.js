@@ -33,7 +33,7 @@ repo.getAll = async () => {
 };
 
 const checkoutBookQuery = `
-    INSERT INTO book_outs(book_id, student_id, return_on, check_out_date)
+    INSERT INTO books_out(book_id, student_id, return_on, check_out_date)
     VALUES($book_id, $student_id, $return_on, $check_out_date);
 `;
 
@@ -47,8 +47,20 @@ export const checkout = async (student_id, book_id) => {
     await run(checkoutBookQuery, statementObject);
 }
 
-export const checkin = async (call_number) => {
+const checkinBookQuery = `
+    UPDATE books_out 
+    SET
+        check_in_date = $check_in_date
+    WHERE
+        books_out_id = $books_out_id
+`;
 
+export const checkin = async (books_out_id, check_in_date = new Date()) => {
+    const statementObject = {
+        $books_out_id: books_out_id,
+        $check_in_date: formatDateForDbInsert(check_in_date)
+    };
+    await run(checkinBookQuery, statementObject);
 }
 
 export default repo;

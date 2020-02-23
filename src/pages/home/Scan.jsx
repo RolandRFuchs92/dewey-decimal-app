@@ -35,12 +35,11 @@ export default ({open, handleClose}) => {
   const [ isCheckout, setIsCheckout] = useState(null);
   const alert = useAlert();
 
-  const handleSubmit = async e =>{
-    if(e.key !== 'Enter'){
+  const handleSubmit = async e => {
+    if(e.key !== 'Enter')
       return;
-    }
+
     const { target: { value } } = e; 
-    setBarcode(value);
     input.current.focus();
     const data = await getBookByCallNumber(value);
     if(!data) {
@@ -52,12 +51,18 @@ export default ({open, handleClose}) => {
     setBarcodeResult(data);
   }
 
+  const reset = () => {
+    setBarcode('')
+    setIsCheckout(null);
+    setBarcodeResult({});
+  }
+
     return <Modal open={open} handleClose={handleClose}>
         {
           isCheckout === null 
           && <Typography variant="h5" className={classes.title}>Scan a barcode</Typography>
         }
-        <TextField tabIndex="1" ref={input} label="Barcode" autoFocus variant="outlined" onKeyDown={handleSubmit} InputProps={{
+        <TextField tabIndex="1" ref={input} label="Barcode" autoFocus variant="outlined" onKeyDown={handleSubmit} value={barcode} onChange={({target: {value}}) => setBarcode(value)} InputProps={{
           startAdornment: (
             <InputAdornment position="start" className={classes.barcode} >
               {Icons.Barcode}
@@ -67,13 +72,24 @@ export default ({open, handleClose}) => {
       {barcodeResult.isCheckout === undefined 
         ? null
         : barcodeResult.isCheckout 
-          ? <GenerateCheckout data={barcodeResult} />
-          : <GenerateCheckin data={barcodeResult}></GenerateCheckin>
+          ? <GenerateCheckout data={barcodeResult} reset={reset} />
+          : <GenerateCheckin data={barcodeResult} reset={reset}></GenerateCheckin>
       }
     </Modal>
 }
 
-const GenerateCheckin = ({data}) => {
+const GenerateCheckin = ({data, reset}) => {
+  const alert = useAlert();
+  const handleSubmit = async () => {
+    try {
+      await checkin(data.books_out_id);
+      reset();
+      alert.success(`Successfully checked in ${data.book_name} for ${data.student_name}`);
+    } catch (error) {
+      alert.error(`An error occured while checking in ${data.book_name} for ${data.student_name}`);
+    }
+  }
+
   const classes = useStyles();
   return <div className={classes.statContainer}>
     <Typography variant="h6">Checkin</Typography>
@@ -89,14 +105,15 @@ const GenerateCheckin = ({data}) => {
     <p>Check in on: <b>{data.check_in_on}</b></p>
     <p>Due by:<b>{data.return_on}</b></p>
     <p>Fine due: <b>{data.fine}</b></p>
-    <Button variant="contained" fullWidth>Check in</Button>
+    <Button variant="contained" fullWidth onClick={handleSubmit}>Check in</Button>
   </div>
 }
 
-const GenerateCheckout = ({data}) => {
+const GenerateCheckout = ({data, reset}) => {
   const [selectList, setSelectList] = useState([]);
   const [selection, setSelection] = useState({});
   const classes = useStyles();
+  const alert = useAlert();
 
   const handleSearch = async e => {
     const { target: {value}} = e;
@@ -105,11 +122,17 @@ const GenerateCheckout = ({data}) => {
   
   const getSelection = (e,value) => {
     if(isNil(value)) return;
-    setSelection({class: value.class, teacher: value.teacher, student_id: value.student_id});
+    setSelection({class: value.class, teacher: value.teacher, student_id: value.value, student_name: value.text});
   }
 
   const handleSubmit = async () => {
-    await checkout(selection.student_id, data.book_id);
+    try {
+      await checkout(selection.student_id, data.book_id);
+      reset();
+      alert.success(`${selection.student_name} checked out ${data.book_name} due back on ###ADD DATE HERE ###`);
+    } catch (error) {
+      alert.error(`An error occured while checking out ${data.book_name} for ${selection.student_name}.`);
+    }
   }
 
   return <div className={classes.statContainer}>
@@ -119,6 +142,7 @@ const GenerateCheckout = ({data}) => {
     <p>Call Number: <b>{data.call_number}</b></p>
     <hr></hr>
     <Autocomplete 
+      autoFocus
       label="Student" 
       options={selectList} 
       onChange={getSelection}

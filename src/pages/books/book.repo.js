@@ -81,6 +81,7 @@ export const getStudentBooksHistory = async (student_id) => {
 
 const getBookByCallNumberQuery = `
 SELECT
+    bo.books_out_id,
     b.book_id,
 	b.name book_name,
 	a.name || ' ' || a.second_name || ' ' || a.surname author_name,
@@ -98,7 +99,8 @@ JOIN
 	ON b.author_id = a.author_id
 LEFT JOIN
 	books_out bo
-	ON b.book_id = bo.book_id
+    ON b.book_id = bo.book_id
+    AND bo.check_in_date IS NULL
 LEFT JOIN
 	student s
 	ON bo.student_id = s.student_id
@@ -109,7 +111,7 @@ LEFT JOIN
 	teacher t
 	ON c.class_id = t.class_id
 WHERE	
-    b.call_number = $call_number
+   b.call_number = $call_number
 `
 
 export const getBookByCallNumber = async (call_number) => {

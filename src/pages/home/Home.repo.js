@@ -56,7 +56,7 @@ const calculateCheckin = (data) => {
 
 
 export const searchForStudentsSelect = async value => {
-    if (value.length < 3) return [];
+    if (value.length < 2) return [];
         
     return await getStudentSelectListSearch(value);
 }
