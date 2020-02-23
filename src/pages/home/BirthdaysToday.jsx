@@ -48,12 +48,11 @@ export default () => {
 
 
     return <Paper className={classes.container}>
-        <Typography variant="h5" className={classes.heading}>{Icons.Birthday} Birthdays Today {Icons.Birthday}</Typography>
         {
             state.map(({teacher, student}, index) => {
                 const { grade, class_name} = student[0];
                 return <Paper key={`${teacher}${index}`} className={classes.teachers}>
-                    <Typography variant="h6" align="left">{teacher} - {grade} {class_name}</Typography>
+                    <Typography variant="h6" align="left">{teacher} - {grade}{class_name}</Typography>
                     {
                         student.map(({first_name, last_name}, index) => {
                             return <Typography variant="body2" align="left" key={`${index}${first_name}${last_name}`}>{first_name} {last_name}</Typography>

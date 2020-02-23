@@ -15,19 +15,13 @@ const useStyles = makeStyles(theme => ({
     scanTileItem: {
         width: '50%'
     },
-    scanTile: {
-        textAlign: 'left',
-        overflow: 'overlay',
-    }
 }));
 
-export default ({scans,title}) => {
+export default ({scans}) => {
     const classes = useStyles();
 
-    return (<Paper className={classes.container}>
-        <Typography variant="h5" className={classes.title}>{title}</Typography>
-        <div className={classes.scanTile}>
-            {scans && scans.map(({author, book, student}) => {
+    return (<>
+        {scans && scans.map(({author, book, student}) => {
                 return <>
                     <Grid container >
                         <Grid item className={classes.scanTileItem}>{book}</Grid>
@@ -39,7 +33,6 @@ export default ({scans,title}) => {
                 </>
             })
         }
-        </div>
-    </Paper>
+        </>
     )
 }

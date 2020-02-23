@@ -1,5 +1,5 @@
-import React, { useEffect, useState, useReducer } from 'react';
-import { Button, makeStyles, Grid } from '@material-ui/core';
+import React, { useEffect, useState } from 'react';
+import { Button, makeStyles, Grid, Paper, Typography } from '@material-ui/core';
 
 import { Provider, reducer, constants} from './Context';
 import { getScans } from 'pages/booksOut/booksout.repo';
@@ -12,6 +12,19 @@ import { formatDateForDbInsert } from 'utils/businessRules'
 
 
 const useStyles = makeStyles(theme => ({
+    container: {
+        // display: 'flex',
+    },
+    homePageContainer: {
+        padding: 15,
+        height: '100%',
+        display: 'flex',
+        flexDirection: 'column'
+    },
+    title: {
+        background:'white',
+        paddingBottom: 15
+    },
     items: {
         width:500,
         height: 350,
@@ -23,6 +36,9 @@ const useStyles = makeStyles(theme => ({
         '& svg': {
             fontSize: 47
         }
+    },
+    content: {
+        overflow: 'overlay',
     }
 }));
 
@@ -51,22 +67,39 @@ export default () => {
         <Grid container className={classes.container}>
             <Button variant="contained" color="primary" onClick={() => setOpen(true)} startIcon={<div>{Icons.Barcode}</div>} fullWidth className={classes.barcodeButton}>Checkin / Checkout</Button>
             
-            <Grid item className={classes.items}>
-                <ScansToday scans={scans.checkins} title="Checkins Today"></ScansToday>
-            </Grid>
+            <HomePageTile title="Checkins Today">
+                <ScansToday scans={scans.checkins} ></ScansToday>
+            </HomePageTile>
 
-            <Grid item className={classes.items}>
-                <ScansToday scans={scans.checkouts} title="Checkouts Today"></ScansToday>
-            </Grid>
+            <HomePageTile title="Checkouts Today">
+                <ScansToday scans={scans.checkouts} ></ScansToday>
+            </HomePageTile>
             
-            <Grid className={classes.items}>
+            <HomePageTile title="Books Overdue">
                 <Overdue></Overdue>
-            </Grid>
+            </HomePageTile>
 
-            <Grid item className={classes.items}>
+            <HomePageTile titleComponent={<Typography variant="h5" className={classes.heading}>{Icons.Birthday} Birthdays Today {Icons.Birthday}</Typography>}>
                 <BirthdaysToday></BirthdaysToday>
-            </Grid>
+            </HomePageTile>
+
             <Scan open={open} handleClose={() => setOpen(false)}></Scan>
         </Grid>
     </Provider>
+}
+
+const HomePageTile = ({title, titleComponent, children}) => {
+    const classes = useStyles();
+
+    return <Grid item className={classes.items}>
+        <Paper className={classes.homePageContainer}>
+            {title 
+                ? <Typography variant="h5" className={classes.title}>{title}</Typography>
+                : titleComponent
+            }
+            <div className={classes.content}>
+                {children}    
+            </div>
+        </Paper>
+    </Grid>
 }
