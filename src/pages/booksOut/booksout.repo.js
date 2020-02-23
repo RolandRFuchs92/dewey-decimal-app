@@ -63,6 +63,41 @@ export const checkin = async (books_out_id, check_in_date = new Date()) => {
     await run(checkinBookQuery, statementObject);
 }
 
+const scannsQuery = `
+SELECT
+    t.first_name || ' ' || t.last_name teacher,
+    c.grade || c.class_name class,
+    b.name book,
+    a.name || ' ' || a.second_name || ' ' || a.surname author,
+    s.first_name || ' ' || s.last_name student
+FROM	
+    books_out bo
+JOIN
+    book b
+    ON bo.book_id = b.book_id
+JOIN
+    author a
+    ON b.author_id = a.author_id
+JOIN	
+    student s
+    ON bo.student_id = s.student_id
+JOIN
+    class c
+    ON s.class_id = c.class_id
+JOIN
+    teacher t
+    ON c.class_id = t.class_id
+WHERE
+    STRFTIME('%Y-%m-%d', bo.check_in_date) = STRFTIME('%Y-%m-%d', $date)
+`;
+export const getScanns = async (date = new Date()) => {
+    const statementObject = {
+        $date: date
+    };
+    return await all(scannsQuery, statementObject);
+}
+
+
 export default repo;
 export const getBooksForSelect = getBooksSelectList;
 export const getStudentsForSelect = getSelectList;
