@@ -81,7 +81,7 @@ function CreateListItem({ label, icon, path, menuItems, props, handleSelected })
 	const classes = useStyles();
 	const [isOpen, setIsOpen] = useState(false);
 	const hasMenuItems = !isNil(menuItems);
-	const appContext = useContext(context);
+	const { state: appContext} = useContext(context);
 	const [selected, setSelected] = useState(false);
 
 	const handleMenuItemClick = path => {

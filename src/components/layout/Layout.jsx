@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useContext } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { drawerWidth } from './Layout.config.json';
 import Drawer from './Drawer';
-import { CssBaseline, AppBar, Toolbar, Typography } from '@material-ui/core';
+import { CssBaseline, AppBar, Toolbar, Typography, IconButton } from '@material-ui/core';
 import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
 
 import Teacher from 'pages/teacher/Teacher';
@@ -14,7 +14,6 @@ import Authours from 'pages/authors'
 import Books from 'pages/books';
 import BooksOut from 'pages/booksOut';
 import context from 'utils/context';
-import { useContext } from 'react';
 import Icons from 'components/icons';
 
 const useStyles = makeStyles(theme => ({
@@ -48,7 +47,7 @@ const useStyles = makeStyles(theme => ({
 
 export default function PermanentDrawerLeft() {
 	const classes = useStyles();
-	const state = useContext(context);
+	const {state, toggleTheme} = useContext(context);
 	
 
 	return (
@@ -61,7 +60,12 @@ export default function PermanentDrawerLeft() {
 								{state.pageTitle}
 							</Typography>
 							<div className={classes.toggleMode}>
-								{Icons.DarkLight}
+								<IconButton aria-label="delete" >
+									{Icons.Barcode}
+								</IconButton>
+								<IconButton aria-label="Toggle light/dark mode" onClick={toggleTheme}>
+									{Icons.DarkLight}
+								</IconButton>
 							</div>
 						</div>
 					</Toolbar>

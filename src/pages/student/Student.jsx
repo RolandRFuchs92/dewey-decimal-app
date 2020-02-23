@@ -81,7 +81,7 @@ const defaultColumns= [
 ]
 
 export default () => {
-    const [open, setOpen] = useState(true);
+    const [open, setOpen] = useState(false);
     const handleDeleteRow = repo.deleteRow;
     const handleEditAddRow = repo.addOrUpdate;
     const getAll = repo.getAll;
