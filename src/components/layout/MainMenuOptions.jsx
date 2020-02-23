@@ -15,6 +15,9 @@ import icons from 'components/icons';
 import context from 'utils/context';
 
 const useStyles = makeStyles(theme => ({
+	list: {
+		overflow: 'hidden'
+	},
 	nested: {
 		paddingLeft: theme.spacing(4),
 	},
@@ -54,6 +57,7 @@ let prevSelected;
 
 
 function MenuOptions(props) {
+	const classes = useStyles();
 	const { menuItems } = props;
 	const handleSelected = setSelected => {
 		prevSelected && prevSelected(false);
@@ -62,7 +66,7 @@ function MenuOptions(props) {
 	}
 
 	return (
-		<List disablePadding>
+		<List disablePadding className={classes.list}>
 			{menuItems.map(({ label, icon, path, menuItems }) => (
 				<CreateListItem
 					key={label}

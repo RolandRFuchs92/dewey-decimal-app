@@ -80,9 +80,6 @@ export default function PermanentDrawerLeft() {
 								<BooksOut></BooksOut>
 							</Route>
 						</Switch>
-						<Route exact path='/checkout'>
-							<p>Checkout</p>
-						</Route>
 					</main>
 				</Router>
 		</div>
