@@ -3,7 +3,7 @@ import { Button, makeStyles, Grid } from '@material-ui/core';
 
 import { Provider, reducer, constants} from './Context';
 import { getScans } from 'pages/booksOut/booksout.repo';
-import ScansToday from './ScansToday';
+import ScansToday from './ScansTemplate';
 import BirthdaysToday from './BirthdaysToday';
 import Icons from 'components/icons';
 import Scan from './Scan';

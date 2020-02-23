@@ -48,7 +48,7 @@ export default () => {
 
 
     return <Paper className={classes.container}>
-        <Typography variant="h6" className={classes.heading}>{Icons.Birthday} Birthdays Today {Icons.Birthday}</Typography>
+        <Typography variant="h5" className={classes.heading}>{Icons.Birthday} Birthdays Today {Icons.Birthday}</Typography>
         {
             state.map(({teacher, student}, index) => {
                 const { grade, class_name} = student[0];

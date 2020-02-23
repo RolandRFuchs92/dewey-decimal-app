@@ -69,7 +69,9 @@ SELECT
     c.grade || c.class_name class,
     b.name book,
     a.name || ' ' || a.second_name || ' ' || a.surname author,
-    s.first_name || ' ' || s.last_name student
+    s.first_name || ' ' || s.last_name student,
+    bo.check_in_date,
+    bo.check_out_date
 FROM	
     books_out bo
 JOIN
