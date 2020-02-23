@@ -1,8 +1,11 @@
-import appSettings from 'appSettings';
+import { differenceInBusinessDays } from 'date-fns';
+import { format, parse } from 'date-fns';
 
 import repoBase from 'components/page/repo.base';
 import {all} from 'db/repo';
+import appSettings from 'appSettings';
 
+const { fines, formatDate } = appSettings;
 const {tables: {book, author, dewey_decimal}} = appSettings;
 
 const getAllQuery = `
@@ -80,37 +83,60 @@ export const getStudentBooksHistory = async (student_id) => {
 
 const getBookByCallNumberQuery = `
 SELECT
-    b.name book_name,
-    a.name || ' ' || a.second_name || ' ' || a.surname author_name,
-    b.call_number,
-    s.first_name || ' ' || s.last_name student_name,
-    c.grade || ' ' || c.class_name class_name,
-    t.first_name || ' ' || t.last_name teacher_name,
-    bo.check_out_date,
-    bo.return_on,
-    bo.check_in_date
+	b.name book_name,
+	a.name || ' ' || a.second_name || ' ' || a.surname author_name,
+	b.call_number,
+	s.first_name || ' ' || s.last_name student_name,
+	c.grade || ' ' || c.class_name class,
+	t.first_name || ' ' || t.last_name teacher_name,
+	bo.check_out_date,
+	bo.return_on,
+	bo.check_in_date
 FROM	
-    book b
+	book b
 JOIN
-    books_out bo
-    ON b.book_id = bo.book_id
-JOIN
-    author a
-    ON b.author_id = a.author_id
-JOIN
-    student s
-    ON bo.student_id = s.student_id
-JOIN
-    class c
-    ON s.class_id = c.class_id
-JOIN
-    teacher t
-    ON c.class_id = t.class_id
+	author a
+	ON b.author_id = a.author_id
+LEFT JOIN
+	books_out bo
+	ON b.book_id = bo.book_id
+LEFT JOIN
+	student s
+	ON bo.student_id = s.student_id
+LEFT JOIN
+	class c
+	ON s.class_id = c.class_id
+LEFT JOIN
+	teacher t
+	ON c.class_id = t.class_id
 WHERE	
     b.call_number = $call_number
 `
 
 export const getBookByCallNumber = async (call_number) => {
-    const data = await all(getBookByCallNumberQuery, { $call_number: call_number });
+    const [data] = await all(getBookByCallNumberQuery, { $call_number: call_number });
+
+    if(data.student_name) 
+        return calculateCheckin(data);
+    return calculateCheckout(data);
+}
+
+const calculateCheckin = (data) => {
+    return data;
+}
+
+const calculateCheckout = (data) => { 
+    if(data && !data.check_in_date && fines.isEnabled) {
+        let {check_out_date, return_on} = data;
+        check_out_date = parse(data.check_out_date, formatDate.from, new Date());
+        return_on = parse(data.return_on, formatDate.from, new Date());
+        const diffDays = differenceInBusinessDays(check_out_date, return_on);
+        data.check_out_date = format(check_out_date, formatDate.to, new Date());
+        data.check_in_on = data.check_in_on && format(parse(data.check_in_on, formatDate.to, new Date()))
+        data.return_on = format(return_on, formatDate.to, new Date());
+        data.fine = diffDays > 0 ? `R${diffDays * fines.rate}` : 'None';
+    } else {
+        data.fine = 'None';
+    }
     return data;
 }
