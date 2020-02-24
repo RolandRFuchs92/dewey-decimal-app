@@ -13,6 +13,7 @@ import {
 import { makeStyles } from '@material-ui/core';
 import { FontAwesomeIcon  } from '@fortawesome/react-fontawesome'
 import { 
+	faAdjust,
 	faEdit, 
 	faPlusSquare, 
 	faMinusSquare, 
@@ -27,7 +28,9 @@ import {
 	faChalkboardTeacher,
 	faUsers,
 	faBookReader,
-	faHistory
+	faHistory,
+	faFolderPlus,
+	faFolderMinus
 } from '@fortawesome/free-solid-svg-icons';
 
 const useStyles = makeStyles(theme => ({
@@ -40,6 +43,8 @@ function CreateIcon(icon){
 	return <FontAwesomeIcon icon={icon}></FontAwesomeIcon>
 }
 
+const Checkin = CreateIcon(faFolderPlus);
+const Checkout = CreateIcon(faFolderMinus);
 const History = CreateIcon(faHistory);
 const Edit = CreateIcon(faEdit);
 const Add = CreateIcon(faPlusSquare);
@@ -55,6 +60,7 @@ const Student = CreateIcon(faUserGraduate);
 const Teacher = CreateIcon(faChalkboardTeacher);
 const studentClass = CreateIcon(faUsers);
 const BookOut = CreateIcon(faBookReader);
+const DarkLight = CreateIcon(faAdjust);
 
 export default { 
     Code: <Code />,
@@ -81,5 +87,8 @@ export default {
 	Student,
 	Teacher,
 	BookOut,
-	History
+	History,
+	DarkLight,
+	Checkin,
+	Checkout
 }

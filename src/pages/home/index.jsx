@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import { Button, makeStyles, Grid, Paper, Typography } from '@material-ui/core';
 
 import { Provider, reducer, constants} from './Context';
@@ -9,55 +9,59 @@ import Icons from 'components/icons';
 import Scan from './Scan';
 import Overdue from './Overdue';
 import { formatDateForDbInsert } from 'utils/businessRules'
+import rootContext from 'utils/context';
 
-
-const useStyles = makeStyles(theme => ({
-    container: {
-        // display: 'flex',
-    },
-    homePageContainer: {
-        padding: 15,
-        height: '100%',
-        display: 'flex',
-        flexDirection: 'column'
-    },
-    title: {
-        background:'white',
-        paddingBottom: 15
-    },
-    items: {
-        width:500,
-        height: 350,
-        margin: '0px 15px 15px 0px'
-    },
-    barcodeButton: {
-        marginBottom: 15,
-        fontSize:30,
-        '& svg': {
-            fontSize: 47
+const useStyles = makeStyles(theme => {
+    return {
+        container: {
+            // display: 'flex',
+        },
+        homePageContainer: {
+            padding: 15,
+            height: '100%',
+            display: 'flex',
+            flexDirection: 'column'
+        },
+        title: {
+            
+            paddingBottom: 15
+        },
+        items: {
+            width:500,
+            height: 350,
+            margin: '0px 15px 15px 0px'
+        },
+        barcodeButton: {
+            marginBottom: 15,
+            fontSize:30,
+            '& svg': {
+                fontSize: 47
+            }
+        },
+        content: {
+            textAlign: 'left',
+            overflow: 'overlay',
         }
-    },
-    content: {
-        textAlign: 'left',
-        overflow: 'overlay',
-    }
-}));
+    };
+})
 
 export default () => {
     const classes = useStyles();
-    const [open, setOpen] = useState(false);
     const [scans, setScans] = useState({});
+    const { toggleScan, setUpdateScans } = useContext(rootContext);
 
     useEffect(() => {
         (async () => {
             await resetScansToday();
-        })()
+        })();
+        setUpdateScans({update: resetScansToday});
+        return () => setUpdateScans({update: () => {}});
     },[])
 
     const resetScansToday = async () => {
         const rawScans = await getScans();
-        const checkins = rawScans.filter(({check_out_date}) => check_out_date === formatDateForDbInsert());
-        const checkouts = rawScans.filter(({check_in_date}) => check_in_date === formatDateForDbInsert());   
+        const checkins = rawScans.filter(({check_in_date}) => check_in_date === formatDateForDbInsert());   
+        const checkouts = rawScans.filter(({check_out_date}) => check_out_date === formatDateForDbInsert());
         setScans({
             checkins,
             checkouts
@@ -66,14 +70,20 @@ export default () => {
 
     return <Provider value={resetScansToday}>
         <Grid container className={classes.container}>
-            <Button variant="contained" color="primary" onClick={() => setOpen(true)} startIcon={<div>{Icons.Barcode}</div>} fullWidth className={classes.barcodeButton}>Checkin / Checkout</Button>
-            
-            <HomePageTile title="Checkins Today">
-                <ScansToday scans={scans.checkins} ></ScansToday>
-            </HomePageTile>
+            <Button 
+                variant="contained" 
+                color="primary" 
+                onClick={() => toggleScan(resetScansToday)} 
+                startIcon={<div>{Icons.Barcode}</div>} 
+                fullWidth 
+                className={classes.barcodeButton}>Checkin / Checkout</Button>
 
             <HomePageTile title="Checkouts Today">
                 <ScansToday scans={scans.checkouts} ></ScansToday>
+            </HomePageTile>
+
+            <HomePageTile title="Checkins Today">
+                <ScansToday scans={scans.checkins} ></ScansToday>
             </HomePageTile>
             
             <HomePageTile title="Books Overdue">
@@ -84,7 +94,6 @@ export default () => {
                 <BirthdaysToday></BirthdaysToday>
             </HomePageTile>
 
-            <Scan open={open} handleClose={() => setOpen(false)}></Scan>
         </Grid>
     </Provider>
 }

@@ -14,34 +14,36 @@ import { isNil, upperFirst } from 'lodash';
 import icons from 'components/icons';
 import context from 'utils/context';
 
-const useStyles = makeStyles(theme => ({
-	nested: {
-		paddingLeft: theme.spacing(4),
-	},
-	menuItem: {
-		'&:after': {
-			content: '""',
-				height: 3,
-				width: '100%',
-				position: 'absolute',
-				bottom:0,
-				backgroundImage: 'linear-gradient(white)',
-				backgroundColor: 'white',
-				transition: 'all cubic-bezier(0, 0, 0.2, 1) 1s',
-				right: -200,
-				opacity: 0
+const useStyles = makeStyles(theme => {
+	return {
+		list: {
+			overflow: 'hidden'
 		},
-		'&.Mui-selected': {
-			backgroundColor: 'white',
-			
+		nested: {
+			paddingLeft: theme.spacing(4),
+		},
+		menuItem: {
 			'&:after': {
-				background: `linear-gradient(to right, white 15px, ${theme.palette.primary.light} 50%, ${theme.palette.primary.main} 85%, ${theme.palette.primary.dark})`,
-				right:0,
-				opacity: 1
+				content: '""',
+					height: 3,
+					width: '100%',
+					position: 'absolute',
+					bottom:0,
+					backgroundColor: 'white',
+					transition: 'all cubic-bezier(0, 0, 0.2, 1) 1s',
+					right: -200,
+					opacity: 0
+			},
+			'&.Mui-selected': {
+				'&:after': {
+					background: `linear-gradient(to right, white 15px, ${theme.palette.primary.light} 50%, ${theme.palette.primary.main} 85%, ${theme.palette.primary.dark})`,
+					right:0,
+					opacity: 1
+				}
 			}
 		}
 	}
-}));
+});
 
 const StyledListItem = withStyles({
 	
@@ -54,6 +56,7 @@ let prevSelected;
 
 
 function MenuOptions(props) {
+	const classes = useStyles();
 	const { menuItems } = props;
 	const handleSelected = setSelected => {
 		prevSelected && prevSelected(false);
@@ -62,7 +65,7 @@ function MenuOptions(props) {
 	}
 
 	return (
-		<List disablePadding>
+		<List disablePadding className={classes.list}>
 			{menuItems.map(({ label, icon, path, menuItems }) => (
 				<CreateListItem
 					key={label}
@@ -77,7 +80,7 @@ function CreateListItem({ label, icon, path, menuItems, props, handleSelected })
 	const classes = useStyles();
 	const [isOpen, setIsOpen] = useState(false);
 	const hasMenuItems = !isNil(menuItems);
-	const appContext = useContext(context);
+	const { state: appContext} = useContext(context);
 	const [selected, setSelected] = useState(false);
 
 	const handleMenuItemClick = path => {

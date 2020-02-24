@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useContext } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { drawerWidth } from './Layout.config.json';
 import Drawer from './Drawer';
-import { CssBaseline, AppBar, Toolbar, Typography } from '@material-ui/core';
+import { CssBaseline, AppBar, Toolbar, Typography, IconButton } from '@material-ui/core';
 import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
 
 import Teacher from 'pages/teacher/Teacher';
@@ -14,37 +14,65 @@ import Authours from 'pages/authors'
 import Books from 'pages/books';
 import BooksOut from 'pages/booksOut';
 import context from 'utils/context';
-import { useContext } from 'react';
+import Icons from 'components/icons';
 
-const useStyles = makeStyles(theme => ({
-	root: {
-		display: 'flex',
-	},
-	appBar: {
-		width: `calc(100% - ${drawerWidth}px)`,
-		marginLeft: drawerWidth,
-	},
-	toolbar: theme.mixins.toolbar,
-	content: {
-		flexGrow: 1,
-		backgroundColor: theme.palette.background.default,
-		padding: theme.spacing(3),
-	},
-}));
+const useStyles = makeStyles(theme => {
+	return {
+		root: {
+			display: 'flex',
+		},
+		toolbarRoot: {
+			display: 'flex',
+			width: '100%',
+			justifyContent: 'space-between',
+			alignSelf: 'center'
+		},
+		appBar: {
+			width: `calc(100% - ${drawerWidth}px)`,
+			marginLeft: drawerWidth,
+		},
+		toolbar: theme.mixins.toolbar,
+		toolbarCenter: {
+			color: theme.palette.primary.contrastText,
+			alignSelf: 'center'
+		},
+		toggleMode: {
+			fontSize:30
+		},
+		
+		content: {
+			flexGrow: 1,
+			backgroundColor: theme.palette.background.default,
+			padding: theme.spacing(3),
+		},
+		iconText: {
+			color: theme.palette.primary.contrastText,
+		}
+	}
+});
 
 export default function PermanentDrawerLeft() {
 	const classes = useStyles();
-	const state = useContext(context);
-	
+	const {state, toggleTheme, toggleScan} = useContext(context);
 
 	return (
 		<div className={classes.root}>
 			<CssBaseline />
 				<AppBar position='fixed' className={classes.appBar}>
 					<Toolbar>
-						<Typography variant='h6' noWrap>
-							{state.pageTitle}
-						</Typography>
+						<div className={classes.toolbarRoot}>
+							<Typography variant='h5' noWrap className={classes.toolbarCenter}>
+								{state.pageTitle}
+							</Typography>
+							<div className={classes.toggleMode} >
+								<IconButton aria-label="Checkin/out" className={classes.iconText} onClick={() => toggleScan(false)}>
+									{Icons.Barcode}
+								</IconButton>
+								<IconButton aria-label="Toggle light/dark mode" onClick={toggleTheme} className={classes.iconText}>
+									{Icons.DarkLight}
+								</IconButton>
+							</div>
+						</div>
 					</Toolbar>
 				</AppBar>
 				<Router>
@@ -80,9 +108,6 @@ export default function PermanentDrawerLeft() {
 								<BooksOut></BooksOut>
 							</Route>
 						</Switch>
-						<Route exact path='/checkout'>
-							<p>Checkout</p>
-						</Route>
 					</main>
 				</Router>
 		</div>

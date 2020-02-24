@@ -8,7 +8,6 @@ import { useAlert } from 'utils/snackbarAlerts';
 import Modal from 'components/modal';
 import Icons from 'components/icons';
 import { getBookByCallNumber, searchForStudentsSelect } from './Home.repo';
-import Context from './Context';
 
 const useStyles = makeStyles(theme => ({
     barcode: {
@@ -28,13 +27,13 @@ const useStyles = makeStyles(theme => ({
     }
 }));
 
-export default ({open, handleClose}) => {
+export default ({open, handleClose, updateScans}) => {
   const classes = useStyles();
   const input = useRef(null);
   const [ barcodeResult, setBarcodeResult] = useState({});
   const [ barcode, setBarcode] = useState('');
   const [ isCheckout, setIsCheckout] = useState(null);
-  const resetScans = useContext(Context);
+  
   const alert = useAlert();
 
   const handleSubmit = async e => {
@@ -54,7 +53,7 @@ export default ({open, handleClose}) => {
   }
 
   const reset = () => {
-    resetScans();
+    updateScans.update();
     setBarcode('')
     setIsCheckout(null);
     setBarcodeResult({});

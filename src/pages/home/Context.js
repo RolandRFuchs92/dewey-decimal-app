@@ -8,7 +8,6 @@ export const Provider = context.Provider;
 export const Consumer = context.Consumer;
 
 export const reducer = async (state, action) => {
-    debugger;
     switch(action.type){
         case constants.SCANSTODAY:
             return await getScans();
