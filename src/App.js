@@ -18,7 +18,10 @@ const initialState = {
 
 function App() {
 	const [state, setState] = React.useState(initialState);
-	const [showScan, setShowScan] = React.useState(false);
+	const [showScan, setShowScan] = React.useState({
+		updateScans: false,
+		open: false
+	});
 	const [theme, setTheme] = React.useState({
 		palette: {
 			type: 'light'
@@ -35,8 +38,11 @@ function App() {
 		});
 	}
 
-	const toggleScan = () => {
-		setShowScan(!showScan);
+	const toggleScan = (updateScans = false) => {
+		setShowScan({
+			showScan: !showScan,
+			updateScans: updateScans
+		});
 	}
 
 	state.setState = state => setState({...state});
@@ -54,7 +60,7 @@ function App() {
 									horizontal: 'center',
 								}}> 
 								<MainLayout></MainLayout>
-            					<Scan open={showScan} handleClose={() => setShowScan(false)}></Scan>
+            					<Scan open={showScan.open} handleClose={() => setShowScan(false)} updateScans={showScan.updateScans}></Scan>
 							</SnackbarProvider>
 						</ConfirmProvider>
 					</MuiPickersUtilsProvider>

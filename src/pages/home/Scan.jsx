@@ -28,7 +28,7 @@ const useStyles = makeStyles(theme => ({
     }
 }));
 
-export default ({open, handleClose}) => {
+export default ({open, handleClose, updateScans = false}) => {
   const classes = useStyles();
   const input = useRef(null);
   const [ barcodeResult, setBarcodeResult] = useState({});
@@ -54,7 +54,7 @@ export default ({open, handleClose}) => {
   }
 
   const reset = () => {
-    resetScans();
+    updateScans && resetScans();
     setBarcode('')
     setIsCheckout(null);
     setBarcodeResult({});
@@ -86,7 +86,7 @@ const GenerateCheckin = ({data, reset}) => {
   const handleSubmit = async () => {
     try {
       await checkin(data.books_out_id);
-      reset();
+      reset && reset();
       alert.success(`Successfully checked in ${data.book_name} for ${data.student_name}`);
     } catch (error) {
       alert.error(`An error occured while checking in ${data.book_name} for ${data.student_name}`);
@@ -131,7 +131,7 @@ const GenerateCheckout = ({data, reset}) => {
   const handleSubmit = async () => {
     try {
       await checkout(selection.student_id, data.book_id);
-      reset();
+      reset && reset();
       alert.success(`${selection.student_name} checked out ${data.book_name} due back on ###ADD DATE HERE ###`);
     } catch (error) {
       alert.error(`An error occured while checking out ${data.book_name} for ${selection.student_name}.`);
