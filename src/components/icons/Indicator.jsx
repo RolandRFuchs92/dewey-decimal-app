@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import { Badge, makeStyles } from '@material-ui/core';
-import deepPurple from '@material-ui/core/colors/deepPurple';
+import { deepPurple, lightGreen, grey} from '@material-ui/core/colors';
 import Icons from './index';
 
 const useStyles = makeStyles(theme => {
@@ -14,7 +14,10 @@ const useStyles = makeStyles(theme => {
             padding: 15,
             height: 64,
             fontSize: 23,
-          
+            '& .MuiBadge-root span': {
+                backgroundColor: lightGreen[200],
+                color: grey[700]
+            }
         },
         checkin: {
             color: theme.palette.primary.light            
@@ -41,10 +44,10 @@ export default () => {
     const [count, setCount] = useState(8);
 
     return <div className={classes.indicators}>
-        <Indicator count={count} icon={Icons.Checkin} className={classes.checkin}></Indicator>
-        <Indicator count={count} icon={Icons.Checkout} className={classes.checkout}></Indicator>
-        <Indicator count={count} icon={Icons.Overdue} className={classes.Overdue}> </Indicator>
-        <Indicator count={count} icon={Icons.Birthday} className={classes.birthday}></Indicator>
+        <CheckinIndicator count={count}></CheckinIndicator>
+        <CheckoutIndicator count={count}></CheckoutIndicator>
+        <OverdueIndicator count={count}></OverdueIndicator>
+        <BirthdayIndicator count={count}></BirthdayIndicator>
     </div>
 }
 
@@ -54,4 +57,21 @@ export const Indicator = ({count, icon, className}) => {
             {icon}
         </Badge>
     </div>
+}
+
+export const CheckinIndicator = ({count}) => {
+    const classes = useStyles();
+    return <Indicator count={count} icon={Icons.Checkin} className={classes.checkin}></Indicator>
+}
+export const CheckoutIndicator = ({count}) => {
+    const classes = useStyles();
+    return <Indicator count={count} icon={Icons.Checkout} className={classes.checkout}></Indicator>
+}
+export const OverdueIndicator = ({count}) => {
+    const classes = useStyles();
+    return <Indicator count={count} icon={Icons.Birthday} className={classes.birthday}></Indicator>
+}
+export const BirthdayIndicator = ({count}) => {
+    const classes = useStyles();
+    return <Indicator count={count} icon={Icons.Overdue} className={classes.Overdue}></Indicator>
 }
