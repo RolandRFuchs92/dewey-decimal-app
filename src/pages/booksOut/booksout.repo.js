@@ -91,6 +91,7 @@ JOIN
     ON c.class_id = t.class_id
 WHERE
     STRFTIME('%Y-%m-%d', bo.check_in_date) = STRFTIME('%Y-%m-%d', $date)
+    OR STRFTIME('%Y-%m-%d', bo.check_out_date) = STRFTIME('%Y-%m-%d', $date)
 `;
 export const getScans = async (date = new Date()) => {
     const statementObject = {

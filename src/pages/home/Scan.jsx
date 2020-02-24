@@ -2,14 +2,12 @@ import React, { useState, useRef, useContext } from 'react';
 import { TextField, makeStyles, InputAdornment, Typography, Button } from '@material-ui/core';
 import { Autocomplete } from '@material-ui/lab';
 import { isNil } from 'lodash';
-import {useHistory} from 'react-router-dom'
 
 import { checkout, checkin, getScans } from 'pages/booksOut/booksout.repo';
 import { useAlert } from 'utils/snackbarAlerts';
 import Modal from 'components/modal';
 import Icons from 'components/icons';
 import { getBookByCallNumber, searchForStudentsSelect } from './Home.repo';
-import Context from './Context';
 
 const useStyles = makeStyles(theme => ({
     barcode: {
@@ -29,13 +27,12 @@ const useStyles = makeStyles(theme => ({
     }
 }));
 
-export default ({open, handleClose, updateScans = false}) => {
+export default ({open, handleClose, updateScans}) => {
   const classes = useStyles();
   const input = useRef(null);
   const [ barcodeResult, setBarcodeResult] = useState({});
   const [ barcode, setBarcode] = useState('');
   const [ isCheckout, setIsCheckout] = useState(null);
-  const resetScans = useContext(Context);
   
   const alert = useAlert();
 
@@ -56,8 +53,7 @@ export default ({open, handleClose, updateScans = false}) => {
   }
 
   const reset = () => {
-    debugger;
-    window.location.pathname === '/home' && resetScans();
+    updateScans.update();
     setBarcode('')
     setIsCheckout(null);
     setBarcodeResult({});

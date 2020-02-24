@@ -45,20 +45,21 @@ const useStyles = makeStyles(theme => ({
 
 export default () => {
     const classes = useStyles();
-    const [open, setOpen] = useState(false);
     const [scans, setScans] = useState({});
-    const { toggleScan } = useContext(rootContext);
+    const { toggleScan, setUpdateScans } = useContext(rootContext);
 
     useEffect(() => {
         (async () => {
             await resetScansToday();
-        })()
+        })();
+        setUpdateScans({update: resetScansToday});
+        return () => setUpdateScans({update: () => {}});
     },[])
 
     const resetScansToday = async () => {
         const rawScans = await getScans();
-        const checkins = rawScans.filter(({check_out_date}) => check_out_date === formatDateForDbInsert());
-        const checkouts = rawScans.filter(({check_in_date}) => check_in_date === formatDateForDbInsert());   
+        const checkins = rawScans.filter(({check_in_date}) => check_in_date === formatDateForDbInsert());   
+        const checkouts = rawScans.filter(({check_out_date}) => check_out_date === formatDateForDbInsert());
         setScans({
             checkins,
             checkouts
@@ -67,14 +68,20 @@ export default () => {
 
     return <Provider value={resetScansToday}>
         <Grid container className={classes.container}>
-            <Button variant="contained" color="primary" onClick={() => toggleScan()} startIcon={<div>{Icons.Barcode}</div>} fullWidth className={classes.barcodeButton}>Checkin / Checkout</Button>
-            
-            <HomePageTile title="Checkins Today">
-                <ScansToday scans={scans.checkins} ></ScansToday>
-            </HomePageTile>
+            <Button 
+                variant="contained" 
+                color="primary" 
+                onClick={() => toggleScan(resetScansToday)} 
+                startIcon={<div>{Icons.Barcode}</div>} 
+                fullWidth 
+                className={classes.barcodeButton}>Checkin / Checkout</Button>
 
             <HomePageTile title="Checkouts Today">
                 <ScansToday scans={scans.checkouts} ></ScansToday>
+            </HomePageTile>
+
+            <HomePageTile title="Checkins Today">
+                <ScansToday scans={scans.checkins} ></ScansToday>
             </HomePageTile>
             
             <HomePageTile title="Books Overdue">

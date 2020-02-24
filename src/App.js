@@ -18,10 +18,8 @@ const initialState = {
 
 function App() {
 	const [state, setState] = React.useState(initialState);
-	const [showScan, setShowScan] = React.useState({
-		updateScans: false,
-		open: false
-	});
+	const [updateScans, setUpdateScans] = React.useState({update: () => {}});
+	const [showScan, setShowScan] = React.useState(false);
 	const [theme, setTheme] = React.useState({
 		palette: {
 			type: 'light'
@@ -38,12 +36,8 @@ function App() {
 		});
 	}
 
-	const toggleScan = (updateScans = false) => {
-		debugger;
-		setShowScan({
-			open: !showScan.open,
-			updateScans: showScan.updateScans
-		});
+	const toggleScan = () => {
+		setShowScan(!showScan);
 	}
 
 	state.setState = state => setState({...state});
@@ -53,7 +47,7 @@ function App() {
 	return (
 		<div className='App'>
 			<MuiThemeProvider theme={muiTheme}>
-				<Provider value={{state, toggleTheme, toggleScan}}>
+				<Provider value={{state, toggleTheme, toggleScan, setUpdateScans}}>
 					<MuiPickersUtilsProvider utils={DateFnsUtils}>
 						<ConfirmProvider>
 							<SnackbarProvider anchorOrigin={{
@@ -61,7 +55,7 @@ function App() {
 									horizontal: 'center',
 								}}> 
 								<MainLayout></MainLayout>
-            					<Scan open={showScan.open} handleClose={() => setShowScan(false)} updateScans={showScan.updateScans}></Scan>
+            					<Scan open={showScan} handleClose={() => setShowScan(false)} updateScans={updateScans}></Scan>
 							</SnackbarProvider>
 						</ConfirmProvider>
 					</MuiPickersUtilsProvider>
