@@ -2,6 +2,7 @@ import React, { useState, useRef, useContext } from 'react';
 import { TextField, makeStyles, InputAdornment, Typography, Button } from '@material-ui/core';
 import { Autocomplete } from '@material-ui/lab';
 import { isNil } from 'lodash';
+import {useHistory} from 'react-router-dom'
 
 import { checkout, checkin, getScans } from 'pages/booksOut/booksout.repo';
 import { useAlert } from 'utils/snackbarAlerts';
@@ -35,6 +36,7 @@ export default ({open, handleClose, updateScans = false}) => {
   const [ barcode, setBarcode] = useState('');
   const [ isCheckout, setIsCheckout] = useState(null);
   const resetScans = useContext(Context);
+  
   const alert = useAlert();
 
   const handleSubmit = async e => {
@@ -54,7 +56,8 @@ export default ({open, handleClose, updateScans = false}) => {
   }
 
   const reset = () => {
-    updateScans && resetScans();
+    debugger;
+    window.location.pathname === '/home' && resetScans();
     setBarcode('')
     setIsCheckout(null);
     setBarcodeResult({});
@@ -86,7 +89,7 @@ const GenerateCheckin = ({data, reset}) => {
   const handleSubmit = async () => {
     try {
       await checkin(data.books_out_id);
-      reset && reset();
+      reset();
       alert.success(`Successfully checked in ${data.book_name} for ${data.student_name}`);
     } catch (error) {
       alert.error(`An error occured while checking in ${data.book_name} for ${data.student_name}`);
@@ -131,7 +134,7 @@ const GenerateCheckout = ({data, reset}) => {
   const handleSubmit = async () => {
     try {
       await checkout(selection.student_id, data.book_id);
-      reset && reset();
+      reset();
       alert.success(`${selection.student_name} checked out ${data.book_name} due back on ###ADD DATE HERE ###`);
     } catch (error) {
       alert.error(`An error occured while checking out ${data.book_name} for ${selection.student_name}.`);

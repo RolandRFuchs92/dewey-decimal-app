@@ -65,7 +65,7 @@ export default function PermanentDrawerLeft() {
 								{state.pageTitle}
 							</Typography>
 							<div className={classes.toggleMode} >
-								<IconButton aria-label="delete" className={classes.iconText} onClick={toggleScan}>
+								<IconButton aria-label="Checkin/out" className={classes.iconText} onClick={() => toggleScan(false)}>
 									{Icons.Barcode}
 								</IconButton>
 								<IconButton aria-label="Toggle light/dark mode" onClick={toggleTheme} className={classes.iconText}>

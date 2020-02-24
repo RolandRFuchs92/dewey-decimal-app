@@ -39,9 +39,10 @@ function App() {
 	}
 
 	const toggleScan = (updateScans = false) => {
+		debugger;
 		setShowScan({
-			showScan: !showScan,
-			updateScans: updateScans
+			open: !showScan.open,
+			updateScans: showScan.updateScans
 		});
 	}
 
