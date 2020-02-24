@@ -14,37 +14,36 @@ import { isNil, upperFirst } from 'lodash';
 import icons from 'components/icons';
 import context from 'utils/context';
 
-const useStyles = makeStyles(theme => ({
-	list: {
-		overflow: 'hidden'
-	},
-	nested: {
-		paddingLeft: theme.spacing(4),
-	},
-	menuItem: {
-		'&:after': {
-			content: '""',
-				height: 3,
-				width: '100%',
-				position: 'absolute',
-				bottom:0,
-				backgroundImage: 'linear-gradient(white)',
-				backgroundColor: 'white',
-				transition: 'all cubic-bezier(0, 0, 0.2, 1) 1s',
-				right: -200,
-				opacity: 0
+const useStyles = makeStyles(theme => {
+	return {
+		list: {
+			overflow: 'hidden'
 		},
-		'&.Mui-selected': {
-			backgroundColor: 'white',
-			
+		nested: {
+			paddingLeft: theme.spacing(4),
+		},
+		menuItem: {
 			'&:after': {
-				background: `linear-gradient(to right, white 15px, ${theme.palette.primary.light} 50%, ${theme.palette.primary.main} 85%, ${theme.palette.primary.dark})`,
-				right:0,
-				opacity: 1
+				content: '""',
+					height: 3,
+					width: '100%',
+					position: 'absolute',
+					bottom:0,
+					backgroundColor: 'white',
+					transition: 'all cubic-bezier(0, 0, 0.2, 1) 1s',
+					right: -200,
+					opacity: 0
+			},
+			'&.Mui-selected': {
+				'&:after': {
+					background: `linear-gradient(to right, white 15px, ${theme.palette.primary.light} 50%, ${theme.palette.primary.main} 85%, ${theme.palette.primary.dark})`,
+					right:0,
+					opacity: 1
+				}
 			}
 		}
 	}
-}));
+});
 
 const StyledListItem = withStyles({
 	
