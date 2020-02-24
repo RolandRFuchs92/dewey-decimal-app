@@ -11,37 +11,39 @@ import Overdue from './Overdue';
 import { formatDateForDbInsert } from 'utils/businessRules'
 import rootContext from 'utils/context';
 
-const useStyles = makeStyles(theme => ({
-    container: {
-        // display: 'flex',
-    },
-    homePageContainer: {
-        padding: 15,
-        height: '100%',
-        display: 'flex',
-        flexDirection: 'column'
-    },
-    title: {
-        background:'white',
-        paddingBottom: 15
-    },
-    items: {
-        width:500,
-        height: 350,
-        margin: '0px 15px 15px 0px'
-    },
-    barcodeButton: {
-        marginBottom: 15,
-        fontSize:30,
-        '& svg': {
-            fontSize: 47
+const useStyles = makeStyles(theme => {
+    return {
+        container: {
+            // display: 'flex',
+        },
+        homePageContainer: {
+            padding: 15,
+            height: '100%',
+            display: 'flex',
+            flexDirection: 'column'
+        },
+        title: {
+            
+            paddingBottom: 15
+        },
+        items: {
+            width:500,
+            height: 350,
+            margin: '0px 15px 15px 0px'
+        },
+        barcodeButton: {
+            marginBottom: 15,
+            fontSize:30,
+            '& svg': {
+                fontSize: 47
+            }
+        },
+        content: {
+            textAlign: 'left',
+            overflow: 'overlay',
         }
-    },
-    content: {
-        textAlign: 'left',
-        overflow: 'overlay',
-    }
-}));
+    };
+})
 
 export default () => {
     const classes = useStyles();
