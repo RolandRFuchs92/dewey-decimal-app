@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useReducer } from 'react';
 import './App.css';
 import {ConfirmProvider} from 'material-ui-confirm';
 import { MuiPickersUtilsProvider } from '@material-ui/pickers';
@@ -17,10 +17,10 @@ const initialState = {
 }
 
 function App() {
-	const [state, setState] = React.useState(initialState);
-	const [updateScans, setUpdateScans] = React.useState({update: () => {}});
-	const [showScan, setShowScan] = React.useState(false);
-	const [theme, setTheme] = React.useState({
+	const [state, setState] = useState(initialState);
+	const [updateScans, setUpdateScans] = useState({update: () => {}});
+	const [showScan, setShowScan] = useState(false);
+	const [theme, setTheme] = useState({
 		palette: {
 			type: 'light'
 		}
@@ -47,7 +47,7 @@ function App() {
 	return (
 		<div className='App'>
 			<MuiThemeProvider theme={muiTheme}>
-				<Provider value={{state, toggleTheme, toggleScan, setUpdateScans}}>
+				<Provider value={{state, toggleTheme, toggleScan, setUpdateScans, }}>
 					<MuiPickersUtilsProvider utils={DateFnsUtils}>
 						<ConfirmProvider>
 							<SnackbarProvider anchorOrigin={{
