@@ -8,6 +8,7 @@ import { useAlert } from 'utils/snackbarAlerts';
 import Modal from 'components/modal';
 import Icons from 'components/icons';
 import { getBookByCallNumber, searchForStudentsSelect } from './Home.repo';
+import Scanner from 'components/scanner'
 
 const useStyles = makeStyles(theme => ({
     barcode: {
@@ -42,6 +43,23 @@ export default ({open, handleClose, updateScans}) => {
 
     const { target: { value } } = e; 
     input.current.focus();
+    setBarcode(value);
+    handleCheckinout(value);
+  }
+
+  const reset = () => {
+    updateScans.update();
+    setBarcode('')
+    setIsCheckout(null);
+    setBarcodeResult({});
+  }
+
+  const handleDetectedCode = ({ codeResult: {code}}) => {
+    setBarcode(code);
+    handleCheckinout(code);
+  }
+
+  const handleCheckinout = async (value) => {
     const data = await getBookByCallNumber(value);
     if(!data) {
       alert.error(`${value} was not found. Make sure the book is loaded`);
@@ -52,32 +70,25 @@ export default ({open, handleClose, updateScans}) => {
     setBarcodeResult(data);
   }
 
-  const reset = () => {
-    updateScans.update();
-    setBarcode('')
-    setIsCheckout(null);
-    setBarcodeResult({});
-  }
-
-    return <Modal open={open} handleClose={handleClose}>
-        {
-          isCheckout === null 
-          && <Typography variant="h5" className={classes.title}>Scan a barcode</Typography>
-        }
-        <TextField tabIndex="1" ref={input} label="Barcode" autoFocus variant="outlined" onKeyDown={handleSubmit} value={barcode} onChange={({target: {value}}) => setBarcode(value)} InputProps={{
-          startAdornment: (
-            <InputAdornment position="start" className={classes.barcode} >
-              {Icons.Barcode}
-            </InputAdornment> 
-          ),  
-        }}></TextField>
-      {barcodeResult.isCheckout === undefined 
-        ? null
-        : barcodeResult.isCheckout 
-          ? <GenerateCheckout data={barcodeResult} reset={reset} />
-          : <GenerateCheckin data={barcodeResult} reset={reset}></GenerateCheckin>
+  return <Modal open={open} handleClose={handleClose}>
+      {
+        isCheckout === null 
+        && <Typography variant="h5" className={classes.title}>Scan a barcode</Typography>
       }
-    </Modal>
+      <TextField tabIndex="1" ref={input} label="Barcode" autoFocus variant="outlined" onKeyDown={handleSubmit} value={barcode} onChange={({target: {value}}) => setBarcode(value)} InputProps={{
+        startAdornment: (
+          <InputAdornment position="start" className={classes.barcode} >
+            {Icons.Barcode}
+          </InputAdornment> 
+        ),  
+      }}></TextField>
+    {barcodeResult.isCheckout === undefined 
+      ? <Scanner onDetected={handleDetectedCode}></Scanner>
+      : barcodeResult.isCheckout 
+        ? <GenerateCheckout data={barcodeResult} reset={reset} />
+        : <GenerateCheckin data={barcodeResult} reset={reset}></GenerateCheckin>
+    }
+  </Modal>
 }
 
 const GenerateCheckin = ({data, reset}) => {
