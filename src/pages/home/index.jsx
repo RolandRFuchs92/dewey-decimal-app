@@ -10,6 +10,12 @@ import Scan from './Scan';
 import Overdue from './Overdue';
 import { formatDateForDbInsert } from 'utils/businessRules'
 import rootContext from 'utils/context';
+import { 
+    CheckinIndicator, 
+    CheckoutIndicator,
+    OverdueIndicator,
+    BirthdayIndicator 
+} from 'components/icons/Indicator';
 
 const useStyles = makeStyles(theme => {
     return {
@@ -78,19 +84,19 @@ export default () => {
                 fullWidth 
                 className={classes.barcodeButton}>Checkin / Checkout</Button>
 
-            <HomePageTile title="Checkouts Today">
+            <HomePageTile title="Checkouts Today" indicator={CheckoutIndicator}>
                 <ScansToday scans={scans.checkouts} ></ScansToday>
             </HomePageTile>
 
-            <HomePageTile title="Checkins Today">
+            <HomePageTile title="Checkins Today" indicator={CheckinIndicator}>
                 <ScansToday scans={scans.checkins} ></ScansToday>
             </HomePageTile>
             
-            <HomePageTile title="Books Overdue">
+            <HomePageTile title="Books Overdue" indicator={OverdueIndicator}>
                 <Overdue></Overdue>
             </HomePageTile>
 
-            <HomePageTile titleComponent={<Typography variant="h5" className={classes.heading}>{Icons.Birthday} Birthdays Today {Icons.Birthday}</Typography>}>
+            <HomePageTile indicator={OverdueIndicator} titleComponent={<Typography variant="h5" className={classes.heading}>{Icons.Birthday} Birthdays Today {Icons.Birthday}</Typography>}>
                 <BirthdaysToday></BirthdaysToday>
             </HomePageTile>
 
@@ -98,11 +104,12 @@ export default () => {
     </Provider>
 }
 
-const HomePageTile = ({title, titleComponent, children}) => {
+const HomePageTile = ({title, titleComponent, children, indicator}) => {
     const classes = useStyles();
 
     return <Grid item className={classes.items}>
         <Paper className={classes.homePageContainer}>
+            {/* {indicator} */}
             {title 
                 ? <Typography variant="h5" className={classes.title}>{title}</Typography>
                 : titleComponent

@@ -21,8 +21,8 @@ export default () => {
 
     return <>
         {
-            booksOverdue.map(({student_name, book_name, author_name, return_on}) => {
-                return <>
+            booksOverdue.map(({student_name, book_name, author_name, return_on}, index) => {
+                return <div key={`${student_name}${book_name}${index}`}>
                     <Grid container >
                         <Grid item xs={6} className={classes.scanTileItem}>{student_name}</Grid>
                         <Grid item xs={6} className={classes.scanTileItem}>{book_name}</Grid>
@@ -30,7 +30,7 @@ export default () => {
                         <Grid item xs={6} className={classes.scanTileItem}>{return_on}</Grid>
                     </Grid>
                     <hr></hr>
-                </>
+                </div>
             })
         }
     </>
