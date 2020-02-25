@@ -1,7 +1,9 @@
-import React, {useState} from 'react';
+import React, {useState, useContext} from 'react';
 import { Badge, makeStyles } from '@material-ui/core';
 import { deepPurple, lightGreen, grey} from '@material-ui/core/colors';
+
 import Icons from './index';
+import reducerContext from 'utils/reducerContext';
 
 const useStyles = makeStyles(theme => {
     return {
@@ -41,13 +43,13 @@ const useStyles = makeStyles(theme => {
 
 export default () => {
     const classes = useStyles();
-    const [count, setCount] = useState(8);
+    const [state] = useContext(reducerContext);
 
     return <div className={classes.indicators}>
-        <CheckinIndicator count={count}></CheckinIndicator>
-        <CheckoutIndicator count={count}></CheckoutIndicator>
-        <BirthdayIndicator count={count}></BirthdayIndicator>
-        <OverdueIndicator count={count}></OverdueIndicator>
+        <CheckinIndicator count={state.checkinsTodayCount}></CheckinIndicator>
+        <CheckoutIndicator count={state.checkoutsTodayCount}></CheckoutIndicator>
+        <BirthdayIndicator count={state.birthdaysTodayCount}></BirthdayIndicator>
+        <OverdueIndicator count={state.booksOverdueCount}></OverdueIndicator>
     </div>
 }
 
