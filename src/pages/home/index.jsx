@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useContext } from 'react';
 import { Button, makeStyles, Grid, Paper, Typography } from '@material-ui/core';
+import Proptypes from 'prop-types';
 
 import { Provider, reducer, constants} from './Context';
 import { getScans } from 'pages/booksOut/booksout.repo';
@@ -47,6 +48,16 @@ const useStyles = makeStyles(theme => {
         content: {
             textAlign: 'left',
             overflow: 'overlay',
+        },
+        titleContainer: {
+            position: 'relative',
+            display: 'flex',
+            justifyContent: 'center'
+        },
+        indicator: {
+            position: 'absolute',
+            left: 0,
+            fontSize:23
         }
     };
 })
@@ -84,19 +95,19 @@ export default () => {
                 fullWidth 
                 className={classes.barcodeButton}>Checkin / Checkout</Button>
 
-            <HomePageTile title="Checkouts Today" indicator={CheckoutIndicator}>
+            <HomePageTile title="Checkouts Today" indicator={<CheckoutIndicator/>}>
                 <ScansToday scans={scans.checkouts} ></ScansToday>
             </HomePageTile>
 
-            <HomePageTile title="Checkins Today" indicator={CheckinIndicator}>
+            <HomePageTile title="Checkins Today" indicator={<CheckinIndicator />}>
                 <ScansToday scans={scans.checkins} ></ScansToday>
             </HomePageTile>
             
-            <HomePageTile title="Books Overdue" indicator={OverdueIndicator}>
+            <HomePageTile title="Books Overdue" indicator={<OverdueIndicator />}>
                 <Overdue></Overdue>
             </HomePageTile>
 
-            <HomePageTile indicator={OverdueIndicator} titleComponent={<Typography variant="h5" className={classes.heading}>{Icons.Birthday} Birthdays Today {Icons.Birthday}</Typography>}>
+            <HomePageTile title='Birthdays Today' indicator={<BirthdayIndicator />} >
                 <BirthdaysToday></BirthdaysToday>
             </HomePageTile>
 
@@ -109,14 +120,23 @@ const HomePageTile = ({title, titleComponent, children, indicator}) => {
 
     return <Grid item className={classes.items}>
         <Paper className={classes.homePageContainer}>
-            {/* {indicator} */}
-            {title 
-                ? <Typography variant="h5" className={classes.title}>{title}</Typography>
-                : titleComponent
-            }
+            <div className={classes.titleContainer}>
+                <div className={classes.indicator}>{indicator}</div>
+                {title 
+                    ? <Typography variant="h5" className={classes.title}>{title}</Typography>
+                    : titleComponent
+                }
+            </div>
             <div className={classes.content}>
                 {children}    
             </div>
         </Paper>
     </Grid>
 }
+
+// HomePageTile.propTypes = {
+//     title: Proptypes.string,
+//     titleComponent: Proptypes.node,
+//     children: Proptypes.element,
+//     indicator: Proptypes.element
+// }
