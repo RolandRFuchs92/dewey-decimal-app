@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import {makeStyles, Typography, Paper} from '@material-ui/core';
 import { chain } from 'lodash';
 
-import Icons from 'components/icons';
+import reducerContext, { birthdayIndicatorAction } from 'utils/reducerContext';
 import { getBirthdays } from './Home.repo';
 
 const useStyles = makeStyles(theme => {
@@ -33,15 +33,18 @@ const useStyles = makeStyles(theme => {
 export default () => {
     const [state, setState] = useState([]);
     const classes = useStyles();
-    
+    const [reducerState, dispatch] = useContext(reducerContext);
+
     useEffect(() => {
         (async () => {
-            const birthdays = chain(await getBirthdays())
+            const birthdaysResult = await getBirthdays();
+            const birthdays = chain(birthdaysResult)
             .groupBy("teacher")
             .map((value, key) => ({
                 teacher:key, student: value
             })).value();
 
+            dispatch(birthdayIndicatorAction(birthdaysResult.length));
             setState(birthdays);
         })();
     },[])

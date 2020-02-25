@@ -26,7 +26,10 @@ export const reducer = (state, action) => {
             }
             break
         case BIRTHDAYSTODAY: 
-            break;
+            return {
+                ...state,
+                birthdaysTodayCount: action.state
+            }
         default:
             return state;
     }
