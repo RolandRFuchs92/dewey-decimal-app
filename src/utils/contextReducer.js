@@ -23,7 +23,7 @@ const CHECKINTODAY = 'CHECKINTODAY';
 const BOOKSOVERDUE = 'BOOKSOVERDUE';
 const BIRTHDAYSTODAY = 'BIRTHDAYSTODAY';
 
-const genericAction = type = state => {
+const genericAction = type => state => {
     return state => ({
         state, 
         type

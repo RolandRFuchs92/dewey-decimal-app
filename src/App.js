@@ -9,6 +9,7 @@ import MainLayout from './components/layout/Layout';
 import {SnackbarProvider } from 'notistack';
 import initializeDb from 'db/initializeDb';
 import { Provider } from 'utils/context';
+import { ReducerProvider } from 'utils/contextReducer';
 import Scan from 'pages/home/Scan';
 
 const initialState = {
@@ -47,19 +48,21 @@ function App() {
 	return (
 		<div className='App'>
 			<MuiThemeProvider theme={muiTheme}>
-				<Provider value={{state, toggleTheme, toggleScan, setUpdateScans, }}>
-					<MuiPickersUtilsProvider utils={DateFnsUtils}>
-						<ConfirmProvider>
-							<SnackbarProvider anchorOrigin={{
-									vertical: 'bottom',
-									horizontal: 'center',
-								}}> 
-								<MainLayout></MainLayout>
-            					<Scan open={showScan} handleClose={() => setShowScan(false)} updateScans={updateScans}></Scan>
-							</SnackbarProvider>
-						</ConfirmProvider>
-					</MuiPickersUtilsProvider>
-				</Provider>
+				<ReducerProvider value={'na'}>
+					<Provider value={{state, toggleTheme, toggleScan, setUpdateScans, }}>
+						<MuiPickersUtilsProvider utils={DateFnsUtils}>
+							<ConfirmProvider>
+								<SnackbarProvider anchorOrigin={{
+										vertical: 'bottom',
+										horizontal: 'center',
+									}}> 
+									<MainLayout></MainLayout>
+									<Scan open={showScan} handleClose={() => setShowScan(false)} updateScans={updateScans}></Scan>
+								</SnackbarProvider>
+							</ConfirmProvider>
+						</MuiPickersUtilsProvider>
+					</Provider>
+				</ReducerProvider>
 			</MuiThemeProvider>
 		</div>
 	);
