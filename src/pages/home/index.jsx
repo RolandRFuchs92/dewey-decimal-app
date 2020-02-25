@@ -11,6 +11,7 @@ import Scan from './Scan';
 import Overdue from './Overdue';
 import { formatDateForDbInsert } from 'utils/businessRules'
 import rootContext from 'utils/context';
+import reducerContext, { checkoutIndicatorAction, checkinIndicatorAction } from 'utils/reducerContext';
 import { 
     CheckinIndicator, 
     CheckoutIndicator,
@@ -66,6 +67,7 @@ export default () => {
     const classes = useStyles();
     const [scans, setScans] = useState({});
     const { toggleScan, setUpdateScans } = useContext(rootContext);
+    const [indicators, dispatch] = useContext(reducerContext);
 
     useEffect(() => {
         (async () => {
@@ -79,6 +81,8 @@ export default () => {
         const rawScans = await getScans();
         const checkins = rawScans.filter(({check_in_date}) => check_in_date === formatDateForDbInsert());   
         const checkouts = rawScans.filter(({check_out_date}) => check_out_date === formatDateForDbInsert());
+        dispatch(checkoutIndicatorAction(checkins.length));
+        dispatch(checkinIndicatorAction(checkouts.length));
         setScans({
             checkins,
             checkouts
@@ -95,19 +99,19 @@ export default () => {
                 fullWidth 
                 className={classes.barcodeButton}>Checkin / Checkout</Button>
 
-            <HomePageTile title="Checkouts Today" indicator={<CheckoutIndicator/>}>
+            <HomePageTile title="Checkouts Today" indicator={<CheckoutIndicator count={indicators.checkoutsTodayCount}/>}>
                 <ScansToday scans={scans.checkouts} ></ScansToday>
             </HomePageTile>
 
-            <HomePageTile title="Checkins Today" indicator={<CheckinIndicator />}>
+            <HomePageTile title="Checkins Today" indicator={<CheckinIndicator count={indicators.checkinsTodayCount} />}>
                 <ScansToday scans={scans.checkins} ></ScansToday>
             </HomePageTile>
             
-            <HomePageTile title="Books Overdue" indicator={<OverdueIndicator />}>
+            <HomePageTile title="Books Overdue" indicator={<OverdueIndicator count={indicators.booksOverdueCount}/>}>
                 <Overdue></Overdue>
             </HomePageTile>
 
-            <HomePageTile title='Birthdays Today' indicator={<BirthdayIndicator />} >
+            <HomePageTile title='Birthdays Today' indicator={<BirthdayIndicator count={indicators.birthdaysTodayCount} />} >
                 <BirthdaysToday></BirthdaysToday>
             </HomePageTile>
 

@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Grid, Paper, makeStyles} from '@material-ui/core';
 
 import { getBooksOverdue } from 'pages/booksOut/booksout.repo';
+import reducerContext, { booksOverdueAction } from 'utils/reducerContext';
 
 const useStyles = makeStyles(theme => ({
     container: {
@@ -12,10 +13,13 @@ const useStyles = makeStyles(theme => ({
 export default () => {
     const classes = useStyles();
     const [booksOverdue, setBooksOverdue] = useState([]);
+    const [state, dispatch] = useContext(reducerContext);
 
     useEffect(() => {
         (async () => {
-            setBooksOverdue(await getBooksOverdue());
+            const overdueBooksResult = await getBooksOverdue()
+            setBooksOverdue(overdueBooksResult);
+            dispatch(booksOverdueAction(overdueBooksResult.length));
         })();
     },[]);
 

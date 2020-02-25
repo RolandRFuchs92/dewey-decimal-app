@@ -46,8 +46,8 @@ export default () => {
     return <div className={classes.indicators}>
         <CheckinIndicator count={count}></CheckinIndicator>
         <CheckoutIndicator count={count}></CheckoutIndicator>
-        <OverdueIndicator count={count}></OverdueIndicator>
         <BirthdayIndicator count={count}></BirthdayIndicator>
+        <OverdueIndicator count={count}></OverdueIndicator>
     </div>
 }
 
@@ -69,9 +69,9 @@ export const CheckoutIndicator = ({count}) => {
 }
 export const OverdueIndicator = ({count}) => {
     const classes = useStyles();
-    return <Indicator count={count} icon={Icons.Birthday} className={classes.Overdue}></Indicator>
+    return <Indicator count={count} icon={Icons.Overdue} className={classes.Overdue}></Indicator>
 }
 export const BirthdayIndicator = ({count}) => {
     const classes = useStyles();
-    return <Indicator count={count} icon={Icons.Overdue} className={classes.birthday}></Indicator>
+    return <Indicator count={count} icon={Icons.Birthday} className={classes.birthday}></Indicator>
 }
