@@ -30,7 +30,8 @@ import {
 	faBookReader,
 	faHistory,
 	faFolderPlus,
-	faFolderMinus
+	faFolderMinus,
+	faUserClock
 } from '@fortawesome/free-solid-svg-icons';
 
 const useStyles = makeStyles(theme => ({
@@ -43,6 +44,7 @@ function CreateIcon(icon){
 	return <FontAwesomeIcon icon={icon}></FontAwesomeIcon>
 }
 
+const Overdue = CreateIcon(faUserClock);
 const Checkin = CreateIcon(faFolderPlus);
 const Checkout = CreateIcon(faFolderMinus);
 const History = CreateIcon(faHistory);
@@ -90,5 +92,6 @@ export default {
 	History,
 	DarkLight,
 	Checkin,
-	Checkout
+	Checkout,
+	Overdue
 }

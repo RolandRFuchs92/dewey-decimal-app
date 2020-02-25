@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useContext } from 'react';
 import { Button, makeStyles, Grid, Paper, Typography } from '@material-ui/core';
+import Proptypes from 'prop-types';
 
 import { Provider, reducer, constants} from './Context';
 import { getScans } from 'pages/booksOut/booksout.repo';
@@ -10,6 +11,13 @@ import Scan from './Scan';
 import Overdue from './Overdue';
 import { formatDateForDbInsert } from 'utils/businessRules'
 import rootContext from 'utils/context';
+import reducerContext, { checkoutIndicatorAction, checkinIndicatorAction } from 'utils/reducerContext';
+import { 
+    CheckinIndicator, 
+    CheckoutIndicator,
+    OverdueIndicator,
+    BirthdayIndicator 
+} from 'components/icons/Indicator';
 
 const useStyles = makeStyles(theme => {
     return {
@@ -41,6 +49,16 @@ const useStyles = makeStyles(theme => {
         content: {
             textAlign: 'left',
             overflow: 'overlay',
+        },
+        titleContainer: {
+            position: 'relative',
+            display: 'flex',
+            justifyContent: 'center'
+        },
+        indicator: {
+            position: 'absolute',
+            left: 0,
+            fontSize:23
         }
     };
 })
@@ -49,6 +67,7 @@ export default () => {
     const classes = useStyles();
     const [scans, setScans] = useState({});
     const { toggleScan, setUpdateScans } = useContext(rootContext);
+    const [indicators, dispatch] = useContext(reducerContext);
 
     useEffect(() => {
         (async () => {
@@ -62,6 +81,8 @@ export default () => {
         const rawScans = await getScans();
         const checkins = rawScans.filter(({check_in_date}) => check_in_date === formatDateForDbInsert());   
         const checkouts = rawScans.filter(({check_out_date}) => check_out_date === formatDateForDbInsert());
+        dispatch(checkoutIndicatorAction(checkins.length));
+        dispatch(checkinIndicatorAction(checkouts.length));
         setScans({
             checkins,
             checkouts
@@ -78,19 +99,19 @@ export default () => {
                 fullWidth 
                 className={classes.barcodeButton}>Checkin / Checkout</Button>
 
-            <HomePageTile title="Checkouts Today">
+            <HomePageTile title="Checkouts Today" indicator={<CheckoutIndicator count={indicators.checkoutsTodayCount}/>}>
                 <ScansToday scans={scans.checkouts} ></ScansToday>
             </HomePageTile>
 
-            <HomePageTile title="Checkins Today">
+            <HomePageTile title="Checkins Today" indicator={<CheckinIndicator count={indicators.checkinsTodayCount} />}>
                 <ScansToday scans={scans.checkins} ></ScansToday>
             </HomePageTile>
             
-            <HomePageTile title="Books Overdue">
+            <HomePageTile title="Books Overdue" indicator={<OverdueIndicator count={indicators.booksOverdueCount}/>}>
                 <Overdue></Overdue>
             </HomePageTile>
 
-            <HomePageTile titleComponent={<Typography variant="h5" className={classes.heading}>{Icons.Birthday} Birthdays Today {Icons.Birthday}</Typography>}>
+            <HomePageTile title='Birthdays Today' indicator={<BirthdayIndicator count={indicators.birthdaysTodayCount} />} >
                 <BirthdaysToday></BirthdaysToday>
             </HomePageTile>
 
@@ -98,18 +119,28 @@ export default () => {
     </Provider>
 }
 
-const HomePageTile = ({title, titleComponent, children}) => {
+const HomePageTile = ({title, titleComponent, children, indicator}) => {
     const classes = useStyles();
 
     return <Grid item className={classes.items}>
         <Paper className={classes.homePageContainer}>
-            {title 
-                ? <Typography variant="h5" className={classes.title}>{title}</Typography>
-                : titleComponent
-            }
+            <div className={classes.titleContainer}>
+                <div className={classes.indicator}>{indicator}</div>
+                {title 
+                    ? <Typography variant="h5" className={classes.title}>{title}</Typography>
+                    : titleComponent
+                }
+            </div>
             <div className={classes.content}>
                 {children}    
             </div>
         </Paper>
     </Grid>
 }
+
+// HomePageTile.propTypes = {
+//     title: Proptypes.string,
+//     titleComponent: Proptypes.node,
+//     children: Proptypes.element,
+//     indicator: Proptypes.element
+// }
