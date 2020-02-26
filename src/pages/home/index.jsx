@@ -74,15 +74,17 @@ export default () => {
             await resetScansToday();
         })();
         setUpdateScans({update: resetScansToday});
-        return () => setUpdateScans({update: () => {}});
+        return () => {
+            setUpdateScans({update: () => {}})
+        };
     },[])
 
     const resetScansToday = async () => {
         const rawScans = await getScans();
         const checkins = rawScans.filter(({check_in_date}) => check_in_date === formatDateForDbInsert());   
         const checkouts = rawScans.filter(({check_out_date}) => check_out_date === formatDateForDbInsert());
-        dispatch(checkoutIndicatorAction(checkins.length));
-        dispatch(checkinIndicatorAction(checkouts.length));
+        dispatch(checkoutIndicatorAction(checkouts.length));
+        dispatch(checkinIndicatorAction(checkins.length));
         setScans({
             checkins,
             checkouts

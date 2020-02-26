@@ -107,6 +107,8 @@ export default function PermanentDrawerLeft() {
 							<Route exact path='/library/booksout'>
 								<BooksOut></BooksOut>
 							</Route>
+							<Route exact path="/admin">
+							</Route>
 						</Switch>
 					</main>
 				</Router>
