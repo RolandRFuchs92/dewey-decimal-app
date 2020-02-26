@@ -35,7 +35,7 @@
 		"winston": "^3.2.1"
 	},
 	"scripts": {
-		"electron": "electron .",
+		"electron": "electron . --inspect-brk=9222 your/app",
 		"rebuild": "electron-rebuild -f -w sqlite3 winston",
 		"start": "react-scripts start",
 		"build": "react-scripts build",

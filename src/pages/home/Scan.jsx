@@ -37,7 +37,8 @@ const useStyles = makeStyles(theme => ({
       '&.active': {
         color: theme.palette.error.light
       }
-    }
+    },
+   
 }));
 
 export default ({open, handleClose, updateScans}) => {
@@ -93,35 +94,37 @@ export default ({open, handleClose, updateScans}) => {
   }
 
   return <Modal open={open} handleClose={_handleClose}>
-    <Grid container direction="column">
-      <Grid item>
-        <Typography variant="h5" className={classes.title}>Scan a barcode</Typography>
+    <Grid container >
+      <Grid container item direction="column" md={isScannerOpen ? 6 : 12}>
+        <Grid item>
+          <Typography variant="h5" className={classes.title}>Scan a barcode</Typography>
+        </Grid>
+        <Grid item container direction="row">
+          <TextField tabIndex="1" ref={input} label="Barcode" autoFocus variant="outlined" onKeyDown={handleSubmit} value={barcode} onChange={({target: {value}}) => setBarcode(value)} InputProps={{
+            startAdornment: (
+              <InputAdornment position="start" className={classes.barcode} >
+                {Icons.Barcode}
+              </InputAdornment> 
+            ),  
+          }}></TextField>
+          <div>
+          <IconButton aria-label="Scan with phone" className={classes.laptopCamera} onClick={() => setIsScannerOpen(!isScannerOpen)}>
+            {Icons.LaptopCamera}
+          </IconButton>
+          <IconButton aria-label="Scan with phone" className={classes.phone}>
+            {Icons.UsePhone}
+          </IconButton>
+          </div>
+        </Grid>
+        <Grid item>
+          {
+            barcodeResult.isCheckout 
+              ? <GenerateCheckout data={barcodeResult} reset={reset} />
+              : <GenerateCheckin data={barcodeResult} reset={reset}></GenerateCheckin>
+          }
+        </Grid>
       </Grid>
-      <Grid item container direction="row">
-        <TextField tabIndex="1" ref={input} label="Barcode" autoFocus variant="outlined" onKeyDown={handleSubmit} value={barcode} onChange={({target: {value}}) => setBarcode(value)} InputProps={{
-          startAdornment: (
-            <InputAdornment position="start" className={classes.barcode} >
-              {Icons.Barcode}
-            </InputAdornment> 
-          ),  
-        }}></TextField>
-        <div>
-        <IconButton aria-label="Scan with phone" className={classes.laptopCamera}>
-          {Icons.LaptopCamera}
-        </IconButton>
-        <IconButton aria-label="Scan with phone" className={classes.phone}>
-          {Icons.UsePhone}
-        </IconButton>
-        </div>
-      </Grid>
-    </Grid>
-    {
-      barcodeResult.isCheckout 
-        ? <GenerateCheckout data={barcodeResult} reset={reset} />
-        : <GenerateCheckin data={barcodeResult} reset={reset}></GenerateCheckin>
-    }
-    <Grid item>
-      <Scanner></Scanner>
+      <Scanner open={isScannerOpen} onDetected={handleDetectedCode}></Scanner>
     </Grid>
   </Modal>
 }
