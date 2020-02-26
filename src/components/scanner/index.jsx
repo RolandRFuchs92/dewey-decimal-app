@@ -1,6 +1,6 @@
 import React, { useEffect} from 'react';
 import Quagga from 'quagga';
-import { makeStyles, Grid } from '@material-ui/core';
+import { makeStyles, Grid, Typography } from '@material-ui/core';
 
 const useStyles = makeStyles(theme => {
     return {
@@ -66,7 +66,7 @@ export default ({onDetected = r => alert(r.codeResult.code), open }) => {
     return (
       <Grid item md={6} className={classes.videoContainer}>
         <div className={classes.viewport}>
-            <p>scanner</p>
+            <Typography variant="h5">Display barcode to easily checkin/out</Typography>
             <div id="interactive" className="viewport"></div>
         </div>
       </Grid>
