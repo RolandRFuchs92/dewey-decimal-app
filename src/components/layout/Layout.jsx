@@ -15,6 +15,7 @@ import Books from 'pages/books';
 import BooksOut from 'pages/booksOut';
 import context from 'utils/context';
 import Icons from 'components/icons';
+import Admin from 'pages/admin';
 
 const useStyles = makeStyles(theme => {
 	return {
@@ -108,6 +109,7 @@ export default function PermanentDrawerLeft() {
 								<BooksOut></BooksOut>
 							</Route>
 							<Route exact path="/admin">
+								<Admin></Admin>
 							</Route>
 						</Switch>
 					</main>
