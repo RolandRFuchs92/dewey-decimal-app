@@ -107,14 +107,7 @@ export default ({open, handleClose, updateScans}) => {
               </InputAdornment> 
             ),  
           }}></TextField>
-          <div>
-          <IconButton aria-label="Scan with phone" className={classes.laptopCamera} onClick={() => setIsScannerOpen(!isScannerOpen)}>
-            {Icons.LaptopCamera}
-          </IconButton>
-          <IconButton aria-label="Scan with phone" className={classes.phone}>
-            {Icons.UsePhone}
-          </IconButton>
-          </div>
+         <ScannerIconButtons handleLaptopButton={() => setIsScannerOpen(!isScannerOpen)}></ScannerIconButtons>
         </Grid>
         <Grid item>
           {
@@ -127,6 +120,19 @@ export default ({open, handleClose, updateScans}) => {
       <Scanner open={isScannerOpen} onDetected={handleDetectedCode}></Scanner>
     </Grid>
   </Modal>
+}
+
+const ScannerIconButtons = ({handleLaptopButton}) => {
+  const classes = useStyles();
+
+  return <div>
+    <IconButton aria-label="Scan with Laptop" className={classes.laptopCamera} onClick={handleLaptopButton}>
+      {Icons.LaptopCamera}
+    </IconButton>
+    <IconButton aria-label="Scan with phone" className={classes.phone}>
+      {Icons.UsePhone}
+    </IconButton>
+  </div>
 }
 
 const GenerateCheckin = ({data, reset}) => {

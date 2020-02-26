@@ -5,9 +5,9 @@ import { makeStyles, Grid } from '@material-ui/core';
 const useStyles = makeStyles(theme => {
     return {
         viewport : {
-            // '& div.viewport canvas': {
-            //     // display: 'none'
-            // },
+            '& div.viewport canvas': {
+                display: 'none'
+            },
             '& div.viewport video' : {
                 width: '100%'
             },
@@ -58,7 +58,7 @@ export default ({onDetected = r => alert(r.codeResult.code), open }) => {
         
             return () => Quagga.offDetected(onDetected);
         }
-    },[]);
+    },[open]);
 
     if(!open)
         return null;
