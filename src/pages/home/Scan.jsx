@@ -1,4 +1,4 @@
-import React, { useState, useRef, useContext } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { TextField, makeStyles, InputAdornment, Typography, Button } from '@material-ui/core';
 import { Autocomplete } from '@material-ui/lab';
 import { isNil } from 'lodash';
@@ -37,6 +37,13 @@ export default ({open, handleClose, updateScans}) => {
   
   const alert = useAlert();
 
+  const _handleClose = () => {
+    setIsCheckout(null);
+    setBarcode('');
+    handleClose();
+    setBarcodeResult({});
+  }
+
   const handleSubmit = async e => {
     if(e.key !== 'Enter')
       return;
@@ -70,7 +77,7 @@ export default ({open, handleClose, updateScans}) => {
     setBarcodeResult(data);
   }
 
-  return <Modal open={open} handleClose={handleClose}>
+  return <Modal open={open} handleClose={_handleClose}>
       {
         isCheckout === null 
         && <Typography variant="h5" className={classes.title}>Scan a barcode</Typography>

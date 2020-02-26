@@ -74,7 +74,9 @@ export default () => {
             await resetScansToday();
         })();
         setUpdateScans({update: resetScansToday});
-        return () => setUpdateScans({update: () => {}});
+        return () => {
+            setUpdateScans({update: () => {}})
+        };
     },[])
 
     const resetScansToday = async () => {
