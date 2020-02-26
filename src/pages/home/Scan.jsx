@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { TextField, makeStyles, InputAdornment, Typography, Button, IconButton, Grid } from '@material-ui/core';
+import { TextField, makeStyles, InputAdornment, Typography, Button, IconButton, Grid, csls } from '@material-ui/core';
 import { Autocomplete } from '@material-ui/lab';
 import { isNil } from 'lodash';
 
@@ -44,8 +44,7 @@ const useStyles = makeStyles(theme => ({
 export default ({open, handleClose, updateScans}) => {
   const classes = useStyles();
   const input = useRef(null);
-  const [isScannerOpen, setIsScannerOpen] = useState(false);
-
+  const [isScannerOpen, setIsScannerOpen] = useState(true);
 
   const [ barcodeResult, setBarcodeResult] = useState({});
   const [ barcode, setBarcode] = useState('');
@@ -107,7 +106,7 @@ export default ({open, handleClose, updateScans}) => {
               </InputAdornment> 
             ),  
           }}></TextField>
-         <ScannerIconButtons handleLaptopButton={() => setIsScannerOpen(!isScannerOpen)}></ScannerIconButtons>
+         <ScannerIconButtons handleLaptopButton={() => setIsScannerOpen(!isScannerOpen)} isScannerOpen={isScannerOpen}></ScannerIconButtons>
         </Grid>
         <Grid item>
           {
@@ -122,11 +121,11 @@ export default ({open, handleClose, updateScans}) => {
   </Modal>
 }
 
-const ScannerIconButtons = ({handleLaptopButton}) => {
+const ScannerIconButtons = ({handleLaptopButton, isScannerOpen}) => {
   const classes = useStyles();
 
   return <div>
-    <IconButton aria-label="Scan with Laptop" className={classes.laptopCamera} onClick={handleLaptopButton}>
+    <IconButton aria-label="Scan with Laptop" className={`${classes.laptopCamera} ${isScannerOpen && 'active'}`} onClick={handleLaptopButton}>
       {Icons.LaptopCamera}
     </IconButton>
     <IconButton aria-label="Scan with phone" className={classes.phone}>
@@ -162,7 +161,7 @@ const GenerateCheckin = ({data, reset}) => {
     <p>Check in on: <b>{data.check_in_on}</b></p>
     <p>Due by:<b>{data.return_on}</b></p>
     <p>Fine due: <b>{data.fine}</b></p>
-    <Button variant="contained" fullWidth onClick={handleSubmit}>Check in</Button>
+    <Button variant="contained" fullWidth onClick={handleSubmit} color="primary">Check in</Button>
   </div>
 }
 
@@ -221,7 +220,7 @@ const GenerateCheckout = ({data, reset}) => {
     <hr></hr>
     <p>Check out on: <b>{data.check_out_date}</b></p>
     <p>Due by:<b>{data.return_on}</b></p>
-    <Button variant="contained" fullWidth onClick={handleSubmit}>Checkout</Button>
+    <Button variant="contained" fullWidth onClick={handleSubmit} color="primary">Checkout</Button>
   </div> 
 }
 
