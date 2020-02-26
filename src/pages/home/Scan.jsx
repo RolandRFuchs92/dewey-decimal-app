@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { TextField, makeStyles, InputAdornment, Typography, Button } from '@material-ui/core';
+import { TextField, makeStyles, InputAdornment, Typography, Button, IconButton, Grid } from '@material-ui/core';
 import { Autocomplete } from '@material-ui/lab';
 import { isNil } from 'lodash';
 
@@ -25,12 +25,27 @@ const useStyles = makeStyles(theme => ({
     },
     title: {
       marginBottom: 15
+    },
+    phone: {
+      marginLeft: 15,
+      '&.active': {
+        color: theme.palette.error.light
+      }
+    },
+    laptopCamera: {
+      marginLeft: 15,
+      '&.active': {
+        color: theme.palette.error.light
+      }
     }
 }));
 
 export default ({open, handleClose, updateScans}) => {
   const classes = useStyles();
   const input = useRef(null);
+  const [isScannerOpen, setIsScannerOpen] = useState(false);
+
+
   const [ barcodeResult, setBarcodeResult] = useState({});
   const [ barcode, setBarcode] = useState('');
   const [ isCheckout, setIsCheckout] = useState(null);
@@ -78,23 +93,36 @@ export default ({open, handleClose, updateScans}) => {
   }
 
   return <Modal open={open} handleClose={_handleClose}>
-      {
-        isCheckout === null 
-        && <Typography variant="h5" className={classes.title}>Scan a barcode</Typography>
-      }
-      <TextField tabIndex="1" ref={input} label="Barcode" autoFocus variant="outlined" onKeyDown={handleSubmit} value={barcode} onChange={({target: {value}}) => setBarcode(value)} InputProps={{
-        startAdornment: (
-          <InputAdornment position="start" className={classes.barcode} >
-            {Icons.Barcode}
-          </InputAdornment> 
-        ),  
-      }}></TextField>
-    {barcodeResult.isCheckout === undefined 
-      ? <Scanner onDetected={handleDetectedCode}></Scanner>
-      : barcodeResult.isCheckout 
+    <Grid container direction="column">
+      <Grid item>
+        <Typography variant="h5" className={classes.title}>Scan a barcode</Typography>
+      </Grid>
+      <Grid item container direction="row">
+        <TextField tabIndex="1" ref={input} label="Barcode" autoFocus variant="outlined" onKeyDown={handleSubmit} value={barcode} onChange={({target: {value}}) => setBarcode(value)} InputProps={{
+          startAdornment: (
+            <InputAdornment position="start" className={classes.barcode} >
+              {Icons.Barcode}
+            </InputAdornment> 
+          ),  
+        }}></TextField>
+        <div>
+        <IconButton aria-label="Scan with phone" className={classes.laptopCamera}>
+          {Icons.LaptopCamera}
+        </IconButton>
+        <IconButton aria-label="Scan with phone" className={classes.phone}>
+          {Icons.UsePhone}
+        </IconButton>
+        </div>
+      </Grid>
+    </Grid>
+    {
+      barcodeResult.isCheckout 
         ? <GenerateCheckout data={barcodeResult} reset={reset} />
         : <GenerateCheckin data={barcodeResult} reset={reset}></GenerateCheckin>
     }
+    <Grid item>
+      <Scanner></Scanner>
+    </Grid>
   </Modal>
 }
 

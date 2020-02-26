@@ -58,7 +58,7 @@ function App() {
 										horizontal: 'center',
 									}}> 
 									<MainLayout></MainLayout>
-									<Scan open={showScan} handleClose={() => setShowScan(false)} updateScans={updateScans}></Scan>
+									<Scan open={true} handleClose={() => setShowScan(false)} updateScans={updateScans}></Scan>
 								</SnackbarProvider>
 							</ConfirmProvider>
 						</MuiPickersUtilsProvider>

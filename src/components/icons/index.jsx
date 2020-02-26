@@ -31,7 +31,9 @@ import {
 	faHistory,
 	faFolderPlus,
 	faFolderMinus,
-	faUserClock
+	faUserClock,
+	faMobileAlt,
+	faRecordVinyl
 } from '@fortawesome/free-solid-svg-icons';
 
 const useStyles = makeStyles(theme => ({
@@ -44,6 +46,8 @@ function CreateIcon(icon){
 	return <FontAwesomeIcon icon={icon}></FontAwesomeIcon>
 }
 
+const LaptopCamera = CreateIcon(faRecordVinyl);
+const UsePhone = CreateIcon(faMobileAlt);
 const Overdue = CreateIcon(faUserClock);
 const Checkin = CreateIcon(faFolderPlus);
 const Checkout = CreateIcon(faFolderMinus);
@@ -93,5 +97,7 @@ export default {
 	DarkLight,
 	Checkin,
 	Checkout,
-	Overdue
+	Overdue,
+	UsePhone,
+	LaptopCamera
 }
