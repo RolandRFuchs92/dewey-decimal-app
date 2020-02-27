@@ -14,7 +14,7 @@ const useStyles = makeStyles(theme => {
 });
 
 export default () => {
-    return <Grid container lg={12}>
+    return <Grid container>
         <AppSettings/>
         <ErrorReport></ErrorReport>
     </ Grid>
@@ -27,14 +27,14 @@ function AppSettings  () {
         setState({...state, [name]: value})
     }
 
-    return <Grid container lg={3}>
+    return <Grid item container lg={3}>
         <Typography variant="h5">App settings</Typography>
-        <TooltipTextField title="The duration" label="Transition Duration" handleChange={handleChange}></TooltipTextField>
-        <TooltipTextField title="" label="Database Location" handleChange={handleChange}></TooltipTextField>
+        <TooltipTextField tooltip="The duration of the fade effects during page transition" label="Transition Duration" handleChange={handleChange}></TooltipTextField>
+        <TooltipTextField tooltip="Where to store the database. Point this to a local 'onedrive','google drive' folder for cloud storage.(anything that can sync to a cloud)" label="Database Location" handleChange={handleChange}></TooltipTextField>
         <Typography variant="h5">Library settings</Typography>
-        <TooltipTextField title="" label="Fine rate" handleChange={handleChange}></TooltipTextField>
-        <TooltipTextField title="" label="Days allowed out until fine" handleChange={handleChange}></TooltipTextField>
-        <TooltipTextField title="The duration of the fade effect per page" label="Transition Duration" handleChange={handleChange}></TooltipTextField>
+        <TooltipTextField tooltip="The monitary value calculated per day a book is overdue" label="Fine rate" handleChange={handleChange}></TooltipTextField>
+        <TooltipTextField tooltip="Number of days a student may have a book before a fine is due" label="Days allowed to keep a book" handleChange={handleChange}></TooltipTextField>
+        <TooltipTextField tooltip="The duration of the fade effect per page." label="Transition Duration" handleChange={handleChange}></TooltipTextField>
         <Grid item className={classes.pullRight}>
             <Button variant="contained" color="primary">Submit </Button>
         </Grid>

@@ -64,7 +64,7 @@ export default () => {
         })();
     }, [])
 
-    return <Grid className={classes.container} container lg={3} spacing={2}>
+    return <Grid className={classes.container} container item lg={3} spacing={2}>
         <div>
             <Typography variant="h5">These are application errors.</Typography>
        
