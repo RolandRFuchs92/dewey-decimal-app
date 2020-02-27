@@ -1,11 +1,12 @@
 import React, { useState, useEffect} from 'react';
-import { makeStyles, Paper, Grid, Typography, IconButton } from '@material-ui/core';
+import { makeStyles, Paper, Grid, Typography, IconButton, Button } from '@material-ui/core';
 import { trim } from 'lodash'
 import { format, parse } from 'date-fns';
 
 import log from 'utils/logger';
 import appSettings from 'appSettings';
 import Icons from 'components/icons';
+
 
 const fs = window.require('fs');
 const path = window.require('path');
@@ -25,6 +26,9 @@ const useStyles = makeStyles(theme => {
             textAlign: 'left',
             padding: 15,
             margin: 15
+        },
+        fullWidth: {
+            width:'100%'
         }
     }
 });
@@ -74,6 +78,7 @@ export default () => {
             errors && errors.map(i => (<ErrorTile row={i}></ErrorTile>))
         }
         </div>
+        <Button variant="contained" color="primary">Package Errors</Button>
     </Grid>
 }
 
@@ -84,11 +89,13 @@ const ErrorTile = ({row}) => {
 
     return <Grid item>
         <Paper className={classes.errors}>
-            <Typography variant="caption" align="left">Timestamp: {format(parse(row.timestamp, from, new Date()),to)}</Typography><br></br>
-            <Typography variant="caption" align="left">Message: {row.message}</Typography><br></br>
-            <pre>
-                <Typography variant="caption" align="left">stack trace: {row.stack}</Typography>
-            </pre>
+            <div className={classes.fullWidth}>
+                <Typography variant="caption" align="left">Timestamp: {format(parse(row.timestamp, from, new Date()),to)}</Typography><br></br>
+                <Typography variant="caption" align="left">Message: {row.message}</Typography><br></br>
+                <pre>
+                    <Typography variant="caption" align="left">stack trace: {row.stack}</Typography>
+                </pre>
+            </div>
         </Paper>
     </Grid>
 }

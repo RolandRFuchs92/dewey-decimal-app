@@ -34,7 +34,6 @@ function AppSettings  () {
         <Typography variant="h5">Library settings</Typography>
         <TooltipTextField tooltip="The monitary value calculated per day a book is overdue" label="Fine rate" handleChange={handleChange}></TooltipTextField>
         <TooltipTextField tooltip="Number of days a student may have a book before a fine is due" label="Days allowed to keep a book" handleChange={handleChange}></TooltipTextField>
-        <TooltipTextField tooltip="The duration of the fade effect per page." label="Transition Duration" handleChange={handleChange}></TooltipTextField>
         <Grid item className={classes.pullRight}>
             <Button variant="contained" color="primary">Submit </Button>
         </Grid>
