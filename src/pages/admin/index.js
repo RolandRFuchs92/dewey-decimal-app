@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { Grid, TextField, Button, Tooltip, Typography, makeStyles } from '@material-ui/core';
 
 import ErrorReport from './ErrorReport';
+import { TooltipTextField } from 'components/inputs/TextField';
 
 const useStyles = makeStyles(theme => {
     return {
