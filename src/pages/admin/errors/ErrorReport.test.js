@@ -4,8 +4,12 @@ import '@testing-library/jest-dom/extend-expect';
 
 import ErrorReport from './ErrorReport';
 
-test('shows the current app settings',async () => {
+
+it('shows loading before the application has loaded.',async () => {
+    //Arrange
     const container = render(<ErrorReport></ErrorReport>);
-    const {getByTestId} = container;
-    const errorlist = getByTestId('errorlist');
+    const { getAllByTestId } = container;
+    const result = getAllByTestId('errors-loading');
+
+    expect(result).toHaveLength(2);
 });
