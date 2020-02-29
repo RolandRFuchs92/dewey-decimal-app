@@ -41,7 +41,7 @@
 		"rebuild": "electron-rebuild -f -w sqlite3 winston",
 		"start": "react-scripts start",
 		"build": "react-scripts build",
-		"test": "react-scripts test --maxWorkers=6",
+		"test": "react-scripts test --maxWorkers=4 --runInBand",
 		"eject": "react-scripts eject"
 	},
 	"eslintConfig": {

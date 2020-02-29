@@ -44,6 +44,14 @@ describe('processErrorLog',() => {
         const fs = require('fs');
         fs.readFile = readFile;
 
+        const mockErrorLog = jest.fn();
+        jest.mock('utils/logger', () => ({
+            __esModule: true,
+            default: {
+                error: mockErrorLog
+            }
+        }));
+
         const mockParse = jest.fn();
         const mockFormat = jest.fn();
 
@@ -57,14 +65,12 @@ describe('processErrorLog',() => {
         const { processErrorLog } = require('./ErrorReport.service');
 
         //Act
-        const [parsedErrors, unparsedErrors] = await processErrorLog();
+        const parsedErrors = await processErrorLog();
 
         //Assert
-        expect(parsedErrors).toHaveLength(2);
-        expect(unparsedErrors).toHaveLength(1);
+        expect(parsedErrors).toBeTruthy();
         expect(mockFormat).toHaveBeenCalledTimes(2);
         expect(mockParse).toHaveBeenCalledTimes(2);
-        expect(unparsedErrors[0].error).toBeTruthy();
-        expect(parsedErrors[0].error).toBeFalsy();
+        expect(mockErrorLog).toHaveBeenCalled();
     })
 });

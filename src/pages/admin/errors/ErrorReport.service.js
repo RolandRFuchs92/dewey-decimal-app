@@ -16,7 +16,6 @@ export const processErrorLog = () => {
             }
     
             try {
-                const failedToParse=[];
                 const parsedErrors=[];
                 const rows = data.split('\r\n')
                 rows.forEach((row,index) => {
@@ -27,19 +26,14 @@ export const processErrorLog = () => {
                             parsedErrors.push(json);
                         }
                     } catch(e) {
-                        failedToParse.push({row, index, error: e});
+                        log.error(e);
                     }
                 });
-                res([parsedErrors, failedToParse]);
+                res(parsedErrors);
             } catch (error) {
                 log.error(error);
                 rej(error);
             }
         });
     })
-}
-
-
-export const someService = () => {
-
 }

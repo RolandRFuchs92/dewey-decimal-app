@@ -1,7 +1,9 @@
 import React, { useState, useEffect} from 'react';
 import { makeStyles, Paper, Grid, Typography, Button } from '@material-ui/core';
-
 import { processErrorLog } from './ErrorReport.service';
+import { useDialog } from 'utils/dialog';
+
+const ipc = require('electron').ipcRenderer
 
 const useStyles = makeStyles(theme => {
     return {
@@ -20,6 +22,13 @@ const useStyles = makeStyles(theme => {
         },
         fullWidth: {
             width:'100%'
+        },
+        packageButton: {
+            marginTop:15
+        },
+        title: {
+            width: '100%',
+            alignSelf: "flex-start"
         }
     }
 });
@@ -28,21 +37,30 @@ export default () => {
     const classes = useStyles();
     const [isLoading, setIsLoading] = useState(true);
     const [errorLogResult, setErrorLogResult] = useState([]);
+    const dialog = useDialog();
 
     useEffect(() => {
         (async () => {
-            setTimeout(() => {},3000)
-            setErrorLogResult(await processErrorLog());
+            const result = await processErrorLog();
+            setErrorLogResult(result);
             setIsLoading(false);
         })()
     },[]);
 
-    return <Grid className={classes.container} container item lg={3} spacing={2}>
-        <Typography variant="h5">These are application errors.</Typography>
+    const handlePackageErrors = () => {
+        ipc.send('selectPackagePath');
+    }
+
+    ipc.on('selectedPackagePath', (event, path) => {
+        debugger;
+    })
+
+    return <Grid className={classes.container} container justify="flex-end" item lg={3} spacing={2}>
+        <Typography align="left" variant="h5" className={classes.title}>These are application errors.</Typography>
         <div className={classes.errorContainer}>
-            <ErrorList isLoading={isLoading} errors={errorLogResult[0]}></ErrorList>
+            <ErrorList isLoading={isLoading} errors={errorLogResult} />
         </div>
-        <Button variant="contained" color="primary">Package Errors</Button>
+        <Button variant="contained" color="primary" className={classes.packageButton} onClick={handlePackageErrors}>Package Errors</Button>
     </Grid>
 }
 
@@ -50,9 +68,9 @@ const ErrorList = ({errors=[], isLoading}) => {
     if(isLoading)
         return <p data-testid="errors-loading">Loading...</p> 
 
-    const Errors = errors.map(i => <ErrorTile row={i}/>);
+    const Errors = errors.map((row, index) => <ErrorTile key={index} row={row}/>);
     return <div data-testid="errorlist">
-        {Errors || <Typography variant="h5">No errors were found</Typography>}
+        {Errors.length ? Errors : <Typography data-testid="no-errors" variant="h5">No errors were found</Typography>}
     </div>
 }
 
