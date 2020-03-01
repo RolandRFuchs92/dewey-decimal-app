@@ -1,15 +1,17 @@
+// @flow
 import appSettings from 'appSettings';
 import { trim } from 'lodash'
 import { format, parse } from 'date-fns';
 import log from 'utils/logger';
 
+
 const fs = window.require('fs');
 const { formatDate : {errorLog : {from, to}}} = appSettings;
 
 
-export const processErrorLog = () => {
+export const processErrorLog = async () => {
     return new Promise((res, rej) => {
-        fs.readFile(`dewey.error.log`,'utf8',(err, data) =>{
+        fs.readFile(`dewey.error.log`, 'utf8', (err, data) =>{
             if(err){
                 log.error(err);
                 return rej(err);

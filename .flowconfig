@@ -1,0 +1,15 @@
+[ignore]
+.*/node_modules/.*
+.*/build/.*
+
+[include]
+
+[libs]
+flow-typed
+
+[lints]
+
+[options]
+; module.name_mapper='^\([^\.].*\)$' -> '<PROJECT_ROOT>/src/\1'
+
+[strict]

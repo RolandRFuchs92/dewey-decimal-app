@@ -3,6 +3,7 @@ import { makeStyles, Paper, Grid, Typography, Button } from '@material-ui/core';
 import { processErrorLog } from './ErrorReport.service';
 import { useDialog } from 'utils/dialog';
 
+
 const useStyles = makeStyles(theme => {
     return {
         container: {
