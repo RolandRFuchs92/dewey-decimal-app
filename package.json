@@ -3,7 +3,7 @@
 	"version": "0.1.0",
 	"private": true,
 	"homepage": "./",
-	"main": "src/electron.js",
+	"main": "src/electron",
 	"dependencies": {
 		"@date-io/date-fns": "1.x",
 		"@fortawesome/fontawesome-svg-core": "^1.2.27",
