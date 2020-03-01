@@ -14,10 +14,6 @@ let mainWindow;
 
 // app.removeAllListeners('ready');
 
-ipcMain.on( "setMyGlobalVariable", ( event, myGlobalVariableValue ) => {
-	global.myGlobalVariable = myGlobalVariableValue;
-});
-
 function createWindow() {
 	BrowserWindow.addDevToolsExtension(
 		path.join(
@@ -30,7 +26,10 @@ function createWindow() {
 	mainWindow = new BrowserWindow({
 		width: 1200,
 		height: 800,
-		webPreferences: { nodeIntegration: true },
+		webPreferences: { 
+			nodeIntegration: true,
+			preload: __dirname + '/preload.js' 
+		},
 	});
 
 	mainWindow.removeMenu();
@@ -76,12 +75,13 @@ app.on('activate', function() {
 
 const dialog = require('electron').dialog;
 
-ipcMain.on('selectPackagePath', event => {
-	dialog.showOpenDialog({
-		properties: ['promptToCreate']
-	})
-}, (data) => {
-	if(data){
-		event.sender.end('selectedPackagePath', data);
-	}
-});
+ipcMain.on('selectPackagePath', async event => {
+	const dialogResult = await dialog.showSaveDialog({
+			title:'This is this',
+			buttonLabel: 'Create Package',
+			message: 'Create a developers error report package',
+		})
+		const savePath = dialogResult.filePath;
+
+		event.sender.send('selectedPackagePath',savePath);
+})

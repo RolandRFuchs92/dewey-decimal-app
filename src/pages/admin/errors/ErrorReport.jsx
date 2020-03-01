@@ -3,8 +3,6 @@ import { makeStyles, Paper, Grid, Typography, Button } from '@material-ui/core';
 import { processErrorLog } from './ErrorReport.service';
 import { useDialog } from 'utils/dialog';
 
-const ipc = require('electron').ipcRenderer
-
 const useStyles = makeStyles(theme => {
     return {
         container: {
@@ -48,10 +46,10 @@ export default () => {
     },[]);
 
     const handlePackageErrors = () => {
-        ipc.send('selectPackagePath');
+        window.ipcRenderer.send('selectPackagePath');
     }
 
-    ipc.on('selectedPackagePath', (event, path) => {
+    window.ipcRenderer.on('selectedPackagePath', (event, path) => {
         debugger;
     })
 
