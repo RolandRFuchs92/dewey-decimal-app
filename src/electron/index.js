@@ -3,7 +3,7 @@ const electron = require('electron');
 const app = electron.app;
 // Module to create native browser window.
 const BrowserWindow = electron.BrowserWindow;
-
+const { packageErrors } = require('./admin/applicationErrors');
 const os = require('os');
 const path = require('path');
 const { ipcMain } = require( "electron" );
@@ -75,13 +75,13 @@ app.on('activate', function() {
 
 const dialog = require('electron').dialog;
 
-ipcMain.on('selectPackagePath', async event => {
+ipcMain.on('selectPackagePath', async (event, errors) => {
 	const dialogResult = await dialog.showSaveDialog({
 			title:'This is this',
 			buttonLabel: 'Create Package',
 			message: 'Create a developers error report package',
-		})
-		const savePath = dialogResult.filePath;
-
-		event.sender.send('selectedPackagePath',savePath);
+		});
+	const savePath = dialogResult.filePath;
+	const result = packageErrors(savePath, errors);
+	event.sender.send('selectedPackagePath', result);
 })

@@ -1,6 +1,5 @@
 import React from 'react';
 
-import _ from 'lodas'
 const context = React.createContext({});
 
 export default context;

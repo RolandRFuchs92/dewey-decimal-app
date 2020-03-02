@@ -5,6 +5,10 @@ import '@testing-library/jest-dom/extend-expect';
 import ErrorReport from './ErrorReport';
 import * as svc from './ErrorReport.service';
 
+var ipcRenderer = {
+    on: () => {}
+};
+
 describe('Error Report component', () => {
     beforeEach(() => {
         jest.resetAllMocks();
@@ -12,7 +16,7 @@ describe('Error Report component', () => {
     })
 
     it('shows loading before and after the application has loaded.',async () => {
-        const container = render(<ErrorReport></ErrorReport>);
+        const container = render(<ErrorReport />);
         const { getAllByTestId, findByTestId } = container;
         const loading = getAllByTestId('errors-loading');
         const mockProcessLog = jest.fn().mockResolvedValue([{"timestamp":"123", "message":"yes", "stack": "yes"}]);
@@ -23,7 +27,6 @@ describe('Error Report component', () => {
             }
         })
     
-    
         expect(loading).toHaveLength(1);
         const errorList = await findByTestId('errorlist');
         expect(errorList.children.length).toBeTruthy();    
@@ -32,7 +35,6 @@ describe('Error Report component', () => {
     it(`shows a message if no errors are found after load`, async () => {
         //Arrange
         const mockProcessLog = () => {
-            debugger;
         };
         svc.processErrorLog = jest.fn().mockResolvedValue([]);
 

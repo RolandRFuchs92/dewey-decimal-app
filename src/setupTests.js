@@ -4,3 +4,6 @@
 // learn more: https://github.com/testing-library/jest-dom
 import '@testing-library/jest-dom/extend-expect';
 window.require = require;
+window.ipcRenderer = {
+    on: () => {}
+}
