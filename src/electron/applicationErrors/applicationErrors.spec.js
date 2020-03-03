@@ -1,5 +1,5 @@
 // @flow
-import { err }  from './applicationErrors';
+
 const log = require('utils/logger');
 const admZip = require('adm-zip');
 const {remove} = require('fs-jetpack');

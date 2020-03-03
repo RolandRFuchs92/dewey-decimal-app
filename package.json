@@ -41,7 +41,7 @@
 	},
 	"scripts": {
 		"electron": "electron . --inspect-brk=9222 your/app",
-		"rebuild": "electron-rebuild -f -w sqlite3 winston",
+		"rebuild": "electron-rebuild -f -w sqlite3 winston adm-zip",
 		"start": "react-scripts start",
 		"build": "react-scripts build",
 		"test": "react-scripts test --runInBand",
@@ -63,7 +63,8 @@
 			"last 1 chrome version",
 			"last 1 firefox version",
 			"last 1 safari version"
-		]
+		],
+		"target": "electron-renderer"
 	},
 	"devDependencies": {
 		"@babel/core": "7.8.6",

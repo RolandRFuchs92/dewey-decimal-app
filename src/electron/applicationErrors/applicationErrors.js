@@ -1,16 +1,10 @@
-// @flow
-
+const log = require('utils/logger');
 const admZip = require('adm-zip');
 const { remove } = require('fs-jetpack');
 const { normalize } = require('path');
-const log = require('utils/logger');
 
-declare type packageErrorsType = {
-    message: string,
-    isSuccess: bool,
-};
 
-function packageErrors(path: string, errorList: Array<err>): packageErrorsType { 
+function packageErrors(path, errorList) { 
     if(path.length === 0)
         return {
             message: 'No path was provided. Please select a path.',
@@ -39,10 +33,5 @@ function packageErrors(path: string, errorList: Array<err>): packageErrorsType {
 
     return { message: `Successfully saved application errors to ${path}`, isSuccess: true};
 }
-type err = {
-    timestamp: Date,
-    message: string,
-    stack: string
-};
-export type { err };
+
 module.exports.packageErrors = packageErrors;
