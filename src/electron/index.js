@@ -3,7 +3,7 @@ const electron = require('electron');
 const app = electron.app;
 // Module to create native browser window.
 const BrowserWindow = electron.BrowserWindow;
-const { packageErrors } = require('./applicationErrors/applicationErrors');
+// const { packageErrors } = require('./applicationErrors/applicationErrors');
 const os = require('os');
 const path = require('path');
 const { ipcMain } = require( "electron" );
