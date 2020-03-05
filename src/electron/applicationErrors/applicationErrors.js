@@ -5,7 +5,6 @@ const { normalize } = require('path');
 
 
 function packageErrors(path, errorList) { 
-    debugger;
     if(path.length === 0)
         return {
             message: 'No path was provided. Please select a path.',

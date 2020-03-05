@@ -5,5 +5,6 @@
 import '@testing-library/jest-dom/extend-expect';
 window.require = require;
 window.ipcRenderer = {
-    on: () => {}
+    on: () => {},
+    once: () => {}
 }

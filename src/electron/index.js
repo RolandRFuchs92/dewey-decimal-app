@@ -76,6 +76,7 @@ app.on('activate', function() {
 const dialog = require('electron').dialog;
 
 ipcMain.on('selectPackagePath', async (event, errors) => {
+	console.log('Recieved at electron')
 	const dialogResult = await dialog.showSaveDialog({
 			title:'This is this',
 			buttonLabel: 'Create Package',

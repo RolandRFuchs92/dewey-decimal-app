@@ -2,6 +2,7 @@ import React, { useState, useEffect} from 'react';
 import { makeStyles, Paper, Grid, Typography, Button } from '@material-ui/core';
 import { processErrorLog } from './ErrorReport.service';
 import { useDialog } from 'utils/dialog';
+import { useAlert } from 'utils/snackbarAlerts';
 
 const useStyles = makeStyles(theme => {
     return {
@@ -36,6 +37,8 @@ export default () => {
     const [isLoading, setIsLoading] = useState(true);
     const [errorLogResult, setErrorLogResult] = useState([]);
     const dialog = useDialog();
+    const alert = useAlert();
+    let hasRecievedReply = false;
 
     useEffect(() => {
         (async () => {
@@ -46,13 +49,19 @@ export default () => {
     },[]);
 
     const handlePackageErrors = () => {
-        debugger
+        hasRecievedReply = false;
         window.ipcRenderer.send('selectPackagePath', errorLogResult);
-    }
 
-    window.ipcRenderer.once('selectedPackagePath', function (event, result) {
-        debugger;
-    })
+        window.ipcRenderer.once('selectedPackagePath', function (event, result) {
+            if(hasRecievedReply) return;
+            hasRecievedReply = true;
+            if(result.isSuccess)
+                alert.success(result.message);
+            else
+                alert.error(result.message);
+            
+        })
+    }
 
     return <Grid className={classes.container} container justify="flex-end" item lg={3} spacing={2}>
         <Typography align="left" variant="h5" className={classes.title}>These are application errors.</Typography>
