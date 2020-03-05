@@ -10,9 +10,10 @@ const useStyles = makeStyles(theme => {
             margin:15,
         },
         errorContainer: {
-            overflowX: "scroll",
-            overflowY: 'scroll',
-            height: 600
+            overflow: 'auto',
+            height: 250,
+            textAlign:'left',
+            padding:15
         },
         errors: {
             textAlign: 'left',
@@ -23,7 +24,8 @@ const useStyles = makeStyles(theme => {
             width:'100%'
         },
         packageButton: {
-            marginTop:15
+            marginTop:15,
+            alignSelf: 'flex-end'
         },
         title: {
             width: '100%',
@@ -38,7 +40,6 @@ export default () => {
     const [errorLogResult, setErrorLogResult] = useState([]);
     const dialog = useDialog();
     const alert = useAlert();
-    let hasRecievedReply = false;
 
     useEffect(() => {
         (async () => {
@@ -49,12 +50,14 @@ export default () => {
     },[]);
 
     const handlePackageErrors = () => {
-        hasRecievedReply = false;
+        if(!errorLogResult.length) {
+            alert.info("There are no errors to package. Please try again if anything changes.");
+            return;
+        }
+
         window.ipcRenderer.send('selectPackagePath', errorLogResult);
 
         window.ipcRenderer.once('selectedPackagePath', function (event, result) {
-            if(hasRecievedReply) return;
-            hasRecievedReply = true;
             if(result.isSuccess)
                 alert.success(result.message);
             else
@@ -63,13 +66,17 @@ export default () => {
         })
     }
 
-    return <Grid className={classes.container} container justify="flex-end" item lg={3} spacing={2}>
-        <Typography align="left" variant="h5" className={classes.title}>These are application errors.</Typography>
-        <div className={classes.errorContainer}>
-            <ErrorList isLoading={isLoading} errors={errorLogResult} />
-        </div>
-        <Button variant="contained" color="primary" className={classes.packageButton} onClick={handlePackageErrors}>Package Errors</Button>
-    </Grid>
+    return <>
+        <Grid container item className={classes.container} lg={3} spacing={2} direction="column">
+            <Typography align="left" variant="h5" className={classes.title}>These are application errors.</Typography>
+            <Paper>
+                <Grid item md={12} className={classes.errorContainer}>
+                    <ErrorList isLoading={isLoading} errors={errorLogResult} />
+                </Grid>
+            </Paper>
+            <Button variant="contained" color="primary" className={classes.packageButton} onClick={handlePackageErrors}>Package Errors</Button>
+        </Grid>
+    </>
 }
 
 const ErrorList = ({errors=[], isLoading}) => {
