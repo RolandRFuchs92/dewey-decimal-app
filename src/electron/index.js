@@ -3,7 +3,7 @@ const electron = require('electron');
 const app = electron.app;
 // Module to create native browser window.
 const BrowserWindow = electron.BrowserWindow;
-// const { packageErrors } = require('./applicationErrors/applicationErrors');
+const { packageErrors } = require('./applicationErrors/applicationErrors');
 const os = require('os');
 const path = require('path');
 const { ipcMain } = require( "electron" );
@@ -15,12 +15,12 @@ let mainWindow;
 // app.removeAllListeners('ready');
 
 function createWindow() {
-	BrowserWindow.addDevToolsExtension(
-		path.join(
-			os.homedir(),
-			`/AppData/Local/Google/Chrome/User Data/Default/Extensions/fmkadmapgofadopljbjfkapdkoienihi/4.4.0_0`,
-		),
-	);
+	// BrowserWindow.addDevToolsExtension(
+	// 	path.join(
+	// 		os.homedir(),
+	// 		`/AppData/Local/Google/Chrome/User Data/Default/Extensions/fmkadmapgofadopljbjfkapdkoienihi/4.4.0_0`,
+	// 	),
+	// );
 
 	// Create the browser window.
 	mainWindow = new BrowserWindow({
@@ -84,5 +84,5 @@ ipcMain.on('selectPackagePath', async (event, errors) => {
 		
 	const savePath = dialogResult.filePath;
 	const result = packageErrors(savePath, errors);
-	event.sender.send('selectedPackagePath', dialogResult.filePath);
+	event.sender.send('selectedPackagePath', result);
 })

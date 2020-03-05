@@ -1,10 +1,11 @@
-const log = require('utils/logger');
+// const log = require('utils/logger');
 const admZip = require('adm-zip');
-const { remove } = require('fs-jetpack');
+const { write } = require('fs-jetpack');
 const { normalize } = require('path');
 
 
 function packageErrors(path, errorList) { 
+    debugger;
     if(path.length === 0)
         return {
             message: 'No path was provided. Please select a path.',
@@ -22,10 +23,10 @@ function packageErrors(path, errorList) {
         const zip = new admZip();
         zip.addFile("ErrorLogs", Buffer.alloc(content.length, content), "Developer error logs");
         zip.writeZip(path);
-        remove('dewey.error.log');
+        write('dewey.error.log','');
     } catch(e){
-        log.error('There was an error while saving your package, please try again.');
         return {
+            error: e,
             message: 'There was an error while saving your package, please try again.',
             isSuccess: false
         }

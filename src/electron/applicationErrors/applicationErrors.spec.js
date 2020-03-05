@@ -1,11 +1,10 @@
 // @flow
 
-const log = require('utils/logger');
 const admZip = require('adm-zip');
-const {remove} = require('fs-jetpack');
+const {write} = require('fs-jetpack');
 
 jest.mock('adm-zip', () => jest.fn());
-jest.mock('fs-jetpack', () => ({ remove: jest.fn()}));
+jest.mock('fs-jetpack', () => ({ write: jest.fn()}));
 jest.mock('utils/logger', () => ({
     __esModule: true,
     error: jest.fn()
@@ -55,12 +54,12 @@ describe('applicationErrors', () => {
 
         expect(addFile).toHaveBeenCalled();
         expect(writeZip).toHaveBeenCalledWith(path);
-        expect(remove).toHaveBeenCalled();
+        expect(write).toHaveBeenCalled();
         expect(result.message).toBe('Successfully saved application errors to aa');  
         expect(result.isSuccess).toBeTruthy();
     });
 
-    it('should log an error if an error occurs during zip creation and alert the user about the error.', () =>{
+    it('should retyrn an error if error occurs during zip creation and alert the user about the error.', () =>{
         const testSubject = require('./applicationErrors');
 
         admZip.mockImplementation(() => ({
@@ -72,6 +71,5 @@ describe('applicationErrors', () => {
 
         expect(result.message).toBe('There was an error while saving your package, please try again.');        
         expect(result.isSuccess).toBeFalsy();
-        expect(log.error).toHaveBeenCalled();
     })
 })
