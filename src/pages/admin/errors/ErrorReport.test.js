@@ -4,10 +4,9 @@ import '@testing-library/jest-dom/extend-expect';
 
 import ErrorReport from './ErrorReport';
 import * as svc from './ErrorReport.service';
+import * as alerts from 'utils/snackbarAlerts';
 
-var ipcRenderer = {
-    on: () => {}
-};
+jest.mock('utils/snackbarAlerts');
 
 describe('Error Report component', () => {
     beforeEach(() => {
