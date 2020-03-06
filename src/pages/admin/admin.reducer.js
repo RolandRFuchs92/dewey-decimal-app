@@ -5,7 +5,16 @@ const initialState = {
     errorCount: 0
 }
 
-export default (currentState = initialState, action) => {
+declare type initialStateModel = {
+    errorCount: Number
+}
+
+declare type reducerAction = {
+    type: String,
+    payload: Json<any>
+}
+
+export default (currentState: initialStateModel = initialState, action: reducerAction) => {
     const {type, payload} = action;
     switch (type){ 
         case ERROR_COUNT:

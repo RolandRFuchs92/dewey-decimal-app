@@ -77,3 +77,7 @@ export const BirthdayIndicator = ({count}) => {
     const classes = useStyles();
     return <Indicator count={count} icon={Icons.Birthday} className={classes.birthday}></Indicator>
 }
+
+export const ErrorCount = ({ count }) => {
+    return <Indicator count={count} icon={Icons.Birthday} className={classes.birthday}></Indicator>
+}
