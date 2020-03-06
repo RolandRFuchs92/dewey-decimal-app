@@ -14,6 +14,7 @@ import { Provider } from 'utils/context';
 import { ReducerProvider, reducer, initialState as reducerInitialState } from 'utils/reducerContext';
 import Scan from 'pages/home/Scan';
 import reduxReducers from 'utils/redux/rootReducer';
+import { ErrorIndicator } from 'components/icons/Indicator';
 
 const store = createStore(reduxReducers);
 
@@ -65,6 +66,7 @@ function App() {
 										}}> 
 										<MainLayout></MainLayout>
 										<Scan open={showScan} handleClose={() => setShowScan(false)} updateScans={updateScans}></Scan>
+										<ErrorIndicator/>
 									</SnackbarProvider>
 								</ConfirmProvider>
 							</MuiPickersUtilsProvider>

@@ -1,6 +1,7 @@
 import React, {useState, useContext} from 'react';
 import { Badge, makeStyles } from '@material-ui/core';
 import { deepPurple, lightGreen, grey} from '@material-ui/core/colors';
+import { connect } from 'react-redux';
 
 import Icons from './index';
 import reducerContext from 'utils/reducerContext';
@@ -78,6 +79,15 @@ export const BirthdayIndicator = ({count}) => {
     return <Indicator count={count} icon={Icons.Birthday} className={classes.birthday}></Indicator>
 }
 
-export const ErrorCount = ({ count }) => {
+const ErrorSymbol = ({ count }) => {
     return <Indicator count={count} icon={Icons.Birthday} className={classes.birthday}></Indicator>
 }
+
+const mapStateToProps = (currentState, ownProps) => {
+    return {
+        ...ownProps,
+        count: currentState.admin.errorCount
+    }
+}
+
+export const ErrorIndicator = connect(mapStateToProps)(ErrorSymbol);
