@@ -79,8 +79,11 @@ export const BirthdayIndicator = ({count}) => {
     return <Indicator count={count} icon={Icons.Birthday} className={classes.birthday}></Indicator>
 }
 
-const ErrorSymbol = ({ count }) => {
-    return <Indicator count={count} icon={Icons.Birthday} className={classes.birthday}></Indicator>
+export const RawErrorIndicator = ({ count }) => {
+    if(!count)
+        return null;
+
+    return <div>{count} application errors.</div>
 }
 
 const mapStateToProps = (currentState, ownProps) => {
@@ -90,4 +93,5 @@ const mapStateToProps = (currentState, ownProps) => {
     }
 }
 
-export const ErrorIndicator = connect(mapStateToProps)(ErrorSymbol);
+export const ErrorIndicator = connect(mapStateToProps)(RawErrorIndicator);
+
