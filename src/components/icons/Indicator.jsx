@@ -89,7 +89,6 @@ export const BirthdayIndicator = ({count}) => {
 }
 
 export const RawErrorIndicator = ({ count }) => {
-    debugger;
     if(!count)
         return null;
 
