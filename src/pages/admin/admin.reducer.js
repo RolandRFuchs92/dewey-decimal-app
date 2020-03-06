@@ -23,8 +23,6 @@ export default (currentState: initialStateModel = initialState, action: reducerA
                 errorCount: payload
             }
         default: 
-            return {
-                initialState
-            };
+            return {...currentState};
     }
 }

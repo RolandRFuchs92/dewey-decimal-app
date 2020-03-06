@@ -38,6 +38,15 @@ const useStyles = makeStyles(theme => {
             },
             fontSize: 23,
             paddingBottom: 2
+        },
+        applicationErrors: {
+            position: 'fixed',
+            bottom: 0,
+            right: 0,
+            background: 'rgba(255, 0, 0, 0.7)',
+            color: '#0a0a0a',
+            padding: '5px 5px 0px 5px',
+            borderRadius: '5px 5px 0px 0px'
         }
     }
 })
@@ -80,6 +89,7 @@ export const BirthdayIndicator = ({count}) => {
 }
 
 export const RawErrorIndicator = ({ count }) => {
+    debugger;
     if(!count)
         return null;
 
