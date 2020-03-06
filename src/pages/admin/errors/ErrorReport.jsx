@@ -69,7 +69,7 @@ export default () => {
     return <>
         <Grid container item className={classes.container} lg={3} spacing={2} direction="column">
             <Typography align="left" variant="h5" className={classes.title}>These are application errors.</Typography>
-            <Paper>
+            <Paper className={classes.fullWidth}>
                 <Grid item md={12} className={classes.errorContainer}>
                     <ErrorList isLoading={isLoading} errors={errorLogResult} />
                 </Grid>
