@@ -44,11 +44,11 @@ export function Textfield({label, defaultValue, value, onChange}){
     )
 }
 
-export const TooltipTextField = ({label, tooltip, value, handleChange}) => {
+export const TooltipTextField = ({label, tooltip, value, handleChange, ...rest}) => {
     const classes = useStyles();
     return <Grid item sm={12}>
         <Tooltip title={<span className={classes.toolTip}>{tooltip}</span>}>
-            <TextField fullWidth label={label} value={value || ''} onChange={handleChange}></TextField>
+            <TextField fullWidth label={label} value={value || ''} onChange={handleChange} {...rest}></TextField>
         </Tooltip>
     </Grid>
 }
