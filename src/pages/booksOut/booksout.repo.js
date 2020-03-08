@@ -141,6 +141,20 @@ export const countBooksOverdue = async (date = newDate()) => {
     return await all(statement, statementObject);
 }
 
+const countBooksCheckedOutTodayQuery = `SELECT COUNT(*) FROM books_out WHERE check_out_date =  STRFTIME('%Y-%m-%d', 'now')`;
+
+export const countBooksCheckedOutToday = async () => {
+    const statement = countBooksCheckedOutTodayQuery;
+    return await all(statement);
+}
+
+const countBooksCheckedInTodayQuery = `SELECT COUNT(*) FROM books_out WHERE check_in_date =  STRFTIME('%Y-%m-%d', 'now')`;
+export const countBooksCheckedInToday = async () => {
+    const statement = countBooksCheckedInTodayQuery;
+    return await all(statement);
+}
+
+
 export default repo;
 export const getBooksForSelect = getBooksSelectList;
 export const getStudentsForSelect = getSelectList;
