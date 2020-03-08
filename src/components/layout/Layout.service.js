@@ -1,4 +1,5 @@
 // @flow
+
 import ERROR_COUNT from 'pages/admin/errors/ErrorReport.constants';
 import { setError } from 'pages/admin/errors/ErrorReport.action';
 import { errorLogErrorsCount } from 'pages/admin/errors/ErrorReport.service';
@@ -15,18 +16,18 @@ async function loadErrors(dispatch){
     }
 }
 
-async function genericHomeCount(setter: Function<Promise>) {
-    return (dispatch) => {
-        const countResult = await setter();
-        dispatch(countResult);
+async function genericHomeCount(action: Number => void, getter: () => Promise ): Promise {
+    return async (dispatch) => {
+        const countResult = await getter();
+        dispatch(action(countResult));
         return Promise.resolved();
     }
 }
 
-const loadCheckoutsToday = genericHomeCount(homeActions.setCheckoutsToday);
-const loadCheckinsToday = genericHomeCount(homeActions.setCheckinsToday);
-const loadBirthdaysToday = genericHomeCount(homeActions.setBirthdayIndicator);
-const loadBooksOverdue = genericHomeCount(homeActions.setBooksOverdueIndicator);
+const loadCheckoutsToday = genericHomeCount(homeActions.setCheckoutsToday,);
+const loadCheckinsToday = genericHomeCount(homeActions.setCheckinsToday,);
+const loadBirthdaysToday = genericHomeCount(homeActions.setBirthdayIndicator,);
+const loadBooksOverdue = genericHomeCount(homeActions.setBooksOverdueIndicator, countBooksOverdue);
 
 export async function loadInitialAppState(dispatch) {
     return await Promise.all([
