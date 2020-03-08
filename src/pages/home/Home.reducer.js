@@ -1,6 +1,6 @@
 // @flow
 
-import Constants from './errors/ErrorReport.constants';
+import Constants from 'pages/home/Home.constants';
 
 const initialState = {
     checkoutsToday: 0,
@@ -9,7 +9,20 @@ const initialState = {
     booksOverdue: 0
 }
 
+declare type initialStateModel = {
+    checkoutsToday: Number,
+    checkinsToday: Number,
+    birthdaysToday: Number,
+    booksOverdue: Number
+}
+
+declare type reducerAction = {
+    type: Constants.CHECKOUTS_TODAY | Constants.CHECKINSTODAY | Constants.BIRTHDAYS_TODAY | Constants.BOOKS_OVERDUE,
+    payload: NUMBER
+}
+
 export default (currentState: initialStateModel = initialState, action: reducerAction) => {
+    debugger;
     const {type, payload} = action;
     switch (type){ 
         case Constants.CHECKOUTS_TODAY:
