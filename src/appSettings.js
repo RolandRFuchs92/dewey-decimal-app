@@ -57,8 +57,13 @@ const appSettings =  new function(){
     };
     this.formatDate = {
         from: 'yyyy-MM-dd',
-        to: 'dd MMM yyyy'
+        to: 'dd MMM yyyy',
+        errorLog: {
+            from: 'yyyy-MM-dd HH:mm:ss',
+            to: 'dd MMM yyyy h:mm:ss aaaa'
+        }
     }
+    this.databaseLocation = `${__dirname}\\${this.databaseName}`;
 }
 
 export default appSettings;

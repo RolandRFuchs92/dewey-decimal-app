@@ -1,9 +1,10 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { drawerWidth } from './Layout.config.json';
 import Drawer from './Drawer';
 import { CssBaseline, AppBar, Toolbar, Typography, IconButton } from '@material-ui/core';
 import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
+import { connect } from 'react-redux';
 
 import Teacher from 'pages/teacher/Teacher';
 import Student from 'pages/student/Student';
@@ -15,6 +16,9 @@ import Books from 'pages/books';
 import BooksOut from 'pages/booksOut';
 import context from 'utils/context';
 import Icons from 'components/icons';
+import Admin from 'pages/admin';
+
+import {loadInitialAppState} from './Layout.service.js';
 
 const useStyles = makeStyles(theme => {
 	return {
@@ -51,9 +55,15 @@ const useStyles = makeStyles(theme => {
 	}
 });
 
-export default function PermanentDrawerLeft() {
+export function PermanentDrawerLeft({dispatch}) {
 	const classes = useStyles();
 	const {state, toggleTheme, toggleScan} = useContext(context);
+
+	useEffect(() => {
+		(async () => {
+			await loadInitialAppState(dispatch)	
+		})()
+	},[])
 
 	return (
 		<div className={classes.root}>
@@ -108,6 +118,7 @@ export default function PermanentDrawerLeft() {
 								<BooksOut></BooksOut>
 							</Route>
 							<Route exact path="/admin">
+								<Admin></Admin>
 							</Route>
 						</Switch>
 					</main>
@@ -115,3 +126,5 @@ export default function PermanentDrawerLeft() {
 		</div>
 	);
 }
+
+export default connect(null, null)(PermanentDrawerLeft);

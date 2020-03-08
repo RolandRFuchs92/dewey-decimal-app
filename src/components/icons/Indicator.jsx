@@ -1,6 +1,7 @@
 import React, {useState, useContext} from 'react';
 import { Badge, makeStyles } from '@material-ui/core';
 import { deepPurple, lightGreen, grey} from '@material-ui/core/colors';
+import { connect } from 'react-redux';
 
 import Icons from './index';
 import reducerContext from 'utils/reducerContext';
@@ -37,6 +38,15 @@ const useStyles = makeStyles(theme => {
             },
             fontSize: 23,
             paddingBottom: 2
+        },
+        applicationErrors: {
+            position: 'fixed',
+            bottom: 0,
+            right: 0,
+            background: 'rgba(255, 0, 0, 0.7)',
+            padding: '5px 5px 0px 5px',
+            borderRadius: '5px 5px 0px 0px',
+            color:'white'
         }
     }
 })
@@ -77,3 +87,23 @@ export const BirthdayIndicator = ({count}) => {
     const classes = useStyles();
     return <Indicator count={count} icon={Icons.Birthday} className={classes.birthday}></Indicator>
 }
+
+export const RawErrorIndicator = ({ count }) => {
+    const classes = useStyles();
+    
+    if(!count)
+        return null;
+return <span className={classes.applicationErrors}>{Icons.Warning} {count} application errors.</span>
+}
+
+
+
+const mapStateToProps = (currentState, ownProps) => {
+    return {
+        ...ownProps,
+        count: currentState.admin.errorCount
+    }
+}
+
+export const ErrorIndicator = connect(mapStateToProps)(RawErrorIndicator);
+
