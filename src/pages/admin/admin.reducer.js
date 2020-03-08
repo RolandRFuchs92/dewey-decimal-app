@@ -11,7 +11,7 @@ declare type initialStateModel = {
 
 declare type reducerAction = {
     type: String,
-    payload: Json<any>
+    payload: Number
 }
 
 export default (currentState: initialStateModel = initialState, action: reducerAction) => {

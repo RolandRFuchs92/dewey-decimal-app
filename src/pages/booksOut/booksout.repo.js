@@ -132,6 +132,15 @@ export const getBooksOverdue = async (date = new Date()) => {
     return await all(booksOverdueQuery, statementObject);
 }
 
+export const countBooksOverdue = async (date = newDate()) => {
+    const statementObject = {
+        $date: formatDateForDbInsert(date)
+    };
+    
+    const statement = booksOverdueQuery.replace(/SELECT.*FROM/,'SELECT COUNT(*) FROM');
+    return await all(statement, statementObject);
+}
+
 export default repo;
 export const getBooksForSelect = getBooksSelectList;
 export const getStudentsForSelect = getSelectList;
