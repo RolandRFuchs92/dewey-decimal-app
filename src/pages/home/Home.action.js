@@ -3,7 +3,7 @@
 import Constants from './Home.constants.js'
 
 
-function genericAction(type) {
+function genericAction(type: String): Function {
     return function(payload){
         return {
             type,

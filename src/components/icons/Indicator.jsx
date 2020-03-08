@@ -1,3 +1,5 @@
+// @flow
+
 import React, {useState, useContext} from 'react';
 import { Badge, makeStyles } from '@material-ui/core';
 import { deepPurple, lightGreen, grey} from '@material-ui/core/colors';
@@ -95,6 +97,15 @@ export const RawErrorIndicator = ({ count }) => {
     return <span className={classes.applicationErrors}>{Icons.Warning} {count} application errors.</span>
 }
 
+const genericMapStateToProps = (stateTree, stateTreeChild) => {
+    return (currentState, ownProps) => {
+        return {
+            ...ownProps,
+            count: currentState[stateTree][stateTreeChild]
+        }
+    }
+}
+
 const mapStateToProps = (currentState, ownProps) => {
     return {
         ...ownProps,
@@ -102,6 +113,9 @@ const mapStateToProps = (currentState, ownProps) => {
     }
 }
 
-export const BirthdayIndicator = connect(mapStateToProps)(RawBirthdayIndicator);
+export const BirthdayIndicator = connect(genericMapStateToProps('home', 'birthdaysToday'))(RawBirthdayIndicator);
+// export const BirthdayIndicator = connect(genericMapStateToProps('home', 'checkoutsToday'))(RawBirthdayIndicator);
+// export const BirthdayIndicator = connect(genericMapStateToProps('home', 'checkoutsToday'))(RawBirthdayIndicator);
+// export const BirthdayIndicator = connect(genericMapStateToProps('home', 'checkoutsToday'))(RawBirthdayIndicator);
 export const ErrorIndicator = connect(mapStateToProps)(RawErrorIndicator);
 

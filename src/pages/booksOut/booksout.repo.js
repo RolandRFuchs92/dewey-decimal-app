@@ -137,7 +137,8 @@ export const countBooksOverdue = async (date = new Date()) => {
         $date: formatDateForDbInsert(date)
     };
     
-    const statement = booksOverdueQuery.replace(/SELECT.*FROM/,'SELECT COUNT(*) FROM');
+    const statement = `SELECT COUNT(*) FROM ${booksOverdueQuery.split('FROM').pop()}`
+    debugger;
     return await all(statement, statementObject);
 }
 

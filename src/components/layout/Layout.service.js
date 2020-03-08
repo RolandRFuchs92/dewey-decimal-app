@@ -17,7 +17,7 @@ async function loadErrors(dispatch){
     }
 }
 
-function genericHomeCount(action: Number => void, getter: () => Promise ): Promise {
+function genericHomeCount(action: JSON, getter: () => Promise ): Promise {
     return async (dispatch) => {
         const countResult = await getter();
         dispatch(action(countResult));
