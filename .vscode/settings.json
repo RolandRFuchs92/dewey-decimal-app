@@ -1,5 +1,11 @@
 {
   "javascript.updateImportsOnFileMove.enabled": "always",
   "javascript.preferences.importModuleSpecifier": "relative",
-  "flow.useNPMPackagedFlow": true
+  // "flow.useNPMPackagedFlow": true,
+  "editor.quickSuggestions": {
+    "other": true,
+    "comments": false,
+    "strings": false
+  },
+  "editor.quickSuggestionsDelay": 10,
 }
