@@ -93,7 +93,7 @@ export const RawErrorIndicator = ({ count }) => {
     
     if(!count)
         return null;
-    return <span className={classes.applicationErrors}  >{count} application errors.</span>
+return <span className={classes.applicationErrors}>{Icons.Warning} {count} application errors.</span>
 }
 
 

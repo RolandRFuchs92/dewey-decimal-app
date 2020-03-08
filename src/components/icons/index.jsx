@@ -33,7 +33,8 @@ import {
 	faFolderMinus,
 	faUserClock,
 	faMobileAlt,
-	faRecordVinyl
+	faRecordVinyl,
+	faExclamationTriangle
 } from '@fortawesome/free-solid-svg-icons';
 
 const useStyles = makeStyles(theme => ({
@@ -46,6 +47,7 @@ function CreateIcon(icon){
 	return <FontAwesomeIcon icon={icon}></FontAwesomeIcon>
 }
 
+const Warning = CreateIcon(faExclamationTriangle);
 const LaptopCamera = CreateIcon(faRecordVinyl);
 const UsePhone = CreateIcon(faMobileAlt);
 const Overdue = CreateIcon(faUserClock);
@@ -99,5 +101,6 @@ export default {
 	Checkout,
 	Overdue,
 	UsePhone,
-	LaptopCamera
+	LaptopCamera,
+	Warning
 }
