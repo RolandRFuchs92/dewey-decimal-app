@@ -1,9 +1,11 @@
 // @flow
+
 import {ERROR_COUNT} from './ErrorReport.constants';
 
-export const incrementError = (payload) => {
-    return {
+export const setError = (count: Number) => {
+    const action =  {
         type: ERROR_COUNT,
-        payload
-    }
+        payload: count
+    };
+    return action;
 }

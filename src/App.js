@@ -5,7 +5,8 @@ import { MuiPickersUtilsProvider } from '@material-ui/pickers';
 import DateFnsUtils from '@date-io/date-fns';
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core';
 import { Provider as GlobalProvider} from 'react-redux';
-import { createStore } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
+import ReduxThunk  from 'redux-thunk';
 
 import MainLayout from './components/layout/Layout';
 import {SnackbarProvider } from 'notistack';
@@ -16,7 +17,10 @@ import Scan from 'pages/home/Scan';
 import reduxReducers from 'utils/redux/rootReducer';
 import { ErrorIndicator } from 'components/icons/Indicator';
 
-const store = createStore(reduxReducers);
+const store = createStore(
+	reduxReducers, 
+	applyMiddleware(ReduxThunk)
+);
 
 const initialState = {
 	pageTitle: 'Home',

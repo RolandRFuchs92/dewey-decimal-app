@@ -40,3 +40,12 @@ export const processErrorLog = async () => {
         });
     })
 }
+
+export const errorLogErrorsCount = async () => {
+    return await new Promise((res, rej) => {
+        fs.readFile('dewey.error.log', 'utf8', (err, data) => {
+            if(err) rej(err);
+            res(typeof data === 'string' ? data.split('\r\n').length : 0);
+        })
+    })
+}
