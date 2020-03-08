@@ -90,13 +90,10 @@ export const BirthdayIndicator = ({count}) => {
 
 export const RawErrorIndicator = ({ count }) => {
     const classes = useStyles();
-    
     if(!count)
         return null;
-return <span className={classes.applicationErrors}>{Icons.Warning} {count} application errors.</span>
+    return <span className={classes.applicationErrors}>{Icons.Warning} {count} application errors.</span>
 }
-
-
 
 const mapStateToProps = (currentState, ownProps) => {
     return {
