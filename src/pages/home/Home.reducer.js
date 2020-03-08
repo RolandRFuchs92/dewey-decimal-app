@@ -22,7 +22,6 @@ declare type reducerAction = {
 }
 
 export default (currentState: initialStateModel = initialState, action: reducerAction) => {
-    debugger;
     const {type, payload} = action;
     switch (type){ 
         case Constants.CHECKOUTS_TODAY:

@@ -132,7 +132,7 @@ export const getBooksOverdue = async (date = new Date()) => {
     return await all(booksOverdueQuery, statementObject);
 }
 
-export const countBooksOverdue = async (date = newDate()) => {
+export const countBooksOverdue = async (date = new Date()) => {
     const statementObject = {
         $date: formatDateForDbInsert(date)
     };

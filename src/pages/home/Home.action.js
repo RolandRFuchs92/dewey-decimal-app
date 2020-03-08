@@ -5,8 +5,10 @@ import Constants from './Home.constants.js'
 
 function genericAction(type) {
     return function(payload){
-        type,
-        payload
+        return {
+            type,
+            payload
+        }
     }   
 }
 

@@ -4,8 +4,9 @@ import ERROR_COUNT from 'pages/admin/errors/ErrorReport.constants';
 import { setError } from 'pages/admin/errors/ErrorReport.action';
 import { errorLogErrorsCount } from 'pages/admin/errors/ErrorReport.service';
 
-import { countBooksOverdue } from 'pages/booksOut/booksout.repo';
+import { countBooksCheckedOutToday, countBooksCheckedInToday, countBooksOverdue } from 'pages/booksOut/booksout.repo';
 import homeActions from 'pages/home/Home.action.js';
+
 
 async function loadErrors(dispatch){
     try {
@@ -24,18 +25,18 @@ async function genericHomeCount(action: Number => void, getter: () => Promise ):
     }
 }
 
-const loadCheckoutsToday = genericHomeCount(homeActions.setCheckoutsToday,);
-const loadCheckinsToday = genericHomeCount(homeActions.setCheckinsToday,);
-const loadBirthdaysToday = genericHomeCount(homeActions.setBirthdayIndicator,);
+const loadCheckoutsToday = genericHomeCount(homeActions.setCheckoutsToday, countBooksCheckedOutToday);
+const loadCheckinsToday = genericHomeCount(homeActions.setCheckinsToday, countBooksCheckedInToday);
 const loadBooksOverdue = genericHomeCount(homeActions.setBooksOverdueIndicator, countBooksOverdue);
+const loadBirthdaysToday = genericHomeCount(homeActions.setBirthdayIndicator,);
 
 export async function loadInitialAppState(dispatch) {
     return await Promise.all([
         loadErrors(dispatch),
         loadCheckoutsToday(dispatch),
         loadCheckinsToday(dispatch),
-        loadBirthdaysToday(dispatch),
         loadBooksOverdue(dispatch),
+        loadBirthdaysToday(dispatch),
     ])
 }
 

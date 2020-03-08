@@ -83,7 +83,7 @@ export const OverdueIndicator = ({count}) => {
     const classes = useStyles();
     return <Indicator count={count} icon={Icons.Overdue} className={classes.Overdue}></Indicator>
 }
-export const BirthdayIndicator = ({count}) => {
+export const RawBirthdayIndicator = ({count}) => {
     const classes = useStyles();
     return <Indicator count={count} icon={Icons.Birthday} className={classes.birthday}></Indicator>
 }
@@ -102,5 +102,6 @@ const mapStateToProps = (currentState, ownProps) => {
     }
 }
 
+export const BirthdayIndicator = connect(mapStateToProps)(RawBirthdayIndicator);
 export const ErrorIndicator = connect(mapStateToProps)(RawErrorIndicator);
 
