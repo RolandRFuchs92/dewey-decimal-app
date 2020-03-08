@@ -17,18 +17,18 @@ async function loadErrors(dispatch){
     }
 }
 
-async function genericHomeCount(action: Number => void, getter: () => Promise ): Promise {
+function genericHomeCount(action: Number => void, getter: () => Promise ): Promise {
     return async (dispatch) => {
         const countResult = await getter();
         dispatch(action(countResult));
-        return Promise.resolved();
+        return Promise.resolve();
     }
 }
 
 const loadCheckoutsToday = genericHomeCount(homeActions.setCheckoutsToday, countBooksCheckedOutToday);
 const loadCheckinsToday = genericHomeCount(homeActions.setCheckinsToday, countBooksCheckedInToday);
 const loadBooksOverdue = genericHomeCount(homeActions.setBooksOverdueIndicator, countBooksOverdue);
-const loadBirthdaysToday = genericHomeCount(homeActions.setBirthdayIndicator,);
+const loadBirthdaysToday = genericHomeCount(homeActions.setBirthdayIndicator, () => {});
 
 export async function loadInitialAppState(dispatch) {
     return await Promise.all([
