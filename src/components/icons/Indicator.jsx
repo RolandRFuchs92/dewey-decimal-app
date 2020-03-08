@@ -44,9 +44,9 @@ const useStyles = makeStyles(theme => {
             bottom: 0,
             right: 0,
             background: 'rgba(255, 0, 0, 0.7)',
-            color: '#0a0a0a',
             padding: '5px 5px 0px 5px',
-            borderRadius: '5px 5px 0px 0px'
+            borderRadius: '5px 5px 0px 0px',
+            color:'white'
         }
     }
 })
@@ -89,11 +89,14 @@ export const BirthdayIndicator = ({count}) => {
 }
 
 export const RawErrorIndicator = ({ count }) => {
+    const classes = useStyles();
+    
     if(!count)
         return null;
-
-    return <div>{count} application errors.</div>
+    return <span className={classes.applicationErrors}  >{count} application errors.</span>
 }
+
+
 
 const mapStateToProps = (currentState, ownProps) => {
     return {
