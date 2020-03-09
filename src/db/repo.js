@@ -87,7 +87,7 @@ export function getDatabase() {
 	return db;
 }
 
-export function single() {
+export function single(statement, statementObject) {
     const db = getDatabase();
     const stamp = getStamp();
     log.info(`${stamp} Running (single) statement ${statement.substr(0,1024)} with params ${JSON.stringify(statementObject)}.`);
