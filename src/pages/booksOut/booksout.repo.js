@@ -1,11 +1,12 @@
-import {format, addBusinessDays, addDays} from 'date-fns';
-
-import repoBase from 'components/page/repo.base';
-import { getBooksSelectList } from 'pages/books/book.repo';
-import { getSelectList } from 'pages/student/Student.repo';
-import { all, run } from 'db/repo';
-import appSettings from 'appSettings';
-import { calculateReturnOnDateForDbInsert, formatDateForDbInsert } from 'utils/businessRules';
+import repoBase from "components/page/repo.base";
+import { getBooksSelectList } from "pages/books/book.repo";
+import { getSelectList } from "pages/student/Student.repo";
+import { all, run } from "db/repo";
+import appSettings from "appSettings";
+import {
+  calculateReturnOnDateForDbInsert,
+  formatDateForDbInsert
+} from "utils/businessRules";
 
 const getAllQuery = `
 SELECT
@@ -28,8 +29,8 @@ JOIN
 
 const repo = repoBase(`books_out`);
 repo.getAll = async () => {
-    const result =  await all(getAllQuery);
-    return result;
+  const result = await all(getAllQuery);
+  return result;
 };
 
 const checkoutBookQuery = `
@@ -38,14 +39,14 @@ const checkoutBookQuery = `
 `;
 
 export const checkout = async (student_id, book_id) => {
-    const statementObject = {
-        $student_id: student_id,
-        $book_id: book_id,
-        $return_on: calculateReturnOnDateForDbInsert(),
-        $check_out_date: formatDateForDbInsert()
-    };
-    await run(checkoutBookQuery, statementObject);
-}
+  const statementObject = {
+    $student_id: student_id,
+    $book_id: book_id,
+    $return_on: calculateReturnOnDateForDbInsert(),
+    $check_out_date: formatDateForDbInsert()
+  };
+  await run(checkoutBookQuery, statementObject);
+};
 
 const checkinBookQuery = `
     UPDATE books_out 
@@ -56,12 +57,12 @@ const checkinBookQuery = `
 `;
 
 export const checkin = async (books_out_id, check_in_date = new Date()) => {
-    const statementObject = {
-        $books_out_id: books_out_id,
-        $check_in_date: formatDateForDbInsert(check_in_date)
-    };
-    await run(checkinBookQuery, statementObject);
-}
+  const statementObject = {
+    $books_out_id: books_out_id,
+    $check_in_date: formatDateForDbInsert(check_in_date)
+  };
+  await run(checkinBookQuery, statementObject);
+};
 
 const scannsQuery = `
 SELECT
@@ -94,11 +95,11 @@ WHERE
     OR STRFTIME('%Y-%m-%d', bo.check_out_date) = STRFTIME('%Y-%m-%d', $date)
 `;
 export const getScans = async (date = new Date()) => {
-    const statementObject = {
-        $date: formatDateForDbInsert(date)
-    };
-    return await all(scannsQuery, statementObject);
-}
+  const statementObject = {
+    $date: formatDateForDbInsert(date)
+  };
+  return await all(scannsQuery, statementObject);
+};
 
 const booksOverdueQuery = `
 SELECT
@@ -126,37 +127,36 @@ WHERE
 `;
 
 export const getBooksOverdue = async (date = new Date()) => {
-    const statementObject = {
-        $date: formatDateForDbInsert(date)
-    };
-    return await all(booksOverdueQuery, statementObject);
-}
+  const statementObject = {
+    $date: formatDateForDbInsert(date)
+  };
+  return await all(booksOverdueQuery, statementObject);
+};
 
 export const countBooksOverdue = async (date = new Date()) => {
-    const statementObject = {
-        $date: formatDateForDbInsert(date)
-    };
-    
-    const statement = `SELECT COUNT(*) FROM ${booksOverdueQuery.split('FROM').pop()}`
-    debugger;
-    return await all(statement, statementObject);
-}
+  const statementObject = {
+    $date: formatDateForDbInsert(date)
+  };
+
+  const statement = `SELECT COUNT(*) FROM ${booksOverdueQuery
+    .split("FROM")
+    .pop()}`;
+  return await all(statement, statementObject);
+};
 
 const countBooksCheckedOutTodayQuery = `SELECT COUNT(*) FROM books_out WHERE check_out_date =  STRFTIME('%Y-%m-%d', 'now')`;
 
 export const countBooksCheckedOutToday = async () => {
-    const statement = countBooksCheckedOutTodayQuery;
-    return await all(statement);
-}
+  const statement = countBooksCheckedOutTodayQuery;
+  return await all(statement);
+};
 
 const countBooksCheckedInTodayQuery = `SELECT COUNT(*) FROM books_out WHERE check_in_date =  STRFTIME('%Y-%m-%d', 'now')`;
 export const countBooksCheckedInToday = async () => {
-    const statement = countBooksCheckedInTodayQuery;
-    return await all(statement);
-}
-
+  const statement = countBooksCheckedInTodayQuery;
+  return await all(statement);
+};
 
 export default repo;
 export const getBooksForSelect = getBooksSelectList;
 export const getStudentsForSelect = getSelectList;
-
