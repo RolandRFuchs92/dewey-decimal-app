@@ -86,3 +86,23 @@ export function getDatabase() {
 	log.info('Opening database.');
 	return db;
 }
+
+export function single() {
+    const db = getDatabase();
+    const stamp = getStamp();
+    log.info(`${stamp} Running (single) statement ${statement.substr(0,1024)} with params ${JSON.stringify(statementObject)}.`);
+    return new Promise((res, rej) => {
+        db.all(statement, statementObject, (err, rows) => {
+            db.close();
+            log.info(`${stamp} Closed Db.`);
+            if(err) {
+                log.error(`${stamp} ${err}`);
+                rej(err);
+            }
+            log.info(`${stamp} Returned first row of ${rows.length} row(s)`);
+            if(!rows.length) res(null);
+            const result = Object.values(rows[0])[0];
+            rows(result);
+        });
+    })
+}
