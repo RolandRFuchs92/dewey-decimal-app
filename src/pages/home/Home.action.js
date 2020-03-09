@@ -1,13 +1,12 @@
-import Constants from './Home.constants.js'
-
+import Constants from "./Home.constants.js";
 
 function genericAction(type) {
-    return function(payload){
-        return {
-            type,
-            payload
-        }
-    }   
+  return function(payload) {
+    return {
+      type,
+      payload
+    };
+  };
 }
 
 export const setBirthdayIndicator = genericAction(Constants.BIRTHDAYS_TODAY);
@@ -16,8 +15,8 @@ export const setCheckoutsToday = genericAction(Constants.CHECKOUTS_TODAY);
 export const setCheckinsToday = genericAction(Constants.CHECKINS_TODAY);
 
 export default {
-    setBirthdayIndicator,
-    setBooksOverdueIndicator,
-    setCheckinsToday,
-    setCheckoutsToday
-}
+  setBirthdayIndicator,
+  setBooksOverdueIndicator,
+  setCheckinsToday,
+  setCheckoutsToday
+};
