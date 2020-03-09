@@ -1,9 +1,7 @@
-// @flow
-
 import Constants from './Home.constants.js'
 
 
-function genericAction(type: String): Function {
+function genericAction(type) {
     return function(payload){
         return {
             type,

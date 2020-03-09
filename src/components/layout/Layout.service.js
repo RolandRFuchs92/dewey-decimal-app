@@ -1,5 +1,3 @@
-// @flow
-
 import ERROR_COUNT from 'pages/admin/errors/ErrorReport.constants';
 import { setError } from 'pages/admin/errors/ErrorReport.action';
 import { errorLogErrorsCount } from 'pages/admin/errors/ErrorReport.service';
@@ -17,7 +15,7 @@ async function loadErrors(dispatch){
     }
 }
 
-function genericHomeCount(action: JSON, getter: () => Promise ): Promise {
+function genericHomeCount(action, getter ) {
     return async (dispatch) => {
         const countResult = await getter();
         dispatch(action(countResult));

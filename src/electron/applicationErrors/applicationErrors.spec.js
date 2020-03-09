@@ -1,5 +1,3 @@
-// @flow
-
 const admZip = require("adm-zip");
 const { write } = require("fs-jetpack");
 
