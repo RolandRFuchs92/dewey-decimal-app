@@ -2,7 +2,7 @@ import { snakeCase, compact, lowerCase } from "lodash";
 import { all, run } from "db/repo";
 import log from "utils/logger";
 
-const getColumnsStatement = tableName => `PRAGMA table_info(${tableName})`;
+const getColumnsStatement = (tableName: string) => `PRAGMA table_info(${tableName})`;
 const getTablesStatement = `
 	SELECT
 		name
@@ -12,7 +12,7 @@ const getTablesStatement = `
 		type='table'
 `;
 
-export async function getColumnNames(tableName) {
+export async function getColumnNames(tableName: string) {
   try {
     const columnStatement = getColumnsStatement(tableName);
     return await all(columnStatement);
@@ -21,28 +21,28 @@ export async function getColumnNames(tableName) {
   }
 }
 
-export function jsonToStatementObject(obj) {
+export function jsonToStatementObject(obj: object) {
   return Object.fromEntries(
     Object.entries(obj).map(([key, val]) => [`$${key}`, val])
   );
 }
 
-export function getStatementColRefs(obj) {
+export function getStatementColRefs(obj: object) {
   return Object.keys(obj)
     .map(i => `$${i}`)
     .join(",");
 }
 
-export function objectKeysToSnakeCaseString(obj) {
+export function objectKeysToSnakeCaseString(obj: object) {
   return Object.keys(obj)
     .map(i => snakeCase(i))
     .join(",");
 }
 
 export function objectToUpdateStatement(
-  obj,
-  tableName,
-  primaryKeyName = `${tableName}_id`
+  obj: object,
+  tableName: string,
+  primaryKeyName: string = `${tableName}_id`
 ) {
   const setConditions = compact(
     Object.entries(obj).map(([key, val]) => {
@@ -61,7 +61,7 @@ export function objectToUpdateStatement(
 	`;
 }
 
-export function objectToInsertStatement(obj, tableName) {
+export function objectToInsertStatement(obj: object, tableName: string) {
   const columns = objectKeysToSnakeCaseString(obj);
   const statementColRefs = getStatementColRefs(obj);
   let statement = `INSERT INTO ${tableName} (${columns})
@@ -74,9 +74,9 @@ export async function getAllTablesInDb() {
 }
 
 export async function addOrUpdate(
-  object,
-  tableName,
-  pkField = `${tableName}_id`
+  object: { Edit?: any, Delete?: any, [key: string]: any },
+  tableName: string,
+  pkField: string = `${tableName}_id`
 ) {
   object.Edit && delete object.Edit;
   object.Delete && delete object.Delete;
@@ -89,7 +89,7 @@ export async function addOrUpdate(
   return "update";
 }
 
-export async function addToDb(object, tableName) {
+export async function addToDb(object: object, tableName: string) {
   const statement = objectToInsertStatement(object, tableName);
   const statementObject = jsonToStatementObject(object);
 
@@ -97,7 +97,7 @@ export async function addToDb(object, tableName) {
   return await run(statement, statementObject);
 }
 
-export async function updateDb(object, tableName, pkField = `${tableName}_id`) {
+export async function updateDb(object: object, tableName: string, pkField: string = `${tableName}_id`) {
   const statement = objectToUpdateStatement(object, tableName, pkField);
   const statementObject = jsonToStatementObject(object);
 
@@ -105,7 +105,7 @@ export async function updateDb(object, tableName, pkField = `${tableName}_id`) {
   return await run(statement, statementObject);
 }
 
-export async function getAll(tableName, where = "") {
+export async function getAll(tableName: string, where: string = "") {
   const statement = `
 		SELECT
 			*
@@ -117,7 +117,7 @@ export async function getAll(tableName, where = "") {
   return await all(statement);
 }
 
-export function deleteRow(tableName, pkField) {
+export function deleteRow(tableName: string, pkField: string) {
   const buildStatement = `
 		DELETE
 		FROM
@@ -126,7 +126,7 @@ export function deleteRow(tableName, pkField) {
 			${pkField}=
 	`;
 
-  return async id => {
+  return async (id: string) => {
     const statement = `${buildStatement}${id}`;
     log.info(`Running generic DELETE statement.`);
     return await run(statement);
