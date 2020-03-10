@@ -1,20 +1,14 @@
 import React, { useEffect, useState, useContext } from "react";
 import { Button, makeStyles, Grid, Paper, Typography } from "@material-ui/core";
-import Proptypes from "prop-types";
 
-import { Provider, reducer, constants } from "./Context";
+import { Provider } from "./Context";
 import { getScans } from "pages/booksOut/booksout.repo";
 import ScansToday from "./ScansTemplate";
 import BirthdaysToday from "./BirthdaysToday";
 import Icons from "components/icons";
-import Scan from "./Scan";
 import Overdue from "./Overdue";
 import { formatDateForDbInsert } from "utils/businessRules";
 import rootContext from "utils/context";
-import reducerContext, {
-  checkoutIndicatorAction,
-  checkinIndicatorAction
-} from "utils/reducerContext";
 import {
   CheckinIndicator,
   CheckoutIndicator,
@@ -69,7 +63,6 @@ export default () => {
   const classes = useStyles();
   const [scans, setScans] = useState({});
   const { toggleScan, setUpdateScans } = useContext(rootContext);
-  const [indicators, dispatch] = useContext(reducerContext);
 
   const resetScansToday = async () => {
     const rawScans = await getScans();
@@ -79,8 +72,6 @@ export default () => {
     const checkouts = rawScans.filter(
       ({ check_out_date }) => check_out_date === formatDateForDbInsert()
     );
-    dispatch(checkoutIndicatorAction(checkouts.length));
-    dispatch(checkinIndicatorAction(checkins.length));
     setScans({
       checkins,
       checkouts
@@ -95,7 +86,7 @@ export default () => {
     return () => {
       setUpdateScans({ update: () => {} });
     };
-  }, []);
+  }, [setUpdateScans]);
 
   return (
     <Provider value={resetScansToday}>
@@ -111,35 +102,19 @@ export default () => {
           Checkin / Checkout
         </Button>
 
-        <HomePageTile
-          title="Checkouts Today"
-          indicator={
-            <CheckoutIndicator count={indicators.checkoutsTodayCount} />
-          }
-        >
+        <HomePageTile title="Checkouts Today" indicator={<CheckoutIndicator />}>
           <ScansToday scans={scans.checkouts}></ScansToday>
         </HomePageTile>
 
-        <HomePageTile
-          title="Checkins Today"
-          indicator={<CheckinIndicator count={indicators.checkinsTodayCount} />}
-        >
+        <HomePageTile title="Checkins Today" indicator={<CheckinIndicator />}>
           <ScansToday scans={scans.checkins}></ScansToday>
         </HomePageTile>
 
-        <HomePageTile
-          title="Books Overdue"
-          indicator={<OverdueIndicator count={indicators.booksOverdueCount} />}
-        >
+        <HomePageTile title="Books Overdue" indicator={<OverdueIndicator />}>
           <Overdue></Overdue>
         </HomePageTile>
 
-        <HomePageTile
-          title="Birthdays Today"
-          indicator={
-            <BirthdayIndicator count={indicators.birthdaysTodayCount} />
-          }
-        >
+        <HomePageTile title="Birthdays Today" indicator={<BirthdayIndicator />}>
           <BirthdaysToday></BirthdaysToday>
         </HomePageTile>
       </Grid>
@@ -168,10 +143,3 @@ const HomePageTile = ({ title, titleComponent, children, indicator }) => {
     </Grid>
   );
 };
-
-// HomePageTile.propTypes = {
-//     title: Proptypes.string,
-//     titleComponent: Proptypes.node,
-//     children: Proptypes.element,
-//     indicator: Proptypes.element
-// }
