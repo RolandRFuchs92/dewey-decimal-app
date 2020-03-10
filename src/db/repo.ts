@@ -3,7 +3,7 @@ import appSettings from "appSettings";
 
 const getStamp = () => `Stamp[${new Date().getTime()}] -`;
 
-export const run = async (statement, statementObject = {}) => {
+export const run = async (statement: string, statementObject?: object ) => {
   return await new Promise((res, rej) => {
     const db = getDatabase();
     const stamp = getStamp();
@@ -13,7 +13,7 @@ export const run = async (statement, statementObject = {}) => {
       )}.`
     );
 
-    db.run(statement, statementObject, err => {
+    db.run(statement, statementObject, (err: object)  => {
       db.close();
       log.info(`${stamp} Closed Db.`);
       if (err) {
@@ -27,7 +27,7 @@ export const run = async (statement, statementObject = {}) => {
   });
 };
 
-export const all = (statement, statementObject) => {
+export const all = (statement: string, statementObject?: object) => {
   const db = getDatabase();
   const stamp = getStamp();
   log.info(
@@ -37,7 +37,7 @@ export const all = (statement, statementObject) => {
     )} with params ${JSON.stringify(statementObject)}.`
   );
   return new Promise((res, rej) => {
-    db.all(statement, statementObject, (err, rows) => {
+    db.all(statement, statementObject, (err: object, rows: object[]) => {
       db.close();
       log.info(`${stamp} Closed Db.`);
       if (err) {
@@ -50,13 +50,13 @@ export const all = (statement, statementObject) => {
   });
 };
 
-export const exec = statement => {
+export const exec = (statement: string) => {
   return new Promise((res, rej) => {
     const db = getDatabase();
     const stamp = getStamp();
     log.info(`${stamp} Running statement - \n\n${statement}\n\n with params.`);
 
-    db.exec(statement, err => {
+    db.exec(statement, (err: object) => {
       db.close();
       log.info(`${stamp} Closed Db.`);
       if (err) {
@@ -77,7 +77,7 @@ export function getDatabase() {
   return db;
 }
 
-export function single(statement, statementObject) {
+export function single(statement: string, statementObject?: object) {
   const db = getDatabase();
   const stamp = getStamp();
   log.info(
@@ -87,7 +87,7 @@ export function single(statement, statementObject) {
     )} with params ${JSON.stringify(statementObject)}.`
   );
   return new Promise((res, rej) => {
-    db.all(statement, statementObject, (err, rows) => {
+    db.all(statement, statementObject, (err: object, rows: object[]) => {
       db.close();
       log.info(`${stamp} Closed Db.`);
       if (err) {

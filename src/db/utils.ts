@@ -14,7 +14,7 @@ const getTablesStatement = `
 
 export async function getColumnNames(tableName: string) {
   try {
-    const columnStatement = getColumnsStatement(tableName);
+    const columnStatement: string = getColumnsStatement(tableName);
     return await all(columnStatement);
   } catch (e) {
     throw e;
