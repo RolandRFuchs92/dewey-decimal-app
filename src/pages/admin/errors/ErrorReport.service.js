@@ -1,7 +1,5 @@
-// @flow
 import appSettings from 'appSettings';
 import { trim } from 'lodash'
-//$FlowFixMe
 import { format, parse } from 'date-fns';
 import log from 'utils/logger';
 
