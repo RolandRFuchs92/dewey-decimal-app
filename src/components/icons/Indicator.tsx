@@ -5,6 +5,7 @@ import { connect } from "react-redux";
 
 import Icons from "./index";
 import reducerContext from "utils/reducerContext";
+import { nativeImage } from "electron";
 
 const useStyles = makeStyles(theme => {
   return {
@@ -65,7 +66,13 @@ export default () => {
   );
 };
 
-export const Indicator = ({ count, icon, className }) => {
+type indicatorRootModel = {
+  count: number;
+  icon: JSX.Element;
+  className: string
+}
+
+export const Indicator = ({ count, icon, className }: indicatorRootModel) => {
   return (
     <div className={className}>
       <Badge badgeContent={count} color="secondary">
@@ -75,7 +82,11 @@ export const Indicator = ({ count, icon, className }) => {
   );
 };
 
-export const RawCheckinIndicator = ({ count }) => {
+type indicatorModel = {
+  count: number
+}
+
+export const RawCheckinIndicator = ({ count }: indicatorModel) => {
   const classes = useStyles();
   return (
     <Indicator
@@ -85,7 +96,7 @@ export const RawCheckinIndicator = ({ count }) => {
     ></Indicator>
   );
 };
-export const RawCheckoutIndicator = ({ count }) => {
+export const RawCheckoutIndicator = ({ count }: indicatorModel) => {
   const classes = useStyles();
   return (
     <Indicator
@@ -95,7 +106,7 @@ export const RawCheckoutIndicator = ({ count }) => {
     ></Indicator>
   );
 };
-export const RawOverdueIndicator = ({ count }) => {
+export const RawOverdueIndicator = ({ count }: indicatorModel) => {
   const classes = useStyles();
   return (
     <Indicator
@@ -105,7 +116,7 @@ export const RawOverdueIndicator = ({ count }) => {
     ></Indicator>
   );
 };
-export const RawBirthdayIndicator = ({ count }) => {
+export const RawBirthdayIndicator = ({ count }: indicatorModel) => {
   const classes = useStyles();
   return (
     <Indicator
@@ -116,7 +127,7 @@ export const RawBirthdayIndicator = ({ count }) => {
   );
 };
 
-export const RawErrorIndicator = ({ count }) => {
+export const RawErrorIndicator = ({ count }: indicatorModel) => {
   const classes = useStyles();
   if (!count) return null;
   return (
@@ -126,8 +137,8 @@ export const RawErrorIndicator = ({ count }) => {
   );
 };
 
-const genericMapStateToProps = (stateTree, stateTreeChild) => {
-  return (currentState, ownProps) => {
+const genericMapStateToProps = (stateTree: string, stateTreeChild: string) => {
+  return (currentState: { [key: string]: any; }, ownProps: { [key: string]: any; }) => {
     return {
       ...ownProps,
       count: currentState[stateTree][stateTreeChild]
