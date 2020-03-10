@@ -75,7 +75,7 @@ export const Indicator = ({ count, icon, className }) => {
   );
 };
 
-export const CheckinIndicator = ({ count }) => {
+export const RawCheckinIndicator = ({ count }) => {
   const classes = useStyles();
   return (
     <Indicator
@@ -85,7 +85,7 @@ export const CheckinIndicator = ({ count }) => {
     ></Indicator>
   );
 };
-export const CheckoutIndicator = ({ count }) => {
+export const RawCheckoutIndicator = ({ count }) => {
   const classes = useStyles();
   return (
     <Indicator
@@ -135,20 +135,18 @@ const genericMapStateToProps = (stateTree, stateTreeChild) => {
   };
 };
 
-const mapStateToProps = (currentState, ownProps) => {
-  return {
-    ...ownProps,
-    count: currentState.admin.errorCount
-  };
-};
-
 export const BirthdayIndicator = connect(
   genericMapStateToProps("home", "birthdaysToday")
 )(RawBirthdayIndicator);
-
 export const OverdueIndicator = connect(
   genericMapStateToProps("home", "booksOverdue")
 )(RawOverdueIndicator);
-// export const BirthdayIndicator = connect(genericMapStateToProps('home', 'checkoutsToday'))(RawBirthdayIndicator);
-// export const BirthdayIndicator = connect(genericMapStateToProps('home', 'checkoutsToday'))(RawBirthdayIndicator);
-export const ErrorIndicator = connect(mapStateToProps)(RawErrorIndicator);
+export const CheckoutIndicator = connect(
+  genericMapStateToProps("home", "checkoutsToday")
+)(RawCheckoutIndicator);
+export const CheckinIndicator = connect(
+  genericMapStateToProps("home", "checkinsToday")
+)(RawCheckinIndicator);
+export const ErrorIndicator = connect(
+  genericMapStateToProps("admin", "errorCount")
+)(RawErrorIndicator);
