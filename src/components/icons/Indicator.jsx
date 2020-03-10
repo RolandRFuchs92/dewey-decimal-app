@@ -95,7 +95,7 @@ export const CheckoutIndicator = ({ count }) => {
     ></Indicator>
   );
 };
-export const OverdueIndicator = ({ count }) => {
+export const RawOverdueIndicator = ({ count }) => {
   const classes = useStyles();
   return (
     <Indicator
@@ -145,7 +145,10 @@ const mapStateToProps = (currentState, ownProps) => {
 export const BirthdayIndicator = connect(
   genericMapStateToProps("home", "birthdaysToday")
 )(RawBirthdayIndicator);
-// export const BirthdayIndicator = connect(genericMapStateToProps('home', 'checkoutsToday'))(RawBirthdayIndicator);
+
+export const OverdueIndicator = connect(
+  genericMapStateToProps("home", "booksOverdue")
+)(RawOverdueIndicator);
 // export const BirthdayIndicator = connect(genericMapStateToProps('home', 'checkoutsToday'))(RawBirthdayIndicator);
 // export const BirthdayIndicator = connect(genericMapStateToProps('home', 'checkoutsToday'))(RawBirthdayIndicator);
 export const ErrorIndicator = connect(mapStateToProps)(RawErrorIndicator);
