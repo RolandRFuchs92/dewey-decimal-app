@@ -115,9 +115,8 @@ export function single(statement, statementObject) {
       }
       log.info(`${stamp} Returned first row of ${rows.length} row(s)`);
       if (!rows.length) res(null);
-      debugger;
       const result = Object.values(rows[0])[0];
-      rows(result);
+      res(result);
     });
   });
 }
