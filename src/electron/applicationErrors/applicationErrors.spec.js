@@ -15,7 +15,7 @@ describe("applicationErrors", () => {
 
   it("should return false and a message if no path is provided", () => {
     const testSubject = require("./applicationErrors");
-    const errs: Array<err> = [{}, {}];
+    const errs = [{}, {}];
 
     const result = testSubject.packageErrors("", errs);
 
@@ -47,7 +47,7 @@ describe("applicationErrors", () => {
 
     const testSubject = require("./applicationErrors");
     const path = "aa";
-    const errorList: Array<err> = [{}, {}];
+    const errorList = [{}, {}];
 
     const result = testSubject.packageErrors(path, errorList);
 
@@ -67,7 +67,7 @@ describe("applicationErrors", () => {
       }
     }));
 
-    const errs: Array<err> = [{}, {}];
+    const errs = [{}, {}];
     const result = testSubject.packageErrors("aa", errs);
 
     expect(result.message).toBe(

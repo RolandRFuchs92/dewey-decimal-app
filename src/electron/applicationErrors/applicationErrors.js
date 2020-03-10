@@ -1,4 +1,3 @@
-// const log = require('utils/logger');
 const admZip = require("adm-zip");
 const { write } = require("fs-jetpack");
 
