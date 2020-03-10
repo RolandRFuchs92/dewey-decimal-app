@@ -1,7 +1,7 @@
 import repoBase from "components/page/repo.base";
 import { getBooksSelectList } from "pages/books/book.repo";
 import { getSelectList } from "pages/student/Student.repo";
-import { all, run } from "db/repo";
+import { all, run, single } from "db/repo";
 import appSettings from "appSettings";
 import {
   calculateReturnOnDateForDbInsert,
@@ -141,20 +141,20 @@ export const countBooksOverdue = async (date = new Date()) => {
   const statement = `SELECT COUNT(*) FROM ${booksOverdueQuery
     .split("FROM")
     .pop()}`;
-  return await all(statement, statementObject);
+  return await single(statement, statementObject);
 };
 
 const countBooksCheckedOutTodayQuery = `SELECT COUNT(*) FROM books_out WHERE check_out_date =  STRFTIME('%Y-%m-%d', 'now')`;
 
 export const countBooksCheckedOutToday = async () => {
   const statement = countBooksCheckedOutTodayQuery;
-  return await all(statement);
+  return await single(statement);
 };
 
 const countBooksCheckedInTodayQuery = `SELECT COUNT(*) FROM books_out WHERE check_in_date =  STRFTIME('%Y-%m-%d', 'now')`;
 export const countBooksCheckedInToday = async () => {
   const statement = countBooksCheckedInTodayQuery;
-  return await all(statement);
+  return await single(statement);
 };
 
 export default repo;
