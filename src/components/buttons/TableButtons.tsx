@@ -9,14 +9,16 @@ const useStyles = makeStyles(theme => ({
     }
 }));
 
-export default (handleOpen, columnName, Icon, className = useStyles().child) => {
+type handleOpen = (rowData: object) => void;
+
+export default (handleOpen:handleOpen, columnName:string, Icon: JSX.Element, className: string = useStyles().child) => {
     const newColumn =  {
         name: columnName,
         options: {
             filter: false,
             sort: false,
             empty: true,
-            customBodyRender: (value, tableMeta, updateValue) => {
+            customBodyRender: (value: null, tableMeta: { rowData: object}) => {
             
             return (
                 <IconComponent onClick={() => handleOpen(tableMeta.rowData)} className={className}> 
@@ -29,7 +31,13 @@ export default (handleOpen, columnName, Icon, className = useStyles().child) => 
     return newColumn;
 }
 
-const IconComponent = ({onClick, children, className}) => {
+type iconComponentModel ={
+    onClick: (open: true) => void;
+    children: JSX.Element;
+    className: string
+}
+
+const IconComponent = ({onClick, children, className}: iconComponentModel) => {
     return <div onClick={() => onClick(true)} className={className}>
         {children}
     </div>
