@@ -12,7 +12,7 @@ const tableDeweySummary1Name = `dewey_summary`;
 const tableDeweySummary2Name = `dewey_summary_2`;
 const deweySummary3Name = `dewey_summary_3`;
 
-const tableHasDataQuery = table => `
+const tableHasDataQuery = (table: string) => `
     SELECT
         *
     FROM
@@ -25,6 +25,7 @@ export default async function setupDatabase() {
     await createDatabase();
     await seedDatabase();
     log.info(`Database successfully checked, initialized and seeded.`);
+    return true;
   } catch (error) {
     log.error(`Catastrophic database startup error. Please try again.`);
     log.error(error);
@@ -50,9 +51,9 @@ const createDatabase = async () => {
   }
 };
 
-const hasData = async table => {
+const hasData = async (table: string) => {
   try {
-    const result = await all(tableHasDataQuery(table));
+    const result: object[] = await all(tableHasDataQuery(table));
     if (result.length === 0) return false;
     return true;
   } catch (error) {
@@ -75,7 +76,7 @@ const seedDatabase = async () => {
   await executeParallelDbQuery(deweySummary3Name, await summary3Queries);
 };
 
-const seedTable = async (tableName, query) => {
+const seedTable = async (tableName: string, query: string) => {
   try {
     await run(query);
   } catch (error) {
@@ -86,7 +87,7 @@ const seedTable = async (tableName, query) => {
   }
 };
 
-const executeParallelDbQuery = async (tableName, files) => {
+const executeParallelDbQuery = async (tableName: string, files: string[]) => {
   const tableHasData = await hasData(tableName);
   if (tableHasData) {
     log.info(`table[${tableName}] already has data. Skipping seed.`);
@@ -100,12 +101,12 @@ const executeParallelDbQuery = async (tableName, files) => {
   log.info(`table[${tableName}] has been populated.`);
 };
 
-const getScriptsInFolder = async folderInDbFolder => {
+const getScriptsInFolder = async (folderInDbFolder: string): Promise<string[]>=> {
   const filesInDbFolder = (
     await getAllFilesInFolder(`${deweySqlRoot}\\${folderInDbFolder}`)
-  ).filter(i => endsWith(i, ".sql"));
+  ).filter((i: string) => endsWith(i, ".sql"));
   return await Promise.all(
-    filesInDbFolder.map(fileName =>
+    filesInDbFolder.map((fileName: string) =>
       loadSingleFileFromDbFolder(
         `${deweySqlRoot}\\${folderInDbFolder}\\${fileName}`
       )

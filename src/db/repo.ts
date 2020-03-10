@@ -27,7 +27,7 @@ export const run = async (statement: string, statementObject?: object ) => {
   });
 };
 
-export const all = (statement: string, statementObject?: object) => {
+export const all = (statement: string, statementObject?: object): Promise<object[]> => {
   const db = getDatabase();
   const stamp = getStamp();
   log.info(
@@ -77,7 +77,7 @@ export function getDatabase() {
   return db;
 }
 
-export function single(statement: string, statementObject?: object) {
+export function single(statement: string, statementObject?: object): Promise<string | number | boolean | null> {
   const db = getDatabase();
   const stamp = getStamp();
   log.info(
