@@ -3,12 +3,6 @@ import appSettings from "appSettings";
 
 const getStamp = () => `Stamp[${new Date().getTime()}] -`;
 
-/**
- * Will execute a single sql statement in a given query (UPDATE, INSERT, DELETE, etc)
- *
- * @param {string} statement
- * @param {JSON} statementObject
- */
 export const run = async (statement, statementObject = {}) => {
   return await new Promise((res, rej) => {
     const db = getDatabase();
@@ -33,12 +27,6 @@ export const run = async (statement, statementObject = {}) => {
   });
 };
 
-/**
- * Will return data rows as a result of a query (SELECT)
- *
- * @param {string} statement
- * @param {JSON} statementObject
- */
 export const all = (statement, statementObject) => {
   const db = getDatabase();
   const stamp = getStamp();
@@ -62,10 +50,6 @@ export const all = (statement, statementObject) => {
   });
 };
 
-/**
- * Executes each statement in an sql statement. (EVERYTHING)
- * @param {string} statement
- */
 export const exec = statement => {
   return new Promise((res, rej) => {
     const db = getDatabase();
@@ -86,9 +70,6 @@ export const exec = statement => {
   });
 };
 
-/**
- * Will initialize and return a database object.
- */
 export function getDatabase() {
   const sqlite3 = window.require("sqlite3").verbose();
   const db = new sqlite3.Database(appSettings.databaseName);
