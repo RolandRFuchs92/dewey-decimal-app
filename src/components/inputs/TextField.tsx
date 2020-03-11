@@ -10,10 +10,16 @@ const useStyles = makeStyles(theme => {
     }
 });
 
-export default ({label, defaultValue, onChange}) => {
+type textFieldModel = {
+    label: string;
+    defaultValue: string;
+    onChange: (value: any) => void;
+}
+
+export default ({label, defaultValue, onChange}: textFieldModel) => {
     const [val, setVal] = useState(defaultValue);
 
-    const handleChange = ({target:{value}}) => {
+    const handleChange = ({target:{value}}: {target: {value: any}}) => {
         setVal(value);
         if(!isNil(onChange))
             onChange(value);
@@ -25,14 +31,16 @@ export default ({label, defaultValue, onChange}) => {
     )
 }
 
-export function Textfield({label, defaultValue, value, onChange}){
+
+
+export function Textfield({ label, defaultValue, value, onChange} : textFieldModel & { value: string}){
     const [val, setVal] = useState(defaultValue);
 
     useEffect(() => {
         setVal(value);
     },[value]);
 
-    const handleChange = ({target:{value}}) => {
+    const handleChange = ({target:{value}}: {target: {value: string}}) => {
         setVal(value);
         if(!isNil(onChange))
             onChange(value);
@@ -44,7 +52,15 @@ export function Textfield({label, defaultValue, value, onChange}){
     )
 }
 
-export const TooltipTextField = ({label, tooltip, value, handleChange, ...rest}) => {
+type toolTipTextFieldModel = {
+    handleChange: () => void;
+    tooltip: string;
+    value: string;
+    rest: any[];
+    label: string
+};
+
+export const TooltipTextField = ({label, tooltip, value, handleChange, ...rest}: toolTipTextFieldModel) => {
     const classes = useStyles();
     return <Grid item sm={12}>
         <Tooltip title={<span className={classes.toolTip}>{tooltip}</span>}>
