@@ -16,13 +16,19 @@ const useStyles = makeStyles(theme => ({
     }
 }));
 
-export default ({handleClose, open = false, ...rest}) => {
+type ModalModel = {
+    handleClose: ((event: React.SyntheticEvent<{}, Event>) => void) | undefined
+    open: boolean,
+    children: JSX.Element | JSX.Element[] 
+}
+
+export default ({handleClose, open = false, children}: ModalModel ) => {
     const classes = useStyles();
     return <Modal open={open}  onBackdropClick={handleClose} closeAfterTransition>
         <Fade in={open} timeout={appSettings.fadeTransitionDuration}>
             <Grid container>
                 <Paper className={classes.paper}>
-                    {rest.children}
+                    {children}
                 </Paper>
             </Grid>
         </Fade>
