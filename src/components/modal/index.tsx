@@ -2,6 +2,7 @@ import React from 'react';
 
 import {Modal, Grid, Paper, Fade, makeStyles} from '@material-ui/core';
 import appSettings from 'appSettings';
+import { ModalModel } from './Modal.type';
 
 const useStyles = makeStyles(theme => ({
     paper: {
@@ -11,16 +12,7 @@ const useStyles = makeStyles(theme => ({
         transform: 'translate(-50%, -50%)',
         padding:15
     },
-    spacing: {
-      
-    }
 }));
-
-type ModalModel = {
-    handleClose: ((event: React.SyntheticEvent<{}, Event>) => void) | undefined
-    open: boolean,
-    children: JSX.Element | JSX.Element[] 
-}
 
 export default ({handleClose, open = false, children}: ModalModel ) => {
     const classes = useStyles();
