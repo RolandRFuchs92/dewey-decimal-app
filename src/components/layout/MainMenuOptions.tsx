@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, Dispatch } from 'react';
 import {
 	List,
 	ListItem,
@@ -8,10 +8,10 @@ import {
 	makeStyles,
 	withStyles
 } from '@material-ui/core';
-import { withRouter } from 'react-router-dom';
+import { withRouter, useHistory } from 'react-router-dom';
 import { isNil, upperFirst } from 'lodash';
 
-import icons from 'components/icons';
+import Icons from 'components/icons';
 import context from 'utils/context';
 
 const useStyles = makeStyles(theme => {
@@ -49,43 +49,49 @@ const StyledListItem = withStyles({
 	
 })(ListItem);
 
-const ExpandLess = icons.ExpandLess;
-const ExpandMore = icons.ExpandMore;
+const ExpandLess = Icons.ExpandLess;
+const ExpandMore = Icons.ExpandMore;
 let prevSelected;
 
-
-
-function MenuOptions(props) {
+function MenuOptions({ menuItems } : CreateListItemModel) {
 	const classes = useStyles();
-	const { menuItems } = props;
-	const handleSelected = setSelected => {
-		prevSelected && prevSelected(false);
+	const handleSelected = (setSelected: Dispatch<boolean> )=> {
 		setSelected(true);
 		prevSelected = setSelected;
 	}
 
 	return (
 		<List disablePadding className={classes.list}>
-			{menuItems.map(({ label, icon, path, menuItems }) => (
+			{menuItems.map((menuItem) => {
+				const { label, icon, path, menuItems }: CreateListItemModel = menuItem;
+				return (
 				<CreateListItem
 					key={label}
-					{...{ label, icon, path, menuItems, props, handleSelected }}
-				></CreateListItem>
-			))}
+					{...{ label, icon, path, menuItems, handleSelected }}
+				/>
+			)})
+		}
 		</List>
 	);
 }
 
-function CreateListItem({ label, icon, path, menuItems, props, handleSelected }) {
+type CreateListItemModel ={ 
+	label: string;
+	icon: string; 
+	path: string;
+	menuItems: CreateListItemModel[];
+	handleSelected: (callback: Dispatch<boolean>) => void
+}
+
+function CreateListItem({ label, icon, path, menuItems, handleSelected }: CreateListItemModel) {
 	const classes = useStyles();
+	const history = useHistory();
 	const [isOpen, setIsOpen] = useState(false);
 	const hasMenuItems = !isNil(menuItems);
-	const { state: appContext} = useContext(context);
-	const [selected, setSelected] = useState(false);
+	const [selected, setSelected] = useState<boolean>(false);
 
-	const handleMenuItemClick = path => {
+	const handleMenuItemClick = (path: string) => {
 		if(!hasMenuItems){
-			appContext.setState({...appContext, pageTitle: label});
 			handleSelected(setSelected);
 		}
 		
@@ -93,9 +99,9 @@ function CreateListItem({ label, icon, path, menuItems, props, handleSelected })
 			setIsOpen(!isOpen);
 			return;
 		}
-		props.history.push(path);
+		history.push(path);
 	};
-	const Icon = icons[upperFirst(icon)]
+	const Icon = Icons[upperFirst(icon)]
 	return (
 		<>
 			<ListItem selected={selected} button key={label} onClick={() => handleMenuItemClick(path)} className={classes.menuItem} >
@@ -103,11 +109,11 @@ function CreateListItem({ label, icon, path, menuItems, props, handleSelected })
 					{Icon}
 				</ListItemIcon>
 				<ListItemText primary={label} />
-				{hasMenuItems ? isOpen ? <ExpandLess /> : <ExpandMore /> : null}
+				{hasMenuItems ? isOpen ? {ExpandLess} : {ExpandMore} : null}
 			</ListItem>
 			{hasMenuItems && (
 				<Collapse in={isOpen} className={classes.nested}>
-					<MenuOptions {...props} menuItems={menuItems}></MenuOptions>
+					<MenuOptions 	{...{ label, icon, path, menuItems, handleSelected }} menuItems={menuItems}></MenuOptions>
 				</Collapse>
 			)}
 		</>

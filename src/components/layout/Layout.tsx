@@ -1,6 +1,5 @@
 import React, { useContext, useEffect } from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import { drawerWidth } from "./Layout.config.json";
 import Drawer from "./Drawer";
 import {
   CssBaseline,
@@ -17,6 +16,7 @@ import {
 } from "react-router-dom";
 import { connect } from "react-redux";
 
+import { drawerWidth } from "./Layout.config.json";
 import Teacher from "pages/teacher/Teacher";
 import Student from "pages/student/Student";
 import Class from "pages/class/Class";
@@ -28,6 +28,7 @@ import BooksOut from "pages/booksOut";
 import context from "utils/context";
 import Icons from "components/icons";
 import Admin from "pages/admin";
+import {PermanentDrawerLeftModel} from './Layout.type';
 
 import { loadInitialAppState } from "./Layout.service.js";
 
@@ -66,10 +67,13 @@ const useStyles = makeStyles(theme => {
   };
 });
 
-export function PermanentDrawerLeft({ dispatch }) {
-  const classes = useStyles();
-  const { state, toggleTheme, toggleScan } = useContext(context);
 
+
+export function PermanentDrawerLeft({ pageTitle, dispatch }: PermanentDrawerLeftModel) {
+  const classes = useStyles();
+
+  const toggleScan = () => {}
+  const toggleTheme = () => {}
   useEffect(() => {
     (async () => {
       await loadInitialAppState(dispatch);
@@ -83,13 +87,13 @@ export function PermanentDrawerLeft({ dispatch }) {
         <Toolbar>
           <div className={classes.toolbarRoot}>
             <Typography variant="h5" noWrap className={classes.toolbarCenter}>
-              {state.pageTitle}
+              {pageTitle}
             </Typography>
             <div className={classes.toggleMode}>
               <IconButton
                 aria-label="Checkin/out"
                 className={classes.iconText}
-                onClick={() => toggleScan(false)}
+                onClick={() => toggleScan()}
               >
                 {Icons.Barcode}
               </IconButton>

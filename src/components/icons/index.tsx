@@ -63,7 +63,7 @@ const studentClass = CreateIcon(faUsers);
 const BookOut = CreateIcon(faBookReader);
 const DarkLight = CreateIcon(faAdjust);
 
-export default {
+const defaultExport: {[key: string]: JSX.Element} = {
   Code: <Code />,
   Store: <Store />,
   Birthday: <Cake />,
@@ -72,8 +72,8 @@ export default {
   Class: studentClass,
   Print: <Print />,
 
-  ExpandLess,
-  ExpandMore,
+  ExpandLess: <ExpandLess/>,
+  ExpandMore: <ExpandMore/>,
   School: FaSchool,
   Edit,
   Add,
@@ -96,3 +96,5 @@ export default {
   LaptopCamera,
   Warning
 };
+
+export default defaultExport
