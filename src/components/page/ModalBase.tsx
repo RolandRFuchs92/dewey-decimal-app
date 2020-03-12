@@ -1,4 +1,4 @@
-import React,{useEffect, useState} from 'react';
+import React,{useEffect, useState, SyntheticEvent, ChangeEvent} from 'react';
 import { TextField, Typography, Grid, MenuItem } from '@material-ui/core';
 import { DatePicker as DatePickerImport} from '@material-ui/pickers';
 import { toLower, isPlainObject } from 'lodash';
@@ -8,12 +8,25 @@ import Modal from 'components/modal';
 import FormButtons from 'components/buttons/FormButtons';
 import log from 'utils/logger';
 import { useAlert } from 'utils/snackbarAlerts';
+import { SyntheticEventData } from 'react-dom/test-utils';
 
-export default ({columns, open, handleClose, handleEditAddRow, modalData, reset}) => {
+import { DefaultColumnModel } from './PageBase.type';
+
+type ModalBaseModel = {
+    columns: DefaultColumnModel[];
+    open: boolean;
+    handleClose: () => void;
+    handleEditAddRow: (statementObject:{[x: string]: any;}) => 'add' | null;
+    modalData: {[key: string]: any};
+    reset: () => void;
+}
+
+
+export default ({columns, open, handleClose, handleEditAddRow, modalData, reset}: ModalBaseModel) => {
     const [val, setVal] = useState(modalData);
     const alert = useAlert();
 
-    const handleOnChange = name => ({target: {value}}) =>{
+    const handleOnChange = (name: string) => ({target: {value}}: {target: {value: string}}) =>{
         const key = columns.filter(({name: colName}) => colName === name )[0].ref || name;
         setVal({...val, [key]: value});
     }
@@ -22,10 +35,15 @@ export default ({columns, open, handleClose, handleEditAddRow, modalData, reset}
         try {
             const statementObject = {...val};
             const refColumns = columns.filter(column => {
-               const firstChar = column.name.substr(0,1);
+                let firstChar: string ='';
+                if(column.name !== null && column.name !== undefined) firstChar = column.name.substr(0,1);
+
                return column.ref || firstChar === firstChar.toUpperCase();
             });
-            refColumns.forEach(({ name }) => delete statementObject[name]);
+            refColumns.forEach(({ name }) => {
+                if(name !== null && name !== undefined)
+                    delete statementObject[name]
+            });
             const result = await handleEditAddRow(statementObject);        
             alert.success(`Successfully ${result === 'add' ? 'added' : 'updated'} ${val.name}!`);
             reset();

@@ -28,7 +28,7 @@ const defaultColumns= [
     },
 ]
 
-export default () => {
+export Authors () => {
     const handleDeleteRow = repo.deleteRow;
     const handleEditAddRow = repo.addOrUpdate;
     const getAll = repo.getAll;

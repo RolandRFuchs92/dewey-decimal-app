@@ -22,7 +22,7 @@ import Student from "pages/student/Student";
 import Class from "pages/class/Class";
 import Home from "pages/home";
 import DeweySystem from "pages/deweySystem";
-import Authours from "pages/authors";
+import Authors from "pages/authors";
 import Books from "pages/books";
 import BooksOut from "pages/booksOut";
 import context from "utils/context";
@@ -132,7 +132,7 @@ export function PermanentDrawerLeft({ pageTitle, dispatch }: PermanentDrawerLeft
               <DeweySystem></DeweySystem>
             </Route>
             <Route exact path="/library/author">
-              <Authours></Authours>
+              <Authors></Authors>
             </Route>
             <Route exact path="/library/books">
               <Books></Books>
