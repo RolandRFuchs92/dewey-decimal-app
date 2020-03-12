@@ -1,7 +1,7 @@
 import React,{useEffect, useState, SyntheticEvent, ChangeEvent} from 'react';
 import { TextField, Typography, Grid, MenuItem } from '@material-ui/core';
 import { DatePicker as DatePickerImport} from '@material-ui/pickers';
-import { toLower, isPlainObject } from 'lodash';
+import { toLower, isPlainObject, isNil } from 'lodash';
 import { format } from 'date-fns';
 
 import Modal from 'components/modal';
@@ -10,7 +10,7 @@ import log from 'utils/logger';
 import { useAlert } from 'utils/snackbarAlerts';
 import { SyntheticEventData } from 'react-dom/test-utils';
 
-import { DefaultColumnModel } from './PageBase.type';
+import { DefaultColumnModel, ModalBaseHandleChange } from './PageBase.type';
 
 type ModalBaseModel = {
     columns: DefaultColumnModel[];
@@ -68,9 +68,16 @@ export default ({columns, open, handleClose, handleEditAddRow, modalData, reset}
 }
 
 
-function convertJsonToModalFields(columns, handleOnChange, modalData){
+function convertJsonToModalFields(
+    columns: DefaultColumnModel[], 
+    handleOnChange: ModalBaseHandleChange, 
+    modalData: {[key: string]: string}){
     const result = columns.map((column,index)=> {
-        const value = `${column.ref === undefined ? modalData[column.name] : modalData[column.ref] || '0'}`;
+        const value: string = column.ref === undefined && !isNil(column.name) 
+            ? modalData[column.name] 
+            : !isNil(column.ref) 
+                ? modalData[column.ref] 
+                : '0';
         const child = getElement({...column, onChange:handleOnChange(column.name), value});
         const el = <Grid item key={`${column.label}${index}`}>
             {child}

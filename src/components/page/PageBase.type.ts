@@ -7,7 +7,13 @@ export type DefaultColumnModel = {
   label: string,
   type?: {
     header: string,
-  } | 'textField' | 'text' | 'select' ,
+  } | 'textField' 
+    | 'text' 
+    | 'select' 
+    | 'selectbox'
+    | 'typography' 
+    | 'date' 
+    | 'datetime'
   options?: {
     display: boolean,
   }
@@ -15,3 +21,8 @@ export type DefaultColumnModel = {
   ref?: string
 }
 
+export type ModalBaseHandleChange = (name: string) => ({ target: { value } }: {
+  target: {
+      value: string;
+  };
+}) => void

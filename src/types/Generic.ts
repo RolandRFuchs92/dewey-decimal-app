@@ -1,0 +1,1 @@
+export type diddlydoo= {name: string}
