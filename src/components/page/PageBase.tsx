@@ -8,7 +8,19 @@ import Modal from './ModalBase';
 import { useDialog } from 'utils/dialog';
 import { useAlert } from 'utils/snackbarAlerts';
 
-export default ({defaultColumns, getAll, handleDeleteRow, handleEditAddRow, modal = null }) => {
+import { DefaultColumnModel } from './PageBase.type';
+
+type PageBaseModel = {
+    defaultColumns: DefaultColumnModel[];
+    getAll: () => { [key: string]: string};
+    handleDeleteRow: (rowData: {[key: string]: string}) => Promise<void>;
+    handleEditAddRow: () => Promise<void>;
+    modal?: JSX.Element | null;
+}
+
+type jsonObj = {[key: string]: string};
+
+export default ({defaultColumns, getAll, handleDeleteRow, handleEditAddRow, modal = null }: PageBaseModel) => {
     const [options, setOptions] = useState({});
     const [columns, setColumns] = useState(defaultColumns);
     const [data, setData] = useState([]);
@@ -18,14 +30,14 @@ export default ({defaultColumns, getAll, handleDeleteRow, handleEditAddRow, moda
     const showDialog = useDialog();
     const alert = useAlert();
     
-    const handleEditAdd = (rowData) => {
+    const handleEditAdd = (rowData: jsonObj) => {
         let obj = null;
         rowData && (obj = objectFromRowData(rowData));
         setModalData(obj);
         setOpenModal(true);
     };
 
-    const handleYesOnDelete = async rowData => {
+    const handleYesOnDelete = async (rowData: jsonObj) => {
         try {
             await handleDeleteRow(rowData);
             await reset();
@@ -36,8 +48,8 @@ export default ({defaultColumns, getAll, handleDeleteRow, handleEditAddRow, moda
         }
     }
 
-    const objectFromRowData = (rowData) => Object.fromEntries(columns.map(({name}, index) => [name,rowData[index] || '']));
-    const handleDelete = rowData => {
+    const objectFromRowData = (rowData: jsonObj) => Object.fromEntries(columns.map(({name}, index) => [name,rowData[index] || '']));
+    const handleDelete = (rowData: jsonObj) => {
         const obj = objectFromRowData(rowData);
         showDialog({ title: 'Are you sure?', description: `Really delete ${obj.name}?`, handleYes:() => handleYesOnDelete(obj)})
     }
