@@ -29,3 +29,25 @@ export type ModalBaseHandleChange = (name: string) => ({ target: { value } }: {
       value: string;
   };
 }) => void
+
+export type DatePickerModel = {
+  label: string;
+  value?: string;
+  onChange: (value: {target: {value: string}}) => void;
+}
+
+export type SelectBoxModel = {
+  label: string;
+  onChange: (value: {target: {value: string;}}) => void;
+  value?: string;
+  getDropDownItems: () => Promise<DropdownListModel[]>;
+}
+
+export type ModalBaseModel = {
+  columns: DefaultColumnModel[];
+  open: boolean;
+  handleClose: () => void;
+  handleEditAddRow: (statementObject:{[x: string]: any;}) => 'add' | null;
+  modalData: {[key: string]: any};
+  reset: () => void;
+}

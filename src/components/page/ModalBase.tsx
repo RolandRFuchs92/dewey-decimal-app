@@ -10,17 +10,10 @@ import log from 'utils/logger';
 import { useAlert } from 'utils/snackbarAlerts';
 import { SyntheticEventData } from 'react-dom/test-utils';
 
-import { DefaultColumnModel, ModalBaseHandleChange, DropdownListModel } from './PageBase.type';
+import { DefaultColumnModel, ModalBaseHandleChange, DropdownListModel, ModalBaseModel, DatePickerModel, SelectBoxModel} from './PageBase.type';
 import { MaterialUiPickersDate } from '@material-ui/pickers/typings/date';
 
-type ModalBaseModel = {
-    columns: DefaultColumnModel[];
-    open: boolean;
-    handleClose: () => void;
-    handleEditAddRow: (statementObject:{[x: string]: any;}) => 'add' | null;
-    modalData: {[key: string]: any};
-    reset: () => void;
-}
+
 
 
 export default ({columns, open, handleClose, handleEditAddRow, modalData, reset}: ModalBaseModel) => {
@@ -116,11 +109,7 @@ function getElement({type, label, value, onChange, getDropDownItems}: DefaultCol
     }
 }
 
-type DatePickerModel = {
-    label: string;
-    value?: string;
-    onChange: (value: {target: {value: string}}) => void;
-}
+
 
 function DatePicker ({label, value, onChange}: DatePickerModel) {
     const handleDateChange = (date: MaterialUiPickersDate) => {
@@ -139,12 +128,7 @@ function DatePicker ({label, value, onChange}: DatePickerModel) {
       />
 }
 
-type SelectBoxModel = {
-    label: string;
-    onChange: (value: {target: {value: string;}}) => void;
-    value?: string;
-    getDropDownItems: () => Promise<DropdownListModel[]>;
-}
+
 
 function SelectBox({label, onChange, value, getDropDownItems}: SelectBoxModel) {
     const [rows, setRows] = useState<DropdownListModel[]>([]);
