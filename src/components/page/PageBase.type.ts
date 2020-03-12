@@ -1,24 +1,27 @@
-export type DropdownListModel {
-  
+export type DropdownListModel = {
+  text: string;
+  value: string;
 }
 
 export type DefaultColumnModel = {
-  name?: string,
-  label: string,
-  type?: {
-    header: string,
-  } | 'textField' 
+  name?: string;
+  label: string;
+  type?: 
+    | 'header'
+    | 'textField' 
     | 'text' 
     | 'select' 
     | 'selectbox'
     | 'typography' 
     | 'date' 
-    | 'datetime'
+    | 'datetime';
   options?: {
     display: boolean,
-  }
-  dropdownItems?: () => DropdownListModel,
-  ref?: string
+  };
+  value?: string;
+  onChange: (value: {target: {value: string;}}) => void;
+  getDropDownItems?: () => Promise<DropdownListModel[]>;
+  ref?: string;
 }
 
 export type ModalBaseHandleChange = (name: string) => ({ target: { value } }: {

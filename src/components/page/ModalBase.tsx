@@ -10,7 +10,8 @@ import log from 'utils/logger';
 import { useAlert } from 'utils/snackbarAlerts';
 import { SyntheticEventData } from 'react-dom/test-utils';
 
-import { DefaultColumnModel, ModalBaseHandleChange } from './PageBase.type';
+import { DefaultColumnModel, ModalBaseHandleChange, DropdownListModel } from './PageBase.type';
+import { MaterialUiPickersDate } from '@material-ui/pickers/typings/date';
 
 type ModalBaseModel = {
     columns: DefaultColumnModel[];
@@ -57,10 +58,12 @@ export default ({columns, open, handleClose, handleEditAddRow, modalData, reset}
         setVal(modalData);
     },[open, modalData])
 
-    const fields = convertJsonToModalFields(columns, handleOnChange, val);
+    const Fields = () => {
+        return <>{convertJsonToModalFields(columns, handleOnChange, val)}</>
+    } 
 
     return <Modal {...{open, handleClose}}>
-        {fields}
+        <Fields />
         <Grid item>
             <FormButtons onReset={() => setVal({})} onSubmit={handleSubmit}></FormButtons>
         </Grid>
@@ -78,7 +81,7 @@ function convertJsonToModalFields(
             : !isNil(column.ref) 
                 ? modalData[column.ref] 
                 : '0';
-        const child = getElement({...column, onChange:handleOnChange(column.name), value});
+        const child = getElement({...column, onChange:handleOnChange(column.name || ''), value});
         const el = <Grid item key={`${column.label}${index}`}>
             {child}
         </Grid>
@@ -87,11 +90,12 @@ function convertJsonToModalFields(
     return result;
 } 
 
-function getElement({type, label, value, onChange, dropdownItems}){
-    if(isPlainObject(type))
-        return <Typography variant="h5">{type.header} {!!value && `(${value})`}</Typography>
+function getElement({type, label, value, onChange, getDropDownItems}: DefaultColumnModel){
+    if(isNil(type)) return null;
 
     switch (toLower(type)) {
+        case 'header':
+            return <Typography variant="h5">{label} {value}</Typography>
         case 'text':
         case `textfield`:
             return <TextField fullWidth label={label} value={value || ''} onChange={onChange}></TextField>;
@@ -102,16 +106,25 @@ function getElement({type, label, value, onChange, dropdownItems}){
             return <DatePicker {...{label, value, onChange}}></DatePicker>
         case 'select':
         case 'selectbox':
-            return <SelectBox {...{label, onChange, value, getDropdownItems: dropdownItems}}></SelectBox>
+            return <SelectBox 
+                        label={label} 
+                        onChange={onChange} 
+                        value={value} 
+                        getDropDownItems={getDropDownItems as () => Promise<DropdownListModel[]>} />
         default:
             return null;
     }
 }
 
+type DatePickerModel = {
+    label: string;
+    value?: string;
+    onChange: (value: {target: {value: string}}) => void;
+}
 
-function DatePicker ({label, value, onChange}) {
-    const handleDateChange = date => {
-        const formattedDate = format(date,'dd MMM yyyy');
+function DatePicker ({label, value, onChange}: DatePickerModel) {
+    const handleDateChange = (date: MaterialUiPickersDate) => {
+        const formattedDate = format(date as Date,'dd MMM yyyy');
         onChange({ target: {value: formattedDate}});
     }
 
@@ -126,19 +139,25 @@ function DatePicker ({label, value, onChange}) {
       />
 }
 
+type SelectBoxModel = {
+    label: string;
+    onChange: (value: {target: {value: string;}}) => void;
+    value?: string;
+    getDropDownItems: () => Promise<DropdownListModel[]>;
+}
 
-function SelectBox({label, onChange,value,getDropdownItems}) {
-    const [rows, setRows] = useState([]);
+function SelectBox({label, onChange, value, getDropDownItems}: SelectBoxModel) {
+    const [rows, setRows] = useState<DropdownListModel[]>([]);
     
     useEffect(() => {
         (async () => {
-            const result  = await getDropdownItems();
+            const result  = await getDropDownItems();
             setRows(result);
         })()
     },[])
     
     
     return <TextField select fullWidth label={label} value={value || ''} onChange={onChange}>
-        {rows.map(row => <MenuItem key={row.value} value={row.value}>{row.text}</MenuItem>)}
+        {rows.map((row: DropdownListModel) => <MenuItem key={row.value} value={row.value}>{row.text}</MenuItem>)}
     </TextField>;
 }
