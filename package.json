@@ -55,11 +55,13 @@
 	"eslintConfig": {
 		"extends": [
 			"react-app",
-			"plugin:prettier/recommended"
+			"plugin:prettier/recommended",
+			"prettier"
 		]
 	},
 	"prettier": {
-		"bracketSpacing": true
+		"bracketSpacing": true,
+		"tabWidth": 2
 	},
 	"browserslist": {
 		"production": [

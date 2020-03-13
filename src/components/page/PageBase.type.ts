@@ -1,11 +1,13 @@
+import { MUIDataTableColumnOptions } from "mui-datatables"
+
 export type DropdownListModel = {
   text: string;
   value: string;
 }
 
 export type DefaultColumnModel = {
-  name?: string;
   label: string;
+  name?: string;
   type?: 
     | 'header'
     | 'textField' 
@@ -17,9 +19,9 @@ export type DefaultColumnModel = {
     | 'datetime';
   options?: {
     display: boolean,
-  };
+  } | MUIDataTableColumnOptions;
   value?: string;
-  onChange: (value: {target: {value: string;}}) => void;
+  onChange?: (value: {target: {value: string;}}) => void;
   getDropDownItems?: () => Promise<DropdownListModel[]>;
   ref?: string;
 }
