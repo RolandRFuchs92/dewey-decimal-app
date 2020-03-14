@@ -1,14 +1,13 @@
-import React, { useEffect, useState, SyntheticEvent, ChangeEvent } from "react";
+import React, { useEffect, useState } from "react";
 import { TextField, Typography, Grid, MenuItem } from "@material-ui/core";
 import { DatePicker as DatePickerImport } from "@material-ui/pickers";
-import { toLower, isPlainObject, isNil } from "lodash";
+import { toLower, isNil } from "lodash";
 import { format } from "date-fns";
 
 import Modal from "components/modal";
 import FormButtons from "components/buttons/FormButtons";
 import log from "utils/logger";
 import { useAlert } from "utils/snackbarAlerts";
-import { SyntheticEventData } from "react-dom/test-utils";
 
 import {
   DefaultColumnModel,

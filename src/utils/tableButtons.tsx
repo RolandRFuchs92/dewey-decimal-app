@@ -12,6 +12,7 @@ import MuiTablePagination, {
 import { OnClickModel, JsonObj } from "types/Generic";
 import Icons from "components/icons";
 import { isNil } from "lodash";
+import { DefaultColumnModel } from "components/page/PageBase.type";
 
 const useStyles = makeStyles(theme => ({
   edit: {
@@ -53,16 +54,15 @@ const EditComponent = ({ handleClick }: { handleClick: OnClickModel }) => {
   );
 };
 
-type HandleEditAddModel = (
-  event: React.MouseEvent<HTMLDivElement, MouseEvent> | JsonObj
-) => void;
+type HandleEditAddModel = (event: JsonObj) => void;
 
 export default (
   handleEditAdd: HandleEditAddModel,
   handleDelete: HandleEditAddModel
-) => [
+): DefaultColumnModel[] => [
   {
     name: "Edit",
+    label: "",
     options: {
       filter: false,
       sort: false,
@@ -80,6 +80,7 @@ export default (
   },
   {
     name: "Delete",
+    label: "",
     options: {
       filter: false,
       sort: false,
@@ -135,7 +136,7 @@ export const useAddButton = (handleEditAdd: HandleEditAddModel) => {
           changePage={changePage}
           textLabels={textLabels}
         >
-          <div className={classes.addButton} onClick={handleEditAdd}>
+          <div className={classes.addButton} onClick={() => handleEditAdd({})}>
             {Icons.Add}
           </div>
         </CustomFooter>

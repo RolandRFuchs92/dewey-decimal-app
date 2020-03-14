@@ -14,7 +14,7 @@ type PageBaseModel = {
   defaultColumns: DefaultColumnModel[];
   getAll: () => Promise<JsonObj[]>;
   handleDeleteRow: (rowData: { [key: string]: string }) => Promise<void>;
-  handleEditAddRow: () => Promise<void>;
+  handleEditAddRow: (event: JsonObj | null) => Promise<null | "add">;
   modal?: JSX.Element | null;
 };
 
@@ -81,12 +81,12 @@ export default ({
       ...addButton
     });
 
-    const cols = [
+    const cols: DefaultColumnModel[] = [
       ...defaultColumns,
       ...EditDeleteCol(handleEditAdd, handleDelete)
     ];
 
-    setColumns();
+    setColumns(cols);
 
     (async () => {
       await reset();
@@ -105,14 +105,12 @@ export default ({
           />
           {modal || (
             <Modal
-              {...{
-                columns,
-                open: openModal,
-                handleClose,
-                handleEditAddRow,
-                modalData,
-                reset
-              }}
+              columns={columns}
+              open={openModal}
+              handleClose={handleClose}
+              handleEditAddRow={handleEditAddRow}
+              modalData={modalData}
+              reset={reset}
             ></Modal>
           )}
         </div>
