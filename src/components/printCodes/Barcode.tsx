@@ -37,7 +37,7 @@ export default ({ value, description, className }: BarcodeModel) => {
       >
         {description}
       </Typography>
-      <Barcode value={value} {...appSettings.Barcode}></Barcode>
+      <Barcode value={value} {...appSettings.barcode} />
     </div>
   );
 };
