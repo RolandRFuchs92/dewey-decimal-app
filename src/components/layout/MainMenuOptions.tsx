@@ -13,6 +13,7 @@ import { useHistory } from "react-router-dom";
 import { isNil, upperFirst } from "lodash";
 
 import Icons from "components/icons";
+import { CreateListItemModel } from "./Layout.type";
 
 const useStyles = makeStyles(theme => {
   return {
@@ -51,7 +52,11 @@ const ExpandLess = Icons.ExpandLess;
 const ExpandMore = Icons.ExpandMore;
 let prevSelected;
 
-function MenuOptions({ menuItems }: CreateListItemModel): JSX.Element {
+function MenuOptions({
+  menuItems
+}: {
+  menuItems: CreateListItemModel[];
+}): JSX.Element {
   const classes = useStyles();
   const handleSelected = (setSelected: Dispatch<boolean>) => {
     setSelected(true);
@@ -60,29 +65,27 @@ function MenuOptions({ menuItems }: CreateListItemModel): JSX.Element {
 
   return (
     <List disablePadding className={classes.list}>
-      {menuItems.map(menuItem => {
-        const { label, icon, path, menuItems }: CreateListItemModel = menuItem;
-        return (
-          <CreateListItem
-            key={label}
-            label={label}
-            icon={icon}
-            path={path}
-            menuItems={menuItems}
-            handleSelected={handleSelected}
-          />
-        );
-      })}
+      {!isNil(menuItems) &&
+        menuItems.map(menuItem => {
+          const {
+            label,
+            icon,
+            path,
+            menuItems
+          }: CreateListItemModel = menuItem;
+          return (
+            <CreateListItem
+              key={label}
+              label={label}
+              icon={icon}
+              path={path}
+              menuItems={menuItems}
+              handleSelected={handleSelected}
+            />
+          );
+        })}
     </List>
   );
-}
-
-interface CreateListItemModel {
-  label: string;
-  icon: string;
-  path: string;
-  menuItems: CreateListItemModel[];
-  handleSelected: (callback: Dispatch<boolean>) => void;
 }
 
 function CreateListItem({
@@ -91,7 +94,9 @@ function CreateListItem({
   path,
   menuItems,
   handleSelected
-}: CreateListItemModel) {
+}: CreateListItemModel & {
+  handleSelected: (callback: Dispatch<boolean>) => void;
+}) {
   const classes = useStyles();
   const history = useHistory();
   const [isOpen, setIsOpen] = useState(false);
@@ -116,7 +121,7 @@ function CreateListItem({
         selected={selected}
         button
         key={label}
-        onClick={() => handleMenuItemClick(path)}
+        onClick={() => handleMenuItemClick(isNil(path) ? "" : path)}
         className={classes.menuItem}
       >
         <ListItemIcon>{Icon}</ListItemIcon>
@@ -125,10 +130,7 @@ function CreateListItem({
       </ListItem>
       {hasMenuItems && (
         <Collapse in={isOpen} className={classes.nested}>
-          <MenuOptions
-            {...{ label, icon, path, menuItems, handleSelected }}
-            menuItems={menuItems}
-          ></MenuOptions>
+          <MenuOptions menuItems={!isNil(menuItems) ? menuItems : []} />
         </Collapse>
       )}
     </>

@@ -5,7 +5,10 @@ import Divider from "@material-ui/core/Divider";
 
 import MainMenuOptions from "./MainMenuOptions";
 import Indicators from "components/icons/Indicator";
-import { drawerWidth, mainMenu } from "./Layout.config.json";
+import config from "./Layout.config.json";
+import { CreateListItemModel } from "./Layout.type";
+
+const { drawerWidth, mainMenu } = config;
 
 const useStyles = makeStyles(theme => ({
   drawer: {
@@ -38,7 +41,7 @@ export default function MainLayoutDrawer() {
         <Indicators></Indicators>
         <div className={classes.toolbar} />
         <Divider />
-        <MainMenuOptions menuItems={mainMenu}></MainMenuOptions>
+        <MainMenuOptions menuItems={mainMenu} />
       </Drawer>
     </>
   );

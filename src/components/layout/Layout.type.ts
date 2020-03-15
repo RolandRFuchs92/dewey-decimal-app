@@ -1,6 +1,13 @@
-import {Dispatch } from 'redux';
+import { Dispatch } from "redux";
 
 export type PermanentDrawerLeftModel = {
   pageTitle: string;
-  dispatch: Dispatch; 
-}
+  dispatch: Dispatch;
+};
+
+export type CreateListItemModel = {
+  label: string;
+  icon: string;
+  path?: string;
+  menuItems?: CreateListItemModel[];
+};
