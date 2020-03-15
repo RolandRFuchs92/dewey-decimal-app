@@ -1,6 +1,6 @@
 import { setError } from "pages/admin/errors/ErrorReport.action";
 import { errorLogErrorsCount } from "pages/admin/errors/ErrorReport.service";
-import { Dispatch, AnyAction } from 'redux' 
+import { Dispatch, AnyAction } from "redux";
 
 import {
   countBooksCheckedOutToday,
@@ -18,7 +18,10 @@ async function loadErrors(dispatch: Dispatch) {
   }
 }
 
-function genericHomeCount(action: (payload: any) => AnyAction, getter: () => number ) {
+function genericHomeCount(
+  action: (payload: any) => AnyAction,
+  getter: () => Promise<string | number | boolean | null>
+) {
   return async (dispatch: Dispatch) => {
     const countResult = await getter();
     dispatch(action(countResult));
@@ -40,7 +43,7 @@ const loadBooksOverdue = genericHomeCount(
 );
 const loadBirthdaysToday = genericHomeCount(
   homeActions.setBirthdayIndicator,
-  () => 0
+  () => 0 // TODO
 );
 
 export async function loadInitialAppState(dispatch: Dispatch) {
