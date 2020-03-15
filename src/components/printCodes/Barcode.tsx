@@ -3,6 +3,8 @@ import Barcode from "react-barcode";
 import { Typography, makeStyles } from "@material-ui/core";
 import appSettings from "appSettings.json";
 
+import { BarcodeModel } from "./PrintCodes.type";
+
 const useStyles = makeStyles(theme => ({
   container: {
     margin: 20,
@@ -19,12 +21,6 @@ const useStyles = makeStyles(theme => ({
     position: "absolute"
   }
 }));
-
-type BarcodeModel = {
-  value: string;
-  description: string;
-  className: string;
-};
 
 export default ({ value, description, className }: BarcodeModel) => {
   const classes = useStyles();

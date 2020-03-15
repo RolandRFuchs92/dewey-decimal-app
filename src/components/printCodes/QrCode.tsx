@@ -2,7 +2,7 @@ import React from "react";
 import QrCode from "qrcode.react";
 import { makeStyles, Typography } from "@material-ui/core";
 
-import appSettings from "appSettings.json";
+import { QrCodeModel } from "./PrintCodes.type";
 
 const useStyles = makeStyles(theme => ({
   container: {
@@ -29,12 +29,6 @@ const useStyles = makeStyles(theme => ({
     position: "absolute"
   }
 }));
-
-type QrCodeModel = {
-  value: string;
-  description: string;
-  className: string;
-};
 
 export default ({ value, description, className }: QrCodeModel) => {
   const classes = useStyles();

@@ -2,6 +2,8 @@ import React, { useEffect } from "react";
 import Quagga from "quagga";
 import { makeStyles, Grid, Typography } from "@material-ui/core";
 
+import { ScannerModel } from "./Scanner.type";
+
 const useStyles = makeStyles(theme => {
   return {
     viewport: {
@@ -22,11 +24,6 @@ const useStyles = makeStyles(theme => {
     }
   };
 });
-
-type ScannerModel = {
-  onDetected: (r: { codeResult: { code: string } }) => void;
-  open: boolean;
-};
 
 export default ({
   onDetected = (r: { codeResult: { code: string } }) =>
