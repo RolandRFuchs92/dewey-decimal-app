@@ -1,4 +1,4 @@
-import React, { useState, useContext, Dispatch } from "react";
+import React, { useState, Dispatch } from "react";
 import {
   List,
   ListItem,
@@ -8,7 +8,6 @@ import {
   makeStyles,
   withStyles
 } from "@material-ui/core";
-import { RouteComponentProps } from "react-router";
 import { useHistory } from "react-router-dom";
 import { isNil, upperFirst } from "lodash";
 
@@ -45,8 +44,6 @@ const useStyles = makeStyles(theme => {
     }
   };
 });
-
-const StyledListItem = withStyles({})(ListItem);
 
 const ExpandLess = Icons.ExpandLess;
 const ExpandMore = Icons.ExpandMore;

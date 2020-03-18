@@ -4,10 +4,9 @@ import appSettings from "appSettings.json";
 
 export default (tableReference: TableNames) => {
   const { tables } = appSettings;
-  tables;
 
-  const tableName = appSettings.tables[tableReference].name;
-  const pkFieldName = appSettings.tables[tableReference].pk;
+  const tableName = tables[tableReference].name;
+  const pkFieldName = tables[tableReference].pk;
 
   const deleteFunc = async (obj: { [key: string]: string }) => {
     const executeDelete = deleteRow(tableName, pkFieldName);

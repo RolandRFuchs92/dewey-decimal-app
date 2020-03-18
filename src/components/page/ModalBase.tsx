@@ -217,7 +217,7 @@ function SelectBox({
       const result = await getDropDownItems();
       setRows(result);
     })();
-  }, []);
+  });
 
   return (
     <TextField
