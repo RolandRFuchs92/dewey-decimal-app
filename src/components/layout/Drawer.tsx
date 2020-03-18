@@ -6,7 +6,6 @@ import Divider from "@material-ui/core/Divider";
 import MainMenuOptions from "./MainMenuOptions";
 import Indicators from "components/icons/Indicator";
 import config from "./Layout.config.json";
-import { CreateListItemModel } from "./Layout.type";
 
 const { drawerWidth, mainMenu } = config;
 

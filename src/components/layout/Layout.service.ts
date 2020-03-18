@@ -11,7 +11,7 @@ import homeActions from "pages/home/Home.action.js";
 
 async function loadErrors(dispatch: Dispatch) {
   try {
-    const errorCount = await errorLogErrorsCount();
+    const errorCount = (await errorLogErrorsCount()) as number;
     dispatch(setError(errorCount));
   } catch (error) {
     console.log(error);

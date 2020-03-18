@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useEffect } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Drawer from "./Drawer";
 import {
@@ -25,10 +25,9 @@ import DeweySystem from "pages/deweySystem";
 import Authors from "pages/authors";
 import Books from "pages/books";
 import BooksOut from "pages/booksOut";
-import context from "utils/context";
 import Icons from "components/icons";
 import Admin from "pages/admin";
-import {PermanentDrawerLeftModel} from './Layout.type';
+import { PermanentDrawerLeftModel } from "./Layout.type";
 
 import { loadInitialAppState } from "./Layout.service.js";
 
@@ -67,13 +66,14 @@ const useStyles = makeStyles(theme => {
   };
 });
 
-
-
-export function PermanentDrawerLeft({ pageTitle, dispatch }: PermanentDrawerLeftModel) {
+export function PermanentDrawerLeft({
+  pageTitle,
+  dispatch
+}: PermanentDrawerLeftModel) {
   const classes = useStyles();
 
-  const toggleScan = () => {}
-  const toggleTheme = () => {}
+  const toggleScan = () => {};
+  const toggleTheme = () => {};
   useEffect(() => {
     (async () => {
       await loadInitialAppState(dispatch);
