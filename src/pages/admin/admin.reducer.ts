@@ -8,7 +8,10 @@ const initialState: ReducerStateModel = {
   errorCount: 0
 };
 
-export default (currentState: ReducerStateModel = initialState, action) => {
+export default (
+  currentState: ReducerStateModel = initialState,
+  action: { payload: ReducerStateModel; type: "ERROR_COUNT" }
+) => {
   const { type, payload } = action;
   switch (type) {
     case ERROR_COUNT:
