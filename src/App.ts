@@ -13,7 +13,6 @@ import { SnackbarProvider } from "notistack";
 import initializeDb from "db/initializeDb";
 import { Provider } from "utils/context";
 import {
-  ReducerProvider,
   reducer,
   initialState as reducerInitialState
 } from "utils/reducerContext";
