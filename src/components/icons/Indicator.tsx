@@ -69,8 +69,8 @@ export default () => {
 type indicatorRootModel = {
   count: number;
   icon: JSX.Element;
-  className: string
-}
+  className: string;
+};
 
 export const Indicator = ({ count, icon, className }: indicatorRootModel) => {
   return (
@@ -83,8 +83,8 @@ export const Indicator = ({ count, icon, className }: indicatorRootModel) => {
 };
 
 type indicatorModel = {
-  count: number
-}
+  count: number;
+};
 
 export const RawCheckinIndicator = ({ count }: indicatorModel) => {
   const classes = useStyles();
@@ -138,7 +138,10 @@ export const RawErrorIndicator = ({ count }: indicatorModel) => {
 };
 
 const genericMapStateToProps = (stateTree: string, stateTreeChild: string) => {
-  return (currentState: { [key: string]: any; }, ownProps: { [key: string]: any; }) => {
+  return (
+    currentState: { [key: string]: any },
+    ownProps: { [key: string]: any }
+  ) => {
     return {
       ...ownProps,
       count: currentState[stateTree][stateTreeChild]

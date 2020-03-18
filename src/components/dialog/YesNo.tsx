@@ -10,13 +10,13 @@ import {
 } from "@material-ui/core";
 
 type yesNoDialogModel = {
-    open: boolean;
-    handleYes: () => void;
-    handleNo: () => void;
-    handleClose: () => void;
-    text: string;
-    title: string;
-}
+  open: boolean;
+  handleYes: () => void;
+  handleNo: () => void;
+  handleClose: () => void;
+  text: string;
+  title: string;
+};
 
 export default ({
   open = false,
