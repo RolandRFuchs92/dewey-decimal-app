@@ -6,7 +6,7 @@ import { SubmitButton, ResetButton } from "./StandardButtons";
 type formButtonModel = {
   onReset: () => void;
   onSubmit: () => void;
-}
+};
 
 export default ({ onReset, onSubmit }: formButtonModel) => {
   return (

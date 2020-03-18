@@ -72,7 +72,7 @@ export function Textfield({
 }
 
 type toolTipTextFieldModel = {
-  handleChange: () => void;
+  handleChange: (evt: { target: { value: string } }) => void;
   tooltip: string;
   value: string;
   rest: any[];
@@ -83,8 +83,7 @@ export const TooltipTextField = ({
   label,
   tooltip,
   value,
-  handleChange,
-  ...rest
+  handleChange
 }: toolTipTextFieldModel) => {
   const classes = useStyles();
   return (
@@ -95,7 +94,6 @@ export const TooltipTextField = ({
           label={label}
           value={value || ""}
           onChange={handleChange}
-          {...rest}
         ></TextField>
       </Tooltip>
     </Grid>
