@@ -5,9 +5,7 @@ import {
   TableCell,
   makeStyles
 } from "@material-ui/core";
-import MuiTablePagination, {
-  LabelDisplayedRowsArgs
-} from "@material-ui/core/TablePagination";
+import MuiTablePagination from "@material-ui/core/TablePagination";
 
 import { OnClickModel, JsonObj } from "types/Generic";
 import Icons from "components/icons";

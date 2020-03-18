@@ -11,11 +11,6 @@ import ReduxThunk from "redux-thunk";
 import MainLayout from "./components/layout/Layout";
 import { SnackbarProvider } from "notistack";
 import initializeDb from "db/initializeDb";
-import { Provider } from "utils/context";
-import {
-  reducer,
-  initialState as reducerInitialState
-} from "utils/reducerContext";
 import Scan from "pages/home/Scan";
 import reduxReducers from "utils/redux/rootReducer";
 import { ErrorIndicator } from "components/icons/Indicator";
@@ -27,12 +22,15 @@ const initialState = {
   setState: () => {}
 };
 
+type ThemeProp = {
+  palette: {
+    type: "light" | "dark";
+  };
+};
+
 function App() {
-  const [state, setState] = useState(initialState);
-  const [updateScans, setUpdateScans] = useState({ update: () => {} });
-  const [reducerState, dispatch] = useReducer(reducer, reducerInitialState);
   const [showScan, setShowScan] = useState(false);
-  const [theme, setTheme] = useState({
+  const [theme, setTheme] = useState<ThemeProp>({
     palette: {
       type: "light"
     }
@@ -50,7 +48,6 @@ function App() {
     setShowScan(!showScan);
   };
 
-  state.setState = state => setState({ ...state });
   initializeDb();
   const muiTheme = createMuiTheme(theme);
 
@@ -58,30 +55,24 @@ function App() {
     <div className="App">
       <GlobalProvider store={store}>
         <MuiThemeProvider theme={muiTheme}>
-          <ReducerProvider value={[reducerState, dispatch]}>
-            <Provider
-              value={{ state, toggleTheme, toggleScan, setUpdateScans }}
-            >
-              <MuiPickersUtilsProvider utils={DateFnsUtils}>
-                <ConfirmProvider>
-                  <SnackbarProvider
-                    anchorOrigin={{
-                      vertical: "bottom",
-                      horizontal: "center"
-                    }}
-                  >
-                    <MainLayout></MainLayout>
-                    <Scan
-                      open={showScan}
-                      handleClose={() => setShowScan(false)}
-                      updateScans={updateScans}
-                    ></Scan>
-                    <ErrorIndicator />
-                  </SnackbarProvider>
-                </ConfirmProvider>
-              </MuiPickersUtilsProvider>
-            </Provider>
-          </ReducerProvider>
+          <MuiPickersUtilsProvider utils={DateFnsUtils}>
+            <ConfirmProvider>
+              <SnackbarProvider
+                anchorOrigin={{
+                  vertical: "bottom",
+                  horizontal: "center"
+                }}
+              >
+                <MainLayout />
+                <Scan
+                  open={showScan}
+                  handleClose={() => setShowScan(false)}
+                  updateScans={updateScans}
+                ></Scan>
+                <ErrorIndicator />
+              </SnackbarProvider>
+            </ConfirmProvider>
+          </MuiPickersUtilsProvider>
         </MuiThemeProvider>
       </GlobalProvider>
     </div>
