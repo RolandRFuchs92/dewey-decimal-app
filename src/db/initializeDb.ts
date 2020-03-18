@@ -4,7 +4,7 @@ import {
   loadSingleFileFromDbFolder,
   getAllFilesInFolder
 } from "utils/sqlScriptLoader";
-import appSettings from "appSettings";
+import appSettings from "appSettings.json";
 import { run, exec, all } from "./repo";
 import log from "utils/logger";
 
@@ -101,7 +101,9 @@ const executeParallelDbQuery = async (tableName: string, files: string[]) => {
   log.info(`table[${tableName}] has been populated.`);
 };
 
-const getScriptsInFolder = async (folderInDbFolder: string): Promise<string[]>=> {
+const getScriptsInFolder = async (
+  folderInDbFolder: string
+): Promise<string[]> => {
   const filesInDbFolder = (
     await getAllFilesInFolder(`${deweySqlRoot}\\${folderInDbFolder}`)
   ).filter((i: string) => endsWith(i, ".sql"));

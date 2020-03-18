@@ -1,9 +1,9 @@
 import log from "utils/logger";
-import appSettings from "appSettings";
+import appSettings from "appSettings.json";
 
 const getStamp = () => `Stamp[${new Date().getTime()}] -`;
 
-export const run = async (statement: string, statementObject?: object ) => {
+export const run = async (statement: string, statementObject?: object) => {
   return await new Promise((res, rej) => {
     const db = getDatabase();
     const stamp = getStamp();
@@ -13,7 +13,7 @@ export const run = async (statement: string, statementObject?: object ) => {
       )}.`
     );
 
-    db.run(statement, statementObject, (err: object)  => {
+    db.run(statement, statementObject, (err: object) => {
       db.close();
       log.info(`${stamp} Closed Db.`);
       if (err) {
@@ -27,7 +27,10 @@ export const run = async (statement: string, statementObject?: object ) => {
   });
 };
 
-export const all = (statement: string, statementObject?: object): Promise<object[]> => {
+export const all = (
+  statement: string,
+  statementObject?: object
+): Promise<object[]> => {
   const db = getDatabase();
   const stamp = getStamp();
   log.info(
@@ -77,7 +80,10 @@ export function getDatabase() {
   return db;
 }
 
-export function single(statement: string, statementObject?: object): Promise<string | number | boolean | null> {
+export function single(
+  statement: string,
+  statementObject?: object
+): Promise<string | number | boolean | null> {
   const db = getDatabase();
   const stamp = getStamp();
   log.info(

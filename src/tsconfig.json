@@ -16,7 +16,7 @@
     "noImplicitAny": true,
     "strictNullChecks": true,
     "esModuleInterop": true,
-    "baseUrl": "./",
+    "baseUrl": "./"
   },
   "exclude": [
     "build",
@@ -26,7 +26,5 @@
     "jest",
     "src/setupTests.ts"
   ],
-  "types": [
-    "typePatches"
-  ]
+  "types": ["typePatches"]
 }
