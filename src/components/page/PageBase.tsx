@@ -36,12 +36,13 @@ export default ({
   const showDialog = useDialog();
   const alert = useAlert();
 
-  const handleEditAdd = (rowData: JsonObj) => {
+  const handleEditAdd = useCallback((rowData: JsonObj) => {
+    //TODO
     let obj = null;
     rowData && (obj = objectFromRowData(rowData));
     setModalData(obj);
     setOpenModal(true);
-  };
+  });
 
   const handleYesOnDelete = async (rowData: JsonObj) => {
     try {
@@ -69,10 +70,10 @@ export default ({
 
   const handleClose = () => setOpenModal(false);
   const addButton = useAddButton(handleEditAdd);
-  const reset = async () => {
+  const reset = useCallback(async () => {
     setData(await getAll());
     setOpenModal(false);
-  };
+  });
 
   useEffect(() => {
     setOptions({
@@ -91,7 +92,7 @@ export default ({
     (async () => {
       await reset();
     })();
-  }, []);
+  }, [addButton, defaultColumns, handleDelete, handleEditAdd, reset]);
 
   return (
     <>

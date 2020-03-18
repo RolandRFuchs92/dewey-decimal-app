@@ -68,7 +68,7 @@ export default ({
       return () => Quagga.offDetected(onDetected);
     }
     return () => {};
-  }, [open]);
+  }, [onDetected, open]);
 
   if (!open) return null;
 

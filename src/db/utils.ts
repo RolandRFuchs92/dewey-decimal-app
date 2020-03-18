@@ -2,7 +2,8 @@ import { snakeCase, compact, lowerCase } from "lodash";
 import { all, run } from "db/repo";
 import log from "utils/logger";
 
-const getColumnsStatement = (tableName: string) => `PRAGMA table_info(${tableName})`;
+const getColumnsStatement = (tableName: string) =>
+  `PRAGMA table_info(${tableName})`;
 const getTablesStatement = `
 	SELECT
 		name
@@ -74,7 +75,7 @@ export async function getAllTablesInDb() {
 }
 
 export async function addOrUpdate(
-  object: { Edit?: any, Delete?: any, [key: string]: any },
+  object: { Edit?: any; Delete?: any; [key: string]: any },
   tableName: string,
   pkField: string = `${tableName}_id`
 ) {
@@ -97,7 +98,11 @@ export async function addToDb(object: object, tableName: string) {
   return await run(statement, statementObject);
 }
 
-export async function updateDb(object: object, tableName: string, pkField: string = `${tableName}_id`) {
+export async function updateDb(
+  object: object,
+  tableName: string,
+  pkField: string = `${tableName}_id`
+) {
   const statement = objectToUpdateStatement(object, tableName, pkField);
   const statementObject = jsonToStatementObject(object);
 
