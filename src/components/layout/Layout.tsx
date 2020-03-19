@@ -1,46 +1,46 @@
-import React, { useEffect } from "react";
-import { makeStyles } from "@material-ui/core/styles";
-import Drawer from "./Drawer";
+import React, { useEffect } from 'react';
+import { makeStyles } from '@material-ui/core/styles';
+import Drawer from './Drawer';
 import {
   CssBaseline,
   AppBar,
   Toolbar,
   Typography,
   IconButton
-} from "@material-ui/core";
+} from '@material-ui/core';
 import {
   BrowserRouter as Router,
   Switch,
   Route,
   Redirect
-} from "react-router-dom";
-import { connect } from "react-redux";
+} from 'react-router-dom';
+import { connect } from 'react-redux';
 
-import { drawerWidth } from "./Layout.config.json";
-import Teacher from "pages/teacher/Teacher";
-import Student from "pages/student/Student";
-import Class from "pages/class/Class";
-import Home from "pages/home";
-import DeweySystem from "pages/deweySystem";
-import Authors from "pages/authors";
-import Books from "pages/books";
-import BooksOut from "pages/booksOut";
-import Icons from "components/icons";
-import Admin from "pages/admin";
-import { PermanentDrawerLeftModel } from "./Layout.type";
+import { drawerWidth } from './Layout.config.json';
+import Teacher from 'pages/teacher/Teacher';
+import Student from 'pages/student/Student';
+import Class from 'pages/class/Class';
+import Home from 'pages/home';
+import DeweySystem from 'pages/deweySystem';
+import Authors from 'pages/authors';
+import Books from 'pages/books';
+import BooksOut from 'pages/booksOut';
+import Icons from 'components/icons';
+import Admin from 'pages/admin';
+import { PermanentDrawerLeftModel } from './Layout.type';
 
-import { loadInitialAppState } from "./Layout.service.js";
+import { loadInitialAppState } from './Layout.service.js';
 
 const useStyles = makeStyles(theme => {
   return {
     root: {
-      display: "flex"
+      display: 'flex'
     },
     toolbarRoot: {
-      display: "flex",
-      width: "100%",
-      justifyContent: "space-between",
-      alignSelf: "center"
+      display: 'flex',
+      width: '100%',
+      justifyContent: 'space-between',
+      alignSelf: 'center'
     },
     appBar: {
       width: `calc(100% - ${drawerWidth}px)`,
@@ -49,7 +49,7 @@ const useStyles = makeStyles(theme => {
     toolbar: theme.mixins.toolbar,
     toolbarCenter: {
       color: theme.palette.primary.contrastText,
-      alignSelf: "center"
+      alignSelf: 'center'
     },
     toggleMode: {
       fontSize: 30

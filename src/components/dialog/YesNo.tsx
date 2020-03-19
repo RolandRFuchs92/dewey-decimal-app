@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 
 import {
   Dialog,
@@ -7,7 +7,7 @@ import {
   DialogContentText,
   DialogActions,
   Button
-} from "@material-ui/core";
+} from '@material-ui/core';
 
 type yesNoDialogModel = {
   open: boolean;

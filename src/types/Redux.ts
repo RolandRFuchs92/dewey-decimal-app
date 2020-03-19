@@ -1,4 +1,4 @@
-import { JsonObj } from "./Generic";
+import { JsonObj } from './Generic';
 
 export type ActionPayloadType = {
   state: JsonObj;

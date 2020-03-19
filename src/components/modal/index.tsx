@@ -1,15 +1,15 @@
-import React from "react";
+import React from 'react';
 
-import { Modal, Grid, Paper, Fade, makeStyles } from "@material-ui/core";
-import appSettings from "appSettings.json";
-import { ModalModel } from "./Modal.type";
+import { Modal, Grid, Paper, Fade, makeStyles } from '@material-ui/core';
+import appSettings from 'appSettings.json';
+import { ModalModel } from './Modal.type';
 
 const useStyles = makeStyles(theme => ({
   paper: {
-    position: "absolute",
-    top: "50%",
-    left: "50%",
-    transform: "translate(-50%, -50%)",
+    position: 'absolute',
+    top: '50%',
+    left: '50%',
+    transform: 'translate(-50%, -50%)',
     padding: 15
   }
 }));

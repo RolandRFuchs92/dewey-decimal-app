@@ -1,6 +1,6 @@
-import React from "react";
+import React from 'react';
 
-import { Grid, TextField, MenuItem } from "@material-ui/core";
+import { Grid, TextField, MenuItem } from '@material-ui/core';
 export default ({
   label,
   menuItems

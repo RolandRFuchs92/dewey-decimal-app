@@ -1,4 +1,4 @@
-import { ERROR_COUNT } from "./errors/ErrorReport.constants";
+import { ERROR_COUNT } from './errors/ErrorReport.constants';
 
 type ReducerStateModel = {
   errorCount: number;
@@ -10,7 +10,7 @@ const initialState: ReducerStateModel = {
 
 export default (
   currentState: ReducerStateModel = initialState,
-  action: { payload: ReducerStateModel; type: "ERROR_COUNT" }
+  action: { payload: ReducerStateModel; type: 'ERROR_COUNT' }
 ) => {
   const { type, payload } = action;
   switch (type) {

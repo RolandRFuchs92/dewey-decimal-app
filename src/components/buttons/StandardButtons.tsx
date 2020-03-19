@@ -1,8 +1,8 @@
-import React from "react";
+import React from 'react';
 
-import { onClickModel } from "types/buttons";
+import { onClickModel } from 'types/buttons';
 
-import { Button } from "@material-ui/core";
+import { Button } from '@material-ui/core';
 
 export function ResetButton({ onClick }: onClickModel) {
   return (

@@ -1,6 +1,6 @@
-import { getAll, deleteRow, addOrUpdate } from "db/utils";
-import { TableNames } from "appSettings.type";
-import appSettings from "appSettings.json";
+import { getAll, deleteRow, addOrUpdate } from 'db/utils';
+import { TableNames } from 'appSettings.type';
+import appSettings from 'appSettings.json';
 
 export default (tableReference: TableNames) => {
   const { tables } = appSettings;

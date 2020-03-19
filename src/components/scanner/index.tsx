@@ -1,20 +1,20 @@
-import React, { useEffect } from "react";
-import Quagga from "quagga";
-import { makeStyles, Grid, Typography } from "@material-ui/core";
+import React, { useEffect } from 'react';
+import Quagga from 'quagga';
+import { makeStyles, Grid, Typography } from '@material-ui/core';
 
-import { ScannerModel } from "./Scanner.type";
+import { ScannerModel } from './Scanner.type';
 
 const useStyles = makeStyles(theme => {
   return {
     viewport: {
-      "& div.viewport canvas": {
-        display: "none"
+      '& div.viewport canvas': {
+        display: 'none'
       },
-      "& div.viewport video": {
-        width: "100%"
+      '& div.viewport video': {
+        width: '100%'
       },
-      "& .drawingBuffer": {
-        position: "absolute",
+      '& .drawingBuffer': {
+        position: 'absolute',
         top: 0,
         left: 0
       }
@@ -37,21 +37,21 @@ export default ({
       Quagga.init(
         {
           inputStream: {
-            type: "LiveStream",
+            type: 'LiveStream',
             constraints: {
               width: 640,
               height: 480,
-              facing: "environment" // or user
+              facing: 'environment' // or user
             }
           },
           locator: {
-            patchSize: "medium",
+            patchSize: 'medium',
             halfSample: true
           },
           numOfWorkers: 2,
           readers: [
             {
-              format: "code_128_reader"
+              format: 'code_128_reader'
             }
           ],
           locate: true

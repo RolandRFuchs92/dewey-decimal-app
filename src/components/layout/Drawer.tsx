@@ -1,11 +1,11 @@
-import React from "react";
-import { makeStyles } from "@material-ui/core/styles";
-import Drawer from "@material-ui/core/Drawer";
-import Divider from "@material-ui/core/Divider";
+import React from 'react';
+import { makeStyles } from '@material-ui/core/styles';
+import Drawer from '@material-ui/core/Drawer';
+import Divider from '@material-ui/core/Divider';
 
-import MainMenuOptions from "./MainMenuOptions";
-import Indicators from "components/icons/Indicator";
-import config from "./Layout.config.json";
+import MainMenuOptions from './MainMenuOptions';
+import Indicators from 'components/icons/Indicator';
+import config from './Layout.config.json';
 
 const { drawerWidth, mainMenu } = config;
 
@@ -20,7 +20,7 @@ const useStyles = makeStyles(theme => ({
   toolbar: theme.mixins.toolbar,
   floatIcons: {
     padding: theme.mixins.gutters().padding,
-    position: "absolute"
+    position: 'absolute'
   }
 }));
 

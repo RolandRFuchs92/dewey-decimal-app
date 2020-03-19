@@ -1,3 +1,3 @@
-import standardTextFiled from "./TextField";
+import standardTextFiled from './TextField';
 
 export { standardTextFiled as StandardTextFiled };

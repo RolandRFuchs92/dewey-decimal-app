@@ -1,4 +1,4 @@
-import { MUIDataTableColumnOptions } from "mui-datatables";
+import { MUIDataTableColumnOptions } from 'mui-datatables';
 
 export type DropdownListModel = {
   text: string;
@@ -9,14 +9,14 @@ export type DefaultColumnModel = {
   label: string;
   name?: string;
   type?:
-    | "header"
-    | "textField"
-    | "text"
-    | "select"
-    | "selectbox"
-    | "typography"
-    | "date"
-    | "datetime";
+    | 'header'
+    | 'textField'
+    | 'text'
+    | 'select'
+    | 'selectbox'
+    | 'typography'
+    | 'date'
+    | 'datetime';
   options?:
     | {
         display: boolean;
@@ -58,7 +58,7 @@ export type ModalBaseModel = {
   handleClose: () => void;
   handleEditAddRow: (statementObject: {
     [x: string]: any;
-  }) => Promise<"add" | null>;
+  }) => Promise<'add' | null>;
   modalData: { [key: string]: any };
   reset: () => void;
 };

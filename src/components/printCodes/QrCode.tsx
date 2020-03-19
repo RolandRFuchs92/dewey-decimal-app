@@ -1,32 +1,32 @@
-import React from "react";
-import QrCode from "qrcode.react";
-import { makeStyles, Typography } from "@material-ui/core";
+import React from 'react';
+import QrCode from 'qrcode.react';
+import { makeStyles, Typography } from '@material-ui/core';
 
-import { QrCodeModel } from "./PrintCodes.type";
+import { QrCodeModel } from './PrintCodes.type';
 
 const useStyles = makeStyles(theme => ({
   container: {
     marginTop: 15,
     marginBottom: 30,
-    position: "relative",
-    display: "flex",
-    justifyContent: "center"
+    position: 'relative',
+    display: 'flex',
+    justifyContent: 'center'
   },
   description: {
-    font: "14px monospace",
+    font: '14px monospace',
     top: -15,
     zIndex: 1,
-    textOverflow: "ellipsis",
-    width: "100%",
-    position: "absolute"
+    textOverflow: 'ellipsis',
+    width: '100%',
+    position: 'absolute'
   },
   value: {
-    font: "14px monospace",
+    font: '14px monospace',
     bottom: -20,
     zIndex: 1,
-    textOverflow: "ellipsis",
-    width: "100%",
-    position: "absolute"
+    textOverflow: 'ellipsis',
+    width: '100%',
+    position: 'absolute'
   }
 }));
 

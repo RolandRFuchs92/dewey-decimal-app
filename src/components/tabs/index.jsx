@@ -1,6 +1,6 @@
-import React from "react";
-import { makeStyles } from "@material-ui/core/styles";
-import { AppBar, Tabs, Tab, Typography } from "@material-ui/core";
+import React from 'react';
+import { makeStyles } from '@material-ui/core/styles';
+import { AppBar, Tabs, Tab, Typography } from '@material-ui/core';
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -22,7 +22,7 @@ function TabPanel(props) {
 function a11yProps(index) {
   return {
     id: `simple-tab-${index}`,
-    "aria-controls": `simple-tabpanel-${index}`
+    'aria-controls': `simple-tabpanel-${index}`
   };
 }
 

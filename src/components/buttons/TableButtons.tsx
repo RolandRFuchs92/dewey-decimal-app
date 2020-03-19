@@ -1,10 +1,10 @@
-import React from "react";
-import { makeStyles } from "@material-ui/core";
+import React from 'react';
+import { makeStyles } from '@material-ui/core';
 
 const useStyles = makeStyles(theme => ({
   child: {
     fontSize: 23,
-    cursor: "pointer",
+    cursor: 'pointer',
     color: theme.palette.primary.light
   }
 }));

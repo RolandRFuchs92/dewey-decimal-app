@@ -1,13 +1,13 @@
-import { setError } from "pages/admin/errors/ErrorReport.action";
-import { errorLogErrorsCount } from "pages/admin/errors/ErrorReport.service";
-import { Dispatch, AnyAction } from "redux";
+import { setError } from 'pages/admin/errors/ErrorReport.action';
+import { errorLogErrorsCount } from 'pages/admin/errors/ErrorReport.service';
+import { Dispatch, AnyAction } from 'redux';
 
 import {
   countBooksCheckedOutToday,
   countBooksCheckedInToday,
   countBooksOverdue
-} from "pages/booksOut/booksout.repo";
-import homeActions from "pages/home/Home.action.js";
+} from 'pages/booksOut/booksout.repo';
+import homeActions from 'pages/home/Home.action.js';
 
 async function loadErrors(dispatch: Dispatch) {
   try {

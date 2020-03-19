@@ -1,41 +1,40 @@
-import React, { useState, Dispatch } from "react";
+import React, { useState, Dispatch } from 'react';
 import {
   List,
   ListItem,
   ListItemIcon,
   ListItemText,
   Collapse,
-  makeStyles,
-  withStyles
-} from "@material-ui/core";
-import { useHistory } from "react-router-dom";
-import { isNil, upperFirst } from "lodash";
+  makeStyles
+} from '@material-ui/core';
+import { useHistory } from 'react-router-dom';
+import { isNil, upperFirst } from 'lodash';
 
-import Icons from "components/icons";
-import { CreateListItemModel } from "./Layout.type";
+import Icons from 'components/icons';
+import { CreateListItemModel } from './Layout.type';
 
 const useStyles = makeStyles(theme => {
   return {
     list: {
-      overflow: "hidden"
+      overflow: 'hidden'
     },
     nested: {
       paddingLeft: theme.spacing(4)
     },
     menuItem: {
-      "&:after": {
+      '&:after': {
         content: '""',
         height: 3,
-        width: "100%",
-        position: "absolute",
+        width: '100%',
+        position: 'absolute',
         bottom: 0,
-        backgroundColor: "white",
-        transition: "all cubic-bezier(0, 0, 0.2, 1) 1s",
+        backgroundColor: 'white',
+        transition: 'all cubic-bezier(0, 0, 0.2, 1) 1s',
         right: -200,
         opacity: 0
       },
-      "&.Mui-selected": {
-        "&:after": {
+      '&.Mui-selected': {
+        '&:after': {
           background: `linear-gradient(to right, white 15px, ${theme.palette.primary.light} 50%, ${theme.palette.primary.main} 85%, ${theme.palette.primary.dark})`,
           right: 0,
           opacity: 1
@@ -118,7 +117,7 @@ function CreateListItem({
         selected={selected}
         button
         key={label}
-        onClick={() => handleMenuItemClick(isNil(path) ? "" : path)}
+        onClick={() => handleMenuItemClick(isNil(path) ? '' : path)}
         className={classes.menuItem}
       >
         <ListItemIcon>{Icon}</ListItemIcon>

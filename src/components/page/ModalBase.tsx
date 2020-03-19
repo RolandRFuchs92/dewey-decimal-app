@@ -1,13 +1,13 @@
-import React, { useEffect, useState } from "react";
-import { TextField, Typography, Grid, MenuItem } from "@material-ui/core";
-import { DatePicker as DatePickerImport } from "@material-ui/pickers";
-import { toLower, isNil } from "lodash";
-import { format } from "date-fns";
+import React, { useEffect, useState } from 'react';
+import { TextField, Typography, Grid, MenuItem } from '@material-ui/core';
+import { DatePicker as DatePickerImport } from '@material-ui/pickers';
+import { toLower, isNil } from 'lodash';
+import { format } from 'date-fns';
 
-import Modal from "components/modal";
-import FormButtons from "components/buttons/FormButtons";
-import log from "utils/logger";
-import { useAlert } from "utils/snackbarAlerts";
+import Modal from 'components/modal';
+import FormButtons from 'components/buttons/FormButtons';
+import log from 'utils/logger';
+import { useAlert } from 'utils/snackbarAlerts';
 
 import {
   DefaultColumnModel,
@@ -16,8 +16,8 @@ import {
   ModalBaseModel,
   DatePickerModel,
   SelectBoxModel
-} from "./PageBase.type";
-import { MaterialUiPickersDate } from "@material-ui/pickers/typings/date";
+} from './PageBase.type';
+import { MaterialUiPickersDate } from '@material-ui/pickers/typings/date';
 
 export default ({
   columns,
@@ -44,7 +44,7 @@ export default ({
     try {
       const statementObject = { ...val };
       const refColumns = columns.filter(column => {
-        let firstChar: string = "";
+        let firstChar: string = '';
         if (column.name !== null && column.name !== undefined)
           firstChar = column.name.substr(0, 1);
 
@@ -55,13 +55,13 @@ export default ({
       });
       const result = await handleEditAddRow(statementObject);
       alert.success(
-        `Successfully ${result === "add" ? "added" : "updated"} ${val.name}!`
+        `Successfully ${result === 'add' ? 'added' : 'updated'} ${val.name}!`
       );
       reset();
     } catch (error) {
       alert.error(
         `There was an error ${
-          val.dewey_summary_id ? "updating" : "adding"
+          val.dewey_summary_id ? 'updating' : 'adding'
         } a field.`
       );
       log.error(
@@ -104,10 +104,10 @@ function convertJsonToModalFields(
         ? modalData[column.name]
         : !isNil(column.ref)
         ? modalData[column.ref]
-        : "0";
+        : '0';
     const child = getElement({
       ...column,
-      onChange: handleOnChange(column.name || ""),
+      onChange: handleOnChange(column.name || ''),
       value
     });
     const el = (
@@ -130,19 +130,19 @@ function getElement({
   if (isNil(type)) return null;
 
   switch (toLower(type)) {
-    case "header":
+    case 'header':
       return (
         <Typography variant="h5">
           {label} {value}
         </Typography>
       );
-    case "text":
+    case 'text':
     case `textfield`:
       return (
         <TextField
           fullWidth
           label={label}
-          value={value || ""}
+          value={value || ''}
           onChange={onChange}
         ></TextField>
       );
@@ -151,12 +151,12 @@ function getElement({
         <TextField
           fullWidth
           label={label}
-          value={value || ""}
+          value={value || ''}
           onChange={onChange}
         ></TextField>
       );
-    case "date":
-    case "datetime":
+    case 'date':
+    case 'datetime':
       return (
         <DatePicker
           label={label}
@@ -164,8 +164,8 @@ function getElement({
           onChange={isNil(onChange) ? () => {} : onChange}
         />
       );
-    case "select":
-    case "selectbox":
+    case 'select':
+    case 'selectbox':
       return (
         <SelectBox
           label={label}
@@ -174,7 +174,7 @@ function getElement({
               ? (value: { target: { value: string } }): void => {}
               : onChange
           }
-          value={isNil(value) ? "" : value}
+          value={isNil(value) ? '' : value}
           getDropDownItems={
             getDropDownItems as () => Promise<DropdownListModel[]>
           }
@@ -187,7 +187,7 @@ function getElement({
 
 function DatePicker({ label, value, onChange }: DatePickerModel) {
   const handleDateChange = (date: MaterialUiPickersDate) => {
-    const formattedDate = format(date as Date, "dd MMM yyyy");
+    const formattedDate = format(date as Date, 'dd MMM yyyy');
     onChange({ target: { value: formattedDate } });
   };
 
@@ -224,7 +224,7 @@ function SelectBox({
       select
       fullWidth
       label={label}
-      value={value || ""}
+      value={value || ''}
       onChange={onChange}
     >
       {rows.map((row: DropdownListModel) => (

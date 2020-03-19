@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 import {
   Home,
   Code,
@@ -8,8 +8,8 @@ import {
   ExpandLess,
   ExpandMore,
   Print
-} from "@material-ui/icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+} from '@material-ui/icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   IconDefinition,
   faAdjust,
@@ -34,7 +34,7 @@ import {
   faMobileAlt,
   faRecordVinyl,
   faExclamationTriangle
-} from "@fortawesome/free-solid-svg-icons";
+} from '@fortawesome/free-solid-svg-icons';
 
 function CreateIcon(icon: IconDefinition) {
   return <FontAwesomeIcon icon={icon}></FontAwesomeIcon>;

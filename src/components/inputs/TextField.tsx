@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from "react";
-import isNil from "lodash";
-import { TextField, Grid, Tooltip, makeStyles } from "@material-ui/core";
+import React, { useState, useEffect } from 'react';
+import isNil from 'lodash';
+import { TextField, Grid, Tooltip, makeStyles } from '@material-ui/core';
 
 const useStyles = makeStyles(theme => {
   return {
@@ -92,7 +92,7 @@ export const TooltipTextField = ({
         <TextField
           fullWidth
           label={label}
-          value={value || ""}
+          value={value || ''}
           onChange={handleChange}
         ></TextField>
       </Tooltip>

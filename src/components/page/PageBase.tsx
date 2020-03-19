@@ -1,20 +1,20 @@
-import React, { useState, useEffect } from "react";
-import MUIDataTable, { MUIDataTableColumnDef } from "mui-datatables";
-import { Fade, Slide } from "@material-ui/core";
+import React, { useState, useEffect } from 'react';
+import MUIDataTable, { MUIDataTableColumnDef } from 'mui-datatables';
+import { Fade, Slide } from '@material-ui/core';
 
-import log from "utils/logger";
-import EditDeleteCol, { useAddButton } from "utils/tableButtons";
-import Modal from "./ModalBase";
-import { useDialog } from "utils/dialog";
-import { useAlert } from "utils/snackbarAlerts";
+import log from 'utils/logger';
+import EditDeleteCol, { useAddButton } from 'utils/tableButtons';
+import Modal from './ModalBase';
+import { useDialog } from 'utils/dialog';
+import { useAlert } from 'utils/snackbarAlerts';
 
-import { DefaultColumnModel } from "./PageBase.type";
+import { DefaultColumnModel } from './PageBase.type';
 
 type PageBaseModel = {
   defaultColumns: DefaultColumnModel[];
   getAll: () => Promise<JsonObj[]>;
   handleDeleteRow: (rowData: { [key: string]: string }) => Promise<void>;
-  handleEditAddRow: (event: JsonObj | null) => Promise<null | "add">;
+  handleEditAddRow: (event: JsonObj | null) => Promise<null | 'add'>;
   modal?: JSX.Element | null;
 };
 
@@ -57,12 +57,12 @@ export default ({
 
   const objectFromRowData = (rowData: JsonObj) =>
     Object.fromEntries(
-      columns.map(({ name }, index) => [name, rowData[index] || ""])
+      columns.map(({ name }, index) => [name, rowData[index] || ''])
     );
   const handleDelete = (rowData: JsonObj) => {
     const obj = objectFromRowData(rowData);
     showDialog({
-      title: "Are you sure?",
+      title: 'Are you sure?',
       description: `Really delete ${obj.name}?`,
       handleYes: () => handleYesOnDelete(obj)
     });
@@ -77,7 +77,7 @@ export default ({
 
   useEffect(() => {
     setOptions({
-      selectableRows: "none",
+      selectableRows: 'none',
       pagination: true,
       ...addButton
     });
