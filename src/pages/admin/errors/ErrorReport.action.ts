@@ -1,4 +1,4 @@
-import { ERROR_COUNT } from "./ErrorReport.constants";
+import { ERROR_COUNT } from './ErrorReport.constants';
 
 export const setError = (count: number): { type: string; payload: number } => {
   const action = {

@@ -1,13 +1,13 @@
-import React, { useState } from "react";
-import { Grid, Button, Typography, makeStyles } from "@material-ui/core";
+import React, { useState } from 'react';
+import { Grid, Button, Typography, makeStyles } from '@material-ui/core';
 
-import { TooltipTextField } from "components/inputs/TextField";
-import appSettings from "appSettings.json";
+import { TooltipTextField } from 'components/inputs/TextField';
+import appSettings from 'appSettings.json';
 
 const useStyles = makeStyles(theme => {
   return {
     pullRight: {
-      alignSelf: "flex-end"
+      alignSelf: 'flex-end'
     }
   };
 });
@@ -32,20 +32,20 @@ export default function AppSettings() {
 
   return (
     <Grid item container lg={3}>
-      <Typography variant="h5">{state.name || "App settings"}</Typography>
+      <Typography variant="h5">{state.name || 'App settings'}</Typography>
       <TooltipTextField
         data-testid="fadeDuration"
         value={`${fadeTransitionDuration}`}
         tooltip="The duration of the fade effects during page transition"
         label="Transition Duration"
-        handleChange={handleChange("fadeDuration")}
+        handleChange={handleChange('fadeDuration')}
       ></TooltipTextField>
       <TooltipTextField
         data-testid="databaseLocation"
         value={`${databaseLocation}`}
         tooltip="Where to store the database. Point this to a local 'onedrive','google drive' folder for cloud storage.(anything that can sync to a cloud)"
         label="Database Location"
-        handleChange={handleChange("databaseLocation")}
+        handleChange={handleChange('databaseLocation')}
       ></TooltipTextField>
       <Typography variant="h5">Library settings</Typography>
       <TooltipTextField

@@ -1,11 +1,11 @@
-import React from "react";
-import { render, within } from "@testing-library/react";
-import "@testing-library/jest-dom/extend-expect";
+import React from 'react';
+import { render, within } from '@testing-library/react';
+import '@testing-library/jest-dom/extend-expect';
 
-import appSettings from "appSettings.json";
-import TestSubject from "./Settings";
+import appSettings from 'appSettings.json';
+import TestSubject from './Settings';
 
-jest.mock("appSettings.json", () => jest.fn());
+jest.mock('appSettings.json', () => jest.fn());
 
 const mockData = {
   fines: {
@@ -17,10 +17,10 @@ const mockData = {
     isBusinessDays: true
   },
   fadeTransitionDuration: 1,
-  databaseLocation: "databaseLocation"
+  databaseLocation: 'databaseLocation'
 };
 
-it("appSettings is imported and shows on page", async () => {
+it('appSettings is imported and shows on page', async () => {
   appSettings.fines = mockData.fines;
   appSettings.checkout = mockData.checkout;
   appSettings.fadeTransitionDuration = mockData.fadeTransitionDuration;
@@ -31,19 +31,19 @@ it("appSettings is imported and shows on page", async () => {
   async function getTestElement(testId: string) {
     const elemenet = await findByTestId(testId); // TODO
     const el = await within(elemenet);
-    const result = await el.getByRole("textbox");
+    const result = await el.getByRole('textbox');
     return result;
   }
 
   const fadeDuration = (await getTestElement(
-    "fadeDuration"
+    'fadeDuration'
   )) as HTMLInputElement;
   const databaseLocation = (await getTestElement(
-    "databaseLocation"
+    'databaseLocation'
   )) as HTMLInputElement;
-  const fineRate = (await getTestElement("fineRate")) as HTMLInputElement;
+  const fineRate = (await getTestElement('fineRate')) as HTMLInputElement;
   const daysAllowedOut = (await getTestElement(
-    "daysAllowedOut"
+    'daysAllowedOut'
   )) as HTMLInputElement;
 
   expect(fadeDuration.value).toBe(`${mockData.fadeTransitionDuration}`);

@@ -1,20 +1,20 @@
-import "@testing-library/jest-dom/extend-expect";
+import '@testing-library/jest-dom/extend-expect';
 
-describe("processErrorLog", () => {
+describe('processErrorLog', () => {
   beforeEach(() => {
     jest.resetModules();
   });
 
-  it("should throw if an error occured while reading data", async () => {
+  it('should throw if an error occured while reading data', async () => {
     //Arrange
-    const fs = require("fs");
+    const fs = require('fs');
     const readFile = jest.fn((path, utf8, cb) => {
       cb(new Error(), null);
     });
     fs.readFile = readFile;
 
     const mockErrorLog = jest.fn();
-    jest.mock("utils/logger", () => ({
+    jest.mock('utils/logger', () => ({
       __esModule: true,
       default: {
         error: mockErrorLog
@@ -24,7 +24,7 @@ describe("processErrorLog", () => {
     let result;
     try {
       //Act
-      const { processErrorLog } = require("./ErrorReport.service");
+      const { processErrorLog } = require('./ErrorReport.service');
       result = await processErrorLog();
     } catch (e) {
       //Assert
@@ -35,16 +35,16 @@ describe("processErrorLog", () => {
   });
 
   const fakeLoggingFile2Good1Bad = `{"timestamp":"2020-02-01 03:03:03"}\r\n{"timestamp"s:"2020-12-12 03:03:03"}\r\n{"timestamp":"2020-01-03 03:03:03"}`;
-  it("should return 2 rows and 1 failed", async () => {
+  it('should return 2 rows and 1 failed', async () => {
     //Arrange
     const readFile = jest.fn((path, utf8, cb) => {
       cb(null, fakeLoggingFile2Good1Bad);
     });
-    const fs = require("fs");
+    const fs = require('fs');
     fs.readFile = readFile;
 
     const mockErrorLog = jest.fn();
-    jest.mock("utils/logger", () => ({
+    jest.mock('utils/logger', () => ({
       __esModule: true,
       default: {
         error: mockErrorLog
@@ -54,14 +54,14 @@ describe("processErrorLog", () => {
     const mockParse = jest.fn();
     const mockFormat = jest.fn();
 
-    jest.mock("date-fns", () => {
+    jest.mock('date-fns', () => {
       return {
         __esModule: true,
         parse: mockParse,
         format: mockFormat
       };
     });
-    const { processErrorLog } = require("./ErrorReport.service");
+    const { processErrorLog } = require('./ErrorReport.service');
 
     //Act
     const parsedErrors = await processErrorLog();

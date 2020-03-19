@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from "react";
-import { makeStyles, Paper, Grid, Typography, Button } from "@material-ui/core";
-import { processErrorLog } from "./ErrorReport.service";
-import { useDialog } from "utils/dialog";
-import { useAlert } from "utils/snackbarAlerts";
-import { ProcessErrorLogResultModel, ErrorListProps } from "./ErrorReport.type";
+import React, { useState, useEffect } from 'react';
+import { makeStyles, Paper, Grid, Typography, Button } from '@material-ui/core';
+import { processErrorLog } from './ErrorReport.service';
+import { useDialog } from 'utils/dialog';
+import { useAlert } from 'utils/snackbarAlerts';
+import { ProcessErrorLogResultModel, ErrorListProps } from './ErrorReport.type';
 
 const useStyles = makeStyles(theme => {
   return {
@@ -11,26 +11,26 @@ const useStyles = makeStyles(theme => {
       margin: 15
     },
     errorContainer: {
-      overflow: "auto",
+      overflow: 'auto',
       height: 250,
-      textAlign: "left",
+      textAlign: 'left',
       padding: 15
     },
     errors: {
-      textAlign: "left",
+      textAlign: 'left',
       padding: 15,
       margin: 15
     },
     fullWidth: {
-      width: "100%"
+      width: '100%'
     },
     packageButton: {
       marginTop: 15,
-      alignSelf: "flex-end"
+      alignSelf: 'flex-end'
     },
     title: {
-      width: "100%",
-      alignSelf: "flex-start"
+      width: '100%',
+      alignSelf: 'flex-start'
     }
   };
 });
@@ -55,14 +55,14 @@ export default () => {
   const handlePackageErrors = () => {
     if (!errorLogResult.length) {
       alert.info(
-        "There are no errors to package. Please try again if anything changes."
+        'There are no errors to package. Please try again if anything changes.'
       );
       return;
     }
 
-    window.ipcRenderer.send("selectPackagePath", errorLogResult);
+    window.ipcRenderer.send('selectPackagePath', errorLogResult);
 
-    window.ipcRenderer.once("selectedPackagePath", function(event, result) {
+    window.ipcRenderer.once('selectedPackagePath', function(event, result) {
       if (result.isSuccess) alert.success(result.message);
       else alert.error(result.message);
     });

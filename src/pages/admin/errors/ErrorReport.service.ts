@@ -1,10 +1,10 @@
-import appSettings from "appSettings.json";
-import { trim } from "lodash";
-import { format, parse } from "date-fns";
-import log from "utils/logger";
-import { ProcessErrorLogResultModel } from "./ErrorReport.type";
+import appSettings from 'appSettings.json';
+import { trim } from 'lodash';
+import { format, parse } from 'date-fns';
+import log from 'utils/logger';
+import { ProcessErrorLogResultModel } from './ErrorReport.type';
 
-const fs = window.require("fs");
+const fs = window.require('fs');
 const {
   formatDate: {
     errorLog: { from, to }
@@ -13,15 +13,15 @@ const {
 
 export const processErrorLog = async (): Promise<ProcessErrorLogResultModel[]> => {
   return new Promise((res, rej) => {
-    fs.readFile(`dewey.error.log`, "utf8", (err: Error, data: string) => {
+    fs.readFile(`dewey.error.log`, 'utf8', (err: Error, data: string) => {
       if (err) {
-        log.error(err);
+        log.error(err.toString());
         return rej(err);
       }
 
       try {
         const parsedErrors: ProcessErrorLogResultModel[] = [];
-        const rows = data.split("\r\n");
+        const rows = data.split('\r\n');
         rows.forEach(row => {
           try {
             if (trim(row).length > 0) {
@@ -47,9 +47,9 @@ export const processErrorLog = async (): Promise<ProcessErrorLogResultModel[]> =
 
 export const errorLogErrorsCount = async () => {
   return await new Promise((res, rej) => {
-    fs.readFile("dewey.error.log", "utf8", (err: Error, data: string) => {
+    fs.readFile('dewey.error.log', 'utf8', (err: Error, data: string) => {
       if (err) rej(err);
-      res(typeof data === "string" ? data.split("\r\n").length : 0);
+      res(typeof data === 'string' ? data.split('\r\n').length : 0);
     });
   });
 };
