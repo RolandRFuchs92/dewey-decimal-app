@@ -1,30 +1,30 @@
-import React from "react";
+import React from 'react';
 
-import PageBase from "components/page/PageBase";
-import repo from "./authors.repo";
+import PageBase from 'components/page/PageBase';
+import repo from './authors.repo';
 
 const defaultColumns = [
   {
-    name: "author_id",
-    label: "Id",
+    name: 'author_id',
+    label: 'Id',
     type: {
-      header: "Author"
+      header: 'Author'
     }
   },
   {
-    name: "name",
-    label: "First name",
-    type: "textfield"
+    name: 'name',
+    label: 'First name',
+    type: 'textfield'
   },
   {
-    name: "second_name",
-    label: "Second name",
-    type: "textfield"
+    name: 'second_name',
+    label: 'Second name',
+    type: 'textfield'
   },
   {
-    name: "surname",
-    label: "Last name",
-    type: "textField"
+    name: 'surname',
+    label: 'Last name',
+    type: 'textField'
   }
 ];
 
@@ -35,7 +35,10 @@ export default () => {
 
   return (
     <PageBase
-      {...{ defaultColumns, getAll, handleDeleteRow, handleEditAddRow }}
+      defaultColumns={defaultColumns}
+      getAll={getAll}
+      handleDeleteRow={handleDeleteRow}
+      handleEditAddRow={handleEditAddRow}
     ></PageBase>
   );
 };

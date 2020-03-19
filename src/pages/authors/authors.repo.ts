@@ -1,9 +1,9 @@
-import { startCase, isEmpty } from "lodash";
+import { startCase, isEmpty } from 'lodash';
 
-import repoBase from "components/page/repo.base";
-import appSettings from "appSettings.json";
-import { all } from "db/repo";
-import { AuthorsQuerySelectListModel } from "./Authors.type";
+import repoBase from 'components/page/repo.base';
+import appSettings from 'appSettings.json';
+import { all } from 'db/repo';
+import { AuthorsQuerySelectListModel } from './Authors.type';
 
 export default repoBase(`author`);
 

@@ -1,8 +1,17 @@
 import { MUIDataTableColumnOptions } from 'mui-datatables';
+import { JsonObj } from 'types/Generic';
 
 export type DropdownListModel = {
   text: string;
   value: string;
+};
+
+export type PageBaseModel = {
+  defaultColumns: DefaultColumnModel[];
+  getAll: () => Promise<JsonObj[]>;
+  handleDeleteRow: (rowData: { [key: string]: string }) => Promise<void>;
+  handleEditAddRow: (event: JsonObj | null) => Promise<null | 'add'>;
+  modal?: JSX.Element | null;
 };
 
 export type DefaultColumnModel = {
