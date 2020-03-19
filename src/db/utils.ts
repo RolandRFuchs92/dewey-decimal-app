@@ -1,6 +1,6 @@
-import { snakeCase, compact, lowerCase } from "lodash";
-import { all, run } from "db/repo";
-import log from "utils/logger";
+import { snakeCase, compact, lowerCase } from 'lodash';
+import { all, run } from 'db/repo';
+import log from 'utils/logger';
 
 const getColumnsStatement = (tableName: string) =>
   `PRAGMA table_info(${tableName})`;
@@ -31,13 +31,13 @@ export function jsonToStatementObject(obj: object) {
 export function getStatementColRefs(obj: object) {
   return Object.keys(obj)
     .map(i => `$${i}`)
-    .join(",");
+    .join(',');
 }
 
 export function objectKeysToSnakeCaseString(obj: object) {
   return Object.keys(obj)
     .map(i => snakeCase(i))
-    .join(",");
+    .join(',');
 }
 
 export function objectToUpdateStatement(
@@ -51,7 +51,7 @@ export function objectToUpdateStatement(
         return `${snakeCase(key)}=$${snakeCase(key)}`;
       return null;
     })
-  ).join(",");
+  ).join(',');
 
   return `
 		UPDATE ${tableName}
@@ -82,19 +82,19 @@ export async function addOrUpdate(
   object.Edit && delete object.Edit;
   object.Delete && delete object.Delete;
   if (!object[pkField]) {
-    object[pkField] === "" && delete object[pkField];
+    object[pkField] === '' && delete object[pkField];
     await addToDb(object, tableName);
-    return "add";
+    return 'add';
   }
   await updateDb(object, tableName, pkField);
-  return "update";
+  return 'update';
 }
 
 export async function addToDb(object: object, tableName: string) {
   const statement = objectToInsertStatement(object, tableName);
   const statementObject = jsonToStatementObject(object);
 
-  log.info("Running generic addToDb statement.");
+  log.info('Running generic addToDb statement.');
   return await run(statement, statementObject);
 }
 
@@ -106,11 +106,11 @@ export async function updateDb(
   const statement = objectToUpdateStatement(object, tableName, pkField);
   const statementObject = jsonToStatementObject(object);
 
-  log.info("Running generic updateDb statement.");
+  log.info('Running generic updateDb statement.');
   return await run(statement, statementObject);
 }
 
-export async function getAll(tableName: string, where: string = "") {
+export async function getAll(tableName: string, where: string = '') {
   const statement = `
 		SELECT
 			*

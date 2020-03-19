@@ -1,12 +1,12 @@
-import { endsWith } from "lodash";
+import { endsWith } from 'lodash';
 
 import {
   loadSingleFileFromDbFolder,
   getAllFilesInFolder
-} from "utils/sqlScriptLoader";
-import appSettings from "appSettings.json";
-import { run, exec, all } from "./repo";
-import log from "utils/logger";
+} from 'utils/sqlScriptLoader';
+import appSettings from 'appSettings.json';
+import { run, exec, all } from './repo';
+import log from 'utils/logger';
 
 const tableDeweySummary1Name = `dewey_summary`;
 const tableDeweySummary2Name = `dewey_summary_2`;
@@ -33,7 +33,7 @@ export default async function setupDatabase() {
   }
 }
 
-const deweySqlRoot = "sql\\deweySystemScripts";
+const deweySqlRoot = 'sql\\deweySystemScripts';
 
 const createDatabase = async () => {
   try {
@@ -67,9 +67,9 @@ const hasData = async (table: string) => {
 };
 
 const seedDatabase = async () => {
-  const summary1Queries = getScriptsInFolder("summary1");
-  const summary2Queries = getScriptsInFolder("summary2");
-  const summary3Queries = getScriptsInFolder("summary3");
+  const summary1Queries = getScriptsInFolder('summary1');
+  const summary2Queries = getScriptsInFolder('summary2');
+  const summary3Queries = getScriptsInFolder('summary3');
 
   await executeParallelDbQuery(tableDeweySummary1Name, await summary1Queries);
   await executeParallelDbQuery(tableDeweySummary2Name, await summary2Queries);
@@ -106,7 +106,8 @@ const getScriptsInFolder = async (
 ): Promise<string[]> => {
   const filesInDbFolder = (
     await getAllFilesInFolder(`${deweySqlRoot}\\${folderInDbFolder}`)
-  ).filter((i: string) => endsWith(i, ".sql"));
+  ).filter((i: string) => endsWith(i, '.sql'));
+
   return await Promise.all(
     filesInDbFolder.map((fileName: string) =>
       loadSingleFileFromDbFolder(
