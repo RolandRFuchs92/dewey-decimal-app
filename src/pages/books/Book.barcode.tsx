@@ -12,7 +12,6 @@ import Barcode from 'components/printCodes/Barcode';
 import QrCode from 'components/printCodes/QrCode';
 import Modal from 'components/modal';
 import Icons from 'components/icons';
-import { JsonObj } from 'types/Generic';
 
 const useStyles = makeStyles(theme => ({
   hide: {

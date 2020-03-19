@@ -7,5 +7,5 @@ export type QrCodeModel = {
 export type BarcodeModel = {
   value: string;
   description: string;
-  className: string;
+  className?: string;
 };
