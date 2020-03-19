@@ -1,10 +1,11 @@
 import log from 'utils/logger';
+import { JsonObj } from 'types/Generic';
 import appSettings from 'appSettings.json';
 
 const getStamp = () => `Stamp[${new Date().getTime()}] -`;
 
-export const run = async (statement: string, statementObject?: object) => {
-  return await new Promise((res, rej) => {
+export const run = async (statement: string, statementObject?: JsonObj) => {
+  return await new Promise<true>((res, rej) => {
     const db = getDatabase();
     const stamp = getStamp();
     log.info(
@@ -13,7 +14,7 @@ export const run = async (statement: string, statementObject?: object) => {
       )}.`
     );
 
-    db.run(statement, statementObject, (err: object) => {
+    db.run(statement, statementObject, (err: JsonObj) => {
       db.close();
       log.info(`${stamp} Closed Db.`);
       if (err) {
@@ -30,7 +31,7 @@ export const run = async (statement: string, statementObject?: object) => {
 export const all = (
   statement: string,
   statementObject?: object
-): Promise<object[]> => {
+): Promise<JsonObj[]> => {
   const db = getDatabase();
   const stamp = getStamp();
   log.info(
@@ -54,7 +55,7 @@ export const all = (
 };
 
 export const exec = (statement: string) => {
-  return new Promise((res, rej) => {
+  return new Promise<true>((res, rej) => {
     const db = getDatabase();
     const stamp = getStamp();
     log.info(`${stamp} Running statement - \n\n${statement}\n\n with params.`);

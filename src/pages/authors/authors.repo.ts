@@ -27,7 +27,7 @@ export const getSelectList = async () => {
       name,
       second_name,
       surname
-    }: AuthorsQuerySelectListModel = row as AuthorsQuerySelectListModel;
+    }: AuthorsQuerySelectListModel = (row as unknown) as AuthorsQuerySelectListModel;
     return {
       text: `${startCase(name)} ${!isEmpty(second_name) &&
         `${second_name.substr(0, 1)}.`} ${startCase(surname)}`,

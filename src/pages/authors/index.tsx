@@ -1,15 +1,15 @@
 import React from 'react';
 
+import { DefaultColumnModel } from 'components/page/PageBase.type';
 import PageBase from 'components/page/PageBase';
+
 import repo from './authors.repo';
 
-const defaultColumns = [
+const defaultColumns: DefaultColumnModel[] = [
   {
     name: 'author_id',
     label: 'Id',
-    type: {
-      header: 'Author'
-    }
+    type: 'header'
   },
   {
     name: 'name',
@@ -24,7 +24,7 @@ const defaultColumns = [
   {
     name: 'surname',
     label: 'Last name',
-    type: 'textField'
+    type: 'textfield'
   }
 ];
 

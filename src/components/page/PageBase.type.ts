@@ -9,8 +9,8 @@ export type DropdownListModel = {
 export type PageBaseModel = {
   defaultColumns: DefaultColumnModel[];
   getAll: () => Promise<JsonObj[]>;
-  handleDeleteRow: (rowData: { [key: string]: string }) => Promise<void>;
-  handleEditAddRow: (event: JsonObj | null) => Promise<null | 'add'>;
+  handleDeleteRow: (rowData: { [key: string]: string }) => Promise<true>;
+  handleEditAddRow: (event: JsonObj | null) => Promise<'add' | 'update'>;
   modal?: JSX.Element | null;
 };
 
@@ -19,7 +19,7 @@ export type DefaultColumnModel = {
   name?: string;
   type?:
     | 'header'
-    | 'textField'
+    | 'textfield'
     | 'text'
     | 'select'
     | 'selectbox'

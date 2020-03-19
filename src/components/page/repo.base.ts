@@ -1,6 +1,7 @@
 import { getAll, deleteRow, addOrUpdate } from 'db/utils';
 import { TableNames } from 'appSettings.type';
 import appSettings from 'appSettings.json';
+import { JsonObj } from 'types/Generic';
 
 export default (tableReference: TableNames) => {
   const { tables } = appSettings;
@@ -16,7 +17,7 @@ export default (tableReference: TableNames) => {
   return {
     getAll: async () => await getAll(tableName),
     deleteRow: deleteFunc,
-    addOrUpdate: async (val: { [key: string]: string }) =>
-      await addOrUpdate(val, tableName, pkFieldName)
+    addOrUpdate: async (val: JsonObj | null) =>
+      await addOrUpdate(val!, tableName, pkFieldName)
   };
 };
