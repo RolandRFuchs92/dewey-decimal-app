@@ -1,34 +1,34 @@
-import * as React from "react";
+import * as React from 'react';
 import {
   TableFooter,
   TableRow,
   TableCell,
   makeStyles
-} from "@material-ui/core";
-import MuiTablePagination from "@material-ui/core/TablePagination";
+} from '@material-ui/core';
+import MuiTablePagination from '@material-ui/core/TablePagination';
 
-import { OnClickModel, JsonObj } from "types/Generic";
-import Icons from "components/icons";
-import { isNil } from "lodash";
-import { DefaultColumnModel } from "components/page/PageBase.type";
+import { OnClickModel, JsonObj } from 'types/Generic';
+import Icons from 'components/icons';
+import { isNil } from 'lodash';
+import { DefaultColumnModel } from 'components/page/PageBase.type';
 
 const useStyles = makeStyles(theme => ({
   edit: {
     fontSize: 20,
     color: theme.palette.info.main,
-    cursor: "pointer"
+    cursor: 'pointer'
   },
   delete: {
     fontSize: 20,
     color: theme.palette.error.main,
-    cursor: "pointer"
+    cursor: 'pointer'
   },
   addButton: {
     color: theme.palette.success.main,
-    textAlign: "right",
+    textAlign: 'right',
     padding: 10,
-    alignSelf: "flex-end",
-    "& svg": {
+    alignSelf: 'flex-end',
+    '& svg': {
       fontSize: 30
     }
   }
@@ -59,8 +59,8 @@ export default (
   handleDelete: HandleEditAddModel
 ): DefaultColumnModel[] => [
   {
-    name: "Edit",
-    label: "",
+    name: 'Edit',
+    label: '',
     options: {
       filter: false,
       sort: false,
@@ -77,8 +77,8 @@ export default (
     }
   },
   {
-    name: "Delete",
-    label: "",
+    name: 'Delete',
+    label: '',
     options: {
       filter: false,
       sort: false,
@@ -114,7 +114,9 @@ type CustomFooterModel = {
   changeRowsPerPage: (val: string) => void;
 };
 
-export const useAddButton = (handleEditAdd: HandleEditAddModel) => {
+export const useAddButton: React.ReactNode = (
+  handleEditAdd: HandleEditAddModel
+) => {
   const classes = useStyles();
   return {
     customFooter: (
@@ -164,9 +166,9 @@ function CustomFooter({
   };
 
   const footerStyle = {
-    display: "flex",
-    justifyContent: "flex-end",
-    padding: "0px 24px 0px 24px"
+    display: 'flex',
+    justifyContent: 'flex-end',
+    padding: '0px 24px 0px 24px'
   };
 
   return (
@@ -185,10 +187,10 @@ function CustomFooter({
                 textLabels.displayRows} ${count}`
             }
             backIconButtonProps={{
-              "aria-label": textLabels.previous
+              'aria-label': textLabels.previous
             }}
             nextIconButtonProps={{
-              "aria-label": textLabels.next
+              'aria-label': textLabels.next
             }}
             rowsPerPageOptions={[10, 20, 100]}
             onChangePage={handlePageChange}
