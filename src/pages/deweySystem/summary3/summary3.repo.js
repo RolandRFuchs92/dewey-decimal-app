@@ -31,5 +31,5 @@ const selectListQuery = `
 
 `;
 export const getSelectList = async () => {
-    return await all(selectListQuery);
+    return await all(selectListQuery) as DropdownListModel;
 }
