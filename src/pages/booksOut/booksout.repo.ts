@@ -1,12 +1,12 @@
-import repoBase from "components/page/repo.base";
-import { getBooksSelectList } from "pages/books/book.repo";
-import { getSelectList } from "pages/student/Student.repo";
-import { all, run, single } from "db/repo";
-import appSettings from "appSettings";
+import repoBase from 'components/page/repo.base';
+import { getBooksSelectList } from 'pages/books/book.repo';
+import { getSelectList } from 'pages/student/Student.repo';
+import { all, run, single } from 'db/repo';
+import appSettings from 'appSettings.json';
 import {
   calculateReturnOnDateForDbInsert,
   formatDateForDbInsert
-} from "utils/businessRules";
+} from 'utils/businessRules';
 
 const getAllQuery = `
 SELECT
@@ -38,7 +38,7 @@ const checkoutBookQuery = `
     VALUES($book_id, $student_id, $return_on, $check_out_date);
 `;
 
-export const checkout = async (student_id, book_id) => {
+export const checkout = async (student_id: string, book_id: string) => {
   const statementObject = {
     $student_id: student_id,
     $book_id: book_id,
@@ -56,7 +56,10 @@ const checkinBookQuery = `
         books_out_id = $books_out_id
 `;
 
-export const checkin = async (books_out_id, check_in_date = new Date()) => {
+export const checkin = async (
+  books_out_id: string,
+  check_in_date = new Date()
+) => {
   const statementObject = {
     $books_out_id: books_out_id,
     $check_in_date: formatDateForDbInsert(check_in_date)
@@ -139,7 +142,7 @@ export const countBooksOverdue = async (date = new Date()) => {
   };
 
   const statement = `SELECT COUNT(*) FROM ${booksOverdueQuery
-    .split("FROM")
+    .split('FROM')
     .pop()}`;
   return await single(statement, statementObject);
 };
