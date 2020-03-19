@@ -1,7 +1,7 @@
 import baseRepo from 'components/page/repo.base';
-import {all} from 'db/repo';
+import { all } from 'db/repo';
+import { DropdownListModel } from 'components/page/PageBase.type';
 const repo = baseRepo(`dewey_summary_3`);
-
 
 const getAllQuery = `
 SELECT
@@ -15,9 +15,9 @@ FROM
 JOIN	
     dewey_summary_2 ds2
     on ds3.summary_2_id = ds2.summary_2_id
-`
+`;
 repo.getAll = async () => {
-    return await all(getAllQuery);
+  return await all(getAllQuery);
 };
 
 export default repo;
@@ -31,5 +31,5 @@ const selectListQuery = `
 
 `;
 export const getSelectList = async () => {
-    return await all(selectListQuery) as DropdownListModel;
-}
+  return ((await all(selectListQuery)) as unknown) as DropdownListModel[];
+};

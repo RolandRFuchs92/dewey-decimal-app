@@ -1,6 +1,7 @@
 import { all, run } from 'db/repo';
 import { addOrUpdate as addOrUpdateGeneric } from 'db/utils';
 import { JsonObj } from 'types/Generic';
+import { DropdownListModel } from 'components/page/PageBase.type';
 
 const getAllData = `
     SELECT
@@ -39,5 +40,5 @@ export const deleteRow = async (id: string) => {
 };
 
 export const getSelectList = async () => {
-  return await all(getSelectListQuery);
+  return ((await all(getSelectListQuery)) as unknown) as DropdownListModel[];
 };

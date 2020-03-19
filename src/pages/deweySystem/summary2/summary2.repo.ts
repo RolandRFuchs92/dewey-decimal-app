@@ -1,5 +1,6 @@
 import baseRepo from 'components/page/repo.base';
 import { all } from 'db/repo';
+import { DropdownListModel } from 'components/page/PageBase.type';
 
 const repo = baseRepo(`dewey_summary_2`);
 
@@ -18,11 +19,10 @@ const getAllQuery = `
 `;
 
 repo.getAll = async () => {
-    return await all(getAllQuery);
+  return await all(getAllQuery);
 };
 
 export default repo;
-
 
 const getSelectListQuery = `
 SELECT
@@ -30,8 +30,8 @@ SELECT
     name as text
 FROM 
     dewey_summary_2
-`
+`;
 
 export const getSelectList = async () => {
-    return await all(getSelectListQuery);
-}
+  return ((await all(getSelectListQuery)) as unknown) as DropdownListModel[];
+};
