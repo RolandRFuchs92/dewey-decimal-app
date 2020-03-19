@@ -1,10 +1,10 @@
 import repoBase from 'components/page/repo.base';
-import {all} from 'db/repo';
-import appSettings from 'appSettings';
+import { all } from 'db/repo';
+import appSettings from 'appSettings.json';
 
-
-const { fines, formatDate, checkout } = appSettings;
-const {tables: {book, author, dewey_decimal}} = appSettings;
+const {
+  tables: { book, author, dewey_decimal }
+} = appSettings;
 
 const getAllQuery = `
 SELECT	
@@ -24,12 +24,12 @@ JOIN
 JOIN
     ${dewey_decimal.name} dd
     ON b.decimal_id = dd.decimal_id
-`
+`;
 const repo = repoBase(`book`);
 
 repo.getAll = async () => {
-    return await all(getAllQuery);
-}
+  return await all(getAllQuery);
+};
 
 export default repo;
 
@@ -43,15 +43,14 @@ const getBooksSelectListQuery = `
 `;
 
 export const getBooksSelectList = async () => {
-    const data = await all(getBooksSelectListQuery);
-    return data.map(({[appSettings.tables.book.pk] :pk, name, call_number}) => {
-        return {
-            value: pk,
-            text: `${name.substr(0,20)} - ${call_number}`
-        };
-    });
-}
-
+  const data = await all(getBooksSelectListQuery);
+  return data.map(({ [appSettings.tables.book.pk]: pk, name, call_number }) => {
+    return {
+      value: pk,
+      text: `${name.substr(0, 20)} - ${call_number}`
+    };
+  });
+};
 
 const getStudentBooksHistoryQuery = `
 SELECT	
@@ -74,10 +73,12 @@ WHERE
 ORDER by 
 	bo.check_out_date DESC
 `;
-export const getStudentBooksHistory = async (student_id) => {
-    const data = await all(getStudentBooksHistoryQuery, {$student_id: student_id});
-    return data;
-}
+export const getStudentBooksHistory = async (student_id: string) => {
+  const data = await all(getStudentBooksHistoryQuery, {
+    $student_id: student_id
+  });
+  return data;
+};
 
 const getBookByCallNumberQuery = `
 SELECT
@@ -112,9 +113,11 @@ LEFT JOIN
 	ON c.class_id = t.class_id
 WHERE	
    b.call_number = $call_number
-`
+`;
 
-export const getBookByCallNumber = async (call_number) => {
-    const [data] = await all(getBookByCallNumberQuery, { $call_number: call_number });
-    return data;
-}   
+export const getBookByCallNumber = async (call_number: string) => {
+  const [data] = await all(getBookByCallNumberQuery, {
+    $call_number: call_number
+  });
+  return data;
+};

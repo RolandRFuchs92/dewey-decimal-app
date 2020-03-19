@@ -15,7 +15,7 @@ export type PageBaseModel = {
 };
 
 export type DefaultColumnModel = {
-  label: string;
+  label?: string;
   name?: string;
   type?:
     | 'header'
