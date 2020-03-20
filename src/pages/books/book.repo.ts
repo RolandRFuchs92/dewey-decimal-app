@@ -2,6 +2,8 @@ import repoBase from 'components/page/repo.base';
 import { all } from 'db/repo';
 import appSettings from 'appSettings.json';
 
+import { CalculateCheckoutModel, CalculateCheckinModel } from './Home.type';
+
 const {
   tables: { book, author, dewey_decimal }
 } = appSettings;
@@ -115,7 +117,9 @@ WHERE
    b.call_number = $call_number
 `;
 
-export const getBookByCallNumber = async (call_number: string) => {
+export const getBookByCallNumber = async (
+  call_number: string
+): Promise<CalculateCheckoutModel | CalculateCheckinModel> => {
   const [data] = await all(getBookByCallNumberQuery, {
     $call_number: call_number
   });

@@ -1,27 +1,26 @@
-import React, { useContext, useEffect, useState } from "react";
-import { Grid, Paper, makeStyles } from "@material-ui/core";
+import React, { useEffect, useState } from 'react';
+import { Grid, makeStyles } from '@material-ui/core';
 
-import { getBooksOverdue } from "pages/booksOut/booksout.repo";
-import reducerContext, { booksOverdueAction } from "utils/reducerContext";
+import { getBooksOverdue } from 'pages/booksOut/booksout.repo';
+import { JsonObj } from 'types/Generic';
 
 const useStyles = makeStyles(theme => ({
   container: {
     height: 500
-  }
+  },
+  scanTileItem: {}
 }));
 
 export default () => {
   const classes = useStyles();
-  const [booksOverdue, setBooksOverdue] = useState([]);
-  const [state, dispatch] = useContext(reducerContext);
+  const [booksOverdue, setBooksOverdue] = useState<JsonObj[]>([]);
 
   useEffect(() => {
     (async () => {
       const overdueBooksResult = await getBooksOverdue();
       setBooksOverdue(overdueBooksResult);
-      dispatch(booksOverdueAction(overdueBooksResult.length));
     })();
-  }, [dispatch]);
+  }, []);
 
   return (
     <>

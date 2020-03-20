@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, ChangeEvent } from 'react';
 import {
   TextField,
   makeStyles,
@@ -7,27 +7,29 @@ import {
   Button,
   IconButton,
   Grid
-} from "@material-ui/core";
-import { Autocomplete } from "@material-ui/lab";
-import { isNil } from "lodash";
+} from '@material-ui/core';
+import { Autocomplete } from '@material-ui/lab';
+import { isNil } from 'lodash';
 
-import { checkout, checkin } from "pages/booksOut/booksout.repo";
-import { useAlert } from "utils/snackbarAlerts";
-import Modal from "components/modal";
-import Icons from "components/icons";
-import { getBookByCallNumber, searchForStudentsSelect } from "./Home.repo";
-import Scanner from "components/scanner";
+import { checkout, checkin } from 'pages/booksOut/booksout.repo';
+import { useAlert } from 'utils/snackbarAlerts';
+import Modal from 'components/modal';
+import Icons from 'components/icons';
+import { getBookByCallNumber, searchForStudentsSelect } from './Home.repo';
+import Scanner from 'components/scanner';
+import { ScanProps, BarcodeResultModel } from './Home.type';
+import { JsonObj } from 'types/Generic';
 
 const useStyles = makeStyles(theme => ({
   barcode: {
     fontSize: 35
   },
   statContainer: {
-    "& p": {
+    '& p': {
       margin: 0,
       fontSize: 15
     },
-    "& button": {
+    '& button': {
       marginTop: 15
     }
   },
@@ -36,57 +38,59 @@ const useStyles = makeStyles(theme => ({
   },
   phone: {
     marginLeft: 15,
-    "&.active": {
+    '&.active': {
       color: theme.palette.error.light
     }
   },
   laptopCamera: {
     marginLeft: 15,
-    "&.active": {
+    '&.active': {
       color: theme.palette.error.light
     }
   }
 }));
 
-export default ({ open, handleClose, updateScans }) => {
+export default ({ open, handleClose, updateScans }: ScanProps) => {
   const classes = useStyles();
   const input = useRef(null);
   const [isScannerOpen, setIsScannerOpen] = useState(true);
 
   const [barcodeResult, setBarcodeResult] = useState({});
-  const [barcode, setBarcode] = useState("");
+  const [barcode, setBarcode] = useState('');
 
   const alert = useAlert();
 
   const _handleClose = () => {
-    setBarcode("");
+    setBarcode('');
     handleClose();
     setBarcodeResult({});
   };
 
-  const handleSubmit = async e => {
-    if (e.key !== "Enter") return;
+  const handleSubmit = async (
+    e: KeyboardEvent & { target: { value: string } }
+  ) => {
+    if (e.key !== 'Enter') return;
 
     const {
       target: { value }
     } = e;
+    // @ts-ignore //Todo fix this error
     input.current.focus();
     setBarcode(value);
     handleCheckinout(value);
   };
 
   const reset = () => {
-    updateScans.update();
-    setBarcode("");
+    setBarcode('');
     setBarcodeResult({});
   };
 
-  const handleDetectedCode = ({ codeResult: { code } }) => {
+  const handleDetectedCode = ({ codeResult: { code } }: BarcodeResultModel) => {
     setBarcode(code);
     handleCheckinout(code);
   };
 
-  const handleCheckinout = async value => {
+  const handleCheckinout = async (value: string) => {
     const data = await getBookByCallNumber(value);
     if (!data) {
       alert.error(`${value} was not found. Make sure the book is loaded`);
@@ -145,14 +149,22 @@ export default ({ open, handleClose, updateScans }) => {
   );
 };
 
-const ScannerIconButtons = ({ handleLaptopButton, isScannerOpen }) => {
+export type ScannerIconButtonProps = {
+  handleLaptopButton: () => void;
+  isScannerOpen: boolean;
+};
+
+const ScannerIconButtons = ({
+  handleLaptopButton,
+  isScannerOpen
+}: ScannerIconButtonProps) => {
   const classes = useStyles();
 
   return (
     <div>
       <IconButton
         aria-label="Scan with Laptop"
-        className={`${classes.laptopCamera} ${isScannerOpen && "active"}`}
+        className={`${classes.laptopCamera} ${isScannerOpen && 'active'}`}
         onClick={handleLaptopButton}
       >
         {Icons.LaptopCamera}
@@ -228,20 +240,32 @@ const GenerateCheckin = ({ data, reset }) => {
   );
 };
 
-const GenerateCheckout = ({ data, reset }) => {
+export type GenerateCheckoutProps = {
+  data: {
+    author_name: string;
+    book_name: string;
+    call_number: string;
+    check_out_date: string;
+    return_on: string;
+    book_id: string;
+  };
+  reset: () => void;
+};
+
+const GenerateCheckout = ({ data, reset }: GenerateCheckoutProps) => {
   const [selectList, setSelectList] = useState([]);
-  const [selection, setSelection] = useState({});
+  const [selection, setSelection] = useState<GenerateCheckoutProps>({});
   const classes = useStyles();
   const alert = useAlert();
 
-  const handleSearch = async e => {
+  const handleSearch = async (e: ChangeEvent<HTMLInputElement>) => {
     const {
       target: { value }
     } = e;
     setSelectList(await searchForStudentsSelect(value));
   };
 
-  const getSelection = (e, value) => {
+  const getSelection = (_: never, value: JsonObj) => {
     if (isNil(value)) return;
     setSelection({
       class: value.class,
@@ -279,8 +303,6 @@ const GenerateCheckout = ({ data, reset }) => {
       </p>
       <hr></hr>
       <Autocomplete
-        autoFocus
-        label="Student"
         options={selectList}
         onChange={getSelection}
         getOptionLabel={option => option.text}

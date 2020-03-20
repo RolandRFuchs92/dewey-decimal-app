@@ -5,7 +5,11 @@ import appSettings from 'appSettings';
 import { all } from 'db/repo';
 import { getStudentBooksHistory } from 'pages/books/book.repo';
 
-const {tables: {student: {pk, name}}} = appSettings;
+const {
+  tables: {
+    student: { pk, name }
+  }
+} = appSettings;
 const repo = repoBase(name);
 
 const getAllQuery = `
@@ -29,11 +33,11 @@ const getAllQuery = `
     JOIN
         class c
         on s.class_id = c.class_id
-`
+`;
 
 repo.getAll = async () => {
-    return await all(getAllQuery);
-}
+  return await all(getAllQuery);
+};
 export default repo;
 
 const queryStudentDropdown = `
@@ -51,26 +55,35 @@ const queryStudentDropdown = `
 `;
 
 export async function getSelectList() {
-	const data = await all(queryStudentDropdown);
-	return data.map(({[appSettings.tables.student.pk]: pk,first_name, last_name, class_name, grade}) => {
-		return {
-			value: pk,
-			text: `${startCase(first_name)} ${last_name} - Grade ${grade}${startCase(class_name.substr(0,2))}`
-		}
-	});
+  const data = await all(queryStudentDropdown);
+  return data.map(
+    ({
+      [appSettings.tables.student.pk]: pk,
+      first_name,
+      last_name,
+      class_name,
+      grade
+    }) => {
+      return {
+        value: pk,
+        text: `${startCase(
+          first_name
+        )} ${last_name} - Grade ${grade}${startCase(class_name.substr(0, 2))}`
+      };
+    }
+  );
 }
 
 export async function getStudentProfileData(student_id) {
-    const studentProfileDataQuery = `
+  const studentProfileDataQuery = `
         ${getAllQuery} 
         WHERE
             s.student_id = student_id
     `;
-    const studentData = await all(studentProfileDataQuery);
-    const historyData = await getStudentBooksHistory(student_id);
+  const studentData = await all(studentProfileDataQuery);
+  const historyData = await getStudentBooksHistory(student_id);
 
-    return { studentData, historyData}
-
+  return { studentData, historyData };
 }
 
 const getStudentsWithBirthdaysQuery = `
@@ -91,11 +104,11 @@ const getStudentsWithBirthdaysQuery = `
         on c.class_id = t.class_id
     WHERE
         strftime('%d %m', s.birthdate) = STRFTIME('%d %m', $date)
-`
+`;
 
 export async function getStudentsWithBirthdays(date) {
-    const statementObject = { $date: date };
-    return await all(getStudentsWithBirthdaysQuery, statementObject);
+  const statementObject = { $date: date };
+  return await all(getStudentsWithBirthdaysQuery, statementObject);
 }
 
 const getStudentSelectListSearchQuery = `
@@ -116,7 +129,9 @@ const getStudentSelectListSearchQuery = `
         (c.grade || c.class_name || ' - ' || s.first_name || ' '  || s.last_name) LIKE $searchTerm
 `;
 
-export const getStudentSelectListSearch = async value => {
-    const result = await all(getStudentSelectListSearchQuery, { $searchTerm : `%${value}%` })
-    return result;
-}
+export const getStudentSelectListSearch = async (value: string) => {
+  const result = await all(getStudentSelectListSearchQuery, {
+    $searchTerm: `%${value}%`
+  });
+  return result;
+};

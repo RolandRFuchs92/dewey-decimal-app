@@ -159,16 +159,17 @@ function getElement({
     case 'datetime':
       return (
         <DatePicker
-          label={label}
+          label={label!}
           value={value}
           onChange={isNil(onChange) ? () => {} : onChange}
         />
       );
+    case 'check':
     case 'select':
     case 'selectbox':
       return (
         <SelectBox
-          label={label}
+          label={label!}
           onChange={
             isNil(onChange)
               ? (value: { target: { value: string } }): void => {}

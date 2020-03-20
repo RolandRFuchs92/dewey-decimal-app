@@ -1,19 +1,18 @@
-import React, { useState, useEffect, useContext } from "react";
-import { makeStyles, Typography, Paper } from "@material-ui/core";
-import { chain } from "lodash";
+import React, { useState, useEffect } from 'react';
+import { makeStyles, Typography, Paper } from '@material-ui/core';
+import { chain } from 'lodash';
 
-import reducerContext, { birthdayIndicatorAction } from "utils/reducerContext";
-import { getBirthdays } from "./Home.repo";
-
+import { getBirthdays } from './Home.repo';
+import { BirthdaysType } from './Home.type';
 const useStyles = makeStyles(theme => {
   return {
     container: {
       padding: 15,
-      height: "100%",
-      overflow: "overlay"
+      height: '100%',
+      overflow: 'overlay'
     },
     heading: {
-      position: "sticky",
+      position: 'sticky',
       top: 0
     },
     birthday: {
@@ -22,7 +21,7 @@ const useStyles = makeStyles(theme => {
     teachers: {
       marginBottom: 5,
       paddingLeft: 5,
-      "& p": {
+      '& p': {
         marginLeft: 5
       }
     }
@@ -30,25 +29,23 @@ const useStyles = makeStyles(theme => {
 });
 
 export default () => {
-  const [state, setState] = useState([]);
+  const [state, setState] = useState<BirthdaysType[]>([]);
   const classes = useStyles();
-  const [reducerState, dispatch] = useContext(reducerContext);
 
   useEffect(() => {
     (async () => {
       const birthdaysResult = await getBirthdays();
       const birthdays = chain(birthdaysResult)
-        .groupBy("teacher")
+        .groupBy('teacher')
         .map((value, key) => ({
           teacher: key,
           student: value
         }))
         .value();
 
-      dispatch(birthdayIndicatorAction(birthdaysResult.length));
       setState(birthdays);
     })();
-  }, [dispatch]);
+  }, []);
 
   return (
     <Paper className={classes.container}>

@@ -1,4 +1,4 @@
-import Constants from "pages/home/Home.constants";
+import { GenericActionModal } from './Home.type';
 
 const initialState = {
   checkoutsToday: 0,
@@ -7,25 +7,25 @@ const initialState = {
   booksOverdue: 0
 };
 
-export default (currentState = initialState, action) => {
+export default (currentState = initialState, action: GenericActionModal) => {
   const { type, payload } = action;
   switch (type) {
-    case Constants.CHECKOUTS_TODAY:
+    case 'CHECKOUTS_TODAY':
       return {
         ...initialState,
         checkoutsToday: payload
       };
-    case Constants.CHECKINS_Today:
+    case 'CHECKINS_TODAY':
       return {
         ...initialState,
         checkinsToday: payload
       };
-    case Constants.BIRTHDAYS_TODAY:
+    case 'BIRTHDAYS_TODAY':
       return {
         ...initialState,
         birthdaysToday: payload
       };
-    case Constants.BOOKS_OVERDUE:
+    case 'BOOKS_OVERDUE':
       return {
         ...initialState,
         booksOverdue: payload

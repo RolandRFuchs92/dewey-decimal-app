@@ -25,7 +25,8 @@ export type DefaultColumnModel = {
     | 'selectbox'
     | 'typography'
     | 'date'
-    | 'datetime';
+    | 'datetime'
+    | 'check';
   options?:
     | {
         display: boolean;

@@ -1,29 +1,30 @@
-import React from "react";
-import { makeStyles, Grid } from "@material-ui/core";
+import React from 'react';
+import { makeStyles, Grid } from '@material-ui/core';
+import { ScansTemplateProps, ScansModel } from './Home.type';
 
 const useStyles = makeStyles(theme => ({
   container: {
-    height: "100%",
+    height: '100%',
     padding: 15,
-    display: "flex",
-    flexDirection: "column"
+    display: 'flex',
+    flexDirection: 'column'
   },
   title: {
-    background: "white",
+    background: 'white',
     paddingBottom: 15
   },
   scanTileItem: {
-    width: "50%"
+    width: '50%'
   }
 }));
 
-export default ({ scans }) => {
+export default ({ scans }: ScansTemplateProps) => {
   const classes = useStyles();
 
   return (
     <>
       {scans &&
-        scans.map(({ author, book, student }) => {
+        scans.map(({ author, book, student }: ScansModel) => {
           return (
             <>
               <Grid container>
