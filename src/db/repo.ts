@@ -28,10 +28,10 @@ export const run = async (statement: string, statementObject?: JsonObj) => {
   });
 };
 
-export const all = (
+export async function all<T>(
   statement: string,
   statementObject?: object
-): Promise<JsonObj[]> => {
+): Promise<T[]> {
   const db = getDatabase();
   const stamp = getStamp();
   log.info(
@@ -41,7 +41,7 @@ export const all = (
     )} with params ${JSON.stringify(statementObject)}.`
   );
   return new Promise((res, rej) => {
-    db.all(statement, statementObject, (err: object, rows: object[]) => {
+    db.all(statement, statementObject, (err: object, rows: T[]) => {
       db.close();
       log.info(`${stamp} Closed Db.`);
       if (err) {
@@ -52,7 +52,7 @@ export const all = (
       res(rows);
     });
   });
-};
+}
 
 export const exec = (statement: string) => {
   return new Promise<true>((res, rej) => {

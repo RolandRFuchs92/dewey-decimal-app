@@ -15,10 +15,11 @@ import { checkout, checkin } from 'pages/booksOut/booksout.repo';
 import { useAlert } from 'utils/snackbarAlerts';
 import Modal from 'components/modal';
 import Icons from 'components/icons';
-import { getBookByCallNumber, searchForStudentsSelect } from './Home.repo';
 import Scanner from 'components/scanner';
+import { JsonObj, GenericInputEvent } from 'types/Generic';
+
 import { ScanProps, BarcodeResultModel } from './Home.type';
-import { JsonObj } from 'types/Generic';
+import { getBookByCallNumber, searchForStudentsSelect } from './Home.repo';
 
 const useStyles = makeStyles(theme => ({
   barcode: {
@@ -50,12 +51,30 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
+const defeaultCheckoutData: ScanDataModel = {
+  author_name: '',
+  book_id: '',
+  book_name: '',
+  call_number: '',
+  check_out_date: '',
+  return_on: '',
+  books_out_id: '',
+  check_in_on: '',
+  class: '',
+  fine: '',
+  isCheckout: true,
+  student_name: '',
+  teacher_name: ''
+};
+
 export default ({ open, handleClose, updateScans }: ScanProps) => {
   const classes = useStyles();
   const input = useRef(null);
   const [isScannerOpen, setIsScannerOpen] = useState(true);
 
-  const [barcodeResult, setBarcodeResult] = useState({});
+  const [barcodeResult, setBarcodeResult] = useState<ScanDataModel>(
+    defeaultCheckoutData
+  );
   const [barcode, setBarcode] = useState('');
 
   const alert = useAlert();
@@ -63,10 +82,10 @@ export default ({ open, handleClose, updateScans }: ScanProps) => {
   const _handleClose = () => {
     setBarcode('');
     handleClose();
-    setBarcodeResult({});
+    setBarcodeResult(defeaultCheckoutData);
   };
 
-  const handleSubmit = async (e: HTMLInputElement) => {
+  const handleSubmit = (e: GenericInputEvent & KeyboardEvent): void => {
     if (e.key !== 'Enter') return;
 
     const {
@@ -80,7 +99,7 @@ export default ({ open, handleClose, updateScans }: ScanProps) => {
 
   const reset = () => {
     setBarcode('');
-    setBarcodeResult({});
+    setBarcodeResult(defeaultCheckoutData);
   };
 
   const handleDetectedCode = ({ codeResult: { code } }: BarcodeResultModel) => {
@@ -114,6 +133,7 @@ export default ({ open, handleClose, updateScans }: ScanProps) => {
               label="Barcode"
               autoFocus
               variant="outlined"
+              // @ts-ignore
               onKeyDown={handleSubmit}
               value={barcode}
               onChange={({ target: { value } }) => setBarcode(value)}
@@ -131,6 +151,7 @@ export default ({ open, handleClose, updateScans }: ScanProps) => {
             ></ScannerIconButtons>
           </Grid>
           <Grid item>
+            // @ts-ignore
             {barcodeResult.isCheckout ? (
               <GenerateCheckout data={barcodeResult} reset={reset} />
             ) : (
@@ -174,7 +195,27 @@ const ScannerIconButtons = ({
   );
 };
 
-const GenerateCheckin = ({ data, reset }) => {
+export type ScanDataModel = {
+  books_out_id: string;
+  book_name: string;
+  student_name: string;
+  call_number: string;
+  isCheckout: boolean;
+  check_out_date: string;
+  check_in_on: string;
+  return_on: string;
+  class: string;
+  author_name: string;
+  fine: string | 'None';
+  teacher_name: string;
+};
+
+export type GenerateCheckinProps = {
+  data: ScanDataModel;
+  reset: () => void;
+};
+
+const GenerateCheckin = ({ data, reset }: GenerateCheckinProps) => {
   const alert = useAlert();
   const handleSubmit = async () => {
     try {
@@ -238,15 +279,17 @@ const GenerateCheckin = ({ data, reset }) => {
   );
 };
 
+export type CheckoutData = {
+  author_name: string;
+  book_name: string;
+  call_number: string;
+  check_out_date: string;
+  return_on: string;
+  book_id: string;
+};
+
 export type GenerateCheckoutProps = {
-  data: {
-    author_name: string;
-    book_name: string;
-    call_number: string;
-    check_out_date: string;
-    return_on: string;
-    book_id: string;
-  };
+  data: CheckoutData;
   reset: () => void;
 };
 
@@ -270,7 +313,7 @@ const GenerateCheckout = ({ data, reset }: GenerateCheckoutProps) => {
     setSelectList(await searchForStudentsSelect(value));
   };
 
-  const getSelection = (_: never, value: JsonObj) => {
+  const getSelection = (event: ChangeEvent<{}>, value: JsonObj) => {
     if (isNil(value)) return;
     setSelection({
       class: value.class,
@@ -282,14 +325,18 @@ const GenerateCheckout = ({ data, reset }: GenerateCheckoutProps) => {
 
   const handleSubmit = async () => {
     try {
-      await checkout(selection.student_id!, data.book_id);
+      await checkout(selection?.student_id ?? '', data.book_id);
       reset();
       alert.success(
-        `${selection.student_name} checked out ${data.book_name} due back on ###ADD DATE HERE ###`
+        `${selection?.student_name ?? 'Unknown'} checked out ${
+          data.book_name
+        } due back on ###ADD DATE HERE ###`
       );
     } catch (error) {
       alert.error(
-        `An error occured while checking out ${data.book_name} for ${selection.student_name}.`
+        `An error occured while checking out ${
+          data.book_name
+        } for ${selection?.student_name ?? 'Unknown'}.`
       );
     }
   };
@@ -309,6 +356,7 @@ const GenerateCheckout = ({ data, reset }: GenerateCheckoutProps) => {
       <hr></hr>
       <Autocomplete
         options={selectList}
+        //@ts-ignore //Todo Figure out why this is broken...
         onChange={getSelection!}
         getOptionLabel={option => option.text}
         ListboxProps={{ onClick: getSelection }}
@@ -325,10 +373,10 @@ const GenerateCheckout = ({ data, reset }: GenerateCheckoutProps) => {
         )}
       ></Autocomplete>
       <p>
-        Class: <b>{selection.class}</b>
+        Class: <b>{selection?.class ?? ''}</b>
       </p>
       <p>
-        Teacher: <b>{selection.teacher}</b>
+        Teacher: <b>{selection?.teacher ?? ''}</b>
       </p>
       <hr></hr>
       <p>

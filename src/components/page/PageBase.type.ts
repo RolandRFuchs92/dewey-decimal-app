@@ -72,3 +72,8 @@ export type ModalBaseModel = {
   modalData: { [key: string]: any };
   reset: () => void;
 };
+
+export type DatatabelDataModel<T> = {
+  Delete: any;
+  Edit: any;
+} & T;
