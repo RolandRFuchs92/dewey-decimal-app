@@ -1,15 +1,16 @@
 import { startCase } from 'lodash';
 
 import repoBase from 'components/page/repo.base';
-import appSettings from 'appSettings';
+import appSettings from 'appSettings.json';
 import { all } from 'db/repo';
 import { getStudentBooksHistory } from 'pages/books/book.repo';
 
 const {
   tables: {
-    student: { pk, name }
+    student: { name }
   }
 } = appSettings;
+
 const repo = repoBase(name);
 
 const getAllQuery = `
@@ -74,7 +75,7 @@ export async function getSelectList() {
   );
 }
 
-export async function getStudentProfileData(student_id) {
+export async function getStudentProfileData(student_id: string) {
   const studentProfileDataQuery = `
         ${getAllQuery} 
         WHERE
@@ -106,7 +107,7 @@ const getStudentsWithBirthdaysQuery = `
         strftime('%d %m', s.birthdate) = STRFTIME('%d %m', $date)
 `;
 
-export async function getStudentsWithBirthdays(date) {
+export async function getStudentsWithBirthdays(date: string) {
   const statementObject = { $date: date };
   return await all(getStudentsWithBirthdaysQuery, statementObject);
 }

@@ -1,8 +1,4 @@
-export type TableNames =
-  | "author"
-  | "dewey_summary_2"
-  | "dewey_summary_3"
-  | "dewey_decimal"
-  | "book"
-  | "books_out"
-  | "student";
+import appSettings from 'appSettings.json';
+
+const { tables } = appSettings;
+export type TableNames = keyof typeof tables;

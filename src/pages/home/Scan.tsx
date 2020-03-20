@@ -66,9 +66,7 @@ export default ({ open, handleClose, updateScans }: ScanProps) => {
     setBarcodeResult({});
   };
 
-  const handleSubmit = async (
-    e: KeyboardEvent & { target: { value: string } }
-  ) => {
+  const handleSubmit = async (e: HTMLInputElement) => {
     if (e.key !== 'Enter') return;
 
     const {
@@ -111,7 +109,7 @@ export default ({ open, handleClose, updateScans }: ScanProps) => {
           </Grid>
           <Grid item container direction="row">
             <TextField
-              tabIndex="1"
+              tabIndex={1}
               ref={input}
               label="Barcode"
               autoFocus
@@ -252,9 +250,16 @@ export type GenerateCheckoutProps = {
   reset: () => void;
 };
 
+export type UserSelection = {
+  class: string;
+  teacher: string;
+  student_name: string;
+  student_id: string;
+};
+
 const GenerateCheckout = ({ data, reset }: GenerateCheckoutProps) => {
-  const [selectList, setSelectList] = useState([]);
-  const [selection, setSelection] = useState<GenerateCheckoutProps>({});
+  const [selectList, setSelectList] = useState<JsonObj[]>([]);
+  const [selection, setSelection] = useState<UserSelection>();
   const classes = useStyles();
   const alert = useAlert();
 
@@ -277,7 +282,7 @@ const GenerateCheckout = ({ data, reset }: GenerateCheckoutProps) => {
 
   const handleSubmit = async () => {
     try {
-      await checkout(selection.student_id, data.book_id);
+      await checkout(selection.student_id!, data.book_id);
       reset();
       alert.success(
         `${selection.student_name} checked out ${data.book_name} due back on ###ADD DATE HERE ###`
@@ -304,7 +309,7 @@ const GenerateCheckout = ({ data, reset }: GenerateCheckoutProps) => {
       <hr></hr>
       <Autocomplete
         options={selectList}
-        onChange={getSelection}
+        onChange={getSelection!}
         getOptionLabel={option => option.text}
         ListboxProps={{ onClick: getSelection }}
         noOptionsText="No students found"
