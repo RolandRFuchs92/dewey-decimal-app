@@ -6,48 +6,18 @@ import {
 import { run, all } from '../../db/repo';
 import { DatatabelDataModel } from 'components/page/PageBase.type';
 import { JsonObj } from 'types/Generic';
-
-const querySelectListTeachers = `
-    SELECT
-        teacher_id,
-        first_name
-    FROM
-        teacher
-    WHERE
-        is_active = 1
-    ORDER BY 
-        teacher_id ASC
-`;
-
-const queryAllTeachers = `
-    SELECT
-        teacher_id,
-        first_name,
-        last_name,
-        mobile,
-        email,
-        class_id,
-        is_active
-    FROM
-        teacher
-    WHERE
-        is_active = 1;
-`;
-const queryHideTeacher = `
-    UPDATE 
-        teacher
-    SET
-        is_active = 0
-    WHERE
-        teacher_id = $teacher_id
-`;
+import {
+  querySelectListTeachers,
+  queryAllTeachers,
+  queryHideTeacher
+} from './Teacher.sql';
 
 export async function getTeachersForSelect() {
-  return all(querySelectListTeachers);
+  return all<TeacherModel>(querySelectListTeachers);
 }
 
-export async function getTeachers(): Promise<TeacherModel[]> {
-  return all(queryAllTeachers);
+export async function getTeachers() {
+  return all<TeacherModel>(queryAllTeachers);
 }
 
 export type TeacherModel = {

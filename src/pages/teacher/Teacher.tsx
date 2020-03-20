@@ -49,13 +49,13 @@ const tableOptions = {
 
 export default () => {
   const [columns, setColumns] = useState([]);
-  const [data, setData] = useState([]);
+  const [data, setData] = useState<TeacherModel[]>([]);
   const [options, setOptions] = useState({});
   const [isOpen, setIsOpen] = useState(false);
   const [teacher, setTeacher] = useState({});
   const alert = useAlert();
   const dialog = useDialog();
-  let columnsVar: DefaultColumnModel;
+  let columnsVar: DefaultColumnModel[];
 
   const handleEditAdd = rowData => {
     const obj = Object.fromEntries(
@@ -65,7 +65,8 @@ export default () => {
     setIsOpen(true);
   };
 
-  const tableAddButton = useAddButton(handleEditAdd);
+  const tableAddButton = useAddButton!(handleEditAdd);
+
   useEffect(() => {
     (async () => {
       let editButtons = await AddUpdate(handleEditAdd, handleDelete);
@@ -105,7 +106,8 @@ export default () => {
   const handleClose = () => setIsOpen(false);
 
   const reset = async () => {
-    setData(await getTeachers());
+    const result = await getTeachers();
+    setData(result);
     setIsOpen(false);
   };
 
