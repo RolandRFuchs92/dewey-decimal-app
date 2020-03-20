@@ -114,9 +114,7 @@ type CustomFooterModel = {
   changeRowsPerPage: (val: string) => void;
 };
 
-export const useAddButton: React.ReactNode = (
-  handleEditAdd: HandleEditAddModel
-) => {
+export const useAddButton = (handleEditAdd: HandleEditAddModel) => {
   const classes = useStyles();
   return {
     customFooter: (

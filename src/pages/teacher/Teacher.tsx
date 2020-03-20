@@ -65,7 +65,7 @@ export default () => {
     setIsOpen(true);
   };
 
-  const tableAddButton = useAddButton!(handleEditAdd);
+  const tableAddButton = useAddButton(handleEditAdd);
 
   useEffect(() => {
     (async () => {
