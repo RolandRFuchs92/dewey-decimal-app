@@ -11,22 +11,23 @@ import {
   queryAllTeachers,
   queryHideTeacher
 } from './Teacher.sql';
+import { TeacherModel } from './Teacher.type';
 
 export async function getTeachersForSelect() {
-  return all<TeacherModel>(querySelectListTeachers);
+  return all<TeacherRepoModel>(querySelectListTeachers);
 }
 
 export async function getTeachers() {
   return all<TeacherModel>(queryAllTeachers);
 }
 
-export type TeacherModel = {
+export type TeacherRepoModel = {
   teacher_id: string;
   is_active: boolean | 0 | 1;
 };
 
 export async function createOrUpdateTeacher(
-  teacher: DatatabelDataModel<TeacherModel>
+  teacher: DatatabelDataModel<TeacherRepoModel>
 ) {
   delete teacher.Delete;
   delete teacher.Edit;
@@ -38,14 +39,14 @@ export async function createOrUpdateTeacher(
   return 'update';
 }
 
-export async function updateTeacher(teacher: TeacherModel) {
+export async function updateTeacher(teacher: TeacherRepoModel) {
   const statement = objectToUpdateStatement(teacher, 'teacher');
   const statementObject = jsonToStatementObject(teacher);
 
   return run(statement, statementObject);
 }
 
-export async function createTeacher(teacher: TeacherModel) {
+export async function createTeacher(teacher: TeacherRepoModel) {
   teacher.is_active = 1;
   const statement = objectToInsertStatement(teacher, 'teacher');
   const statementObject = jsonToStatementObject(teacher);

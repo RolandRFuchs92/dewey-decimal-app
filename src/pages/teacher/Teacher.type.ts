@@ -1,6 +1,6 @@
-export type TeacherModel = {
+export interface TeacherModel {
   first_name: string;
   last_name: string;
   teacher_id: string;
   teacherName: string;
-};
+}

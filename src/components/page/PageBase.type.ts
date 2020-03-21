@@ -1,10 +1,5 @@
 import { MUIDataTableColumnOptions } from 'mui-datatables';
-import { JsonObj } from 'types/Generic';
-
-export type DropdownListModel = {
-  text: string;
-  value: string;
-};
+import { JsonObj, DropdownListModel } from 'types/Generic';
 
 export type PageBaseModel = {
   defaultColumns: DefaultColumnModel[];

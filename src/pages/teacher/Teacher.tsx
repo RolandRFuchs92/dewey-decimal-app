@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import MUIDataTable from 'mui-datatables';
+import MUIDataTable, { MUIDataTableColumnDef } from 'mui-datatables';
 import { Fade } from '@material-ui/core';
 
 import AddUpdate from 'utils/tableButtons';
@@ -11,6 +11,7 @@ import { useDialog } from 'utils/dialog';
 import appSettings from 'appSettings.json';
 import { TeacherModel } from './Teacher.type';
 import { DefaultColumnModel } from 'components/page/PageBase.type';
+import { JsonObj } from 'types/Generic';
 
 const columnConfig: DefaultColumnModel[] = [
   {
@@ -48,7 +49,7 @@ const tableOptions = {
 };
 
 export default () => {
-  const [columns, setColumns] = useState([]);
+  const [columns, setColumns] = useState<DefaultColumnModel[]>([]);
   const [data, setData] = useState<TeacherModel[]>([]);
   const [options, setOptions] = useState({});
   const [isOpen, setIsOpen] = useState(false);
@@ -57,9 +58,9 @@ export default () => {
   const dialog = useDialog();
   let columnsVar: DefaultColumnModel[];
 
-  const handleEditAdd = rowData => {
+  const handleEditAdd = (rowData: JsonObj) => {
     const obj = Object.fromEntries(
-      columnsVar.map(({ name }, index) => [name, rowData[index]])
+      columnsVar.map(({ name }, index) => [name, rowData[index]]) // Todo, check this logic..
     );
     setTeacher(obj);
     setIsOpen(true);
@@ -75,13 +76,14 @@ export default () => {
         ...tableAddButton
       });
       const columns = [...columnConfig, ...editButtons];
-      columnsVar = columns;
+      columnsVar = columns; // Todo Check this logic too
       setColumns(columns);
       reset();
     })();
   }, []);
 
-  const handleDelete = rowData => {
+  // ToDo check this logic for indexing
+  const handleDelete = (rowData: JsonObj) => {
     const teacher = Object.fromEntries(
       columnsVar.map(({ name }, index) => [name, rowData[index]])
     );
@@ -95,7 +97,7 @@ export default () => {
   const handleYesForDelete = async (teacher: TeacherModel) => {
     const teacherName = `${teacher.first_name} ${teacher.last_name}`;
     try {
-      await hideTeacher(teacher.teacher_id);
+      await hideTeacher(+teacher.teacher_id);
       await reset();
       alert.success(`Successfully removed teacher - ${teacherName}`);
     } catch (error) {
@@ -118,7 +120,7 @@ export default () => {
           <MUIDataTable
             title=""
             data={data}
-            columns={columns}
+            columns={(columns as unknown) as MUIDataTableColumnDef[]}
             options={options}
           />
           <TeacherModal

@@ -3,3 +3,10 @@ export type JsonObj = { [key: string]: string };
 export type EventObj = { target: { value: string } };
 
 export type GenericInputEvent = React.ChangeEvent<HTMLInputElement>;
+
+export type DropdownListModel = {
+  text: string;
+  value: string;
+  selected?: boolean;
+  disabled?: boolean;
+};

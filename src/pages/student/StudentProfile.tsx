@@ -6,6 +6,12 @@ import Modal from 'components/modal';
 import Icons from 'components/icons';
 import { getStudentProfileData } from './Student.repo';
 import { JsonObj } from 'types/Generic';
+import {
+  StudentCardProps,
+  StudentBookHistoryProps,
+  StudentProfileProps,
+  StudentModel
+} from './Student.type';
 
 const cardWidth = 680;
 
@@ -85,12 +91,6 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export type StudentProfileProps = {
-  open: boolean;
-  handleClose: () => void;
-  studentId?: number;
-};
-
 export default ({ open, handleClose, studentId = 1 }: StudentProfileProps) => {
   const [isFront, setIsFront] = useState(true);
   const [historyData, setHistoryData] = useState<JsonObj[]>([]); // TODO IMPLEMENT THE PROPER TYPES
@@ -98,7 +98,7 @@ export default ({ open, handleClose, studentId = 1 }: StudentProfileProps) => {
 
   useEffect(() => {
     (async () => {
-      const result = await getStudentProfileData(studentId);
+      const result = await getStudentProfileData(studentId.toString());
       setStudentData(result.studentData[0]);
       setHistoryData(result.historyData);
     })();
@@ -148,7 +148,7 @@ export default ({ open, handleClose, studentId = 1 }: StudentProfileProps) => {
 const BooksHistory = ({
   historyData,
   studentData: { first_name, last_name }
-}) => {
+}: StudentCardProps) => {
   const classes = useStyles();
   return (
     <Grid container alignContent="space-between" style={{ height: '100%' }}>
@@ -191,26 +191,24 @@ const BooksHistory = ({
   );
 };
 
-export type StudentModel = {
-  first_name: string;
-  last_name: string;
-  birthdate: string;
-  mother_mobile: string;
-  mother_email: string;
-  mother_name: string;
-  father_name: string;
-  father_mobile: string;
-  father_email: string;
-  grade: number;
-  class_name: string;
+const defaultStudentData: StudentModel = {
+  birthdate: '',
+  class_name: '',
+  father_email: '',
+  father_mobile: '',
+  father_name: '',
+  first_name: '',
+  grade: 0,
+  last_name: '',
+  mother_email: '',
+  mother_mobile: '',
+  mother_name: ''
 };
 
-export type StudentCardProps = {
-  studentData: StudentModel;
-  historyData: BookHistoryModel[];
-};
-
-const StudentCard = ({ studentData = {}, historyData }: StudentCardProps) => {
+const StudentCard = ({
+  studentData = defaultStudentData,
+  historyData
+}: StudentCardProps) => {
   const {
     first_name,
     last_name,
@@ -286,17 +284,6 @@ const StudentCard = ({ studentData = {}, historyData }: StudentCardProps) => {
       </Grid>
     </Grid>
   );
-};
-
-export type BookHistoryModel = {
-  check_in_date?: string;
-  return_on: string;
-  book_name: string;
-  author_name: string;
-};
-
-export type StudentBookHistoryProps = {
-  hst: BookHistoryModel[];
 };
 
 const StudentBookHistory = ({ hst = [] }: StudentBookHistoryProps) => {
