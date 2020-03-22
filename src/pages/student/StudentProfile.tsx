@@ -5,7 +5,6 @@ import { compareAsc, parse } from 'date-fns';
 import Modal from 'components/modal';
 import Icons from 'components/icons';
 import { getStudentProfileData } from './Student.repo';
-import { JsonObj } from 'types/Generic';
 import {
   StudentCardProps,
   StudentBookHistoryProps,

@@ -13,8 +13,8 @@ import {
   getStudentSelectListSearch
 } from 'pages/student/Student.repo';
 import appSettings from 'appSettings.json';
-import { JsonObj } from 'types/Generic';
 import { CalculateCheckoutModel, CalculateCheckinModel } from './Home.type';
+import { GetBookCallNumberModel } from 'pages/books/Book.type';
 
 const { fines, formatDate, checkout } = appSettings;
 export const getBirthdays = async () => {
@@ -22,48 +22,70 @@ export const getBirthdays = async () => {
 };
 
 export const getBookByCallNumber = async (callnumber: string) => {
-  const data = await findBookByBarcode(callnumber);
+  const data = (await findBookByBarcode(callnumber))[0];
   if (data === undefined) return null;
 
   if (data.student_name) return calculateCheckin(data);
   return calculateCheckout(data);
 };
 
-const calculateCheckout = async (data: CalculateCheckoutModel) => {
-  data.isCheckout = true;
-  data.return_on = checkout.isBusinessDays
+const calculateCheckout = async (
+  data: GetBookCallNumberModel
+): Promise<CalculateCheckoutModel> => {
+  const isCheckout = true;
+  const return_on = checkout.isBusinessDays
     ? format(
         addBusinessDays(new Date(), checkout.daysAllowedOut),
         formatDate.to
       )
     : format(addDays(new Date(), checkout.daysAllowedOut), formatDate.to);
 
-  data.check_out_date = format(new Date(), formatDate.to);
-  data.fine = 'None';
-  data.fetchStudents = getSelectList;
-  return data;
+  const check_out_date = format(new Date(), formatDate.to);
+  const fine = 'None';
+  const fetchStudents = getSelectList;
+
+  const checkoutResult: CalculateCheckoutModel = {
+    check_out_date,
+    fine,
+    isCheckout,
+    return_on,
+    fetchStudents
+  };
+
+  return checkoutResult;
 };
 
-const calculateCheckin = (data: CalculateCheckinModel) => {
-  data.isCheckout = false;
-  let check_out_date, return_on;
-
-  check_out_date = parse(data.check_out_date, formatDate.from, new Date());
-  return_on = parse(data.return_on, formatDate.from, new Date());
+const calculateCheckin = (
+  data: GetBookCallNumberModel
+): CalculateCheckinModel => {
+  const isCheckout = false;
+  let check_out_date = parse(
+    data.check_out_date.toString(),
+    formatDate.from,
+    new Date()
+  );
+  let return_on = parse(data.return_on.toString(), formatDate.from, new Date());
   const diffDays = differenceInBusinessDays(check_out_date, return_on);
 
-  data.check_out_date = format(check_out_date, formatDate.to);
-  data.check_in_on =
-    data.check_in_on &&
-    format(parse(data.check_in_on, formatDate.to, new Date()), formatDate.to);
+  let fine;
+  if (!data.check_in_date && fines.isEnabled)
+    fine = diffDays > 0 ? `R${diffDays * fines.rate}` : 'None';
+  else fine = 'None';
 
-  data.return_on = format(return_on, formatDate.to);
+  const result: CalculateCheckinModel = {
+    isCheckout,
+    check_out_date: format(check_out_date, formatDate.to),
+    check_in_on:
+      data.check_in_date &&
+      format(
+        parse(data.check_in_date.toString(), formatDate.to, new Date()),
+        formatDate.to
+      ),
+    return_on: format(return_on, formatDate.to),
+    fine
+  };
 
-  if (!data.check_in_on && fines.isEnabled)
-    data.fine = diffDays > 0 ? `R${diffDays * fines.rate}` : 'None';
-  else data.fine = 'None';
-
-  return data;
+  return result;
 };
 
 export const searchForStudentsSelect = async (value: string) => {
