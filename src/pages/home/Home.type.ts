@@ -1,4 +1,4 @@
-import { JsonObj } from 'types/Generic';
+import { GetStudentsWithBirthdaysModel } from 'pages/student/Student.type';
 
 export type GenericActionModal = {
   type: IndicatorActionTypes;
@@ -56,7 +56,7 @@ export type HomeProps = {
 
 export type BirthdaysType = {
   teacher: string;
-  student: JsonObj[];
+  student: GetStudentsWithBirthdaysModel[];
 };
 
 export type ScanProps = {

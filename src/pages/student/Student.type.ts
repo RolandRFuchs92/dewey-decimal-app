@@ -14,6 +14,15 @@ export type StudentModel = {
   class_name: string;
 };
 
+export type GetStudentsWithBirthdaysModel = {
+  first_name: string;
+  last_name: string;
+  birthdate: Date;
+  grade: number;
+  class_name: string;
+  teacher: string;
+};
+
 export type StudentCardProps = {
   studentData?: StudentModel;
   historyData?: GetStudentBooksHistoryModel[];

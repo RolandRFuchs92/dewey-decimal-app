@@ -1,7 +1,7 @@
 import repoBase from 'components/page/repo.base';
 import { all } from 'db/repo';
 import { getStudentBooksHistory } from 'pages/books/book.repo';
-import { StudentModel } from './Student.type';
+import { StudentModel, GetStudentsWithBirthdaysModel } from './Student.type';
 import {
   getAllQuery,
   queryStudentDropdown,
@@ -37,7 +37,10 @@ export async function getStudentProfileData(student_id: string) {
 
 export async function getStudentsWithBirthdays(date: string) {
   const statementObject = { $date: date };
-  return await all(getStudentsWithBirthdaysQuery, statementObject);
+  return await all<GetStudentsWithBirthdaysModel>(
+    getStudentsWithBirthdaysQuery,
+    statementObject
+  );
 }
 
 export const getStudentSelectListSearch = async (value: string) => {
