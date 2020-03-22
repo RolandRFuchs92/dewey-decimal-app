@@ -1,21 +1,21 @@
 export const getAllQuery = `
 SELECT
-	bo.books_out_id,
-	bo.book_id,
-  bo.student_id,
-  bo.check_out_date,
-  bo.check_in_date,
-  s.first_name || ' ' || s.last_name as student_name,
-  b.name book_name,
-  bo.return_on
+    bo.books_out_id,
+    bo.book_id,
+    bo.student_id,
+    bo.check_out_date,
+    bo.check_in_date,
+    s.first_name || ' ' || s.last_name as student_name,
+    b.name book_name,
+    bo.return_on
 FROM
-  books_out bo
+    books_out bo
 JOIN
-  book b
-  ON bo.books_out_id = b.books_out_id
+    book b
+    ON bo.books_out_id = b.books_out_id
 JOIN
-  student s
-  ON bo.student_id = s.student_id`;
+    student s
+    ON bo.student_id = s.student_id`;
 
 export const booksOverdueQuery = `
 SELECT

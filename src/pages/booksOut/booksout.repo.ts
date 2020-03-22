@@ -15,7 +15,7 @@ import {
   countBooksCheckedOutTodayQuery,
   countBooksCheckedInTodayQuery
 } from './Booksout.sql';
-import { GetAllModel } from './Booksout.type';
+import { GetAllModel, BooksOverdueModel, ScansModel } from './Booksout.type';
 
 const repo = repoBase<GetAllModel>(`books_out`);
 repo.getAll = async () => {
@@ -48,14 +48,14 @@ export const getScans = async (date = new Date()) => {
   const statementObject = {
     $date: formatDateForDbInsert(date)
   };
-  return await all(scannsQuery, statementObject);
+  return await all<ScansModel>(scannsQuery, statementObject);
 };
 
 export const getBooksOverdue = async (date = new Date()) => {
   const statementObject = {
     $date: formatDateForDbInsert(date)
   };
-  return await all(booksOverdueQuery, statementObject);
+  return await all<BooksOverdueModel>(booksOverdueQuery, statementObject);
 };
 
 export const countBooksOverdue = async (date = new Date()) => {
