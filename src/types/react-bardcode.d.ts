@@ -1,4 +1,4 @@
-declare module "react-barcode" {
+declare module 'react-barcode' {
   type BarcodeModel = {
     value: string;
     format: string;

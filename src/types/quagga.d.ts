@@ -1,4 +1,4 @@
-declare module "quagga" {
+declare module 'quagga' {
   function init(
     initialize: {
       [key: string]: string | number | boolean | object | object[];
