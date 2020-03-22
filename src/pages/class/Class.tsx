@@ -17,6 +17,25 @@ import { JsonObj } from 'types/Generic';
 import { DatatabelDataModel } from 'components/page/PageBase.type';
 import { ClassModel } from './Class.type';
 
+const columns = [
+  {
+    name: 'class_id',
+    label: 'Id'
+  },
+  {
+    name: 'class_name',
+    label: 'Name'
+  },
+  {
+    name: 'grade',
+    label: 'Grade'
+  },
+  {
+    name: 'is_active',
+    label: 'Active'
+  }
+];
+
 export default () => {
   const [data, setData] = useState<MUIDataTableColumn[]>([]);
   const [modalData, setModalData] = useState<
@@ -52,25 +71,7 @@ export default () => {
   };
 
   const getColumns = () => {
-    return [
-      {
-        name: 'class_id',
-        label: 'Id'
-      },
-      {
-        name: 'class_name',
-        label: 'Name'
-      },
-      {
-        name: 'grade',
-        label: 'Grade'
-      },
-      {
-        name: 'is_active',
-        label: 'Active'
-      },
-      ...EditDeleteCol(handleEditAdd, handleDelete)
-    ];
+    return [...columns, ...EditDeleteCol(handleEditAdd, handleDelete)];
   };
 
   const handleYesForDelete = async (classIdToDelete: string) => {
