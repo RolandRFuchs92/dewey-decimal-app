@@ -6,6 +6,11 @@ import {
 } from 'db/utils';
 import { isNil } from 'lodash';
 import { DropdownListModel } from 'types/Generic';
+import {
+  queryGetClasses,
+  queryHideClass,
+  getSelectListQuery
+} from './Class.sql';
 
 export async function getClasses() {
   const classes = await all(queryGetClasses);
