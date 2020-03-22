@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { makeStyles, Paper, Grid, Typography, Button } from '@material-ui/core';
 import { processErrorLog } from './ErrorReport.service';
-import { useDialog } from 'utils/dialog';
 import { useAlert } from 'utils/snackbarAlerts';
 import { ProcessErrorLogResultModel, ErrorListProps } from './ErrorReport.type';
 

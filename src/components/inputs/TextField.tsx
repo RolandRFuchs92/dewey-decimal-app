@@ -75,8 +75,8 @@ type toolTipTextFieldModel = {
   handleChange: (evt: { target: { value: string } }) => void;
   tooltip: string;
   value: string;
-  rest: any[];
   label: string;
+  rest?: any[];
 };
 
 export const TooltipTextField = ({
