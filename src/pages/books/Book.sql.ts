@@ -57,9 +57,8 @@ ORDER by
 
 export const getBooksSelectListQuery = `
   SELECT
-    book_id,
-    name,
-    call_number
+    book_id value,
+    SUBSTR(name, 1, 20) || ' - ' || call_number text
   FROM
     book
 `;

@@ -1,14 +1,19 @@
 import repoBase from 'components/page/repo.base';
 import { all } from 'db/repo';
-import appSettings from 'appSettings.json';
+import { getAllQuery } from 'pages/student/Student.sql';
+import {
+  getBooksSelectListQuery,
+  getStudentBooksHistoryQuery,
+  getBookByCallNumberQuery
+} from './Book.sql';
+import { DropdownListModel } from 'types/Generic';
+import {
+  BookModel,
+  GetStudentBooksHistoryModel,
+  GetBookCallNumberModel
+} from './Book.type';
 
-import { CalculateCheckoutModel, CalculateCheckinModel } from './Home.type';
-
-const {
-  tables: { book, author, dewey_decimal }
-} = appSettings;
-
-const repo = repoBase(`book`);
+const repo = repoBase<BookModel>(`book`);
 
 repo.getAll = async () => {
   return await all(getAllQuery);
@@ -17,27 +22,26 @@ repo.getAll = async () => {
 export default repo;
 
 export const getBooksSelectList = async () => {
-  const data = await all(getBooksSelectListQuery);
-  return data.map(({ [appSettings.tables.book.pk]: pk, name, call_number }) => {
-    return {
-      value: pk,
-      text: `${name.substr(0, 20)} - ${call_number}`
-    };
-  });
+  const data = await all<DropdownListModel>(getBooksSelectListQuery);
+  return data;
 };
 
 export const getStudentBooksHistory = async (student_id: string) => {
-  const data = await all(getStudentBooksHistoryQuery, {
-    $student_id: student_id
-  });
+  const data = await all<GetStudentBooksHistoryModel>(
+    getStudentBooksHistoryQuery,
+    {
+      $student_id: student_id
+    }
+  );
   return data;
 };
 
 export const getBookByCallNumber = async (
   call_number: string
-): Promise<CalculateCheckoutModel | CalculateCheckinModel> => {
-  const [data] = await all(getBookByCallNumberQuery, {
+): Promise<GetBookCallNumberModel[]> => {
+  const result = await all<GetBookCallNumberModel>(getBookByCallNumberQuery, {
     $call_number: call_number
   });
-  return data;
+
+  return result;
 };
