@@ -110,7 +110,10 @@ export async function updateDb(
   return await run(statement, statementObject);
 }
 
-export async function getAll(tableName: string, where: string = '') {
+export async function getAll<T>(
+  tableName: string,
+  where: string = ''
+): Promise<T[]> {
   const statement = `
 		SELECT
 			*

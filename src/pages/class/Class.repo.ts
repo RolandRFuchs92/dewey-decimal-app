@@ -5,33 +5,7 @@ import {
   jsonToStatementObject
 } from 'db/utils';
 import { isNil } from 'lodash';
-
-const queryGetClasses = `
-        SELECT 
-            * 
-        FROM 
-            class
-        WHERE 
-            is_active = 1
-`;
-
-const queryHideClass = `
-        UPDATE 
-            class 
-        SET 
-            is_active = 0
-        WHERE
-            class_id=$class_id
-        
-`;
-
-const getSelectListQuery = `
-    SELECT
-        class_id value,
-        grade || ' - ' || class_name as text
-    FROM
-        class
-`;
+import { DropdownListModel } from 'types/Generic';
 
 export async function getClasses() {
   const classes = await all(queryGetClasses);
@@ -66,5 +40,5 @@ export async function hideClass(classId) {
 }
 
 export async function getSelectList() {
-  return await all(getSelectListQuery);
+  return await all<DropdownListModel>(getSelectListQuery);
 }

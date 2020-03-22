@@ -3,10 +3,9 @@ import React, { useState } from 'react';
 import PageBase from 'components/page/PageBase';
 import repo from './Student.repo';
 import { getSelectList } from 'pages/class/Class.repo';
-import TableButton from 'components/buttons/TableButtons';
-import Icons from 'components/icons';
 import StudentProfile from './StudentProfile';
 import { DefaultColumnModel } from 'components/page/PageBase.type';
+import { StudentModel } from './Student.type';
 
 const defaultColumns: DefaultColumnModel[] = [
   {
@@ -76,7 +75,7 @@ const defaultColumns: DefaultColumnModel[] = [
   {
     name: 'is_active',
     label: 'Active',
-    type: 'checkbox'
+    type: 'check'
   }
 ];
 
@@ -93,14 +92,12 @@ export default () => {
 
   return (
     <>
-      <PageBase
-        {...{
-          defaultColumns: defaultColumns,
-          getAll,
-          handleDeleteRow,
-          handleEditAddRow
-        }}
-      ></PageBase>
+      <PageBase<StudentModel>
+        defaultColumns={defaultColumns}
+        getAll={getAll}
+        handleDeleteRow={handleDeleteRow}
+        handleEditAddRow={handleEditAddRow}
+      />
       <StudentProfile
         open={open}
         handleClose={() => setOpen(false)}

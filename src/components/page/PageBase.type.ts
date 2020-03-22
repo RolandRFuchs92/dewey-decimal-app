@@ -1,9 +1,9 @@
 import { MUIDataTableColumnOptions } from 'mui-datatables';
 import { JsonObj, DropdownListModel } from 'types/Generic';
 
-export type PageBaseModel = {
+export type PageBaseModel<T> = {
   defaultColumns: DefaultColumnModel[];
-  getAll: () => Promise<JsonObj[]>;
+  getAll: () => Promise<T[]>;
   handleDeleteRow: (rowData: { [key: string]: string }) => Promise<true>;
   handleEditAddRow: (event: JsonObj | null) => Promise<'add' | 'update'>;
   modal?: JSX.Element | null;

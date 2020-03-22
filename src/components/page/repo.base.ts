@@ -3,7 +3,7 @@ import { TableNames } from 'appSettings.type';
 import appSettings from 'appSettings.json';
 import { JsonObj } from 'types/Generic';
 
-export default (tableReference: TableNames) => {
+export default <T>(tableReference: TableNames) => {
   const { tables } = appSettings;
 
   const tableName = tables[tableReference].name;
@@ -15,7 +15,7 @@ export default (tableReference: TableNames) => {
   };
 
   return {
-    getAll: async () => await getAll(tableName),
+    getAll: async () => await getAll<T>(tableName),
     deleteRow: deleteFunc,
     addOrUpdate: async (val: JsonObj | null) =>
       await addOrUpdate(val!, tableName, pkFieldName)

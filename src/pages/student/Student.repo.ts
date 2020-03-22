@@ -10,10 +10,10 @@ import {
 } from './Student.sql';
 import { DropdownListModel } from 'types/Generic';
 
-const repo = repoBase('student');
+const repo = repoBase<StudentModel>('student');
 
 repo.getAll = async () => {
-  return await all(getAllQuery);
+  return await all<StudentModel>(getAllQuery);
 };
 
 export default repo;

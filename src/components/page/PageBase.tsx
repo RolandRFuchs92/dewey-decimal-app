@@ -11,13 +11,13 @@ import { JsonObj } from 'types/Generic';
 
 import { DefaultColumnModel, PageBaseModel } from './PageBase.type';
 
-export default ({
+export default <T,>({
   defaultColumns,
   getAll,
   handleDeleteRow,
   handleEditAddRow,
   modal = null
-}: PageBaseModel) => {
+}: PageBaseModel<T>) => {
   const [options, setOptions] = useState({});
   const [columns, setColumns] = useState<DefaultColumnModel[]>(defaultColumns);
   const [data, setData] = useState<JsonObj[]>([]);
