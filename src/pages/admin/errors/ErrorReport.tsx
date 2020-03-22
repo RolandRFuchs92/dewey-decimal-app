@@ -41,7 +41,6 @@ export default () => {
   const [errorLogResult, setErrorLogResult] = useState<
     ProcessErrorLogResultModel[]
   >([]);
-  const dialog = useDialog();
   const alert = useAlert();
 
   useEffect(() => {

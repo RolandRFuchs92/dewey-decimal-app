@@ -35,6 +35,7 @@ describe('Error Report component', () => {
   it(`shows a message if no errors are found after load`, async () => {
     //Arrange
     const mockProcessLog = () => {};
+    // @ts-ignore
     svc.processErrorLog = jest.fn().mockResolvedValue([]);
 
     const { findByTestId } = render(<ErrorReport />);

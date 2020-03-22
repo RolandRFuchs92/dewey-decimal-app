@@ -46,7 +46,7 @@ export const processErrorLog = async (): Promise<ProcessErrorLogResultModel[]> =
 };
 
 export const errorLogErrorsCount = async () => {
-  return await new Promise((res, rej) => {
+  return await new Promise<number>((res, rej) => {
     fs.readFile('dewey.error.log', 'utf8', (err: Error, data: string) => {
       if (err) rej(err);
       res(typeof data === 'string' ? data.split('\r\n').length : 0);
