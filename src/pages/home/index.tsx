@@ -12,7 +12,6 @@ import {
   OverdueIndicator,
   BirthdayIndicator
 } from 'components/icons/Indicator';
-import { JsonObj } from 'types/Generic';
 import { HomeProps, HomePageTileProps } from './Home.type';
 
 const useStyles = makeStyles(theme => {
