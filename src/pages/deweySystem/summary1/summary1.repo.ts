@@ -17,5 +17,5 @@ export const deleteRow = async (id: number) => {
 };
 
 export const getSelectList = async () => {
-  return ((await all(getSelectListQuery)) as unknown) as DropdownListModel[];
+  return await all<DropdownListModel>(getSelectListQuery);
 };
