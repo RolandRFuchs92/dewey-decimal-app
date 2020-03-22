@@ -117,7 +117,7 @@ export function PermanentDrawerLeft({
               <Redirect to="/home"></Redirect>
             </Route>
             <Route exact path="/home">
-              <Home></Home>
+              <Home />
             </Route>
             <Route exact path="/students">
               <Student></Student>

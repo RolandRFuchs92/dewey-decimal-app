@@ -37,14 +37,14 @@ export default function AppSettings() {
     <Grid item container lg={3}>
       <Typography variant="h5">{state.appName || 'App settings'}</Typography>
       <TooltipTextField
-        data-testid="fadeDuration"
+        data_testid="fadeDuration"
         value={`${fadeTransitionDuration}`}
         tooltip="The duration of the fade effects during page transition"
         label="Transition Duration"
         handleChange={handleChange('fadeDuration')}
       />
       <TooltipTextField
-        data-testid="databaseLocation"
+        data_testid="databaseLocation"
         value={`${databaseLocation}`}
         tooltip="Where to store the database. Point this to a local 'onedrive','google drive' folder for cloud storage.(anything that can sync to a cloud)"
         label="Database Location"
@@ -52,14 +52,14 @@ export default function AppSettings() {
       />
       <Typography variant="h5">Library settings</Typography>
       <TooltipTextField
-        data-testid="fineRate"
+        data_testid="fineRate"
         value={`${fines.rate}`}
         tooltip="The monitary value calculated per day a book is overdue"
         label="Fine rate"
         handleChange={handleChange('fineRate')}
       />
       <TooltipTextField
-        data-testid="daysAllowedOut"
+        data_testid="daysAllowedOut"
         value={`${checkout.daysAllowedOut}`}
         tooltip="Number of days a student may have a book before a fine is due"
         label="Days allowed to keep a book"

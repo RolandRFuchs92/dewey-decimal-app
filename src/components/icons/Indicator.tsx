@@ -1,11 +1,9 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { Badge, makeStyles } from '@material-ui/core';
 import { deepPurple, lightGreen, grey } from '@material-ui/core/colors';
 import { connect } from 'react-redux';
 
 import Icons from './index';
-import reducerContext from 'utils/reducerContext';
-import { nativeImage } from 'electron';
 
 const useStyles = makeStyles(theme => {
   return {
@@ -54,14 +52,21 @@ const useStyles = makeStyles(theme => {
 
 export default () => {
   const classes = useStyles();
-  const [state] = useContext(reducerContext);
+
+  // Todo implement redux
+  const state = {
+    checkinsTodayCount: 0,
+    checkoutsTodayCount: 0,
+    birthdaysTodayCount: 0,
+    booksOverdueCount: 0
+  };
 
   return (
     <div className={classes.indicators}>
-      <CheckinIndicator count={state.checkinsTodayCount}></CheckinIndicator>
-      <CheckoutIndicator count={state.checkoutsTodayCount}></CheckoutIndicator>
-      <BirthdayIndicator count={state.birthdaysTodayCount}></BirthdayIndicator>
-      <OverdueIndicator count={state.booksOverdueCount}></OverdueIndicator>
+      <CheckinIndicator count={state.checkinsTodayCount} />
+      <CheckoutIndicator count={state.checkoutsTodayCount} />
+      <BirthdayIndicator count={state.birthdaysTodayCount} />
+      <OverdueIndicator count={state.booksOverdueCount} />
     </div>
   );
 };

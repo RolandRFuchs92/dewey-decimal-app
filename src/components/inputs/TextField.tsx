@@ -83,11 +83,12 @@ export const TooltipTextField = ({
   label,
   tooltip,
   value,
-  handleChange
-}: toolTipTextFieldModel) => {
+  handleChange,
+  data_testid
+}: toolTipTextFieldModel & { data_testid: string }) => {
   const classes = useStyles();
   return (
-    <Grid item sm={12}>
+    <Grid item sm={12} data-testid={data_testid}>
       <Tooltip title={<span className={classes.toolTip}>{tooltip}</span>}>
         <TextField
           fullWidth

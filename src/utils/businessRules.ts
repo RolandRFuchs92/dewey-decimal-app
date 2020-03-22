@@ -1,5 +1,5 @@
-import { addBusinessDays, addDays, format } from "date-fns";
-import appSettings from "appSettings.json";
+import { addBusinessDays, addDays, format } from 'date-fns';
+import appSettings from 'appSettings.json';
 
 const { formatDate, checkout } = appSettings;
 

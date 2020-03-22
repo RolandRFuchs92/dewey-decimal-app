@@ -63,7 +63,7 @@ export type ModalBaseModel = {
   handleClose: () => void;
   handleEditAddRow: (statementObject: {
     [x: string]: any;
-  }) => Promise<'add' | null>;
+  }) => Promise<'add' | 'update'>;
   modalData: { [key: string]: any };
   reset: () => void;
 };

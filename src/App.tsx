@@ -1,45 +1,41 @@
-import React, { useState, useReducer } from "react";
-import "./App.css";
-import { ConfirmProvider } from "material-ui-confirm";
-import { MuiPickersUtilsProvider } from "@material-ui/pickers";
-import DateFnsUtils from "@date-io/date-fns";
-import { MuiThemeProvider, createMuiTheme } from "@material-ui/core";
-import { Provider as GlobalProvider } from "react-redux";
-import { createStore, applyMiddleware } from "redux";
-import ReduxThunk from "redux-thunk";
+import React, { useState } from 'react';
+import './App.css';
+import { ConfirmProvider } from 'material-ui-confirm';
+import { MuiPickersUtilsProvider } from '@material-ui/pickers';
+import DateFnsUtils from '@date-io/date-fns';
+import { MuiThemeProvider, createMuiTheme } from '@material-ui/core';
+import { Provider as GlobalProvider } from 'react-redux';
+import { createStore, applyMiddleware } from 'redux';
+import ReduxThunk from 'redux-thunk';
 
-import MainLayout from "./components/layout/Layout";
-import { SnackbarProvider } from "notistack";
-import initializeDb from "db/initializeDb";
-import Scan from "pages/home/Scan";
-import reduxReducers from "utils/redux/rootReducer";
-import { ErrorIndicator } from "components/icons/Indicator";
+import MainLayout from './components/layout/Layout';
+import { SnackbarProvider } from 'notistack';
+import initializeDb from 'db/initializeDb';
+import Scan from 'pages/home/Scan';
+import reduxReducers from 'utils/redux/rootReducer';
+import { ErrorIndicator } from 'components/icons/Indicator';
 
 const store = createStore(reduxReducers, applyMiddleware(ReduxThunk));
 
-const initialState = {
-  pageTitle: "Home",
-  setState: () => {}
-};
-
 type ThemeProp = {
   palette: {
-    type: "light" | "dark";
+    type: 'light' | 'dark';
   };
 };
 
+// ToDo Compiler
 function App() {
   const [showScan, setShowScan] = useState(false);
   const [theme, setTheme] = useState<ThemeProp>({
     palette: {
-      type: "light"
+      type: 'light'
     }
   });
 
   const toggleTheme = () => {
     setTheme({
       palette: {
-        type: theme.palette.type === "light" ? "dark" : "light"
+        type: theme.palette.type === 'light' ? 'dark' : 'light'
       }
     });
   };
@@ -59,8 +55,8 @@ function App() {
             <ConfirmProvider>
               <SnackbarProvider
                 anchorOrigin={{
-                  vertical: "bottom",
-                  horizontal: "center"
+                  vertical: 'bottom',
+                  horizontal: 'center'
                 }}
               >
                 <MainLayout />

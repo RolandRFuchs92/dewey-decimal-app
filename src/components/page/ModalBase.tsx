@@ -12,12 +12,12 @@ import { useAlert } from 'utils/snackbarAlerts';
 import {
   DefaultColumnModel,
   ModalBaseHandleChange,
-  DropdownListModel,
   ModalBaseModel,
   DatePickerModel,
   SelectBoxModel
 } from './PageBase.type';
 import { MaterialUiPickersDate } from '@material-ui/pickers/typings/date';
+import { DropdownListModel } from 'types/Generic';
 
 export default ({
   columns,

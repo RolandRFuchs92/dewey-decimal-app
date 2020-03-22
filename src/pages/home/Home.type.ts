@@ -49,7 +49,6 @@ export type HomePageTileProps = {
 };
 
 export type HomeProps = {
-  toggleScan: () => Promise<void>;
   checkins: ScansModel[];
   checkouts: ScansModel[];
 };

@@ -31,6 +31,7 @@ export type TeacherModalProps = {
   handleClose: () => void;
 };
 
+// ToDo: Compiler
 export default ({ isOpen, teacher, reset, handleClose }: TeacherModalProps) => {
   const [newTeacher, setNewTeacher] = useState({ ...teacher });
   const [title, setTitle] = useState('Add Teacher');

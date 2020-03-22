@@ -67,6 +67,7 @@ const defeaultCheckoutData: ScanDataModel = {
   teacher_name: ''
 };
 
+// Todo Fix this page for compiler
 export default ({ open, handleClose, updateScans }: ScanProps) => {
   const classes = useStyles();
   const input = useRef(null);

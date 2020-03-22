@@ -43,7 +43,7 @@ const loadBooksOverdue = genericHomeCount(
 );
 const loadBirthdaysToday = genericHomeCount(
   homeActions.setBirthdayIndicator,
-  () => 0 // TODO
+  async () => 0 // TODO
 );
 
 export async function loadInitialAppState(dispatch: Dispatch) {

@@ -10,3 +10,7 @@ export type DropdownListModel = {
   selected?: boolean;
   disabled?: boolean;
 };
+
+export type HasName<T> = {
+  name: string;
+} & T;

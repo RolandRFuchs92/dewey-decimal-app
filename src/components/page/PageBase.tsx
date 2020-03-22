@@ -7,7 +7,7 @@ import EditDeleteCol, { useAddButton } from 'utils/tableButtons';
 import Modal from './ModalBase';
 import { useDialog } from 'utils/dialog';
 import { useAlert } from 'utils/snackbarAlerts';
-import { JsonObj } from 'types/Generic';
+import { JsonObj, HasName } from 'types/Generic';
 
 import { DefaultColumnModel, PageBaseModel } from './PageBase.type';
 
@@ -20,7 +20,7 @@ export default <T,>({
 }: PageBaseModel<T>) => {
   const [options, setOptions] = useState({});
   const [columns, setColumns] = useState<DefaultColumnModel[]>(defaultColumns);
-  const [data, setData] = useState<JsonObj[]>([]);
+  const [data, setData] = useState<T[]>([]);
   const [openModal, setOpenModal] = useState(false);
   const [modalData, setModalData] = useState({});
 
@@ -33,7 +33,7 @@ export default <T,>({
   }, [getAll]);
 
   const handleYesOnDelete = useCallback(
-    async (rowData: JsonObj) => {
+    async (rowData: HasName<T>) => {
       try {
         await handleDeleteRow(rowData);
         await reset();
@@ -107,6 +107,7 @@ export default <T,>({
             title=""
             options={options}
             columns={columns as MUIDataTableColumnDef[]}
+            // @ts-ignore //Todo look at why this it not happy
             data={data}
           />
           {modal || (

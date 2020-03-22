@@ -1,11 +1,11 @@
-import appSettings from "appSettings.json";
-const { createLogger, format, transports } = window.require("winston");
+import appSettings from 'appSettings.json';
+const { createLogger, format, transports } = window.require('winston');
 
 const logger = createLogger({
-  level: "info",
+  level: 'info',
   format: format.combine(
     format.timestamp({
-      format: "YYYY-MM-DD HH:mm:ss"
+      format: 'YYYY-MM-DD HH:mm:ss'
     }),
     format.errors({ stack: true }),
     format.splat(),
@@ -19,13 +19,13 @@ const logger = createLogger({
     //
     new transports.File({
       filename: `${appSettings.appName}.error.log`,
-      level: "error"
+      level: 'error'
     }),
     new transports.File({ filename: `${appSettings.appName}.general.log` })
   ]
 });
 
-if (process.env.NODE_ENV !== "production") {
+if (process.env.NODE_ENV !== 'production') {
   logger.add(
     new transports.Console({
       format: format.combine(format.colorize(), format.simple())

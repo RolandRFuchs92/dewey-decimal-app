@@ -12,7 +12,8 @@ import {
   OverdueIndicator,
   BirthdayIndicator
 } from 'components/icons/Indicator';
-import { HomeProps, HomePageTileProps } from './Home.type';
+import { HomePageTileProps, ScansModel, HomeProps } from './Home.type';
+import { connect, useDispatch } from 'react-redux';
 
 const useStyles = makeStyles(theme => {
   return {
@@ -57,8 +58,14 @@ const useStyles = makeStyles(theme => {
   };
 });
 
-export default ({ toggleScan, checkins, checkouts }: HomeProps) => {
+export const Home = ({ checkins, checkouts }: HomeProps) => {
   const classes = useStyles();
+  const dispatch = useDispatch();
+
+  const toggleScan = () => {
+    dispatch({ type: 'nothing' });
+  };
+
   // const resetScansToday = async () => {
   //   const rawScans = await getScans();
   //   const checkins = rawScans.filter(
@@ -123,3 +130,18 @@ const HomePageTile = ({ title, children, indicator }: HomePageTileProps) => {
     </Grid>
   );
 };
+
+const mapStateToProps = (
+  state: {
+    checkouts: ScansModel[];
+    checkins: ScansModel[];
+  },
+  ownProps: any
+) => {
+  return {
+    checkouts: state.checkouts,
+    checkins: state.checkins
+  };
+};
+
+export default connect(mapStateToProps)(Home);
