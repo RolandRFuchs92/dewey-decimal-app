@@ -60,7 +60,7 @@ export default () => {
 
   const handleEditAdd = (rowData: JsonObj) => {
     const obj = Object.fromEntries(
-      columnsVar.map(({ name }, index) => [name, rowData[index]]) // Todo, check this logic..
+      columnsVar.map(({ name }, index) => [name, rowData[index]]) // TODO, check this logic..
     );
     setTeacher(obj);
     setIsOpen(true);
@@ -76,13 +76,13 @@ export default () => {
         ...tableAddButton
       });
       const columns = [...columnConfig, ...editButtons];
-      columnsVar = columns; // Todo Check this logic too
+      columnsVar = columns; // TODO Check this logic too
       setColumns(columns);
       reset();
     })();
   }, []);
 
-  // ToDo check this logic for indexing
+  // TODO check this logic for indexing
   const handleDelete = (rowData: JsonObj) => {
     const teacher = Object.fromEntries(
       columnsVar.map(({ name }, index) => [name, rowData[index]])

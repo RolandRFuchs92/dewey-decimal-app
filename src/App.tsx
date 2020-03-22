@@ -23,7 +23,7 @@ type ThemeProp = {
   };
 };
 
-// ToDo Compiler
+// TODO Compiler
 function App() {
   const [showScan, setShowScan] = useState(false);
   const [theme, setTheme] = useState<ThemeProp>({

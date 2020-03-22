@@ -67,7 +67,7 @@ const defeaultCheckoutData: ScanDataModel = {
   teacher_name: ''
 };
 
-// Todo Fix this page for compiler
+// TODO Fix this page for compiler
 export default ({ open, handleClose, updateScans }: ScanProps) => {
   const classes = useStyles();
   const input = useRef(null);
@@ -92,7 +92,7 @@ export default ({ open, handleClose, updateScans }: ScanProps) => {
     const {
       target: { value }
     } = e;
-    // @ts-ignore //Todo fix this error
+    // @ts-ignore //TODO fix this error
     input.current.focus();
     setBarcode(value);
     handleCheckinout(value);
@@ -357,7 +357,7 @@ const GenerateCheckout = ({ data, reset }: GenerateCheckoutProps) => {
       <hr></hr>
       <Autocomplete
         options={selectList}
-        //@ts-ignore //Todo Figure out why this is broken...
+        //@ts-ignore //TODO Figure out why this is broken...
         onChange={getSelection!}
         getOptionLabel={option => option.text}
         ListboxProps={{ onClick: getSelection }}

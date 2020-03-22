@@ -64,7 +64,7 @@ export default () => {
   };
 
   const addButton = useAddButton(handleEditAdd);
-  // @ts-ignore //ToDo get this to compile after tsignore is gone
+  // @ts-ignore //TODO get this to compile after tsignore is gone
   const tableOptions: MUIDataTableOptions = {
     selectableRows: 'none',
     ...addButton

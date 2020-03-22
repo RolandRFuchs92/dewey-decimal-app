@@ -53,7 +53,7 @@ const useStyles = makeStyles(theme => {
 export default () => {
   const classes = useStyles();
 
-  // Todo implement redux
+  // TODO implement redux
   const state = {
     checkinsTodayCount: 0,
     checkoutsTodayCount: 0,
