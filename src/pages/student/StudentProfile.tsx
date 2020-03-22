@@ -12,6 +12,7 @@ import {
   StudentProfileProps,
   StudentModel
 } from './Student.type';
+import { GetStudentBooksHistoryModel } from 'pages/books/Book.type';
 
 const cardWidth = 680;
 
@@ -93,8 +94,12 @@ const useStyles = makeStyles(theme => ({
 
 export default ({ open, handleClose, studentId = 1 }: StudentProfileProps) => {
   const [isFront, setIsFront] = useState(true);
-  const [historyData, setHistoryData] = useState<JsonObj[]>([]); // TODO IMPLEMENT THE PROPER TYPES
-  const [studentData, setStudentData] = useState({}); // TODO IMPLEMENT THE PROPER TYPES
+  const [historyData, setHistoryData] = useState<GetStudentBooksHistoryModel[]>(
+    []
+  ); // TODO IMPLEMENT THE PROPER TYPES
+  const [studentData, setStudentData] = useState<StudentModel | undefined>(
+    undefined
+  ); // TODO IMPLEMENT THE PROPER TYPES
 
   useEffect(() => {
     (async () => {
@@ -121,12 +126,12 @@ export default ({ open, handleClose, studentId = 1 }: StudentProfileProps) => {
               <StudentCard
                 studentData={studentData}
                 historyData={historyData}
-              ></StudentCard>
+              />
             ) : (
               <BooksHistory
-                studentData={studentData}
+                studentData={studentData!}
                 historyData={historyData}
-              ></BooksHistory>
+              />
             )}
           </div>
           <Grid
@@ -145,20 +150,18 @@ export default ({ open, handleClose, studentId = 1 }: StudentProfileProps) => {
   );
 };
 
-const BooksHistory = ({
-  historyData,
-  studentData: { first_name, last_name }
-}: StudentCardProps) => {
+const BooksHistory = ({ historyData, studentData }: StudentCardProps) => {
   const classes = useStyles();
   return (
     <Grid container alignContent="space-between" style={{ height: '100%' }}>
       <Grid item>
         <Typography variant="h5">
-          {first_name} {last_name} Book history
+          {studentData?.first_name ?? ''} {studentData?.last_name ?? ''}{' '}
+          {'Book history'}
         </Typography>
         <Divider></Divider>
       </Grid>
-      {historyData.map(
+      {historyData?.map(
         (
           { book_name, author_name, check_out_date, check_in_date, return_on },
           index
@@ -286,31 +289,35 @@ const StudentCard = ({
   );
 };
 
-const StudentBookHistory = ({ hst = [] }: StudentBookHistoryProps) => {
-  const newBooks = hst
+const StudentBookHistory = ({ hst }: StudentBookHistoryProps): JSX.Element => {
+  const newBooks = hst!
     .filter(i => i.check_in_date == null)
     .sort((a, b) => {
       const dateFormat = 'dd MMM yyyy';
-      const dateA = parse(a.return_on, dateFormat, new Date());
-      const dateB = parse(b.return_on, dateFormat, new Date());
+      const dateA = parse(a.return_on.toString(), dateFormat, new Date());
+      const dateB = parse(b.return_on.toString(), dateFormat, new Date());
       return compareAsc(dateA, dateB);
     })
     .slice(0, 2);
 
-  return newBooks.map(({ book_name, author_name, return_on }, index) => {
-    return (
-      <React.Fragment key={`${book_name}${index}`}>
-        <Grid item sm={8}>
-          <Typography variant="body1">
-            {book_name} - {author_name}
-          </Typography>
-        </Grid>
-        <Grid item sm={4}>
-          <Typography variant="body1" align="right">
-            Due: {return_on}
-          </Typography>
-        </Grid>
-      </React.Fragment>
-    );
-  });
+  return (
+    <>
+      {newBooks.map(({ book_name, author_name, return_on }, index) => {
+        return (
+          <React.Fragment key={`${book_name}${index}`}>
+            <Grid item sm={8}>
+              <Typography variant="body1">
+                {book_name} - {author_name}
+              </Typography>
+            </Grid>
+            <Grid item sm={4}>
+              <Typography variant="body1" align="right">
+                Due: {return_on}
+              </Typography>
+            </Grid>
+          </React.Fragment>
+        );
+      })}
+    </>
+  );
 };

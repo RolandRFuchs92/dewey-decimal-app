@@ -1,3 +1,5 @@
+import { GetStudentBooksHistoryModel } from 'pages/books/Book.type';
+
 export type StudentModel = {
   first_name: string;
   last_name: string;
@@ -13,19 +15,12 @@ export type StudentModel = {
 };
 
 export type StudentCardProps = {
-  studentData: StudentModel;
-  historyData: BookHistoryModel[];
-};
-
-export type BookHistoryModel = {
-  check_in_date?: string;
-  return_on: string;
-  book_name: string;
-  author_name: string;
+  studentData?: StudentModel;
+  historyData?: GetStudentBooksHistoryModel[];
 };
 
 export type StudentBookHistoryProps = {
-  hst: BookHistoryModel[];
+  hst?: GetStudentBooksHistoryModel[];
 };
 
 export type StudentProfileProps = {
