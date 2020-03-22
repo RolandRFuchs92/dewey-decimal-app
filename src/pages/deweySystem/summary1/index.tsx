@@ -57,7 +57,7 @@ export default () => {
   const handleYesOnDelete = useCallback(
     async (rowData: JsonObj) => {
       try {
-        await deleteRow(rowData.dewey_summary_id);
+        await deleteRow(+rowData.dewey_summary_id);
         await reset();
         alert.success(`Successfully deleted ${rowData.name}`);
       } catch {
@@ -115,8 +115,11 @@ export default () => {
             data={data}
           />
           <Modal
-            {...{ open: openModal, modalData, handleClose, reset }}
-          ></Modal>
+            open={openModal}
+            modalData={modalData}
+            handleClose={handleClose}
+            reset={reset}
+          />
         </div>
       </Fade>
     </>
