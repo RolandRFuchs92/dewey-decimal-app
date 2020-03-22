@@ -11,13 +11,14 @@ import {
   queryHideClass,
   getSelectListQuery
 } from './Class.sql';
+import { ClassModel } from './Class.type';
 
 export async function getClasses() {
   const classes = await all(queryGetClasses);
   return classes;
 }
 
-export async function addOrUpdateClass(classObj) {
+export async function addOrUpdateClass(classObj: ClassModel) {
   if (isNil(classObj.class_id)) {
     await addClass(classObj);
     return 'add';
@@ -26,19 +27,19 @@ export async function addOrUpdateClass(classObj) {
   return 'update';
 }
 
-async function addClass(classObj) {
+async function addClass(classObj: ClassModel) {
   const statement = objectToInsertStatement(classObj, 'class');
   const statementObj = jsonToStatementObject(classObj);
   return run(statement, statementObj);
 }
 
-async function updateClass(classObj) {
+async function updateClass(classObj: ClassModel) {
   const statement = objectToUpdateStatement(classObj, 'class');
   const statementObj = jsonToStatementObject(classObj);
   return run(statement, statementObj);
 }
 
-export async function hideClass(classId) {
+export async function hideClass(classId: number) {
   const statementObject = { $class_id: classId };
   const statement = queryHideClass;
   return await run(statement, statementObject);

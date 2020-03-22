@@ -12,7 +12,9 @@ import FormButtons from 'components/buttons/FormButtons';
 
 import { addOrUpdateClass } from './Class.repo';
 import { useAlert } from 'utils/snackbarAlerts';
-import { EventObj, JsonObj } from 'types/Generic';
+import { EventObj } from 'types/Generic';
+import { ClassModel } from './Class.type';
+import { DatatabelDataModel } from 'components/page/PageBase.type';
 
 const useStyles = makeStyles(theme => ({
   paper: {
@@ -28,7 +30,7 @@ const useStyles = makeStyles(theme => ({
 export type ClassModalProps = {
   isOpen: boolean;
   handleClose: () => void;
-  modalData: JsonObj;
+  modalData: DatatabelDataModel<ClassModel>;
   updateTable: () => void;
 };
 
@@ -38,7 +40,7 @@ export default ({
   modalData,
   updateTable
 }: ClassModalProps) => {
-  const [data, setData] = useState<JsonObj>({});
+  const [data, setData] = useState<DatatabelDataModel<ClassModel>>(modalData);
   const [open, setOpen] = useState(isOpen);
   const alert = useAlert();
   const classes = useStyles();
@@ -53,14 +55,14 @@ export default ({
 
   const handleSubmit = async () => {
     try {
-      delete data.Edit;
-      delete data.Delete;
-      const action = await addOrUpdateClass(data);
+      delete data!.Edit;
+      delete data!.Delete;
+      const action = await addOrUpdateClass(data!);
       await updateTable();
       alert.success(
         `Successfully ${action === 'add' ? 'added' : 'updated'} Grade ${
-          data.grade
-        } - ${data.class_name}`
+          data!.grade
+        } - ${data!.class_name}`
       );
     } catch (e) {
       alert.error(`There was an error `);
@@ -68,7 +70,7 @@ export default ({
   };
 
   const handleChange = (name: string) => ({ target: { value } }: EventObj) => {
-    setData({ ...data, [name]: value });
+    setData({ ...data!, [name]: value });
   };
 
   return (
@@ -78,33 +80,33 @@ export default ({
           <Paper className={classes.paper}>
             <Grid item>
               <Typography variant="h6">
-                {data.class_id ? `Class (${data.class_id})` : 'Teacher'}
+                {data?.class_id ? `Class (${data.class_id})` : 'Teacher'}
               </Typography>
             </Grid>
             <Grid item>
               <TextField
                 label="Class Name"
-                value={data.class_name || ''}
+                value={data?.class_name ?? ''}
                 onChange={handleChange('class_name')}
               ></TextField>
             </Grid>
             <Grid item>
               <TextField
                 label="Grade"
-                value={data.grade || ''}
+                value={data?.grade ?? ''}
                 onChange={handleChange('grade')}
               ></TextField>
             </Grid>
             <Grid item>
               <TextField
                 label="Is Active"
-                value={data.is_active || ''}
+                value={data?.is_active ?? ''}
                 onChange={handleChange('is_active')}
               ></TextField>
             </Grid>
             <Grid item>
               <FormButtons
-                onReset={() => setData({})}
+                onReset={() => setData(modalData)}
                 onSubmit={handleSubmit}
               ></FormButtons>
             </Grid>

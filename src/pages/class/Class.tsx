@@ -14,13 +14,42 @@ import { useDialog } from 'utils/dialog';
 import EditDeleteCol, { useAddButton } from 'utils/tableButtons';
 import appSettings from 'appSettings.json';
 import { JsonObj } from 'types/Generic';
+import { DatatabelDataModel } from 'components/page/PageBase.type';
+import { ClassModel } from './Class.type';
 
 export default () => {
   const [data, setData] = useState<MUIDataTableColumn[]>([]);
-  const [modalData, setModalData] = useState({});
+  const [modalData, setModalData] = useState<
+    DatatabelDataModel<ClassModel> | undefined
+  >(undefined);
   const [isOpen, setIsOpen] = useState(false);
   const alert = useAlert();
   const dialog = useDialog();
+
+  const handleDelete = (rowData: JsonObj) => {
+    const obj = Object.fromEntries(
+      getColumns().map(({ name }, index) => [name, rowData[index]])
+    );
+    dialog({
+      title: 'Are you sure?',
+      description: `Really delete grade ${obj.grade} - ${obj.class_name}?`,
+      handleYes: () => handleYesForDelete(obj.class_id)
+    });
+  };
+  const handleEditAdd = (rowData: JsonObj) => {
+    const obj = Object.fromEntries(
+      getColumns().map(({ name }, index) => [name, rowData[index]])
+    );
+    setModalData(obj);
+    setIsOpen(true);
+  };
+
+  const addButton = useAddButton(handleEditAdd);
+  // @ts-ignore //ToDo get this to compile after tsignore is gone
+  const tableOptions: MUIDataTableOptions = {
+    selectableRows: 'none',
+    ...addButton
+  };
 
   const getColumns = () => {
     return [
@@ -44,34 +73,9 @@ export default () => {
     ];
   };
 
-  const handleDelete = (rowData: JsonObj) => {
-    const obj = Object.fromEntries(
-      getColumns().map(({ name }, index) => [name, rowData[index]])
-    );
-    dialog({
-      title: 'Are you sure?',
-      description: `Really delete grade ${obj.grade} - ${obj.class_name}?`,
-      handleYes: () => handleYesForDelete(obj.class_id)
-    });
-  };
-  const handleEditAdd = (rowData: JsonObj) => {
-    const obj = Object.fromEntries(
-      getColumns().map(({ name }, index) => [name, rowData[index]])
-    );
-    setModalData(obj);
-    setIsOpen(true);
-  };
-
-  // @ts-ignore
-  const addButton = useAddButton(handleEditAdd);
-  const tableOptions: MUIDataTableOptions = {
-    selectableRows: 'none',
-    ...addButton
-  };
-
   const handleYesForDelete = async (classIdToDelete: string) => {
     try {
-      await hideClass(classIdToDelete);
+      await hideClass(+classIdToDelete);
       await resetPage();
       alert.success(`Successfully removed class[${classIdToDelete}]`);
     } catch (e) {
@@ -110,9 +114,9 @@ export default () => {
             <Modal
               isOpen={isOpen}
               handleClose={handleClose}
-              modalData={modalData}
+              modalData={modalData!}
               updateTable={() => resetPage()}
-            ></Modal>
+            />
           </Grid>
         </div>
       </Fade>

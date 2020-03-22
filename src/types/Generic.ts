@@ -1,5 +1,5 @@
 export type OnClickModel = () => void;
-export type JsonObj = { [key: string]: string };
+export type JsonObj = { [key: string]: string | number | boolean | Date };
 export type EventObj = { target: { value: string } };
 
 export type GenericInputEvent = React.ChangeEvent<HTMLInputElement>;
