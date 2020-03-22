@@ -4,19 +4,10 @@ import repoBase from 'components/page/repo.base';
 import appSettings from 'appSettings.json';
 import { all } from 'db/repo';
 import { AuthorsQuerySelectListModel } from './Authors.type';
-import { DropdownListModel } from 'components/page/PageBase.type';
+import { querySelectList } from './Authors.sql';
+import { DropdownListModel } from 'types/Generic';
 
 export default repoBase(`author`);
-
-const querySelectList = `
-    SELECT
-        ${appSettings.tables.author.pk},
-        name,
-        second_name,
-        surname
-    FROM
-        ${appSettings.tables.author.name}
-`;
 
 export const getSelectList = async (): Promise<DropdownListModel[]> => {
   const selectData = await all(querySelectList);

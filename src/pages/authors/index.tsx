@@ -39,6 +39,6 @@ export default () => {
       getAll={getAll}
       handleDeleteRow={handleDeleteRow}
       handleEditAddRow={handleEditAddRow}
-    ></PageBase>
+    />
   );
 };
