@@ -16,12 +16,6 @@ export type CalculateCheckoutModel = {
   return_on: string;
   check_out_date: string;
   fine: string | 'None';
-  fetchStudents: () => Promise<
-    {
-      value: string;
-      text: string;
-    }[]
-  >;
 };
 
 export type CalculateCheckinModel = {

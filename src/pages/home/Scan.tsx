@@ -18,8 +18,21 @@ import Icons from 'components/icons';
 import Scanner from 'components/scanner';
 import { JsonObj, GenericInputEvent } from 'types/Generic';
 
-import { ScanProps, BarcodeResultModel } from './Home.type';
+import {
+  ScanProps,
+  BarcodeResultModel,
+  CalculateCheckinModel,
+  CalculateCheckoutModel
+} from './Home.type';
 import { getBookByCallNumber, searchForStudentsSelect } from './Home.repo';
+import {
+  ScanDataModel,
+  ScannerIconButtonProps,
+  GenerateCheckinProps,
+  GenerateCheckoutProps,
+  UserSelection,
+  CheckoutData
+} from './Scan.type';
 
 const useStyles = makeStyles(theme => ({
   barcode: {
@@ -53,7 +66,6 @@ const useStyles = makeStyles(theme => ({
 
 const defeaultCheckoutData: ScanDataModel = {
   author_name: '',
-  book_id: '',
   book_name: '',
   call_number: '',
   check_out_date: '',
@@ -73,9 +85,9 @@ export default ({ open, handleClose, updateScans }: ScanProps) => {
   const input = useRef(null);
   const [isScannerOpen, setIsScannerOpen] = useState(true);
 
-  const [barcodeResult, setBarcodeResult] = useState<ScanDataModel>(
-    defeaultCheckoutData
-  );
+  const [barcodeResult, setBarcodeResult] = useState<
+    ScanDataModel | CheckoutData
+  >(defeaultCheckoutData);
   const [barcode, setBarcode] = useState('');
 
   const alert = useAlert();
@@ -154,10 +166,13 @@ export default ({ open, handleClose, updateScans }: ScanProps) => {
           <Grid item>
             // @ts-ignore
             {barcodeResult.isCheckout ? (
-              <GenerateCheckout data={barcodeResult} reset={reset} />
+              <GenerateCheckout
+                data={barcodeResult as CheckoutData}
+                reset={reset}
+              />
             ) : (
               <GenerateCheckin
-                data={barcodeResult}
+                data={barcodeResult as ScanDataModel}
                 reset={reset}
               ></GenerateCheckin>
             )}
@@ -167,11 +182,6 @@ export default ({ open, handleClose, updateScans }: ScanProps) => {
       </Grid>
     </Modal>
   );
-};
-
-export type ScannerIconButtonProps = {
-  handleLaptopButton: () => void;
-  isScannerOpen: boolean;
 };
 
 const ScannerIconButtons = ({
@@ -194,26 +204,6 @@ const ScannerIconButtons = ({
       </IconButton>
     </div>
   );
-};
-
-export type ScanDataModel = {
-  books_out_id: string;
-  book_name: string;
-  student_name: string;
-  call_number: string;
-  isCheckout: boolean;
-  check_out_date: string;
-  check_in_on: string;
-  return_on: string;
-  class: string;
-  author_name: string;
-  fine: string | 'None';
-  teacher_name: string;
-};
-
-export type GenerateCheckinProps = {
-  data: ScanDataModel;
-  reset: () => void;
 };
 
 const GenerateCheckin = ({ data, reset }: GenerateCheckinProps) => {
@@ -280,27 +270,6 @@ const GenerateCheckin = ({ data, reset }: GenerateCheckinProps) => {
   );
 };
 
-export type CheckoutData = {
-  author_name: string;
-  book_name: string;
-  call_number: string;
-  check_out_date: string;
-  return_on: string;
-  book_id: string;
-};
-
-export type GenerateCheckoutProps = {
-  data: CheckoutData;
-  reset: () => void;
-};
-
-export type UserSelection = {
-  class: string;
-  teacher: string;
-  student_name: string;
-  student_id: string;
-};
-
 const GenerateCheckout = ({ data, reset }: GenerateCheckoutProps) => {
   const [selectList, setSelectList] = useState<JsonObj[]>([]);
   const [selection, setSelection] = useState<UserSelection>();
@@ -311,22 +280,22 @@ const GenerateCheckout = ({ data, reset }: GenerateCheckoutProps) => {
     const {
       target: { value }
     } = e;
-    setSelectList(await searchForStudentsSelect(value));
+    setSelectList(await searchForStudentsSelect(value as string));
   };
 
   const getSelection = (event: ChangeEvent<{}>, value: JsonObj) => {
     if (isNil(value)) return;
     setSelection({
-      class: value.class,
-      teacher: value.teacher,
-      student_id: value.value,
-      student_name: value.text
+      class: +value.class,
+      teacher: value.teacher.toString(),
+      student_id: +value.value,
+      student_name: value.text.toString()
     });
   };
 
   const handleSubmit = async () => {
     try {
-      await checkout(selection?.student_id ?? '', data.book_id);
+      await checkout(selection?.student_id.toString() ?? '', data.book_id);
       reset();
       alert.success(
         `${selection?.student_name ?? 'Unknown'} checked out ${
@@ -359,7 +328,7 @@ const GenerateCheckout = ({ data, reset }: GenerateCheckoutProps) => {
         options={selectList}
         //@ts-ignore //TODO Figure out why this is broken...
         onChange={getSelection!}
-        getOptionLabel={option => option.text}
+        getOptionLabel={option => option.text.toString()}
         ListboxProps={{ onClick: getSelection }}
         noOptionsText="No students found"
         selectOnFocus={true}

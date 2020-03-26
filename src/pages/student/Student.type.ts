@@ -37,3 +37,10 @@ export type StudentProfileProps = {
   handleClose: () => void;
   studentId?: number;
 };
+
+export type StudentSelectListSearchModel = {
+  text: string;
+  value: string;
+  class: string;
+  teacher: string;
+};

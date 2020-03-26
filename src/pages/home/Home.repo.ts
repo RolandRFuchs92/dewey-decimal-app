@@ -13,8 +13,8 @@ import {
   getStudentSelectListSearch
 } from 'pages/student/Student.repo';
 import appSettings from 'appSettings.json';
-import { CalculateCheckoutModel, CalculateCheckinModel } from './Home.type';
 import { GetBookCallNumberModel } from 'pages/books/Book.type';
+import { CheckoutData, ScanDataModel } from './Scan.type';
 
 const { fines, formatDate, checkout } = appSettings;
 export const getBirthdays = async () => {
@@ -31,7 +31,7 @@ export const getBookByCallNumber = async (callnumber: string) => {
 
 const calculateCheckout = async (
   data: GetBookCallNumberModel
-): Promise<CalculateCheckoutModel> => {
+): Promise<CheckoutData> => {
   const isCheckout = true;
   const return_on = checkout.isBusinessDays
     ? format(
@@ -42,22 +42,20 @@ const calculateCheckout = async (
 
   const check_out_date = format(new Date(), formatDate.to);
   const fine = 'None';
-  const fetchStudents = getSelectList;
 
-  const checkoutResult: CalculateCheckoutModel = {
+  const checkoutResult: CheckoutData = {
     check_out_date,
-    fine,
-    isCheckout,
-    return_on,
-    fetchStudents
+    author_name: data.author_name,
+    book_id: data.book_id.toString(),
+    book_name: data.book_name,
+    call_number: data.call_number,
+    return_on
   };
 
   return checkoutResult;
 };
 
-const calculateCheckin = (
-  data: GetBookCallNumberModel
-): CalculateCheckinModel => {
+const calculateCheckin = (data: GetBookCallNumberModel): ScanDataModel => {
   const isCheckout = false;
   let check_out_date = parse(
     data.check_out_date.toString(),
@@ -72,8 +70,15 @@ const calculateCheckin = (
     fine = diffDays > 0 ? `R${diffDays * fines.rate}` : 'None';
   else fine = 'None';
 
-  const result: CalculateCheckinModel = {
+  const result: ScanDataModel = {
     isCheckout,
+    author_name: data.author_name,
+    book_name: data.book_name,
+    books_out_id: data.books_out_id.toString(),
+    call_number: data.call_number,
+    class: data.class,
+    student_name: data.student_name,
+    teacher_name: data.teacher_name,
     check_out_date: format(check_out_date, formatDate.to),
     check_in_on:
       data.check_in_date &&
