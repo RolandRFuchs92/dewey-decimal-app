@@ -104,7 +104,7 @@ function CreateListItem({
       handleSelected(setSelected);
     }
 
-    if (isNil(path)) {
+    if (!path.length) {
       setIsOpen(!isOpen);
       return;
     }
