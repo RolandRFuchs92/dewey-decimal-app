@@ -1,4 +1,4 @@
-import React, { useState, Dispatch, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   List,
   ListItem,
@@ -7,11 +7,14 @@ import {
   Collapse,
   makeStyles
 } from '@material-ui/core';
+import { useDispatch } from 'react-redux';
+
 import { useHistory } from 'react-router-dom';
 import { isNil, upperFirst } from 'lodash';
 
 import Icons from 'components/icons';
 import { CreateListItemModel } from './Layout.type';
+import { setPageTitle } from 'utils/redux/global.action';
 
 const useStyles = makeStyles(theme => {
   return {
@@ -53,7 +56,13 @@ export type CurrentSelectedIndex = {
 };
 
 export default ({ menuItems }: { menuItems: CreateListItemModel[] }) => {
+  const dispatch = useDispatch();
   const [selectedOption, setSelectedOption] = useState('');
+
+  useEffect(() => {
+    dispatch(setPageTitle(menuItems[0].label));
+  }, []);
+
   return (
     <MenuOptions
       menuItems={menuItems}
@@ -113,6 +122,7 @@ function CreateListItem({
 }: CreateListItemModel & CurrentSelectedIndex) {
   const classes = useStyles();
   const history = useHistory();
+  const dispatch = useDispatch();
   const [isOpen, setIsOpen] = useState(false);
   const hasMenuItems = !isNil(menuItems);
   const [selected, setSelected] = useState<boolean>(false);
@@ -124,6 +134,7 @@ function CreateListItem({
   const handleMenuItemClick = (path: string) => {
     if (path.length) {
       setSelectedOption(path!);
+      dispatch(setPageTitle(label));
     } else {
       setIsOpen(!isOpen);
       return;
