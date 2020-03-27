@@ -29,6 +29,15 @@ export const getStudentsWithBirthdaysQuery = `
         strftime('%d %m', s.birthdate) = STRFTIME('%d %m', $date)
 `;
 
+export const getStudentsWithBirthdaysCountQuery = `
+    SELECT
+        COUNT(*)
+    FROM
+        student s
+    WHERE
+        strftime('%d %m', s.birthdate) = STRFTIME('%d %m', $date)
+`;
+
 export const getStudentSelectListSearchQuery = `
     SELECT
         c.grade || c.class_name || ' - ' || s.first_name || ' '  || s.last_name as text,

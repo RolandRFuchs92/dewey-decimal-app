@@ -1,6 +1,6 @@
 import { ReducerStateModel } from 'pages/admin/admin.reducer';
-import { HomeReducerModel } from 'pages/home/Home.reducer';
 import { GlobalReducerModel } from './globalReducer';
+import { HomeReducerModel } from 'pages/home/Home.type';
 
 export type RootReducerModel = {
   admin: ReducerStateModel;

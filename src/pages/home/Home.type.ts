@@ -5,11 +5,24 @@ export type GenericActionModal = {
   payload: number;
 };
 
+export type HomeReducerModel = {
+  checkoutsToday: number;
+  checkinsToday: number;
+  birthdaysToday: number;
+  booksOverdue: number;
+};
+
+export type FullIndicatorActionModel = {
+  type: 'ALL_INDICATORS';
+  payload: HomeReducerModel;
+};
+
 export type IndicatorActionTypes =
   | 'BIRTHDAYS_TODAY'
   | 'BOOKS_OVERDUE'
   | 'CHECKINS_TODAY'
-  | 'CHECKOUTS_TODAY';
+  | 'CHECKOUTS_TODAY'
+  | 'ALL_INDICATORS';
 
 export type CalculateCheckoutModel = {
   isCheckout: boolean;

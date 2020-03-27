@@ -1,4 +1,8 @@
-import { GenericActionModal } from './Home.type';
+import {
+  GenericActionModal,
+  FullIndicatorActionModel,
+  HomeReducerModel
+} from './Home.type';
 
 const initialState = {
   checkoutsToday: 0,
@@ -7,14 +11,10 @@ const initialState = {
   booksOverdue: 0
 };
 
-export type HomeReducerModel = {
-  checkoutsToday: number;
-  checkinsToday: number;
-  birthdaysToday: number;
-  booksOverdue: number;
-};
-
-export default (currentState = initialState, action: GenericActionModal) => {
+export default (
+  currentState = initialState,
+  action: GenericActionModal | FullIndicatorActionModel
+) => {
   const { type, payload } = action;
   switch (type) {
     case 'CHECKOUTS_TODAY':
@@ -36,6 +36,11 @@ export default (currentState = initialState, action: GenericActionModal) => {
       return {
         ...initialState,
         booksOverdue: payload
+      };
+    case 'ALL_INDICATORS':
+      return {
+        ...initialState,
+        ...(payload as HomeReducerModel)
       };
     default:
       return { ...currentState };

@@ -8,6 +8,11 @@ import {
   countBooksOverdue
 } from 'pages/booksOut/booksout.repo';
 import homeActions from 'pages/home/Home.action';
+import { countStudentsWithBirthdayToday } from 'pages/student/Student.repo';
+import {
+  HomeReducerModel,
+  FullIndicatorActionModel
+} from 'pages/home/Home.type';
 
 async function loadErrors(dispatch: Dispatch) {
   try {
@@ -29,29 +34,23 @@ function genericHomeCount(
   };
 }
 
-const loadCheckoutsToday = genericHomeCount(
-  homeActions.setCheckoutsToday,
-  countBooksCheckedOutToday
-);
-const loadCheckinsToday = genericHomeCount(
-  homeActions.setCheckinsToday,
-  countBooksCheckedInToday
-);
-const loadBooksOverdue = genericHomeCount(
-  homeActions.setBooksOverdueIndicator,
-  countBooksOverdue
-);
-const loadBirthdaysToday = genericHomeCount(
-  homeActions.setBirthdayIndicator,
-  async () => 0 // TODO
-);
-
 export async function loadInitialAppState(dispatch: Dispatch) {
-  return await Promise.all([
-    loadErrors(dispatch),
-    loadCheckoutsToday(dispatch),
-    loadCheckinsToday(dispatch),
-    loadBooksOverdue(dispatch),
-    loadBirthdaysToday(dispatch)
-  ]);
+  const booksOverdue = countBooksOverdue();
+  const checkinsToday = countBooksCheckedInToday();
+  const checkoutsToday = countBooksCheckedOutToday();
+  const birthdaysToday = countStudentsWithBirthdayToday();
+
+  const payload: HomeReducerModel = {
+    booksOverdue: +((await booksOverdue) || 0),
+    checkinsToday: +((await checkinsToday) || 0),
+    checkoutsToday: +((await checkoutsToday) || 0),
+    birthdaysToday: await birthdaysToday
+  };
+
+  const dispatchData: FullIndicatorActionModel = {
+    type: 'ALL_INDICATORS',
+    payload
+  };
+
+  dispatch(dispatchData);
 }

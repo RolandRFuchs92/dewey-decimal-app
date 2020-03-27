@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Badge, makeStyles } from '@material-ui/core';
 import { deepPurple, lightGreen, grey } from '@material-ui/core/colors';
 import { connect } from 'react-redux';
 
 import Icons from './index';
+import { indicatorRootModel, indicatorModel } from './Icons.type';
 
 const useStyles = makeStyles(theme => {
   return {
@@ -53,28 +54,16 @@ const useStyles = makeStyles(theme => {
 export default () => {
   const classes = useStyles();
 
-  // TODO implement redux
-  const state = {
-    checkinsTodayCount: 0,
-    checkoutsTodayCount: 0,
-    birthdaysTodayCount: 0,
-    booksOverdueCount: 0
-  };
+  useEffect(() => {});
 
   return (
     <div className={classes.indicators}>
-      <CheckinIndicator count={state.checkinsTodayCount} />
-      <CheckoutIndicator count={state.checkoutsTodayCount} />
-      <BirthdayIndicator count={state.birthdaysTodayCount} />
-      <OverdueIndicator count={state.booksOverdueCount} />
+      <CheckinIndicator />
+      <CheckoutIndicator />
+      <BirthdayIndicator />
+      <OverdueIndicator />
     </div>
   );
-};
-
-type indicatorRootModel = {
-  count: number;
-  icon: JSX.Element;
-  className: string;
 };
 
 export const Indicator = ({ count, icon, className }: indicatorRootModel) => {
@@ -87,12 +76,15 @@ export const Indicator = ({ count, icon, className }: indicatorRootModel) => {
   );
 };
 
-type indicatorModel = {
-  count: number;
-};
-
 export const RawCheckinIndicator = ({ count }: indicatorModel) => {
   const classes = useStyles();
+
+  const [cnt, setCnt] = useState(count);
+
+  useEffect(() => {
+    setCnt(count);
+  }, [count]);
+
   return (
     <Indicator
       count={count}
@@ -103,6 +95,13 @@ export const RawCheckinIndicator = ({ count }: indicatorModel) => {
 };
 export const RawCheckoutIndicator = ({ count }: indicatorModel) => {
   const classes = useStyles();
+
+  const [cnt, setCnt] = useState(count);
+
+  useEffect(() => {
+    setCnt(count);
+  }, [count]);
+
   return (
     <Indicator
       count={count}
@@ -111,8 +110,13 @@ export const RawCheckoutIndicator = ({ count }: indicatorModel) => {
     ></Indicator>
   );
 };
+
 export const RawOverdueIndicator = ({ count }: indicatorModel) => {
   const classes = useStyles();
+  const [cnt, setCnt] = useState(count);
+
+  console.log(`>>>>>>> OD ${count}`);
+
   return (
     <Indicator
       count={count}
@@ -123,6 +127,13 @@ export const RawOverdueIndicator = ({ count }: indicatorModel) => {
 };
 export const RawBirthdayIndicator = ({ count }: indicatorModel) => {
   const classes = useStyles();
+
+  const [cnt, setCnt] = useState(count);
+
+  useEffect(() => {
+    setCnt(count);
+  }, [count]);
+
   return (
     <Indicator
       count={count}
@@ -133,6 +144,12 @@ export const RawBirthdayIndicator = ({ count }: indicatorModel) => {
 };
 
 export const RawErrorIndicator = ({ count }: indicatorModel) => {
+  const [cnt, setCnt] = useState(count);
+
+  useEffect(() => {
+    setCnt(count);
+  }, [count]);
+
   const classes = useStyles();
   if (!count) return null;
   return (

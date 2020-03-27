@@ -18,12 +18,7 @@ import Icons from 'components/icons';
 import Scanner from 'components/scanner';
 import { JsonObj, GenericInputEvent } from 'types/Generic';
 
-import {
-  ScanProps,
-  BarcodeResultModel,
-  CalculateCheckinModel,
-  CalculateCheckoutModel
-} from './Home.type';
+import { ScanProps, BarcodeResultModel } from './Home.type';
 import { getBookByCallNumber, searchForStudentsSelect } from './Home.repo';
 import {
   ScanDataModel,

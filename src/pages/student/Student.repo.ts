@@ -1,6 +1,11 @@
+import { format } from 'date-fns';
+
 import repoBase from 'components/page/repo.base';
-import { all } from 'db/repo';
+import { all, single } from 'db/repo';
 import { getStudentBooksHistory } from 'pages/books/book.repo';
+import { DropdownListModel } from 'types/Generic';
+import appSettings from 'appSettings.json';
+
 import {
   StudentModel,
   GetStudentsWithBirthdaysModel,
@@ -10,9 +15,9 @@ import {
   getAllQuery,
   queryStudentDropdown,
   getStudentsWithBirthdaysQuery,
-  getStudentSelectListSearchQuery
+  getStudentSelectListSearchQuery,
+  getStudentsWithBirthdaysCountQuery
 } from './Student.sql';
-import { DropdownListModel } from 'types/Generic';
 
 const repo = repoBase<StudentModel>('student');
 
@@ -45,6 +50,12 @@ export async function getStudentsWithBirthdays(date: string) {
     getStudentsWithBirthdaysQuery,
     statementObject
   );
+}
+
+export async function countStudentsWithBirthdayToday(date = new Date()) {
+  return 10;
+  // const statementObject = { $date: format(date, appSettings.formatDate.to) };
+  // return await single(getStudentsWithBirthdaysCountQuery, statementObject);
 }
 
 export const getStudentSelectListSearch = async (value: string) => {

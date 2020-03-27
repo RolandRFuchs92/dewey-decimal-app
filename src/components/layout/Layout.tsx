@@ -29,9 +29,7 @@ import Icons from 'components/icons';
 import Admin from 'pages/admin';
 import { PermanentDrawerLeftModel } from './Layout.type';
 
-import { loadInitialAppState } from './Layout.service';
 import { RootReducerModel } from 'utils/redux/rootReducer.type';
-import { Dispatch } from 'redux';
 
 const useStyles = makeStyles(theme => {
   return {
@@ -68,19 +66,11 @@ const useStyles = makeStyles(theme => {
   };
 });
 
-export function PermanentDrawerLeft({
-  pageTitle,
-  dispatch
-}: PermanentDrawerLeftModel) {
+export function PermanentDrawerLeft({ pageTitle }: PermanentDrawerLeftModel) {
   const classes = useStyles();
 
   const toggleScan = () => {};
   const toggleTheme = () => {};
-  useEffect(() => {
-    (async () => {
-      await loadInitialAppState(dispatch);
-    })();
-  }, [dispatch]);
 
   return (
     <div className={classes.root}>
@@ -111,7 +101,7 @@ export function PermanentDrawerLeft({
         </Toolbar>
       </AppBar>
       <Router>
-        <Drawer></Drawer>
+        <Drawer />
         <main className={classes.content}>
           <div className={classes.toolbar} />
           <Switch>
@@ -158,11 +148,4 @@ const mapStateToProps = (state: RootReducerModel) => {
   };
 };
 
-const mapDispatchToProps = (dispatch: Dispatch) => {
-  return { dispatch };
-};
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(PermanentDrawerLeft);
+export default connect(mapStateToProps)(PermanentDrawerLeft);
