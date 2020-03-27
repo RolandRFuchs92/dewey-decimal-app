@@ -1,6 +1,6 @@
 import { ERROR_COUNT } from './errors/ErrorReport.constants';
 
-type ReducerStateModel = {
+export type ReducerStateModel = {
   errorCount: number;
 };
 

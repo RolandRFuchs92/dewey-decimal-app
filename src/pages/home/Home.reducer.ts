@@ -7,6 +7,13 @@ const initialState = {
   booksOverdue: 0
 };
 
+export type HomeReducerModel = {
+  checkoutsToday: number;
+  checkinsToday: number;
+  birthdaysToday: number;
+  booksOverdue: number;
+};
+
 export default (currentState = initialState, action: GenericActionModal) => {
   const { type, payload } = action;
   switch (type) {

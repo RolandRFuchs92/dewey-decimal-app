@@ -7,7 +7,7 @@ import {
   countBooksCheckedInToday,
   countBooksOverdue
 } from 'pages/booksOut/booksout.repo';
-import homeActions from 'pages/home/Home.action.js';
+import homeActions from 'pages/home/Home.action';
 
 async function loadErrors(dispatch: Dispatch) {
   try {

@@ -29,7 +29,9 @@ import Icons from 'components/icons';
 import Admin from 'pages/admin';
 import { PermanentDrawerLeftModel } from './Layout.type';
 
-import { loadInitialAppState } from './Layout.service.js';
+import { loadInitialAppState } from './Layout.service';
+import { RootReducerModel } from 'utils/redux/rootReducer.type';
+import { Dispatch } from 'redux';
 
 const useStyles = makeStyles(theme => {
   return {
@@ -150,4 +152,17 @@ export function PermanentDrawerLeft({
   );
 }
 
-export default connect(null, null)(PermanentDrawerLeft);
+const mapStateToProps = (state: RootReducerModel) => {
+  return {
+    pageTitle: state.global.pageTitle
+  };
+};
+
+const mapDispatchToProps = (dispatch: Dispatch) => {
+  return { dispatch };
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(PermanentDrawerLeft);

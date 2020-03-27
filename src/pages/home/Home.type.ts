@@ -55,7 +55,6 @@ export type BirthdaysType = {
 export type ScanProps = {
   open: boolean;
   handleClose: () => void;
-  updateScans: () => void;
 };
 
 export type BarcodeResultModel = {

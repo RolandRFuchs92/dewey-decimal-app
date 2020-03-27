@@ -122,7 +122,7 @@ function CreateListItem({
       >
         <ListItemIcon>{Icon}</ListItemIcon>
         <ListItemText primary={label} />
-        {hasMenuItems ? (isOpen ? { ExpandLess } : { ExpandMore }) : null}
+        {hasMenuItems ? (isOpen ? ExpandLess : ExpandMore) : null}
       </ListItem>
       {hasMenuItems && (
         <Collapse in={isOpen} className={classes.nested}>

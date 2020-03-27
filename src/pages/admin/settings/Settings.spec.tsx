@@ -29,7 +29,7 @@ it('appSettings is imported and shows on page', async () => {
   const { findByTestId } = render(<TestSubject />);
 
   async function getTestElement(testId: string) {
-    const elemenet = await findByTestId(testId); // TODO
+    const elemenet = await findByTestId(testId);
     const el = await within(elemenet);
     const result = await el.getByRole('textbox');
     return result;

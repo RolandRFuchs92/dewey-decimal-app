@@ -10,7 +10,10 @@ import { useAlert } from 'utils/snackbarAlerts';
 import { useDialog } from 'utils/dialog';
 import appSettings from 'appSettings.json';
 import { TeacherModel } from './Teacher.type';
-import { DefaultColumnModel } from 'components/page/PageBase.type';
+import {
+  DefaultColumnModel,
+  DatatabelDataModel
+} from 'components/page/PageBase.type';
 import { JsonObj } from 'types/Generic';
 
 const columnConfig: DefaultColumnModel[] = [
@@ -53,7 +56,9 @@ export default () => {
   const [data, setData] = useState<TeacherModel[]>([]);
   const [options, setOptions] = useState({});
   const [isOpen, setIsOpen] = useState(false);
-  const [teacher, setTeacher] = useState({});
+  const [teacher, setTeacher] = useState<
+    DatatabelDataModel<TeacherModel> | undefined
+  >();
   const alert = useAlert();
   const dialog = useDialog();
   let columnsVar: DefaultColumnModel[];
@@ -86,7 +91,8 @@ export default () => {
   const handleDelete = (rowData: JsonObj) => {
     const teacher = Object.fromEntries(
       columnsVar.map(({ name }, index) => [name, rowData[index]])
-    );
+    ) as TeacherModel;
+
     dialog({
       title: 'Are you sure?',
       description: `Really delete ${teacher.first_name} ${teacher.last_name}?`,
@@ -124,8 +130,11 @@ export default () => {
             options={options}
           />
           <TeacherModal
-            {...{ isOpen, handleClose, reset, teacher }}
-          ></TeacherModal>
+            isOpen={isOpen}
+            handleClose={handleClose}
+            reset={reset}
+            teacher={teacher!}
+          />
         </div>
       </Fade>
     </>

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, ChangeEvent } from 'react';
 import {
   Paper,
   Modal,
@@ -11,7 +11,8 @@ import FormButtons from 'components/buttons/FormButtons';
 
 import { createOrUpdateTeacher } from './Teacher.repo';
 import { useAlert } from 'utils/snackbarAlerts';
-import { TeacherModel } from './Teacher.type';
+import { TeacherModel, TeacherModalProps } from './Teacher.type';
+import { DatatabelDataModel } from 'components/page/PageBase.type';
 
 const useStyles = makeStyles(theme => ({
   paper: {
@@ -24,16 +25,11 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export type TeacherModalProps = {
-  isOpen: boolean;
-  teacher: TeacherModel;
-  reset: () => void;
-  handleClose: () => void;
-};
-
 // TODO: Compiler
 export default ({ isOpen, teacher, reset, handleClose }: TeacherModalProps) => {
-  const [newTeacher, setNewTeacher] = useState({ ...teacher });
+  const [newTeacher, setNewTeacher] = useState<
+    DatatabelDataModel<TeacherModel>
+  >({ ...teacher });
   const [title, setTitle] = useState('Add Teacher');
   const classes = useStyles();
   const alert = useAlert();
@@ -46,7 +42,9 @@ export default ({ isOpen, teacher, reset, handleClose }: TeacherModalProps) => {
 
   const handleChange = (name: string) => ({
     target: { value }
-  }: HTMLInputElement) => setNewTeacher({ ...newTeacher, [name]: value });
+  }: ChangeEvent<HTMLInputElement>) =>
+    setNewTeacher({ ...newTeacher, [name]: value });
+
   const handleSubmit = async () => {
     const teacherName = `${newTeacher.first_name} ${newTeacher.last_name}`;
     let isCreate;
@@ -68,7 +66,7 @@ export default ({ isOpen, teacher, reset, handleClose }: TeacherModalProps) => {
   };
 
   const handleReset = () => {
-    setNewTeacher({});
+    setNewTeacher({ ...teacher });
   };
 
   return (

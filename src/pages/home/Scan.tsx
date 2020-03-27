@@ -80,7 +80,7 @@ const defeaultCheckoutData: ScanDataModel = {
 };
 
 // TODO Fix this page for compiler
-export default ({ open, handleClose, updateScans }: ScanProps) => {
+export default ({ open, handleClose }: ScanProps) => {
   const classes = useStyles();
   const input = useRef(null);
   const [isScannerOpen, setIsScannerOpen] = useState(true);
@@ -343,10 +343,10 @@ const GenerateCheckout = ({ data, reset }: GenerateCheckoutProps) => {
         )}
       ></Autocomplete>
       <p>
-        Class: <b>{selection?.class ?? ''}</b>
+        Class: <b>{selection!.class}</b>
       </p>
       <p>
-        Teacher: <b>{selection?.teacher ?? ''}</b>
+        Teacher: <b>{selection!.teacher}</b>
       </p>
       <hr></hr>
       <p>

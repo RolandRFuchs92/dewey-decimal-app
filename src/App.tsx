@@ -23,7 +23,6 @@ type ThemeProp = {
   };
 };
 
-// TODO Compiler
 function App() {
   const [showScan, setShowScan] = useState(false);
   const [theme, setTheme] = useState<ThemeProp>({
@@ -63,7 +62,6 @@ function App() {
                 <Scan
                   open={showScan}
                   handleClose={() => setShowScan(false)}
-                  updateScans={updateScans}
                 ></Scan>
                 <ErrorIndicator />
               </SnackbarProvider>
