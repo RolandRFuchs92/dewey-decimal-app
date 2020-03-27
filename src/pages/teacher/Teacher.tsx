@@ -51,14 +51,27 @@ const tableOptions = {
   selectableRows: 'none'
 };
 
+const teacherDefault: DatatabelDataModel<TeacherModel> = {
+  Delete: null,
+  Edit: null,
+  class_id: 0,
+  email: '',
+  first_name: '',
+  is_active: false,
+  last_name: '',
+  mobile: '',
+  teacherName: '',
+  teacher_id: ''
+};
+
 export default () => {
   const [columns, setColumns] = useState<DefaultColumnModel[]>([]);
   const [data, setData] = useState<TeacherModel[]>([]);
   const [options, setOptions] = useState({});
   const [isOpen, setIsOpen] = useState(false);
-  const [teacher, setTeacher] = useState<
-    DatatabelDataModel<TeacherModel> | undefined
-  >();
+  const [teacher, setTeacher] = useState<DatatabelDataModel<TeacherModel>>(
+    teacherDefault
+  );
   const alert = useAlert();
   const dialog = useDialog();
   let columnsVar: DefaultColumnModel[];

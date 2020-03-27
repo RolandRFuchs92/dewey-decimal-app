@@ -84,10 +84,7 @@ export default ({
     <Modal {...{ open, handleClose }}>
       <Fields />
       <Grid item>
-        <FormButtons
-          onReset={() => setVal({})}
-          onSubmit={handleSubmit}
-        ></FormButtons>
+        <FormButtons onReset={() => setVal({})} onSubmit={handleSubmit} />
       </Grid>
     </Modal>
   );
