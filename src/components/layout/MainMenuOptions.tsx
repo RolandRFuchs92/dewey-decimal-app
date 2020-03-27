@@ -1,4 +1,4 @@
-import React, { useState, Dispatch } from 'react';
+import React, { useState, Dispatch, useEffect } from 'react';
 import {
   List,
   ListItem,
@@ -46,18 +46,33 @@ const useStyles = makeStyles(theme => {
 
 const ExpandLess = Icons.ExpandLess;
 const ExpandMore = Icons.ExpandMore;
-let prevSelected;
+
+export type CurrentSelectedIndex = {
+  selectedOption: string;
+  setSelectedOption: (index: string) => void;
+};
+
+export default ({ menuItems }: { menuItems: CreateListItemModel[] }) => {
+  const [selectedOption, setSelectedOption] = useState('');
+  return (
+    <MenuOptions
+      menuItems={menuItems}
+      option={{
+        selectedOption,
+        setSelectedOption: (option: string) => setSelectedOption(option)
+      }}
+    />
+  );
+};
 
 function MenuOptions({
-  menuItems
+  menuItems,
+  option
 }: {
   menuItems: CreateListItemModel[];
+  option: CurrentSelectedIndex;
 }): JSX.Element {
   const classes = useStyles();
-  const handleSelected = (setSelected: Dispatch<boolean>) => {
-    setSelected(true);
-    prevSelected = setSelected;
-  };
 
   return (
     <List disablePadding className={classes.list}>
@@ -69,14 +84,18 @@ function MenuOptions({
             path,
             menuItems
           }: CreateListItemModel = menuItem;
+
           return (
             <CreateListItem
               key={label}
               label={label}
               icon={icon}
               path={path}
+              selectedOption={option.selectedOption}
+              setSelectedOption={(selection: string) =>
+                option.setSelectedOption(selection)
+              }
               menuItems={menuItems}
-              handleSelected={handleSelected}
             />
           );
         })}
@@ -89,28 +108,30 @@ function CreateListItem({
   icon,
   path,
   menuItems,
-  handleSelected
-}: CreateListItemModel & {
-  handleSelected: (callback: Dispatch<boolean>) => void;
-}) {
+  selectedOption,
+  setSelectedOption
+}: CreateListItemModel & CurrentSelectedIndex) {
   const classes = useStyles();
   const history = useHistory();
   const [isOpen, setIsOpen] = useState(false);
   const hasMenuItems = !isNil(menuItems);
   const [selected, setSelected] = useState<boolean>(false);
 
-  const handleMenuItemClick = (path: string) => {
-    if (!hasMenuItems) {
-      handleSelected(setSelected);
-    }
+  useEffect(() => {
+    setSelected(selectedOption === path!);
+  }, [selectedOption]);
 
-    if (!path.length) {
+  const handleMenuItemClick = (path: string) => {
+    if (path.length) {
+      setSelectedOption(path!);
+    } else {
       setIsOpen(!isOpen);
       return;
     }
     history.push(path);
   };
   const Icon = Icons[upperFirst(icon)];
+
   return (
     <>
       <ListItem
@@ -126,11 +147,12 @@ function CreateListItem({
       </ListItem>
       {hasMenuItems && (
         <Collapse in={isOpen} className={classes.nested}>
-          <MenuOptions menuItems={!isNil(menuItems) ? menuItems : []} />
+          <MenuOptions
+            menuItems={!isNil(menuItems) ? menuItems : []}
+            option={{ selectedOption, setSelectedOption }}
+          />
         </Collapse>
       )}
     </>
   );
 }
-
-export default MenuOptions;
