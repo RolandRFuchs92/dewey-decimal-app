@@ -1,20 +1,17 @@
-import { all, run } from 'db/repo';
-import { addOrUpdate as addOrUpdateGeneric } from 'db/utils';
-import { JsonObj, DropdownListModel } from 'types/Generic';
-import { DeweySummaryModel } from './Summary1.type';
-import { getAllData, deleteRowQuery } from './Summary1.sql';
+import baseRepo from 'components/page/repo.base';
+import { all } from 'db/repo';
 import { getSelectListQuery } from 'pages/class/Class.sql';
+import { DropdownListModel } from 'types/Generic';
+import { DeweySummaryModel } from './Summary1.type';
+import { getAllQuery } from './Summary1.sql';
 
-export const getAll = async () => {
-  return await all<DeweySummaryModel>(getAllData);
+const repo = baseRepo<DeweySummaryModel>(`dewey_summary`);
+
+repo.getAll = async () => {
+  return await all(getAllQuery);
 };
 
-export const addOrUpdate = async (summary1Object: JsonObj) => {
-  return await addOrUpdateGeneric(summary1Object, 'dewey_summary');
-};
-export const deleteRow = async (id: number) => {
-  return await run(deleteRowQuery, { $id: id });
-};
+export default repo;
 
 export const getSelectList = async () => {
   return await all<DropdownListModel>(getSelectListQuery);

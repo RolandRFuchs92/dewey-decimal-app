@@ -1,4 +1,4 @@
-export const getAllData = `
+export const getAllQuery = `
     SELECT
         dewey_summary_id,
         summary_id,
