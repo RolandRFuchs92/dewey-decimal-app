@@ -24,7 +24,6 @@ type ThemeProp = {
 };
 
 function App() {
-  const [showScan, setShowScan] = useState(false);
   const [theme, setTheme] = useState<ThemeProp>({
     palette: {
       type: 'light'
@@ -37,10 +36,6 @@ function App() {
         type: theme.palette.type === 'light' ? 'dark' : 'light'
       }
     });
-  };
-
-  const toggleScan = () => {
-    setShowScan(!showScan);
   };
 
   initializeDb();
@@ -59,10 +54,7 @@ function App() {
                 }}
               >
                 <MainLayout />
-                <Scan
-                  open={showScan}
-                  handleClose={() => setShowScan(false)}
-                ></Scan>
+                <Scan />
                 <ErrorIndicator />
               </SnackbarProvider>
             </ConfirmProvider>
