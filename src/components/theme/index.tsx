@@ -15,7 +15,7 @@ const ThemeProvider = ({ children, theme }: ThemeProps) => {
 
 const mapStateToProps = (currentState: RootReducerModel) => {
   return {
-    theme: currentState.theme
+    theme: currentState.theme.theme
   };
 };
 
