@@ -1,3 +1,13 @@
+export type ScanConstants = 'SCANNER_OPEN' | 'SCANNER_CLOSE';
+
+export type ScannerAction = {
+  type: ScanConstants;
+};
+
+export type ScanReducerModel = {
+  open: boolean;
+};
+
 export type CheckoutData = {
   author_name: string;
   book_name: string;
@@ -46,7 +56,6 @@ export type ScannerIconButtonProps = {
 
 export type ScanProps = {
   open: boolean;
-  handleClose: () => void;
 };
 
 export type ScansModel = {

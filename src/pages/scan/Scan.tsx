@@ -18,16 +18,21 @@ import Icons from 'components/icons';
 import Scanner from 'components/scanner';
 import { JsonObj, GenericInputEvent } from 'types/Generic';
 
-import { ScanProps, BarcodeResultModel } from './Home.type';
-import { getBookByCallNumber, searchForStudentsSelect } from './Home.repo';
 import {
   ScanDataModel,
   ScannerIconButtonProps,
   GenerateCheckinProps,
   GenerateCheckoutProps,
   UserSelection,
-  CheckoutData
+  CheckoutData,
+  ScanProps
 } from './Scan.type';
+import { connect, useDispatch } from 'react-redux';
+import { BarcodeResultModel } from 'pages/home/Home.type';
+import { getBookByCallNumber } from 'pages/books/book.repo';
+import { searchForStudentsSelect } from 'pages/home/Home.repo';
+import { RootReducerModel } from 'utils/redux/rootReducer.type';
+import { ScannerCloseAction } from './Scanner.action';
 
 const useStyles = makeStyles(theme => ({
   barcode: {
@@ -75,9 +80,11 @@ const defeaultCheckoutData: ScanDataModel = {
 };
 
 // TODO Fix this page for compiler
-export default ({ open, handleClose }: ScanProps) => {
+
+const ScannerPage = ({ open }: ScanProps) => {
   const classes = useStyles();
   const input = useRef(null);
+  const dispatch = useDispatch();
   const [isScannerOpen, setIsScannerOpen] = useState(true);
 
   const [barcodeResult, setBarcodeResult] = useState<
@@ -89,8 +96,8 @@ export default ({ open, handleClose }: ScanProps) => {
 
   const _handleClose = () => {
     setBarcode('');
-    handleClose();
     setBarcodeResult(defeaultCheckoutData);
+    dispatch(ScannerCloseAction());
   };
 
   const handleSubmit = (e: GenericInputEvent & KeyboardEvent): void => {
@@ -122,7 +129,7 @@ export default ({ open, handleClose }: ScanProps) => {
       return;
     }
 
-    setBarcodeResult(data);
+    setBarcodeResult(data[0]);
   };
 
   return (
@@ -361,3 +368,10 @@ const GenerateCheckout = ({ data, reset }: GenerateCheckoutProps) => {
     </div>
   );
 };
+
+const mapStateToProps = (currentState: RootReducerModel) => {
+  return {
+    open: currentState.scan.open
+  };
+};
+export default connect(mapStateToProps)(ScannerPage);
