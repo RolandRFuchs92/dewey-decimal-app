@@ -53,9 +53,8 @@ export async function getStudentsWithBirthdays(date: string) {
 }
 
 export async function countStudentsWithBirthdayToday(date = new Date()) {
-  return 10;
-  // const statementObject = { $date: format(date, appSettings.formatDate.to) };
-  // return await single(getStudentsWithBirthdaysCountQuery, statementObject);
+  const statementObject = { $date: format(date, appSettings.formatDate.to) };
+  return await single(getStudentsWithBirthdaysCountQuery, statementObject);
 }
 
 export const getStudentSelectListSearch = async (value: string) => {
