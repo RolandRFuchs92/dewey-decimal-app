@@ -16,11 +16,7 @@ const useStyles = makeStyles(theme => {
       alignItems: 'baseline',
       padding: 15,
       height: 64,
-      fontSize: 23,
-      '& .MuiBadge-root span': {
-        backgroundColor: lightGreen[200],
-        color: grey[700]
-      }
+      fontSize: 23
     },
     checkin: {
       color: theme.palette.primary.light
