@@ -4,6 +4,7 @@ import { DefaultColumnModel } from 'components/page/PageBase.type';
 import PageBase from 'components/page/PageBase';
 
 import repo from './authors.repo';
+import { getAllModel } from './Authors.type';
 
 const defaultColumns: DefaultColumnModel[] = [
   {
@@ -34,11 +35,12 @@ export default () => {
   const getAll = repo.getAll;
 
   return (
-    <PageBase
+    <PageBase<getAllModel>
       defaultColumns={defaultColumns}
       getAll={getAll}
       handleDeleteRow={handleDeleteRow}
       handleEditAddRow={handleEditAddRow}
+      dialogKey="name"
     />
   );
 };

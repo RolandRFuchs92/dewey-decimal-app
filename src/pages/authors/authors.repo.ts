@@ -3,11 +3,11 @@ import { startCase, isEmpty } from 'lodash';
 import repoBase from 'components/page/repo.base';
 import appSettings from 'appSettings.json';
 import { all } from 'db/repo';
-import { AuthorsQuerySelectListModel } from './Authors.type';
+import { AuthorsQuerySelectListModel, getAllModel } from './Authors.type';
 import { querySelectList } from './Authors.sql';
 import { DropdownListModel } from 'types/Generic';
 
-export default repoBase(`author`);
+export default repoBase<getAllModel>(`author`, 'author_id');
 
 export const getSelectList = async (): Promise<DropdownListModel[]> => {
   const selectData = await all(querySelectList);
