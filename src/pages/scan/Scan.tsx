@@ -121,13 +121,30 @@ const ScannerPage = ({ open }: ScanProps) => {
   };
 
   const handleCheckinout = async (value: string) => {
-    const data = await getBookByCallNumber(value);
+    const data = (await getBookByCallNumber(value))[0];
     if (!data) {
       alert.error(`${value} was not found. Make sure the book is loaded`);
       return;
     }
 
-    setBarcodeResult(data[0]);
+    const fine = '0'; // TODO: calculate fine
+
+    const scanData: ScanDataModel = {
+      author_name: data.author_name,
+      book_name: data.book_name,
+      books_out_id: data.books_out_id.toString(),
+      call_number: data.call_number,
+      check_in_on: data.check_in_date.toString(),
+      check_out_date: data.check_out_date.toString(),
+      class: data.class,
+      isCheckout: data.check_in_date === null,
+      return_on: data.return_on.toString(),
+      student_name: data.student_name,
+      teacher_name: data.teacher_name,
+      fine
+    };
+
+    setBarcodeResult(scanData);
   };
 
   return (

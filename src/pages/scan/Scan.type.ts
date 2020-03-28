@@ -1,3 +1,5 @@
+import { GetBookCallNumberModel } from 'pages/books/Book.type';
+
 export type ScanConstants = 'SCANNER_OPEN' | 'SCANNER_CLOSE';
 
 export type ScannerAction = {
