@@ -1,7 +1,11 @@
 import { ScannerAction, ScanReducerModel } from './Scan.type';
 
-export function reducer(
-  currentState: ScanReducerModel,
+const initialState: ScanReducerModel = {
+  open: false
+};
+
+export default function reducer(
+  currentState: ScanReducerModel = initialState,
   action: ScannerAction
 ): ScanReducerModel {
   const { type } = action;

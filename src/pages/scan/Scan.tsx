@@ -181,8 +181,7 @@ const ScannerPage = ({ open }: ScanProps) => {
             ></ScannerIconButtons>
           </Grid>
           <Grid item>
-            // @ts-ignore
-            {barcodeResult.isCheckout ? (
+            {(barcodeResult as ScanDataModel).isCheckout ? (
               <GenerateCheckout
                 data={barcodeResult as CheckoutData}
                 reset={reset}
@@ -360,10 +359,10 @@ const GenerateCheckout = ({ data, reset }: GenerateCheckoutProps) => {
         )}
       ></Autocomplete>
       <p>
-        Class: <b>{selection!.class}</b>
+        Class: <b>{selection ? selection.class : ''}</b>
       </p>
       <p>
-        Teacher: <b>{selection!.teacher}</b>
+        Teacher: <b>{selection ? selection.teacher : ''}</b>
       </p>
       <hr></hr>
       <p>
