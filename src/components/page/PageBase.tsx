@@ -7,7 +7,7 @@ import EditDeleteCol, { useAddButton } from 'utils/tableButtons';
 import Modal from './ModalBase';
 import { useDialog } from 'utils/dialog';
 import { useAlert } from 'utils/snackbarAlerts';
-import { JsonObj, HasName } from 'types/Generic';
+import { JsonObj } from 'types/Generic';
 
 import { DefaultColumnModel, PageBaseModel } from './PageBase.type';
 
@@ -16,13 +16,14 @@ export default <T,>({
   getAll,
   handleDeleteRow,
   handleEditAddRow,
-  modal = null
+  modal = null,
+  dialogKey
 }: PageBaseModel<T>) => {
   const [options, setOptions] = useState({});
   const [columns, setColumns] = useState<DefaultColumnModel[]>(defaultColumns);
   const [data, setData] = useState<T[]>([]);
   const [openModal, setOpenModal] = useState(false);
-  const [modalData, setModalData] = useState({});
+  const [modalData, setModalData] = useState<T | undefined>(undefined);
 
   const showDialog = useDialog();
   const alert = useAlert();
@@ -34,21 +35,21 @@ export default <T,>({
   }, [getAll]);
 
   const handleYesOnDelete = useCallback(
-    async (rowData: HasName<T>) => {
+    async (rowData: T) => {
       try {
         await handleDeleteRow(rowData);
         await reset();
-        alert.success(`Successfully deleted ${rowData.name}`);
+        alert.success(`Successfully deleted ${rowData[dialogKey]}`);
       } catch (error) {
-        alert.error(`There was an error deleting ${rowData.name}!`);
+        alert.error(`There was an error deleting ${rowData[dialogKey]}!`);
         log.error(error);
       }
     },
-    [alert, handleDeleteRow, reset]
+    [alert, dialogKey, handleDeleteRow, reset]
   );
 
   const objectFromRowData = useCallback(
-    (rowData: JsonObj) =>
+    (rowData: JsonObj): T =>
       Object.fromEntries(
         columns.map(({ name }, index) => [name, rowData[index] || ''])
       ),
@@ -57,9 +58,7 @@ export default <T,>({
 
   const handleEditAdd = useCallback(
     (rowData: JsonObj) => {
-      let obj = null;
-      rowData && (obj = objectFromRowData(rowData));
-      setModalData(obj);
+      rowData && setModalData(objectFromRowData(rowData));
       setOpenModal(true);
     },
     [objectFromRowData]
@@ -70,11 +69,11 @@ export default <T,>({
       const obj = objectFromRowData(rowData);
       showDialog({
         title: 'Are you sure?',
-        description: `Really delete ${obj.name}?`,
+        description: `Really delete ${obj[dialogKey]}?`,
         handleYes: () => handleYesOnDelete(obj)
       });
     },
-    [handleYesOnDelete, objectFromRowData, showDialog]
+    [dialogKey, handleYesOnDelete, objectFromRowData, showDialog]
   );
 
   const handleClose = () => setOpenModal(false);
@@ -97,7 +96,7 @@ export default <T,>({
     (async () => {
       await reset();
     })();
-  }, [reset]);
+  }, [addButton, defaultColumns, handleDelete, handleEditAdd, reset]);
 
   return (
     <>
@@ -116,7 +115,7 @@ export default <T,>({
               open={openModal}
               handleClose={handleClose}
               handleEditAddRow={handleEditAddRow}
-              modalData={modalData}
+              modalData={modalData!}
               reset={reset}
             ></Modal>
           )}

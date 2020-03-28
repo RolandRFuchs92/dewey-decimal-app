@@ -4,9 +4,10 @@ import { JsonObj, DropdownListModel } from 'types/Generic';
 export type PageBaseModel<T> = {
   defaultColumns: DefaultColumnModel[];
   getAll: () => Promise<T[]>;
-  handleDeleteRow: (rowData: { [key: string]: string }) => Promise<true>;
+  handleDeleteRow: (rowData: T) => Promise<true>;
   handleEditAddRow: (event: JsonObj | null) => Promise<'add' | 'update'>;
   modal?: JSX.Element | null;
+  dialogKey: keyof T;
 };
 
 export type DefaultColumnModel = {
