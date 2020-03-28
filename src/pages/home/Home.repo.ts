@@ -8,10 +8,7 @@ import {
 
 import { getStudentsWithBirthdays } from 'pages/student/Student.repo';
 import { getBookByCallNumber as findBookByBarcode } from 'pages/books/book.repo';
-import {
-  getSelectList,
-  getStudentSelectListSearch
-} from 'pages/student/Student.repo';
+import { getStudentSelectListSearch } from 'pages/student/Student.repo';
 import appSettings from 'appSettings.json';
 import { GetBookCallNumberModel } from 'pages/books/Book.type';
 import { CheckoutData, ScanDataModel } from 'pages/scan/Scan.type';
@@ -32,7 +29,6 @@ export const getBookByCallNumber = async (callnumber: string) => {
 const calculateCheckout = async (
   data: GetBookCallNumberModel
 ): Promise<CheckoutData> => {
-  const isCheckout = true;
   const return_on = checkout.isBusinessDays
     ? format(
         addBusinessDays(new Date(), checkout.daysAllowedOut),
@@ -41,7 +37,6 @@ const calculateCheckout = async (
     : format(addDays(new Date(), checkout.daysAllowedOut), formatDate.to);
 
   const check_out_date = format(new Date(), formatDate.to);
-  const fine = 'None';
 
   const checkoutResult: CheckoutData = {
     check_out_date,

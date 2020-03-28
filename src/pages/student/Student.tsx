@@ -97,6 +97,7 @@ export default () => {
         getAll={getAll}
         handleDeleteRow={handleDeleteRow}
         handleEditAddRow={handleEditAddRow}
+        dialogKey="first_name"
       />
       <StudentProfile
         open={open}

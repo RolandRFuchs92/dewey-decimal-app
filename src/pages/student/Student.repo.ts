@@ -19,7 +19,7 @@ import {
   getStudentsWithBirthdaysCountQuery
 } from './Student.sql';
 
-const repo = repoBase<StudentModel>('student');
+const repo = repoBase<StudentModel>('student', 'student_id');
 
 repo.getAll = async () => {
   return await all<StudentModel>(getAllQuery);
