@@ -1,6 +1,6 @@
 import repoBase from 'components/page/repo.base';
 import { all } from 'db/repo';
-import { getAllQuery } from 'pages/student/Student.sql';
+import { getAllQuery } from './Book.sql';
 import {
   getBooksSelectListQuery,
   getStudentBooksHistoryQuery,
