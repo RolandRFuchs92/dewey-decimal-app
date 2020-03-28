@@ -48,7 +48,7 @@ export async function all<T>(
         log.error(`${stamp} ${err}`);
         rej(err);
       }
-      log.info(`${stamp} Returned ${rows.length} row(s)`);
+      log.info(`${stamp} Returned ${rows ? rows.length : 0} row(s)`);
       res(rows);
     });
   });

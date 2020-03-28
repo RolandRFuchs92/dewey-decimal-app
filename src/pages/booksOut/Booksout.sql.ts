@@ -21,7 +21,7 @@ export const booksOverdueQuery = `
 SELECT
 	s.first_name || ' ' || s.last_name student_name,
 	b.name book_name,
-	a.name || ' ' || a.second_name || ' ' || as.surname author_name,
+	a.name || ' ' || a.second_name || ' ' || a.surname author_name,
 	bo.return_on
 FROM	
 	books_out bo
