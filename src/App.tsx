@@ -11,9 +11,9 @@ import ReduxThunk from 'redux-thunk';
 import MainLayout from './components/layout/Layout';
 import { SnackbarProvider } from 'notistack';
 import initializeDb from 'db/initializeDb';
-import Scan from 'pages/home/Scan';
 import reduxReducers from 'utils/redux/rootReducer';
 import { ErrorIndicator } from 'components/icons/Indicator';
+import Scan from 'pages/scan/Scan';
 
 const store = createStore(reduxReducers, applyMiddleware(ReduxThunk));
 

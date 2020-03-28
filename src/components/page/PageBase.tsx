@@ -56,7 +56,6 @@ export default <T,>({
 
   const handleEditAdd = useCallback(
     (rowData: JsonObj) => {
-      //TODO
       let obj = null;
       rowData && (obj = objectFromRowData(rowData));
       setModalData(obj);

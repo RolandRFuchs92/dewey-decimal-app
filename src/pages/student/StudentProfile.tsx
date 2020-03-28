@@ -95,10 +95,10 @@ export default ({ open, handleClose, studentId = 1 }: StudentProfileProps) => {
   const [isFront, setIsFront] = useState(true);
   const [historyData, setHistoryData] = useState<GetStudentBooksHistoryModel[]>(
     []
-  ); // TODO IMPLEMENT THE PROPER TYPES
+  );
   const [studentData, setStudentData] = useState<StudentModel | undefined>(
     undefined
-  ); // TODO IMPLEMENT THE PROPER TYPES
+  );
 
   useEffect(() => {
     (async () => {

@@ -79,8 +79,6 @@ const defeaultCheckoutData: ScanDataModel = {
   teacher_name: ''
 };
 
-// TODO Fix this page for compiler
-
 const ScannerPage = ({ open }: ScanProps) => {
   const classes = useStyles();
   const input = useRef(null);

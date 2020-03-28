@@ -78,7 +78,7 @@ export default () => {
 
   const handleEditAdd = (rowData: JsonObj) => {
     const obj = Object.fromEntries(
-      columnsVar.map(({ name }, index) => [name, rowData[index]]) // TODO, check this logic..
+      columnsVar.map(({ name }, index) => [name, rowData[index]])
     );
     setTeacher(obj);
     setIsOpen(true);
@@ -94,7 +94,7 @@ export default () => {
         ...tableAddButton
       });
       const columns = [...columnConfig, ...editButtons];
-      columnsVar = columns; // TODO Check this logic too
+      columnsVar = columns;
       setColumns(columns);
       reset();
     })();

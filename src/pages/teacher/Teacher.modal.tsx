@@ -25,7 +25,6 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-// TODO: Compiler
 export default ({ isOpen, teacher, reset, handleClose }: TeacherModalProps) => {
   const [newTeacher, setNewTeacher] = useState<
     DatatabelDataModel<TeacherModel>
