@@ -1,4 +1,5 @@
 import { GetStudentsWithBirthdaysModel } from 'pages/student/Student.type';
+import { ScansModel } from 'pages/booksOut/Booksout.type';
 
 export type GenericActionModal = {
   type: IndicatorActionTypes;
@@ -39,16 +40,6 @@ export type CalculateCheckinModel = {
   fine: string | 'None';
 };
 
-export type ScansTemplateProps = {
-  scans: ScansModel[];
-};
-
-export type ScansModel = {
-  author: string;
-  book: string;
-  student: string;
-};
-
 export type HomePageTileProps = {
   title: string;
   children: JSX.Element | JSX.Element[];
@@ -63,11 +54,6 @@ export type HomeProps = {
 export type BirthdaysType = {
   teacher: string;
   student: GetStudentsWithBirthdaysModel[];
-};
-
-export type ScanProps = {
-  open: boolean;
-  handleClose: () => void;
 };
 
 export type BarcodeResultModel = {

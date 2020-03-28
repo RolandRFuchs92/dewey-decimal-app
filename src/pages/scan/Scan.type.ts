@@ -43,3 +43,18 @@ export type ScannerIconButtonProps = {
   handleLaptopButton: () => void;
   isScannerOpen: boolean;
 };
+
+export type ScanProps = {
+  open: boolean;
+  handleClose: () => void;
+};
+
+export type ScansModel = {
+  author: string;
+  book: string;
+  student: string;
+};
+
+export type ScansTemplateProps = {
+  scans: ScansModel[];
+};

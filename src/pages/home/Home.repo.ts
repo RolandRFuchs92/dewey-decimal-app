@@ -14,7 +14,7 @@ import {
 } from 'pages/student/Student.repo';
 import appSettings from 'appSettings.json';
 import { GetBookCallNumberModel } from 'pages/books/Book.type';
-import { CheckoutData, ScanDataModel } from './Scan.type';
+import { CheckoutData, ScanDataModel } from 'pages/scan/Scan.type';
 
 const { fines, formatDate, checkout } = appSettings;
 export const getBirthdays = async () => {
