@@ -17,7 +17,7 @@ import {
 } from './Booksout.sql';
 import { GetAllModel, BooksOverdueModel, ScansModel } from './Booksout.type';
 
-const repo = repoBase<GetAllModel>(`books_out`);
+const repo = repoBase<GetAllModel>(`books_out`, 'books_out_id');
 repo.getAll = async () => {
   const result = await all<GetAllModel>(getAllQuery);
   return result;

@@ -13,7 +13,7 @@ import {
   GetBookCallNumberModel
 } from './Book.type';
 
-const repo = repoBase<BookModel>(`book`);
+const repo = repoBase<BookModel>(`book`, 'book_id');
 
 repo.getAll = async () => {
   return await all(getAllQuery);
