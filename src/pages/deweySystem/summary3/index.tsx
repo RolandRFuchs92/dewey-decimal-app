@@ -48,6 +48,7 @@ export default () => {
       getAll={getAll}
       handleDeleteRow={handleDeleteRow}
       handleEditAddRow={handleEditAddRow}
+      dialogKey="name"
     />
   );
 };

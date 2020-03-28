@@ -6,7 +6,7 @@ import { DropdownListModel } from 'types/Generic';
 import { DeweySummary2Model } from './Summary.type';
 import { getAllQuery } from './Summary2.sql';
 
-const repo = baseRepo<DeweySummary2Model>(`dewey_summary_2`);
+const repo = baseRepo<DeweySummary2Model>(`dewey_summary_2`, 'name');
 
 repo.getAll = async () => {
   return await all(getAllQuery);

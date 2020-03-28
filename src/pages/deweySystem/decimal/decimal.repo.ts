@@ -4,8 +4,9 @@ import { DropdownListModel } from 'types/Generic';
 
 import { getSelectQuery } from './Decimal.sql';
 import { getAllQuery } from './Decimal.sql';
+import { getAllModel } from './Decimal.type';
 
-const repo = repoBase(`dewey_decimal`);
+const repo = repoBase<getAllModel>(`dewey_decimal`, 'decimal_id');
 
 repo.getAll = async () => {
   return await all(getAllQuery);
