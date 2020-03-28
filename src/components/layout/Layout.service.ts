@@ -7,7 +7,6 @@ import {
   countBooksCheckedInToday,
   countBooksOverdue
 } from 'pages/booksOut/booksout.repo';
-import homeActions from 'pages/home/Home.action';
 import { countStudentsWithBirthdayToday } from 'pages/student/Student.repo';
 import {
   HomeReducerModel,

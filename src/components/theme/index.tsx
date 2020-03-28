@@ -10,7 +10,13 @@ export type ThemeProps = {
 };
 
 const ThemeProvider = ({ children, theme }: ThemeProps) => {
-  return <MuiThemeProvider theme={theme}>{children}</MuiThemeProvider>;
+  const mode = createMuiTheme({
+    palette: {
+      type: theme
+    }
+  });
+
+  return <MuiThemeProvider theme={mode}>{children}</MuiThemeProvider>;
 };
 
 const mapStateToProps = (currentState: RootReducerModel) => {

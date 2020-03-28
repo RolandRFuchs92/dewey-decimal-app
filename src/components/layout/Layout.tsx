@@ -31,6 +31,7 @@ import { RootReducerModel } from 'utils/redux/rootReducer.type';
 
 import { PermanentDrawerLeftModel } from './Layout.type';
 import { ScannerToggleAction } from 'pages/scan/Scanner.action';
+import { toggleThemeAction } from 'components/theme/Theme.action';
 
 const useStyles = makeStyles(theme => {
   return {
@@ -74,7 +75,9 @@ export function PermanentDrawerLeft({ pageTitle }: PermanentDrawerLeftModel) {
   const toggleScan = () => {
     dispatch(ScannerToggleAction());
   };
-  const toggleTheme = () => {};
+  const toggleTheme = () => {
+    dispatch(toggleThemeAction());
+  };
 
   return (
     <div className={classes.root}>
