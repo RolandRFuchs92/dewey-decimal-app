@@ -28,7 +28,8 @@ export default <T,>({
   const alert = useAlert();
 
   const reset = useCallback(async () => {
-    setData(await getAll());
+    const tableData = await getAll();
+    setData(tableData);
     setOpenModal(false);
   }, [getAll]);
 

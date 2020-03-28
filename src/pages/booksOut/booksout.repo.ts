@@ -6,7 +6,7 @@ import {
   calculateReturnOnDateForDbInsert,
   formatDateForDbInsert
 } from 'utils/businessRules';
-import { getAllQuery } from 'pages/student/Student.sql';
+import { getAllQuery } from './Booksout.sql';
 import {
   checkoutBookQuery,
   checkinBookQuery,
