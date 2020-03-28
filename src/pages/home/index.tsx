@@ -1,19 +1,20 @@
 import React from 'react';
 import { Button, makeStyles, Grid, Paper, Typography } from '@material-ui/core';
 
-import ScansToday from './ScansTemplate';
-import BirthdaysToday from './BirthdaysToday';
-import Icons from 'components/icons';
-import Overdue from './Overdue';
-
 import {
   CheckinIndicator,
   CheckoutIndicator,
   OverdueIndicator,
   BirthdayIndicator
 } from 'components/icons/Indicator';
-import { HomePageTileProps, ScansModel, HomeProps } from './Home.type';
+import { HomePageTileProps, HomeProps } from './Home.type';
 import { connect, useDispatch } from 'react-redux';
+import { ScansModel } from 'pages/scan/Scan.type';
+import ScansToday from 'pages/scan/ScansTemplate';
+
+import BirthdaysToday from './BirthdaysToday';
+import Icons from 'components/icons';
+import Overdue from './Overdue';
 
 const useStyles = makeStyles(theme => {
   return {

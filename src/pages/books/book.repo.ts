@@ -7,8 +7,11 @@ import {
   getBookByCallNumberQuery
 } from './Book.sql';
 import { DropdownListModel } from 'types/Generic';
-import { BookModel, GetStudentBooksHistoryModel } from './Book.type';
-import { ScanDataModel } from 'pages/scan/Scan.type';
+import {
+  BookModel,
+  GetStudentBooksHistoryModel,
+  GetBookCallNumberModel
+} from './Book.type';
 
 const repo = repoBase<BookModel>(`book`);
 
@@ -35,8 +38,8 @@ export const getStudentBooksHistory = async (student_id: string) => {
 
 export const getBookByCallNumber = async (
   call_number: string
-): Promise<ScanDataModel[]> => {
-  const result = await all<ScanDataModel>(getBookByCallNumberQuery, {
+): Promise<GetBookCallNumberModel[]> => {
+  const result = await all<GetBookCallNumberModel>(getBookByCallNumberQuery, {
     $call_number: call_number
   });
 

@@ -6,6 +6,6 @@ export function ScannerCloseAction() {
 
 export function ScannerOpenAction() {
   return {
-    open: true;
-  }
+    open: true
+  };
 }

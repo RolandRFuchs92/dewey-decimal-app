@@ -1,5 +1,5 @@
 import { GetStudentsWithBirthdaysModel } from 'pages/student/Student.type';
-import { ScansModel } from 'pages/booksOut/Booksout.type';
+import { ScansModel } from 'pages/scan/Scan.type';
 
 export type GenericActionModal = {
   type: IndicatorActionTypes;
