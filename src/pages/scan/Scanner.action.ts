@@ -1,11 +1,19 @@
-export function ScannerCloseAction() {
+import { ScannerAction } from './Scan.type';
+
+export function ScannerCloseAction(): ScannerAction {
   return {
-    open: false
+    type: 'SCANNER_CLOSE'
   };
 }
 
-export function ScannerOpenAction() {
+export function ScannerOpenAction(): ScannerAction {
   return {
-    open: true
+    type: 'SCANNER_OPEN'
+  };
+}
+
+export function ScannerToggleAction(): ScannerAction {
+  return {
+    type: 'SCANNER_TOGGLE'
   };
 }

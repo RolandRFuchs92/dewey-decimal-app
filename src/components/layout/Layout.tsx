@@ -14,7 +14,7 @@ import {
   Route,
   Redirect
 } from 'react-router-dom';
-import { connect } from 'react-redux';
+import { connect, useDispatch } from 'react-redux';
 
 import { drawerWidth } from './Layout.config.json';
 import Teacher from 'pages/teacher/Teacher';
@@ -27,9 +27,10 @@ import Books from 'pages/books';
 import BooksOut from 'pages/booksOut';
 import Icons from 'components/icons';
 import Admin from 'pages/admin';
-import { PermanentDrawerLeftModel } from './Layout.type';
-
 import { RootReducerModel } from 'utils/redux/rootReducer.type';
+
+import { PermanentDrawerLeftModel } from './Layout.type';
+import { ScannerToggleAction } from 'pages/scan/Scanner.action';
 
 const useStyles = makeStyles(theme => {
   return {
@@ -68,8 +69,11 @@ const useStyles = makeStyles(theme => {
 
 export function PermanentDrawerLeft({ pageTitle }: PermanentDrawerLeftModel) {
   const classes = useStyles();
+  const dispatch = useDispatch();
 
-  const toggleScan = () => {};
+  const toggleScan = () => {
+    dispatch(ScannerToggleAction());
+  };
   const toggleTheme = () => {};
 
   return (

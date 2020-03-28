@@ -1,6 +1,9 @@
-import { ScannerAction } from './Scan.type';
+import { ScannerAction, ScanReducerModel } from './Scan.type';
 
-export function reducer(currentState: any, action: ScannerAction) {
+export function reducer(
+  currentState: ScanReducerModel,
+  action: ScannerAction
+): ScanReducerModel {
   const { type } = action;
 
   switch (type) {
@@ -11,6 +14,10 @@ export function reducer(currentState: any, action: ScannerAction) {
     case 'SCANNER_OPEN':
       return {
         open: true
+      };
+    case 'SCANNER_TOGGLE':
+      return {
+        open: !currentState.open
       };
     default:
       return {
