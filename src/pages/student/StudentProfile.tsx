@@ -111,7 +111,7 @@ export default ({ open, handleClose, studentId = 1 }: StudentProfileProps) => {
   const classes = useStyles();
 
   return (
-    <Modal {...{ open, handleClose }}>
+    <Modal open={open} handleClose={handleClose}>
       <div className={classes.container}>
         <div
           className={classes.studentHistory}
@@ -141,7 +141,6 @@ export default ({ open, handleClose, studentId = 1 }: StudentProfileProps) => {
             className={classes.studentProfileImage}
           >
             <div className={classes.studentPreImage}>{Icons.Student}</div>
-            <input type="file" accept="capture=camera;image/*" />
           </Grid>
         </Grid>
       </div>

@@ -36,9 +36,14 @@ export async function getStudentProfileData(student_id: string) {
   const studentProfileDataQuery = `
         ${getAllQuery} 
         WHERE
-            s.student_id = student_id
+            s.student_id = $student_id
     `;
-  const studentData = await all<StudentModel>(studentProfileDataQuery);
+  const studentDataStatementObject = { $student_id: student_id };
+
+  const studentData = await all<StudentModel>(
+    studentProfileDataQuery,
+    studentDataStatementObject
+  );
   const historyData = await getStudentBooksHistory(student_id);
 
   return { studentData, historyData };

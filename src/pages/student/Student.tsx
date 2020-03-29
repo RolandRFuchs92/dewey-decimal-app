@@ -96,6 +96,7 @@ const useStyles = makeStyles(theme => {
 export default () => {
   const classes = useStyles();
 
+  const [studentId, setStudentId] = useState(1);
   const [open, setOpen] = useState(false);
   const handleDeleteRow = repo.deleteRow;
   const handleEditAddRow = repo.addOrUpdate;
@@ -104,7 +105,10 @@ export default () => {
   const columns = defaultColumns.concat(
     tableButton(
       'Profile',
-      () => setOpen(true),
+      props => {
+        setStudentId(+props[0]);
+        setOpen(true);
+      },
       classes.studentProfile,
       'Student'
     )
@@ -119,7 +123,11 @@ export default () => {
         handleEditAddRow={handleEditAddRow}
         dialogKey="first_name"
       />
-      <StudentProfile open={open} handleClose={() => setOpen(false)} />
+      <StudentProfile
+        studentId={studentId}
+        open={open}
+        handleClose={() => setOpen(false)}
+      />
     </>
   );
 };

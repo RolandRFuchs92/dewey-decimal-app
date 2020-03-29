@@ -54,7 +54,7 @@ const EditComponent = ({ handleClick }: { handleClick: OnClickModel }) => {
 
 export function tableButton(
   label: string,
-  onClick: () => void,
+  onClick: (rowData: JsonObj) => void,
   className: string,
   icon: keyof typeof Icons
 ) {
@@ -71,7 +71,7 @@ export function tableButton(
         updateValue: any
       ) => {
         return (
-          <div onClick={onClick} className={className}>
+          <div onClick={() => onClick(tableMeta.rowData)} className={className}>
             {Icons[icon]}
           </div>
         );
