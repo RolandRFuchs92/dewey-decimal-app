@@ -1,5 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import { TextField, Typography, Grid, MenuItem } from '@material-ui/core';
+import {
+  TextField,
+  Typography,
+  Grid,
+  MenuItem,
+  FormControlLabel,
+  Checkbox
+} from '@material-ui/core';
 import { DatePicker as DatePickerImport } from '@material-ui/pickers';
 import { toLower, isNil } from 'lodash';
 import { format } from 'date-fns';
@@ -74,14 +81,14 @@ export default ({
 
   useEffect(() => {
     setVal(modalData);
-  }, [open, modalData]);
+  }, []);
 
   const Fields = () => {
-    return <>{convertJsonToModalFields(columns, handleOnChange, val)}</>;
+    return <>{convertJsonToModalFields(columns, handleOnChange, modalData)}</>;
   };
 
   return (
-    <Modal {...{ open, handleClose }}>
+    <Modal open={open} handleClose={handleClose}>
       <Fields />
       <Grid item>
         <FormButtons onReset={() => setVal({})} onSubmit={handleSubmit} />
@@ -162,6 +169,13 @@ function getElement({
         />
       );
     case 'check':
+      return (
+        <CheckBox
+          label={label!}
+          value={value ? true : false}
+          onChange={onChange as () => void}
+        />
+      );
     case 'select':
     case 'selectbox':
       return (
@@ -183,7 +197,22 @@ function getElement({
   }
 }
 
-function DatePicker({ label, value, onChange }: DatePickerModel) {
+export type CheckboxProps = {
+  label: string;
+  onChange: () => void;
+  value: boolean;
+};
+
+function CheckBox({ label, onChange, value }: CheckboxProps) {
+  return (
+    <FormControlLabel
+      control={<Checkbox checked={value} onChange={onChange} name="label" />}
+      label={label}
+    />
+  );
+}
+
+function DatePicker({ label, onChange, value }: DatePickerModel) {
   const handleDateChange = (date: MaterialUiPickersDate) => {
     const formattedDate = format(date as Date, 'dd MMM yyyy');
     onChange({ target: { value: formattedDate } });
@@ -213,9 +242,9 @@ function SelectBox({
   useEffect(() => {
     (async () => {
       const result = await getDropDownItems();
-      setRows(result);
+      setRows(result || []);
     })();
-  });
+  }, []);
 
   return (
     <TextField

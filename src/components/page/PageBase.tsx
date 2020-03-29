@@ -28,11 +28,11 @@ export default <T,>({
   const showDialog = useDialog();
   const alert = useAlert();
 
-  const reset = useCallback(async () => {
+  const reset = async () => {
     const tableData = await getAll();
     setData(tableData);
     setOpenModal(false);
-  }, [getAll]);
+  };
 
   const handleYesOnDelete = useCallback(
     async (rowData: T) => {
@@ -48,33 +48,24 @@ export default <T,>({
     [alert, dialogKey, handleDeleteRow, reset]
   );
 
-  const objectFromRowData = useCallback(
-    (rowData: JsonObj): T =>
-      Object.fromEntries(
-        columns.map(({ name }, index) => [name, rowData[index] || ''])
-      ),
-    [columns]
-  );
+  const objectFromRowData = (rowData: JsonObj): T =>
+    Object.fromEntries(
+      columns.map(({ name }, index) => [name, rowData[index] || ''])
+    );
 
-  const handleEditAdd = useCallback(
-    (rowData: JsonObj) => {
-      rowData && setModalData(objectFromRowData(rowData));
-      setOpenModal(true);
-    },
-    [objectFromRowData]
-  );
+  const handleEditAdd = (rowData: JsonObj) => {
+    rowData && setModalData(objectFromRowData(rowData));
+    setOpenModal(true);
+  };
 
-  const handleDelete = useCallback(
-    (rowData: JsonObj) => {
-      const obj = objectFromRowData(rowData);
-      showDialog({
-        title: 'Are you sure?',
-        description: `Really delete ${obj[dialogKey]}?`,
-        handleYes: () => handleYesOnDelete(obj)
-      });
-    },
-    [dialogKey, handleYesOnDelete, objectFromRowData, showDialog]
-  );
+  const handleDelete = (rowData: JsonObj) => {
+    const obj = objectFromRowData(rowData);
+    showDialog({
+      title: 'Are you sure?',
+      description: `Really delete ${obj[dialogKey]}?`,
+      handleYes: () => handleYesOnDelete(obj)
+    });
+  };
 
   const handleClose = () => setOpenModal(false);
 
@@ -116,7 +107,7 @@ export default <T,>({
               handleEditAddRow={handleEditAddRow}
               modalData={modalData!}
               reset={reset}
-            ></Modal>
+            />
           )}
         </div>
       </Fade>
