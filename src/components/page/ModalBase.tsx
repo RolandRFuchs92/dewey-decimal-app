@@ -81,10 +81,10 @@ export default ({
 
   useEffect(() => {
     setVal(modalData);
-  }, []);
+  }, [modalData]);
 
   const Fields = () => {
-    return <>{convertJsonToModalFields(columns, handleOnChange, modalData)}</>;
+    return <>{convertJsonToModalFields(columns, handleOnChange, val)}</>;
   };
 
   return (
