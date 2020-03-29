@@ -86,7 +86,7 @@ const defaultColumns: DefaultColumnModel[] = [
 const useStyles = makeStyles(theme => {
   return {
     studentProfile: {
-      fontSize: 18,
+      fontSize: 20,
       color: 'purple',
       cursor: 'pointer'
     }
