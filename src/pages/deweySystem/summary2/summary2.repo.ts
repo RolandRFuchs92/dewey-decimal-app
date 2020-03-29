@@ -1,10 +1,9 @@
 import baseRepo from 'components/page/repo.base';
 import { all } from 'db/repo';
-import { getSelectListQuery } from 'pages/class/Class.sql';
 import { DropdownListModel } from 'types/Generic';
 
 import { DeweySummary2Model } from './Summary.type';
-import { getAllQuery } from './Summary2.sql';
+import { getAllQuery, getSelectListQuery } from './Summary2.sql';
 
 const repo = baseRepo<DeweySummary2Model>(
   `dewey_summary_2`,
