@@ -135,11 +135,9 @@ function getElement({
 
   switch (toLower(type)) {
     case 'header':
-      return (
-        <Typography variant="h5">
-          {label} {value}
-        </Typography>
-      );
+      const header = value ? `${label} (${value})` : label;
+
+      return <Typography variant="h5">{header}</Typography>;
     case 'text':
     case `textfield`:
       return (

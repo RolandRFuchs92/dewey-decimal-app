@@ -10,7 +10,7 @@ import { StudentModel } from './Student.type';
 const defaultColumns: DefaultColumnModel[] = [
   {
     name: 'student_id',
-    label: 'Id',
+    label: 'Student',
     type: 'header',
     value: 'Student'
   },
