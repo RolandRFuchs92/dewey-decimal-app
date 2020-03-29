@@ -61,7 +61,8 @@
       "prettier"
     ],
     "rules": {
-      "prettier/prettier": "error"
+      "prettier/prettier": "error",
+      "eslint-plugin-react-hooks": false
     }
   },
   "prettier": {

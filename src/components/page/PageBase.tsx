@@ -95,7 +95,7 @@ export default <T,>({
     (async () => {
       await reset();
     })();
-  }, [defaultColumns, handleDelete, handleEditAdd, reset]);
+  }, []);
 
   return (
     <>
