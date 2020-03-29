@@ -7,15 +7,19 @@ import { DefaultColumnModel } from 'components/page/PageBase.type';
 const defaultColumns: DefaultColumnModel[] = [
   {
     label: 'Id',
-    name: 'dewey_summary_id'
+    name: 'dewey_summary_id',
+    type: 'header',
+    modalTitle: 'Dewey summary 1'
   },
   {
     label: 'Name',
-    name: 'name'
+    name: 'name',
+    type: 'text'
   },
   {
     label: 'Summary Id',
-    name: 'summary_id'
+    name: 'summary_id',
+    type: 'text'
   }
 ];
 
