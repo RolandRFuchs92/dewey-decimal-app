@@ -1,7 +1,7 @@
 export const queryStudentDropdown = `
 	SELECT
         s.student_id as value,
-        s.first_name || ' ' s.last_name || '- Grade ' || s.grade ||  SUBSTR(s.class_name, 1, 2) 
+        s.first_name || ' ' || s.last_name || '- Grade ' || c.grade ||  SUBSTR(c.class_name, 1, 2)  text
 	FROM
 		student s
 	JOIN
