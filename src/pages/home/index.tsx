@@ -15,6 +15,7 @@ import ScansToday from 'pages/scan/ScansTemplate';
 import BirthdaysToday from './BirthdaysToday';
 import Icons from 'components/icons';
 import Overdue from './Overdue';
+import { ScannerToggleAction } from 'pages/scan/Scanner.action';
 
 const useStyles = makeStyles(theme => {
   return {
@@ -64,7 +65,7 @@ export const Home = ({ checkins, checkouts }: HomeProps) => {
   const dispatch = useDispatch();
 
   const toggleScan = () => {
-    dispatch({ type: 'nothing' });
+    dispatch(ScannerToggleAction());
   };
 
   return (
