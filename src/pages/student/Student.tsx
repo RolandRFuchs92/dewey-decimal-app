@@ -1,11 +1,15 @@
 import React, { useState } from 'react';
 
 import PageBase from 'components/page/PageBase';
-import repo from './Student.repo';
 import { getSelectList } from 'pages/class/Class.repo';
-import StudentProfile from './StudentProfile';
 import { DefaultColumnModel } from 'components/page/PageBase.type';
+import Icons from 'components/icons';
+
+import StudentProfile from './StudentProfile';
+import repo from './Student.repo';
 import { StudentModel } from './Student.type';
+import { makeStyles } from '@material-ui/core';
+import { tableButton } from 'utils/tableButtons';
 
 const defaultColumns: DefaultColumnModel[] = [
   {
@@ -79,30 +83,43 @@ const defaultColumns: DefaultColumnModel[] = [
   }
 ];
 
+const useStyles = makeStyles(theme => {
+  return {
+    studentProfile: {
+      fontSize: 18,
+      color: 'purple',
+      cursor: 'pointer'
+    }
+  };
+});
+
 export default () => {
+  const classes = useStyles();
+
   const [open, setOpen] = useState(false);
   const handleDeleteRow = repo.deleteRow;
   const handleEditAddRow = repo.addOrUpdate;
   const getAll = repo.getAll;
 
-  // TODO REINTEGRATE THIS
-  //   const columns = defaultColumns.concat(
-  //     TableButton(() => setOpen(true), 'Profile', Icons.Student)
-  //   );
+  const columns = defaultColumns.concat(
+    tableButton(
+      'Profile',
+      () => setOpen(true),
+      classes.studentProfile,
+      'Student'
+    )
+  );
 
   return (
     <>
       <PageBase<StudentModel>
-        defaultColumns={defaultColumns}
+        defaultColumns={columns}
         getAll={getAll}
         handleDeleteRow={handleDeleteRow}
         handleEditAddRow={handleEditAddRow}
         dialogKey="first_name"
       />
-      <StudentProfile
-        open={open}
-        handleClose={() => setOpen(false)}
-      ></StudentProfile>
+      <StudentProfile open={open} handleClose={() => setOpen(false)} />
     </>
   );
 };

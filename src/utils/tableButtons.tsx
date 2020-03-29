@@ -52,6 +52,34 @@ const EditComponent = ({ handleClick }: { handleClick: OnClickModel }) => {
   );
 };
 
+export function tableButton(
+  label: string,
+  onClick: () => void,
+  className: string,
+  icon: keyof typeof Icons
+) {
+  return {
+    name: 'custom',
+    label: label,
+    options: {
+      filter: false,
+      sort: false,
+      empty: true,
+      customBodyRender: (
+        value: string,
+        tableMeta: { rowData: JsonObj },
+        updateValue: any
+      ) => {
+        return (
+          <div onClick={onClick} className={className}>
+            {Icons[icon]}
+          </div>
+        );
+      }
+    }
+  };
+}
+
 type HandleEditAddModel = (event: JsonObj) => void;
 
 export default (
