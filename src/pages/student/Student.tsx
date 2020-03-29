@@ -10,9 +10,9 @@ import { StudentModel } from './Student.type';
 const defaultColumns: DefaultColumnModel[] = [
   {
     name: 'student_id',
-    label: 'Student',
+    label: 'Id',
     type: 'header',
-    value: 'Student'
+    modalTitle: 'Student'
   },
   {
     name: 'first_name',

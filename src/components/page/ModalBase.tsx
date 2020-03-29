@@ -129,13 +129,14 @@ function getElement({
   label,
   value,
   onChange,
+  modalTitle,
   getDropDownItems
 }: DefaultColumnModel) {
   if (isNil(type)) return null;
 
   switch (toLower(type)) {
     case 'header':
-      const header = value ? `${label} (${value})` : label;
+      const header = value ? `${modalTitle} (${value})` : label;
 
       return <Typography variant="h5">{header}</Typography>;
     case 'text':
@@ -201,6 +202,7 @@ export type CheckboxProps = {
   value: boolean;
 };
 
+// TODO GET THIS UPDATING STATE PROPERLY
 function CheckBox({ label, onChange, value }: CheckboxProps) {
   return (
     <FormControlLabel

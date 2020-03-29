@@ -10,7 +10,8 @@ const defaultColumns: DefaultColumnModel[] = [
   {
     name: 'author_id',
     label: 'Id',
-    type: 'header'
+    type: 'header',
+    modalTitle: 'Author'
   },
   {
     name: 'name',

@@ -13,6 +13,7 @@ export type PageBaseModel<T> = {
 export type DefaultColumnModel = {
   label?: string;
   name?: string;
+  modalTitle?: string;
   type?:
     | 'header'
     | 'textfield'

@@ -9,8 +9,8 @@ const defaultColumns: DefaultColumnModel[] = [
   {
     name: 'dewey_summary_3_id',
     label: 'Id',
-    type: 'header',
-    value: 'Dewey Summary 3'
+    modalTitle: 'Dewey Summary 3',
+    type: 'header'
   },
   {
     name: 'summary_3_id',

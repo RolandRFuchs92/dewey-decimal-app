@@ -13,7 +13,7 @@ const defaultColumns: DefaultColumnModel[] = [
     name: books_out.pk,
     label: 'Id',
     type: 'header',
-    value: 'Dewey Summary 3'
+    modalTitle: 'Dewey Summary 3'
   },
   {
     name: book.pk,
