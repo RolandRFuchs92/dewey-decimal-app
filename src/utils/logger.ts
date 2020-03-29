@@ -18,10 +18,10 @@ const logger = createLogger({
     // - Write all logs error (and below) to `quick-start-error.log`.
     //
     new transports.File({
-      filename: `${appSettings.appName}.error.log`,
+      filename: `${appSettings.logs.error}`,
       level: 'error'
     }),
-    new transports.File({ filename: `${appSettings.appName}.general.log` })
+    new transports.File({ filename: `${appSettings.logs.general}` })
   ]
 });
 
