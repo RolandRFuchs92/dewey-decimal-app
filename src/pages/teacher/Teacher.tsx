@@ -5,7 +5,7 @@ import { Fade } from '@material-ui/core';
 import AddUpdate from 'utils/tableButtons';
 import { getTeachers, hideTeacher } from './Teacher.repo';
 import TeacherModal from './Teacher.modal';
-import { useAddButton } from 'utils/tableButtons';
+import { addButton } from 'utils/tableButtons';
 import { useAlert } from 'utils/snackbarAlerts';
 import { useDialog } from 'utils/dialog';
 import appSettings from 'appSettings.json';
@@ -84,7 +84,7 @@ export default () => {
     setIsOpen(true);
   };
 
-  const tableAddButton = useAddButton(handleEditAdd);
+  const tableAddButton = addButton(handleEditAdd);
 
   useEffect(() => {
     (async () => {

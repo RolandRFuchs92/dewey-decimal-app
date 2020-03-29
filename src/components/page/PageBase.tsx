@@ -3,7 +3,7 @@ import MUIDataTable, { MUIDataTableColumnDef } from 'mui-datatables';
 import { Fade } from '@material-ui/core';
 
 import log from 'utils/logger';
-import EditDeleteCol, { useAddButton } from 'utils/tableButtons';
+import EditDeleteCol, { addButton } from 'utils/tableButtons';
 import Modal from './ModalBase';
 import { useDialog } from 'utils/dialog';
 import { useAlert } from 'utils/snackbarAlerts';
@@ -77,13 +77,12 @@ export default <T,>({
   );
 
   const handleClose = () => setOpenModal(false);
-  const addButton = useAddButton(handleEditAdd);
 
   useEffect(() => {
     setOptions({
       selectableRows: 'none',
       pagination: true,
-      ...addButton
+      ...addButton(handleEditAdd)
     });
 
     const cols: DefaultColumnModel[] = [
@@ -96,7 +95,7 @@ export default <T,>({
     (async () => {
       await reset();
     })();
-  }, [addButton, defaultColumns, handleDelete, handleEditAdd, reset]);
+  }, [defaultColumns, handleDelete, handleEditAdd, reset]);
 
   return (
     <>

@@ -1,5 +1,5 @@
 import repoBase from 'components/page/repo.base';
-import { getBooksSelectList } from 'pages/books/book.repo';
+import { getBooksSelectList } from 'pages/books/Book.repo';
 import { getSelectList } from 'pages/student/Student.repo';
 import { all, run, single } from 'db/repo';
 import {

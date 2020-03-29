@@ -7,7 +7,7 @@ import {
 } from 'date-fns';
 
 import { getStudentsWithBirthdays } from 'pages/student/Student.repo';
-import { getBookByCallNumber as findBookByBarcode } from 'pages/books/book.repo';
+import { getBookByCallNumber as findBookByBarcode } from 'pages/books/Book.repo';
 import { getStudentSelectListSearch } from 'pages/student/Student.repo';
 import appSettings from 'appSettings.json';
 import { GetBookCallNumberModel } from 'pages/books/Book.type';

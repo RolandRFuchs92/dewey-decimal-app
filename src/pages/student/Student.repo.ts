@@ -2,7 +2,7 @@ import { format } from 'date-fns';
 
 import repoBase from 'components/page/repo.base';
 import { all, single } from 'db/repo';
-import { getStudentBooksHistory } from 'pages/books/book.repo';
+import { getStudentBooksHistory } from 'pages/books/Book.repo';
 import { DropdownListModel } from 'types/Generic';
 import appSettings from 'appSettings.json';
 

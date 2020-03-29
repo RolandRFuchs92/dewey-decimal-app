@@ -114,8 +114,7 @@ type CustomFooterModel = {
   changeRowsPerPage: (val: string) => void;
 };
 
-export const useAddButton = (handleEditAdd: HandleEditAddModel) => {
-  const classes = useStyles();
+export const addButton = (handleEditAdd: HandleEditAddModel) => {
   return {
     customFooter: (
       count: number,
@@ -124,7 +123,7 @@ export const useAddButton = (handleEditAdd: HandleEditAddModel) => {
       changeRowsPerPage: (val: string) => void,
       changePage: (params: any) => React.ReactNode,
       textLabels: TextLabelsModel
-    ) => (
+    ): React.ReactNode => (
       <>
         <CustomFooter
           count={count}
@@ -134,14 +133,22 @@ export const useAddButton = (handleEditAdd: HandleEditAddModel) => {
           changePage={changePage}
           textLabels={textLabels}
         >
-          <div className={classes.addButton} onClick={() => handleEditAdd({})}>
-            {Icons.Add}
-          </div>
+          <AddButton handleEditAdd={handleEditAdd} />
         </CustomFooter>
       </>
     )
   };
 };
+
+function AddButton({ handleEditAdd }: { handleEditAdd: HandleEditAddModel }) {
+  const classes = useStyles();
+
+  return (
+    <div className={classes.addButton} onClick={() => handleEditAdd({})}>
+      {Icons.Add}
+    </div>
+  );
+}
 
 function CustomFooter({
   count,

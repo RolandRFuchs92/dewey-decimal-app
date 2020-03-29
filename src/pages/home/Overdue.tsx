@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Grid, makeStyles } from '@material-ui/core';
 
-import { getBooksOverdue } from 'pages/booksOut/booksout.repo';
+import { getBooksOverdue } from 'pages/booksOut/Booksout.repo';
 import { JsonObj } from 'types/Generic';
 
 const useStyles = makeStyles(theme => ({

@@ -6,7 +6,7 @@ import {
   countBooksCheckedOutToday,
   countBooksCheckedInToday,
   countBooksOverdue
-} from 'pages/booksOut/booksout.repo';
+} from 'pages/booksOut/Booksout.repo';
 import { countStudentsWithBirthdayToday } from 'pages/student/Student.repo';
 import {
   HomeReducerModel,

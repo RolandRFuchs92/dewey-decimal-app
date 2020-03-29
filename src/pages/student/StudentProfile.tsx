@@ -194,6 +194,7 @@ const BooksHistory = ({ historyData, studentData }: StudentCardProps) => {
 };
 
 const defaultStudentData: StudentModel = {
+  student_id: 0,
   birthdate: '',
   class_name: '',
   father_email: '',

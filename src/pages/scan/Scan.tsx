@@ -8,15 +8,20 @@ import {
   IconButton,
   Grid
 } from '@material-ui/core';
+import { connect, useDispatch } from 'react-redux';
 import { Autocomplete } from '@material-ui/lab';
 import { isNil } from 'lodash';
 
-import { checkout, checkin } from 'pages/booksOut/booksout.repo';
+import { checkout, checkin } from 'pages/booksOut/Booksout.repo';
 import { useAlert } from 'utils/snackbarAlerts';
 import Modal from 'components/modal';
 import Icons from 'components/icons';
 import Scanner from 'components/scanner';
 import { JsonObj, GenericInputEvent } from 'types/Generic';
+import { BarcodeResultModel } from 'pages/home/Home.type';
+import { getBookByCallNumber } from 'pages/books/Book.repo';
+import { searchForStudentsSelect } from 'pages/home/Home.repo';
+import { RootReducerModel } from 'utils/redux/rootReducer.type';
 
 import {
   ScanDataModel,
@@ -27,11 +32,6 @@ import {
   CheckoutData,
   ScanProps
 } from './Scan.type';
-import { connect, useDispatch } from 'react-redux';
-import { BarcodeResultModel } from 'pages/home/Home.type';
-import { getBookByCallNumber } from 'pages/books/book.repo';
-import { searchForStudentsSelect } from 'pages/home/Home.repo';
-import { RootReducerModel } from 'utils/redux/rootReducer.type';
 import { ScannerCloseAction } from './Scanner.action';
 
 const useStyles = makeStyles(theme => ({

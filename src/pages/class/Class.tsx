@@ -11,7 +11,7 @@ import Modal from './Class.Modal';
 import { useAlert } from 'utils/snackbarAlerts';
 
 import { useDialog } from 'utils/dialog';
-import EditDeleteCol, { useAddButton } from 'utils/tableButtons';
+import EditDeleteCol, { addButton } from 'utils/tableButtons';
 import appSettings from 'appSettings.json';
 import { JsonObj } from 'types/Generic';
 import { DatatabelDataModel } from 'components/page/PageBase.type';
@@ -63,11 +63,10 @@ export default () => {
     setIsOpen(true);
   };
 
-  const addButton = useAddButton(handleEditAdd);
   // @ts-ignore //TODO get this to compile after tsignore is gone
   const tableOptions: MUIDataTableOptions = {
     selectableRows: 'none',
-    ...addButton
+    ...addButton(handleEditAdd)
   };
 
   const getColumns = () => {
