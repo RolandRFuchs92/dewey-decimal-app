@@ -91,6 +91,7 @@
     "customize-cra": "^0.9.1",
     "customize-cra-react-refresh": "^1.0.1",
     "electron-rebuild": "1.10.0",
+    "electron-redux-devtools": "^0.3.4",
     "eslint-config-prettier": "^6.10.0",
     "eslint-plugin-prettier": "^3.1.2",
     "jest": "24.9.0",
