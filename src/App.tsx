@@ -4,6 +4,7 @@ import { ConfirmProvider } from 'material-ui-confirm';
 import { MuiPickersUtilsProvider } from '@material-ui/pickers';
 import DateFnsUtils from '@date-io/date-fns';
 import { Provider as GlobalProvider } from 'react-redux';
+import { composeWithDevTools } from 'redux-devtools-extension';
 import { createStore, applyMiddleware } from 'redux';
 import ReduxThunk from 'redux-thunk';
 
@@ -16,7 +17,10 @@ import Scan from 'pages/scan/Scan';
 
 import MainLayout from './components/layout/Layout';
 
-const store = createStore(reduxReducers, applyMiddleware(ReduxThunk));
+const store = createStore(
+  reduxReducers,
+  composeWithDevTools(applyMiddleware(ReduxThunk))
+);
 
 type ThemeProp = {
   palette: {
