@@ -146,7 +146,7 @@ function CreateElement({
 
   switch (toLower(type)) {
     case 'header':
-      const header = value ? `${modalTitle} (${value})` : label;
+      const header = value ? `${modalTitle} (${value})` : modalTitle;
 
       return <Typography variant="h5">{header}</Typography>;
     case 'text':
