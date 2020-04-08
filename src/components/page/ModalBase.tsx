@@ -38,8 +38,8 @@ export default ({
   const alert = useAlert();
 
   useEffect(() => {
-    setVal(modalData!);
-  }, []);
+    setVal({ ...modalData! });
+  }, [modalData]);
 
   const handleOnChange = (name: string) => ({
     target: { value }
@@ -83,17 +83,13 @@ export default ({
     }
   };
 
-  useEffect(() => {
-    setVal(modalData);
-  }, [modalData]);
-
-  const Fields = () => {
-    return <>{convertJsonToModalFields(columns, handleOnChange, val!)}</>;
-  };
-
   return (
     <Modal open={open} handleClose={handleClose}>
-      <Fields />
+      <Fields
+        columns={columns}
+        handleOnChange={handleOnChange}
+        modalData={val!}
+      />
       <Grid item>
         <FormButtons
           onReset={() => setVal(modalData)}
@@ -104,11 +100,17 @@ export default ({
   );
 };
 
-function convertJsonToModalFields(
-  columns: DefaultColumnModel[],
-  handleOnChange: ModalBaseHandleChange,
-  modalData: { [key: string]: string }
-) {
+export type FieldProps = {
+  columns: DefaultColumnModel[];
+  handleOnChange: ModalBaseHandleChange;
+  modalData: { [key: string]: string };
+};
+
+function Fields({
+  columns,
+  handleOnChange,
+  modalData
+}: FieldProps): JSX.Element {
   const result = columns.map((column, index) => {
     const value: string =
       column.ref === undefined && !isNil(column.name)
@@ -117,7 +119,7 @@ function convertJsonToModalFields(
         ? modalData[column.ref]
         : '0';
 
-    const child = getElement({
+    const child = CreateElement({
       ...column,
       onChange: handleOnChange(column.name || ''),
       value
@@ -129,10 +131,10 @@ function convertJsonToModalFields(
     );
     return el;
   });
-  return result;
+  return <>{result}</>;
 }
 
-function getElement({
+function CreateElement({
   type,
   label,
   value,
