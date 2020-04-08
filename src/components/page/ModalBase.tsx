@@ -34,8 +34,12 @@ export default ({
   modalData,
   reset
 }: ModalBaseModel) => {
-  const [val, setVal] = useState(modalData);
+  const [val, setVal] = useState<typeof modalData | undefined>();
   const alert = useAlert();
+
+  useEffect(() => {
+    setVal(modalData!);
+  }, []);
 
   const handleOnChange = (name: string) => ({
     target: { value }
@@ -62,13 +66,13 @@ export default ({
       });
       const result = await handleEditAddRow(statementObject);
       alert.success(
-        `Successfully ${result === 'add' ? 'added' : 'updated'} ${val.name}!`
+        `Successfully ${result === 'add' ? 'added' : 'updated'} ${val!.name}!`
       );
       reset();
     } catch (error) {
       alert.error(
         `There was an error ${
-          val.dewey_summary_id ? 'updating' : 'adding'
+          val!.dewey_summary_id ? 'updating' : 'adding'
         } a field.`
       );
       log.error(
@@ -84,14 +88,17 @@ export default ({
   }, [modalData]);
 
   const Fields = () => {
-    return <>{convertJsonToModalFields(columns, handleOnChange, val)}</>;
+    return <>{convertJsonToModalFields(columns, handleOnChange, val!)}</>;
   };
 
   return (
     <Modal open={open} handleClose={handleClose}>
       <Fields />
       <Grid item>
-        <FormButtons onReset={() => setVal({})} onSubmit={handleSubmit} />
+        <FormButtons
+          onReset={() => setVal(modalData)}
+          onSubmit={handleSubmit}
+        />
       </Grid>
     </Modal>
   );
@@ -109,6 +116,7 @@ function convertJsonToModalFields(
         : !isNil(column.ref)
         ? modalData[column.ref]
         : '0';
+
     const child = getElement({
       ...column,
       onChange: handleOnChange(column.name || ''),
@@ -147,7 +155,7 @@ function getElement({
           label={label}
           value={value || ''}
           onChange={onChange}
-        ></TextField>
+        />
       );
     case `typography`:
       return (
@@ -156,7 +164,7 @@ function getElement({
           label={label}
           value={value || ''}
           onChange={onChange}
-        ></TextField>
+        />
       );
     case 'date':
     case 'datetime':
@@ -202,7 +210,6 @@ export type CheckboxProps = {
   value: boolean;
 };
 
-// TODO GET THIS UPDATING STATE PROPERLY
 function CheckBox({ label, onChange, value }: CheckboxProps) {
   return (
     <FormControlLabel
