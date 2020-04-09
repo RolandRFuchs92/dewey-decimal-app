@@ -12,7 +12,7 @@ import { toLower, isNil } from 'lodash';
 import { format } from 'date-fns';
 
 import Modal from 'components/modal';
-import FormButtons from 'components/buttons/FormButtons';
+import FormButtons from 'components/buttons/formButtons';
 import log from 'utils/logger';
 import { useAlert } from 'utils/snackbarAlerts';
 

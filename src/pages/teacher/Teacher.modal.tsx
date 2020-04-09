@@ -7,7 +7,7 @@ import {
   Typography,
   makeStyles
 } from '@material-ui/core';
-import FormButtons from 'components/buttons/FormButtons';
+import FormButtons from 'components/buttons/formButtons';
 
 import { createOrUpdateTeacher } from './Teacher.repo';
 import { useAlert } from 'utils/snackbarAlerts';
