@@ -1,7 +1,7 @@
 import React from 'react';
 import { render, fireEvent } from '@testing-library/react';
 
-import FormButtons from './FormButtons';
+import FormButtons from './index';
 
 describe('<FormButtons .../>', () => {
   const resetTxt = 'Reset';
