@@ -73,7 +73,7 @@ export function Textfield({
     target: { value: string };
   }) => {
     setVal(value);
-    if (!isNil(onChange)) onChange(value);
+    onChange(value);
   };
 
   return (
@@ -93,8 +93,8 @@ type toolTipTextFieldModel = {
   handleChange: (evt: { target: { value: string } }) => void;
   tooltip: string;
   value: string;
+  defaultValue?: string;
   label: string;
-  rest?: any[];
   dataTestId?: string;
 };
 
@@ -103,7 +103,8 @@ export const TooltipTextField = ({
   tooltip,
   value,
   handleChange,
-  dataTestId
+  dataTestId,
+  defaultValue
 }: toolTipTextFieldModel) => {
   const classes = useStyles();
   return (
@@ -114,7 +115,7 @@ export const TooltipTextField = ({
           label={label}
           value={value || ''}
           onChange={handleChange}
-        ></TextField>
+        />
       </Tooltip>
     </Grid>
   );

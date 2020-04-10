@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, fireEvent } from '@testing-library/react';
+import { render, fireEvent, wait } from '@testing-library/react';
 
 import TextField, { Textfield, TooltipTextField } from './TextField';
 
@@ -60,12 +60,16 @@ describe('TextField.tsx components', () => {
     const testId = 'ThisIsTheTestId';
     const testValue = 'this is the test value';
     const testDefaultValue = 'this is some default value';
-    function renderMethod(defaultValue = testDefaultValue, value = testValue) {
+    function renderMethod(
+      defaultValue = testDefaultValue,
+      value = testValue,
+      onChangeMethod = testMethod
+    ) {
       return render(
         <Textfield
           defaultValue={defaultValue}
           label={testLabel}
-          onChange={testMethod}
+          onChange={onChangeMethod}
           dataTestId={testId}
           value={value}
         />
@@ -89,7 +93,59 @@ describe('TextField.tsx components', () => {
 
       container.getByDisplayValue(testDefaultValue);
     });
+
+    it('should call the passed onChange method.', () => {
+      const evt = jest.fn();
+      const container = renderMethod(testDefaultValue, '', evt);
+      const textBox = container.getByRole('textbox');
+      fireEvent.change(textBox, { target: { value: 'a' } });
+      expect(evt).toBeCalledTimes(1);
+    });
   });
 
-  describe('<ToolTipTextField .../>', () => {});
+  describe('<ToolTipTextField .../>', () => {
+    const onChange = jest.fn();
+    const testLabel = 'Test Label...';
+    const testValue = 'Test Value';
+    const testDefaultValue = 'Test Default Value';
+    const testToolTip = 'This is the test tooltip.';
+    const testId = 'ThisIsTheTestId';
+
+    function renderMethod() {
+      return render(
+        <TooltipTextField
+          handleChange={onChange}
+          value={testValue}
+          label={testLabel}
+          tooltip={testToolTip}
+          dataTestId={testId}
+          defaultValue={testDefaultValue}
+        />
+      );
+    }
+
+    it('should render a data-testId, label and a value', () => {
+      const { getByText, getByTestId, getByDisplayValue } = renderMethod();
+      getByTestId(testId);
+      getByDisplayValue(testValue);
+      getByText(testLabel);
+    });
+
+    it('should show a tooltip when the textbox is hovered over.', async () => {
+      const container = renderMethod();
+      const inputElement = container.getByRole('textbox');
+      fireEvent.mouseEnter(inputElement);
+
+      await container.findByText(testToolTip);
+    });
+
+    it('should call the expected onchange method when input is provided.', () => {
+      const container = renderMethod();
+      const input = container.getByRole('textbox');
+
+      fireEvent.change(input, { target: { value: 'a' } });
+
+      expect(onChange).toHaveBeenCalledTimes(1);
+    });
+  });
 });
