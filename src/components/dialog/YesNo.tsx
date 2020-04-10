@@ -16,6 +16,7 @@ type yesNoDialogModel = {
   handleClose: () => void;
   text: string;
   title: string;
+  dataTestId?: string;
 };
 
 export default ({
@@ -24,10 +25,12 @@ export default ({
   handleNo,
   handleClose,
   text,
-  title
+  title,
+  dataTestId
 }: yesNoDialogModel) => {
   return (
     <Dialog
+      data-testid={dataTestId}
       open={open}
       onClose={handleClose}
       aria-labelledby="alert-dialog-title"
