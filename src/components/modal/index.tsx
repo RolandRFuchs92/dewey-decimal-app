@@ -14,10 +14,20 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export default ({ handleClose, open = false, children }: ModalModel) => {
+export default ({
+  handleClose,
+  open = false,
+  children,
+  dataTestId
+}: ModalModel) => {
   const classes = useStyles();
   return (
-    <Modal open={open} onBackdropClick={handleClose} closeAfterTransition>
+    <Modal
+      open={open}
+      onBackdropClick={handleClose}
+      closeAfterTransition
+      data-testid={dataTestId}
+    >
       <Fade in={open} timeout={appSettings.fadeTransitionDuration}>
         <Grid container>
           <Paper className={classes.paper}>{children}</Paper>
