@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, ChangeEvent } from 'react';
 import isNil from 'lodash';
 import { TextField, Grid, Tooltip, makeStyles } from '@material-ui/core';
 
@@ -14,22 +14,31 @@ type textFieldModel = {
   label: string;
   defaultValue: string;
   onChange: (value: any) => void;
+  dataTestId?: string;
 };
 
-export default ({ label, defaultValue, onChange }: textFieldModel) => {
+export default ({
+  label,
+  defaultValue,
+  onChange,
+  dataTestId
+}: textFieldModel) => {
   const [val, setVal] = useState(defaultValue);
 
   const handleChange = ({ target: { value } }: { target: { value: any } }) => {
     setVal(value);
-    if (!isNil(onChange)) onChange(value);
+    // if (!isNil(onChange)) {
+    onChange(value);
+    // }
   };
 
   return (
-    <Grid item>
+    <Grid item data-testid={dataTestId}>
       <TextField
         fullWidth
         onChange={handleChange}
         value={val}
+        defaultValue={defaultValue}
         label={label}
         variant="filled"
       />
@@ -37,16 +46,25 @@ export default ({ label, defaultValue, onChange }: textFieldModel) => {
   );
 };
 
+export type TextfieldProps = {
+  label: string;
+  value: string;
+  defaultValue: string;
+  onChange: (e: ChangeEvent<HTMLInputElement>) => void;
+  dataTestId?: string;
+};
+
 export function Textfield({
   label,
-  defaultValue,
   value,
-  onChange
-}: textFieldModel & { value: string }) {
+  defaultValue,
+  onChange,
+  dataTestId
+}: TextfieldProps) {
   const [val, setVal] = useState(defaultValue);
 
   useEffect(() => {
-    setVal(value);
+    setVal(value || defaultValue);
   }, [value]);
 
   const handleChange = ({
@@ -59,7 +77,7 @@ export function Textfield({
   };
 
   return (
-    <Grid item>
+    <Grid item data-testid={dataTestId}>
       <TextField
         fullWidth
         onChange={handleChange}
@@ -77,6 +95,7 @@ type toolTipTextFieldModel = {
   value: string;
   label: string;
   rest?: any[];
+  dataTestId?: string;
 };
 
 export const TooltipTextField = ({
@@ -84,11 +103,11 @@ export const TooltipTextField = ({
   tooltip,
   value,
   handleChange,
-  data_testid
-}: toolTipTextFieldModel & { data_testid: string }) => {
+  dataTestId
+}: toolTipTextFieldModel) => {
   const classes = useStyles();
   return (
-    <Grid item sm={12} data-testid={data_testid}>
+    <Grid item sm={12} data-testid={dataTestId}>
       <Tooltip title={<span className={classes.toolTip}>{tooltip}</span>}>
         <TextField
           fullWidth
