@@ -53,9 +53,15 @@ const ExpandMore = Icons.ExpandMore;
 export type CurrentSelectedIndex = {
   selectedOption: string;
   setSelectedOption: (index: string) => void;
+  dataTestId?: string;
 };
 
-export default ({ menuItems }: { menuItems: CreateListItemModel[] }) => {
+export type MenuItemProps = {
+  menuItems: CreateListItemModel[];
+  dataTestId?: string;
+};
+
+export default ({ menuItems, dataTestId }: MenuItemProps) => {
   const dispatch = useDispatch();
   const [selectedOption, setSelectedOption] = useState('');
 
@@ -65,6 +71,7 @@ export default ({ menuItems }: { menuItems: CreateListItemModel[] }) => {
 
   return (
     <MenuOptions
+      dataTestId={dataTestId}
       menuItems={menuItems}
       option={{
         selectedOption,
@@ -74,17 +81,21 @@ export default ({ menuItems }: { menuItems: CreateListItemModel[] }) => {
   );
 };
 
-function MenuOptions({
-  menuItems,
-  option
-}: {
+export type MenuOptionsProps = {
   menuItems: CreateListItemModel[];
   option: CurrentSelectedIndex;
-}): JSX.Element {
+  dataTestId?: string;
+};
+
+function MenuOptions({
+  menuItems,
+  option,
+  dataTestId
+}: MenuOptionsProps): JSX.Element {
   const classes = useStyles();
 
   return (
-    <List disablePadding className={classes.list}>
+    <List disablePadding className={classes.list} data-testid={dataTestId}>
       {!isNil(menuItems) &&
         menuItems.map(menuItem => {
           const {
