@@ -1,5 +1,5 @@
 import log from 'utils/logger';
-import { JsonObj } from 'types/Generic';
+import { JsonObj } from 'types/generic.type';
 import appSettings from 'appSettings.json';
 
 const getStamp = () => `Stamp[${new Date().getTime()}] -`;
