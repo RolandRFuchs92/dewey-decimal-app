@@ -15,7 +15,7 @@ import reduxReducers from 'utils/redux/rootReducer';
 import { ErrorIndicator } from 'components/icons/Indicator';
 import Scan from 'pages/scan/Scan';
 
-import MainLayout from './components/layout/Layout';
+import MainLayout from 'components/layout';
 
 const store = createStore(
   reduxReducers,

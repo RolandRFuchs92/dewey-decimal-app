@@ -87,6 +87,7 @@ export type MenuOptionsProps = {
   dataTestId?: string;
 };
 
+const menuItemsClass = 'menuItemContainer';
 function MenuOptions({
   menuItems,
   option,
@@ -95,7 +96,11 @@ function MenuOptions({
   const classes = useStyles();
 
   return (
-    <List disablePadding className={classes.list} data-testid={dataTestId}>
+    <List
+      disablePadding
+      className={`${classes.list} ${menuItemsClass}`}
+      data-testid={dataTestId}
+    >
       {!isNil(menuItems) &&
         menuItems.map(menuItem => {
           const {
@@ -161,7 +166,7 @@ function CreateListItem({
         button
         key={label}
         onClick={() => handleMenuItemClick(isNil(path) ? '' : path)}
-        className={classes.menuItem}
+        className={`${classes.menuItem} menuItem`}
       >
         <ListItemIcon>{Icon}</ListItemIcon>
         <ListItemText primary={label} />
