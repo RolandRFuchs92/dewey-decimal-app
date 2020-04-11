@@ -2,7 +2,7 @@ import React from 'react';
 import QrCode from 'qrcode.react';
 import { makeStyles, Typography } from '@material-ui/core';
 
-import { QrCodeModel } from './PrintCodes.type';
+import { QrCodeModel } from 'components/printCodes/PrintCodes.type';
 
 const useStyles = makeStyles(theme => ({
   container: {
