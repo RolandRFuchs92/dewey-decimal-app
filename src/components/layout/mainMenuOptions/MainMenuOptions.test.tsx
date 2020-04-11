@@ -2,8 +2,8 @@ import React from 'react';
 import { render, fireEvent } from '@testing-library/react';
 
 import AppWrapper from '__test/AppDepWrapper';
-import MainMenuOptions from './MainMenuOptions';
-import { CreateListItemModel } from './Layout.type';
+import MainMenuOptions from './index';
+import { CreateListItemModel } from '../Layout.type';
 
 describe('<MainMenuOptions />', () => {
   const testId = 'dataTestId';

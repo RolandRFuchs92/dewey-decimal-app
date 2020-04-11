@@ -13,7 +13,7 @@ import { useHistory } from 'react-router-dom';
 import { isNil, upperFirst } from 'lodash';
 
 import Icons from 'components/icons';
-import { CreateListItemModel } from './Layout.type';
+import { CreateListItemModel } from '../Layout.type';
 import { setPageTitle } from 'utils/redux/global.action';
 
 const useStyles = makeStyles(theme => {
