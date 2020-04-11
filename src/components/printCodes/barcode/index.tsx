@@ -3,7 +3,7 @@ import Barcode from 'react-barcode';
 import { Typography, makeStyles } from '@material-ui/core';
 import appSettings from 'appSettings.json';
 
-import { BarcodeModel } from './PrintCodes.type';
+import { BarcodeModel } from '../PrintCodes.type';
 
 const useStyles = makeStyles(theme => ({
   container: {
@@ -33,7 +33,12 @@ export default ({ value, description, className }: BarcodeModel) => {
       >
         {description}
       </Typography>
-      <Barcode value={value} {...appSettings.barcode} />
+      <Barcode
+        value={value}
+        format={appSettings.barcode.format}
+        height={appSettings.barcode.height}
+        width={appSettings.barcode.width}
+      />
     </div>
   );
 };
