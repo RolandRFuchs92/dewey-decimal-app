@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import Quagga from 'quagga';
 import { makeStyles, Grid, Typography } from '@material-ui/core';
 
@@ -31,6 +31,7 @@ export default ({
   open
 }: ScannerModel) => {
   const classes = useStyles();
+  const [isScannerError, setIsScannerError] = useState<undefined | boolean>();
 
   useEffect(() => {
     if (open) {
@@ -58,6 +59,7 @@ export default ({
         },
         function(err: Error) {
           if (err) {
+            setIsScannerError(true);
             return console.log(err);
           }
           Quagga.start();
@@ -78,6 +80,11 @@ export default ({
         <Typography variant="h5">
           Display barcode to easily checkin/out
         </Typography>
+        {isScannerError && (
+          <Typography variant="h5">
+            There was a problem opening the webcam.
+          </Typography>
+        )}
         <div id="interactive" className="viewport" />
       </div>
     </Grid>
