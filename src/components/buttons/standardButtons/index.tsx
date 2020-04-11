@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { onClickModel } from 'types/buttons';
+import { onClickModel } from 'types/buttons.types';
 
 import { Button } from '@material-ui/core';
 

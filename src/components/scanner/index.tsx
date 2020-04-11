@@ -78,7 +78,7 @@ export default ({
         <Typography variant="h5">
           Display barcode to easily checkin/out
         </Typography>
-        <div id="interactive" className="viewport"></div>
+        <div id="interactive" className="viewport" />
       </div>
     </Grid>
   );

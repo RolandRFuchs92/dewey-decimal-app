@@ -7,7 +7,7 @@ import {
 } from '@material-ui/core';
 import MuiTablePagination from '@material-ui/core/TablePagination';
 
-import { OnClickModel, JsonObj } from 'types/Generic';
+import { OnClickModel, JsonObj } from 'types/generic.type';
 import Icons from 'components/icons';
 import { isNil } from 'lodash';
 import { DefaultColumnModel } from 'components/page/PageBase.type';
