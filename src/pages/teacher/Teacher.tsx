@@ -3,18 +3,19 @@ import MUIDataTable, { MUIDataTableColumnDef } from 'mui-datatables';
 import { Fade } from '@material-ui/core';
 
 import AddUpdate from 'utils/tableButtons';
-import { getTeachers, hideTeacher } from './Teacher.repo';
-import TeacherModal from './Teacher.modal';
 import { addButton } from 'utils/tableButtons';
 import { useAlert } from 'utils/snackbarAlerts';
 import { useDialog } from 'utils/dialog';
 import appSettings from 'appSettings.json';
-import { TeacherModel } from './Teacher.type';
 import {
   DefaultColumnModel,
   DatatabelDataModel
 } from 'components/page/PageBase.type';
-import { JsonObj } from 'types/Generic';
+import { JsonObj } from 'types/generic.type';
+
+import TeacherModal from './Teacher.modal';
+import { getTeachers, hideTeacher } from './Teacher.repo';
+import { TeacherModel } from './Teacher.type';
 
 const columnConfig: DefaultColumnModel[] = [
   {

@@ -1,6 +1,6 @@
 import repoBase from 'components/page/repo.base';
 import { all } from 'db/repo';
-import { DropdownListModel } from 'types/Generic';
+import { DropdownListModel } from 'types/generic.type';
 
 import { getSelectQuery } from './Decimal.sql';
 import { getAllQuery } from './Decimal.sql';

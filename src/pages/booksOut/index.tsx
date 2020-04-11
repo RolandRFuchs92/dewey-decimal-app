@@ -1,9 +1,11 @@
 import React from 'react';
-import appSettings from 'appSettings.json';
 
+import appSettings from 'appSettings.json';
 import PageBase from 'components/page/PageBase';
-import repo, { getBooksForSelect, getStudentsForSelect } from './Booksout.repo';
 import { DefaultColumnModel } from 'components/page/PageBase.type';
+
+import repo, { getBooksForSelect, getStudentsForSelect } from './Booksout.repo';
+
 const {
   tables: { books_out, book, student }
 } = appSettings;

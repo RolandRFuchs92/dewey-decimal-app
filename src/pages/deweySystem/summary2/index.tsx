@@ -1,9 +1,10 @@
 import React from 'react';
 
 import PageBase from 'components/page/PageBase';
-import repo from './summary2.repo';
 import { getSelectList } from 'pages/deweySystem/summary1/Summary1.repo';
 import { DefaultColumnModel } from 'components/page/PageBase.type';
+
+import repo from './summary2.repo';
 
 const defaultColumns: DefaultColumnModel[] = [
   {

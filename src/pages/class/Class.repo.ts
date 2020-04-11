@@ -5,7 +5,8 @@ import {
   jsonToStatementObject
 } from 'db/utils';
 import { isNil } from 'lodash';
-import { DropdownListModel } from 'types/Generic';
+import { DropdownListModel } from 'types/generic.type';
+
 import {
   queryGetClasses,
   queryHideClass,

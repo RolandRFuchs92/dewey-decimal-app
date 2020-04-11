@@ -7,12 +7,13 @@ import {
   Typography,
   makeStyles
 } from '@material-ui/core';
+
 import FormButtons from 'components/buttons/formButtons';
+import { useAlert } from 'utils/snackbarAlerts';
+import { DatatabelDataModel } from 'components/page/PageBase.type';
 
 import { createOrUpdateTeacher } from './Teacher.repo';
-import { useAlert } from 'utils/snackbarAlerts';
 import { TeacherModel, TeacherModalProps } from './Teacher.type';
-import { DatatabelDataModel } from 'components/page/PageBase.type';
 
 const useStyles = makeStyles(theme => ({
   paper: {

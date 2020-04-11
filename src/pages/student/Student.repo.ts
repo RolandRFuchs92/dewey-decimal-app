@@ -3,7 +3,7 @@ import { format } from 'date-fns';
 import repoBase from 'components/page/repo.base';
 import { all, single } from 'db/repo';
 import { getStudentBooksHistory } from 'pages/books/Book.repo';
-import { DropdownListModel } from 'types/Generic';
+import { DropdownListModel } from 'types/generic.type';
 import appSettings from 'appSettings.json';
 
 import {

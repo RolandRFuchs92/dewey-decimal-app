@@ -1,8 +1,9 @@
 import React from 'react';
 
 import PageBase from 'components/page/PageBase';
-import repo from './Summary1.repo';
 import { DefaultColumnModel } from 'components/page/PageBase.type';
+
+import repo from './Summary1.repo';
 
 const defaultColumns: DefaultColumnModel[] = [
   {

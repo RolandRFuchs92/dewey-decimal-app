@@ -5,8 +5,8 @@ import Icons from 'components/icons';
 import { getSelectList as getAuthorsSelectList } from 'pages/authors/authors.repo';
 import { getSelectList as getDecimalSelectList } from 'pages/deweySystem/decimal/Decimal.repo';
 import { DefaultColumnModel } from 'components/page/PageBase.type';
-import { JsonObj } from 'types/Generic';
 import { BarcodeModel } from 'components/printCodes/PrintCodes.type';
+import { JsonObj } from 'types/generic.type';
 
 import BarcodePage from './Book.barcode';
 import PageBase from 'components/page/PageBase';

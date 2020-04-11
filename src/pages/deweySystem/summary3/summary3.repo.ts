@@ -1,6 +1,6 @@
 import baseRepo from 'components/page/repo.base';
 import { all } from 'db/repo';
-import { DropdownListModel } from 'types/Generic';
+import { DropdownListModel } from 'types/generic.type';
 
 import { selectListQuery, getAllQuery } from './Summary3.sql';
 import { DeweySummary3Model } from './Summary3.type';

@@ -3,9 +3,10 @@ import {
   objectToInsertStatement,
   jsonToStatementObject
 } from 'db/utils';
-import { run, all } from '../../db/repo';
+import { run, all } from 'db/repo';
 import { DatatabelDataModel } from 'components/page/PageBase.type';
-import { JsonObj } from 'types/Generic';
+import { JsonObj } from 'types/generic.type';
+
 import {
   querySelectListTeachers,
   queryAllTeachers,

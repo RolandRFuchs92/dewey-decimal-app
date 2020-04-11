@@ -1,15 +1,15 @@
 import React, { useState } from 'react';
+import { makeStyles } from '@material-ui/core';
 
 import PageBase from 'components/page/PageBase';
 import { getSelectList } from 'pages/class/Class.repo';
 import { DefaultColumnModel } from 'components/page/PageBase.type';
 import Icons from 'components/icons';
+import { tableButton } from 'utils/tableButtons';
 
 import StudentProfile from './StudentProfile';
 import repo from './Student.repo';
 import { StudentModel } from './Student.type';
-import { makeStyles } from '@material-ui/core';
-import { tableButton } from 'utils/tableButtons';
 
 const defaultColumns: DefaultColumnModel[] = [
   {

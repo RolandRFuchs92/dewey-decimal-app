@@ -6,6 +6,7 @@ import {
   calculateReturnOnDateForDbInsert,
   formatDateForDbInsert
 } from 'utils/businessRules';
+
 import { getAllQuery } from './Booksout.sql';
 import {
   checkoutBookQuery,

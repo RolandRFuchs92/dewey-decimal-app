@@ -6,15 +6,16 @@ import MUIDataTable, {
   MUIDataTableProps
 } from 'mui-datatables';
 
-import { getClasses, hideClass } from './Class.repo';
-import Modal from './Class.Modal';
 import { useAlert } from 'utils/snackbarAlerts';
 
 import { useDialog } from 'utils/dialog';
 import EditDeleteCol, { addButton } from 'utils/tableButtons';
 import appSettings from 'appSettings.json';
-import { JsonObj } from 'types/Generic';
+import { JsonObj } from 'types/generic.type';
 import { DatatabelDataModel } from 'components/page/PageBase.type';
+
+import { getClasses, hideClass } from './Class.repo';
+import Modal from './Class.Modal';
 import { ClassModel } from './Class.type';
 
 const columns = [

@@ -6,7 +6,7 @@ import {
   getStudentBooksHistoryQuery,
   getBookByCallNumberQuery
 } from './Book.sql';
-import { DropdownListModel } from 'types/Generic';
+import { DropdownListModel } from 'types/generic.type';
 import {
   BookModel,
   GetStudentBooksHistoryModel,

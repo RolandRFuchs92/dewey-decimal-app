@@ -10,11 +10,12 @@ import {
 } from '@material-ui/core';
 import FormButtons from 'components/buttons/formButtons';
 
-import { addOrUpdateClass } from './Class.repo';
 import { useAlert } from 'utils/snackbarAlerts';
-import { EventObj } from 'types/Generic';
-import { ClassModel } from './Class.type';
+import { EventObj } from 'types/generic.type';
 import { DatatabelDataModel } from 'components/page/PageBase.type';
+
+import { addOrUpdateClass } from './Class.repo';
+import { ClassModel } from './Class.type';
 
 const useStyles = makeStyles(theme => ({
   paper: {
