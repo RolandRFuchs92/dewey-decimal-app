@@ -24,10 +24,11 @@ import DeweySystem from 'pages/deweySystem';
 import Authors from 'pages/authors';
 import Books from 'pages/books';
 import BooksOut from 'pages/booksOut';
-import Icons from 'components/icons';
 import Admin from 'pages/admin';
-import { RootReducerModel } from 'utils/redux/rootReducer.type';
 import { ScannerToggleAction } from 'pages/scan/Scanner.action';
+
+import Icons from 'components/icons';
+import { RootReducerModel } from 'utils/redux/rootReducer.type';
 import { toggleThemeAction } from 'components/theme/Theme.action';
 
 import { drawerWidth } from './Layout.config.json';

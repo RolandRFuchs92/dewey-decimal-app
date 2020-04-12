@@ -1,11 +1,13 @@
 import React from 'react';
 import { render, within } from '@testing-library/react';
-import { useDispatch } from 'react-redux';
+import Home from 'pages/home';
 
 import { setPageTitle } from 'utils/redux/global.action';
 import AppWrapper from '__test/AppDepWrapper';
 import { PermanentDrawerLeft } from './index';
 import layoutSettings from './Layout.config.json';
+
+jest.mock('pages/home');
 
 describe('<Layout ..../>', () => {
   it('should render the layout with the correct menu options', async () => {

@@ -74,7 +74,7 @@ describe('db/repo', () => {
   });
 
   describe('all(...)', () => {
-    it('should call logs during execution', async () => {
+    it('should call logs during execution - all', async () => {
       const expectedResult = ['this', 'is', 'expected'];
       const allJest = jest.fn((stmt, stmtObj, cb) => {
         cb();
@@ -126,7 +126,7 @@ describe('db/repo', () => {
   });
 
   describe('exec(...)', () => {
-    it('should call logs during execution', async () => {
+    it('should call logs during execution - exec', async () => {
       const jestExec = jest.fn((stmt, cb) => {
         cb();
       });
@@ -149,7 +149,7 @@ describe('db/repo', () => {
       );
     });
 
-    it('should throw an expected error and log correctly', async () => {
+    it('should throw an expected error and log correctly - exec', async () => {
       const expectedError = 'this was the expected error';
       const jestExec = jest.fn((stmt, cb) => {
         cb(expectedError);
@@ -174,7 +174,7 @@ describe('db/repo', () => {
   });
 
   describe('single(...)', () => {
-    it('should call logs during execution', async () => {
+    it('should call logs during execution - single', async () => {
       const expectedResult = [{ a: 1 }, { a: 2 }, { a: 3 }];
       const jestAll = jest.fn((stmt, stmtObj, cb) => {
         cb(undefined, expectedResult);
@@ -200,7 +200,7 @@ describe('db/repo', () => {
       expect(result).toEqual(expectedResult[0]);
     });
 
-    it('should throw an expected error and log correctly', async () => {
+    it('should throw an expected error and log correctly - single', async () => {
       const expectedError = 'this was the expected error';
       const jestSingle = jest.fn((stmt, cb) => {
         cb(expectedError);
