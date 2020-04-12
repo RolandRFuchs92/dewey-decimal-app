@@ -16,7 +16,6 @@ import {
 } from 'react-router-dom';
 import { connect, useDispatch } from 'react-redux';
 
-import { drawerWidth } from './Layout.config.json';
 import Teacher from 'pages/teacher/Teacher';
 import Student from 'pages/student/Student';
 import Class from 'pages/class/Class';
@@ -28,10 +27,11 @@ import BooksOut from 'pages/booksOut';
 import Icons from 'components/icons';
 import Admin from 'pages/admin';
 import { RootReducerModel } from 'utils/redux/rootReducer.type';
-
-import { PermanentDrawerLeftModel } from './Layout.type';
 import { ScannerToggleAction } from 'pages/scan/Scanner.action';
 import { toggleThemeAction } from 'components/theme/Theme.action';
+
+import { drawerWidth } from './Layout.config.json';
+import { PermanentDrawerLeftModel } from './Layout.type';
 
 const useStyles = makeStyles(theme => {
   return {

@@ -5,8 +5,9 @@ import {
   getAllFilesInFolder
 } from 'utils/sqlScriptLoader';
 import appSettings from 'appSettings.json';
-import { run, exec, all } from './repo';
 import log from 'utils/logger';
+
+import { run, exec, all } from './repo';
 
 const tableDeweySummary1Name = `dewey_summary`;
 const tableDeweySummary2Name = `dewey_summary_2`;

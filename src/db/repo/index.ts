@@ -1,6 +1,6 @@
 import log from 'utils/logger';
 import { JsonObj } from 'types/generic.type';
-import appSettings from 'appSettings.json';
+import getDatabase from 'db/sqlite';
 
 const getStamp = () => `Stamp[${new Date().getTime()}] -`;
 
@@ -46,7 +46,7 @@ export async function all<T>(
       log.info(`${stamp} Closed Db.`);
       if (err) {
         log.error(`${stamp} ${err}`);
-        rej(err);
+        return rej(err);
       }
       log.info(`${stamp} Returned ${rows ? rows.length : 0} row(s)`);
       res(rows);
@@ -74,17 +74,10 @@ export const exec = (statement: string) => {
   });
 };
 
-export function getDatabase() {
-  const sqlite3 = window.require('sqlite3').verbose();
-  const db = new sqlite3.Database(appSettings.databaseName);
-  log.info('Opening database.');
-  return db;
-}
-
 export function single(
   statement: string,
   statementObject?: object
-): Promise<string | number | boolean | null> {
+): Promise<object | null> {
   const db = getDatabase();
   const stamp = getStamp();
   log.info(
@@ -103,8 +96,7 @@ export function single(
       }
       log.info(`${stamp} Returned first row of ${rows.length} row(s)`);
       if (!rows.length) res(null);
-      const result = Object.values(rows[0])[0];
-      res(result);
+      res(rows[0]);
     });
   });
 }
