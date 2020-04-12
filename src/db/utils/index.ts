@@ -2,26 +2,6 @@ import { snakeCase, compact, lowerCase } from 'lodash';
 import { all, run } from 'db/repo';
 import log from 'utils/logger';
 
-const getColumnsStatement = (tableName: string) =>
-  `PRAGMA table_info(${tableName})`;
-const getTablesStatement = `
-	SELECT
-		name
-	FROM 
-		sqlite_master
-	WHERE
-		type='table'
-`;
-
-export async function getColumnNames(tableName: string) {
-  try {
-    const columnStatement: string = getColumnsStatement(tableName);
-    return await all(columnStatement);
-  } catch (e) {
-    throw e;
-  }
-}
-
 export function jsonToStatementObject(obj: object) {
   return Object.fromEntries(
     Object.entries(obj).map(([key, val]) => [`$${key}`, val])
@@ -68,10 +48,6 @@ export function objectToInsertStatement(obj: object, tableName: string) {
   let statement = `INSERT INTO ${tableName} (${columns})
 					VALUES (${statementColRefs})`;
   return statement;
-}
-
-export async function getAllTablesInDb() {
-  return await all(getTablesStatement);
 }
 
 export async function addOrUpdate(
