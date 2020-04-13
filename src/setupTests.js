@@ -5,6 +5,14 @@
 import '@testing-library/jest-dom/extend-expect';
 window.require = require;
 window.ipcRenderer = {
-    on: () => {},
-    once: () => {}
-}
+  on: () => {},
+  once: () => {}
+};
+global.document.createRange = () => ({
+  setStart: () => {},
+  setEnd: () => {},
+  commonAncestorContainer: {
+    nodeName: 'BODY',
+    ownerDocument: document
+  }
+});
