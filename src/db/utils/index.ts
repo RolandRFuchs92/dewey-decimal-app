@@ -55,8 +55,12 @@ export async function addOrUpdate(
   tableName: string,
   pkField: string = `${tableName}_id`
 ) {
-  object.Edit && delete object.Edit;
-  object.Delete && delete object.Delete;
+  delete object?.Edit;
+  delete object?.Delete;
+
+  log.info(
+    `Running addOrUpdate on ${tableName} with params ${JSON.stringify(object)}`
+  );
   if (!object[pkField]) {
     object[pkField] === '' && delete object[pkField];
     await addToDb(object, tableName);

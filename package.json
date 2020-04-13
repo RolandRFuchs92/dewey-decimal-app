@@ -7,6 +7,7 @@
   "typings": "src/index",
   "dependencies": {
     "@babel/cli": "^7.8.4",
+    "@babel/helper-validator-identifier": "^7.9.5",
     "@date-io/date-fns": "1.x",
     "@fortawesome/fontawesome-svg-core": "^1.2.27",
     "@fortawesome/free-solid-svg-icons": "^5.12.1",
