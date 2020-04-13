@@ -3,7 +3,7 @@ const electron = require('electron');
 const app = electron.app;
 // Module to create native browser window.
 
-const BrowserWindow = electron.BrowserWindow;
+const MainBrowserWindow = require('./main_browser_window');
 const { packageErrors } = require('./applicationErrors/applicationErrors');
 const { ipcMain } = require('electron');
 const loadDevTools = require('./addDevTools');
@@ -12,19 +12,10 @@ const loadDevTools = require('./addDevTools');
 // be closed automatically when the JavaScript object is garbage collected.
 let mainWindow;
 
-// app.removeAllListeners('ready');
-
 function createWindow() {
   loadDevTools();
   // Create the browser window.
-  mainWindow = new BrowserWindow({
-    width: 1200,
-    height: 800,
-    webPreferences: {
-      nodeIntegration: true,
-      preload: __dirname + '/preload.js'
-    }
-  });
+  mainWindow = MainBrowserWindow();
 
   mainWindow.removeMenu();
   // and load the index.html of the app.

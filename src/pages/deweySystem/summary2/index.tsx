@@ -4,7 +4,7 @@ import PageBase from 'components/page/PageBase';
 import { getSelectList } from 'pages/deweySystem/summary1/Summary1.repo';
 import { DefaultColumnModel } from 'components/page/PageBase.type';
 
-import repo from './summary2.repo';
+import repo from './Summary2.repo';
 
 const defaultColumns: DefaultColumnModel[] = [
   {
