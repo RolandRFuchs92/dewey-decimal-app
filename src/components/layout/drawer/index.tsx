@@ -6,7 +6,7 @@ import Divider from '@material-ui/core/Divider';
 
 import Indicators from 'components/icons/Indicator';
 
-import MainMenuOptions from '../MainMenuOptions';
+import MainMenuOptions from '../mainMenuOptions';
 import config from '../Layout.config.json';
 import { loadInitialAppState } from '../Layout.service';
 

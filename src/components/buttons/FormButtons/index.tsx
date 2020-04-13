@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { Grid } from '@material-ui/core';
-import { SubmitButton, ResetButton } from '../StandardButtons';
+import { SubmitButton, ResetButton } from '../standardButtons';
 
 type formButtonModel = {
   onReset: () => void;

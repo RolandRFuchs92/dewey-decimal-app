@@ -24,7 +24,7 @@ import {
   SelectBoxModel
 } from './PageBase.type';
 import { MaterialUiPickersDate } from '@material-ui/pickers/typings/date';
-import { DropdownListModel } from 'types/Generic';
+import { DropdownListModel } from 'types/generic.type';
 
 export default ({
   columns,

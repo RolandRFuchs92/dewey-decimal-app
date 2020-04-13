@@ -1,6 +1,5 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import Drawer from './Drawer';
 import {
   CssBaseline,
   AppBar,
@@ -31,6 +30,7 @@ import Icons from 'components/icons';
 import { RootReducerModel } from 'utils/redux/rootReducer.type';
 import { toggleThemeAction } from 'components/theme/Theme.action';
 
+import Drawer from './drawer';
 import { drawerWidth } from './Layout.config.json';
 import { PermanentDrawerLeftModel } from './Layout.type';
 

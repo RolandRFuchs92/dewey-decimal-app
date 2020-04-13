@@ -17,7 +17,7 @@ import { useAlert } from 'utils/snackbarAlerts';
 import Modal from 'components/modal';
 import Icons from 'components/icons';
 import Scanner from 'components/scanner';
-import { JsonObj, GenericInputEvent } from 'types/Generic';
+import { JsonObj, GenericInputEvent } from 'types/generic.type';
 import { BarcodeResultModel } from 'pages/home/Home.type';
 import { getBookByCallNumber } from 'pages/books/Book.repo';
 import { searchForStudentsSelect } from 'pages/home/Home.repo';

@@ -8,8 +8,8 @@ import {
   makeStyles
 } from '@material-ui/core';
 
-import Barcode from 'components/printCodes/Barcode';
-import QrCode from 'components/printCodes/QrCode';
+import Barcode from 'components/printCodes/barcode';
+import QrCode from 'components/printCodes/qrCode';
 import Modal from 'components/modal';
 import Icons from 'components/icons';
 

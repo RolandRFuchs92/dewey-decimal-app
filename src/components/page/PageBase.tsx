@@ -7,7 +7,7 @@ import EditDeleteCol, { addButton } from 'utils/tableButtons';
 import Modal from './ModalBase';
 import { useDialog } from 'utils/dialog';
 import { useAlert } from 'utils/snackbarAlerts';
-import { JsonObj } from 'types/Generic';
+import { JsonObj } from 'types/generic.type';
 
 import { DefaultColumnModel, PageBaseModel } from './PageBase.type';
 

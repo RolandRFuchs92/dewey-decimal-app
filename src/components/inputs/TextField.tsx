@@ -73,7 +73,10 @@ export function Textfield({
     target: { value: string };
   }) => {
     setVal(value);
-    onChange(value);
+    const val = ({ target: { value } } as unknown) as ChangeEvent<
+      HTMLInputElement
+    >;
+    onChange(val);
   };
 
   return (

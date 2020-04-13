@@ -1,7 +1,7 @@
 import { getAll, deleteRow, addOrUpdate } from 'db/utils';
 import { TableNames } from 'appSettings.type';
 import appSettings from 'appSettings.json';
-import { JsonObj } from 'types/Generic';
+import { JsonObj } from 'types/generic.type';
 
 export default <T>(tableReference: TableNames, pk: keyof T) => {
   const { tables } = appSettings;

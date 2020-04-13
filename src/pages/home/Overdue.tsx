@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Grid, makeStyles } from '@material-ui/core';
 
 import { getBooksOverdue } from 'pages/booksOut/Booksout.repo';
-import { JsonObj } from 'types/Generic';
+import { JsonObj } from 'types/generic.type';
 
 const useStyles = makeStyles(theme => ({
   container: {
