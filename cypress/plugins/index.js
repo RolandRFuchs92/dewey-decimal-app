@@ -15,7 +15,33 @@
 /**
  * @type {Cypress.PluginConfig}
  */
+const path = require('path');
+const pkg = require('../../package.json');
+
+const pathToElectron = path.join(
+  __dirname,
+  '..',
+  '..',
+  'node_modules',
+  '.bin',
+  'electron'
+);
 module.exports = (on, config) => {
-  // `on` is used to hook into various events Cypress emits
-  // `config` is the resolved Cypress config
-}
+  // remove "standard" browsers and use
+  // our local Electron as a browser
+  config.browsers = [
+    {
+      name: 'electron',
+      family: 'chromium',
+      displayName: 'electron',
+      version: pkg.version,
+      path: pathToElectron,
+      // show full package version in the browser dropdown
+      majorVersion: `v${pkg.version}`,
+      info:
+        pkg.description || 'Electron.js app that supports the Cypress launcher'
+    }
+  ];
+
+  return config;
+};

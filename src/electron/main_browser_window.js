@@ -2,9 +2,10 @@ const { BrowserWindow } = require('electron');
 const _ = require('lodash');
 
 module.exports = (options = {}) => {
+  console.log('gotcha');
   _.defaultsDeep(options, {
-    width: 200,
-    height: 200,
+    width: 960,
+    height: 720,
     webPreferences: {
       nodeIntegration: true
     }
