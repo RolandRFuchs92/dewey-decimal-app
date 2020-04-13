@@ -31,7 +31,7 @@ export const getStudentsWithBirthdaysQuery = `
 
 export const getStudentsWithBirthdaysCountQuery = `
     SELECT
-        COUNT(*)
+        COUNT(*) as count
     FROM
         student s
     WHERE

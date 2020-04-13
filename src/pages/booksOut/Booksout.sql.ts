@@ -86,5 +86,5 @@ export const checkoutBookQuery = `
     VALUES($book_id, $student_id, $return_on, $check_out_date);
 `;
 
-export const countBooksCheckedOutTodayQuery = `SELECT COUNT(*) FROM books_out WHERE check_out_date =  STRFTIME('%Y-%m-%d', 'now')`;
-export const countBooksCheckedInTodayQuery = `SELECT COUNT(*) FROM books_out WHERE check_in_date =  STRFTIME('%Y-%m-%d', 'now')`;
+export const countBooksCheckedOutTodayQuery = `SELECT COUNT(*) as count FROM books_out WHERE check_out_date =  STRFTIME('%Y-%m-%d', 'now')`;
+export const countBooksCheckedInTodayQuery = `SELECT COUNT(*) as count FROM books_out WHERE check_in_date =  STRFTIME('%Y-%m-%d', 'now')`;

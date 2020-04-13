@@ -3,7 +3,7 @@ import { format } from 'date-fns';
 import repoBase from 'components/page/repo.base';
 import { all, single } from 'db/repo';
 import { getStudentBooksHistory } from 'pages/books/Book.repo';
-import { DropdownListModel } from 'types/generic.type';
+import { DropdownListModel, CountObj } from 'types/generic.type';
 import appSettings from 'appSettings.json';
 
 import {
@@ -59,7 +59,10 @@ export async function getStudentsWithBirthdays(date: string) {
 
 export async function countStudentsWithBirthdayToday(date = new Date()) {
   const statementObject = { $date: format(date, appSettings.formatDate.to) };
-  return await single(getStudentsWithBirthdaysCountQuery, statementObject);
+  return await single<CountObj>(
+    getStudentsWithBirthdaysCountQuery,
+    statementObject
+  );
 }
 
 export const getStudentSelectListSearch = async (value: string) => {

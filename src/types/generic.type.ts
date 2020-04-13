@@ -14,3 +14,7 @@ export type DropdownListModel = {
 export type HasName<T> = {
   name: string;
 } & T;
+
+export type CountObj = {
+  count: number;
+};

@@ -74,10 +74,10 @@ export const exec = (statement: string) => {
   });
 };
 
-export function single(
+export function single<T>(
   statement: string,
   statementObject?: object
-): Promise<object | null> {
+): Promise<T | null> {
   const db = getDatabase();
   const stamp = getStamp();
   log.info(
@@ -87,7 +87,7 @@ export function single(
     )} with params ${JSON.stringify(statementObject)}.`
   );
   return new Promise((res, rej) => {
-    db.all(statement, statementObject, (err: object, rows: object[]) => {
+    db.all(statement, statementObject, (err: object, rows: T[]) => {
       db.close();
       log.info(`${stamp} Closed Db.`);
       if (err) {

@@ -29,10 +29,10 @@ export async function loadInitialAppState(dispatch: Dispatch) {
   const birthdaysToday = countStudentsWithBirthdayToday();
 
   const payload: HomeReducerModel = {
-    booksOverdue: +((await booksOverdue) || 0),
-    checkinsToday: +((await checkinsToday) || 0),
-    checkoutsToday: +((await checkoutsToday) || 0),
-    birthdaysToday: +((await birthdaysToday) || 0)
+    booksOverdue: +((await booksOverdue)?.count || 0),
+    checkinsToday: +((await checkinsToday)?.count || 0),
+    checkoutsToday: +((await checkoutsToday)?.count || 0),
+    birthdaysToday: +((await birthdaysToday)?.count || 0)
   };
 
   const dispatchData: FullIndicatorActionModel = {
