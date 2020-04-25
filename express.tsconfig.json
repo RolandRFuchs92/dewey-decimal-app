@@ -1,0 +1,21 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "strict": true,
+    "removeComments": true,
+    "experimentalDecorators": true,
+    "esModuleInterop": true,
+    "target": "esnext",
+    "emitDecoratorMetadata": true,
+    "allowSyntheticDefaultImports": true,
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "types": ["node", "express"],
+    "baseUrl": "./src",
+    "outDir": "./build",
+    "typeRoots": ["node_modules/@types"],
+    "isolatedModules": true
+  },
+  "exclude": ["node_modules"],
+  "include": ["./src/server.ts"]
+}

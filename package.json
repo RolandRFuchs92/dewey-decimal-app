@@ -56,7 +56,9 @@
     "build": "react-app-rewired build",
     "test": "react-app-rewired test --runInBand",
     "eject": "react-app-rewired eject",
-    "cypress:open": "cypress open"
+    "cypress:open": "cypress open",
+    "exp:wpk": "webpack --config ./webpack.config.js",
+    "exp:run": "node dist/server.bundle.js"
   },
   "eslintConfig": {
     "extends": [
