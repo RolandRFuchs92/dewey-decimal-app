@@ -55,8 +55,8 @@ export async function addOrUpdate(
   tableName: string,
   pkField: string = `${tableName}_id`
 ) {
-  delete object?.Edit;
-  delete object?.Delete;
+  delete object['Edit'];
+  delete object['Delete'];
 
   log.info(
     `Running addOrUpdate on ${tableName} with params ${JSON.stringify(object)}`

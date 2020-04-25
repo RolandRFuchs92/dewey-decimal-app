@@ -1,5 +1,5 @@
 import appSettings from 'appSettings.json';
-const { createLogger, format, transports } = window.require('winston');
+import { createLogger, format, transports } from 'winston';
 
 const logger = createLogger({
   level: 'info',
