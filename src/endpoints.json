@@ -36,8 +36,8 @@
       "uri": "booksout/overdue",
       "verb": "GET"
     },
-    "scanns": {
-      "uri": "booksout/scanns",
+    "scans": {
+      "uri": "booksout/scans",
       "verb": "GET"
     }
   },

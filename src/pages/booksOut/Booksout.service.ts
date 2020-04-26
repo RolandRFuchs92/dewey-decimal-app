@@ -2,7 +2,7 @@ import { booksout } from 'endpoints.json';
 import { get } from 'utils/ajax';
 import { CountObj, Result } from 'types/generic.type';
 
-import { BooksOverdueModel } from './Booksout.type';
+import { ScansModel, BooksOverdueModel } from './Booksout.type';
 
 export default () => {};
 
@@ -44,6 +44,17 @@ export async function countOverdueBooks(): Promise<Result<CountObj>> {
 export async function getOverduebooks(): Promise<Result<BooksOverdueModel[]>> {
   try {
     const result = await get<{}, BooksOverdueModel[]>(booksout.overdue.uri);
+    return result;
+  } catch (error) {
+    return {
+      result: []
+    };
+  }
+}
+
+export async function getScans(): Promise<Result<ScansModel[]>> {
+  try {
+    const result = await get<{}, ScansModel[]>(booksout.scans.uri);
     return result;
   } catch (error) {
     return {

@@ -76,6 +76,7 @@ export function PermanentDrawerLeft({ pageTitle }: PermanentDrawerLeftModel) {
   const toggleScan = () => {
     dispatch(ScannerToggleAction());
   };
+
   const toggleTheme = () => {
     dispatch(toggleThemeAction());
   };

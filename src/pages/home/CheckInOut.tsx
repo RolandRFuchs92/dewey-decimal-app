@@ -1,7 +1,7 @@
 import React from 'react';
 import { makeStyles, Grid } from '@material-ui/core';
 
-import { ScansTemplateProps, ScansModel } from './Scan.type';
+import { ScansTemplateProps, ScansModel } from 'pages/scan/Scan.type';
 
 const useStyles = makeStyles(theme => ({
   container: {

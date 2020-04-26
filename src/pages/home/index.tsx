@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Button, makeStyles, Grid, Paper, Typography } from '@material-ui/core';
-import { connect, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 
 import {
   CheckinIndicator,
@@ -8,20 +8,18 @@ import {
   OverdueIndicator,
   BirthdayIndicator
 } from 'components/icons/Indicator';
-import { ScansModel } from 'pages/scan/Scan.type';
-import ScansToday from 'pages/scan/ScansTemplate';
+import { getScans } from 'pages/booksOut/Booksout.service';
+import { ScansModel } from 'pages/booksOut/Booksout.type';
 import Icons from 'components/icons';
 import { ScannerToggleAction } from 'pages/scan/Scanner.action';
 
 import { HomePageTileProps, HomeProps } from './Home.type';
-import BirthdaysToday from './BirthdaysToday';
+import CheckInOut from './CheckInOut';
 import Overdue from './Overdue';
+import BirthdaysToday from './BirthdaysToday';
 
 const useStyles = makeStyles(() => {
   return {
-    container: {
-      // display: 'flex',
-    },
     homePageContainer: {
       padding: 15,
       height: '100%',
@@ -60,16 +58,30 @@ const useStyles = makeStyles(() => {
   };
 });
 
-export const Home = ({ checkins, checkouts }: HomeProps) => {
+export const Home = () => {
+  const [checkouts, setCheckouts] = useState<ScansModel[]>([]);
+  const [checkins, setCheckins] = useState<ScansModel[]>([]);
   const classes = useStyles();
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    (async () => {
+      const { result } = await getScans();
+
+      const checkoutsResult = result.filter(x => x.check_in_date === null);
+      const checkinsResult = result.filter(x => x.check_in_date !== null);
+
+      setCheckouts(checkoutsResult);
+      setCheckins(checkinsResult);
+    })();
+  }, []);
 
   const toggleScan = () => {
     dispatch(ScannerToggleAction());
   };
 
   return (
-    <Grid container className={classes.container}>
+    <Grid container>
       <Button
         variant="contained"
         color="primary"
@@ -82,11 +94,11 @@ export const Home = ({ checkins, checkouts }: HomeProps) => {
       </Button>
 
       <HomePageTile title="Checkouts Today" indicator={<CheckoutIndicator />}>
-        <ScansToday scans={checkouts}></ScansToday>
+        <CheckInOut scans={checkouts}></CheckInOut>
       </HomePageTile>
 
       <HomePageTile title="Checkins Today" indicator={<CheckinIndicator />}>
-        <ScansToday scans={checkins}></ScansToday>
+        <CheckInOut scans={checkins}></CheckInOut>
       </HomePageTile>
 
       <HomePageTile title="Books Overdue" indicator={<OverdueIndicator />}>
@@ -117,18 +129,4 @@ const HomePageTile = ({ title, children, indicator }: HomePageTileProps) => {
     </Grid>
   );
 };
-
-const mapStateToProps = (
-  state: {
-    checkouts: ScansModel[];
-    checkins: ScansModel[];
-  },
-  ownProps: any
-) => {
-  return {
-    checkouts: state.checkouts,
-    checkins: state.checkins
-  };
-};
-
-export default connect(mapStateToProps)(Home);
+export default Home;

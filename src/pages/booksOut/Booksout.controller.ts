@@ -13,7 +13,12 @@ import booksoutRepo, {
   getStudentRecentlyCheckoutBook,
   checkin
 } from './Booksout.repo';
-import { GetAllModel, book_out_keys, BooksOverdueModel } from './Booksout.type';
+import {
+  GetAllModel,
+  book_out_keys,
+  BooksOverdueModel,
+  ScansModel
+} from './Booksout.type';
 import { Result, CountObj } from 'types/generic.type';
 
 const router = express.Router();
@@ -166,7 +171,10 @@ router.get('/overdue', async (req, res) => {
 router.get('/scans', async (req, res) => {
   try {
     const date = queryDate(req);
-    const result = await getScans(date as Date);
+    const scansResult = await getScans(date as Date);
+    const result: Result<ScansModel[]> = {
+      result: scansResult
+    };
     res.send(result);
   } catch (error) {
     errorHandler('scans', error, res, 'There was an error collecting scans.');
