@@ -1,8 +1,8 @@
 import express, { Response } from 'express';
 import { pick } from 'lodash';
-import log from 'utils/logger';
 import { parse } from 'date-fns';
 
+import { genericErrorHandle } from 'utils/httpHelpers/controller';
 import stud, {
   getSelectList,
   getStudentProfileData,
@@ -60,8 +60,9 @@ router.get('/profiledata', (req, res) => {
     res.status(400);
     return res.send({ message: 'No student id was provided.' });
   }
-
-  getStudentProfileData(studentId.toString()).then(result => res.send(result));
+  return getStudentProfileData(studentId.toString()).then(result =>
+    res.send(result)
+  );
 });
 
 router.get('/birthdays', (req, res) => {
@@ -78,9 +79,12 @@ router.get('/birthdayscount', async (req, res) => {
     console.log(result);
     res.send(result);
   } catch (error) {
-    log.error(`There was an error at /students/birthdayscount => ${error}`);
-    res.statusCode = 500;
-    res.send('Error getting birthday count.');
+    genericErrorHandle(
+      'birthdayscount',
+      error,
+      res,
+      'Error getting birthday count.'
+    );
   }
 });
 
@@ -98,16 +102,5 @@ router.get('/studentSearch', async (req, res) => {
     );
   }
 });
-
-function genericErrorHandle(
-  route: string,
-  error: Error,
-  res: Response<any>,
-  errorMessage: string
-) {
-  log.error(`There was an error at /student/${route} => ${error}`);
-  res.statusCode = 500;
-  res.send(errorMessage);
-}
 
 export default router;
