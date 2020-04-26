@@ -15,17 +15,17 @@ import {
 } from 'react-router-dom';
 import { connect, useDispatch } from 'react-redux';
 
-import Teacher from 'pages/teacher/Teacher';
-import Student from 'pages/student/Student';
-import Class from 'pages/class/Class';
+// import Teacher from 'pages/teacher/Teacher';
+// import Student from 'pages/student/Student';
+// import Class from 'pages/class/Class';
 import Home from 'pages/home';
-import DeweySystem from 'pages/deweySystem';
-import Authors from 'pages/authors';
-import Books from 'pages/books';
-import BooksOut from 'pages/booksOut';
-import Admin from 'pages/admin';
-import { ScannerToggleAction } from 'pages/scan/Scanner.action';
+// import DeweySystem from 'pages/deweySystem';
+// import Authors from 'pages/authors';
+// import Books from 'pages/books';
+// import BooksOut from 'pages/booksOut';
+// import Admin from 'pages/admin';
 
+import { ScannerToggleAction } from 'pages/scan/Scanner.action';
 import Icons from 'components/icons';
 import { RootReducerModel } from 'utils/redux/rootReducer.type';
 import { toggleThemeAction } from 'components/theme/Theme.action';
@@ -119,7 +119,7 @@ export function PermanentDrawerLeft({ pageTitle }: PermanentDrawerLeftModel) {
             <Route exact path="/home">
               <Home />
             </Route>
-            <Route exact path="/students">
+            {/* <Route exact path="/students">
               <Student></Student>
             </Route>
             <Route exact path="/school/class">
@@ -142,7 +142,7 @@ export function PermanentDrawerLeft({ pageTitle }: PermanentDrawerLeftModel) {
             </Route>
             <Route exact path="/admin">
               <Admin></Admin>
-            </Route>
+            </Route> */}
           </Switch>
         </main>
       </Router>

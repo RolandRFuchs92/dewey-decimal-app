@@ -33,8 +33,8 @@ function App() {
                   horizontal: 'center'
                 }}
               >
-                {/* <MainLayout />
-                <Scan />
+                <MainLayout />
+                {/* <Scan />
                 <ErrorIndicator /> */}
               </SnackbarProvider>
             </ConfirmProvider>

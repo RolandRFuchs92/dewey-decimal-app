@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { makeStyles, Paper, Grid, Typography, Button } from '@material-ui/core';
-import { processErrorLog } from './ErrorReport.service';
+// import { processErrorLog } from './ErrorReport.service';
 import { useAlert } from 'utils/snackbarAlerts';
 import { ProcessErrorLogResultModel, ErrorListProps } from './ErrorReport.type';
 
@@ -44,8 +44,8 @@ export default () => {
 
   useEffect(() => {
     (async () => {
-      const result = await processErrorLog();
-      setErrorLogResult(result);
+      // const result = await processErrorLog();
+      // setErrorLogResult(result);
       setIsLoading(false);
     })();
   }, []);
