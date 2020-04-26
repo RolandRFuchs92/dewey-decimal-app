@@ -34,8 +34,8 @@ function App() {
                 }}
               >
                 <MainLayout />
-                {/* <Scan />
-                <ErrorIndicator /> */}
+                {/* <Scan /> */}
+                <ErrorIndicator />
               </SnackbarProvider>
             </ConfirmProvider>
           </MuiPickersUtilsProvider>

@@ -15,10 +15,10 @@ import {
 } from 'react-router-dom';
 import { connect, useDispatch } from 'react-redux';
 
+import Home from 'pages/home';
 // import Teacher from 'pages/teacher/Teacher';
 // import Student from 'pages/student/Student';
 // import Class from 'pages/class/Class';
-import Home from 'pages/home';
 // import DeweySystem from 'pages/deweySystem';
 // import Authors from 'pages/authors';
 // import Books from 'pages/books';
@@ -120,7 +120,7 @@ export function PermanentDrawerLeft({ pageTitle }: PermanentDrawerLeftModel) {
               <Home />
             </Route>
             {/* <Route exact path="/students">
-              <Student></Student>
+              <Student />
             </Route>
             <Route exact path="/school/class">
               <Class></Class>
