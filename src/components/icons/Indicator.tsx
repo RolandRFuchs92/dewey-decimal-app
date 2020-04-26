@@ -16,7 +16,12 @@ const useStyles = makeStyles(theme => {
       alignItems: 'baseline',
       padding: 15,
       height: 64,
-      fontSize: 23
+      fontSize: 23,
+      [theme.breakpoints.down('sm')]: {
+        display: 'none',
+        width: 0,
+        height: 0
+      }
     },
     checkin: {
       color: theme.palette.primary.light

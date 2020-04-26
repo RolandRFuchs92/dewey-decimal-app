@@ -13,12 +13,23 @@ const { drawerWidth, mainMenu } = config;
 const useStyles = makeStyles(theme => ({
   drawer: {
     width: drawerWidth,
-    flexShrink: 0
+    flexShrink: 0,
+    [theme.breakpoints.down('sm')]: {
+      width: 50
+    }
   },
   drawerPaper: {
-    width: drawerWidth
+    width: drawerWidth,
+    [theme.breakpoints.down('sm')]: {
+      width: 50
+    }
   },
-  toolbar: theme.mixins.toolbar,
+  toolbar: {
+    ...theme.mixins.toolbar,
+    [theme.breakpoints.down('sm')]: {
+      display: 'none'
+    }
+  },
   floatIcons: {
     padding: theme.mixins.gutters().padding,
     position: 'absolute'

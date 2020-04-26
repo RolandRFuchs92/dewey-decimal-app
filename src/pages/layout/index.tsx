@@ -47,7 +47,12 @@ const useStyles = makeStyles(theme => {
     },
     appBar: {
       width: `calc(100% - ${drawerWidth}px)`,
-      marginLeft: drawerWidth
+      marginLeft: drawerWidth,
+      [theme.breakpoints.down('sm')]: {
+        left: 0,
+        marginLeft: 50,
+        width: `calc(100% - ${50}px)`
+      }
     },
     toolbar: theme.mixins.toolbar,
     toolbarCenter: {
