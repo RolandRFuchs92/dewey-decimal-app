@@ -1,8 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { makeStyles } from '@material-ui/core/styles';
-import Drawer from '@material-ui/core/Drawer';
-import Divider from '@material-ui/core/Divider';
+import { makeStyles, Drawer, Divider } from '@material-ui/core';
 
 import Indicators from 'components/icons/Indicator';
 

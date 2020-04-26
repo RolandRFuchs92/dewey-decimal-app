@@ -17,6 +17,11 @@ export type HasName<T> = {
   name: string;
 } & T;
 
+export type Result<T> = {
+  message?: string;
+  result: T;
+};
+
 export type CountObj = {
   count: number;
 };
