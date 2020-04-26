@@ -10,11 +10,9 @@ import ReduxThunk from 'redux-thunk';
 
 import ThemeProvider from 'components/theme';
 import { SnackbarProvider } from 'notistack';
-import initializeDb from 'db/initializeDb';
 import reduxReducers from 'utils/redux/rootReducer';
 import { ErrorIndicator } from 'components/icons/Indicator';
 import Scan from 'pages/scan/Scan';
-
 import MainLayout from 'components/layout';
 
 const store = createStore(
@@ -22,15 +20,7 @@ const store = createStore(
   composeWithDevTools(applyMiddleware(ReduxThunk))
 );
 
-type ThemeProp = {
-  palette: {
-    type: 'light' | 'dark';
-  };
-};
-
 function App() {
-  initializeDb();
-
   return (
     <div className="App">
       <GlobalProvider store={store}>

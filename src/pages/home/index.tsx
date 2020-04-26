@@ -17,7 +17,7 @@ import { HomePageTileProps, HomeProps } from './Home.type';
 import BirthdaysToday from './BirthdaysToday';
 import Overdue from './Overdue';
 
-const useStyles = makeStyles(theme => {
+const useStyles = makeStyles(() => {
   return {
     container: {
       // display: 'flex',
