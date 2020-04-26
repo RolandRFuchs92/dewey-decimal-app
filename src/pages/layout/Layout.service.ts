@@ -1,3 +1,4 @@
+import axios from 'axios';
 import { Dispatch } from 'redux';
 import { setError } from 'pages/admin/errors/ErrorReport.action';
 // import { errorLogErrorsCount } from 'pages/admin/errors/ErrorReport.service';

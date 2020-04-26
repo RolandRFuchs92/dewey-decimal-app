@@ -54,8 +54,8 @@ export default () => {
 
   return (
     <div className={classes.indicators}>
-      <CheckinIndicator />
       <CheckoutIndicator />
+      <CheckinIndicator />
       <BirthdayIndicator />
       <OverdueIndicator />
     </div>
