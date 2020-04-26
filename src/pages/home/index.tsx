@@ -89,9 +89,9 @@ export const Home = ({ checkins, checkouts }: HomeProps) => {
         <ScansToday scans={checkins}></ScansToday>
       </HomePageTile>
 
-      {/* <HomePageTile title="Books Overdue" indicator={<OverdueIndicator />}>
+      <HomePageTile title="Books Overdue" indicator={<OverdueIndicator />}>
         <Overdue />
-      </HomePageTile> */}
+      </HomePageTile>
 
       {/* <HomePageTile title="Birthdays Today" indicator={<BirthdayIndicator />}>
         <BirthdaysToday/>

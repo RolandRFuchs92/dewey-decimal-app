@@ -3,7 +3,11 @@ import { Dispatch } from 'redux';
 import { setError } from 'pages/admin/errors/ErrorReport.action';
 // import { errorLogErrorsCount } from 'pages/admin/errors/ErrorReport.service';
 
-import { countCheckouts, countCheckins } from 'pages/booksOut/Booksout.service';
+import {
+  countCheckouts,
+  countCheckins,
+  countOverdueBooks
+} from 'pages/booksOut/Booksout.service';
 import {
   HomeReducerModel,
   FullIndicatorActionModel
@@ -17,13 +21,13 @@ async function loadErrors(dispatch: Dispatch) {
 }
 
 export async function loadInitialAppState(dispatch: Dispatch) {
-  // const booksOverdue = //countBooksOverdue();
+  const booksOverdue = countOverdueBooks();
   const checkinsToday = countCheckins();
   const checkoutsToday = countCheckouts();
   // const birthdaysToday = countStudentsWithBirthdayToday();
 
   const payload: HomeReducerModel = {
-    booksOverdue: 0, // +((await booksOverdue)?.count || 0),
+    booksOverdue: (await booksOverdue).result.count,
     checkinsToday: (await checkinsToday).result.count,
     checkoutsToday: (await checkoutsToday).result.count,
     birthdaysToday: 0 //+((await birthdaysToday)?.count || 0)

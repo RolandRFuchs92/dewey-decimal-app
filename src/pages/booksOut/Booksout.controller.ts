@@ -13,7 +13,7 @@ import booksoutRepo, {
   getStudentRecentlyCheckoutBook,
   checkin
 } from './Booksout.repo';
-import { GetAllModel, book_out_keys } from './Booksout.type';
+import { GetAllModel, book_out_keys, BooksOverdueModel } from './Booksout.type';
 import { Result, CountObj } from 'types/generic.type';
 
 const router = express.Router();
@@ -148,7 +148,10 @@ router.get('/overduecount', async (req, res) => {
 router.get('/overdue', async (req, res) => {
   try {
     const date = queryDate(req);
-    const result = await getBooksOverdue((date as unknown) as Date);
+    const overdueBooksResult = await getBooksOverdue((date as unknown) as Date);
+    const result: Result<BooksOverdueModel[]> = {
+      result: overdueBooksResult
+    };
     res.send(result);
   } catch (error) {
     errorHandler(
