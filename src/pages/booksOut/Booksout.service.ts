@@ -36,7 +36,7 @@ export async function countCheckins(): Promise<Result<CountObj>> {
 
 export async function countOverdueBooks(): Promise<Result<CountObj>> {
   const checkinFunc = async () =>
-    await get<{}, CountObj>(booksout.checkinscount.uri);
+    await get<{}, CountObj>(booksout.overduecount.uri);
   const result = getCountResult(checkinFunc);
   return result;
 }

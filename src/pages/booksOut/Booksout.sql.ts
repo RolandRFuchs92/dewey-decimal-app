@@ -107,5 +107,5 @@ ORDER BY
     bo.books_out_id DESC
 `;
 
-export const countBooksCheckedOutTodayQuery = `SELECT COUNT(*) as count FROM books_out WHERE check_out_date =  STRFTIME('%Y-%m-%d', 'now')`;
-export const countBooksCheckedInTodayQuery = `SELECT COUNT(*) as count FROM books_out WHERE check_in_date =  STRFTIME('%Y-%m-%d', 'now')`;
+export const countBooksCheckedOutTodayQuery = `SELECT COUNT(*) as count FROM books_out WHERE check_out_date = STRFTIME('%Y-%m-%d', $date)`;
+export const countBooksCheckedInTodayQuery = `SELECT COUNT(*) as count FROM books_out WHERE check_in_date = STRFTIME('%Y-%m-%d', $date)`;

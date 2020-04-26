@@ -1,3 +1,6 @@
+import { format } from 'date-fns';
+
+import { formatDate } from 'appSettings.json';
 import repoBase from 'components/page/repo.base';
 import { getBooksSelectList } from 'pages/books/Book.repo';
 import { getSelectList } from 'pages/student/Student.repo';
@@ -80,13 +83,15 @@ export const countBooksOverdue = async (date = new Date()) => {
 };
 
 export const countBooksCheckedOutToday = async () => {
+  const statementObj = { $date: format(new Date(), formatDate.from) };
   const statement = countBooksCheckedOutTodayQuery;
-  return await single<CountObj>(statement);
+  return await single<CountObj>(statement, statementObj);
 };
 
 export const countBooksCheckedInToday = async () => {
+  const statementObj = { $date: format(new Date(), formatDate.from) };
   const statement = countBooksCheckedInTodayQuery;
-  return await single<CountObj>(statement);
+  return await single<CountObj>(statement, statementObj);
 };
 
 export const getStudentRecentlyCheckoutBook = async (

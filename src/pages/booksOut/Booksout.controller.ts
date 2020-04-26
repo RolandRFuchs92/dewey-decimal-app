@@ -138,7 +138,12 @@ router.get('/checkinscount', async (req, res) => {
 router.get('/overduecount', async (req, res) => {
   try {
     const date = queryDate(req);
-    const result = await countBooksOverdue(date as Date);
+    const overdueBooksResult = await countBooksOverdue(date as Date);
+    const result: Result<CountObj> = {
+      result: {
+        count: overdueBooksResult!.count || 0
+      }
+    };
     res.send(result);
   } catch (error) {
     errorHandler(
