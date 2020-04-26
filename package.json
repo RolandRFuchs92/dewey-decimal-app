@@ -63,7 +63,7 @@
     "eject": "react-app-rewired eject",
     "cypress:open": "cypress open",
     "exp:wpk": "webpack --config ./webpack.config.js",
-    "exp:run": "node --inspect dist/server.bundle.js"
+    "exp:run": "nodemon --inspect dist/server.bundle.js"
   },
   "eslintConfig": {
     "extends": [

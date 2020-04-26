@@ -11,13 +11,14 @@
       "port": 9229
     },
     {
-      "name": "Lanch express",
+      "name": "Launch server.js via nodemon",
       "type": "node",
       "request": "launch",
-      "runtimeExecutable": "node",
-      "sourceMaps": true,
-      "runtimeArgs": ["run-script", "exp:run"],
-      "skipFiles": ["<node_internals>/**"]
+      "runtimeExecutable": "nodemon",
+      "program": "${workspaceFolder}/dist/server.bundle.js",
+      "restart": true,
+      "console": "integratedTerminal",
+      "internalConsoleOptions": "neverOpen"
     },
     {
       "type": "node",
