@@ -42,3 +42,12 @@ export type RecentlyCheckoutModel = {
   grade: number;
   class_name: string;
 };
+
+export const book_out_keys = [
+  'books_out_id',
+  'book_id',
+  'student_id',
+  'return_on',
+  'check_out_date',
+  'check_in_date'
+];

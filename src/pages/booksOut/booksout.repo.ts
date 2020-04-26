@@ -27,14 +27,12 @@ import {
 } from './Booksout.type';
 import { CountObj } from 'types/generic.type';
 
-//TODO
 const repo = repoBase<GetAllModel>(`books_out`, 'books_out_id');
 repo.getAll = async () => {
   const result = await all<GetAllModel>(getAllQuery);
   return result;
 };
 
-// TODO
 export const checkout = async (student_id: string, book_id: string) => {
   const statementObject = {
     $student_id: student_id,
@@ -45,7 +43,6 @@ export const checkout = async (student_id: string, book_id: string) => {
   await run(checkoutBookQuery, statementObject);
 };
 
-//TODO
 export const checkin = async (
   books_out_id: string,
   check_in_date = new Date()
