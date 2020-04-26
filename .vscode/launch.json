@@ -2,6 +2,24 @@
   "version": "0.2.0",
   "configurations": [
     {
+      "name": "Launch via npm",
+      "type": "node",
+      "request": "launch",
+      "cwd": "${workspaceFolder}",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["run-script", "exp:run"],
+      "port": 9229
+    },
+    {
+      "name": "Lanch express",
+      "type": "node",
+      "request": "launch",
+      "runtimeExecutable": "node",
+      "sourceMaps": true,
+      "runtimeArgs": ["run-script", "exp:run"],
+      "skipFiles": ["<node_internals>/**"]
+    },
+    {
       "type": "node",
       "name": "vscode-jest-tests",
       "request": "launch",

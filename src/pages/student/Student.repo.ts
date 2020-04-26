@@ -69,7 +69,7 @@ export const getStudentSelectListSearch = async (value: string) => {
   const result = await all<StudentSelectListSearchModel>(
     getStudentSelectListSearchQuery,
     {
-      $searchTerm: `%${value}%`
+      $searchTerm: `%${value}%` /// danger here i think!
     }
   );
   return result;

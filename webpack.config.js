@@ -6,15 +6,14 @@ module.exports = {
   devtool: 'inline-source-map',
   mode: 'development',
   target: 'node',
+  watch: true,
   externals: {
     sqlite3: 'commonjs2 sqlite3'
   },
   module: {
-    // noParse: /sqlite3/,
     rules: [
       {
         test: /\.ts/,
-        // exclude: /node_modules/,
         use: {
           loader: 'ts-loader',
           options: {
@@ -30,9 +29,7 @@ module.exports = {
   },
   output: {
     filename: 'server.bundle.js',
-    path: path.resolve(__dirname, 'dist')
+    path: path.resolve(__dirname, 'dist'),
+    publicPath: '/'
   }
-  // node: {
-  //   fs: 'empty'
-  // }
 };
