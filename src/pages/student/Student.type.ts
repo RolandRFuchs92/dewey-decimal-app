@@ -1,5 +1,4 @@
 import { GetStudentBooksHistoryModel } from 'pages/books/Book.type';
-import { StringLiteral } from 'typescript';
 
 export type StudentSchema = {
   student_id: number;
@@ -61,3 +60,18 @@ export type StudentSelectListSearchModel = {
   class: string;
   teacher: string;
 };
+
+export const studentSchemaKeys = [
+  'student_id',
+  'first_name',
+  'last_name',
+  'birthdate',
+  'mother_name',
+  'mother_mobile',
+  'mother_email',
+  'father_name',
+  'father_email',
+  'father_mobile',
+  'class_id',
+  'is_active'
+];

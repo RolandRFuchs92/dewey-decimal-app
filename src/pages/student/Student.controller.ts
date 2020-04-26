@@ -1,5 +1,8 @@
 import express, { Response } from 'express';
+import { pick } from 'lodash';
 import log from 'utils/logger';
+import { parse } from 'date-fns';
+
 import stud, {
   getSelectList,
   getStudentProfileData,
@@ -7,31 +10,31 @@ import stud, {
   countStudentsWithBirthdayToday,
   getStudentSelectListSearch
 } from 'pages/student/Student.repo';
-import { parse } from 'date-fns';
-import { StudentSchema } from './Student.type';
+import { studentSchemaKeys, StudentModel } from './Student.type';
 
 const router = express.Router();
 
 router.post('/', async (req, res) => {
   try {
-    const body: StudentSchema = req.body;
-    const studentModel: StudentSchema = {
-      birthdate: body.birthdate,
-      class_id: body.class_id,
-      father_email: body.father_email,
-      father_mobile: body.father_mobile,
-      father_name: body.father_name,
-      first_name: body.first_name,
-      is_active: body.is_active,
-      last_name: body.last_name,
-      mother_email: body.mother_email,
-      mother_mobile: body.mother_mobile,
-      mother_name: body.mother_name,
-      student_id: body.student_id
-    };
-    const student = await stud.addOrUpdate(studentModel);
+    const body = req.body;
+    const studentModel = pick(body, studentSchemaKeys);
+
+    if (Object.keys(studentModel).length <= 1) res.send('nothing');
+
+    const result = await stud.addOrUpdate(studentModel);
     console.log('got here');
-    res.send(studentModel);
+    res.send(result);
+  } catch (error) {
+    res.send(error);
+  }
+});
+
+router.delete('/', async (req, res) => {
+  try {
+    debugger;
+    const body = { student_id: req.body.student_id };
+    const result = await stud.deleteRow((body as unknown) as StudentModel);
+    res.send(result);
   } catch (error) {
     res.send(error);
   }
