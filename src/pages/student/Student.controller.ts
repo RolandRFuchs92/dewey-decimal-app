@@ -2,7 +2,7 @@ import express, { Response } from 'express';
 import { pick } from 'lodash';
 import { parse } from 'date-fns';
 
-import { genericErrorHandle } from 'utils/httpHelpers/controller';
+import { genericErrorHandle as baseErrorHandle } from 'utils/httpHelpers/controller';
 import stud, {
   getSelectList,
   getStudentProfileData,
@@ -13,6 +13,7 @@ import stud, {
 import { studentSchemaKeys, StudentModel } from './Student.type';
 
 const router = express.Router();
+const genericErrorHandle = baseErrorHandle('student');
 
 router.post('/', async (req, res) => {
   try {
