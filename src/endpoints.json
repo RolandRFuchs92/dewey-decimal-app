@@ -1,43 +1,43 @@
 {
   "booksout": {
     "getall": {
-      "uri": "/booksout",
+      "uri": "booksout",
       "verb": "GET"
     },
     "delete": {
-      "uri": "/booksout",
+      "uri": "booksout",
       "verb": "DELETE"
     },
     "checkout": {
-      "uri": "/booksout",
+      "uri": "booksout",
       "verb": "POST"
     },
     "checkin": {
-      "uri": "/booksout",
+      "uri": "booksout",
       "verb": "PUT"
     },
     "addOrUpdate": {
-      "uri": "/booksout/addupdate",
+      "uri": "booksout/addupdate",
       "verb": "POST"
     },
     "checkoutscount": {
-      "uri": "/booksout/checkoutscount",
+      "uri": "booksout/checkoutscount",
       "verb": "GET"
     },
     "checkinscount": {
-      "uri": "/booksout/checkinscount",
+      "uri": "booksout/checkinscount",
       "verb": "GET"
     },
     "overduecount": {
-      "uri": "/booksout/overduecount",
+      "uri": "booksout/overduecount",
       "verb": "GET"
     },
     "overdue": {
-      "uri": "/booksout/overdue",
+      "uri": "booksout/overdue",
       "verb": "GET"
     },
     "scanns": {
-      "uri": "/booksout/scanns",
+      "uri": "booksout/scanns",
       "verb": "GET"
     }
   },
