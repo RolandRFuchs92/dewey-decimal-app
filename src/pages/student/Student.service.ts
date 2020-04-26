@@ -6,9 +6,22 @@ import {
   StudentSearchGET,
   StudentProfileGET
 } from './Student.type';
-import { Result, DropdownListModel } from 'types/generic.type';
+import { Result, DropdownListModel, CountObj } from 'types/generic.type';
 
 export default () => {};
+
+export async function getBirthdaysTodayCount(): Promise<Result<CountObj>> {
+  try {
+    const result = await get<{}, CountObj>(student.birthdayscount.uri);
+    return result;
+  } catch (error) {
+    return {
+      result: {
+        count: 0
+      }
+    };
+  }
+}
 
 export async function getBirthdaysToday(): Promise<BirthdaysType[]> {
   try {

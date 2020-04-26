@@ -2,6 +2,7 @@ import express, { Response } from 'express';
 import { pick } from 'lodash';
 import { parse } from 'date-fns';
 
+import { formatDate } from 'appSettings.json';
 import { genericErrorHandle as baseErrorHandle } from 'utils/httpHelpers/controller';
 import stud, {
   getSelectList,
@@ -16,7 +17,7 @@ import {
   StudentCardProps
 } from './Student.type';
 import { RestoreFromTrashOutlined } from '@material-ui/icons';
-import { DropdownListModel, Result } from 'types/generic.type';
+import { DropdownListModel, Result, CountObj } from 'types/generic.type';
 import { faHandHolding } from '@fortawesome/free-solid-svg-icons';
 
 const router = express.Router();
@@ -96,7 +97,7 @@ router.get('/profile', async (req, res) => {
   }
 });
 
-router.get('/birthdays', (req, res) => {
+router.get('/birthdays', async (req, res) => {
   const date = req.query.date && req.query.date.toString();
   getStudentsWithBirthdays(date).then(result => res.send(result));
 });
@@ -105,17 +106,23 @@ router.get('/birthdayscount', async (req, res) => {
   try {
     const date =
       req.query.date &&
-      parse(req.query.date.toString(), 'yyyy-MM-dd', new Date());
-    const result = await countStudentsWithBirthdayToday(date as Date);
-    console.log(result);
+      parse(req.query.date.toString(), formatDate.to, new Date());
+    const birthdaysCountResult = await countStudentsWithBirthdayToday(
+      date as Date
+    );
+    const result: Result<CountObj> = {
+      result: {
+        count: birthdaysCountResult!.count
+      }
+    };
     res.send(result);
   } catch (error) {
-    genericErrorHandle(
-      'birthdayscount',
-      error,
-      res,
-      'Error getting birthday count.'
-    );
+    const result: Result<CountObj> = {
+      result: {
+        count: 0
+      }
+    };
+    res.send(result);
   }
 });
 
