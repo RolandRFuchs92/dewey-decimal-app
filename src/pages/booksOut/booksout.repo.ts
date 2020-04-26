@@ -7,7 +7,10 @@ import {
   formatDateForDbInsert
 } from 'utils/businessRules';
 
-import { getAllQuery } from './Booksout.sql';
+import {
+  getAllQuery,
+  getStudentRecentlyCheckoutBookQuery
+} from './Booksout.sql';
 import {
   checkoutBookQuery,
   checkinBookQuery,
@@ -16,15 +19,22 @@ import {
   countBooksCheckedOutTodayQuery,
   countBooksCheckedInTodayQuery
 } from './Booksout.sql';
-import { GetAllModel, BooksOverdueModel, ScansModel } from './Booksout.type';
+import {
+  GetAllModel,
+  BooksOverdueModel,
+  ScansModel,
+  RecentlyCheckoutModel
+} from './Booksout.type';
 import { CountObj } from 'types/generic.type';
 
+//TODO
 const repo = repoBase<GetAllModel>(`books_out`, 'books_out_id');
 repo.getAll = async () => {
   const result = await all<GetAllModel>(getAllQuery);
   return result;
 };
 
+// TODO
 export const checkout = async (student_id: string, book_id: string) => {
   const statementObject = {
     $student_id: student_id,
@@ -35,6 +45,7 @@ export const checkout = async (student_id: string, book_id: string) => {
   await run(checkoutBookQuery, statementObject);
 };
 
+//TODO
 export const checkin = async (
   books_out_id: string,
   check_in_date = new Date()
@@ -79,6 +90,19 @@ export const countBooksCheckedOutToday = async () => {
 export const countBooksCheckedInToday = async () => {
   const statement = countBooksCheckedInTodayQuery;
   return await single<CountObj>(statement);
+};
+
+export const getStudentRecentlyCheckoutBook = async (
+  student_id: number,
+  book_id: number
+) => {
+  const statement = getStudentRecentlyCheckoutBookQuery;
+  const statementModel = {
+    $student_id: student_id,
+    $book_id: book_id
+  };
+  const result = await single<RecentlyCheckoutModel>(statement, statementModel);
+  return result;
 };
 
 export default repo;

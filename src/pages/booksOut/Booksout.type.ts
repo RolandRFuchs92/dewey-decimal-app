@@ -35,3 +35,10 @@ export type BooksModel = {
   publisher: string;
   created_on: Date;
 };
+
+export type RecentlyCheckoutModel = {
+  return_on: Date;
+  student_name: string;
+  grade: number;
+  class_name: string;
+};

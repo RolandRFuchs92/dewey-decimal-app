@@ -1,4 +1,7 @@
-import { Response } from 'express';
+import { Response, Request } from 'express';
+import { parse } from 'date-fns';
+
+import { formatDate } from 'appSettings.json';
 import log from 'utils/logger';
 
 export default () => {};
@@ -14,4 +17,11 @@ export function genericErrorHandle(baseRoute: string) {
     res.statusCode = 500;
     res.send(errorMessage);
   };
+}
+
+export function queryDate(req: Request) {
+  const date =
+    req.query.date &&
+    parse(req.query.date.toString(), formatDate.from, new Date());
+  return date;
 }
