@@ -9,7 +9,8 @@ import appSettings from 'appSettings.json';
 import {
   StudentModel,
   GetStudentsWithBirthdaysModel,
-  StudentSelectListSearchModel
+  StudentSelectListSearchModel,
+  StudentCardProps
 } from './Student.type';
 import {
   getAllQuery,
@@ -40,13 +41,13 @@ export async function getStudentProfileData(student_id: string) {
     `;
   const studentDataStatementObject = { $student_id: student_id };
 
-  const studentData = await all<StudentModel>(
+  const studentData = await single<StudentModel>(
     studentProfileDataQuery,
     studentDataStatementObject
   );
   const historyData = await getStudentBooksHistory(student_id);
-
-  return { studentData, historyData };
+  const result: StudentCardProps = { studentData: studentData!, historyData };
+  return result;
 }
 
 export async function getStudentsWithBirthdays(date: string) {

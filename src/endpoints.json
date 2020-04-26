@@ -42,5 +42,38 @@
     }
   },
   "books": {},
-  "student": {}
+  "student": {
+    "getAll": {
+      "uri": "student",
+      "verb": "GET"
+    },
+    "addOrUpdate": {
+      "uri": "student",
+      "verb": "POST"
+    },
+    "delete": {
+      "uri": "student",
+      "verb": "DELETE"
+    },
+    "dropdown": {
+      "uri": "student/dropdown",
+      "verb": "GET"
+    },
+    "profile": {
+      "uri": "student/profile",
+      "verb": "GET"
+    },
+    "birthdays": {
+      "uri": "student/birthdays",
+      "verb": "GET"
+    },
+    "birthdayscount": {
+      "uri": "student/birthdayscount",
+      "verb": "GET"
+    },
+    "search": {
+      "uri": "student/search",
+      "verb": "GET"
+    }
+  }
 }

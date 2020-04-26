@@ -54,6 +54,14 @@ export type StudentProfileProps = {
   studentId?: number;
 };
 
+export type StudentSearchGET = {
+  namepart: string;
+};
+
+export type StudentProfileGET = {
+  student_id: number;
+};
+
 export type StudentSelectListSearchModel = {
   text: string;
   value: string;

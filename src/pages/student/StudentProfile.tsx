@@ -4,7 +4,7 @@ import { compareAsc, parse } from 'date-fns';
 
 import Modal from 'components/modal';
 import Icons from 'components/icons';
-import { getStudentProfileData } from './Student.repo';
+import { getStudentProfile } from './Student.service';
 import {
   StudentCardProps,
   StudentBookHistoryProps,
@@ -12,6 +12,7 @@ import {
   StudentModel
 } from './Student.type';
 import { GetStudentBooksHistoryModel } from 'pages/books/Book.type';
+import { useAlert } from 'utils/snackbarAlerts';
 
 const cardWidth = 680;
 
@@ -92,6 +93,7 @@ const useStyles = makeStyles(theme => ({
 }));
 
 export default ({ open, handleClose, studentId = 1 }: StudentProfileProps) => {
+  const alert = useAlert();
   const [isFront, setIsFront] = useState(true);
   const [historyData, setHistoryData] = useState<GetStudentBooksHistoryModel[]>(
     []
@@ -102,9 +104,10 @@ export default ({ open, handleClose, studentId = 1 }: StudentProfileProps) => {
 
   useEffect(() => {
     (async () => {
-      const result = await getStudentProfileData(studentId.toString());
-      setStudentData(result.studentData[0]);
-      setHistoryData(result.historyData);
+      const { result, message } = await getStudentProfile(studentId);
+      if (message) alert.error(message);
+      setStudentData(result.studentData);
+      setHistoryData(result.historyData || []);
     })();
   }, [studentId]);
 

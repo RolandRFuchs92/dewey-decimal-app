@@ -10,7 +10,14 @@ import stud, {
   countStudentsWithBirthdayToday,
   getStudentSelectListSearch
 } from 'pages/student/Student.repo';
-import { studentSchemaKeys, StudentModel } from './Student.type';
+import {
+  studentSchemaKeys,
+  StudentModel,
+  StudentCardProps
+} from './Student.type';
+import { RestoreFromTrashOutlined } from '@material-ui/icons';
+import { DropdownListModel, Result } from 'types/generic.type';
+import { faHandHolding } from '@fortawesome/free-solid-svg-icons';
 
 const router = express.Router();
 const genericErrorHandle = baseErrorHandle('student');
@@ -42,7 +49,6 @@ router.delete('/', async (req, res) => {
 });
 
 router.get('/', async (req, res) => {
-  debugger;
   try {
     const result = await stud.getAll();
     res.send(result);
@@ -51,19 +57,43 @@ router.get('/', async (req, res) => {
   }
 });
 
-router.get('/studentdropdown', (req, res) => {
-  getSelectList().then(studentList => res.send(studentList));
+router.get('/dropdown', async (req, res) => {
+  try {
+    const studentResult = await getSelectList();
+    const result: Result<DropdownListModel[]> = {
+      result: studentResult
+    };
+    res.send(result);
+  } catch (error) {
+    genericErrorHandle(
+      'dropdown',
+      error,
+      res,
+      'There was an error getting the student dropdown list'
+    );
+  }
 });
 
-router.get('/profiledata', (req, res) => {
+router.get('/profile', async (req, res) => {
   const studentId = req.query.student_id;
   if (!studentId) {
     res.status(400);
     return res.send({ message: 'No student id was provided.' });
   }
-  return getStudentProfileData(studentId.toString()).then(result =>
-    res.send(result)
-  );
+  try {
+    const profileResult = await getStudentProfileData(studentId.toString());
+    const result: Result<StudentCardProps> = {
+      result: profileResult
+    };
+    return res.send(result);
+  } catch (error) {
+    return genericErrorHandle(
+      'profile',
+      error,
+      res,
+      'There was an error getting the student model'
+    );
+  }
 });
 
 router.get('/birthdays', (req, res) => {
@@ -89,7 +119,7 @@ router.get('/birthdayscount', async (req, res) => {
   }
 });
 
-router.get('/studentSearch', async (req, res) => {
+router.get('/search', async (req, res) => {
   const namePart = req.query.namepart;
   try {
     const result = await getStudentSelectListSearch(namePart.toString());
