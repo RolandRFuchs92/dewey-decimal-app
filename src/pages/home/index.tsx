@@ -105,9 +105,9 @@ export const Home = () => {
         <Overdue />
       </HomePageTile>
 
-      {/* <HomePageTile title="Birthdays Today" indicator={<BirthdayIndicator />}>
-        <BirthdaysToday/>
-      </HomePageTile> */}
+      <HomePageTile title="Birthdays Today" indicator={<BirthdayIndicator />}>
+        <BirthdaysToday />
+      </HomePageTile>
     </Grid>
   );
 };

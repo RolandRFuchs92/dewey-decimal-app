@@ -22,7 +22,6 @@ async function loadErrors(dispatch: Dispatch) {
 }
 
 export async function loadInitialAppState(dispatch: Dispatch) {
-  debugger;
   const booksOverdue = countOverdueBooks();
   const checkinsToday = countCheckins();
   const checkoutsToday = countCheckouts();

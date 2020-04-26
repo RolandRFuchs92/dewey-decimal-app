@@ -25,7 +25,7 @@ export async function getBirthdaysTodayCount(): Promise<Result<CountObj>> {
 
 export async function getBirthdaysToday(): Promise<BirthdaysType[]> {
   try {
-    const { result } = await get<{}, BirthdaysType[]>('url');
+    const { result } = await get<{}, BirthdaysType[]>(student.birthdays.uri);
     return result;
   } catch (error) {
     return [];

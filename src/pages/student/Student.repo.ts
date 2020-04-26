@@ -50,8 +50,8 @@ export async function getStudentProfileData(student_id: string) {
   return result;
 }
 
-export async function getStudentsWithBirthdays(date: string) {
-  const statementObject = { $date: date };
+export async function getStudentsWithBirthdays(date = new Date()) {
+  const statementObject = { $date: format(date, appSettings.formatDate.from) };
   return await all<GetStudentsWithBirthdaysModel>(
     getStudentsWithBirthdaysQuery,
     statementObject

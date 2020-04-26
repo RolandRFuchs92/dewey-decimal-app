@@ -2,8 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { makeStyles, Typography, Paper } from '@material-ui/core';
 import { chain } from 'lodash';
 
-import { getBirthdays } from './Home.repo';
+import { getBirthdaysToday } from 'pages/student/Student.service';
 import { BirthdaysType } from './Home.type';
+import { GetStudentsWithBirthdaysModel } from 'pages/student/Student.type';
 const useStyles = makeStyles(theme => {
   return {
     container: {
@@ -34,13 +35,15 @@ export default () => {
 
   useEffect(() => {
     (async () => {
-      const birthdaysResult = await getBirthdays();
+      const birthdaysResult = await getBirthdaysToday();
       const birthdays = chain(birthdaysResult)
         .groupBy('teacher')
-        .map((value, key) => ({
-          teacher: key,
-          student: value
-        }))
+        .map((value, key) => {
+          return {
+            teacher: key,
+            student: (value as unknown) as GetStudentsWithBirthdaysModel[]
+          };
+        })
         .value();
 
       setState(birthdays);

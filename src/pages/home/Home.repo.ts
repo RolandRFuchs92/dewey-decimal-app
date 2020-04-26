@@ -15,7 +15,7 @@ import { CheckoutData, ScanDataModel } from 'pages/scan/Scan.type';
 
 const { fines, formatDate, checkout } = appSettings;
 export const getBirthdays = async () => {
-  return await getStudentsWithBirthdays(format(new Date(), 'yyyy-MM-dd'));
+  return await getStudentsWithBirthdays(new Date());
 };
 
 export const getBookByCallNumber = async (callnumber: string) => {

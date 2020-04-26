@@ -14,7 +14,8 @@ import stud, {
 import {
   studentSchemaKeys,
   StudentModel,
-  StudentCardProps
+  StudentCardProps,
+  GetStudentsWithBirthdaysModel
 } from './Student.type';
 import { RestoreFromTrashOutlined } from '@material-ui/icons';
 import { DropdownListModel, Result, CountObj } from 'types/generic.type';
@@ -98,8 +99,21 @@ router.get('/profile', async (req, res) => {
 });
 
 router.get('/birthdays', async (req, res) => {
-  const date = req.query.date && req.query.date.toString();
-  getStudentsWithBirthdays(date).then(result => res.send(result));
+  try {
+    const date =
+      req.query.date &&
+      parse(req.query.date.toString(), formatDate.to, new Date());
+    const birthdaysResult = await getStudentsWithBirthdays(date as Date);
+    const result: Result<GetStudentsWithBirthdaysModel[]> = {
+      result: birthdaysResult
+    };
+    res.send(result);
+  } catch (error) {
+    const result: Result<any> = {
+      result: []
+    };
+    res.send(result);
+  }
 });
 
 router.get('/birthdayscount', async (req, res) => {
