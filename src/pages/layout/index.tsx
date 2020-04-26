@@ -25,13 +25,13 @@ import Home from 'pages/home';
 // import BooksOut from 'pages/booksOut';
 // import Admin from 'pages/admin';
 
+import { drawerWidth } from 'layout.json';
 import { ScannerToggleAction } from 'pages/scan/Scanner.action';
 import Icons from 'components/icons';
 import { RootReducerModel } from 'utils/redux/rootReducer.type';
 import { toggleThemeAction } from 'components/theme/Theme.action';
 
 import Drawer from './drawer';
-import { drawerWidth } from './Layout.config.json';
 import { PermanentDrawerLeftModel } from './Layout.type';
 
 const useStyles = makeStyles(theme => {

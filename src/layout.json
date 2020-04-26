@@ -1,0 +1,62 @@
+{
+  "drawerWidth": 240,
+  "mainMenu": [
+    {
+      "label": "Home",
+      "icon": "Home",
+      "path": "/home"
+    },
+    {
+      "label": "School",
+      "icon": "school",
+      "menuItems": [
+        {
+          "label": "Student",
+          "icon": "student",
+          "path": "/students"
+        },
+        {
+          "label": "Class",
+          "icon": "class",
+          "path": "/school/class"
+        },
+        {
+          "label": "Teachers",
+          "icon": "teacher",
+          "path": "/school/teacher"
+        }
+      ]
+    },
+    {
+      "label": "Library",
+      "icon": "menu",
+      "menuItems": [
+        {
+          "label": "Books Out",
+          "icon": "bookOut",
+          "path": "/library/booksout"
+        },
+        {
+          "label": "Authors",
+          "icon": "author",
+          "path": "/library/author"
+        },
+        {
+          "label": "Book",
+          "icon": "books",
+          "path": "/library/books"
+        },
+        {
+          "label": "Dewey System",
+          "icon": "deweySystem",
+          "path": "/library/dewey"
+        }
+      ]
+    },
+    {
+      "label": "Admin",
+      "icon": "admin",
+      "path": "/admin"
+    }
+  ]
+}

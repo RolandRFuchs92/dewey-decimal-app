@@ -8,12 +8,12 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 import { createStore, applyMiddleware } from 'redux';
 import ReduxThunk from 'redux-thunk';
 
+import MainLayout from 'pages/layout';
 import ThemeProvider from 'components/theme';
 import { SnackbarProvider } from 'notistack';
 import reduxReducers from 'utils/redux/rootReducer';
 import { ErrorIndicator } from 'components/icons/Indicator';
 import Scan from 'pages/scan/Scan';
-import MainLayout from 'components/layout';
 
 const store = createStore(
   reduxReducers,

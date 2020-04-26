@@ -3,9 +3,9 @@ import { useDispatch } from 'react-redux';
 import { makeStyles, Drawer, Divider } from '@material-ui/core';
 
 import Indicators from 'components/icons/Indicator';
+import config from 'layout.json';
 
 import MainMenuOptions from '../mainMenuOptions';
-import config from '../Layout.config.json';
 import { loadInitialAppState } from '../Layout.service';
 
 const { drawerWidth, mainMenu } = config;
