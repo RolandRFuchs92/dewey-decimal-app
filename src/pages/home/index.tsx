@@ -1,5 +1,6 @@
 import React from 'react';
 import { Button, makeStyles, Grid, Paper, Typography } from '@material-ui/core';
+import { connect, useDispatch } from 'react-redux';
 
 import {
   CheckinIndicator,
@@ -7,15 +8,14 @@ import {
   OverdueIndicator,
   BirthdayIndicator
 } from 'components/icons/Indicator';
-import { HomePageTileProps, HomeProps } from './Home.type';
-import { connect, useDispatch } from 'react-redux';
 import { ScansModel } from 'pages/scan/Scan.type';
 import ScansToday from 'pages/scan/ScansTemplate';
-
-import BirthdaysToday from './BirthdaysToday';
 import Icons from 'components/icons';
-import Overdue from './Overdue';
 import { ScannerToggleAction } from 'pages/scan/Scanner.action';
+
+import { HomePageTileProps, HomeProps } from './Home.type';
+import BirthdaysToday from './BirthdaysToday';
+import Overdue from './Overdue';
 
 const useStyles = makeStyles(theme => {
   return {
