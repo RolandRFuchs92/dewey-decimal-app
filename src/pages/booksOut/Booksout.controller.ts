@@ -14,6 +14,7 @@ import booksoutRepo, {
   checkin
 } from './Booksout.repo';
 import { GetAllModel, book_out_keys } from './Booksout.type';
+import { Result, CountObj } from 'types/generic.type';
 
 const router = express.Router();
 const errorHandler = genericErrorHandle('booksout');
@@ -93,7 +94,12 @@ router.post('/addupdate', async (req, res) => {
 
 router.get('/checkoutscount', async (req, res) => {
   try {
-    const result = await countBooksCheckedOutToday();
+    const booksCount = await countBooksCheckedOutToday();
+    const result: Result<CountObj> = {
+      result: {
+        count: booksCount!.count || 0
+      }
+    };
     res.send(result);
   } catch (error) {
     errorHandler(
@@ -107,7 +113,12 @@ router.get('/checkoutscount', async (req, res) => {
 
 router.get('/checkinscount', async (req, res) => {
   try {
-    const result = await countBooksCheckedInToday();
+    const checkinCount = await countBooksCheckedInToday();
+    const result: Result<CountObj> = {
+      result: {
+        count: checkinCount!.count || 0
+      }
+    };
     res.send(result);
   } catch (error) {
     errorHandler(
