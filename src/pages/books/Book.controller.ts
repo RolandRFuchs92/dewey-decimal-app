@@ -1,4 +1,8 @@
 import express from 'express';
+import log from 'utils/logger';
+import { getBookByCallNumber } from './Book.repo';
+import { Result } from 'types/generic.type';
+import { GetBookCallNumberModel } from './Book.type';
 
 const router = express.Router();
 
@@ -16,6 +20,31 @@ router.put('/', async (req, res) => {
 
 router.delete('/', async (req, res) => {
   res.send('DELETE root');
+});
+
+router.post('/bycallnumber', async (req, res) => {
+  try {
+    const callnumber = req.body.callnumber;
+    if (!callnumber) {
+      const result: Result<any> = {
+        result: null,
+        message: 'No callnumber was provided.'
+      };
+      return res.send(result);
+    }
+    const callnumberResult = await getBookByCallNumber(callnumber);
+    const result: Result<GetBookCallNumberModel[]> = {
+      result: callnumberResult
+    };
+    return res.send(result);
+  } catch (error) {
+    log.error(error);
+    const result: Result<GetBookCallNumberModel[]> = {
+      result: [],
+      message: 'There was an error loading your book'
+    };
+    return res.send(result);
+  }
 });
 
 export default router;

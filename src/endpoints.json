@@ -41,7 +41,16 @@
       "verb": "GET"
     }
   },
-  "books": {},
+  "books": {
+    "getall": {
+      "uri": "book",
+      "verb": "GET"
+    },
+    "getBookByCallNumber": {
+      "uri": "book/bycallnumber",
+      "verb": "POST"
+    }
+  },
   "student": {
     "getAll": {
       "uri": "student",
