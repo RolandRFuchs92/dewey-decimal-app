@@ -2,7 +2,7 @@ import React, { useState, useEffect, useCallback } from 'react';
 import MUIDataTable, { MUIDataTableColumnDef } from 'mui-datatables';
 import { Fade } from '@material-ui/core';
 
-import log from 'utils/logger';
+// import log from 'utils/logger';
 import EditDeleteCol, { addButton } from 'utils/tableButtons';
 import Modal from './ModalBase';
 import { useDialog } from 'utils/dialog';
@@ -42,7 +42,7 @@ export default <T,>({
         alert.success(`Successfully deleted ${rowData[dialogKey]}`);
       } catch (error) {
         alert.error(`There was an error deleting ${rowData[dialogKey]}!`);
-        log.error(error);
+        // log.error(error);
       }
     },
     [alert, dialogKey, handleDeleteRow, reset]

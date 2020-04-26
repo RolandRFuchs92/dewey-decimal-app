@@ -1,6 +1,6 @@
 import { snakeCase, compact, lowerCase } from 'lodash';
 import { all, run } from 'db/repo';
-import log from 'utils/logger';
+// import log from 'utils/logger';
 
 export function jsonToStatementObject(obj: object) {
   return Object.fromEntries(
@@ -58,9 +58,9 @@ export async function addOrUpdate(
   delete object['Edit'];
   delete object['Delete'];
 
-  log.info(
-    `Running addOrUpdate on ${tableName} with params ${JSON.stringify(object)}`
-  );
+  // log.info(
+  //   `Running addOrUpdate on ${tableName} with params ${JSON.stringify(object)}`
+  // );
   if (!object[pkField]) {
     object[pkField] === '' && delete object[pkField];
     await addToDb(object, tableName);
@@ -74,7 +74,7 @@ export async function addToDb(object: object, tableName: string) {
   const statement = objectToInsertStatement(object, tableName);
   const statementObject = jsonToStatementObject(object);
 
-  log.info('Running generic addToDb statement.');
+  // log.info('Running generic addToDb statement.');
   return await run(statement, statementObject);
 }
 
@@ -86,7 +86,7 @@ export async function updateDb(
   const statement = objectToUpdateStatement(object, tableName, pkField);
   const statementObject = jsonToStatementObject(object);
 
-  log.info('Running generic updateDb statement.');
+  // log.info('Running generic updateDb statement.');
   return await run(statement, statementObject);
 }
 
@@ -101,7 +101,7 @@ export async function getAll<T>(
 			${tableName}
 		${where}
 	`;
-  log.info(`Running generic select statement.`);
+  // log.info(`Running generic select statement.`);
   return await all(statement);
 }
 
@@ -116,7 +116,7 @@ export function deleteRow(tableName: string, pkField: string) {
 
   return async (id: string) => {
     const statement = `${buildStatement}${id}`;
-    log.info(`Running generic DELETE statement.`);
+    // log.info(`Running generic DELETE statement.`);
     return await run(statement);
   };
 }

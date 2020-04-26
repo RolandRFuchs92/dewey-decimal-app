@@ -33,9 +33,9 @@ function App() {
                   horizontal: 'center'
                 }}
               >
-                <MainLayout />
+                {/* <MainLayout />
                 <Scan />
-                <ErrorIndicator />
+                <ErrorIndicator /> */}
               </SnackbarProvider>
             </ConfirmProvider>
           </MuiPickersUtilsProvider>
