@@ -36,12 +36,25 @@ const useStyles = makeStyles(theme => {
         right: -200,
         opacity: 0
       },
+      '& svg': {
+        fontSize: '2rem'
+      },
       '&.Mui-selected': {
         '&:after': {
           background: `linear-gradient(to right, white 15px, ${theme.palette.primary.light} 50%, ${theme.palette.primary.main} 85%, ${theme.palette.primary.dark})`,
           right: 0,
           opacity: 1
         }
+      },
+      [theme.breakpoints.down('sm')]: {
+        display: 'flex',
+        flexDirection: 'column'
+      }
+    },
+    menuIcon: {
+      [theme.breakpoints.down('sm')]: {
+        display: 'flex',
+        justifyContent: 'center'
       }
     }
   };
@@ -168,7 +181,7 @@ function CreateListItem({
         onClick={() => handleMenuItemClick(isNil(path) ? '' : path)}
         className={`${classes.menuItem} menuItem`}
       >
-        <ListItemIcon>{Icon}</ListItemIcon>
+        <ListItemIcon className={classes.menuIcon}>{Icon}</ListItemIcon>
         <ListItemText primary={label} />
         {hasMenuItems ? (isOpen ? ExpandLess : ExpandMore) : null}
       </ListItem>

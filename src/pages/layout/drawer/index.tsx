@@ -8,20 +8,20 @@ import config from 'layout.json';
 import MainMenuOptions from '../mainMenuOptions';
 import { loadInitialAppState } from '../Layout.service';
 
-const { drawerWidth, mainMenu } = config;
+const { drawerWidth, mainMenu, smDrawerWidth } = config;
 
 const useStyles = makeStyles(theme => ({
   drawer: {
     width: drawerWidth,
     flexShrink: 0,
     [theme.breakpoints.down('sm')]: {
-      width: 50
+      width: smDrawerWidth
     }
   },
   drawerPaper: {
     width: drawerWidth,
     [theme.breakpoints.down('sm')]: {
-      width: 50
+      width: smDrawerWidth
     }
   },
   toolbar: {

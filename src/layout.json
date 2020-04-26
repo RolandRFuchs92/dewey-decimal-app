@@ -1,5 +1,6 @@
 {
   "drawerWidth": 240,
+  "smDrawerWidth": 100,
   "mainMenu": [
     {
       "label": "Home",

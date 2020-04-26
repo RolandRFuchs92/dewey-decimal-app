@@ -25,7 +25,7 @@ import Home from 'pages/home';
 // import BooksOut from 'pages/booksOut';
 // import Admin from 'pages/admin';
 
-import { drawerWidth } from 'layout.json';
+import { drawerWidth, smDrawerWidth } from 'layout.json';
 import { ScannerToggleAction } from 'pages/scan/Scanner.action';
 import Icons from 'components/icons';
 import { RootReducerModel } from 'utils/redux/rootReducer.type';
@@ -50,8 +50,8 @@ const useStyles = makeStyles(theme => {
       marginLeft: drawerWidth,
       [theme.breakpoints.down('sm')]: {
         left: 0,
-        marginLeft: 50,
-        width: `calc(100% - ${50}px)`
+        marginLeft: smDrawerWidth,
+        width: `calc(100% - ${smDrawerWidth}px)`
       }
     },
     toolbar: theme.mixins.toolbar,
