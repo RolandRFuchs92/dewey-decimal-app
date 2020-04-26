@@ -12,15 +12,16 @@ import { connect, useDispatch } from 'react-redux';
 import { Autocomplete } from '@material-ui/lab';
 import { isNil } from 'lodash';
 
-import { checkout, checkin } from 'pages/booksOut/Booksout.repo';
+// import { checkout, checkin } from 'pages/booksOut/Booksout.repo';
 import { useAlert } from 'utils/snackbarAlerts';
 import Modal from 'components/modal';
 import Icons from 'components/icons';
 import Scanner from 'components/scanner';
 import { JsonObj, GenericInputEvent } from 'types/generic.type';
 import { BarcodeResultModel } from 'pages/home/Home.type';
-import { getBookByCallNumber } from 'pages/books/Book.repo';
-import { searchForStudentsSelect } from 'pages/home/Home.repo';
+import {} from 'pages/books/Book.service';
+// import { getBookByCallNumber } from 'pages/books/Book.repo';
+// import { searchForStudentsSelect } from 'pages/home/Home.repo';
 import { RootReducerModel } from 'utils/redux/rootReducer.type';
 
 import {

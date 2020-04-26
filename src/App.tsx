@@ -34,7 +34,7 @@ function App() {
                 }}
               >
                 <MainLayout />
-                {/* <Scan /> */}
+                <Scan />
                 <ErrorIndicator />
               </SnackbarProvider>
             </ConfirmProvider>

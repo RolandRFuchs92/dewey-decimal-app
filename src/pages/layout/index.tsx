@@ -16,14 +16,14 @@ import {
 import { connect, useDispatch } from 'react-redux';
 
 import Home from 'pages/home';
-// import Teacher from 'pages/teacher/Teacher';
-// import Student from 'pages/student/Student';
-// import Class from 'pages/class/Class';
-// import DeweySystem from 'pages/deweySystem';
-// import Authors from 'pages/authors';
-// import Books from 'pages/books';
-// import BooksOut from 'pages/booksOut';
-// import Admin from 'pages/admin';
+import Teacher from 'pages/teacher/Teacher';
+import Student from 'pages/student/Student';
+import Class from 'pages/class/Class';
+import DeweySystem from 'pages/deweySystem';
+import Authors from 'pages/authors';
+import Books from 'pages/books';
+import BooksOut from 'pages/booksOut';
+import Admin from 'pages/admin';
 
 import { drawerWidth, smDrawerWidth } from 'layout.json';
 import { ScannerToggleAction } from 'pages/scan/Scanner.action';
@@ -127,8 +127,8 @@ export function PermanentDrawerLeft({ pageTitle }: PermanentDrawerLeftModel) {
             </Route>
             {/* <Route exact path="/students">
               <Student />
-            </Route>
-            <Route exact path="/school/class">
+            </Route> */}
+            {/* <Route exact path="/school/class">
               <Class></Class>
             </Route>
             <Route exact path="/school/teacher">
