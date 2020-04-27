@@ -65,6 +65,11 @@ const useStyles = makeStyles(theme => ({
     '&.active': {
       color: theme.palette.error.light
     }
+  },
+  close: {
+    fontSize: '2rem',
+    color: theme.palette.grey[500],
+    marginRight: theme.spacing(1)
   }
 }));
 
@@ -155,10 +160,15 @@ const ScannerPage = ({ open }: ScanProps) => {
     <Modal open={open} handleClose={_handleClose}>
       <Grid container>
         <Grid container item direction="column" md={isScannerOpen ? 6 : 12}>
-          <Grid item>
-            <Typography variant="h5" className={classes.title}>
-              Scan a barcode
-            </Typography>
+          <Grid item container justify="space-between">
+            <Grid item>
+              <Typography variant="h5" className={classes.title}>
+                Scan a barcode
+              </Typography>
+            </Grid>
+            <Grid item className={classes.close} onClick={_handleClose}>
+              {Icons.Close}
+            </Grid>
           </Grid>
           <Grid item container direction="row">
             <TextField

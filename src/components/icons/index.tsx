@@ -33,13 +33,15 @@ import {
   faUserClock,
   faMobileAlt,
   faRecordVinyl,
-  faExclamationTriangle
+  faExclamationTriangle,
+  faTimes
 } from '@fortawesome/free-solid-svg-icons';
 
 function CreateIcon(icon: IconDefinition) {
   return <FontAwesomeIcon icon={icon}></FontAwesomeIcon>;
 }
 
+const Close = CreateIcon(faTimes);
 const Home = CreateIcon(faHome);
 const Warning = CreateIcon(faExclamationTriangle);
 const LaptopCamera = CreateIcon(faRecordVinyl);
@@ -72,6 +74,7 @@ const defaultExport: { [key: string]: JSX.Element } = {
   Class: studentClass,
   Print: <Print />,
 
+  Close,
   Home,
   ExpandLess: <ExpandLess />,
   ExpandMore: <ExpandMore />,

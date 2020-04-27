@@ -10,7 +10,13 @@ const useStyles = makeStyles(theme => ({
     top: '50%',
     left: '50%',
     transform: 'translate(-50%, -50%)',
-    padding: 15
+    padding: 15,
+    [theme.breakpoints.down('sm')]: {
+      overflow: 'scroll',
+      marginTop: theme.spacing(4),
+      width: `calc(100% - ${theme.spacing(1) * 2}px)`,
+      height: `calc(100vh - ${theme.spacing(1) * 2}px)`
+    }
   }
 }));
 
@@ -29,8 +35,10 @@ export default ({
       data-testid={dataTestId}
     >
       <Fade in={open} timeout={appSettings.fadeTransitionDuration}>
-        <Grid container>
-          <Paper className={classes.paper}>{children}</Paper>
+        <Grid container spacing={1}>
+          <Grid item xs={12}>
+            <Paper className={classes.paper}>{children}</Paper>
+          </Grid>
         </Grid>
       </Fade>
     </Modal>
