@@ -20,7 +20,7 @@ import Overdue from './Overdue';
 import BirthdaysToday from './BirthdaysToday';
 import { format } from 'date-fns';
 
-const useStyles = makeStyles(() => {
+const useStyles = makeStyles(theme => {
   return {
     homePageContainer: {
       padding: 15,
@@ -34,11 +34,12 @@ const useStyles = makeStyles(() => {
     items: {
       width: 500,
       height: 350,
-      margin: '0px 15px 15px 0px'
+      [theme.breakpoints.down('sm')]: {
+        margin: 0
+      }
     },
     barcodeButton: {
-      marginBottom: 15,
-      fontSize: 30,
+      fontSize: '1rem',
       '& svg': {
         fontSize: 47
       }
@@ -88,17 +89,19 @@ export const Home = () => {
   };
 
   return (
-    <Grid container>
-      <Button
-        variant="contained"
-        color="primary"
-        onClick={() => toggleScan()}
-        startIcon={<div>{Icons.Barcode}</div>}
-        fullWidth
-        className={classes.barcodeButton}
-      >
-        Checkin / Checkout
-      </Button>
+    <Grid container spacing={1}>
+      <Grid item xs={12}>
+        <Button
+          variant="contained"
+          color="primary"
+          onClick={() => toggleScan()}
+          startIcon={<div>{Icons.Barcode}</div>}
+          fullWidth
+          className={classes.barcodeButton}
+        >
+          Checkin / Checkout
+        </Button>
+      </Grid>
 
       <HomePageTile title="Checkouts Today" indicator={<CheckoutIndicator />}>
         <CheckInOut scans={checkouts}></CheckInOut>
@@ -123,7 +126,7 @@ const HomePageTile = ({ title, children, indicator }: HomePageTileProps) => {
   const classes = useStyles();
 
   return (
-    <Grid item className={classes.items}>
+    <Grid item className={classes.items} xs={12} md={6} lg={4}>
       <Paper className={classes.homePageContainer}>
         <div className={classes.titleContainer}>
           <div className={classes.indicator}>{indicator}</div>

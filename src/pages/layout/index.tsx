@@ -66,7 +66,11 @@ const useStyles = makeStyles(theme => {
     content: {
       flexGrow: 1,
       backgroundColor: theme.palette.background.default,
-      padding: theme.spacing(3)
+      padding: theme.spacing(1),
+      [theme.breakpoints.down('sm')]: {
+        width: `calc(100% - ${smDrawerWidth}px)`,
+        padding: 5
+      }
     },
     iconText: {
       color: theme.palette.primary.contrastText
