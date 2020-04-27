@@ -33,7 +33,7 @@ router.post('/bycallnumber', async (req, res) => {
       return res.send(result);
     }
     const callnumberResult = await getBookByCallNumber(callnumber);
-    const result: Result<GetBookCallNumberModel[]> = {
+    const result: Result<GetBookCallNumberModel> = {
       result: callnumberResult
     };
     return res.send(result);

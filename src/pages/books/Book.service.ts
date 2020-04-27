@@ -16,13 +16,13 @@ export async function getBookByCallNumber(callnumber: string) {
     };
     const callnumberResult = await get<
       GetBookByCallNumberPOST,
-      GetBookCallNumberModel[]
-    >(books.getBookByCallNumber.uri, { callnumber });
-    return callnumberResult.result;
+      GetBookCallNumberModel
+    >(books.getBookByCallNumber.uri, callnumberParam);
+    return callnumberResult;
   } catch (error) {
-    const result: Result<GetBookCallNumberModel[]> = {
+    const result: Result<any> = {
       message: `There was an error getting your book by ${callnumber}`,
-      result: []
+      result: undefined
     };
     return result;
   }

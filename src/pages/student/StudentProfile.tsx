@@ -106,8 +106,8 @@ export default ({ open, handleClose, studentId = 1 }: StudentProfileProps) => {
     (async () => {
       const { result, message } = await getStudentProfile(studentId);
       if (message) alert.error(message);
-      setStudentData(result.studentData);
-      setHistoryData(result.historyData || []);
+      setStudentData(result!.studentData! || []);
+      setHistoryData(result!.historyData || []);
     })();
   }, [studentId]);
 

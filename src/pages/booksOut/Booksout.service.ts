@@ -1,8 +1,14 @@
 import { booksout } from 'endpoints.json';
-import { get } from 'utils/ajax';
+import { get, post } from 'utils/ajax';
 import { CountObj, Result } from 'types/generic.type';
 
-import { ScansModel, BooksOverdueModel } from './Booksout.type';
+import {
+  ScansModel,
+  BooksOverdueModel,
+  RecentlyCheckoutModel,
+  CheckoutPOST,
+  CheckinResult
+} from './Booksout.type';
 
 export default () => {};
 
@@ -60,5 +66,48 @@ export async function getScans(): Promise<Result<ScansModel[]>> {
     return {
       result: []
     };
+  }
+}
+
+export async function checkout(
+  student_id: number,
+  book_id: number
+): Promise<Result<RecentlyCheckoutModel>> {
+  try {
+    const param: CheckoutPOST = {
+      book_id,
+      student_id
+    };
+    const result = await post<CheckoutPOST, RecentlyCheckoutModel>(
+      booksout.checkout.uri,
+      param
+    );
+    return result;
+  } catch (error) {
+    const result: Result<RecentlyCheckoutModel> = {
+      message: 'There was an error checking out your book.'
+    };
+    return result;
+  }
+}
+export type CheckinPUT = {
+  booksout_id: number;
+};
+
+export async function checkin(booksout_id: number) {
+  try {
+    const param: CheckinPUT = {
+      booksout_id
+    };
+    const result = await post<CheckinPUT, CheckinResult>(
+      booksout.checkin.uri,
+      param
+    );
+    return result;
+  } catch (error) {
+    const result: Result<RecentlyCheckoutModel> = {
+      message: 'There was an error checking out your book.'
+    };
+    return result;
   }
 }

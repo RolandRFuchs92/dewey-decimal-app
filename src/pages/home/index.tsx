@@ -68,8 +68,12 @@ export const Home = () => {
     (async () => {
       const { result } = await getScans();
 
-      const checkoutsResult = result.filter(x => x.check_in_date === null);
-      const checkinsResult = result.filter(x => x.check_in_date !== null);
+      const checkoutsResult = result
+        ? result.filter(x => x.check_in_date === null)
+        : [];
+      const checkinsResult = result
+        ? result.filter(x => x.check_in_date !== null)
+        : [];
 
       setCheckouts(checkoutsResult);
       setCheckins(checkinsResult);

@@ -1,5 +1,5 @@
 import repoBase from 'components/page/repo.base';
-import { all } from 'db/repo';
+import { all, single } from 'db/repo';
 import { getAllQuery } from './Book.sql';
 import {
   getBooksSelectListQuery,
@@ -38,10 +38,13 @@ export const getStudentBooksHistory = async (student_id: string) => {
 
 export const getBookByCallNumber = async (
   call_number: string
-): Promise<GetBookCallNumberModel[]> => {
-  const result = await all<GetBookCallNumberModel>(getBookByCallNumberQuery, {
-    $call_number: call_number
-  });
+): Promise<GetBookCallNumberModel> => {
+  const result = await single<GetBookCallNumberModel>(
+    getBookByCallNumberQuery,
+    {
+      $call_number: call_number
+    }
+  );
 
-  return result;
+  return result!;
 };

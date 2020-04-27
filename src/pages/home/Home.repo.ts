@@ -19,7 +19,7 @@ export const getBirthdays = async () => {
 };
 
 export const getBookByCallNumber = async (callnumber: string) => {
-  const data = (await findBookByBarcode(callnumber))[0];
+  const data = await findBookByBarcode(callnumber);
   if (data === undefined) return null;
 
   if (data.student_name) return calculateCheckin(data);

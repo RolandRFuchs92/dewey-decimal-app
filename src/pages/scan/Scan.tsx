@@ -12,16 +12,19 @@ import { connect, useDispatch } from 'react-redux';
 import { Autocomplete } from '@material-ui/lab';
 import { isNil } from 'lodash';
 
-// import { checkout, checkin } from 'pages/booksOut/Booksout.repo';
 import { useAlert } from 'utils/snackbarAlerts';
 import Modal from 'components/modal';
 import Icons from 'components/icons';
 import Scanner from 'components/scanner';
-import { JsonObj, GenericInputEvent } from 'types/generic.type';
+import {
+  JsonObj,
+  GenericInputEvent,
+  DropdownListModel
+} from 'types/generic.type';
 import { BarcodeResultModel } from 'pages/home/Home.type';
-import {} from 'pages/books/Book.service';
-// import { getBookByCallNumber } from 'pages/books/Book.repo';
-// import { searchForStudentsSelect } from 'pages/home/Home.repo';
+import { getBookByCallNumber } from 'pages/books/Book.service';
+import { studentSearch } from 'pages/student/Student.service';
+import { checkout, checkin } from 'pages/booksOut/Booksout.service';
 import { RootReducerModel } from 'utils/redux/rootReducer.type';
 
 import {
@@ -122,7 +125,7 @@ const ScannerPage = ({ open }: ScanProps) => {
   };
 
   const handleCheckinout = async (value: string) => {
-    const data = (await getBookByCallNumber(value))[0];
+    const data = (await getBookByCallNumber(value)).result;
     if (!data) {
       alert.error(`${value} was not found. Make sure the book is loaded`);
       return;
@@ -227,7 +230,8 @@ const GenerateCheckin = ({ data, reset }: GenerateCheckinProps) => {
   const alert = useAlert();
   const handleSubmit = async () => {
     try {
-      await checkin(data.books_out_id);
+      // TODO do something with the fine applicable here...
+      const result = await checkin(Number(data.books_out_id));
       reset();
       alert.success(
         `Successfully checked in ${data.book_name} for ${data.student_name}`
@@ -288,7 +292,7 @@ const GenerateCheckin = ({ data, reset }: GenerateCheckinProps) => {
 };
 
 const GenerateCheckout = ({ data, reset }: GenerateCheckoutProps) => {
-  const [selectList, setSelectList] = useState<JsonObj[]>([]);
+  const [selectList, setSelectList] = useState<DropdownListModel[]>([]);
   const [selection, setSelection] = useState<UserSelection>();
   const classes = useStyles();
   const alert = useAlert();
@@ -297,7 +301,8 @@ const GenerateCheckout = ({ data, reset }: GenerateCheckoutProps) => {
     const {
       target: { value }
     } = e;
-    setSelectList(await searchForStudentsSelect(value as string));
+    const result = await studentSearch(value);
+    setSelectList(result.result || []);
   };
 
   const getSelection = (event: ChangeEvent<{}>, value: JsonObj) => {
@@ -312,12 +317,15 @@ const GenerateCheckout = ({ data, reset }: GenerateCheckoutProps) => {
 
   const handleSubmit = async () => {
     try {
-      await checkout(selection?.student_id.toString() ?? '', data.book_id);
+      const result = await checkout(
+        selection!.student_id || 0,
+        Number(data.book_id)
+      );
       reset();
       alert.success(
         `${selection?.student_name ?? 'Unknown'} checked out ${
           data.book_name
-        } due back on ###ADD DATE HERE ###`
+        } due back on ${result.result?.return_on}`
       );
     } catch (error) {
       alert.error(
@@ -342,6 +350,7 @@ const GenerateCheckout = ({ data, reset }: GenerateCheckoutProps) => {
       </p>
       <hr></hr>
       <Autocomplete
+        // @ts-ignore TODO Look look at this shit fail...
         options={selectList}
         //@ts-ignore //TODO Figure out why this is broken...
         onChange={getSelection!}

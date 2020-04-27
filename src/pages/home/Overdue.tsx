@@ -17,7 +17,7 @@ export default () => {
   useEffect(() => {
     (async () => {
       const { result } = await getOverduebooks();
-      setBooksOverdue(result);
+      setBooksOverdue(result || []);
     })();
   }, []);
 

@@ -43,6 +43,15 @@ export type RecentlyCheckoutModel = {
   class_name: string;
 };
 
+export type CheckoutPOST = {
+  student_id: number;
+  book_id: number;
+};
+
+export type CheckinResult = {
+  finedue: number;
+};
+
 export const book_out_keys = [
   'books_out_id',
   'book_id',

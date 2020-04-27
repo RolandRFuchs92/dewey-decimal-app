@@ -28,10 +28,10 @@ export async function loadInitialAppState(dispatch: Dispatch) {
   const birthdaysToday = getBirthdaysTodayCount();
 
   const payload: HomeReducerModel = {
-    booksOverdue: (await booksOverdue).result.count,
-    checkinsToday: (await checkinsToday).result.count,
-    checkoutsToday: (await checkoutsToday).result.count,
-    birthdaysToday: (await birthdaysToday).result.count
+    booksOverdue: (await booksOverdue).result!.count,
+    checkinsToday: (await checkinsToday).result!.count,
+    checkoutsToday: (await checkoutsToday).result!.count,
+    birthdaysToday: (await birthdaysToday).result!.count
   };
 
   const dispatchData: FullIndicatorActionModel = {

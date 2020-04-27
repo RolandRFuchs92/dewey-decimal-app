@@ -17,7 +17,8 @@ import {
   GetAllModel,
   book_out_keys,
   BooksOverdueModel,
-  ScansModel
+  ScansModel,
+  CheckinResult
 } from './Booksout.type';
 import { Result, CountObj } from 'types/generic.type';
 
@@ -71,7 +72,14 @@ router.put('/', async (req, res) => {
   try {
     const bookId = req.body.booksout_id;
     await checkin(bookId);
-    res.send({ message: 'This is something i still have to do...' });
+    const result: Result<CheckinResult> = {
+      message: 'The student has a fine lol',
+      result: {
+        finedue: 10000
+      }
+    };
+    // TODO calculate fine if applicable.
+    res.send(result);
   } catch (error) {
     errorHandler(
       'PUT',
