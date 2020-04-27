@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Button, makeStyles, Grid, Paper, Typography } from '@material-ui/core';
 import { useDispatch } from 'react-redux';
 
+import { formatDate } from 'appSettings.json';
 import {
   CheckinIndicator,
   CheckoutIndicator,
@@ -17,6 +18,7 @@ import { HomePageTileProps, HomeProps } from './Home.type';
 import CheckInOut from './CheckInOut';
 import Overdue from './Overdue';
 import BirthdaysToday from './BirthdaysToday';
+import { format } from 'date-fns';
 
 const useStyles = makeStyles(() => {
   return {
@@ -67,12 +69,13 @@ export const Home = () => {
   useEffect(() => {
     (async () => {
       const { result } = await getScans();
+      const today = format(new Date(), formatDate.from);
 
       const checkoutsResult = result
-        ? result.filter(x => x.check_in_date === null)
+        ? result.filter(x => x.check_out_date.toString() === today)
         : [];
       const checkinsResult = result
-        ? result.filter(x => x.check_in_date !== null)
+        ? result.filter(x => x.check_in_date.toString() === today)
         : [];
 
       setCheckouts(checkoutsResult);
