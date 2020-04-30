@@ -1,3 +1,6 @@
+import fs from 'fs';
+import path from 'path';
+import https from 'https';
 import express, { Request, Response } from 'express';
 import bodyParser from 'body-parser';
 import cors from 'cors';
@@ -20,6 +23,14 @@ app.use('/home', homeController);
 app.use('/booksout', booksoutController);
 app.use('/book', bookController);
 
-app.listen(3001, () => {
-  console.log(`http://localhost:3001`);
-});
+https
+  .createServer(
+    {
+      key: fs.readFileSync(path.resolve('./cert/key.pem')),
+      cert: fs.readFileSync(path.resolve('./cert/cert.pem'))
+    },
+    app
+  )
+  .listen(3001, () => {
+    console.log(`https://localhost:3001`);
+  });

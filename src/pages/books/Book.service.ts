@@ -1,4 +1,4 @@
-import { get } from 'utils/ajax';
+import { get, post } from 'utils/ajax';
 import { books } from 'endpoints.json';
 import { GetBookCallNumberModel } from './Book.type';
 import { Result } from 'types/generic.type';
@@ -14,7 +14,7 @@ export async function getBookByCallNumber(callnumber: string) {
     const callnumberParam: GetBookByCallNumberPOST = {
       callnumber
     };
-    const callnumberResult = await get<
+    const callnumberResult = await post<
       GetBookByCallNumberPOST,
       GetBookCallNumberModel
     >(books.getBookByCallNumber.uri, callnumberParam);

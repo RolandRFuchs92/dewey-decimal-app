@@ -188,7 +188,7 @@ const ScannerPage = ({ open }: ScanProps) => {
                   </InputAdornment>
                 )
               }}
-            ></TextField>
+            />
             <ScannerIconButtons
               handleLaptopButton={() => setIsScannerOpen(!isScannerOpen)}
               isScannerOpen={isScannerOpen}
