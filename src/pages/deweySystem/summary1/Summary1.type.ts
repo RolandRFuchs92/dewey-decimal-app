@@ -3,3 +3,5 @@ export type DeweySummarySchema = {
   summary_id: number;
   name: string;
 };
+
+export type TableDeweySummarySchema = DeweySummarySchema;

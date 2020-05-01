@@ -3,9 +3,12 @@ import React from 'react';
 import PageBase from 'components/page/PageBase';
 import { DefaultColumnModel } from 'components/page/PageBase.type';
 import serviceBase from './Summary1.service';
-import { DeweySummarySchema } from './Summary1.type';
+import { DeweySummarySchema, TableDeweySummarySchema } from './Summary1.type';
 
-const defaultColumns: DefaultColumnModel<DeweySummarySchema>[] = [
+const defaultColumns: DefaultColumnModel<
+  TableDeweySummarySchema,
+  DeweySummarySchema
+>[] = [
   {
     label: 'Id',
     name: 'dewey_summary_id',

@@ -7,7 +7,10 @@ import { DefaultColumnModel } from 'components/page/PageBase.type';
 import { TableDeweyDecimalSchema, DeweyDecimalSchema } from './Decimal.type';
 import serviceBase from './Decimal.service';
 
-const defaultColumns: DefaultColumnModel<TableDeweyDecimalSchema>[] = [
+const defaultColumns: DefaultColumnModel<
+  TableDeweyDecimalSchema,
+  DeweyDecimalSchema
+>[] = [
   {
     name: 'dewey_decimal_id',
     label: 'Id',

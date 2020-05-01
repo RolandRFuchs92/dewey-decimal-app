@@ -7,7 +7,10 @@ import { DefaultColumnModel } from 'components/page/PageBase.type';
 import serviceBase from './Summary.service';
 import { TableDeweySummary2Schema, DeweySummary2Schema } from './Summary2.type';
 
-const defaultColumns: DefaultColumnModel<TableDeweySummary2Schema>[] = [
+const defaultColumns: DefaultColumnModel<
+  TableDeweySummary2Schema,
+  DeweySummary2Schema
+>[] = [
   {
     name: 'dewey_summary_2_id',
     label: 'Id',
