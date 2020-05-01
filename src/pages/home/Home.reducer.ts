@@ -3,7 +3,7 @@ import {
   FullIndicatorActionModel,
   HomeReducerModel,
   UpdateCheckinAndCheckoutCountAction,
-  UpdateCheckinAndCheckoutCount
+  ProcessedScansModel
 } from './Home.type';
 
 const initialState: HomeReducerModel = {
@@ -44,13 +44,13 @@ export default (
         ...currentState,
         booksOverdue: payload
       };
-    case 'UPDATE_CHECKIN_AND_CHECKOUT_COUNTS':
+    case 'UPDATE_SCANS':
       return {
         ...currentState,
-        checkinCountForToday: (payload as UpdateCheckinAndCheckoutCount)
-          .checkinCount,
-        checkoutCountForToday: (payload as UpdateCheckinAndCheckoutCount)
-          .checkoutCount
+        checkinCountForToday: (payload as ProcessedScansModel).checkinCount,
+        checkoutCountForToday: (payload as ProcessedScansModel).checkoutCount,
+        checkoutsToday: (payload as ProcessedScansModel).checkoutResults,
+        checkinsToday: (payload as ProcessedScansModel).checkinResults
       };
     case 'ALL_INDICATORS':
       return {

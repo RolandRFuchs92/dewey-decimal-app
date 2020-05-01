@@ -19,17 +19,13 @@ export function processScansData(scans: ScansModel[]) {
   const checkoutCount = checkoutResults.length;
   const checkinCount = checkinResults.length;
 
-  const checkinAndOutCountAction = setCheckinsAndCheckoutsToday(
-    checkoutCount,
-    checkinCount
-  );
-  store.dispatch(checkinAndOutCountAction);
-
-  const result: ProcessedScansModel = {
+  const processResult: ProcessedScansModel = {
     checkoutResults,
     checkoutCount,
     checkinResults,
     checkinCount
   };
-  return result;
+
+  const checkinAndOutCountAction = setCheckinsAndCheckoutsToday(processResult);
+  store.dispatch(checkinAndOutCountAction);
 }

@@ -1,6 +1,7 @@
 import {
   IndicatorActionTypes,
-  UpdateCheckinAndCheckoutCountAction
+  UpdateCheckinAndCheckoutCountAction,
+  ProcessedScansModel
 } from './Home.type';
 
 function genericAction(type: IndicatorActionTypes) {
@@ -18,15 +19,11 @@ export const setCheckoutsToday = genericAction('CHECKOUTS_COUNT_TODAY');
 export const setCheckinsToday = genericAction('CHECKINS_COUNT_TODAY');
 
 export const setCheckinsAndCheckoutsToday = (
-  checkoutCount: number,
-  checkinCount: number
+  scansResult: ProcessedScansModel
 ): UpdateCheckinAndCheckoutCountAction => {
   return {
-    type: 'UPDATE_CHECKIN_AND_CHECKOUT_COUNTS',
-    payload: {
-      checkoutCount,
-      checkinCount
-    }
+    type: 'UPDATE_SCANS',
+    payload: scansResult
   };
 };
 

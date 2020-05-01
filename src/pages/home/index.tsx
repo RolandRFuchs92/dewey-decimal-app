@@ -63,8 +63,6 @@ const useStyles = makeStyles(theme => {
 });
 
 export const Home = () => {
-  // const [checkouts, setCheckouts] = useState<ScansModel[]>([]);
-  // const [checkins, setCheckins] = useState<ScansModel[]>([]);
   const { checkouts, checkins } = useSelector(
     ({ home: { checkinsToday, checkoutsToday } }: RootReducerModel) => {
       return {
@@ -75,16 +73,6 @@ export const Home = () => {
   );
   const classes = useStyles();
   const dispatch = useDispatch();
-
-  useEffect(() => {
-    (async () => {
-      const { result } = await getScans();
-      processScansData(result!);
-
-      // setCheckouts(processedResult.checkoutResults);
-      // setCheckins(processedResult.checkinResults);
-    })();
-  }, []);
 
   const toggleScan = () => {
     dispatch(ScannerToggleAction());

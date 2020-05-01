@@ -156,7 +156,7 @@ export const OverdueIndicator = connect(
   genericMapStateToProps('home', 'booksOverdue')
 )(RawOverdueIndicator);
 export const CheckoutIndicator = connect(
-  genericMapStateToProps('home', 'checkinCountForToday')
+  genericMapStateToProps('home', 'checkoutCountForToday')
 )(RawCheckoutIndicator);
 export const CheckinIndicator = connect(
   genericMapStateToProps('home', 'checkinCountForToday')

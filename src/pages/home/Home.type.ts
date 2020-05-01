@@ -21,13 +21,8 @@ export type GenericActionModal = {
 };
 
 export type UpdateCheckinAndCheckoutCountAction = {
-  type: 'UPDATE_CHECKIN_AND_CHECKOUT_COUNTS';
-  payload: UpdateCheckinAndCheckoutCount;
-};
-
-export type UpdateCheckinAndCheckoutCount = {
-  checkoutCount: number;
-  checkinCount: number;
+  type: 'UPDATE_SCANS';
+  payload: ProcessedScansModel;
 };
 
 export type FullIndicatorActionModel = {
@@ -41,7 +36,7 @@ export type IndicatorActionTypes =
   | 'CHECKINS_COUNT_TODAY'
   | 'CHECKOUTS_COUNT_TODAY'
   | 'ALL_INDICATORS'
-  | 'UPDATE_CHECKIN_AND_CHECKOUT_COUNTS';
+  | 'UPDATE_SCANS';
 
 export type CalculateCheckoutModel = {
   isCheckout: boolean;

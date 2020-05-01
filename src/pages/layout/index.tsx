@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import {
   CssBaseline,
@@ -30,9 +30,11 @@ import { ScannerToggleAction } from 'pages/scan/Scanner.action';
 import Icons from 'components/icons';
 import { RootReducerModel } from 'utils/redux/rootReducer.type';
 import { toggleThemeAction } from 'components/theme/Theme.action';
+import { getScans } from 'pages/booksOut/Booksout.service';
 
 import Drawer from './drawer';
 import { PermanentDrawerLeftModel } from './Layout.type';
+import { processScansData } from 'pages/home/Home.service';
 
 const useStyles = makeStyles(theme => {
   return {
@@ -81,6 +83,13 @@ const useStyles = makeStyles(theme => {
 export function PermanentDrawerLeft({ pageTitle }: PermanentDrawerLeftModel) {
   const classes = useStyles();
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    (async () => {
+      const result = await getScans();
+      processScansData(result.result!);
+    })();
+  }, []);
 
   const toggleScan = () => {
     dispatch(ScannerToggleAction());
