@@ -1,4 +1,4 @@
-import { addBusinessDays, addDays, format } from 'date-fns';
+import { addBusinessDays, addDays, format, parse } from 'date-fns';
 import appSettings from 'appSettings.json';
 
 const { formatDate, checkout } = appSettings;
@@ -22,4 +22,12 @@ export const formatDateForDbInsert = (date = new Date()) => {
 
 export const formatDateForClient = (date = new Date()) => {
   return format(date, formatDate.to);
+};
+
+export const friendlyClientDateFormatFromString = (date: string) => {
+  const result = format(
+    parse(date, appSettings.formatDate.from, new Date()),
+    appSettings.formatDate.to
+  );
+  return result;
 };

@@ -11,8 +11,12 @@ import {
 import { connect, useDispatch } from 'react-redux';
 import { Autocomplete } from '@material-ui/lab';
 import { isNil } from 'lodash';
-import { addDays, format } from 'date-fns';
+import { addDays, format, parse } from 'date-fns';
 
+import {
+  friendlyClientDateFormatFromString,
+  formatDateForClient
+} from 'utils/businessRules';
 import appSettings from 'appSettings.json';
 import { useAlert } from 'utils/snackbarAlerts';
 import Modal from 'components/modal';
@@ -69,9 +73,14 @@ const useStyles = makeStyles(theme => ({
     }
   },
   close: {
+    cursor: 'pointer',
     fontSize: '2rem',
     color: theme.palette.grey[500],
-    marginRight: theme.spacing(1)
+    marginRight: theme.spacing(1),
+    transition: 'all 0.4s',
+    '&:hover': {
+      color: theme.palette.grey[700]
+    }
   }
 }));
 
@@ -154,13 +163,12 @@ const ScannerPage = ({ open }: ScanProps) => {
         ? data.check_out_date.toString()
         : undefined,
       class: data.class,
-      isCheckout: data.check_in_date === null,
+      isCheckout: data.check_out_date === null,
       return_on: data.return_on ? data.return_on.toString() : undefined,
       student_name: data.student_name,
       teacher_name: data.teacher_name,
       fine
     };
-
     setBarcodeResult(scanData);
   };
 
@@ -286,13 +294,14 @@ const GenerateCheckin = ({ data, reset }: GenerateCheckinProps) => {
       </p>
       <hr></hr>
       <p>
-        Check out on: <b>{data.check_out_date}</b>
+        Check out on:{' '}
+        <b>{friendlyClientDateFormatFromString(data.check_out_date!)}</b>
       </p>
       <p>
-        Check in on: <b>{data.check_in_on}</b>
+        Check in on: <b>{formatDateForClient(new Date())}</b>
       </p>
       <p>
-        Due by:<b>{data.return_on}</b>
+        Due by:<b>{friendlyClientDateFormatFromString(data.return_on!)}</b>
       </p>
       <p>
         Fine due: <b>{data.fine}</b>
@@ -331,7 +340,6 @@ const GenerateCheckout = ({ data, reset }: GenerateCheckoutProps) => {
 
   const getSelection = (event: ChangeEvent<{}>, value: JsonObj) => {
     if (isNil(value)) return;
-    debugger;
     setSelection({
       class: +value.class,
       teacher: value.teacher.toString(),
@@ -342,19 +350,21 @@ const GenerateCheckout = ({ data, reset }: GenerateCheckoutProps) => {
 
   const handleSubmit = async () => {
     try {
+      if (!selection || !data.book_id)
+        return alert.error('A student and barcode selection is required.');
+
       const student_id = selection!.student_id;
       const book_id = Number(data.book_id);
 
-      debugger;
       const result = await checkout(student_id, book_id);
       reset();
-      alert.success(
+      return alert.success(
         `${selection?.student_name ?? 'Unknown'} checked out ${
           data.book_name
         } due back on ${result.result?.return_on}`
       );
     } catch (error) {
-      alert.error(
+      return alert.error(
         `An error occured while checking out ${
           data.book_name
         } for ${selection?.student_name ?? 'Unknown'}.`

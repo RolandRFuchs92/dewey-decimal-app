@@ -95,19 +95,12 @@ export type CheckinPUT = {
 };
 
 export async function checkin(booksout_id: number) {
-  try {
-    const param: CheckinPUT = {
-      booksout_id
-    };
-    const result = await post<CheckinPUT, CheckinResult>(
-      booksout.checkin.uri,
-      param
-    );
-    return result;
-  } catch (error) {
-    const result: Result<RecentlyCheckoutModel> = {
-      message: 'There was an error checking out your book.'
-    };
-    return result;
-  }
+  const param: CheckinPUT = {
+    booksout_id
+  };
+  const result = await post<CheckinPUT, CheckinResult>(
+    booksout.checkin.uri,
+    param
+  );
+  return result;
 }
