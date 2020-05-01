@@ -18,15 +18,16 @@ export type GetStudentBooksHistoryModel = {
 };
 
 export type GetBookCallNumberModel = {
-  books_out_id: number;
   book_id: number;
   book_name: string;
   author_name: string;
   call_number: string;
-  student_name: string;
-  class: string;
-  teacher_name: string;
-  check_out_date: Date;
-  return_on: Date;
+
+  books_out_id?: number;
+  student_name?: string;
+  class?: string;
+  teacher_name?: string;
+  check_out_date?: Date;
+  return_on?: Date;
   check_in_date?: Date;
 };

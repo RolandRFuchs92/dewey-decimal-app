@@ -76,7 +76,9 @@ export const Home = () => {
         ? result.filter(x => x.check_out_date.toString() === today)
         : [];
       const checkinsResult = result
-        ? result.filter(x => x.check_in_date.toString() === today)
+        ? result.filter(
+            x => x.check_in_date && x.check_in_date.toString() === today
+          )
         : [];
 
       setCheckouts(checkoutsResult);

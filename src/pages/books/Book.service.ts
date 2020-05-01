@@ -9,7 +9,9 @@ export type GetBookByCallNumberPOST = {
   callnumber: string;
 };
 
-export async function getBookByCallNumber(callnumber: string) {
+export async function getBookByCallNumber(
+  callnumber: string
+): Promise<Result<GetBookCallNumberModel>> {
   try {
     const callnumberParam: GetBookByCallNumberPOST = {
       callnumber

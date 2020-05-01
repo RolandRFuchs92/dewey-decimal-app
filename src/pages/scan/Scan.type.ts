@@ -30,18 +30,19 @@ export type UserSelection = {
 };
 
 export type ScanDataModel = {
-  books_out_id: string;
-  book_name: string;
-  student_name: string;
   call_number: string;
-  isCheckout: boolean;
-  check_out_date: string;
-  check_in_on?: string;
-  return_on: string;
-  class: string;
+  book_id: number;
   author_name: string;
+  book_name: string;
+  books_out_id?: string;
+  student_name?: string;
+  isCheckout?: boolean;
+  check_out_date?: string;
+  check_in_on?: string;
+  return_on?: string;
+  class?: string;
   fine: string | 'None';
-  teacher_name: string;
+  teacher_name?: string;
 };
 
 export type GenerateCheckinProps = {

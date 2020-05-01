@@ -74,6 +74,7 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const defeaultCheckoutData: ScanDataModel = {
+  book_id: 0,
   author_name: '',
   book_name: '',
   call_number: '',
@@ -139,15 +140,20 @@ const ScannerPage = ({ open }: ScanProps) => {
     const fine = '0'; // TODO: calculate fine
 
     const scanData: ScanDataModel = {
+      book_id: data.book_id,
+      call_number: data.call_number,
       author_name: data.author_name,
       book_name: data.book_name,
-      books_out_id: data.books_out_id.toString(),
-      call_number: data.call_number,
+      books_out_id: data.books_out_id
+        ? data.books_out_id.toString()
+        : undefined,
       check_in_on: data.check_in_date && data.check_in_date.toString(),
-      check_out_date: data.check_out_date.toString(),
+      check_out_date: data.check_out_date
+        ? data.check_out_date.toString()
+        : undefined,
       class: data.class,
       isCheckout: data.check_in_date === null,
-      return_on: data.return_on.toString(),
+      return_on: data.return_on ? data.return_on.toString() : undefined,
       student_name: data.student_name,
       teacher_name: data.teacher_name,
       fine
@@ -327,10 +333,11 @@ const GenerateCheckout = ({ data, reset }: GenerateCheckoutProps) => {
 
   const handleSubmit = async () => {
     try {
-      const result = await checkout(
-        selection!.student_id || 0,
-        Number(data.book_id)
-      );
+      const student_id = selection!.student_id;
+      const book_id = Number(data.book_id);
+
+      debugger;
+      const result = await checkout(student_id, book_id);
       reset();
       alert.success(
         `${selection?.student_name ?? 'Unknown'} checked out ${
@@ -348,7 +355,7 @@ const GenerateCheckout = ({ data, reset }: GenerateCheckoutProps) => {
 
   return (
     <div className={classes.statContainer}>
-      <Typography variant="h6">Check in</Typography>
+      <Typography variant="h6">Checkout</Typography>
       <p>
         Author: <b>{data.author_name}</b>
       </p>
@@ -386,10 +393,10 @@ const GenerateCheckout = ({ data, reset }: GenerateCheckoutProps) => {
       </p>
       <hr></hr>
       <p>
-        Check out on: <b>{data.check_out_date}</b>
+        Check out on: <b>{data.check_out_date}</b> //TODO
       </p>
       <p>
-        Due by:<b>{data.return_on}</b>
+        Due by:<b>{data.return_on}</b>//TODO
       </p>
       <Button
         variant="contained"

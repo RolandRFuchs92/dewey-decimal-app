@@ -18,7 +18,8 @@ import {
   book_out_keys,
   BooksOverdueModel,
   ScansModel,
-  CheckinResult
+  CheckinResult,
+  RecentlyCheckoutModel
 } from './Booksout.type';
 import { Result, CountObj } from 'types/generic.type';
 
@@ -54,11 +55,22 @@ router.delete('/', async (req, res) => {
 router.post('/', async (req, res) => {
   try {
     const { student_id, book_id } = req.body;
+    if (!student_id || !book_id) {
+      res.status(500);
+      return res.send({ message: 'Student or book was not selected.' });
+    }
+
     await checkout(student_id, book_id);
-    const result = await getStudentRecentlyCheckoutBook(student_id, book_id);
-    res.send(result);
+    const checkoutResult = await getStudentRecentlyCheckoutBook(
+      student_id,
+      book_id
+    );
+    const result: Result<RecentlyCheckoutModel> = {
+      result: checkoutResult!
+    };
+    return res.send(result);
   } catch (error) {
-    errorHandler(
+    return errorHandler(
       'POST',
       error,
       res,

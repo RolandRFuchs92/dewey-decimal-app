@@ -50,14 +50,22 @@ const calculateCheckout = async (
   return checkoutResult;
 };
 
-const calculateCheckin = (data: GetBookCallNumberModel): ScanDataModel => {
+const calculateCheckin = (
+  data: GetBookCallNumberModel
+): ScanDataModel | null => {
   const isCheckout = false;
+  if (!data.check_in_date) return null;
+
   let check_out_date = parse(
-    data.check_out_date.toString(),
+    data.check_out_date!.toString(),
     formatDate.from,
     new Date()
   );
-  let return_on = parse(data.return_on.toString(), formatDate.from, new Date());
+  let return_on = parse(
+    data.return_on!.toString(),
+    formatDate.from,
+    new Date()
+  );
   const diffDays = differenceInBusinessDays(check_out_date, return_on);
 
   let fine;
@@ -66,10 +74,11 @@ const calculateCheckin = (data: GetBookCallNumberModel): ScanDataModel => {
   else fine = 'None';
 
   const result: ScanDataModel = {
+    book_id: data.book_id,
     isCheckout,
     author_name: data.author_name,
     book_name: data.book_name,
-    books_out_id: data.books_out_id.toString(),
+    books_out_id: data.books_out_id ? data.books_out_id.toString() : undefined,
     call_number: data.call_number,
     class: data.class,
     student_name: data.student_name,

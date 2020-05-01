@@ -22,7 +22,7 @@ export type ScansModel = {
   book: string;
   author: string;
   student: string;
-  check_in_date: Date;
+  check_in_date?: Date;
   check_out_date: Date;
 };
 
