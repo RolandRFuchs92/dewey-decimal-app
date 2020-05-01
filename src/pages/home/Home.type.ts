@@ -61,3 +61,10 @@ export type BarcodeResultModel = {
     code: string;
   };
 };
+
+export type ProcessedScansModel = {
+  checkoutResults: ScansModel[];
+  checkoutCount: number;
+  checkinResults: ScansModel[];
+  checkinCount: number;
+};
