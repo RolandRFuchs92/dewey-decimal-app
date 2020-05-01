@@ -36,7 +36,7 @@ export type ScanDataModel = {
   call_number: string;
   isCheckout: boolean;
   check_out_date: string;
-  check_in_on: string;
+  check_in_on?: string;
   return_on: string;
   class: string;
   author_name: string;

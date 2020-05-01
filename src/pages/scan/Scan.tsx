@@ -143,7 +143,7 @@ const ScannerPage = ({ open }: ScanProps) => {
       book_name: data.book_name,
       books_out_id: data.books_out_id.toString(),
       call_number: data.call_number,
-      check_in_on: data.check_in_date.toString(),
+      check_in_on: data.check_in_date && data.check_in_date.toString(),
       check_out_date: data.check_out_date.toString(),
       class: data.class,
       isCheckout: data.check_in_date === null,
@@ -377,7 +377,7 @@ const GenerateCheckout = ({ data, reset }: GenerateCheckoutProps) => {
             variant="outlined"
           />
         )}
-      ></Autocomplete>
+      />
       <p>
         Class: <b>{selection ? selection.class : ''}</b>
       </p>

@@ -64,7 +64,7 @@ export async function studentSearch(
       namepart
     };
     const studentResult = await get<StudentSearchGET, DropdownListModel[]>(
-      student.profile.uri,
+      student.search.uri,
       param
     );
     return studentResult;

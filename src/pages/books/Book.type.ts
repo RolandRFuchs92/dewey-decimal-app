@@ -28,5 +28,5 @@ export type GetBookCallNumberModel = {
   teacher_name: string;
   check_out_date: Date;
   return_on: Date;
-  check_in_date: Date;
+  check_in_date?: Date;
 };

@@ -15,7 +15,8 @@ import {
   studentSchemaKeys,
   StudentModel,
   StudentCardProps,
-  GetStudentsWithBirthdaysModel
+  GetStudentsWithBirthdaysModel,
+  StudentSelectListSearchModel
 } from './Student.type';
 import { RestoreFromTrashOutlined } from '@material-ui/icons';
 import { DropdownListModel, Result, CountObj } from 'types/generic.type';
@@ -143,7 +144,10 @@ router.get('/birthdayscount', async (req, res) => {
 router.get('/search', async (req, res) => {
   const namePart = req.query.namepart;
   try {
-    const result = await getStudentSelectListSearch(namePart.toString());
+    const searchResult = await getStudentSelectListSearch(namePart.toString());
+    const result: Result<StudentSelectListSearchModel[]> = {
+      result: searchResult
+    };
     res.send(result);
   } catch (error) {
     genericErrorHandle(
