@@ -1,6 +1,6 @@
 import serviceBase from 'components/page/service.base';
-import { TableDeweyDecimalSchema } from './Decimal.type';
+import { TableDeweyDecimalSchema, DeweyDecimalSchema } from './Decimal.type';
 
-export default serviceBase<TableDeweyDecimalSchema, TableDeweyDecimalSchema>(
+export default serviceBase<TableDeweyDecimalSchema, DeweyDecimalSchema>(
   'dewey_decimal'
 );

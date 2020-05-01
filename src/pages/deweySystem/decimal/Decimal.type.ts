@@ -5,3 +5,8 @@ export type TableDeweyDecimalSchema = {
   name: string;
   dewey_summary_3_name: string;
 };
+
+export type DeweyDecimalSchema = Omit<
+  TableDeweyDecimalSchema,
+  'dewey_summary_3_name'
+>;

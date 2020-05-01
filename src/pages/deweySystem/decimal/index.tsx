@@ -4,7 +4,7 @@ import PageBase from 'components/page/PageBase';
 import { getSelectList } from 'pages/deweySystem/summary3/Summary3.repo';
 import { DefaultColumnModel } from 'components/page/PageBase.type';
 
-import { TableDeweyDecimalSchema } from './Decimal.type';
+import { TableDeweyDecimalSchema, DeweyDecimalSchema } from './Decimal.type';
 import serviceBase from './Decimal.service';
 
 const defaultColumns: DefaultColumnModel<TableDeweyDecimalSchema>[] = [
@@ -46,8 +46,9 @@ export default () => {
     deleteFunc: handleDeleteRow,
     addOrUpdate: handleEditAddRow
   } = serviceBase;
+
   return (
-    <PageBase
+    <PageBase<TableDeweyDecimalSchema, DeweyDecimalSchema>
       defaultColumns={defaultColumns}
       getAll={getAll}
       handleDeleteRow={handleDeleteRow}
