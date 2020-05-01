@@ -1,7 +1,7 @@
 {
   "developmentHost": "http://localhost:3001",
   "productionHost": "",
-  "booksout": {
+  "books_out": {
     "getall": {
       "uri": "booksout",
       "verb": "GET"
@@ -43,7 +43,7 @@
       "verb": "GET"
     }
   },
-  "books": {
+  "book": {
     "getall": {
       "uri": "book",
       "verb": "GET"
@@ -87,5 +87,11 @@
       "uri": "student/search",
       "verb": "GET"
     }
-  }
+  },
+  "author": {},
+  "class": {},
+  "dewey_decimal": {},
+  "dewey_decimal_2": {},
+  "dewey_decimal_3": {},
+  "teacher": {}
 }

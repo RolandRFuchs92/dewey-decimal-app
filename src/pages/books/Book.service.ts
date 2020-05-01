@@ -1,5 +1,5 @@
 import { get, post } from 'utils/ajax';
-import { books } from 'endpoints.json';
+import { book } from 'endpoints.json';
 import { GetBookCallNumberModel } from './Book.type';
 import { Result } from 'types/generic.type';
 
@@ -19,7 +19,7 @@ export async function getBookByCallNumber(
     const callnumberResult = await post<
       GetBookByCallNumberPOST,
       GetBookCallNumberModel
-    >(books.getBookByCallNumber.uri, callnumberParam);
+    >(book.getBookByCallNumber.uri, callnumberParam);
     return callnumberResult;
   } catch (error) {
     const result: Result<any> = {

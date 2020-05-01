@@ -11,19 +11,23 @@ import { JsonObj } from 'types/generic.type';
 
 import { DefaultColumnModel, PageBaseModel } from './PageBase.type';
 
-export default <TResult, TAddOrUpdate>({
+export default <TTableSchema, TSchema>({
   defaultColumns,
   getAll,
   handleDeleteRow,
   handleEditAddRow,
   modal = null,
   dialogKey
-}: PageBaseModel<TResult, TAddOrUpdate>) => {
+}: PageBaseModel<TTableSchema, TSchema>) => {
   const [options, setOptions] = useState({});
-  const [columns, setColumns] = useState<DefaultColumnModel[]>(defaultColumns);
-  const [data, setData] = useState<TResult[]>([]);
+  const [columns, setColumns] = useState<DefaultColumnModel<TTableSchema>[]>(
+    defaultColumns
+  );
+  const [data, setData] = useState<TTableSchema[]>([]);
   const [openModal, setOpenModal] = useState(false);
-  const [modalData, setModalData] = useState<TResult | undefined>(undefined);
+  const [modalData, setModalData] = useState<TTableSchema | undefined>(
+    undefined
+  );
 
   const showDialog = useDialog();
   const alert = useAlert();
@@ -42,7 +46,7 @@ export default <TResult, TAddOrUpdate>({
   };
 
   const handleYesOnDelete = useCallback(
-    async (rowData: TResult) => {
+    async (rowData: TTableSchema) => {
       try {
         await handleDeleteRow((rowData as any).id);
         await reset();
@@ -55,7 +59,7 @@ export default <TResult, TAddOrUpdate>({
     [alert, dialogKey, handleDeleteRow, reset]
   );
 
-  const objectFromRowData = (rowData: JsonObj): TResult =>
+  const objectFromRowData = (rowData: JsonObj): TTableSchema =>
     Object.fromEntries(
       columns.map(({ name }, index) => [name, rowData[index] || ''])
     );
@@ -83,7 +87,7 @@ export default <TResult, TAddOrUpdate>({
       ...addButton(handleEditAdd)
     });
 
-    const cols: DefaultColumnModel[] = [
+    const cols: DefaultColumnModel<TTableSchema>[] = [
       ...defaultColumns,
       ...EditDeleteCol(handleEditAdd, handleDelete)
     ];
@@ -107,7 +111,8 @@ export default <TResult, TAddOrUpdate>({
             data={data}
           />
           {modal || (
-            <Modal
+            <Modal<TTableSchema, TSchema>
+              dialogKey={dialogKey}
               columns={columns}
               open={openModal}
               handleClose={handleClose}

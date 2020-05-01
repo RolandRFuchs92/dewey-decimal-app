@@ -7,9 +7,10 @@ import { DefaultColumnModel } from 'components/page/PageBase.type';
 
 import serviceBase from './Student.service';
 import StudentProfile from './StudentProfile';
-import { StudentModel } from './Student.type';
+import { StudentModel, StudentTableSchema } from './Student.type';
 
-const defaultColumns: DefaultColumnModel[] = [
+const defaultColumns: DefaultColumnModel<StudentTableSchema>[] = [
+  // TODO add a tableSchemaModel...
   {
     name: 'student_id',
     label: 'Id',
@@ -101,6 +102,7 @@ export default () => {
   const getAll = serviceBase.getAll;
 
   const columns = defaultColumns.concat(
+    // @ts-ignore TODO make an exception for columns like this
     tableButton(
       'Profile',
       props => {
@@ -114,7 +116,7 @@ export default () => {
 
   return (
     <>
-      <PageBase<StudentModel, {}>
+      <PageBase<StudentModel, StudentModel>
         defaultColumns={columns}
         getAll={getAll}
         handleDeleteRow={handleDeleteRow}
