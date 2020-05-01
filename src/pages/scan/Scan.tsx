@@ -224,7 +224,7 @@ const ScannerPage = ({ open }: ScanProps) => {
             )}
           </Grid>
         </Grid>
-        <Scanner open={isScannerOpen} onDetected={handleDetectedCode}></Scanner>
+        <Scanner open={isScannerOpen} onDetected={handleDetectedCode} />
       </Grid>
     </Modal>
   );
@@ -325,10 +325,7 @@ const GenerateCheckout = ({ data, reset }: GenerateCheckoutProps) => {
   const alert = useAlert();
 
   const checkoutDate = format(new Date(), appSettings.formatDate.to);
-  const dueBack = format(
-    addDays(new Date(), appSettings.checkout.daysAllowedOut),
-    appSettings.formatDate.to
-  );
+  const dueBack = calculateReturnDate();
 
   const handleSearch = async (e: ChangeEvent<HTMLInputElement>) => {
     const {
@@ -357,11 +354,12 @@ const GenerateCheckout = ({ data, reset }: GenerateCheckoutProps) => {
       const book_id = Number(data.book_id);
 
       const result = await checkout(student_id, book_id);
+
       reset();
       return alert.success(
         `${selection?.student_name ?? 'Unknown'} checked out ${
           data.book_name
-        } due back on ${result.result?.return_on}`
+        } due back on ${calculateReturnDate()}`
       );
     } catch (error) {
       return alert.error(
@@ -435,3 +433,10 @@ const mapStateToProps = (currentState: RootReducerModel) => {
   };
 };
 export default connect(mapStateToProps)(ScannerPage);
+
+function calculateReturnDate() {
+  return format(
+    addDays(new Date(), appSettings.checkout.daysAllowedOut),
+    appSettings.formatDate.to
+  );
+}

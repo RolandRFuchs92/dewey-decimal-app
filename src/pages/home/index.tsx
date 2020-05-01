@@ -106,11 +106,11 @@ export const Home = () => {
       </Grid>
 
       <HomePageTile title="Checkouts Today" indicator={<CheckoutIndicator />}>
-        <CheckInOut scans={checkouts}></CheckInOut>
+        <CheckInOut scans={checkouts} isCheckin={false} />
       </HomePageTile>
 
       <HomePageTile title="Checkins Today" indicator={<CheckinIndicator />}>
-        <CheckInOut scans={checkins}></CheckInOut>
+        <CheckInOut scans={checkins} isCheckin />
       </HomePageTile>
 
       <HomePageTile title="Books Overdue" indicator={<OverdueIndicator />}>

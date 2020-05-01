@@ -72,19 +72,19 @@ export async function getScans(): Promise<Result<ScansModel[]>> {
 export async function checkout(
   student_id: number,
   book_id: number
-): Promise<Result<RecentlyCheckoutModel>> {
+): Promise<Result<ScansModel[]>> {
   try {
     const param: CheckoutPOST = {
       book_id,
       student_id
     };
-    const result = await post<CheckoutPOST, RecentlyCheckoutModel>(
+    const result = await post<CheckoutPOST, ScansModel[]>(
       booksout.checkout.uri,
       param
     );
     return result;
   } catch (error) {
-    const result: Result<RecentlyCheckoutModel> = {
+    const result: Result<ScansModel[]> = {
       message: 'There was an error checking out your book.'
     };
     return result;

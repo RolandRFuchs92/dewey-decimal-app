@@ -61,11 +61,8 @@ router.post('/', async (req, res) => {
     }
 
     await checkout(student_id, book_id);
-    const checkoutResult = await getStudentRecentlyCheckoutBook(
-      student_id,
-      book_id
-    );
-    const result: Result<RecentlyCheckoutModel> = {
+    const checkoutResult = await getScans();
+    const result: Result<ScansModel[]> = {
       result: checkoutResult!
     };
     return res.send(result);
@@ -84,13 +81,7 @@ router.put('/', async (req, res) => {
   try {
     const booksout_id = req.body.booksout_id;
     await checkin(booksout_id);
-    const result: Result<CheckinResult> = {
-      message: 'The student has a fine lol',
-      result: {
-        finedue: 10000
-      }
-    };
-    // TODO calculate fine if applicable.
+    const result = await getScans();
     res.send(result);
   } catch (error) {
     errorHandler(
