@@ -14,8 +14,8 @@ function genericAction(type: IndicatorActionTypes) {
 
 export const setBirthdayIndicator = genericAction('BIRTHDAYS_TODAY');
 export const setBooksOverdueIndicator = genericAction('BOOKS_OVERDUE');
-export const setCheckoutsToday = genericAction('CHECKOUTS_TODAY');
-export const setCheckinsToday = genericAction('CHECKINS_TODAY');
+export const setCheckoutsToday = genericAction('CHECKOUTS_COUNT_TODAY');
+export const setCheckinsToday = genericAction('CHECKINS_COUNT_TODAY');
 
 export const setCheckinsAndCheckoutsToday = (
   checkoutCount: number,

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Button, makeStyles, Grid, Paper, Typography } from '@material-ui/core';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { formatDate } from 'appSettings.json';
 import {
@@ -19,6 +19,7 @@ import CheckInOut from './CheckInOut';
 import Overdue from './Overdue';
 import BirthdaysToday from './BirthdaysToday';
 import { processScansData } from './Home.service';
+import { RootReducerModel } from 'utils/redux/rootReducer.type';
 
 const useStyles = makeStyles(theme => {
   return {
@@ -62,18 +63,26 @@ const useStyles = makeStyles(theme => {
 });
 
 export const Home = () => {
-  const [checkouts, setCheckouts] = useState<ScansModel[]>([]);
-  const [checkins, setCheckins] = useState<ScansModel[]>([]);
+  // const [checkouts, setCheckouts] = useState<ScansModel[]>([]);
+  // const [checkins, setCheckins] = useState<ScansModel[]>([]);
+  const { checkouts, checkins } = useSelector(
+    ({ home: { checkinsToday, checkoutsToday } }: RootReducerModel) => {
+      return {
+        checkouts: checkoutsToday,
+        checkins: checkinsToday
+      };
+    }
+  );
   const classes = useStyles();
   const dispatch = useDispatch();
 
   useEffect(() => {
     (async () => {
       const { result } = await getScans();
-      const processedResult = processScansData(result!);
+      processScansData(result!);
 
-      setCheckouts(processedResult.checkoutResults);
-      setCheckins(processedResult.checkinResults);
+      // setCheckouts(processedResult.checkoutResults);
+      // setCheckins(processedResult.checkinResults);
     })();
   }, []);
 

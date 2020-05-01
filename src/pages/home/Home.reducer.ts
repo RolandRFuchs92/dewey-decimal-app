@@ -6,11 +6,13 @@ import {
   UpdateCheckinAndCheckoutCount
 } from './Home.type';
 
-const initialState = {
-  checkoutsToday: 0,
-  checkinsToday: 0,
+const initialState: HomeReducerModel = {
+  checkoutsToday: [],
+  checkinsToday: [],
   birthdaysToday: 0,
-  booksOverdue: 0
+  booksOverdue: 0,
+  checkinCountForToday: 0,
+  checkoutCountForToday: 0
 };
 
 export default (
@@ -22,20 +24,20 @@ export default (
 ) => {
   const { type, payload } = action;
   switch (type) {
-    case 'CHECKOUTS_TODAY':
+    case 'CHECKOUTS_COUNT_TODAY':
       return {
         ...currentState,
         checkoutsToday: payload
       };
-    case 'CHECKINS_TODAY':
+    case 'CHECKINS_COUNT_TODAY':
       return {
         ...currentState,
-        checkinsToday: payload
+        checkinCountForToday: payload
       };
     case 'BIRTHDAYS_TODAY':
       return {
         ...currentState,
-        birthdaysToday: payload
+        checkoutCountForToday: payload
       };
     case 'BOOKS_OVERDUE':
       return {
@@ -45,9 +47,10 @@ export default (
     case 'UPDATE_CHECKIN_AND_CHECKOUT_COUNTS':
       return {
         ...currentState,
-        checkoutsToday: (payload as UpdateCheckinAndCheckoutCount)
-          .checkoutCount,
-        checkinsToday: (payload as UpdateCheckinAndCheckoutCount).checkinCount
+        checkinCountForToday: (payload as UpdateCheckinAndCheckoutCount)
+          .checkinCount,
+        checkoutCountForToday: (payload as UpdateCheckinAndCheckoutCount)
+          .checkoutCount
       };
     case 'ALL_INDICATORS':
       return {

@@ -38,8 +38,8 @@ export type FullIndicatorActionModel = {
 export type IndicatorActionTypes =
   | 'BIRTHDAYS_TODAY'
   | 'BOOKS_OVERDUE'
-  | 'CHECKINS_TODAY'
-  | 'CHECKOUTS_TODAY'
+  | 'CHECKINS_COUNT_TODAY'
+  | 'CHECKOUTS_COUNT_TODAY'
   | 'ALL_INDICATORS'
   | 'UPDATE_CHECKIN_AND_CHECKOUT_COUNTS';
 
