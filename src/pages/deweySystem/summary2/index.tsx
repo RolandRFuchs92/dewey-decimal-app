@@ -4,7 +4,7 @@ import PageBase from 'components/page/PageBase';
 import { getSelectList } from 'pages/deweySystem/summary1/Summary1.repo';
 import { DefaultColumnModel } from 'components/page/PageBase.type';
 
-import serviceBase from './Summary.service';
+import serviceBase from './Summary2.service';
 import { TableDeweySummary2Schema, DeweySummary2Schema } from './Summary2.type';
 
 const defaultColumns: DefaultColumnModel<
