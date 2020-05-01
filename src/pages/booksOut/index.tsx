@@ -3,22 +3,23 @@ import React from 'react';
 import appSettings from 'appSettings.json';
 import PageBase from 'components/page/PageBase';
 import { DefaultColumnModel } from 'components/page/PageBase.type';
-
-import repo, { getBooksForSelect, getStudentsForSelect } from './Booksout.repo';
+import serviceBase from './Booksout.service';
+// import repo, { getBooksForSelect, getStudentsForSelect } from './Booksout.repo';
+import { TableBooksOutSchema } from './Booksout.type';
 
 const {
   tables: { books_out, book, student }
 } = appSettings;
 
-const defaultColumns: DefaultColumnModel[] = [
+const defaultColumns: DefaultColumnModel<TableBooksOutSchema>[] = [
   {
-    name: books_out.pk,
+    name: 'books_out_id',
     label: 'Id',
     type: 'header',
     modalTitle: 'Dewey Summary 3'
   },
   {
-    name: book.pk,
+    name: 'book_id',
     options: {
       display: 'false'
     }
@@ -26,12 +27,12 @@ const defaultColumns: DefaultColumnModel[] = [
   {
     name: 'book_name',
     label: `Book`,
-    ref: book.pk,
-    type: 'select',
-    getDropDownItems: getBooksForSelect
+    ref: 'book_id',
+    type: 'select'
+    // getDropDownItems: getBooksForSelect
   },
   {
-    name: student.pk,
+    name: 'student_id',
     options: {
       display: 'false'
     }
@@ -40,8 +41,8 @@ const defaultColumns: DefaultColumnModel[] = [
     name: 'student_name',
     label: 'Student',
     type: 'select',
-    ref: student.pk,
-    getDropDownItems: getStudentsForSelect
+    ref: 'student_id'
+    // getDropDownItems: getStudentsForSelect
   },
   {
     name: 'return_on',
@@ -61,9 +62,9 @@ const defaultColumns: DefaultColumnModel[] = [
 ];
 
 export default () => {
-  const handleDeleteRow = repo.deleteRow;
-  const handleEditAddRow = repo.addOrUpdate;
-  const getAll = repo.getAll;
+  const handleDeleteRow = serviceBase.deleteFunc;
+  const handleEditAddRow = serviceBase.addOrUpdate;
+  const getAll = serviceBase.getAll;
 
   return (
     <PageBase

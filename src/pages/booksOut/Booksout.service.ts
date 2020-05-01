@@ -1,16 +1,19 @@
 import { books_out } from 'endpoints.json';
 import { get, post, put } from 'utils/ajax';
 import { CountObj, Result } from 'types/generic.type';
+import serviceBase from 'components/page/service.base';
 
 import {
   ScansModel,
   BooksOverdueModel,
   RecentlyCheckoutModel,
   CheckoutPOST,
-  CheckinResult
+  CheckinResult,
+  TableBooksOutSchema,
+  GetAllModel
 } from './Booksout.type';
 
-export default () => {};
+export default serviceBase<TableBooksOutSchema, GetAllModel>('books_out');
 
 async function getCountResult(func: () => Promise<Result<CountObj>>) {
   try {

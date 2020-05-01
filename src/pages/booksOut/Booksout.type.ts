@@ -26,6 +26,16 @@ export type ScansModel = {
   check_out_date: Date;
 };
 
+export type TableBooksOutSchema = GetAllModel;
+export type BooksOutSchema = {
+  books_out_id: number;
+  book_id: number;
+  student_id: number;
+  return_on?: Date;
+  check_out_date: Date;
+  check_in_date?: Date;
+};
+
 export type BooksModel = {
   book_id: number;
   author_id: number;
