@@ -1,4 +1,6 @@
 {
+  "developmentHost": "http://10.0.0.156:3001",
+  "productionHost": "",
   "booksout": {
     "getall": {
       "uri": "booksout",

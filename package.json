@@ -5,6 +5,7 @@
   "homepage": "./",
   "main": "src/electron",
   "typings": "src/index",
+  "proxy": "http://localhost:3001",
   "dependencies": {
     "@date-io/date-fns": "1.x",
     "@fortawesome/fontawesome-svg-core": "^1.2.27",
@@ -63,7 +64,7 @@
   "scripts": {
     "electron": "electron . --inspect-brk=9222 your/app",
     "rebuild": "electron-rebuild -f -w sqlite3 winston adm-zip",
-    "start": "set HTTPS=true&&react-app-rewired start",
+    "start": "react-app-rewired start",
     "build": "react-app-rewired build",
     "test": "react-app-rewired test --runInBand",
     "eject": "react-app-rewired eject",

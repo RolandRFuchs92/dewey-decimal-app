@@ -24,7 +24,6 @@ router.delete('/', async (req, res) => {
 
 router.post('/bycallnumber', async (req, res) => {
   try {
-    debugger;
     const callnumber = req.body.callnumber;
     if (!callnumber) {
       const result: Result<any> = {

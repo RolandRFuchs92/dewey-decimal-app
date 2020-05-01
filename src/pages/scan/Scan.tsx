@@ -192,7 +192,7 @@ const ScannerPage = ({ open }: ScanProps) => {
             <ScannerIconButtons
               handleLaptopButton={() => setIsScannerOpen(!isScannerOpen)}
               isScannerOpen={isScannerOpen}
-            ></ScannerIconButtons>
+            />
           </Grid>
           <Grid item>
             {(barcodeResult as ScanDataModel).isCheckout ? (
@@ -204,7 +204,7 @@ const ScannerPage = ({ open }: ScanProps) => {
               <GenerateCheckin
                 data={barcodeResult as ScanDataModel}
                 reset={reset}
-              ></GenerateCheckin>
+              />
             )}
           </Grid>
         </Grid>

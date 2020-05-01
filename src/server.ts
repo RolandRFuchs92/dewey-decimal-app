@@ -14,6 +14,12 @@ const app = express();
 
 // TODO add whitelist for dynamic ip allocation... probably
 
+app.use(express.static(path.join(process.cwd(), 'build')));
+app.get('/', (req, res) => {
+  const appLocation = path.join(process.cwd(), 'build', 'index.html');
+  res.sendFile(appLocation);
+});
+
 app.options('*', cors());
 app.use(cors());
 app.use(bodyParser.json());
@@ -23,14 +29,19 @@ app.use('/home', homeController);
 app.use('/booksout', booksoutController);
 app.use('/book', bookController);
 
-https
-  .createServer(
-    {
-      key: fs.readFileSync(path.resolve('./cert/key.pem')),
-      cert: fs.readFileSync(path.resolve('./cert/cert.pem'))
-    },
-    app
-  )
-  .listen(3001, () => {
-    console.log(`https://localhost:3001`);
+if (process.env.NODE_ENV === 'production')
+  https
+    .createServer(
+      {
+        key: fs.readFileSync(path.resolve('./cert/key.pem')),
+        cert: fs.readFileSync(path.resolve('./cert/cert.pem'))
+      },
+      app
+    )
+    .listen(3001, () => {
+      console.log(`https://localhost:3001`);
+    });
+else
+  app.listen(3001, () => {
+    console.log(`http://localhost:3001`);
   });
