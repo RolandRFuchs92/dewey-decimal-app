@@ -5,9 +5,11 @@ export type AuthorsQuerySelectListModel = {
   pk: number;
 };
 
-export type AuthorTableSchema = {
+export type AuthorSchema = {
   author_id: number;
   name: string;
   second_name: string;
   surname: string;
 };
+
+export type TableAuthorSchema = AuthorSchema;
