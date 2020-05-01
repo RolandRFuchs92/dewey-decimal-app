@@ -4,9 +4,10 @@ import PageBase from 'components/page/PageBase';
 import { getSelectList } from 'pages/deweySystem/summary1/Summary1.repo';
 import { DefaultColumnModel } from 'components/page/PageBase.type';
 
-import repo from './Summary2.repo';
+import serviceBase from './Summary.service';
+import { TableDeweySummary2Schema, DeweySummary2Schema } from './Summary2.type';
 
-const defaultColumns: DefaultColumnModel[] = [
+const defaultColumns: DefaultColumnModel<TableDeweySummary2Schema>[] = [
   {
     name: 'dewey_summary_2_id',
     label: 'Id',
@@ -39,12 +40,12 @@ const defaultColumns: DefaultColumnModel[] = [
 ];
 
 export default () => {
-  const handleDeleteRow = repo.deleteRow;
-  const handleEditAddRow = repo.addOrUpdate;
-  const getAll = repo.getAll;
+  const handleDeleteRow = serviceBase.deleteFunc;
+  const handleEditAddRow = serviceBase.addOrUpdate;
+  const getAll = serviceBase.getAll;
 
   return (
-    <PageBase
+    <PageBase<TableDeweySummary2Schema, DeweySummary2Schema>
       defaultColumns={defaultColumns}
       getAll={getAll}
       handleDeleteRow={handleDeleteRow}

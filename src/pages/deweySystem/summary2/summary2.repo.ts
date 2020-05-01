@@ -2,10 +2,10 @@ import baseRepo from 'components/page/repo.base';
 import { all } from 'db/repo';
 import { DropdownListModel } from 'types/generic.type';
 
-import { DeweySummary2Model } from './Summary.type';
+import { TableDeweySummary2Schema } from './Summary2.type';
 import { getAllQuery, getSelectListQuery } from './Summary2.sql';
 
-const repo = baseRepo<DeweySummary2Model>(
+const repo = baseRepo<TableDeweySummary2Schema>(
   `dewey_summary_2`,
   'dewey_summary_2_id'
 );

@@ -1,11 +1,11 @@
 import { MUIDataTableColumnOptions } from 'mui-datatables';
 import { JsonObj, DropdownListModel, Result } from 'types/generic.type';
 
-export type PageBaseModel<TResult, TAddOrUpdate> = {
-  defaultColumns: DefaultColumnModel<TResult>[];
+export type PageBaseModel<TTableSchema, TResult> = {
+  defaultColumns: DefaultColumnModel<TTableSchema>[];
   getAll: () => Promise<Result<TResult[]>>;
   handleDeleteRow: (id: number) => Promise<Result<boolean>>;
-  handleEditAddRow: (event: TAddOrUpdate) => Promise<Result<TResult[]>>;
+  handleEditAddRow: (event: TResult) => Promise<Result<TResult[]>>;
   modal?: JSX.Element | null;
   dialogKey: keyof TResult;
 };
