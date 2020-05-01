@@ -1,18 +1,18 @@
 import { MUIDataTableColumnOptions } from 'mui-datatables';
 import { JsonObj, DropdownListModel, Result } from 'types/generic.type';
 
-export type PageBaseModel<TTableSchema, TResult> = {
-  defaultColumns: DefaultColumnModel<TTableSchema>[];
-  getAll: () => Promise<Result<TResult[]>>;
+export type PageBaseModel<TTableSchema, TSchema> = {
+  defaultColumns: DefaultColumnModel<TTableSchema, TSchema>[];
+  getAll: () => Promise<Result<TSchema[]>>;
   handleDeleteRow: (id: number) => Promise<Result<boolean>>;
-  handleEditAddRow: (event: TResult) => Promise<Result<TResult[]>>;
+  handleEditAddRow: (event: TSchema) => Promise<Result<TSchema[]>>;
   modal?: JSX.Element | null;
-  dialogKey: keyof TResult;
+  dialogKey: keyof TSchema;
 };
 
-export type DefaultColumnModel<TTableSchema> = {
+export type DefaultColumnModel<TTableSchema, TSchema> = {
   label?: string;
-  name?: keyof TTableSchema;
+  name?: keyof TTableSchema | keyof TSchema;
   modalTitle?: string;
   type?:
     | 'header'
@@ -33,7 +33,7 @@ export type DefaultColumnModel<TTableSchema> = {
   value?: string;
   onChange?: (value: { target: { value: string } }) => void;
   getDropDownItems?: () => Promise<DropdownListModel[]>;
-  ref?: keyof TTableSchema;
+  ref?: keyof TSchema;
 };
 
 export type ModalBaseHandleChange = (
@@ -59,16 +59,14 @@ export type SelectBoxModel = {
   getDropDownItems: () => Promise<DropdownListModel[]>;
 };
 
-export type ModalBaseModel<TResult, TAddOrUpdate> = {
-  columns: DefaultColumnModel<TResult>[];
+export type ModalBaseModel<TTableSchema, TSchema> = {
+  columns: DefaultColumnModel<TTableSchema, TSchema>[];
   open: boolean;
   handleClose: () => void;
-  handleEditAddRow: (
-    statementObject: TAddOrUpdate
-  ) => Promise<Result<TResult[]>>;
-  modalData: TResult;
+  handleEditAddRow: (statementObject: TSchema) => Promise<Result<TSchema[]>>;
+  modalData: TSchema;
   reset: () => void;
-  dialogKey: keyof TResult;
+  dialogKey: keyof TSchema;
 };
 
 export type DatatabelDataModel<T> = {

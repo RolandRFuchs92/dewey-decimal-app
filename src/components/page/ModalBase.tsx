@@ -26,7 +26,7 @@ import {
 import { MaterialUiPickersDate } from '@material-ui/pickers/typings/date';
 import { DropdownListModel } from 'types/generic.type';
 
-export default <TResult, TEditAdd>({
+export default <TTableSchema, TSchema>({
   columns,
   open,
   handleClose,
@@ -34,8 +34,8 @@ export default <TResult, TEditAdd>({
   modalData,
   reset,
   dialogKey
-}: ModalBaseModel<TResult, TEditAdd>) => {
-  const [val, setVal] = useState<TResult | undefined>();
+}: ModalBaseModel<TTableSchema, TSchema>) => {
+  const [val, setVal] = useState<TSchema | undefined>();
   const alert = useAlert();
 
   useEffect(() => {
@@ -55,7 +55,7 @@ export default <TResult, TEditAdd>({
 
   const handleSubmit = async () => {
     try {
-      const statementObject = { ...val } as TResult;
+      const statementObject = { ...val } as TSchema;
       const refColumns = columns.filter(column => {
         let firstChar: string = '';
         if (column.name !== null && column.name !== undefined)
@@ -64,10 +64,12 @@ export default <TResult, TEditAdd>({
         return column.ref || firstChar === firstChar.toUpperCase();
       });
       refColumns.forEach(({ name }) => {
-        if (name !== null && name !== undefined) delete statementObject[name];
+        if (name !== null && name !== undefined)
+          delete statementObject[name as keyof TSchema];
       });
+
       const result = await handleEditAddRow(
-        (statementObject as unknown) as TEditAdd
+        (statementObject as unknown) as TSchema
       );
       alert.success(
         `Successfully TODO(ADDD OR UPDATED) ${val ? val[dialogKey] : 'new row'}`
@@ -97,29 +99,29 @@ export default <TResult, TEditAdd>({
   );
 };
 
-export type FieldProps<TTableSchemaModel> = {
-  columns: DefaultColumnModel<TTableSchemaModel>[];
+export type FieldProps<TTableSchema, TSchema> = {
+  columns: DefaultColumnModel<TTableSchema, TSchema>[];
   handleOnChange: ModalBaseHandleChange;
-  modalData: TTableSchemaModel;
+  modalData: TSchema;
 };
 
-function Fields<TTableSchemaModel>({
+function Fields<TTableSchemaModel, TSchema>({
   columns,
   handleOnChange,
   modalData
-}: FieldProps<TTableSchemaModel>): JSX.Element {
+}: FieldProps<TTableSchemaModel, TSchema>): JSX.Element {
   const result = columns.map((column, index) => {
     const hasNoRefButHasColumnName =
       column.ref === undefined && !isNil(column.name);
     // @ts-ignore TODO FIX THIS
     const value: string = hasNoRefButHasColumnName
-      ? modalData[column.name!]
+      ? modalData[column.name! as keyof TSchema]
       : !isNil(column.ref)
       ? modalData[column.ref]
       : '0';
 
     const child = CreateElement({
-      ...column,
+      ...(column as TSchema),
       onChange: handleOnChange((column.name && column.name.toString()) || ''),
       value
     });
@@ -133,14 +135,14 @@ function Fields<TTableSchemaModel>({
   return <>{result}</>;
 }
 
-function CreateElement<TSchemaModel>({
+function CreateElement<TTableSchema, TSchema>({
   type,
   label,
   value,
   onChange,
   modalTitle,
   getDropDownItems
-}: DefaultColumnModel<TSchemaModel>) {
+}: DefaultColumnModel<TTableSchema, TSchema>) {
   if (isNil(type)) return null;
 
   switch (toLower(type)) {

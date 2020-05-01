@@ -20,14 +20,12 @@ export default <TTableSchema, TSchema>({
   dialogKey
 }: PageBaseModel<TTableSchema, TSchema>) => {
   const [options, setOptions] = useState({});
-  const [columns, setColumns] = useState<DefaultColumnModel<TTableSchema>[]>(
-    defaultColumns
-  );
-  const [data, setData] = useState<TTableSchema[]>([]);
+  const [columns, setColumns] = useState<
+    DefaultColumnModel<TTableSchema, TSchema>[]
+  >(defaultColumns);
+  const [data, setData] = useState<TSchema[]>([]);
   const [openModal, setOpenModal] = useState(false);
-  const [modalData, setModalData] = useState<TTableSchema | undefined>(
-    undefined
-  );
+  const [modalData, setModalData] = useState<TSchema | undefined>(undefined);
 
   const showDialog = useDialog();
   const alert = useAlert();
@@ -46,7 +44,7 @@ export default <TTableSchema, TSchema>({
   };
 
   const handleYesOnDelete = useCallback(
-    async (rowData: TTableSchema) => {
+    async (rowData: TSchema) => {
       try {
         await handleDeleteRow((rowData as any).id);
         await reset();
@@ -59,17 +57,18 @@ export default <TTableSchema, TSchema>({
     [alert, dialogKey, handleDeleteRow, reset]
   );
 
-  const objectFromRowData = (rowData: JsonObj): TTableSchema =>
-    Object.fromEntries(
-      columns.map(({ name }, index) => [name, rowData[index] || ''])
+  const objectFromRowData = (rowData: TSchema): TSchema => {
+    const rowToColumn = Object.keys(rowData);
+    return Object.fromEntries(
+      columns.map(({ name }, index) => [name, rowToColumn[index] || ''])
     );
-
-  const handleEditAdd = (rowData: JsonObj) => {
+  };
+  const handleEditAdd = (rowData: TSchema) => {
     rowData && setModalData(objectFromRowData(rowData));
     setOpenModal(true);
   };
 
-  const handleDelete = (rowData: JsonObj) => {
+  const handleDelete = (rowData: TSchema) => {
     const obj = objectFromRowData(rowData);
     showDialog({
       title: 'Are you sure?',
@@ -84,11 +83,13 @@ export default <TTableSchema, TSchema>({
     setOptions({
       selectableRows: 'none',
       pagination: true,
+      // @ts-ignore TODO Comeback here and fix this.
       ...addButton(handleEditAdd)
     });
 
-    const cols: DefaultColumnModel<TTableSchema>[] = [
+    const cols: DefaultColumnModel<TTableSchema, TSchema>[] = [
       ...defaultColumns,
+      // @ts-ignore TODO Comeback here and fix this.
       ...EditDeleteCol(handleEditAdd, handleDelete)
     ];
 
