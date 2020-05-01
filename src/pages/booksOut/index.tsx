@@ -5,13 +5,16 @@ import PageBase from 'components/page/PageBase';
 import { DefaultColumnModel } from 'components/page/PageBase.type';
 import serviceBase from './Booksout.service';
 // import repo, { getBooksForSelect, getStudentsForSelect } from './Booksout.repo';
-import { TableBooksOutSchema } from './Booksout.type';
+import { TableBooksOutSchema, BooksOutSchema } from './Booksout.type';
 
 const {
   tables: { books_out, book, student }
 } = appSettings;
 
-const defaultColumns: DefaultColumnModel<TableBooksOutSchema>[] = [
+const defaultColumns: DefaultColumnModel<
+  TableBooksOutSchema,
+  BooksOutSchema
+>[] = [
   {
     name: 'books_out_id',
     label: 'Id',

@@ -8,12 +8,12 @@ import {
 } from './Book.sql';
 import { DropdownListModel } from 'types/generic.type';
 import {
-  BookModel,
+  BookSchema,
   GetStudentBooksHistoryModel,
   GetBookCallNumberModel
 } from './Book.type';
 
-const repo = repoBase<BookModel>(`book`, 'book_id');
+const repo = repoBase<BookSchema>(`book`, 'book_id');
 
 repo.getAll = async () => {
   return await all(getAllQuery);

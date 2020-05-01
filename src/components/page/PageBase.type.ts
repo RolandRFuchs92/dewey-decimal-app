@@ -3,11 +3,11 @@ import { JsonObj, DropdownListModel, Result } from 'types/generic.type';
 
 export type PageBaseModel<TTableSchema, TSchema> = {
   defaultColumns: DefaultColumnModel<TTableSchema, TSchema>[];
-  getAll: () => Promise<Result<TSchema[]>>;
+  getAll: () => Promise<Result<TTableSchema[]>>;
   handleDeleteRow: (id: number) => Promise<Result<boolean>>;
-  handleEditAddRow: (event: TSchema) => Promise<Result<TSchema[]>>;
+  handleEditAddRow: (event: TSchema) => Promise<Result<TTableSchema[]>>;
   modal?: JSX.Element | null;
-  dialogKey: keyof TSchema;
+  dialogKey: keyof TTableSchema;
 };
 
 export type DefaultColumnModel<TTableSchema, TSchema> = {
@@ -63,10 +63,12 @@ export type ModalBaseModel<TTableSchema, TSchema> = {
   columns: DefaultColumnModel<TTableSchema, TSchema>[];
   open: boolean;
   handleClose: () => void;
-  handleEditAddRow: (statementObject: TSchema) => Promise<Result<TSchema[]>>;
+  handleEditAddRow: (
+    statementObject: TSchema
+  ) => Promise<Result<TTableSchema[]>>;
   modalData: TSchema;
   reset: () => void;
-  dialogKey: keyof TSchema;
+  dialogKey: keyof TTableSchema;
 };
 
 export type DatatabelDataModel<T> = {

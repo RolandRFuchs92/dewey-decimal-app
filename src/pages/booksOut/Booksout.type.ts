@@ -5,17 +5,6 @@ export type BooksOverdueModel = {
   return_on: Date;
 };
 
-export type GetAllModel = {
-  books_out_id: string;
-  book_id: string;
-  student_id: string;
-  check_out_date: Date;
-  check_in_date: Date;
-  student_name: string;
-  book_name: string;
-  return_on: Date;
-};
-
 export type ScansModel = {
   teacher: string;
   class: string;
@@ -26,7 +15,17 @@ export type ScansModel = {
   check_out_date: Date;
 };
 
-export type TableBooksOutSchema = GetAllModel;
+export type TableBooksOutSchema = {
+  books_out_id: string;
+  book_id: string;
+  student_id: string;
+  check_out_date: Date;
+  check_in_date: Date;
+  student_name: string;
+  book_name: string;
+  return_on: Date;
+};
+
 export type BooksOutSchema = {
   books_out_id: number;
   book_id: number;

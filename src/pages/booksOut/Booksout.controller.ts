@@ -14,7 +14,7 @@ import booksoutRepo, {
   checkin
 } from './Booksout.repo';
 import {
-  GetAllModel,
+  TableBooksOutSchema,
   book_out_keys,
   BooksOverdueModel,
   ScansModel,
@@ -38,7 +38,9 @@ router.get('/', async (req, res) => {
 router.delete('/', async (req, res) => {
   try {
     const deleteBookId = req.body.bookout_id;
-    await booksoutRepo.deleteRow({ books_out_id: deleteBookId } as GetAllModel);
+    await booksoutRepo.deleteRow({
+      books_out_id: deleteBookId
+    } as TableBooksOutSchema);
     res.send({ result: 'Your book has been deleted.' });
   } catch (error) {
     errorHandler(

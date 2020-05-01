@@ -1,13 +1,3 @@
-export type BookModel = {
-  book_id: number;
-  author_id: number;
-  decimal_id: number;
-  call_number: string;
-  name: string;
-  publisher: string;
-  created_on: Date;
-};
-
 export type GetStudentBooksHistoryModel = {
   student_id: number;
   author_name: string;
@@ -32,7 +22,17 @@ export type GetBookCallNumberModel = {
   check_in_date?: Date;
 };
 
+export type BookSchema = {
+  book_id: number;
+  author_id: number;
+  decimal_id: number;
+  call_number: string;
+  name: string;
+  publisher: string;
+  created_on: Date;
+};
+
 export type TableBookSchema = {
   author_name: string;
   dewey_decimal_name: string;
-} & Omit<BookModel, 'created_on'>;
+} & Omit<BookSchema, 'created_on'>;

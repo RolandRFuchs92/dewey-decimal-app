@@ -23,16 +23,16 @@ import {
   countBooksCheckedInTodayQuery
 } from './Booksout.sql';
 import {
-  GetAllModel,
+  TableBooksOutSchema,
   BooksOverdueModel,
   ScansModel,
   RecentlyCheckoutModel
 } from './Booksout.type';
 import { CountObj } from 'types/generic.type';
 
-const repo = repoBase<GetAllModel>(`books_out`, 'books_out_id');
+const repo = repoBase<TableBooksOutSchema>(`books_out`, 'books_out_id');
 repo.getAll = async () => {
-  const result = await all<GetAllModel>(getAllQuery);
+  const result = await all<TableBooksOutSchema>(getAllQuery);
   return result;
 };
 

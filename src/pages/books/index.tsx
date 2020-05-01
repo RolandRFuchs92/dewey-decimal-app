@@ -12,7 +12,7 @@ import BarcodePage from './Book.barcode';
 import PageBase from 'components/page/PageBase';
 import serviceBase from './Book.service';
 // import repo from './Book.repo';
-import { TableBookSchema, BookModel } from './Book.type';
+import { TableBookSchema, BookSchema } from './Book.type';
 
 const useStyles = makeStyles(theme => ({
   barcode: {
@@ -21,7 +21,7 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const defaultColumns: DefaultColumnModel<TableBookSchema>[] = [
+const defaultColumns: DefaultColumnModel<TableBookSchema, BookSchema>[] = [
   {
     name: 'book_id',
     label: 'Id',
@@ -103,7 +103,7 @@ export default () => {
 
   return (
     <>
-      <PageBase<TableBookSchema, BookModel>
+      <PageBase<TableBookSchema, BookSchema>
         defaultColumns={columns}
         getAll={getAll}
         handleDeleteRow={handleDeleteRow}

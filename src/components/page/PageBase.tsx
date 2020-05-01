@@ -23,7 +23,7 @@ export default <TTableSchema, TSchema>({
   const [columns, setColumns] = useState<
     DefaultColumnModel<TTableSchema, TSchema>[]
   >(defaultColumns);
-  const [data, setData] = useState<TSchema[]>([]);
+  const [data, setData] = useState<TTableSchema[]>([]);
   const [openModal, setOpenModal] = useState(false);
   const [modalData, setModalData] = useState<TSchema | undefined>(undefined);
 
@@ -44,36 +44,36 @@ export default <TTableSchema, TSchema>({
   };
 
   const handleYesOnDelete = useCallback(
-    async (rowData: TSchema) => {
+    async (rowData: TTableSchema) => {
       try {
         await handleDeleteRow((rowData as any).id);
         await reset();
         alert.success(`Successfully deleted ${rowData[dialogKey]}`);
       } catch (error) {
         alert.error(`There was an error deleting ${rowData[dialogKey]}!`);
-        // log.error(error);
       }
     },
     [alert, dialogKey, handleDeleteRow, reset]
   );
 
-  const objectFromRowData = (rowData: TSchema): TSchema => {
+  const objectFromRowData = (rowData: TTableSchema): TSchema => {
     const rowToColumn = Object.keys(rowData);
     return Object.fromEntries(
       columns.map(({ name }, index) => [name, rowToColumn[index] || ''])
     );
   };
-  const handleEditAdd = (rowData: TSchema) => {
+
+  const handleEditAdd = (rowData: TTableSchema) => {
     rowData && setModalData(objectFromRowData(rowData));
     setOpenModal(true);
   };
 
-  const handleDelete = (rowData: TSchema) => {
-    const obj = objectFromRowData(rowData);
+  const handleDelete = (rowData: TTableSchema) => {
+    // const obj = objectFromRowData(rowData);
     showDialog({
       title: 'Are you sure?',
-      description: `Really delete ${obj[dialogKey]}?`,
-      handleYes: () => handleYesOnDelete(obj)
+      description: `Really delete ${rowData[dialogKey]}?`,
+      handleYes: () => handleYesOnDelete(rowData)
     });
   };
 

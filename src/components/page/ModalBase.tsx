@@ -55,7 +55,7 @@ export default <TTableSchema, TSchema>({
 
   const handleSubmit = async () => {
     try {
-      const statementObject = { ...val } as TSchema;
+      const statementObject = { ...val } as TTableSchema;
       const refColumns = columns.filter(column => {
         let firstChar: string = '';
         if (column.name !== null && column.name !== undefined)
@@ -65,14 +65,16 @@ export default <TTableSchema, TSchema>({
       });
       refColumns.forEach(({ name }) => {
         if (name !== null && name !== undefined)
-          delete statementObject[name as keyof TSchema];
+          delete statementObject[name as keyof TTableSchema];
       });
 
       const result = await handleEditAddRow(
         (statementObject as unknown) as TSchema
       );
       alert.success(
-        `Successfully TODO(ADDD OR UPDATED) ${val ? val[dialogKey] : 'new row'}`
+        `Successfully TODO(ADDD OR UPDATED) ${
+          val ? statementObject[dialogKey] : 'new row'
+        }`
       );
       reset();
     } catch (error) {

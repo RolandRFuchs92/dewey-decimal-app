@@ -9,11 +9,12 @@ import {
   RecentlyCheckoutModel,
   CheckoutPOST,
   CheckinResult,
-  TableBooksOutSchema,
-  GetAllModel
+  TableBooksOutSchema
 } from './Booksout.type';
 
-export default serviceBase<TableBooksOutSchema, GetAllModel>('books_out');
+export default serviceBase<TableBooksOutSchema, TableBooksOutSchema>(
+  'books_out'
+);
 
 async function getCountResult(func: () => Promise<Result<CountObj>>) {
   try {
