@@ -2,10 +2,10 @@ import React from 'react';
 
 import PageBase from 'components/page/PageBase';
 import { DefaultColumnModel } from 'components/page/PageBase.type';
+import serviceBase from './Summary1.service';
+import { DeweySummarySchema } from './Summary1.type';
 
-import repo from './Summary1.repo';
-
-const defaultColumns: DefaultColumnModel[] = [
+const defaultColumns: DefaultColumnModel<DeweySummarySchema>[] = [
   {
     label: 'Id',
     name: 'dewey_summary_id',
@@ -25,9 +25,9 @@ const defaultColumns: DefaultColumnModel[] = [
 ];
 
 export default () => {
-  const handleDeleteRow = repo.deleteRow;
-  const handleEditAddRow = repo.addOrUpdate;
-  const getAll = repo.getAll;
+  const handleDeleteRow = serviceBase.deleteFunc;
+  const handleEditAddRow = serviceBase.addOrUpdate;
+  const getAll = serviceBase.getAll;
 
   return (
     <PageBase
