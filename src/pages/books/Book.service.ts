@@ -1,9 +1,14 @@
 import { get, post } from 'utils/ajax';
 import { book } from 'endpoints.json';
-import { GetBookCallNumberModel } from './Book.type';
+import {
+  GetBookCallNumberModel,
+  BookModel,
+  TableBookSchema
+} from './Book.type';
 import { Result } from 'types/generic.type';
+import serviceBase from 'components/page/service.base';
 
-export default () => {};
+export default serviceBase<TableBookSchema, BookModel>('book');
 
 export type GetBookByCallNumberPOST = {
   callnumber: string;

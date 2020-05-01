@@ -31,3 +31,8 @@ export type GetBookCallNumberModel = {
   return_on?: Date;
   check_in_date?: Date;
 };
+
+export type TableBookSchema = {
+  author_name: string;
+  dewey_decimal_name: string;
+} & Omit<BookModel, 'created_on'>;

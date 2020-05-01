@@ -2,15 +2,17 @@ import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core';
 
 import Icons from 'components/icons';
-import { getSelectList as getAuthorsSelectList } from 'pages/authors/authors.repo';
-import { getSelectList as getDecimalSelectList } from 'pages/deweySystem/decimal/Decimal.repo';
+// import { getSelectList as getAuthorsSelectList } from 'pages/authors/authors.repo';
+// import { getSelectList as getDecimalSelectList } from 'pages/deweySystem/decimal/Decimal.repo';
 import { DefaultColumnModel } from 'components/page/PageBase.type';
 import { BarcodeModel } from 'components/printCodes/PrintCodes.type';
 import { JsonObj } from 'types/generic.type';
 
 import BarcodePage from './Book.barcode';
 import PageBase from 'components/page/PageBase';
-import repo from './Book.repo';
+import serviceBase from './Book.service';
+// import repo from './Book.repo';
+import { TableBookSchema, BookModel } from './Book.type';
 
 const useStyles = makeStyles(theme => ({
   barcode: {
@@ -19,7 +21,7 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const defaultColumns: DefaultColumnModel[] = [
+const defaultColumns: DefaultColumnModel<TableBookSchema>[] = [
   {
     name: 'book_id',
     label: 'Id',
@@ -52,15 +54,15 @@ const defaultColumns: DefaultColumnModel[] = [
     name: 'author_name',
     label: 'Author',
     ref: 'author_id',
-    type: 'select',
-    getDropDownItems: getAuthorsSelectList
+    type: 'select'
+    // getDropDownItems: getAuthorsSelectList
   },
   {
     name: 'dewey_decimal_name',
     label: 'Deciaml Name',
     ref: 'decimal_id',
-    type: 'select',
-    getDropDownItems: getDecimalSelectList
+    type: 'select'
+    // getDropDownItems: getDecimalSelectList
   },
   {
     name: 'publisher',
@@ -75,12 +77,12 @@ export default () => {
     value: '',
     description: ''
   });
-  const handleDeleteRow = repo.deleteRow;
-  const handleEditAddRow = repo.addOrUpdate;
-  const getAll = repo.getAll;
+  const handleDeleteRow = serviceBase.deleteFunc;
+  const handleEditAddRow = serviceBase.addOrUpdate;
+  const getAll = serviceBase.getAll;
 
   const handleBarcodeClose = () => setBarcodeIsOpen(false);
-  const handleBarcodeOpen = (rowData: JsonObj) => {
+  const handleBarcodeOpen = (rowData: TableBookSchema) => {
     const data = objectFromRowData(rowData);
     setBarcode({
       value: data.call_number,
@@ -88,15 +90,20 @@ export default () => {
     });
     setBarcodeIsOpen(true);
   };
+
+  // @ts-ignore
   const columns = defaultColumns.concat(createBarcodeButton(handleBarcodeOpen));
-  const objectFromRowData = (rowData: JsonObj) =>
-    Object.fromEntries(
-      columns.map(({ name }, index) => [name, rowData[index] || ''])
+
+  const objectFromRowData = (rowData: TableBookSchema) => {
+    const rowAsColumn = Object.keys(rowData);
+    return Object.fromEntries(
+      columns.map(({ name }, index: number) => [name, rowAsColumn[index] || ''])
     );
+  };
 
   return (
     <>
-      <PageBase
+      <PageBase<TableBookSchema, BookModel>
         defaultColumns={columns}
         getAll={getAll}
         handleDeleteRow={handleDeleteRow}
