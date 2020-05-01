@@ -15,6 +15,7 @@ const app = express();
 // TODO add whitelist for dynamic ip allocation... probably
 
 app.use(express.static(path.join(process.cwd(), 'build')));
+
 app.get('/', (req, res) => {
   const appLocation = path.join(process.cwd(), 'build', 'index.html');
   res.sendFile(appLocation);
