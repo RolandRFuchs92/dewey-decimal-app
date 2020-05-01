@@ -1,13 +1,13 @@
 import { formatDate } from 'appSettings.json';
-import { ScansModel } from 'pages/booksOut/Booksout.type';
 import format from 'date-fns/format/index.js';
+import { ScansModel } from 'pages/booksOut/Booksout.type';
 import { ProcessedScansModel } from './Home.type';
 import store from 'utils/redux/store';
-import { setCheckinsToday, setCheckoutsToday } from './Home.action';
+import { setCheckinsAndCheckoutsToday } from './Home.action';
 
 export default () => {};
 
-export function updateScansData(scans: ScansModel[]) {
+export function processScansData(scans: ScansModel[]) {
   const today = format(new Date(), formatDate.from);
   const checkoutResults = scans
     ? scans.filter(x => x.check_out_date.toString() === today)
@@ -19,10 +19,11 @@ export function updateScansData(scans: ScansModel[]) {
   const checkoutCount = checkoutResults.length;
   const checkinCount = checkinResults.length;
 
-  const checkoutCountAction = setCheckoutsToday(checkoutCount);
-  const checkinCountAction = setCheckinsToday(checkinCount);
-  store.dispatch(checkoutCountAction);
-  store.dispatch(checkinCountAction);
+  const checkinAndOutCountAction = setCheckinsAndCheckoutsToday(
+    checkoutCount,
+    checkinCount
+  );
+  store.dispatch(checkinAndOutCountAction);
 
   const result: ProcessedScansModel = {
     checkoutResults,
@@ -30,4 +31,5 @@ export function updateScansData(scans: ScansModel[]) {
     checkinResults,
     checkinCount
   };
+  return result;
 }

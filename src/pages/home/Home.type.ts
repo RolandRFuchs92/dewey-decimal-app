@@ -1,21 +1,38 @@
 import { GetStudentsWithBirthdaysModel } from 'pages/student/Student.type';
-import { ScansModel } from 'pages/scan/Scan.type';
+import { ScansModel } from 'pages/booksOut/Booksout.type';
+
+export type HomeReducerModel = {
+  checkoutCountForToday: number;
+  checkinCountForToday: number;
+  birthdaysToday: number;
+  booksOverdue: number;
+  checkoutsToday: ScansModel[];
+  checkinsToday: ScansModel[];
+};
+
+export type HomeReducerCountOnly = Omit<
+  HomeReducerModel,
+  'checkinsToday' | 'checkoutsToday'
+>;
 
 export type GenericActionModal = {
   type: IndicatorActionTypes;
   payload: number;
 };
 
-export type HomeReducerModel = {
-  checkoutsToday: number;
-  checkinsToday: number;
-  birthdaysToday: number;
-  booksOverdue: number;
+export type UpdateCheckinAndCheckoutCountAction = {
+  type: 'UPDATE_CHECKIN_AND_CHECKOUT_COUNTS';
+  payload: UpdateCheckinAndCheckoutCount;
+};
+
+export type UpdateCheckinAndCheckoutCount = {
+  checkoutCount: number;
+  checkinCount: number;
 };
 
 export type FullIndicatorActionModel = {
   type: 'ALL_INDICATORS';
-  payload: HomeReducerModel;
+  payload: HomeReducerCountOnly;
 };
 
 export type IndicatorActionTypes =
@@ -23,7 +40,8 @@ export type IndicatorActionTypes =
   | 'BOOKS_OVERDUE'
   | 'CHECKINS_TODAY'
   | 'CHECKOUTS_TODAY'
-  | 'ALL_INDICATORS';
+  | 'ALL_INDICATORS'
+  | 'UPDATE_CHECKIN_AND_CHECKOUT_COUNTS';
 
 export type CalculateCheckoutModel = {
   isCheckout: boolean;

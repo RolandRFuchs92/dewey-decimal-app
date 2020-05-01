@@ -1,7 +1,9 @@
 import {
   GenericActionModal,
   FullIndicatorActionModel,
-  HomeReducerModel
+  HomeReducerModel,
+  UpdateCheckinAndCheckoutCountAction,
+  UpdateCheckinAndCheckoutCount
 } from './Home.type';
 
 const initialState = {
@@ -13,33 +15,43 @@ const initialState = {
 
 export default (
   currentState = initialState,
-  action: GenericActionModal | FullIndicatorActionModel
+  action:
+    | GenericActionModal
+    | FullIndicatorActionModel
+    | UpdateCheckinAndCheckoutCountAction
 ) => {
   const { type, payload } = action;
   switch (type) {
     case 'CHECKOUTS_TODAY':
       return {
-        ...initialState,
+        ...currentState,
         checkoutsToday: payload
       };
     case 'CHECKINS_TODAY':
       return {
-        ...initialState,
+        ...currentState,
         checkinsToday: payload
       };
     case 'BIRTHDAYS_TODAY':
       return {
-        ...initialState,
+        ...currentState,
         birthdaysToday: payload
       };
     case 'BOOKS_OVERDUE':
       return {
-        ...initialState,
+        ...currentState,
         booksOverdue: payload
+      };
+    case 'UPDATE_CHECKIN_AND_CHECKOUT_COUNTS':
+      return {
+        ...currentState,
+        checkoutsToday: (payload as UpdateCheckinAndCheckoutCount)
+          .checkoutCount,
+        checkinsToday: (payload as UpdateCheckinAndCheckoutCount).checkinCount
       };
     case 'ALL_INDICATORS':
       return {
-        ...initialState,
+        ...currentState,
         ...(payload as HomeReducerModel)
       };
     default:

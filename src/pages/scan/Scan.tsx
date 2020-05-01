@@ -43,6 +43,7 @@ import {
   ScanProps
 } from './Scan.type';
 import { ScannerCloseAction } from './Scanner.action';
+import { processScansData } from 'pages/home/Home.service';
 
 const useStyles = makeStyles(theme => ({
   barcode: {
@@ -257,7 +258,8 @@ const GenerateCheckin = ({ data, reset }: GenerateCheckinProps) => {
   const handleSubmit = async () => {
     try {
       // TODO do something with the fine applicable here...
-      const result = await checkin(Number(data.books_out_id));
+      const { result } = await checkin(Number(data.books_out_id));
+      const processedResult = processScansData(result!.scansToday); //TODO ADD THIS SHIT TO THE CHECKIN PANELS
       reset();
       alert.success(
         `Successfully checked in ${data.book_name} for ${data.student_name}`
@@ -353,9 +355,10 @@ const GenerateCheckout = ({ data, reset }: GenerateCheckoutProps) => {
       const student_id = selection!.student_id;
       const book_id = Number(data.book_id);
 
-      const result = await checkout(student_id, book_id);
-
+      const { result } = await checkout(student_id, book_id);
+      const processedResult = processScansData(result!); //TODO ADD THIS SHIT TO THE CHECKOUT PANELS
       reset();
+
       return alert.success(
         `${selection?.student_name ?? 'Unknown'} checked out ${
           data.book_name

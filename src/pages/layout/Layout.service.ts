@@ -10,7 +10,7 @@ import {
   countOverdueBooks
 } from 'pages/booksOut/Booksout.service';
 import {
-  HomeReducerModel,
+  HomeReducerCountOnly,
   FullIndicatorActionModel
 } from 'pages/home/Home.type';
 
@@ -27,10 +27,10 @@ export async function loadInitialAppState(dispatch: Dispatch) {
   const checkoutsToday = countCheckouts();
   const birthdaysToday = getBirthdaysTodayCount();
 
-  const payload: HomeReducerModel = {
+  const payload: HomeReducerCountOnly = {
     booksOverdue: (await booksOverdue).result!.count,
-    checkinsToday: (await checkinsToday).result!.count,
-    checkoutsToday: (await checkoutsToday).result!.count,
+    checkinCountForToday: (await checkinsToday).result!.count,
+    checkoutCountForToday: (await checkoutsToday).result!.count,
     birthdaysToday: (await birthdaysToday).result!.count
   };
 

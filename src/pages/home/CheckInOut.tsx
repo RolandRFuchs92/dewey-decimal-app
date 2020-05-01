@@ -47,7 +47,6 @@ export default ({
   isCheckin: boolean;
 }) => {
   const classes = useStyles();
-  debugger;
   return (
     <div className={classes.dataDisplay}>
       {scans &&
@@ -68,6 +67,7 @@ export default ({
               <Grid
                 container
                 className={`${isOdd ? classes.odd : classes.even}`}
+                data-cnt={index + 1}
               >
                 <Grid item className={classes.scanTileItem}>
                   {book}

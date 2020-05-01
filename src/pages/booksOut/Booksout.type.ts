@@ -50,6 +50,7 @@ export type CheckoutPOST = {
 
 export type CheckinResult = {
   finedue: number;
+  scansToday: ScansModel[];
 };
 
 export const book_out_keys = [

@@ -81,7 +81,14 @@ router.put('/', async (req, res) => {
   try {
     const booksout_id = req.body.booksout_id;
     await checkin(booksout_id);
-    const result = await getScans();
+    const scansToday = await getScans();
+    const result: Result<CheckinResult> = {
+      result: {
+        finedue: 0, //TODO CALULCATE FINE
+        scansToday
+      }
+    };
+
     res.send(result);
   } catch (error) {
     errorHandler(
