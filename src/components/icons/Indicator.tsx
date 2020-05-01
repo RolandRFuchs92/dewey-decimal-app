@@ -5,6 +5,8 @@ import { connect } from 'react-redux';
 
 import Icons from './index';
 import { indicatorRootModel, indicatorModel } from './Icons.type';
+import { HomeReducerCountOnly } from 'pages/home/Home.type';
+import { AdminReducerModel } from 'pages/admin/admin.reducer';
 
 const useStyles = makeStyles(theme => {
   return {
@@ -132,7 +134,10 @@ export const RawErrorIndicator = ({ count }: indicatorModel) => {
   );
 };
 
-const genericMapStateToProps = (stateTree: string, stateTreeChild: string) => {
+const genericMapStateToProps = (
+  stateTree: string,
+  stateTreeChild: keyof HomeReducerCountOnly | keyof AdminReducerModel
+) => {
   return (
     currentState: { [key: string]: any },
     ownProps: { [key: string]: any }
@@ -151,10 +156,10 @@ export const OverdueIndicator = connect(
   genericMapStateToProps('home', 'booksOverdue')
 )(RawOverdueIndicator);
 export const CheckoutIndicator = connect(
-  genericMapStateToProps('home', 'checkoutsToday')
+  genericMapStateToProps('home', 'checkinCountForToday')
 )(RawCheckoutIndicator);
 export const CheckinIndicator = connect(
-  genericMapStateToProps('home', 'checkinsToday')
+  genericMapStateToProps('home', 'checkinCountForToday')
 )(RawCheckinIndicator);
 export const ErrorIndicator = connect(
   genericMapStateToProps('admin', 'errorCount')

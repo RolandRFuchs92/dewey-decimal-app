@@ -37,7 +37,7 @@ export default (
     case 'BIRTHDAYS_TODAY':
       return {
         ...currentState,
-        checkoutCountForToday: payload
+        birthdaysToday: payload
       };
     case 'BOOKS_OVERDUE':
       return {
