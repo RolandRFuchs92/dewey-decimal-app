@@ -80,12 +80,11 @@ export default ({
         <Typography variant="h5">
           Display barcode to easily checkin/out
         </Typography>
-        {isScannerError}
-        {/* {isScannerError && (
+        {isScannerError && (
           <Typography variant="h5">
             There was a problem opening the webcam.
           </Typography>
-        )} */}
+        )}
         <div id="interactive" className="viewport" />
       </div>
     </Grid>

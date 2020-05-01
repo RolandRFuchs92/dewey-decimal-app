@@ -11,7 +11,9 @@ import {
 import { connect, useDispatch } from 'react-redux';
 import { Autocomplete } from '@material-ui/lab';
 import { isNil } from 'lodash';
+import { addDays, format } from 'date-fns';
 
+import appSettings from 'appSettings.json';
 import { useAlert } from 'utils/snackbarAlerts';
 import Modal from 'components/modal';
 import Icons from 'components/icons';
@@ -313,6 +315,12 @@ const GenerateCheckout = ({ data, reset }: GenerateCheckoutProps) => {
   const classes = useStyles();
   const alert = useAlert();
 
+  const checkoutDate = format(new Date(), appSettings.formatDate.to);
+  const dueBack = format(
+    addDays(new Date(), appSettings.checkout.daysAllowedOut),
+    appSettings.formatDate.to
+  );
+
   const handleSearch = async (e: ChangeEvent<HTMLInputElement>) => {
     const {
       target: { value }
@@ -323,6 +331,7 @@ const GenerateCheckout = ({ data, reset }: GenerateCheckoutProps) => {
 
   const getSelection = (event: ChangeEvent<{}>, value: JsonObj) => {
     if (isNil(value)) return;
+    debugger;
     setSelection({
       class: +value.class,
       teacher: value.teacher.toString(),
@@ -393,10 +402,10 @@ const GenerateCheckout = ({ data, reset }: GenerateCheckoutProps) => {
       </p>
       <hr></hr>
       <p>
-        Check out on: <b>{data.check_out_date}</b> //TODO
+        Check out on: <b>{data.call_number && checkoutDate}</b>
       </p>
       <p>
-        Due by:<b>{data.return_on}</b>//TODO
+        Due by:<b>{data.call_number && dueBack}</b>
       </p>
       <Button
         variant="contained"
