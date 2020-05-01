@@ -1,5 +1,5 @@
 import { booksout } from 'endpoints.json';
-import { get, post } from 'utils/ajax';
+import { get, post, put } from 'utils/ajax';
 import { CountObj, Result } from 'types/generic.type';
 
 import {
@@ -98,7 +98,7 @@ export async function checkin(booksout_id: number) {
   const param: CheckinPUT = {
     booksout_id
   };
-  const result = await post<CheckinPUT, CheckinResult>(
+  const result = await put<CheckinPUT, CheckinResult>(
     booksout.checkin.uri,
     param
   );

@@ -82,8 +82,8 @@ router.post('/', async (req, res) => {
 //Checking in
 router.put('/', async (req, res) => {
   try {
-    const bookId = req.body.booksout_id;
-    await checkin(bookId);
+    const booksout_id = req.body.booksout_id;
+    await checkin(booksout_id);
     const result: Result<CheckinResult> = {
       message: 'The student has a fine lol',
       result: {
