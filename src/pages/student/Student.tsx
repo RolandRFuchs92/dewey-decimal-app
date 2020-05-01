@@ -2,12 +2,11 @@ import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core';
 
 import PageBase from 'components/page/PageBase';
-import { getSelectList } from 'pages/class/Class.repo';
-import { DefaultColumnModel } from 'components/page/PageBase.type';
 import { tableButton } from 'utils/tableButtons';
+import { DefaultColumnModel } from 'components/page/PageBase.type';
 
+import serviceBase from './Student.service';
 import StudentProfile from './StudentProfile';
-import repo from './Student.repo';
 import { StudentModel } from './Student.type';
 
 const defaultColumns: DefaultColumnModel[] = [
@@ -72,8 +71,8 @@ const defaultColumns: DefaultColumnModel[] = [
     name: 'class_name',
     label: 'Class',
     ref: 'class_id',
-    type: 'select',
-    getDropDownItems: getSelectList
+    type: 'select'
+    // getDropDownItems: getSelectList
   },
   {
     name: 'is_active',
@@ -97,9 +96,9 @@ export default () => {
 
   const [studentId, setStudentId] = useState(1);
   const [open, setOpen] = useState(false);
-  const handleDeleteRow = repo.deleteRow;
-  const handleEditAddRow = repo.addOrUpdate;
-  const getAll = repo.getAll;
+  const handleDeleteRow = serviceBase.deleteFunc;
+  const handleEditAddRow = serviceBase.addOrUpdate;
+  const getAll = serviceBase.getAll;
 
   const columns = defaultColumns.concat(
     tableButton(
@@ -115,7 +114,7 @@ export default () => {
 
   return (
     <>
-      <PageBase<StudentModel>
+      <PageBase<StudentModel, {}>
         defaultColumns={columns}
         getAll={getAll}
         handleDeleteRow={handleDeleteRow}

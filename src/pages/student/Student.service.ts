@@ -4,11 +4,13 @@ import { BirthdaysType } from 'pages/home/Home.type';
 import {
   StudentCardProps,
   StudentSearchGET,
-  StudentProfileGET
+  StudentProfileGET,
+  StudentModel
 } from './Student.type';
 import { Result, DropdownListModel, CountObj } from 'types/generic.type';
+import serviceBase from 'components/page/service.base';
 
-export default () => {};
+export default serviceBase<StudentModel[], {}>('student');
 
 export async function getBirthdaysTodayCount(): Promise<Result<CountObj>> {
   try {

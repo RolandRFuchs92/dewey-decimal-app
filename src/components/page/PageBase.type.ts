@@ -1,13 +1,13 @@
 import { MUIDataTableColumnOptions } from 'mui-datatables';
-import { JsonObj, DropdownListModel } from 'types/generic.type';
+import { JsonObj, DropdownListModel, Result } from 'types/generic.type';
 
-export type PageBaseModel<T> = {
+export type PageBaseModel<TResult, TAddOrUpdate> = {
   defaultColumns: DefaultColumnModel[];
-  getAll: () => Promise<T[]>;
-  handleDeleteRow: (rowData: T) => Promise<true>;
-  handleEditAddRow: (event: JsonObj | null) => Promise<'add' | 'update'>;
+  getAll: () => Promise<Result<TResult[]>>;
+  handleDeleteRow: (id: number) => Promise<Result<boolean>>;
+  handleEditAddRow: (event: TAddOrUpdate) => Promise<'add' | 'update'>;
   modal?: JSX.Element | null;
-  dialogKey: keyof T;
+  dialogKey: keyof TResult;
 };
 
 export type DefaultColumnModel = {
@@ -59,13 +59,13 @@ export type SelectBoxModel = {
   getDropDownItems: () => Promise<DropdownListModel[]>;
 };
 
-export type ModalBaseModel = {
+export type ModalBaseModel<TResult, TAddOrUpdate> = {
   columns: DefaultColumnModel[];
   open: boolean;
   handleClose: () => void;
-  handleEditAddRow: (statementObject: {
-    [x: string]: any;
-  }) => Promise<'add' | 'update'>;
+  handleEditAddRow: (
+    statementObject: TAddOrUpdate
+  ) => Promise<Result<TResult[]>>;
   modalData: { [key: string]: any };
   reset: () => void;
 };

@@ -75,11 +75,6 @@ export default ({
           val!.dewey_summary_id ? 'updating' : 'adding'
         } a field.`
       );
-      // log.error(
-      //   `Error in src/components/page/ModalBase - Default - ${JSON.stringify(
-      //     error
-      //   )}`
-      // );
     }
   };
 

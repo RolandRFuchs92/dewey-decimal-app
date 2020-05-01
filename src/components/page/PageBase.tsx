@@ -11,33 +11,40 @@ import { JsonObj } from 'types/generic.type';
 
 import { DefaultColumnModel, PageBaseModel } from './PageBase.type';
 
-export default <T,>({
+export default <TResult, TAddOrUpdate>({
   defaultColumns,
   getAll,
   handleDeleteRow,
   handleEditAddRow,
   modal = null,
   dialogKey
-}: PageBaseModel<T>) => {
+}: PageBaseModel<TResult, TAddOrUpdate>) => {
   const [options, setOptions] = useState({});
   const [columns, setColumns] = useState<DefaultColumnModel[]>(defaultColumns);
-  const [data, setData] = useState<T[]>([]);
+  const [data, setData] = useState<TResult[]>([]);
   const [openModal, setOpenModal] = useState(false);
-  const [modalData, setModalData] = useState<T | undefined>(undefined);
+  const [modalData, setModalData] = useState<TResult | undefined>(undefined);
 
   const showDialog = useDialog();
   const alert = useAlert();
 
   const reset = async () => {
-    const tableData = await getAll();
-    setData(tableData);
+    const getAllResult = await getAll();
+
+    if (getAllResult.message && !getAllResult.result)
+      //TODO check this for caching
+      alert.error(getAllResult.message);
+
+    if (getAllResult.message) alert.success(getAllResult.message);
+
+    setData(getAllResult.result || []);
     setOpenModal(false);
   };
 
   const handleYesOnDelete = useCallback(
-    async (rowData: T) => {
+    async (rowData: TResult) => {
       try {
-        await handleDeleteRow(rowData);
+        await handleDeleteRow((rowData as any).id);
         await reset();
         alert.success(`Successfully deleted ${rowData[dialogKey]}`);
       } catch (error) {
@@ -48,7 +55,7 @@ export default <T,>({
     [alert, dialogKey, handleDeleteRow, reset]
   );
 
-  const objectFromRowData = (rowData: JsonObj): T =>
+  const objectFromRowData = (rowData: JsonObj): TResult =>
     Object.fromEntries(
       columns.map(({ name }, index) => [name, rowData[index] || ''])
     );

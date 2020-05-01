@@ -54,6 +54,7 @@
     }
   },
   "student": {
+    "root": "student",
     "getAll": {
       "uri": "student",
       "verb": "GET"
