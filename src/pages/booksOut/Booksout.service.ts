@@ -1,4 +1,4 @@
-import { books_out } from 'endpoints.json';
+import { booksout } from 'endpoints.json';
 import { get, post, put } from 'utils/ajax';
 import { CountObj, Result } from 'types/generic.type';
 import serviceBase from 'components/page/service.base';
@@ -13,7 +13,7 @@ import {
 } from './Booksout.type';
 
 export default serviceBase<TableBooksOutSchema, TableBooksOutSchema>(
-  'books_out'
+  'booksout'
 );
 
 async function getCountResult(func: () => Promise<Result<CountObj>>) {
@@ -32,28 +32,28 @@ async function getCountResult(func: () => Promise<Result<CountObj>>) {
 
 export async function countCheckouts(): Promise<Result<CountObj>> {
   const checkoutFunc = async () =>
-    await get<{}, CountObj>(books_out.checkoutscount.uri);
+    await get<{}, CountObj>(booksout.checkoutscount.uri);
   const result = getCountResult(checkoutFunc);
   return result;
 }
 
 export async function countCheckins(): Promise<Result<CountObj>> {
   const checkinFunc = async () =>
-    await get<{}, CountObj>(books_out.checkinscount.uri);
+    await get<{}, CountObj>(booksout.checkinscount.uri);
   const result = getCountResult(checkinFunc);
   return result;
 }
 
 export async function countOverdueBooks(): Promise<Result<CountObj>> {
   const checkinFunc = async () =>
-    await get<{}, CountObj>(books_out.overduecount.uri);
+    await get<{}, CountObj>(booksout.overduecount.uri);
   const result = getCountResult(checkinFunc);
   return result;
 }
 
 export async function getOverduebooks(): Promise<Result<BooksOverdueModel[]>> {
   try {
-    const result = await get<{}, BooksOverdueModel[]>(books_out.overdue.uri);
+    const result = await get<{}, BooksOverdueModel[]>(booksout.overdue.uri);
     return result;
   } catch (error) {
     return {
@@ -64,7 +64,7 @@ export async function getOverduebooks(): Promise<Result<BooksOverdueModel[]>> {
 
 export async function getScans(): Promise<Result<ScansModel[]>> {
   try {
-    const result = await get<{}, ScansModel[]>(books_out.scans.uri);
+    const result = await get<{}, ScansModel[]>(booksout.scans.uri);
     return result;
   } catch (error) {
     return {
@@ -83,7 +83,7 @@ export async function checkout(
       student_id
     };
     const result = await post<CheckoutPOST, ScansModel[]>(
-      books_out.checkout.uri,
+      booksout.checkout.uri,
       param
     );
     return result;
@@ -103,7 +103,7 @@ export async function checkin(booksout_id: number) {
     booksout_id
   };
   const result = await put<CheckinPUT, CheckinResult>(
-    books_out.checkin.uri,
+    booksout.checkin.uri,
     param
   );
   return result;
