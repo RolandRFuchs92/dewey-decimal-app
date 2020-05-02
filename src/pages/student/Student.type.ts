@@ -15,7 +15,7 @@ export type StudentSchema = {
   is_active: boolean;
 };
 
-export type StudentTableSchema = {
+export type TableStudentSchema = {
   student_id: number;
   first_name: string;
   last_name: string;

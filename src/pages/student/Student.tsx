@@ -7,9 +7,16 @@ import { DefaultColumnModel } from 'components/page/PageBase.type';
 
 import serviceBase from './Student.service';
 import StudentProfile from './StudentProfile';
-import { StudentModel, StudentTableSchema } from './Student.type';
+import {
+  StudentModel,
+  TableStudentSchema,
+  StudentSchema
+} from './Student.type';
 
-const defaultColumns: DefaultColumnModel<StudentTableSchema>[] = [
+const defaultColumns: DefaultColumnModel<
+  TableStudentSchema,
+  StudentSchema
+>[] = [
   // TODO add a tableSchemaModel...
   {
     name: 'student_id',
@@ -116,7 +123,7 @@ export default () => {
 
   return (
     <>
-      <PageBase<StudentModel, StudentModel>
+      <PageBase<TableStudentSchema, StudentSchema>
         defaultColumns={columns}
         getAll={getAll}
         handleDeleteRow={handleDeleteRow}
