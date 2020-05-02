@@ -1,5 +1,5 @@
 {
-  "developmentHost": "http://localhost:3001",
+  "developmentHost": "http://10.0.0.156:3001",
   "productionHost": "",
   "books_out": {
     "getall": {

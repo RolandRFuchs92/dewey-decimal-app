@@ -16,7 +16,8 @@ import {
   StudentModel,
   StudentCardProps,
   GetStudentsWithBirthdaysModel,
-  StudentSelectListSearchModel
+  StudentSelectListSearchModel,
+  TableStudentSchema
 } from './Student.type';
 import { RestoreFromTrashOutlined } from '@material-ui/icons';
 import { DropdownListModel, Result, CountObj } from 'types/generic.type';
@@ -44,7 +45,9 @@ router.delete('/', async (req, res) => {
   try {
     debugger;
     const body = { student_id: req.body.student_id };
-    const result = await stud.deleteRow((body as unknown) as StudentModel);
+    const result = await stud.deleteRow(
+      (body as unknown) as TableStudentSchema
+    );
     res.send(result);
   } catch (error) {
     res.send(error);
@@ -53,7 +56,10 @@ router.delete('/', async (req, res) => {
 
 router.get('/', async (req, res) => {
   try {
-    const result = await stud.getAll();
+    const getAllResult = await stud.getAll();
+    const result: Result<TableStudentSchema[]> = {
+      result: getAllResult
+    };
     res.send(result);
   } catch (error) {
     genericErrorHandle('', error, res, 'Error collecting student data');

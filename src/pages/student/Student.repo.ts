@@ -10,7 +10,8 @@ import {
   StudentModel,
   GetStudentsWithBirthdaysModel,
   StudentSelectListSearchModel,
-  StudentCardProps
+  StudentCardProps,
+  TableStudentSchema
 } from './Student.type';
 import {
   getAllQuery,
@@ -20,10 +21,10 @@ import {
   getStudentsWithBirthdaysCountQuery
 } from './Student.sql';
 
-const repo = repoBase<StudentModel>('student', 'student_id');
+const repo = repoBase<TableStudentSchema>('student', 'student_id');
 
 repo.getAll = async () => {
-  return await all<StudentModel>(getAllQuery);
+  return await all<TableStudentSchema>(getAllQuery);
 };
 
 export default repo;
