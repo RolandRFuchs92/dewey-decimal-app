@@ -15,6 +15,7 @@ import authorController from 'pages/authors/Authors.controller';
 import decimalController from 'pages/deweySystem/decimal/Decimal.controller';
 import summary1Controller from 'pages/deweySystem/summary1/Summary1.controller';
 import summary2Controller from 'pages/deweySystem/summary2/Summary2.controller';
+import summary3Controller from 'pages/deweySystem/summary3/Summary3.controller';
 
 const app = express();
 
@@ -41,6 +42,7 @@ app.use('/author', authorController);
 app.use('/dewey_decimal', decimalController);
 app.use('/dewey_summary', summary1Controller);
 app.use('/dewey_summary_2', summary2Controller);
+app.use('/dewey_summary_3', summary3Controller);
 
 if (process.env.NODE_ENV === 'production')
   https

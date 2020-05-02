@@ -25,8 +25,7 @@
     "webpack",
     "jest",
     "src/setupTests.ts",
-    "src/server.ts",
-    "**/*.controller.ts"
+    "src/server.ts"
   ],
   "types": ["typePatches"]
 }
