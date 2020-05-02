@@ -30,8 +30,8 @@ router.get('/', async (req, res) => {
   try {
     const booksoutResult = await booksoutRepo.getAll();
     const result: Result<TableBooksOutSchema[]> = {
-      result: booksoutResult;
-    }
+      result: booksoutResult
+    };
     res.send(result);
   } catch (error) {
     errorHandler('GET', error, res, 'There was an error getting all booksout.');

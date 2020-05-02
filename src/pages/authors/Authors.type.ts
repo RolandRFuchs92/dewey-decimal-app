@@ -12,4 +12,4 @@ export type AuthorSchema = {
   surname: string;
 };
 
-export type TableAuthorSchema = AuthorSchema;
+export type TableAuthorSchema = {} & AuthorSchema;

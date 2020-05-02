@@ -2,7 +2,8 @@ import React from 'react';
 
 import { DefaultColumnModel } from 'components/page/PageBase.type';
 import PageBase from 'components/page/PageBase';
-import serviceBase from 'components/page/service.base';
+
+import serviceBase from './Authors.service';
 import { AuthorSchema, TableAuthorSchema } from './Authors.type';
 
 const defaultColumns: DefaultColumnModel<TableAuthorSchema, AuthorSchema>[] = [
@@ -30,10 +31,9 @@ const defaultColumns: DefaultColumnModel<TableAuthorSchema, AuthorSchema>[] = [
 ];
 
 export default () => {
-  const genericService = serviceBase<AuthorSchema, AuthorSchema>('author');
-  const handleDeleteRow = genericService.deleteFunc;
-  const handleEditAddRow = genericService.addOrUpdate;
-  const getAll = genericService.getAll;
+  const handleDeleteRow = serviceBase.deleteFunc;
+  const handleEditAddRow = serviceBase.addOrUpdate;
+  const getAll = serviceBase.getAll;
 
   return (
     <PageBase<AuthorSchema, AuthorSchema>

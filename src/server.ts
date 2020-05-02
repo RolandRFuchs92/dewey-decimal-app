@@ -11,6 +11,7 @@ import booksoutController from 'pages/booksOut/Booksout.controller';
 import bookController from 'pages/books/Book.controller';
 import classController from 'pages/class/Class.controller';
 import teacherController from 'pages/teacher/Teacher.controller';
+import authorController from 'pages/authors/Authors.controller';
 
 const app = express();
 
@@ -33,6 +34,7 @@ app.use('/booksout', booksoutController);
 app.use('/book', bookController);
 app.use('/class', classController);
 app.use('/teacher', teacherController);
+app.use('/author', authorController);
 
 if (process.env.NODE_ENV === 'production')
   https

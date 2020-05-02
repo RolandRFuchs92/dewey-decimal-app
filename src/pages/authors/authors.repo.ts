@@ -5,10 +5,10 @@ import appSettings from 'appSettings.json';
 import { all } from 'db/repo';
 import { DropdownListModel } from 'types/generic.type';
 
-import { AuthorsQuerySelectListModel, AuthorSchema } from './Authors.type';
+import { AuthorsQuerySelectListModel, TableAuthorSchema } from './Authors.type';
 import { querySelectList } from './Authors.sql';
 
-export default repoBase<AuthorSchema>(`author`, 'author_id');
+export default repoBase<TableAuthorSchema>(`author`, 'author_id');
 
 export const getSelectList = async (): Promise<DropdownListModel[]> => {
   const selectData = await all(querySelectList);
