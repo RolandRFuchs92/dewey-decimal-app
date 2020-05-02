@@ -2,12 +2,18 @@ import express from 'express';
 import log from 'utils/logger';
 import { DropdownListModel, Result } from 'types/generic.type';
 
-import { getSelectList } from './Class.repo';
+import { getSelectList, getClasses } from './Class.repo';
+import { TableClassSchema } from './Class.type';
 
 const router = express.Router();
 
 router.get('/', async (req, res) => {
-  res.send('get received');
+  const classResult = await getClasses();
+  const result: Result<TableClassSchema[]> = {
+    result: classResult
+  };
+
+  res.send(result);
 });
 
 router.get('/dropdownlist', async (req, res) => {
