@@ -14,7 +14,7 @@ import appSettings from 'appSettings.json';
 import { JsonObj } from 'types/generic.type';
 import { DatatabelDataModel } from 'components/page/PageBase.type';
 
-import { getClasses, hideClass } from './Class.repo';
+// import { getClasses, hideClass } from './Class.repo';
 import Modal from './Class.Modal';
 import { ClassModel } from './Class.type';
 
@@ -76,7 +76,7 @@ export default () => {
 
   const handleYesForDelete = async (classIdToDelete: string) => {
     try {
-      await hideClass(+classIdToDelete);
+      // await hideClass(+classIdToDelete); //TODO CORRECT THIS
       await resetPage();
       alert.success(`Successfully removed class[${classIdToDelete}]`);
     } catch (e) {
@@ -85,7 +85,7 @@ export default () => {
   };
 
   const resetPage = async () => {
-    setData(((await getClasses()) as unknown[]) as MUIDataTableColumn[]);
+    // setData(((await getClasses()) as unknown[]) as MUIDataTableColumn[]); //TODO CORRECT THIS
     setIsOpen(false);
   };
 

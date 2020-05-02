@@ -12,7 +12,7 @@ import FormButtons from 'components/buttons/formButtons';
 import { useAlert } from 'utils/snackbarAlerts';
 import { DatatabelDataModel } from 'components/page/PageBase.type';
 
-import { createOrUpdateTeacher } from './Teacher.repo';
+// import { createOrUpdateTeacher } from './Teacher.repo'; // TODO GET THIS OUT
 import { TeacherSchema, TeacherModalProps } from './Teacher.type';
 
 const useStyles = makeStyles(theme => ({
@@ -49,7 +49,7 @@ export default ({ isOpen, teacher, reset, handleClose }: TeacherModalProps) => {
     const teacherName = `${newTeacher.first_name} ${newTeacher.last_name}`;
     let isCreate;
     try {
-      isCreate = (await createOrUpdateTeacher(newTeacher)) === 'add';
+      // isCreate = (await createOrUpdateTeacher(newTeacher)) === 'add';
       reset();
       alert.success(
         `Successfully ${

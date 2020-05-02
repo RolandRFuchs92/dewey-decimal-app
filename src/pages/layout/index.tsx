@@ -133,7 +133,7 @@ export function PermanentDrawerLeft({ pageTitle }: PermanentDrawerLeftModel) {
           <div className={classes.toolbar} />
           <Switch>
             <Route exact path="/">
-              <Redirect to="/home"></Redirect>
+              <Redirect to="/home" />
             </Route>
             <Route exact path="/home">
               <Home />
@@ -141,27 +141,27 @@ export function PermanentDrawerLeft({ pageTitle }: PermanentDrawerLeftModel) {
             <Route exact path="/students">
               <Student />
             </Route>
-            {/* <Route exact path="/school/class">
-              <Class></Class>
+            <Route exact path="/school/class">
+              <Class />
             </Route>
             <Route exact path="/school/teacher">
-              <Teacher></Teacher>
+              <Teacher />
             </Route>
             <Route exact path="/library/dewey">
-              <DeweySystem></DeweySystem>
+              <DeweySystem />
             </Route>
             <Route exact path="/library/author">
-              <Authors></Authors>
+              <Authors />
             </Route>
             <Route exact path="/library/books">
-              <Books></Books>
+              <Books />
             </Route>
             <Route exact path="/library/booksout">
-              <BooksOut></BooksOut>
+              <BooksOut />
             </Route>
             <Route exact path="/admin">
-              <Admin></Admin>
-            </Route> */}
+              <Admin />
+            </Route>
           </Switch>
         </main>
       </Router>

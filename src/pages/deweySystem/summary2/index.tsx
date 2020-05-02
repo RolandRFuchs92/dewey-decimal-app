@@ -1,7 +1,7 @@
 import React from 'react';
 
 import PageBase from 'components/page/PageBase';
-import { getSelectList } from 'pages/deweySystem/summary1/Summary1.repo';
+// import { getSelectList } from 'pages/deweySystem/summary1/Summary1.repo'; // TODO REPLACE WITH SERVICE
 import { DefaultColumnModel } from 'components/page/PageBase.type';
 
 import serviceBase from './Summary2.service';
@@ -37,8 +37,8 @@ const defaultColumns: DefaultColumnModel<
     name: 'dewey_summary_name',
     label: 'Summary',
     type: 'select',
-    ref: 'summary_id',
-    getDropDownItems: getSelectList
+    ref: 'summary_id'
+    // getDropDownItems: getSelectList
   }
 ];
 

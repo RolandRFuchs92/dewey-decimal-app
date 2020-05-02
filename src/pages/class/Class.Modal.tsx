@@ -14,7 +14,7 @@ import { useAlert } from 'utils/snackbarAlerts';
 import { EventObj } from 'types/generic.type';
 import { DatatabelDataModel } from 'components/page/PageBase.type';
 
-import { addOrUpdateClass } from './Class.repo';
+// import { addOrUpdateClass } from './Class.repo';
 import { ClassModel } from './Class.type';
 
 const useStyles = makeStyles(theme => ({
@@ -58,13 +58,13 @@ export default ({
     try {
       delete data!.Edit;
       delete data!.Delete;
-      const action = await addOrUpdateClass(data!);
+      // const action = await addOrUpdateClass(data!); // TODO CORRECT THIS
       await updateTable();
-      alert.success(
-        `Successfully ${action === 'add' ? 'added' : 'updated'} Grade ${
-          data!.grade
-        } - ${data!.class_name}`
-      );
+      // alert.success(
+      //   `Successfully ${action === 'add' ? 'added' : 'updated'} Grade ${
+      //     data!.grade
+      //   } - ${data!.class_name}`
+      // );
     } catch (e) {
       alert.error(`There was an error `);
     }

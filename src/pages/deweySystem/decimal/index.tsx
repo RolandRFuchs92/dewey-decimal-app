@@ -1,7 +1,7 @@
 import React from 'react';
 
 import PageBase from 'components/page/PageBase';
-import { getSelectList } from 'pages/deweySystem/summary3/Summary3.repo';
+// import { getSelectList } from 'pages/deweySystem/summary3/Summary3.repo'; // TODO REPLACE WITH SERVICE
 import { DefaultColumnModel } from 'components/page/PageBase.type';
 
 import { TableDeweyDecimalSchema, DeweyDecimalSchema } from './Decimal.type';
@@ -38,8 +38,8 @@ const defaultColumns: DefaultColumnModel<
     name: 'dewey_summary_3_name',
     ref: 'summary_3_id',
     label: 'Summary',
-    type: 'select',
-    getDropDownItems: getSelectList
+    type: 'select'
+    // getDropDownItems: getSelectList
   }
 ];
 
