@@ -13,7 +13,7 @@ import { useAlert } from 'utils/snackbarAlerts';
 import { DatatabelDataModel } from 'components/page/PageBase.type';
 
 import { createOrUpdateTeacher } from './Teacher.repo';
-import { TeacherModel, TeacherModalProps } from './Teacher.type';
+import { TeacherSchema, TeacherModalProps } from './Teacher.type';
 
 const useStyles = makeStyles(theme => ({
   paper: {
@@ -28,7 +28,7 @@ const useStyles = makeStyles(theme => ({
 
 export default ({ isOpen, teacher, reset, handleClose }: TeacherModalProps) => {
   const [newTeacher, setNewTeacher] = useState<
-    DatatabelDataModel<TeacherModel>
+    DatatabelDataModel<TeacherSchema>
   >({ ...teacher });
   const [title, setTitle] = useState('Add Teacher');
   const classes = useStyles();

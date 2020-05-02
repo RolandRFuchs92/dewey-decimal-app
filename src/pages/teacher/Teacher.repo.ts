@@ -12,14 +12,14 @@ import {
   queryAllTeachers,
   queryHideTeacher
 } from './Teacher.sql';
-import { TeacherModel } from './Teacher.type';
+import { TeacherSchema } from './Teacher.type';
 
 export async function getTeachersForSelect() {
   return all<TeacherRepoModel>(querySelectListTeachers);
 }
 
 export async function getTeachers() {
-  return all<TeacherModel>(queryAllTeachers);
+  return all<TeacherSchema>(queryAllTeachers);
 }
 
 export type TeacherRepoModel = {

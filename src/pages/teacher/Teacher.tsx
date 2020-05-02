@@ -14,10 +14,10 @@ import {
 import { JsonObj } from 'types/generic.type';
 
 import TeacherModal from './Teacher.modal';
-import { getTeachers, hideTeacher } from './Teacher.repo';
-import { TeacherModel } from './Teacher.type';
+import serviceBase from './Teacher.service';
+import { TeacherSchema, TableTeacherSchema } from './Teacher.type';
 
-const columnConfig: DefaultColumnModel[] = [
+const columnConfig: DefaultColumnModel<TableTeacherSchema, TeacherSchema>[] = [
   {
     name: 'teacher_id',
     label: 'Id'
@@ -52,7 +52,7 @@ const tableOptions = {
   selectableRows: 'none'
 };
 
-const teacherDefault: DatatabelDataModel<TeacherModel> = {
+const teacherDefault: DatatabelDataModel<TeacherSchema> = {
   Delete: null,
   Edit: null,
   class_id: 0,
@@ -66,16 +66,18 @@ const teacherDefault: DatatabelDataModel<TeacherModel> = {
 };
 
 export default () => {
-  const [columns, setColumns] = useState<DefaultColumnModel[]>([]);
-  const [data, setData] = useState<TeacherModel[]>([]);
+  const [columns, setColumns] = useState<
+    DefaultColumnModel<TableTeacherSchema, TeacherSchema>[]
+  >([]);
+  const [data, setData] = useState<TeacherSchema[]>([]);
   const [options, setOptions] = useState({});
   const [isOpen, setIsOpen] = useState(false);
-  const [teacher, setTeacher] = useState<DatatabelDataModel<TeacherModel>>(
+  const [teacher, setTeacher] = useState<DatatabelDataModel<TeacherSchema>>(
     teacherDefault
   );
   const alert = useAlert();
   const dialog = useDialog();
-  let columnsVar: DefaultColumnModel[];
+  let columnsVar: DefaultColumnModel<TableTeacherSchema, TeacherSchema>[]; //TODO fix this...
 
   const handleEditAdd = (rowData: JsonObj) => {
     const obj = Object.fromEntries(
@@ -105,7 +107,7 @@ export default () => {
   const handleDelete = (rowData: JsonObj) => {
     const teacher = Object.fromEntries(
       columnsVar.map(({ name }, index) => [name, rowData[index]])
-    ) as TeacherModel;
+    ) as TeacherSchema;
 
     dialog({
       title: 'Are you sure?',
@@ -114,10 +116,10 @@ export default () => {
     });
   };
 
-  const handleYesForDelete = async (teacher: TeacherModel) => {
+  const handleYesForDelete = async (teacher: TeacherSchema) => {
     const teacherName = `${teacher.first_name} ${teacher.last_name}`;
     try {
-      await hideTeacher(+teacher.teacher_id);
+      // await hideTeacher(+teacher.teacher_id);
       await reset();
       alert.success(`Successfully removed teacher - ${teacherName}`);
     } catch (error) {
@@ -128,8 +130,9 @@ export default () => {
   const handleClose = () => setIsOpen(false);
 
   const reset = async () => {
-    const result = await getTeachers();
-    setData(result);
+    // TODO Rework this.
+    // const result = await getTeachers();
+    // setData(result);
     setIsOpen(false);
   };
 

@@ -12,7 +12,7 @@ export type PageBaseModel<TTableSchema, TSchema> = {
 
 export type DefaultColumnModel<TTableSchema, TSchema> = {
   label?: string;
-  name?: keyof TTableSchema | keyof TSchema;
+  name?: keyof TTableSchema | keyof TSchema | 'Edit' | 'Delete';
   modalTitle?: string;
   type?:
     | 'header'
@@ -29,11 +29,55 @@ export type DefaultColumnModel<TTableSchema, TSchema> = {
         display: boolean;
       }
     | MUIDataTableColumnOptions
-    | { [key: string]: any };
+    | { [key: string]: any }
+    | TableCellModel;
   value?: string;
   onChange?: (value: { target: { value: string } }) => void;
   getDropDownItems?: () => Promise<DropdownListModel[]>;
   ref?: keyof TSchema;
+};
+// | EditColumnModel
+// | DeleteColumnModel;
+
+type TableCellModel = {
+  filter: false;
+  sort: false;
+  empty: true;
+  customBodyRender: (
+    value: string,
+    tableMeta: { rowData: JsonObj },
+    updateValue: any
+  ) => JSX.Element;
+};
+
+export type EditColumnModel = {
+  label: '';
+  name: 'Edit';
+  options: {
+    filter: false;
+    sort: false;
+    empty: true;
+    customBodyRender: (
+      value: string,
+      tableMeta: { rowData: JsonObj },
+      updateValue: any
+    ) => JSX.Element;
+  };
+};
+
+export type DeleteColumnModel = {
+  label: '';
+  name: 'Delete';
+  options: {
+    filter: false;
+    sort: false;
+    empty: true;
+    customBodyRender: (
+      value: string,
+      tableMeta: { rowData: JsonObj },
+      updateValue: any
+    ) => JSX.Element;
+  };
 };
 
 export type ModalBaseHandleChange = (

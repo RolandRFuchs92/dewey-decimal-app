@@ -85,7 +85,7 @@ type HandleEditAddModel = (event: JsonObj) => void;
 export default (
   handleEditAdd: HandleEditAddModel,
   handleDelete: HandleEditAddModel
-): DefaultColumnModel[] => [
+): DefaultColumnModel<any, any>[] => [
   {
     name: 'Edit',
     label: '',
