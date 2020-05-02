@@ -26,6 +26,8 @@ export async function getBirthdaysTodayCount(): Promise<Result<CountObj>> {
   }
 }
 
+export async function getSelectList() {}
+
 export async function getBirthdaysToday(): Promise<BirthdaysType[]> {
   try {
     const { result } = await get<{}, BirthdaysType[]>(student.birthdays.uri);

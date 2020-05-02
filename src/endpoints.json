@@ -89,7 +89,13 @@
     }
   },
   "author": {},
-  "class": {},
+  "class": {
+    "root": "class",
+    "dropdownList": {
+      "uri": "class/dropdownList",
+      "verb": "GET"
+    }
+  },
   "dewey_decimal": {},
   "dewey_summary": {},
   "dewey_summary_2": {},

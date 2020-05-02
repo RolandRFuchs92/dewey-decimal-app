@@ -33,7 +33,7 @@ export type DefaultColumnModel<TTableSchema, TSchema> = {
     | TableCellModel;
   value?: string;
   onChange?: (value: { target: { value: string } }) => void;
-  getDropDownItems?: () => Promise<DropdownListModel[]>;
+  getDropDownItems?: () => Promise<Result<DropdownListModel[]>>;
   ref?: keyof TSchema;
 };
 // | EditColumnModel
@@ -100,7 +100,7 @@ export type SelectBoxModel = {
   label: string;
   onChange: (value: { target: { value: string } }) => void;
   value?: string;
-  getDropDownItems: () => Promise<DropdownListModel[]>;
+  getDropDownItems: () => Promise<Result<DropdownListModel[]>>;
 };
 
 export type ModalBaseModel<TTableSchema, TSchema> = {

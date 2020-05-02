@@ -4,6 +4,7 @@ import { makeStyles } from '@material-ui/core';
 import PageBase from 'components/page/PageBase';
 import { tableButton } from 'utils/tableButtons';
 import { DefaultColumnModel } from 'components/page/PageBase.type';
+import { getDropdownList } from 'pages/class/Class.service';
 
 import serviceBase from './Student.service';
 import StudentProfile from './StudentProfile';
@@ -79,8 +80,8 @@ const defaultColumns: DefaultColumnModel<
     name: 'class_name',
     label: 'Class',
     ref: 'class_id',
-    type: 'select'
-    // getDropDownItems: getSelectList
+    type: 'select',
+    getDropDownItems: getDropdownList
   },
   {
     name: 'is_active',

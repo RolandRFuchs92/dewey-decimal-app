@@ -199,9 +199,7 @@ function CreateElement<TTableSchema, TSchema>({
               : onChange
           }
           value={isNil(value) ? '' : value}
-          getDropDownItems={
-            getDropDownItems as () => Promise<DropdownListModel[]>
-          }
+          getDropDownItems={getDropDownItems!}
         />
       );
     default:
@@ -250,11 +248,14 @@ function SelectBox({
   getDropDownItems
 }: SelectBoxModel) {
   const [rows, setRows] = useState<DropdownListModel[]>([]);
-
+  const alert = useAlert();
   useEffect(() => {
     (async () => {
       const result = await getDropDownItems();
-      setRows(result || []);
+      if (!result.result || !result.result.length)
+        alert.warning(result.message || 'There are no dropdown items.');
+
+      setRows(result.result || []);
     })();
   }, []);
 

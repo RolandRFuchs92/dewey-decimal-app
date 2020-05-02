@@ -62,8 +62,9 @@ export default <TTableSchema, TSchema>({
     );
   };
 
-  const handleEditAdd = (rowData: TTableSchema) => {
-    // rowData && setModalData(objectFromRowData(rowData));
+  const handleEditAdd = (rowData: string[]) => {
+    const objectData = (objectFromRowData(rowData) as unknown) as TSchema;
+    rowData && setModalData(objectData);
     setOpenModal(true);
   };
 
