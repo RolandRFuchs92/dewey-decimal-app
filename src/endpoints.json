@@ -96,7 +96,9 @@
       "verb": "GET"
     }
   },
-  "dewey_decimal": {},
+  "dewey_decimal": {
+    "root": "dewey_decimal"
+  },
   "dewey_summary": {},
   "dewey_summary_2": {},
   "dewey_summary_3": {},

@@ -12,6 +12,7 @@ import bookController from 'pages/books/Book.controller';
 import classController from 'pages/class/Class.controller';
 import teacherController from 'pages/teacher/Teacher.controller';
 import authorController from 'pages/authors/Authors.controller';
+import decimalController from 'pages/deweySystem/decimal/Decimal.controller';
 
 const app = express();
 
@@ -35,6 +36,7 @@ app.use('/book', bookController);
 app.use('/class', classController);
 app.use('/teacher', teacherController);
 app.use('/author', authorController);
+app.use('/dewey_decimal', decimalController);
 
 if (process.env.NODE_ENV === 'production')
   https

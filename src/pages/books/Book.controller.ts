@@ -1,13 +1,17 @@
 import express from 'express';
 import log from 'utils/logger';
-import { getBookByCallNumber } from './Book.repo';
+import bookRepo, { getBookByCallNumber } from './Book.repo';
 import { Result } from 'types/generic.type';
-import { GetBookCallNumberModel } from './Book.type';
+import { GetBookCallNumberModel, TableBookSchema } from './Book.type';
 
 const router = express.Router();
 
 router.get('/', async (req, res) => {
-  res.send('Get Root');
+  const bookResult = await bookRepo.getAll();
+  const result: Result<TableBookSchema[]> = {
+    result: bookResult
+  };
+  res.send(result);
 });
 
 router.post('/', async (req, res) => {
