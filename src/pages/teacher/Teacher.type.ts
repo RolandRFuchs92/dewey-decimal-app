@@ -2,17 +2,16 @@ import { DatatabelDataModel } from 'components/page/PageBase.type';
 import { TeacherRepoModel } from './Teacher.repo';
 
 export interface TeacherSchema {
+  teacher_id: string;
   first_name: string;
   last_name: string;
-  teacher_id: string;
-  teacherName: string;
-  is_active: boolean;
   mobile: string;
   email: string;
   class_id: number;
+  is_active: boolean;
 }
 
-export type TableTeacherSchema = TeacherSchema;
+export type TableTeacherSchema = {} & TeacherSchema;
 
 export type TeacherModalProps = {
   isOpen: boolean;
