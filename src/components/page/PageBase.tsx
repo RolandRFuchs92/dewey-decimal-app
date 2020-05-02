@@ -56,24 +56,23 @@ export default <TTableSchema, TSchema>({
     [alert, dialogKey, handleDeleteRow, reset]
   );
 
-  const objectFromRowData = (rowData: TTableSchema): TSchema => {
-    const rowToColumn = Object.keys(rowData);
+  const objectFromRowData = (rowData: string[]): TTableSchema => {
     return Object.fromEntries(
-      columns.map(({ name }, index) => [name, rowToColumn[index] || ''])
+      columns.map(({ name }, index) => [name, rowData[index] || ''])
     );
   };
 
   const handleEditAdd = (rowData: TTableSchema) => {
-    rowData && setModalData(objectFromRowData(rowData));
+    // rowData && setModalData(objectFromRowData(rowData));
     setOpenModal(true);
   };
 
-  const handleDelete = (rowData: TTableSchema) => {
-    // const obj = objectFromRowData(rowData);
+  const handleDelete = (rowData: string[]) => {
+    const obj = objectFromRowData(rowData);
     showDialog({
       title: 'Are you sure?',
-      description: `Really delete ${rowData[dialogKey]}?`,
-      handleYes: () => handleYesOnDelete(rowData)
+      description: `Really delete ${obj[dialogKey]}?`,
+      handleYes: () => handleYesOnDelete(obj)
     });
   };
 
