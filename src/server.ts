@@ -13,6 +13,7 @@ import classController from 'pages/class/Class.controller';
 import teacherController from 'pages/teacher/Teacher.controller';
 import authorController from 'pages/authors/Authors.controller';
 import decimalController from 'pages/deweySystem/decimal/Decimal.controller';
+import summary1Controller from 'pages/deweySystem/summary1/Summary1.controller';
 
 const app = express();
 
@@ -37,6 +38,7 @@ app.use('/class', classController);
 app.use('/teacher', teacherController);
 app.use('/author', authorController);
 app.use('/dewey_decimal', decimalController);
+app.use('/dewey_summary', summary1Controller);
 
 if (process.env.NODE_ENV === 'production')
   https
