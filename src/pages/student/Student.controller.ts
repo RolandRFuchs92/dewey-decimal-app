@@ -11,17 +11,15 @@ import stud, {
   countStudentsWithBirthdayToday,
   getStudentSelectListSearch
 } from 'pages/student/Student.repo';
+import { DropdownListModel, Result, CountObj } from 'types/generic.type';
+
 import {
   studentSchemaKeys,
-  StudentModel,
   StudentCardProps,
   GetStudentsWithBirthdaysModel,
   StudentSelectListSearchModel,
   TableStudentSchema
 } from './Student.type';
-import { RestoreFromTrashOutlined } from '@material-ui/icons';
-import { DropdownListModel, Result, CountObj } from 'types/generic.type';
-import { faHandHolding } from '@fortawesome/free-solid-svg-icons';
 
 const router = express.Router();
 const genericErrorHandle = baseErrorHandle('student');
