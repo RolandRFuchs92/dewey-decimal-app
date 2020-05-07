@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 import Icons from './index';
 import { indicatorRootModel, indicatorModel } from './Icons.type';
 import { HomeReducerCountOnly } from 'pages/home/Home.type';
-import { AdminReducerModel } from 'pages/admin/admin.reducer';
+import { AdminReducerModel } from 'pages/admin/Admin.reducer';
 
 const useStyles = makeStyles(theme => {
   return {
