@@ -49,7 +49,7 @@ router.post('/', async (req, res) => {
 
 router.delete('/', async (req, res) => {
   try {
-    const body = { student_id: req.body.student_id };
+    const body = { student_id: req.body.id };
     if (!body) return res.send('yipee');
     const result = await stud.deleteRow(
       (body as unknown) as TableStudentSchema
