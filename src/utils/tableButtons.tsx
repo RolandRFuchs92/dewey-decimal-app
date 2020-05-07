@@ -214,6 +214,7 @@ function CustomFooter({
             count={count}
             rowsPerPage={rowsPerPage}
             page={page}
+            // @ts-ignore TODO Figure out why this is a problem for Ts
             labelRowsPerPage={!isNil(textLabels) && textLabels.rowsPerPage}
             labelDisplayedRows={({ from, to, count }) =>
               `${from}-${to} ${!isNil(textLabels) &&
