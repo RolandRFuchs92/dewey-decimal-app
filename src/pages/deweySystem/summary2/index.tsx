@@ -54,6 +54,7 @@ export default () => {
       handleDeleteRow={handleDeleteRow}
       handleEditAddRow={handleEditAddRow}
       dialogKey="name"
+      primaryKey="dewey_summary_2_id"
     />
   );
 };

@@ -130,6 +130,7 @@ export default () => {
         handleDeleteRow={handleDeleteRow}
         handleEditAddRow={handleEditAddRow}
         dialogKey="first_name"
+        primaryKey="student_id"
       />
       <StudentProfile
         studentId={studentId}

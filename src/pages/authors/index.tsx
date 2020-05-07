@@ -42,6 +42,7 @@ export default () => {
       handleDeleteRow={handleDeleteRow}
       handleEditAddRow={handleEditAddRow}
       dialogKey="name"
+      primaryKey="author_id"
     />
   );
 };

@@ -109,6 +109,7 @@ export default () => {
         handleDeleteRow={handleDeleteRow}
         handleEditAddRow={handleEditAddRow}
         dialogKey="name"
+        primaryKey="book_id"
       />
       <BarcodePage
         open={barcodeIsOpen}
