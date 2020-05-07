@@ -17,7 +17,8 @@ export default <TTableSchema, TSchema>({
   handleDeleteRow,
   handleEditAddRow,
   modal = null,
-  dialogKey
+  dialogKey,
+  primaryKey
 }: PageBaseModel<TTableSchema, TSchema>) => {
   const [options, setOptions] = useState({});
   const [columns, setColumns] = useState<
@@ -46,7 +47,8 @@ export default <TTableSchema, TSchema>({
   const handleYesOnDelete = useCallback(
     async (rowData: TTableSchema) => {
       try {
-        await handleDeleteRow((rowData as any).id);
+        debugger;
+        await handleDeleteRow((rowData as any)[primaryKey]);
         await reset();
         alert.success(`Successfully deleted ${rowData[dialogKey]}`);
       } catch (error) {
@@ -120,6 +122,7 @@ export default <TTableSchema, TSchema>({
               handleEditAddRow={handleEditAddRow}
               modalData={modalData!}
               reset={reset}
+              primaryKey={primaryKey}
             />
           )}
         </div>

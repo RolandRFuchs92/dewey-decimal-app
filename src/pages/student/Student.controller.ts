@@ -30,25 +30,42 @@ router.post('/', async (req, res) => {
     const studentModel = pick(body, studentSchemaKeys);
 
     if (Object.keys(studentModel).length <= 1) res.send('nothing');
-
     const result = await stud.addOrUpdate(studentModel);
-    console.log('got here');
+
     res.send(result);
   } catch (error) {
-    res.send(error);
+    genericErrorHandle(
+      '/',
+      error,
+      res,
+      `Error during a POST for student data, params[${JSON.stringify(
+        req.body,
+        null,
+        2
+      )}]`
+    );
   }
 });
 
 router.delete('/', async (req, res) => {
   try {
-    debugger;
     const body = { student_id: req.body.student_id };
+    if (!body) return res.send('yipee');
     const result = await stud.deleteRow(
       (body as unknown) as TableStudentSchema
     );
-    res.send(result);
+    return res.send(result);
   } catch (error) {
-    res.send(error);
+    return genericErrorHandle(
+      '/',
+      error,
+      res,
+      `Error during a DELETE for student data, params[${JSON.stringify(
+        req.body,
+        null,
+        2
+      )}]`
+    );
   }
 });
 
@@ -60,7 +77,7 @@ router.get('/', async (req, res) => {
     };
     res.send(result);
   } catch (error) {
-    genericErrorHandle('', error, res, 'Error collecting student data');
+    genericErrorHandle('/', error, res, 'Error during a GET student data');
   }
 });
 

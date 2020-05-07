@@ -11,8 +11,10 @@ export default <TResult, TUpdateInsert>(urlBase: keyof typeof endpoints) => {
   const getAll = async (): Promise<Result<TResult[]>> =>
     await get<{}, TResult[]>(urlBase);
 
-  const addOrUpdate = async (): Promise<Result<TResult[]>> =>
-    await post<TUpdateInsert, TResult[]>(urlBase);
+  const addOrUpdate = async <TParam>(
+    params: TParam
+  ): Promise<Result<TResult[]>> =>
+    await post<TParam, TResult[]>(urlBase, params);
 
   const baseService = {
     getAll,

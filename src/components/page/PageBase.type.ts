@@ -8,6 +8,7 @@ export type PageBaseModel<TTableSchema, TSchema> = {
   handleEditAddRow: (event: TSchema) => Promise<Result<TTableSchema[]>>;
   modal?: JSX.Element | null;
   dialogKey: keyof TTableSchema;
+  primaryKey: keyof TTableSchema;
 };
 
 export type DefaultColumnModel<TTableSchema, TSchema> = {
@@ -113,6 +114,7 @@ export type ModalBaseModel<TTableSchema, TSchema> = {
   modalData: TSchema;
   reset: () => void;
   dialogKey: keyof TTableSchema;
+  primaryKey: keyof TTableSchema;
 };
 
 export type DatatabelDataModel<T> = {
