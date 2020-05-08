@@ -47,7 +47,6 @@ export default <TTableSchema, TSchema>({
   const handleYesOnDelete = useCallback(
     async (rowData: TTableSchema) => {
       try {
-        debugger;
         await handleDeleteRow((rowData as any)[primaryKey]);
         await reset();
         alert.success(`Successfully deleted ${rowData[dialogKey]}`);
