@@ -1,10 +1,12 @@
 import express from 'express';
 import log from 'utils/logger';
 import { DropdownListModel, Result } from 'types/generic.type';
+import { genericErrorHandle } from 'utils/httpHelpers/controller';
 
-import { getSelectList, getClasses } from './Class.repo';
+import { getSelectList, getClasses, hideClass } from './Class.repo';
 import { TableClassSchema } from './Class.type';
 
+const handleErr = genericErrorHandle('class');
 const router = express.Router();
 
 router.get('/', async (req, res) => {
@@ -14,6 +16,25 @@ router.get('/', async (req, res) => {
   };
 
   res.send(result);
+});
+
+router.delete('/', async (req, res) => {
+  const classId = req.body.class_id;
+  try {
+    const classResult = await hideClass(classId);
+    const result: Result<boolean> = {
+      message: '',
+      result: classResult
+    };
+    res.send(result);
+  } catch (error) {
+    handleErr(
+      '/',
+      error,
+      res,
+      `There was an error while deleting class[${classId}]`
+    );
+  }
 });
 
 router.get('/dropdownlist', async (req, res) => {
