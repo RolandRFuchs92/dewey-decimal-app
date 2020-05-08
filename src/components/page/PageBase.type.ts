@@ -33,7 +33,7 @@ export type DefaultColumnModel<TTableSchema, TSchema> = {
     | { [key: string]: any }
     | TableCellModel;
   value?: string;
-  onChange?: (value: { target: { value: string } }) => void;
+  onChange?: (value: { target: { value: string | boolean } }) => void;
   getDropDownItems?: () => Promise<Result<DropdownListModel[]>>;
   ref?: keyof TSchema;
 };

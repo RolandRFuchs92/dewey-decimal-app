@@ -44,10 +44,11 @@ export default <TTableSchema, TSchema>({
   const handleOnChange = (name: string) => ({
     target: { value }
   }: {
-    target: { value: string };
+    target: { value: string | boolean };
   }) => {
     const key =
       columns.filter(({ name: colName }) => colName === name)[0].ref || name;
+
     // @ts-ignore
     setVal({ ...val, [key]: value });
   };
@@ -184,7 +185,7 @@ function CreateElement<TTableSchema, TSchema>({
         <CheckBox
           label={label!}
           value={value ? true : false}
-          onChange={onChange as () => void}
+          onChange={onChange!}
         />
       );
     case 'select':
@@ -208,14 +209,24 @@ function CreateElement<TTableSchema, TSchema>({
 
 export type CheckboxProps = {
   label: string;
-  onChange: () => void;
+  onChange: (evt: {
+    target: {
+      value: string | boolean;
+    };
+  }) => void;
   value: boolean;
 };
 
 function CheckBox({ label, onChange, value }: CheckboxProps) {
+  const handleChange = () => {
+    onChange({ target: { value: !value } });
+  };
+
   return (
     <FormControlLabel
-      control={<Checkbox checked={value} onChange={onChange} name="label" />}
+      control={
+        <Checkbox checked={value} onChange={handleChange} name="label" />
+      }
       label={label}
     />
   );
