@@ -28,6 +28,7 @@ const useStyles = makeStyles(theme => ({
     textAlign: 'right',
     padding: 10,
     alignSelf: 'flex-end',
+    cursor: 'pointer',
     '& svg': {
       fontSize: 30
     }
