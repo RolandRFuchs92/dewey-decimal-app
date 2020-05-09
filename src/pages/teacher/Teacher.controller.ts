@@ -66,7 +66,7 @@ router.put('/', async (req, res) => {
 });
 
 router.delete('/', async (req, res) => {
-  const id = req.body.teacher_id;
+  const id = req.body.id;
   try {
     const deleteResult = await deleteTeacher(id);
     const result: Result<boolean> = {
