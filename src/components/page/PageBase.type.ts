@@ -117,7 +117,7 @@ export type ModalBaseModel<TTableSchema, TSchema> = {
   primaryKey: keyof TTableSchema;
 };
 
-export type DatatabelDataModel<T> = {
+export type DataTableDataModel<T> = {
   Delete: any;
   Edit: any;
 } & T;

@@ -1,8 +1,7 @@
-import { DatatabelDataModel } from 'components/page/PageBase.type';
-import { TeacherRepoModel } from './Teacher.repo';
+import { DataTableDataModel } from 'components/page/PageBase.type';
 
 export interface TeacherSchema {
-  teacher_id: string;
+  teacher_id?: string;
   first_name: string;
   last_name: string;
   mobile: string;
@@ -11,11 +10,26 @@ export interface TeacherSchema {
   is_active: boolean;
 }
 
+export const teacherSchemaArray: Array<keyof TeacherSchema> = [
+  'teacher_id',
+  'first_name',
+  'last_name',
+  'email',
+  'mobile',
+  'is_active',
+  'class_id'
+];
+
+export type TeacherRepoModel = {
+  teacher_id: string;
+  is_active: boolean | 0 | 1;
+};
+
 export type TableTeacherSchema = {} & TeacherSchema;
 
 export type TeacherModalProps = {
   isOpen: boolean;
-  teacher: DatatabelDataModel<TeacherSchema>;
+  teacher: DataTableDataModel<TeacherSchema>;
   reset: () => void;
   handleClose: () => void;
 };
