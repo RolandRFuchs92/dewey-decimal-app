@@ -7,6 +7,16 @@ export type GetStudentBooksHistoryModel = {
   return_on: Date;
 };
 
+export const bookSchemaArray: (keyof BookSchema)[] = [
+  'book_id',
+  'name',
+  'call_number',
+  'publisher',
+  'created_on',
+  'decimal_id',
+  'author_id'
+];
+
 export type GetBookCallNumberModel = {
   book_id: number;
   book_name: string;
@@ -23,7 +33,7 @@ export type GetBookCallNumberModel = {
 };
 
 export type BookSchema = {
-  book_id: number;
+  book_id?: number;
   author_id: number;
   decimal_id: number;
   call_number: string;

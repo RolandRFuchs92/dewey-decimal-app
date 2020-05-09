@@ -64,10 +64,10 @@ export async function addOrUpdate(
   if (!object[pkField]) {
     object[pkField] === '' && delete object[pkField];
     await addToDb(object, tableName);
-    return 'add';
+    return 'added';
   }
   await updateDb(object, tableName, pkField);
-  return 'update';
+  return 'updated';
 }
 
 export async function addToDb(object: object, tableName: string) {
