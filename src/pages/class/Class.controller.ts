@@ -66,7 +66,8 @@ router.post('/', async (req, res) => {
     } as Result<boolean>);
   }
   try {
-    if (classObj.class_id) classObj.class_id = null;
+    classObj.class_id =
+      classObj.class_id === '' ? null : Number(classObj.class_id);
 
     await addOrUpdateClass(classObj);
     const result: Result<boolean> = {
