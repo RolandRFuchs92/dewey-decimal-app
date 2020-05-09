@@ -1,4 +1,4 @@
-import express from 'express';
+import express, { Request, Response } from 'express';
 
 import log from 'utils/logger';
 import { DropdownListModel, Result } from 'types/generic.type';
@@ -8,7 +8,7 @@ import { pick } from 'lodash';
 import {
   getSelectList,
   getClasses,
-  hideClass,
+  deleteClass,
   addOrUpdateClass
 } from './Class.repo';
 import { TableClassSchema, ClassSchema } from './Class.type';
@@ -34,7 +34,7 @@ router.delete('/', async (req, res) => {
     } as Result<boolean>);
 
   try {
-    const classResult = await hideClass(classId);
+    const classResult = await deleteClass(classId);
     const result: Result<boolean> = {
       message: '',
       result: classResult
@@ -50,7 +50,15 @@ router.delete('/', async (req, res) => {
   }
 });
 
+router.put('/', async (req, res) => {
+  await addOrUpdateClassSharedFunction(req, res);
+});
+
 router.post('/', async (req, res) => {
+  await addOrUpdateClassSharedFunction(req, res);
+});
+
+async function addOrUpdateClassSharedFunction(req: Request, res: Response) {
   const pickArray: Array<keyof ClassSchema> = [
     'class_id',
     'class_name',
@@ -69,10 +77,9 @@ router.post('/', async (req, res) => {
     classObj.class_id =
       classObj.class_id === '' ? null : Number(classObj.class_id);
 
-    await addOrUpdateClass(classObj);
-    const result: Result<boolean> = {
-      message: 'Successfully added a new class',
-      result: true
+    var addOrUpdate = await addOrUpdateClass(classObj);
+    const result: Result<string> = {
+      message: `Successfully ${addOrUpdate} class ${classObj.grade} - ${classObj.class_name}.`
     };
     res.send(result);
   } catch (error) {
@@ -85,7 +92,7 @@ router.post('/', async (req, res) => {
       )}]`
     );
   }
-});
+}
 
 router.get('/dropdownlist', async (req, res) => {
   try {

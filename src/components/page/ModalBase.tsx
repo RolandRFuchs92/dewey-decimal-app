@@ -71,9 +71,7 @@ export default <TTableSchema, TSchema>({
       const result = await handleEditAddRow(
         (statementObject as unknown) as TSchema
       );
-      alert.success(
-        `Successfully ${val ? statementObject[dialogKey] : 'new row'}`
-      );
+      if (result.message) alert.success(result.message);
       reset();
     } catch (error) {
       alert.error(

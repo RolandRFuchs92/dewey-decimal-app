@@ -22,10 +22,10 @@ export async function getClasses() {
 export async function addOrUpdateClass(classObj: ClassSchema) {
   if (!classObj.class_id) {
     await addClass(classObj);
-    return 'add';
+    return 'added';
   }
   await updateClass(classObj);
-  return 'update';
+  return 'updated';
 }
 
 async function addClass(classObj: ClassSchema) {
@@ -40,7 +40,7 @@ async function updateClass(classObj: ClassSchema) {
   return run(statement, statementObj);
 }
 
-export async function hideClass(classId: number) {
+export async function deleteClass(classId: number) {
   const statementObject = { $class_id: classId };
   const statement = queryHideClass;
   return await run(statement, statementObject);

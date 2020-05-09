@@ -6,18 +6,14 @@ SELECT
     is_active
 FROM 
     class
-WHERE 
-    is_active = 1
 `;
 
 export const queryHideClass = `
-UPDATE 
+DELETE 
+FROM
     class 
-SET 
-    is_active = 0
 WHERE
     class_id=$class_id
-
 `;
 
 export const getSelectListQuery = `
