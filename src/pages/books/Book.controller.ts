@@ -29,12 +29,14 @@ async function addOrUpdateTeacherFunction(
   res: Response,
   method: 'PUT' | 'POST'
 ) {
-  const bookParams: BookSchema = pick(req.body, bookSchemaArray);
+  const bookParams = pick(req.body, bookSchemaArray);
   try {
     bookParams.book_id =
       Number(bookParams.book_id) <= 0 ? undefined : bookParams.book_id;
 
-    const bookResult = await bookRepo.addOrUpdate(bookParams);
+    const bookResult = await bookRepo.addOrUpdate(
+      bookParams as TableBookSchema
+    );
     const result: Result<boolean> = {
       message: `Successfully ${bookResult} ${bookParams.name}.`,
       result: true

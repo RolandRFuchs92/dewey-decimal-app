@@ -14,7 +14,7 @@ import {
   BookSchema
 } from './Book.type';
 
-const repo = repoBase<TableBookSchema, BookSchema>(`book`, 'book_id');
+const repo = repoBase<TableBookSchema>(`book`, 'book_id');
 
 repo.getAll = async () => {
   return await all(getAllQuery);

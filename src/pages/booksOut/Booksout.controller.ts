@@ -40,7 +40,7 @@ router.get('/', async (req, res) => {
 
 router.delete('/', async (req, res) => {
   try {
-    const deleteBookId = req.body.bookout_id;
+    const deleteBookId = req.body.id;
     await booksoutRepo.deleteRow({
       books_out_id: deleteBookId
     } as TableBooksOutSchema);
@@ -108,7 +108,7 @@ router.put('/', async (req, res) => {
 router.post('/addupdate', async (req, res) => {
   try {
     const model = pick(req.body, book_out_keys);
-    const result = await booksoutRepo.addOrUpdate(model);
+    const result = await booksoutRepo.addOrUpdate(model as TableBooksOutSchema);
     res.send({ result });
   } catch (error) {
     errorHandler(

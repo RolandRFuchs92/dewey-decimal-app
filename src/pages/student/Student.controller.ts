@@ -30,7 +30,7 @@ router.post('/', async (req, res) => {
     const studentModel = pick(body, studentSchemaKeys);
 
     if (Object.keys(studentModel).length <= 1) res.send('nothing');
-    const result = await stud.addOrUpdate(studentModel);
+    const result = await stud.addOrUpdate(studentModel as TableStudentSchema);
 
     res.send(result);
   } catch (error) {
