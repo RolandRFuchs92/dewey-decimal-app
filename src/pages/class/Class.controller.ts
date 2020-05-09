@@ -58,7 +58,16 @@ router.post('/', async (req, res) => {
     'is_active'
   ];
   const classObj = pick(req.body, pickArray);
+  if (!classObj.class_name || !classObj.grade) {
+    res.statusCode = 400;
+    res.send({
+      message: 'Missing class name or grade.',
+      result: false
+    } as Result<boolean>);
+  }
   try {
+    if (classObj.class_id) classObj.class_id = null;
+
     await addOrUpdateClass(classObj);
     const result: Result<boolean> = {
       message: 'Successfully added a new class',

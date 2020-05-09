@@ -20,7 +20,7 @@ export async function getClasses() {
 }
 
 export async function addOrUpdateClass(classObj: ClassSchema) {
-  if (isNil(classObj.class_id)) {
+  if (!classObj.class_id) {
     await addClass(classObj);
     return 'add';
   }

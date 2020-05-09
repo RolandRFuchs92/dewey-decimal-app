@@ -72,9 +72,7 @@ export default <TTableSchema, TSchema>({
         (statementObject as unknown) as TSchema
       );
       alert.success(
-        `Successfully TODO(ADDD OR UPDATED) ${
-          val ? statementObject[dialogKey] : 'new row'
-        }`
+        `Successfully ${val ? statementObject[dialogKey] : 'new row'}`
       );
       reset();
     } catch (error) {
