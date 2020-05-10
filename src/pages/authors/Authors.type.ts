@@ -6,7 +6,7 @@ export type AuthorsQuerySelectListModel = {
 };
 
 export type AuthorSchema = {
-  author_id: number;
+  author_id?: number;
   name: string;
   second_name: string;
   surname: string;

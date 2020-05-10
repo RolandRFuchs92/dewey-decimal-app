@@ -57,6 +57,7 @@ router.delete('/', async (req, res) => {
 
 //checking out
 //returns model representing duedate and student
+//TODO THIS IS CONFLICTING WITH SCANNER MUST MAKE THIS /checkout
 router.post('/', async (req, res) => {
   try {
     const { student_id, book_id } = req.body;
@@ -82,6 +83,7 @@ router.post('/', async (req, res) => {
 });
 
 //Checking in
+//TODO THIS IS CONFLICTING WITH SCANNER MUST MAKE THIS /checkin
 router.put('/', async (req, res) => {
   try {
     const booksout_id = req.body.booksout_id;
