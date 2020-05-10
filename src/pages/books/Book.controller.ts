@@ -2,10 +2,10 @@ import express, { Request, Response } from 'express';
 import { pick } from 'lodash';
 
 import log from 'utils/logger';
-import { Result } from 'types/generic.type';
+import { Result, DropdownListModel } from 'types/generic.type';
 import { genericErrorHandle } from 'utils/httpHelpers/controller';
 
-import bookRepo, { getBookByCallNumber } from './Book.repo';
+import bookRepo, { getBookByCallNumber, getBooksSelectList } from './Book.repo';
 import {
   GetBookCallNumberModel,
   TableBookSchema,
@@ -109,6 +109,27 @@ router.post('/bycallnumber', async (req, res) => {
       message: 'There was an error loading your book'
     };
     return res.send(result);
+  }
+});
+
+router.get('/dropdownlist', async (req, res) => {
+  try {
+    const list = await getBooksSelectList();
+    const result: Result<DropdownListModel[]> = {
+      result: list
+    };
+    res.send(result);
+  } catch (error) {
+    errorHandler(
+      '/',
+      error,
+      res,
+      `Error during a GET for a book dropdown list[${JSON.stringify(
+        req.body,
+        null,
+        2
+      )}]`
+    );
   }
 });
 

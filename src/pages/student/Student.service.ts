@@ -26,7 +26,17 @@ export async function getBirthdaysTodayCount(): Promise<Result<CountObj>> {
   }
 }
 
-export async function getSelectList() {}
+export async function getDropdownList() {
+  try {
+    const result = await get<{}, DropdownListModel[]>(student.dropdownList.uri);
+    return result;
+  } catch (error) {
+    const result = {
+      message: 'There was an error retrieving the student dropdown list.'
+    };
+    return result;
+  }
+}
 
 export async function getBirthdaysToday(): Promise<BirthdaysType[]> {
   try {

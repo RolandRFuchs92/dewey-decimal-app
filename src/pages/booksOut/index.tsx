@@ -2,8 +2,11 @@ import React from 'react';
 
 import PageBase from 'components/page/PageBase';
 import { DefaultColumnModel } from 'components/page/PageBase.type';
+import { getDropdownList as getStudentDropdownList } from 'pages/student/Student.service';
+
 import serviceBase from './Booksout.service';
 import { TableBooksOutSchema, BooksOutSchema } from './Booksout.type';
+import { getBooksDropdownList } from 'pages/books/Book.service';
 
 const defaultColumns: DefaultColumnModel<
   TableBooksOutSchema,
@@ -25,8 +28,8 @@ const defaultColumns: DefaultColumnModel<
     name: 'book_name',
     label: `Book`,
     ref: 'book_id',
-    type: 'select'
-    // getDropDownItems: getBooksForSelect
+    type: 'select',
+    getDropDownItems: getBooksDropdownList
   },
   {
     name: 'student_id',
@@ -38,8 +41,8 @@ const defaultColumns: DefaultColumnModel<
     name: 'student_name',
     label: 'Student',
     type: 'select',
-    ref: 'student_id'
-    // getDropDownItems: getStudentsForSelect
+    ref: 'student_id',
+    getDropDownItems: getStudentDropdownList
   },
   {
     name: 'return_on',

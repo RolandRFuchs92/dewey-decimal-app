@@ -5,7 +5,7 @@ import {
   BookSchema,
   TableBookSchema
 } from './Book.type';
-import { Result } from 'types/generic.type';
+import { Result, DropdownListModel } from 'types/generic.type';
 import serviceBase from 'components/page/service.base';
 
 export default serviceBase<TableBookSchema, BookSchema>('book');
@@ -29,6 +29,19 @@ export async function getBookByCallNumber(
   } catch (error) {
     const result: Result<any> = {
       message: `There was an error getting your book by ${callnumber}`,
+      result: undefined
+    };
+    return result;
+  }
+}
+
+export async function getBooksDropdownList() {
+  try {
+    const result = await get<{}, DropdownListModel[]>(book.dropdownList.uri);
+    return result;
+  } catch (error) {
+    const result: Result<any> = {
+      message: `There was an unexpected error getting the dropdown list for books.`,
       result: undefined
     };
     return result;
