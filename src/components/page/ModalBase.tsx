@@ -74,9 +74,7 @@ export default <TTableSchema, TSchema>({
       if (result.message) alert.success(result.message);
       reset();
     } catch (error) {
-      alert.error(
-        `There was an error (TODO ADDING OR UPDATING) a field.` // TODO
-      );
+      alert.error(`There was an error while submitting.`);
     }
   };
 
