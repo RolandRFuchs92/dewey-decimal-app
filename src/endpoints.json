@@ -112,8 +112,18 @@
       "verb": "GET"
     }
   },
-  "dewey_summary": {},
-  "dewey_summary_2": {},
+  "dewey_summary": {
+    "dropdownList": {
+      "uri": "dewey_summary/dropdownList",
+      "verb": "GET"
+    }
+  },
+  "dewey_summary_2": {
+    "dropdownList": {
+      "uri": "dewey_summary_2/dropdownList",
+      "verb": "GET"
+    }
+  },
   "dewey_summary_3": {
     "dropdownList": {
       "uri": "dewey_summary_3/dropdownList",
