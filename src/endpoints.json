@@ -114,6 +114,11 @@
   },
   "dewey_summary": {},
   "dewey_summary_2": {},
-  "dewey_summary_3": {},
+  "dewey_summary_3": {
+    "dropdownList": {
+      "uri": "dewey_summary_3/dropdownList",
+      "verb": "GET"
+    }
+  },
   "teacher": {}
 }
