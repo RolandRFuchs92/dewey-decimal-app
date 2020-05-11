@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core';
 
 import Icons from 'components/icons';
-// import { getSelectList as getAuthorsSelectList } from 'pages/authors/authors.repo';
+import { getSelectList as getAuthorsSelectList } from 'pages/authors/Authors.service';
 // import { getSelectList as getDecimalSelectList } from 'pages/deweySystem/decimal/Decimal.repo';
 import { DefaultColumnModel } from 'components/page/PageBase.type';
 import { BarcodeModel } from 'components/printCodes/PrintCodes.type';
@@ -54,12 +54,12 @@ const defaultColumns: DefaultColumnModel<TableBookSchema, BookSchema>[] = [
     name: 'author_name',
     label: 'Author',
     ref: 'author_id',
-    type: 'select'
-    // getDropDownItems: getAuthorsSelectList
+    type: 'select',
+    getDropDownItems: getAuthorsSelectList
   },
   {
     name: 'dewey_decimal_name',
-    label: 'Deciaml Name',
+    label: 'Decimal Name',
     ref: 'decimal_id',
     type: 'select'
     // getDropDownItems: getDecimalSelectList

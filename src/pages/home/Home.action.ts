@@ -35,7 +35,7 @@ export const setCheckinsAndCheckoutsToday = (
   };
 };
 
-export const initializeIndicators = () => async (dispatch: Dispatch) => {
+export const updateScans = () => async (dispatch: Dispatch) => {
   const results = await getScans();
   if (!results.result) return;
 

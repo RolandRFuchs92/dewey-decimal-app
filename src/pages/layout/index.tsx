@@ -37,7 +37,7 @@ import { PermanentDrawerLeftModel } from './Layout.type';
 import { processScansData } from 'pages/home/Home.service';
 import { setPageTitle } from 'utils/redux/global.action';
 import { mapWindowPathNameToPageTitle } from 'utils/businessRules';
-import { initializeIndicators } from 'pages/home/Home.action';
+import { updateScans } from 'pages/home/Home.action';
 
 const useStyles = makeStyles(theme => {
   return {
@@ -88,7 +88,7 @@ export function PermanentDrawerLeft({ pageTitle }: PermanentDrawerLeftModel) {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(initializeIndicators());
+    dispatch(updateScans());
     const currentPage = window.location.pathname;
     const pageTitleAction = setPageTitle(
       mapWindowPathNameToPageTitle(currentPage)

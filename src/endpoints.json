@@ -92,7 +92,12 @@
       "verb": "GET"
     }
   },
-  "author": {},
+  "author": {
+    "dropdownList": {
+      "uri": "author/dropdownList",
+      "verb": "GET"
+    }
+  },
   "class": {
     "root": "class",
     "dropdownList": {
@@ -101,7 +106,11 @@
     }
   },
   "dewey_decimal": {
-    "root": "dewey_decimal"
+    "root": "dewey_decimal",
+    "dropdownList": {
+      "uri": "dewey_decimal/dropdownList",
+      "verb": "GET"
+    }
   },
   "dewey_summary": {},
   "dewey_summary_2": {},

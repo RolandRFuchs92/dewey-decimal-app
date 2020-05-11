@@ -73,7 +73,7 @@ export default () => {
       handleDeleteRow={handleDeleteRow}
       handleEditAddRow={handleEditAddRow}
       dialogKey="book_name"
-      primaryKey="book_id"
+      primaryKey="books_out_id"
     />
   );
 };

@@ -1,7 +1,7 @@
 import express, { Request, Response } from 'express';
-import authorsRepo from './Authors.repo';
+import authorsRepo, { getSelectList } from './Authors.repo';
 import { TableAuthorSchema, AuthorSchema } from './Authors.type';
-import { Result } from 'types/generic.type';
+import { Result, DropdownListModel } from 'types/generic.type';
 import { genericErrorHandle } from 'utils/httpHelpers/controller';
 import { pick } from 'lodash';
 
@@ -81,6 +81,27 @@ router.delete('/', async (req, res) => {
       error,
       res,
       `Error during a DELETE for an Author, params[${JSON.stringify(
+        req.body,
+        null,
+        2
+      )}]`
+    );
+  }
+});
+
+router.get('/dropdownlist', async (req, res) => {
+  try {
+    const dropdownList = await getSelectList();
+    const result: Result<DropdownListModel[]> = {
+      result: dropdownList
+    };
+    res.send(result);
+  } catch (error) {
+    handleErr(
+      '/',
+      error,
+      res,
+      `Error during a GET for an Author dropdown List, params[${JSON.stringify(
         req.body,
         null,
         2
