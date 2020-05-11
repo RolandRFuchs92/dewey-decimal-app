@@ -35,6 +35,9 @@ import { getScans } from 'pages/booksOut/Booksout.service';
 import Drawer from './drawer';
 import { PermanentDrawerLeftModel } from './Layout.type';
 import { processScansData } from 'pages/home/Home.service';
+import { setPageTitle } from 'utils/redux/global.action';
+import { mapWindowPathNameToPageTitle } from 'utils/businessRules';
+import { initializeIndicators } from 'pages/home/Home.action';
 
 const useStyles = makeStyles(theme => {
   return {
@@ -85,10 +88,12 @@ export function PermanentDrawerLeft({ pageTitle }: PermanentDrawerLeftModel) {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    (async () => {
-      const result = await getScans();
-      processScansData(result.result!);
-    })();
+    dispatch(initializeIndicators());
+    const currentPage = window.location.pathname;
+    const pageTitleAction = setPageTitle(
+      mapWindowPathNameToPageTitle(currentPage)
+    );
+    dispatch(pageTitleAction);
   }, []);
 
   const toggleScan = () => {

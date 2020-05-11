@@ -1,5 +1,6 @@
 import { addBusinessDays, addDays, format, parse } from 'date-fns';
 import appSettings from 'appSettings.json';
+import layoutSettings from 'layout.json';
 
 const { formatDate, checkout } = appSettings;
 
@@ -30,4 +31,23 @@ export const friendlyClientDateFormatFromString = (date: string) => {
     appSettings.formatDate.to
   );
   return result;
+};
+
+export type LayoutModel = {
+  label: string;
+  icon: string;
+  path?: string;
+  menuItems?: LayoutModel[];
+};
+
+export const mapWindowPathNameToPageTitle = (currentPath: string) => {
+  for (const item of layoutSettings.mainMenu) {
+    if (item.path && item.path === currentPath) return item.label;
+
+    if (item.menuItems) {
+      const title = item.menuItems.find(i => i.path === currentPath);
+      if (title) return title.label;
+    }
+  }
+  return 'No title.';
 };

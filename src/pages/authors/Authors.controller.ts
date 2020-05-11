@@ -65,7 +65,9 @@ router.put('/', async (req, res) => {
 router.delete('/', async (req, res) => {
   const deleteObject = { author_id: req.body.id };
   try {
-    const deleteResult = await authorsRepo.deleteRow(deleteObject);
+    const deleteResult = await authorsRepo.deleteRow(
+      deleteObject as AuthorSchema
+    );
     const result: Result<boolean> = {
       message: deleteResult
         ? 'Successfully deleted your book.'
