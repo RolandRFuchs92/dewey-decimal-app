@@ -1,6 +1,6 @@
 export const querySelectList = `
   SELECT
-    author_id
+    author_id,
     name,
     second_name,
     surname

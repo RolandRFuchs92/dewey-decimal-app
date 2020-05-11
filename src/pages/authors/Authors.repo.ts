@@ -15,7 +15,7 @@ export const getSelectList = async (): Promise<DropdownListModel[]> => {
   return selectData.map(row => {
     const pkName = appSettings.tables.author.pk as string;
     const {
-      //@ts-ignore
+      // @ts-ignore
       [pkName]: pk,
       name,
       second_name,

@@ -56,16 +56,22 @@ async function addOrUpdateTeacherFunction(
   }
 }
 
-router.post('/', async (req, res) => {});
+router.post('/', async (req, res) => {
+  addOrUpdateTeacherFunction(req, res, 'POST');
+});
 
 router.put('/', async (req, res) => {
-  res.send('Put root');
+  addOrUpdateTeacherFunction(req, res, 'PUT');
 });
 
 router.delete('/', async (req, res) => {
-  const deleteObject = req.body.id;
+  const deleteObject = {
+    book_id: req.body.id as number
+  };
   try {
-    const deleteResult = await bookRepo.deleteRow(deleteObject);
+    const deleteResult = await bookRepo.deleteRow(
+      (deleteObject as unknown) as TableBookSchema
+    );
     const result: Result<boolean> = {
       message: deleteResult
         ? 'Successfully deleted your book.'
