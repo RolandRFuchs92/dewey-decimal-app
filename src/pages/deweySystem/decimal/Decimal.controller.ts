@@ -66,6 +66,35 @@ router.put('/', async (req, res) => {
   addOrUpdateTeacherFunction(req, res, 'PUT');
 });
 
+router.delete('/', async (req, res) => {
+  const deleteObject = {
+    dewey_decimal_id: req.body.id as number
+  };
+  try {
+    const deleteResult = await decimalRepo.deleteRow(
+      (deleteObject as unknown) as TableDeweyDecimalSchema
+    );
+    const result: Result<boolean> = {
+      message: deleteResult
+        ? 'Successfully deleted this Decimal reference.'
+        : 'There was an error deleting your Decimal reference.',
+      result: deleteResult
+    };
+    res.send(result);
+  } catch (error) {
+    errorHandler(
+      '/',
+      error,
+      res,
+      `Error during a DELETE for a decimal, params[${JSON.stringify(
+        req.body,
+        null,
+        2
+      )}]`
+    );
+  }
+});
+
 router.get('/dropdownlist', async (req, res) => {
   try {
     const decimalDropdownList = await getSelectList();

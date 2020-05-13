@@ -6,7 +6,10 @@ import { getSelectQuery } from './Decimal.sql';
 import { getAllQuery } from './Decimal.sql';
 import { TableDeweyDecimalSchema } from './Decimal.type';
 
-const repo = repoBase<TableDeweyDecimalSchema>(`dewey_decimal`, 'decimal_id');
+const repo = repoBase<TableDeweyDecimalSchema>(
+  `dewey_decimal`,
+  'dewey_decimal_id'
+);
 
 repo.getAll = async () => {
   return await all(getAllQuery);
