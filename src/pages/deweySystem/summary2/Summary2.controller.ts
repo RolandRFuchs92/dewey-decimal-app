@@ -2,7 +2,10 @@ import express from 'express';
 
 import { genericErrorHandle } from 'utils/httpHelpers/controller';
 import { Result, DropdownListModel } from 'types/generic.type';
-import { deleteAction, updateOrAddAction } from 'utils/httpHelpers/genericCrud';
+import {
+  deleteAction,
+  updateOrAddActionCreator
+} from 'utils/httpHelpers/genericCrud';
 
 import summary2Repo, { getSelectList } from './Summary2.repo';
 import {
@@ -13,6 +16,12 @@ import {
 
 const router = express.Router();
 const handleErr = genericErrorHandle('Summary3');
+const addOrUpdateAction = updateOrAddActionCreator<DeweySummary2Schema>(
+  deweySummary2SchemaArray,
+  'Summary2',
+  'dewey_summary_2_id',
+  summary2Repo.addOrUpdate
+);
 
 router.get('/', async (req, res) => {
   const summary2Result = await summary2Repo.getAll();
@@ -23,18 +32,12 @@ router.get('/', async (req, res) => {
   res.send(result);
 });
 
-router.post('/', async (req, res) => {});
+router.post('/', async (req, res) => {
+  addOrUpdateAction(req, res, 'POST');
+});
 
 router.put('/', async (req, res) => {
-  updateOrAddAction<DeweySummary2Schema>(
-    req,
-    res,
-    'PUT',
-    deweySummary2SchemaArray,
-    'Summary2',
-    'dewey_summary_2_id',
-    summary2Repo.addOrUpdate
-  );
+  addOrUpdateAction(req, res, 'PUT');
 });
 
 router.delete('/', async (req, res) => {

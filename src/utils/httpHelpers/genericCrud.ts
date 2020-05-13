@@ -6,6 +6,25 @@ import { Result } from 'types/generic.type';
 
 export default () => {};
 
+export function updateOrAddActionCreator<TSchema>(
+  schemaArray: (keyof TSchema)[],
+  route: string,
+  pk: keyof TSchema,
+  addOrUpdateMethod: (val: TSchema) => Promise<'added' | 'updated'>
+) {
+  return async function(req: Request, res: Response, method: 'PUT' | 'POST') {
+    updateOrAddAction<TSchema>(
+      req,
+      res,
+      method,
+      schemaArray,
+      route,
+      pk,
+      addOrUpdateMethod
+    );
+  };
+}
+
 export async function updateOrAddAction<TSchema>(
   req: Request,
   res: Response,

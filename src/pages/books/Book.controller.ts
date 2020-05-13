@@ -34,9 +34,7 @@ async function addOrUpdateTeacherFunction(
     bookParams.book_id =
       Number(bookParams.book_id) <= 0 ? undefined : bookParams.book_id;
 
-    const bookResult = await bookRepo.addOrUpdate(
-      bookParams as TableBookSchema
-    );
+    const bookResult = await bookRepo.addOrUpdate(bookParams as BookSchema);
     const result: Result<boolean> = {
       message: `Successfully ${bookResult} ${bookParams.name}.`,
       result: true
@@ -70,7 +68,7 @@ router.delete('/', async (req, res) => {
   };
   try {
     const deleteResult = await bookRepo.deleteRow(
-      (deleteObject as unknown) as TableBookSchema
+      (deleteObject as unknown) as BookSchema
     );
     const result: Result<boolean> = {
       message: deleteResult

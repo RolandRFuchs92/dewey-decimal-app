@@ -19,7 +19,8 @@ import {
   BooksOverdueModel,
   ScansModel,
   CheckinResult,
-  RecentlyCheckoutModel
+  RecentlyCheckoutModel,
+  BooksOutSchema
 } from './Booksout.type';
 import { Result, CountObj } from 'types/generic.type';
 
@@ -43,7 +44,7 @@ router.delete('/', async (req, res) => {
     const deleteBookId = req.body.id;
     await booksoutRepo.deleteRow({
       books_out_id: deleteBookId
-    } as TableBooksOutSchema);
+    } as BooksOutSchema);
     res.send({ result: 'Your book has been deleted.' });
   } catch (error) {
     errorHandler(
@@ -110,7 +111,7 @@ router.put('/', async (req, res) => {
 router.post('/addupdate', async (req, res) => {
   try {
     const model = pick(req.body, book_out_keys);
-    const result = await booksoutRepo.addOrUpdate(model as TableBooksOutSchema);
+    const result = await booksoutRepo.addOrUpdate(model as BooksOutSchema);
     res.send({ result });
   } catch (error) {
     errorHandler(
