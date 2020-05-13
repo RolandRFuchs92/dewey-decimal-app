@@ -28,6 +28,7 @@ const useStyles = makeStyles(theme => ({
     textAlign: 'right',
     padding: 10,
     alignSelf: 'flex-end',
+    cursor: 'pointer',
     '& svg': {
       fontSize: 30
     }
@@ -85,7 +86,7 @@ type HandleEditAddModel = (event: JsonObj) => void;
 export default (
   handleEditAdd: HandleEditAddModel,
   handleDelete: HandleEditAddModel
-): DefaultColumnModel[] => [
+): DefaultColumnModel<any, any>[] => [
   {
     name: 'Edit',
     label: '',
@@ -214,6 +215,7 @@ function CustomFooter({
             count={count}
             rowsPerPage={rowsPerPage}
             page={page}
+            // @ts-ignore TODO Figure out why this is a problem for Ts
             labelRowsPerPage={!isNil(textLabels) && textLabels.rowsPerPage}
             labelDisplayedRows={({ from, to, count }) =>
               `${from}-${to} ${!isNil(textLabels) &&

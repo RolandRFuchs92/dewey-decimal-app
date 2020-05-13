@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Grid, makeStyles } from '@material-ui/core';
-
-import { getBooksOverdue } from 'pages/booksOut/Booksout.repo';
+import { getOverduebooks } from 'pages/booksOut/Booksout.service';
 import { JsonObj } from 'types/generic.type';
 
 const useStyles = makeStyles(theme => ({
@@ -17,8 +16,8 @@ export default () => {
 
   useEffect(() => {
     (async () => {
-      const overdueBooksResult = await getBooksOverdue();
-      setBooksOverdue(overdueBooksResult);
+      const { result } = await getOverduebooks();
+      setBooksOverdue(result || []);
     })();
   }, []);
 

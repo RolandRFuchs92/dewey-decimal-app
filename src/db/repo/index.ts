@@ -60,7 +60,7 @@ export const exec = (statement: string) => {
     const stamp = getStamp();
     log.info(`${stamp} Running statement - \n\n${statement}\n\n with params.`);
 
-    db.exec(statement, (err: object) => {
+    db.exec(statement, (err: object | null) => {
       db.close();
       log.info(`${stamp} Closed Db.`);
       if (err) {

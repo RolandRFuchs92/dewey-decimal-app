@@ -31,13 +31,14 @@ export default ({
   open
 }: ScannerModel) => {
   const classes = useStyles();
-  const [isScannerError, setIsScannerError] = useState<undefined | boolean>();
+  const [isScannerError, setIsScannerError] = useState<string>('');
 
   useEffect(() => {
     if (open) {
       Quagga.init(
         {
           inputStream: {
+            name: 'Live',
             type: 'LiveStream',
             constraints: {
               width: 640,
@@ -59,8 +60,7 @@ export default ({
         },
         function(err: Error) {
           if (err) {
-            setIsScannerError(true);
-            return console.log(err);
+            return setIsScannerError(JSON.stringify(err));
           }
           Quagga.start();
         }

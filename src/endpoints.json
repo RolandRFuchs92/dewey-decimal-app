@@ -1,0 +1,134 @@
+{
+  "developmentHost": "http://localhost:3001",
+  "productionHost": "",
+  "booksout": {
+    "getall": {
+      "uri": "booksout",
+      "verb": "GET"
+    },
+    "delete": {
+      "uri": "booksout",
+      "verb": "DELETE"
+    },
+    "checkout": {
+      "uri": "booksout",
+      "verb": "POST"
+    },
+    "checkin": {
+      "uri": "booksout",
+      "verb": "PUT"
+    },
+    "addOrUpdate": {
+      "uri": "booksout/addupdate",
+      "verb": "POST"
+    },
+    "checkoutscount": {
+      "uri": "booksout/checkoutscount",
+      "verb": "GET"
+    },
+    "checkinscount": {
+      "uri": "booksout/checkinscount",
+      "verb": "GET"
+    },
+    "overduecount": {
+      "uri": "booksout/overduecount",
+      "verb": "GET"
+    },
+    "overdue": {
+      "uri": "booksout/overdue",
+      "verb": "GET"
+    },
+    "scans": {
+      "uri": "booksout/scans",
+      "verb": "GET"
+    }
+  },
+  "book": {
+    "getall": {
+      "uri": "book",
+      "verb": "GET"
+    },
+    "getBookByCallNumber": {
+      "uri": "book/bycallnumber",
+      "verb": "POST"
+    },
+    "dropdownList": {
+      "uri": "book/dropdownlist",
+      "verb": "GET"
+    }
+  },
+  "student": {
+    "root": "student",
+    "getAll": {
+      "uri": "student",
+      "verb": "GET"
+    },
+    "addOrUpdate": {
+      "uri": "student",
+      "verb": "POST"
+    },
+    "delete": {
+      "uri": "student",
+      "verb": "DELETE"
+    },
+    "dropdownList": {
+      "uri": "student/dropdown",
+      "verb": "GET"
+    },
+    "profile": {
+      "uri": "student/profile",
+      "verb": "GET"
+    },
+    "birthdays": {
+      "uri": "student/birthdays",
+      "verb": "GET"
+    },
+    "birthdayscount": {
+      "uri": "student/birthdayscount",
+      "verb": "GET"
+    },
+    "search": {
+      "uri": "student/search",
+      "verb": "GET"
+    }
+  },
+  "author": {
+    "dropdownList": {
+      "uri": "author/dropdownList",
+      "verb": "GET"
+    }
+  },
+  "class": {
+    "root": "class",
+    "dropdownList": {
+      "uri": "class/dropdownList",
+      "verb": "GET"
+    }
+  },
+  "dewey_decimal": {
+    "root": "dewey_decimal",
+    "dropdownList": {
+      "uri": "dewey_decimal/dropdownList",
+      "verb": "GET"
+    }
+  },
+  "dewey_summary": {
+    "dropdownList": {
+      "uri": "dewey_summary/dropdownList",
+      "verb": "GET"
+    }
+  },
+  "dewey_summary_2": {
+    "dropdownList": {
+      "uri": "dewey_summary_2/dropdownList",
+      "verb": "GET"
+    }
+  },
+  "dewey_summary_3": {
+    "dropdownList": {
+      "uri": "dewey_summary_3/dropdownList",
+      "verb": "GET"
+    }
+  },
+  "teacher": {}
+}

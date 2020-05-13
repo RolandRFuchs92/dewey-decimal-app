@@ -2,16 +2,23 @@ import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core';
 
 import PageBase from 'components/page/PageBase';
-import { getSelectList } from 'pages/class/Class.repo';
-import { DefaultColumnModel } from 'components/page/PageBase.type';
-import Icons from 'components/icons';
 import { tableButton } from 'utils/tableButtons';
+import { DefaultColumnModel } from 'components/page/PageBase.type';
+import { getDropdownList } from 'pages/class/Class.service';
 
+import serviceBase from './Student.service';
 import StudentProfile from './StudentProfile';
-import repo from './Student.repo';
-import { StudentModel } from './Student.type';
+import {
+  StudentModel,
+  TableStudentSchema,
+  StudentSchema
+} from './Student.type';
 
-const defaultColumns: DefaultColumnModel[] = [
+const defaultColumns: DefaultColumnModel<
+  TableStudentSchema,
+  StudentSchema
+>[] = [
+  // TODO add a tableSchemaModel...
   {
     name: 'student_id',
     label: 'Id',
@@ -74,7 +81,7 @@ const defaultColumns: DefaultColumnModel[] = [
     label: 'Class',
     ref: 'class_id',
     type: 'select',
-    getDropDownItems: getSelectList
+    getDropDownItems: getDropdownList
   },
   {
     name: 'is_active',
@@ -98,11 +105,12 @@ export default () => {
 
   const [studentId, setStudentId] = useState(1);
   const [open, setOpen] = useState(false);
-  const handleDeleteRow = repo.deleteRow;
-  const handleEditAddRow = repo.addOrUpdate;
-  const getAll = repo.getAll;
+  const handleDeleteRow = serviceBase.deleteFunc;
+  const handleEditAddRow = serviceBase.addOrUpdate;
+  const getAll = serviceBase.getAll;
 
   const columns = defaultColumns.concat(
+    // @ts-ignore TODO make an exception for columns like this
     tableButton(
       'Profile',
       props => {
@@ -116,12 +124,13 @@ export default () => {
 
   return (
     <>
-      <PageBase<StudentModel>
+      <PageBase<TableStudentSchema, StudentSchema>
         defaultColumns={columns}
         getAll={getAll}
         handleDeleteRow={handleDeleteRow}
         handleEditAddRow={handleEditAddRow}
         dialogKey="first_name"
+        primaryKey="student_id"
       />
       <StudentProfile
         studentId={studentId}

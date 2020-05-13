@@ -9,7 +9,10 @@ import appSettings from 'appSettings.json';
 import {
   StudentModel,
   GetStudentsWithBirthdaysModel,
-  StudentSelectListSearchModel
+  StudentSelectListSearchModel,
+  StudentCardProps,
+  TableStudentSchema,
+  StudentSchema
 } from './Student.type';
 import {
   getAllQuery,
@@ -19,10 +22,13 @@ import {
   getStudentsWithBirthdaysCountQuery
 } from './Student.sql';
 
-const repo = repoBase<StudentModel>('student', 'student_id');
+const repo = repoBase<StudentSchema, TableStudentSchema>(
+  'student',
+  'student_id'
+);
 
 repo.getAll = async () => {
-  return await all<StudentModel>(getAllQuery);
+  return await all<TableStudentSchema>(getAllQuery);
 };
 
 export default repo;
@@ -40,17 +46,17 @@ export async function getStudentProfileData(student_id: string) {
     `;
   const studentDataStatementObject = { $student_id: student_id };
 
-  const studentData = await all<StudentModel>(
+  const studentData = await single<StudentModel>(
     studentProfileDataQuery,
     studentDataStatementObject
   );
   const historyData = await getStudentBooksHistory(student_id);
-
-  return { studentData, historyData };
+  const result: StudentCardProps = { studentData: studentData!, historyData };
+  return result;
 }
 
-export async function getStudentsWithBirthdays(date: string) {
-  const statementObject = { $date: date };
+export async function getStudentsWithBirthdays(date = new Date()) {
+  const statementObject = { $date: format(date, appSettings.formatDate.from) };
   return await all<GetStudentsWithBirthdaysModel>(
     getStudentsWithBirthdaysQuery,
     statementObject
@@ -58,7 +64,7 @@ export async function getStudentsWithBirthdays(date: string) {
 }
 
 export async function countStudentsWithBirthdayToday(date = new Date()) {
-  const statementObject = { $date: format(date, appSettings.formatDate.to) };
+  const statementObject = { $date: format(date, appSettings.formatDate.from) };
   return await single<CountObj>(
     getStudentsWithBirthdaysCountQuery,
     statementObject
@@ -69,7 +75,7 @@ export const getStudentSelectListSearch = async (value: string) => {
   const result = await all<StudentSelectListSearchModel>(
     getStudentSelectListSearchQuery,
     {
-      $searchTerm: `%${value}%`
+      $searchTerm: `%${value}%` /// danger here i think!
     }
   );
   return result;

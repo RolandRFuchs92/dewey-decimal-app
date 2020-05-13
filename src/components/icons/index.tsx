@@ -1,6 +1,5 @@
 import React from 'react';
 import {
-  Home,
   Code,
   Store,
   Cake,
@@ -12,6 +11,7 @@ import {
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   IconDefinition,
+  faHome,
   faAdjust,
   faEdit,
   faPlusSquare,
@@ -33,13 +33,16 @@ import {
   faUserClock,
   faMobileAlt,
   faRecordVinyl,
-  faExclamationTriangle
+  faExclamationTriangle,
+  faTimes
 } from '@fortawesome/free-solid-svg-icons';
 
 function CreateIcon(icon: IconDefinition) {
   return <FontAwesomeIcon icon={icon}></FontAwesomeIcon>;
 }
 
+const Close = CreateIcon(faTimes);
+const Home = CreateIcon(faHome);
 const Warning = CreateIcon(faExclamationTriangle);
 const LaptopCamera = CreateIcon(faRecordVinyl);
 const UsePhone = CreateIcon(faMobileAlt);
@@ -67,11 +70,12 @@ const defaultExport: { [key: string]: JSX.Element } = {
   Code: <Code />,
   Store: <Store />,
   Birthday: <Cake />,
-  Home: <Home />,
   Menu: <MenuBook />,
   Class: studentClass,
   Print: <Print />,
 
+  Close,
+  Home,
   ExpandLess: <ExpandLess />,
   ExpandMore: <ExpandMore />,
   School: FaSchool,

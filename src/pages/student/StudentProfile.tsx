@@ -4,7 +4,7 @@ import { compareAsc, parse } from 'date-fns';
 
 import Modal from 'components/modal';
 import Icons from 'components/icons';
-import { getStudentProfileData } from './Student.repo';
+import { getStudentProfile } from './Student.service';
 import {
   StudentCardProps,
   StudentBookHistoryProps,
@@ -12,6 +12,7 @@ import {
   StudentModel
 } from './Student.type';
 import { GetStudentBooksHistoryModel } from 'pages/books/Book.type';
+import { useAlert } from 'utils/snackbarAlerts';
 
 const cardWidth = 680;
 
@@ -92,6 +93,7 @@ const useStyles = makeStyles(theme => ({
 }));
 
 export default ({ open, handleClose, studentId = 1 }: StudentProfileProps) => {
+  const alert = useAlert();
   const [isFront, setIsFront] = useState(true);
   const [historyData, setHistoryData] = useState<GetStudentBooksHistoryModel[]>(
     []
@@ -102,9 +104,10 @@ export default ({ open, handleClose, studentId = 1 }: StudentProfileProps) => {
 
   useEffect(() => {
     (async () => {
-      const result = await getStudentProfileData(studentId.toString());
-      setStudentData(result.studentData[0]);
-      setHistoryData(result.historyData);
+      const { result, message } = await getStudentProfile(studentId);
+      if (message) alert.error(message);
+      setStudentData(result!.studentData! || []);
+      setHistoryData(result!.historyData || []);
     })();
   }, [studentId]);
 
@@ -227,59 +230,58 @@ const StudentCard = ({
 
   return (
     <Grid container alignContent="space-between" style={{ height: '100%' }}>
-      <Grid item>
+      <Grid item xs={12}>
         <Typography variant="h5">
           {first_name} {last_name}
         </Typography>
         <Divider></Divider>
       </Grid>
 
-      <Grid container item>
-        <Grid item sm={6}>
+      <Grid container item xs={12} justify="space-between">
+        <Grid item xs={6}>
           <Typography variant="body1">Birthday: {birthdate}</Typography>
         </Grid>
-        <Grid item sm={6}>
+        <Grid item xs={6}>
           <Typography variant="body1">
             Grade: {grade} {class_name}
           </Typography>
         </Grid>
       </Grid>
 
-      <Grid container item sm={12}>
-        <Grid item sm={12}>
-          <Typography variant="h5">Mother</Typography>
+      <Grid container item xs={12}>
+        <Grid item xs={12}>
+          <Typography variant="h5">Mother: {mother_name}</Typography>
         </Grid>
-        <Grid item sm={6}>
-          <Typography variant="body1">{mother_name}</Typography>
-        </Grid>
-        <Grid item sm={6}>
-          <Typography variant="body1">{mother_mobile}</Typography>
-        </Grid>
-        <Grid item sm={12}>
+        <Grid item xs={12}>
           <Typography variant="body1">
-            <a href={`mailto:${{ mother_email }}`}>{mother_email}</a>
+            Mobile:<a href={`tel:${{ mother_mobile }}`}>{mother_mobile}</a>
           </Typography>
         </Grid>
-      </Grid>
-      <Grid container item sm={12}>
-        <Grid item sm={12}>
-          <Typography variant="h5">Father</Typography>
-        </Grid>
-        <Grid item sm={6}>
-          <Typography variant="body1">{father_name}</Typography>
-        </Grid>
-        <Grid item sm={6}>
-          <Typography variant="body1">{father_mobile}</Typography>
-        </Grid>
-        <Grid item sm={12}>
+        <Grid item xs={12}>
           <Typography variant="body1">
-            <a href={`mailto:${father_email}`}>{father_email}</a>
+            Email:<a href={`mailto:${{ mother_email }}`}>{mother_email}</a>
           </Typography>
         </Grid>
       </Grid>
 
-      <Grid container item sm={12}>
-        <Grid item sm={12}>
+      <Grid container item xs={12}>
+        <Grid item xs={12}>
+          <Typography variant="h5">Father: {father_name}</Typography>
+        </Grid>
+        <Grid item xs={6}>
+          <Typography variant="body1">
+            Mobile:<a href={`mailto:${father_mobile}`}>{father_mobile}</a>
+          </Typography>
+        </Grid>
+        <Grid item xs={12}>
+          <Typography variant="body1">
+            Email:<a href={`mailto:${father_email}`}>{father_email}</a>
+          </Typography>
+        </Grid>
+      </Grid>
+
+      <Grid container item xs={12}>
+        <Grid item xs={12}>
           <Typography variant="h5">Next books due</Typography>
         </Grid>
         <StudentBookHistory hst={historyData} />

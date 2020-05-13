@@ -14,10 +14,9 @@ WHERE
 `;
 
 export const queryHideTeacher = `
-UPDATE 
+DELETE 
+FROM 
     teacher
-SET
-    is_active = 0
 WHERE
     teacher_id = $teacher_id
 `;

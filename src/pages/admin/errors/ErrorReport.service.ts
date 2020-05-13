@@ -1,7 +1,7 @@
 import appSettings from 'appSettings.json';
 import { trim } from 'lodash';
 import { format, parse } from 'date-fns';
-import log from 'utils/logger';
+// import log from 'utils/logger';
 import { ProcessErrorLogResultModel } from './ErrorReport.type';
 
 const fs = window.require('fs');
@@ -15,7 +15,7 @@ export const processErrorLog = async (): Promise<ProcessErrorLogResultModel[]> =
   return new Promise((res, rej) => {
     fs.readFile(`dewey.error.log`, 'utf8', (err: Error, data: string) => {
       if (err) {
-        log.error(err.toString());
+        // log.error(err.toString());
         return rej(err);
       }
 
@@ -33,12 +33,12 @@ export const processErrorLog = async (): Promise<ProcessErrorLogResultModel[]> =
               parsedErrors.push(json);
             }
           } catch (e) {
-            log.error(e);
+            // log.error(e
           }
         });
         res(parsedErrors);
       } catch (error) {
-        log.error(error);
+        // log.error(error);
         rej(error);
       }
     });

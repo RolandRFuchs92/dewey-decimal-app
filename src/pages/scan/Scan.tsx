@@ -11,16 +11,26 @@ import {
 import { connect, useDispatch } from 'react-redux';
 import { Autocomplete } from '@material-ui/lab';
 import { isNil } from 'lodash';
+import { addDays, format, parse } from 'date-fns';
 
-import { checkout, checkin } from 'pages/booksOut/Booksout.repo';
+import {
+  friendlyClientDateFormatFromString,
+  formatDateForClient
+} from 'utils/businessRules';
+import appSettings from 'appSettings.json';
 import { useAlert } from 'utils/snackbarAlerts';
 import Modal from 'components/modal';
 import Icons from 'components/icons';
 import Scanner from 'components/scanner';
-import { JsonObj, GenericInputEvent } from 'types/generic.type';
+import {
+  JsonObj,
+  GenericInputEvent,
+  DropdownListModel
+} from 'types/generic.type';
 import { BarcodeResultModel } from 'pages/home/Home.type';
-import { getBookByCallNumber } from 'pages/books/Book.repo';
-import { searchForStudentsSelect } from 'pages/home/Home.repo';
+import { getBookByCallNumber } from 'pages/books/Book.service';
+import { studentSearch } from 'pages/student/Student.service';
+import { checkout, checkin } from 'pages/booksOut/Booksout.service';
 import { RootReducerModel } from 'utils/redux/rootReducer.type';
 
 import {
@@ -33,6 +43,7 @@ import {
   ScanProps
 } from './Scan.type';
 import { ScannerCloseAction } from './Scanner.action';
+import { processScansData } from 'pages/home/Home.service';
 
 const useStyles = makeStyles(theme => ({
   barcode: {
@@ -61,10 +72,21 @@ const useStyles = makeStyles(theme => ({
     '&.active': {
       color: theme.palette.error.light
     }
+  },
+  close: {
+    cursor: 'pointer',
+    fontSize: '2rem',
+    color: theme.palette.grey[500],
+    marginRight: theme.spacing(1),
+    transition: 'all 0.4s',
+    '&:hover': {
+      color: theme.palette.grey[700]
+    }
   }
 }));
 
 const defeaultCheckoutData: ScanDataModel = {
+  book_id: 0,
   author_name: '',
   book_name: '',
   call_number: '',
@@ -121,7 +143,7 @@ const ScannerPage = ({ open }: ScanProps) => {
   };
 
   const handleCheckinout = async (value: string) => {
-    const data = (await getBookByCallNumber(value))[0];
+    const data = (await getBookByCallNumber(value)).result;
     if (!data) {
       alert.error(`${value} was not found. Make sure the book is loaded`);
       return;
@@ -130,20 +152,24 @@ const ScannerPage = ({ open }: ScanProps) => {
     const fine = '0'; // TODO: calculate fine
 
     const scanData: ScanDataModel = {
+      book_id: data.book_id,
+      call_number: data.call_number,
       author_name: data.author_name,
       book_name: data.book_name,
-      books_out_id: data.books_out_id.toString(),
-      call_number: data.call_number,
-      check_in_on: data.check_in_date.toString(),
-      check_out_date: data.check_out_date.toString(),
+      books_out_id: data.books_out_id
+        ? data.books_out_id.toString()
+        : undefined,
+      check_in_on: data.check_in_date && data.check_in_date.toString(),
+      check_out_date: data.check_out_date
+        ? data.check_out_date.toString()
+        : undefined,
       class: data.class,
-      isCheckout: data.check_in_date === null,
-      return_on: data.return_on.toString(),
+      isCheckout: data.check_out_date === null,
+      return_on: data.return_on ? data.return_on.toString() : undefined,
       student_name: data.student_name,
       teacher_name: data.teacher_name,
       fine
     };
-
     setBarcodeResult(scanData);
   };
 
@@ -151,10 +177,15 @@ const ScannerPage = ({ open }: ScanProps) => {
     <Modal open={open} handleClose={_handleClose}>
       <Grid container>
         <Grid container item direction="column" md={isScannerOpen ? 6 : 12}>
-          <Grid item>
-            <Typography variant="h5" className={classes.title}>
-              Scan a barcode
-            </Typography>
+          <Grid item container justify="space-between">
+            <Grid item>
+              <Typography variant="h5" className={classes.title}>
+                Scan a barcode
+              </Typography>
+            </Grid>
+            <Grid item className={classes.close} onClick={_handleClose}>
+              {Icons.Close}
+            </Grid>
           </Grid>
           <Grid item container direction="row">
             <TextField
@@ -174,11 +205,11 @@ const ScannerPage = ({ open }: ScanProps) => {
                   </InputAdornment>
                 )
               }}
-            ></TextField>
+            />
             <ScannerIconButtons
               handleLaptopButton={() => setIsScannerOpen(!isScannerOpen)}
               isScannerOpen={isScannerOpen}
-            ></ScannerIconButtons>
+            />
           </Grid>
           <Grid item>
             {(barcodeResult as ScanDataModel).isCheckout ? (
@@ -190,11 +221,11 @@ const ScannerPage = ({ open }: ScanProps) => {
               <GenerateCheckin
                 data={barcodeResult as ScanDataModel}
                 reset={reset}
-              ></GenerateCheckin>
+              />
             )}
           </Grid>
         </Grid>
-        <Scanner open={isScannerOpen} onDetected={handleDetectedCode}></Scanner>
+        <Scanner open={isScannerOpen} onDetected={handleDetectedCode} />
       </Grid>
     </Modal>
   );
@@ -226,7 +257,9 @@ const GenerateCheckin = ({ data, reset }: GenerateCheckinProps) => {
   const alert = useAlert();
   const handleSubmit = async () => {
     try {
-      await checkin(data.books_out_id);
+      // TODO do something with the fine applicable here...
+      const { result } = await checkin(Number(data.books_out_id));
+      processScansData(result!.scansToday);
       reset();
       alert.success(
         `Successfully checked in ${data.book_name} for ${data.student_name}`
@@ -263,13 +296,14 @@ const GenerateCheckin = ({ data, reset }: GenerateCheckinProps) => {
       </p>
       <hr></hr>
       <p>
-        Check out on: <b>{data.check_out_date}</b>
+        Check out on:{' '}
+        <b>{friendlyClientDateFormatFromString(data.check_out_date!)}</b>
       </p>
       <p>
-        Check in on: <b>{data.check_in_on}</b>
+        Check in on: <b>{formatDateForClient(new Date())}</b>
       </p>
       <p>
-        Due by:<b>{data.return_on}</b>
+        Due by:<b>{friendlyClientDateFormatFromString(data.return_on!)}</b>
       </p>
       <p>
         Fine due: <b>{data.fine}</b>
@@ -287,16 +321,20 @@ const GenerateCheckin = ({ data, reset }: GenerateCheckinProps) => {
 };
 
 const GenerateCheckout = ({ data, reset }: GenerateCheckoutProps) => {
-  const [selectList, setSelectList] = useState<JsonObj[]>([]);
+  const [selectList, setSelectList] = useState<DropdownListModel[]>([]);
   const [selection, setSelection] = useState<UserSelection>();
   const classes = useStyles();
   const alert = useAlert();
+
+  const checkoutDate = format(new Date(), appSettings.formatDate.to);
+  const dueBack = calculateReturnDate();
 
   const handleSearch = async (e: ChangeEvent<HTMLInputElement>) => {
     const {
       target: { value }
     } = e;
-    setSelectList(await searchForStudentsSelect(value as string));
+    const result = await studentSearch(value);
+    setSelectList(result.result || []);
   };
 
   const getSelection = (event: ChangeEvent<{}>, value: JsonObj) => {
@@ -311,15 +349,23 @@ const GenerateCheckout = ({ data, reset }: GenerateCheckoutProps) => {
 
   const handleSubmit = async () => {
     try {
-      await checkout(selection?.student_id.toString() ?? '', data.book_id);
+      if (!selection || !data.book_id)
+        return alert.error('A student and barcode selection is required.');
+
+      const student_id = selection!.student_id;
+      const book_id = Number(data.book_id);
+
+      const { result } = await checkout(student_id, book_id);
+      processScansData(result!);
       reset();
-      alert.success(
+
+      return alert.success(
         `${selection?.student_name ?? 'Unknown'} checked out ${
           data.book_name
-        } due back on ###ADD DATE HERE ###`
+        } due back on ${calculateReturnDate()}`
       );
     } catch (error) {
-      alert.error(
+      return alert.error(
         `An error occured while checking out ${
           data.book_name
         } for ${selection?.student_name ?? 'Unknown'}.`
@@ -329,7 +375,7 @@ const GenerateCheckout = ({ data, reset }: GenerateCheckoutProps) => {
 
   return (
     <div className={classes.statContainer}>
-      <Typography variant="h6">Check in</Typography>
+      <Typography variant="h6">Checkout</Typography>
       <p>
         Author: <b>{data.author_name}</b>
       </p>
@@ -341,6 +387,7 @@ const GenerateCheckout = ({ data, reset }: GenerateCheckoutProps) => {
       </p>
       <hr></hr>
       <Autocomplete
+        // @ts-ignore TODO Look look at this shit fail...
         options={selectList}
         //@ts-ignore //TODO Figure out why this is broken...
         onChange={getSelection!}
@@ -357,7 +404,7 @@ const GenerateCheckout = ({ data, reset }: GenerateCheckoutProps) => {
             variant="outlined"
           />
         )}
-      ></Autocomplete>
+      />
       <p>
         Class: <b>{selection ? selection.class : ''}</b>
       </p>
@@ -366,10 +413,10 @@ const GenerateCheckout = ({ data, reset }: GenerateCheckoutProps) => {
       </p>
       <hr></hr>
       <p>
-        Check out on: <b>{data.check_out_date}</b>
+        Check out on: <b>{data.call_number && checkoutDate}</b>
       </p>
       <p>
-        Due by:<b>{data.return_on}</b>
+        Due by:<b>{data.call_number && dueBack}</b>
       </p>
       <Button
         variant="contained"
@@ -389,3 +436,10 @@ const mapStateToProps = (currentState: RootReducerModel) => {
   };
 };
 export default connect(mapStateToProps)(ScannerPage);
+
+function calculateReturnDate() {
+  return format(
+    addDays(new Date(), appSettings.checkout.daysAllowedOut),
+    appSettings.formatDate.to
+  );
+}

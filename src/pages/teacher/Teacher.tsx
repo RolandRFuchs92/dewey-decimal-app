@@ -1,156 +1,66 @@
-import React, { useEffect, useState } from 'react';
-import MUIDataTable, { MUIDataTableColumnDef } from 'mui-datatables';
-import { Fade } from '@material-ui/core';
+import React from 'react';
 
-import AddUpdate from 'utils/tableButtons';
-import { addButton } from 'utils/tableButtons';
-import { useAlert } from 'utils/snackbarAlerts';
-import { useDialog } from 'utils/dialog';
-import appSettings from 'appSettings.json';
-import {
-  DefaultColumnModel,
-  DatatabelDataModel
-} from 'components/page/PageBase.type';
-import { JsonObj } from 'types/generic.type';
+import PageBase from 'components/page/PageBase';
+import { DefaultColumnModel } from 'components/page/PageBase.type';
 
-import TeacherModal from './Teacher.modal';
-import { getTeachers, hideTeacher } from './Teacher.repo';
-import { TeacherModel } from './Teacher.type';
+import serviceBase from './Teacher.service';
+import { TableTeacherSchema, TeacherSchema } from './Teacher.type';
 
-const columnConfig: DefaultColumnModel[] = [
+const defaultColumns: DefaultColumnModel<
+  TableTeacherSchema,
+  TeacherSchema
+>[] = [
   {
+    label: 'Id',
     name: 'teacher_id',
-    label: 'Id'
+    type: 'header',
+    modalTitle: 'Class'
   },
   {
+    label: 'Name',
     name: 'first_name',
-    label: 'Name'
+    type: 'text'
   },
   {
+    label: 'Surname',
     name: 'last_name',
-    label: 'Surname'
+    type: 'text'
   },
   {
+    label: 'Mobile',
     name: 'mobile',
-    label: 'Mobile'
+    type: 'text'
   },
   {
+    label: 'Email ',
     name: 'email',
-    label: 'Email'
+    type: 'text'
   },
   {
-    name: 'is_active',
-    label: 'Active'
-  },
-  {
+    label: 'Class',
     name: 'class_id',
-    label: 'Class'
+    type: 'text' // TODO Make this a dropdown list
+  },
+  {
+    label: 'Active',
+    name: 'is_active',
+    type: 'check'
   }
 ];
 
-const tableOptions = {
-  selectableRows: 'none'
-};
-
-const teacherDefault: DatatabelDataModel<TeacherModel> = {
-  Delete: null,
-  Edit: null,
-  class_id: 0,
-  email: '',
-  first_name: '',
-  is_active: false,
-  last_name: '',
-  mobile: '',
-  teacherName: '',
-  teacher_id: ''
-};
-
 export default () => {
-  const [columns, setColumns] = useState<DefaultColumnModel[]>([]);
-  const [data, setData] = useState<TeacherModel[]>([]);
-  const [options, setOptions] = useState({});
-  const [isOpen, setIsOpen] = useState(false);
-  const [teacher, setTeacher] = useState<DatatabelDataModel<TeacherModel>>(
-    teacherDefault
-  );
-  const alert = useAlert();
-  const dialog = useDialog();
-  let columnsVar: DefaultColumnModel[];
-
-  const handleEditAdd = (rowData: JsonObj) => {
-    const obj = Object.fromEntries(
-      columnsVar.map(({ name }, index) => [name, rowData[index]])
-    );
-    setTeacher(obj);
-    setIsOpen(true);
-  };
-
-  const tableAddButton = addButton(handleEditAdd);
-
-  useEffect(() => {
-    (async () => {
-      let editButtons = await AddUpdate(handleEditAdd, handleDelete);
-      setOptions({
-        ...tableOptions,
-        ...tableAddButton
-      });
-      const columns = [...columnConfig, ...editButtons];
-      columnsVar = columns;
-      setColumns(columns);
-      reset();
-    })();
-  }, []);
-
-  // TODO check this logic for indexing
-  const handleDelete = (rowData: JsonObj) => {
-    const teacher = Object.fromEntries(
-      columnsVar.map(({ name }, index) => [name, rowData[index]])
-    ) as TeacherModel;
-
-    dialog({
-      title: 'Are you sure?',
-      description: `Really delete ${teacher.first_name} ${teacher.last_name}?`,
-      handleYes: () => handleYesForDelete(teacher)
-    });
-  };
-
-  const handleYesForDelete = async (teacher: TeacherModel) => {
-    const teacherName = `${teacher.first_name} ${teacher.last_name}`;
-    try {
-      await hideTeacher(+teacher.teacher_id);
-      await reset();
-      alert.success(`Successfully removed teacher - ${teacherName}`);
-    } catch (error) {
-      alert.error(`There was an error removing teacher - ${teacherName}`);
-    }
-  };
-
-  const handleClose = () => setIsOpen(false);
-
-  const reset = async () => {
-    const result = await getTeachers();
-    setData(result);
-    setIsOpen(false);
-  };
+  const handleDeleteRow = serviceBase.deleteFunc;
+  const handleEditAddRow = serviceBase.addOrUpdate;
+  const getAll = serviceBase.getAll;
 
   return (
-    <>
-      <Fade in={true} timeout={appSettings.fadeTransitionDuration}>
-        <div>
-          <MUIDataTable
-            title=""
-            data={data}
-            columns={(columns as unknown) as MUIDataTableColumnDef[]}
-            options={options}
-          />
-          <TeacherModal
-            isOpen={isOpen}
-            handleClose={handleClose}
-            reset={reset}
-            teacher={teacher!}
-          />
-        </div>
-      </Fade>
-    </>
+    <PageBase
+      defaultColumns={defaultColumns}
+      getAll={getAll}
+      handleDeleteRow={handleDeleteRow}
+      handleEditAddRow={handleEditAddRow}
+      dialogKey="first_name"
+      primaryKey="teacher_id"
+    />
   );
 };

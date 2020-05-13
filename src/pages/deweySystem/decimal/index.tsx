@@ -1,12 +1,16 @@
 import React from 'react';
 
 import PageBase from 'components/page/PageBase';
-import { getSelectList } from 'pages/deweySystem/summary3/summary3.repo';
+import { getSelectList } from 'pages/deweySystem/summary3/Summary3.service';
 import { DefaultColumnModel } from 'components/page/PageBase.type';
 
-import repo from './Decimal.repo';
+import { TableDeweyDecimalSchema, DeweyDecimalSchema } from './Decimal.type';
+import serviceBase from './Decimal.service';
 
-const defaultColumns: DefaultColumnModel[] = [
+const defaultColumns: DefaultColumnModel<
+  TableDeweyDecimalSchema,
+  DeweyDecimalSchema
+>[] = [
   {
     name: 'dewey_decimal_id',
     label: 'Id',
@@ -42,16 +46,18 @@ const defaultColumns: DefaultColumnModel[] = [
 export default () => {
   const {
     getAll,
-    deleteRow: handleDeleteRow,
+    deleteFunc: handleDeleteRow,
     addOrUpdate: handleEditAddRow
-  } = repo;
+  } = serviceBase;
+
   return (
-    <PageBase
+    <PageBase<TableDeweyDecimalSchema, DeweyDecimalSchema>
       defaultColumns={defaultColumns}
       getAll={getAll}
       handleDeleteRow={handleDeleteRow}
       handleEditAddRow={handleEditAddRow}
       dialogKey="name"
+      primaryKey="dewey_decimal_id"
     />
   );
 };

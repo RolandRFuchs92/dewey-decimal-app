@@ -12,35 +12,35 @@ import {
   queryHideClass,
   getSelectListQuery
 } from './Class.sql';
-import { ClassModel } from './Class.type';
+import { ClassSchema, TableClassSchema } from './Class.type';
 
 export async function getClasses() {
-  const classes = await all(queryGetClasses);
+  const classes = await all<TableClassSchema>(queryGetClasses);
   return classes;
 }
 
-export async function addOrUpdateClass(classObj: ClassModel) {
-  if (isNil(classObj.class_id)) {
+export async function addOrUpdateClass(classObj: ClassSchema) {
+  if (!classObj.class_id) {
     await addClass(classObj);
-    return 'add';
+    return 'added';
   }
   await updateClass(classObj);
-  return 'update';
+  return 'updated';
 }
 
-async function addClass(classObj: ClassModel) {
+async function addClass(classObj: ClassSchema) {
   const statement = objectToInsertStatement(classObj, 'class');
   const statementObj = jsonToStatementObject(classObj);
   return run(statement, statementObj);
 }
 
-async function updateClass(classObj: ClassModel) {
+async function updateClass(classObj: ClassSchema) {
   const statement = objectToUpdateStatement(classObj, 'class');
   const statementObj = jsonToStatementObject(classObj);
   return run(statement, statementObj);
 }
 
-export async function hideClass(classId: number) {
+export async function deleteClass(classId: number) {
   const statementObject = { $class_id: classId };
   const statement = queryHideClass;
   return await run(statement, statementObject);

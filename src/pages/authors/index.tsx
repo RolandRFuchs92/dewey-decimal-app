@@ -3,10 +3,10 @@ import React from 'react';
 import { DefaultColumnModel } from 'components/page/PageBase.type';
 import PageBase from 'components/page/PageBase';
 
-import repo from './authors.repo';
-import { getAllModel } from './Authors.type';
+import serviceBase from './Authors.service';
+import { AuthorSchema, TableAuthorSchema } from './Authors.type';
 
-const defaultColumns: DefaultColumnModel[] = [
+const defaultColumns: DefaultColumnModel<TableAuthorSchema, AuthorSchema>[] = [
   {
     name: 'author_id',
     label: 'Id',
@@ -31,17 +31,18 @@ const defaultColumns: DefaultColumnModel[] = [
 ];
 
 export default () => {
-  const handleDeleteRow = repo.deleteRow;
-  const handleEditAddRow = repo.addOrUpdate;
-  const getAll = repo.getAll;
+  const handleDeleteRow = serviceBase.deleteFunc;
+  const handleEditAddRow = serviceBase.addOrUpdate;
+  const getAll = serviceBase.getAll;
 
   return (
-    <PageBase<getAllModel>
+    <PageBase<AuthorSchema, AuthorSchema>
       defaultColumns={defaultColumns}
       getAll={getAll}
       handleDeleteRow={handleDeleteRow}
       handleEditAddRow={handleEditAddRow}
       dialogKey="name"
+      primaryKey="author_id"
     />
   );
 };

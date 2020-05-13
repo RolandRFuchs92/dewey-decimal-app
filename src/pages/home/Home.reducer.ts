@@ -1,45 +1,60 @@
 import {
   GenericActionModal,
   FullIndicatorActionModel,
-  HomeReducerModel
+  HomeReducerModel,
+  UpdateCheckinAndCheckoutCountAction,
+  ProcessedScansModel
 } from './Home.type';
 
-const initialState = {
-  checkoutsToday: 0,
-  checkinsToday: 0,
+const initialState: HomeReducerModel = {
+  checkoutsToday: [],
+  checkinsToday: [],
   birthdaysToday: 0,
-  booksOverdue: 0
+  booksOverdue: 0,
+  checkinCountForToday: 0,
+  checkoutCountForToday: 0
 };
 
 export default (
   currentState = initialState,
-  action: GenericActionModal | FullIndicatorActionModel
+  action:
+    | GenericActionModal
+    | FullIndicatorActionModel
+    | UpdateCheckinAndCheckoutCountAction
 ) => {
   const { type, payload } = action;
   switch (type) {
-    case 'CHECKOUTS_TODAY':
+    case 'CHECKOUTS_COUNT_TODAY':
       return {
-        ...initialState,
+        ...currentState,
         checkoutsToday: payload
       };
-    case 'CHECKINS_TODAY':
+    case 'CHECKINS_COUNT_TODAY':
       return {
-        ...initialState,
-        checkinsToday: payload
+        ...currentState,
+        checkinCountForToday: payload
       };
     case 'BIRTHDAYS_TODAY':
       return {
-        ...initialState,
+        ...currentState,
         birthdaysToday: payload
       };
     case 'BOOKS_OVERDUE':
       return {
-        ...initialState,
+        ...currentState,
         booksOverdue: payload
+      };
+    case 'UPDATE_SCANS':
+      return {
+        ...currentState,
+        checkinCountForToday: (payload as ProcessedScansModel).checkinCount,
+        checkoutCountForToday: (payload as ProcessedScansModel).checkoutCount,
+        checkoutsToday: (payload as ProcessedScansModel).checkoutResults,
+        checkinsToday: (payload as ProcessedScansModel).checkinResults
       };
     case 'ALL_INDICATORS':
       return {
-        ...initialState,
+        ...currentState,
         ...(payload as HomeReducerModel)
       };
     default:

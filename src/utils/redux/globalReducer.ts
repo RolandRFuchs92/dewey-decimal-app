@@ -25,7 +25,7 @@ export default (
       };
     default: {
       return {
-        pageTitle: 'No Page Title'
+        ...currentState
       };
     }
   }

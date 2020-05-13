@@ -1,27 +1,28 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Button, makeStyles, Grid, Paper, Typography } from '@material-ui/core';
+import { useDispatch, useSelector } from 'react-redux';
 
+import { formatDate } from 'appSettings.json';
 import {
   CheckinIndicator,
   CheckoutIndicator,
   OverdueIndicator,
   BirthdayIndicator
 } from 'components/icons/Indicator';
-import { HomePageTileProps, HomeProps } from './Home.type';
-import { connect, useDispatch } from 'react-redux';
-import { ScansModel } from 'pages/scan/Scan.type';
-import ScansToday from 'pages/scan/ScansTemplate';
-
-import BirthdaysToday from './BirthdaysToday';
+import { getScans } from 'pages/booksOut/Booksout.service';
+import { ScansModel } from 'pages/booksOut/Booksout.type';
 import Icons from 'components/icons';
-import Overdue from './Overdue';
 import { ScannerToggleAction } from 'pages/scan/Scanner.action';
+
+import { HomePageTileProps, HomeProps } from './Home.type';
+import CheckInOut from './CheckInOut';
+import Overdue from './Overdue';
+import BirthdaysToday from './BirthdaysToday';
+import { processScansData } from './Home.service';
+import { RootReducerModel } from 'utils/redux/rootReducer.type';
 
 const useStyles = makeStyles(theme => {
   return {
-    container: {
-      // display: 'flex',
-    },
     homePageContainer: {
       padding: 15,
       height: '100%',
@@ -34,11 +35,12 @@ const useStyles = makeStyles(theme => {
     items: {
       width: 500,
       height: 350,
-      margin: '0px 15px 15px 0px'
+      [theme.breakpoints.down('sm')]: {
+        margin: 0
+      }
     },
     barcodeButton: {
-      marginBottom: 15,
-      fontSize: 30,
+      fontSize: '1rem',
       '& svg': {
         fontSize: 47
       }
@@ -60,7 +62,15 @@ const useStyles = makeStyles(theme => {
   };
 });
 
-export const Home = ({ checkins, checkouts }: HomeProps) => {
+export const Home = () => {
+  const { checkouts, checkins } = useSelector(
+    ({ home: { checkinsToday, checkoutsToday } }: RootReducerModel) => {
+      return {
+        checkouts: checkoutsToday,
+        checkins: checkinsToday
+      };
+    }
+  );
   const classes = useStyles();
   const dispatch = useDispatch();
 
@@ -69,32 +79,34 @@ export const Home = ({ checkins, checkouts }: HomeProps) => {
   };
 
   return (
-    <Grid container className={classes.container}>
-      <Button
-        variant="contained"
-        color="primary"
-        onClick={() => toggleScan()}
-        startIcon={<div>{Icons.Barcode}</div>}
-        fullWidth
-        className={classes.barcodeButton}
-      >
-        Checkin / Checkout
-      </Button>
+    <Grid container spacing={1}>
+      <Grid item xs={12}>
+        <Button
+          variant="contained"
+          color="primary"
+          onClick={() => toggleScan()}
+          startIcon={<div>{Icons.Barcode}</div>}
+          fullWidth
+          className={classes.barcodeButton}
+        >
+          Checkin / Checkout
+        </Button>
+      </Grid>
 
       <HomePageTile title="Checkouts Today" indicator={<CheckoutIndicator />}>
-        <ScansToday scans={checkouts}></ScansToday>
+        <CheckInOut scans={checkouts} isCheckin={false} />
       </HomePageTile>
 
       <HomePageTile title="Checkins Today" indicator={<CheckinIndicator />}>
-        <ScansToday scans={checkins}></ScansToday>
+        <CheckInOut scans={checkins} isCheckin />
       </HomePageTile>
 
       <HomePageTile title="Books Overdue" indicator={<OverdueIndicator />}>
-        <Overdue></Overdue>
+        <Overdue />
       </HomePageTile>
 
       <HomePageTile title="Birthdays Today" indicator={<BirthdayIndicator />}>
-        <BirthdaysToday></BirthdaysToday>
+        <BirthdaysToday />
       </HomePageTile>
     </Grid>
   );
@@ -104,7 +116,7 @@ const HomePageTile = ({ title, children, indicator }: HomePageTileProps) => {
   const classes = useStyles();
 
   return (
-    <Grid item className={classes.items}>
+    <Grid item className={classes.items} xs={12} md={6} lg={4}>
       <Paper className={classes.homePageContainer}>
         <div className={classes.titleContainer}>
           <div className={classes.indicator}>{indicator}</div>
@@ -117,18 +129,4 @@ const HomePageTile = ({ title, children, indicator }: HomePageTileProps) => {
     </Grid>
   );
 };
-
-const mapStateToProps = (
-  state: {
-    checkouts: ScansModel[];
-    checkins: ScansModel[];
-  },
-  ownProps: any
-) => {
-  return {
-    checkouts: state.checkouts,
-    checkins: state.checkins
-  };
-};
-
-export default connect(mapStateToProps)(Home);
+export default Home;

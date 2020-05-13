@@ -5,6 +5,8 @@ import { connect } from 'react-redux';
 
 import Icons from './index';
 import { indicatorRootModel, indicatorModel } from './Icons.type';
+import { HomeReducerCountOnly } from 'pages/home/Home.type';
+import { AdminReducerModel } from 'pages/admin/Admin.reducer';
 
 const useStyles = makeStyles(theme => {
   return {
@@ -16,7 +18,12 @@ const useStyles = makeStyles(theme => {
       alignItems: 'baseline',
       padding: 15,
       height: 64,
-      fontSize: 23
+      fontSize: 23,
+      [theme.breakpoints.down('sm')]: {
+        display: 'none',
+        width: 0,
+        height: 0
+      }
     },
     checkin: {
       color: theme.palette.primary.light
@@ -54,8 +61,8 @@ export default () => {
 
   return (
     <div className={classes.indicators}>
-      <CheckinIndicator />
       <CheckoutIndicator />
+      <CheckinIndicator />
       <BirthdayIndicator />
       <OverdueIndicator />
     </div>
@@ -127,7 +134,10 @@ export const RawErrorIndicator = ({ count }: indicatorModel) => {
   );
 };
 
-const genericMapStateToProps = (stateTree: string, stateTreeChild: string) => {
+const genericMapStateToProps = (
+  stateTree: string,
+  stateTreeChild: keyof HomeReducerCountOnly | keyof AdminReducerModel
+) => {
   return (
     currentState: { [key: string]: any },
     ownProps: { [key: string]: any }
@@ -146,10 +156,10 @@ export const OverdueIndicator = connect(
   genericMapStateToProps('home', 'booksOverdue')
 )(RawOverdueIndicator);
 export const CheckoutIndicator = connect(
-  genericMapStateToProps('home', 'checkoutsToday')
+  genericMapStateToProps('home', 'checkoutCountForToday')
 )(RawCheckoutIndicator);
 export const CheckinIndicator = connect(
-  genericMapStateToProps('home', 'checkinsToday')
+  genericMapStateToProps('home', 'checkinCountForToday')
 )(RawCheckinIndicator);
 export const ErrorIndicator = connect(
   genericMapStateToProps('admin', 'errorCount')

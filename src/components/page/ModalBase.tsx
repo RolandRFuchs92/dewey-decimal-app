@@ -13,7 +13,6 @@ import { format } from 'date-fns';
 
 import Modal from 'components/modal';
 import FormButtons from 'components/buttons/formButtons';
-import log from 'utils/logger';
 import { useAlert } from 'utils/snackbarAlerts';
 
 import {
@@ -26,15 +25,16 @@ import {
 import { MaterialUiPickersDate } from '@material-ui/pickers/typings/date';
 import { DropdownListModel } from 'types/generic.type';
 
-export default ({
+export default <TTableSchema, TSchema>({
   columns,
   open,
   handleClose,
   handleEditAddRow,
   modalData,
-  reset
-}: ModalBaseModel) => {
-  const [val, setVal] = useState<typeof modalData | undefined>();
+  reset,
+  dialogKey
+}: ModalBaseModel<TTableSchema, TSchema>) => {
+  const [val, setVal] = useState<TSchema | undefined>();
   const alert = useAlert();
 
   useEffect(() => {
@@ -44,42 +44,37 @@ export default ({
   const handleOnChange = (name: string) => ({
     target: { value }
   }: {
-    target: { value: string };
+    target: { value: string | boolean };
   }) => {
     const key =
       columns.filter(({ name: colName }) => colName === name)[0].ref || name;
+
+    // @ts-ignore
     setVal({ ...val, [key]: value });
   };
 
   const handleSubmit = async () => {
     try {
-      const statementObject = { ...val };
+      const statementObject = { ...val } as TTableSchema;
       const refColumns = columns.filter(column => {
         let firstChar: string = '';
         if (column.name !== null && column.name !== undefined)
-          firstChar = column.name.substr(0, 1);
+          firstChar = (column.name as string).substr(0, 1);
 
         return column.ref || firstChar === firstChar.toUpperCase();
       });
       refColumns.forEach(({ name }) => {
-        if (name !== null && name !== undefined) delete statementObject[name];
+        if (name !== null && name !== undefined)
+          delete statementObject[name as keyof TTableSchema];
       });
-      const result = await handleEditAddRow(statementObject);
-      alert.success(
-        `Successfully ${result === 'add' ? 'added' : 'updated'} ${val!.name}!`
+
+      const result = await handleEditAddRow(
+        (statementObject as unknown) as TSchema
       );
+      if (result.message) alert.success(result.message);
       reset();
     } catch (error) {
-      alert.error(
-        `There was an error ${
-          val!.dewey_summary_id ? 'updating' : 'adding'
-        } a field.`
-      );
-      log.error(
-        `Error in src/components/page/ModalBase - Default - ${JSON.stringify(
-          error
-        )}`
-      );
+      alert.error(`There was an error while submitting.`);
     }
   };
 
@@ -100,28 +95,30 @@ export default ({
   );
 };
 
-export type FieldProps = {
-  columns: DefaultColumnModel[];
+export type FieldProps<TTableSchema, TSchema> = {
+  columns: DefaultColumnModel<TTableSchema, TSchema>[];
   handleOnChange: ModalBaseHandleChange;
-  modalData: { [key: string]: string };
+  modalData: TSchema;
 };
 
-function Fields({
+function Fields<TTableSchemaModel, TSchema>({
   columns,
   handleOnChange,
   modalData
-}: FieldProps): JSX.Element {
+}: FieldProps<TTableSchemaModel, TSchema>): JSX.Element {
   const result = columns.map((column, index) => {
-    const value: string =
-      column.ref === undefined && !isNil(column.name)
-        ? modalData[column.name]
-        : !isNil(column.ref)
-        ? modalData[column.ref]
-        : '0';
+    const hasNoRefButHasColumnName =
+      column.ref === undefined && !isNil(column.name);
+    // @ts-ignore TODO FIX THIS
+    const value: string = hasNoRefButHasColumnName
+      ? modalData[column.name! as keyof TSchema]
+      : !isNil(column.ref)
+      ? modalData[column.ref]
+      : '0';
 
     const child = CreateElement({
-      ...column,
-      onChange: handleOnChange(column.name || ''),
+      ...(column as TSchema),
+      onChange: handleOnChange((column.name && column.name.toString()) || ''),
       value
     });
     const el = (
@@ -134,14 +131,14 @@ function Fields({
   return <>{result}</>;
 }
 
-function CreateElement({
+function CreateElement<TTableSchema, TSchema>({
   type,
   label,
   value,
   onChange,
   modalTitle,
   getDropDownItems
-}: DefaultColumnModel) {
+}: DefaultColumnModel<TTableSchema, TSchema>) {
   if (isNil(type)) return null;
 
   switch (toLower(type)) {
@@ -182,7 +179,7 @@ function CreateElement({
         <CheckBox
           label={label!}
           value={value ? true : false}
-          onChange={onChange as () => void}
+          onChange={onChange!}
         />
       );
     case 'select':
@@ -196,9 +193,7 @@ function CreateElement({
               : onChange
           }
           value={isNil(value) ? '' : value}
-          getDropDownItems={
-            getDropDownItems as () => Promise<DropdownListModel[]>
-          }
+          getDropDownItems={getDropDownItems!}
         />
       );
     default:
@@ -208,14 +203,24 @@ function CreateElement({
 
 export type CheckboxProps = {
   label: string;
-  onChange: () => void;
+  onChange: (evt: {
+    target: {
+      value: string | boolean;
+    };
+  }) => void;
   value: boolean;
 };
 
 function CheckBox({ label, onChange, value }: CheckboxProps) {
+  const handleChange = () => {
+    onChange({ target: { value: !value } });
+  };
+
   return (
     <FormControlLabel
-      control={<Checkbox checked={value} onChange={onChange} name="label" />}
+      control={
+        <Checkbox checked={value} onChange={handleChange} name="label" />
+      }
       label={label}
     />
   );
@@ -247,11 +252,14 @@ function SelectBox({
   getDropDownItems
 }: SelectBoxModel) {
   const [rows, setRows] = useState<DropdownListModel[]>([]);
-
+  const alert = useAlert();
   useEffect(() => {
     (async () => {
       const result = await getDropDownItems();
-      setRows(result || []);
+      if (!result.result || !result.result.length)
+        alert.warning(result.message || 'There are no dropdown items.');
+
+      setRows(result.result || []);
     })();
   }, []);
 

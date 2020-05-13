@@ -1,20 +1,35 @@
-import { DatatabelDataModel } from 'components/page/PageBase.type';
-import { TeacherRepoModel } from './Teacher.repo';
+import { DataTableDataModel } from 'components/page/PageBase.type';
 
-export interface TeacherModel {
+export interface TeacherSchema {
+  teacher_id?: string;
   first_name: string;
   last_name: string;
-  teacher_id: string;
-  teacherName: string;
-  is_active: boolean;
   mobile: string;
   email: string;
   class_id: number;
+  is_active: boolean;
 }
+
+export const teacherSchemaArray: Array<keyof TeacherSchema> = [
+  'teacher_id',
+  'first_name',
+  'last_name',
+  'email',
+  'mobile',
+  'is_active',
+  'class_id'
+];
+
+export type TeacherRepoModel = {
+  teacher_id: string;
+  is_active: boolean | 0 | 1;
+};
+
+export type TableTeacherSchema = {} & TeacherSchema;
 
 export type TeacherModalProps = {
   isOpen: boolean;
-  teacher: DatatabelDataModel<TeacherModel>;
+  teacher: DataTableDataModel<TeacherSchema>;
   reset: () => void;
   handleClose: () => void;
 };

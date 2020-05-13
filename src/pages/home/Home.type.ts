@@ -1,29 +1,42 @@
 import { GetStudentsWithBirthdaysModel } from 'pages/student/Student.type';
-import { ScansModel } from 'pages/scan/Scan.type';
+import { ScansModel } from 'pages/booksOut/Booksout.type';
+
+export type HomeReducerModel = {
+  checkoutCountForToday: number;
+  checkinCountForToday: number;
+  birthdaysToday: number;
+  booksOverdue: number;
+  checkoutsToday: ScansModel[];
+  checkinsToday: ScansModel[];
+};
+
+export type HomeReducerCountOnly = Omit<
+  HomeReducerModel,
+  'checkinsToday' | 'checkoutsToday'
+>;
 
 export type GenericActionModal = {
   type: IndicatorActionTypes;
   payload: number;
 };
 
-export type HomeReducerModel = {
-  checkoutsToday: number;
-  checkinsToday: number;
-  birthdaysToday: number;
-  booksOverdue: number;
+export type UpdateCheckinAndCheckoutCountAction = {
+  type: 'UPDATE_SCANS';
+  payload: ProcessedScansModel;
 };
 
 export type FullIndicatorActionModel = {
   type: 'ALL_INDICATORS';
-  payload: HomeReducerModel;
+  payload: HomeReducerCountOnly;
 };
 
 export type IndicatorActionTypes =
   | 'BIRTHDAYS_TODAY'
   | 'BOOKS_OVERDUE'
-  | 'CHECKINS_TODAY'
-  | 'CHECKOUTS_TODAY'
-  | 'ALL_INDICATORS';
+  | 'CHECKINS_COUNT_TODAY'
+  | 'CHECKOUTS_COUNT_TODAY'
+  | 'ALL_INDICATORS'
+  | 'UPDATE_SCANS';
 
 export type CalculateCheckoutModel = {
   isCheckout: boolean;
@@ -60,4 +73,11 @@ export type BarcodeResultModel = {
   codeResult: {
     code: string;
   };
+};
+
+export type ProcessedScansModel = {
+  checkoutResults: ScansModel[];
+  checkoutCount: number;
+  checkinResults: ScansModel[];
+  checkinCount: number;
 };
