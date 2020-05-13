@@ -1,7 +1,7 @@
 import React from 'react';
 
 import PageBase from 'components/page/PageBase';
-import { getSelectList } from 'pages/deweySystem/summary1/Summary1.service'; // TODO REPLACE WITH SERVICE
+import { getSelectList } from 'pages/deweySystem/summary1/Summary1.service';
 import { DefaultColumnModel } from 'components/page/PageBase.type';
 
 import serviceBase from './Summary2.service';

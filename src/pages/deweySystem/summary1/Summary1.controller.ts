@@ -11,7 +11,7 @@ import {
 import { Result, DropdownListModel } from 'types/generic.type';
 
 const router = express.Router();
-const handleErr = genericErrorHandle('Summary3');
+const handleErr = genericErrorHandle('Summary1');
 
 router.get('/', async (req, res) => {
   const summaryResult = await summary1Repo.getAll();
