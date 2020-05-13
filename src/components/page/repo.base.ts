@@ -3,7 +3,10 @@ import { TableNames } from 'appSettings.type';
 import appSettings from 'appSettings.json';
 import { JsonObj } from 'types/generic.type';
 
-export default <TSchema>(tableReference: TableNames, pk: keyof TSchema) => {
+export default <TSchema, TTableSchema>(
+  tableReference: TableNames,
+  pk: keyof TSchema
+) => {
   const { tables } = appSettings;
 
   const pkFieldName = tables[tableReference].pk;
@@ -15,7 +18,7 @@ export default <TSchema>(tableReference: TableNames, pk: keyof TSchema) => {
   };
 
   return {
-    getAll: async () => await getAll<TSchema>(tableReference),
+    getAll: async () => await getAll<TTableSchema>(tableReference),
     deleteRow: deleteFunc,
     addOrUpdate: async (val: TSchema) =>
       await addOrUpdate(val!, tableReference, pkFieldName)

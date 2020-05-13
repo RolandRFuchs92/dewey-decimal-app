@@ -4,9 +4,9 @@ import { DropdownListModel } from 'types/generic.type';
 
 import { getSelectQuery } from './Decimal.sql';
 import { getAllQuery } from './Decimal.sql';
-import { TableDeweyDecimalSchema } from './Decimal.type';
+import { TableDeweyDecimalSchema, DeweyDecimalSchema } from './Decimal.type';
 
-const repo = repoBase<TableDeweyDecimalSchema>(
+const repo = repoBase<DeweyDecimalSchema, TableDeweyDecimalSchema>(
   `dewey_decimal`,
   'dewey_decimal_id'
 );

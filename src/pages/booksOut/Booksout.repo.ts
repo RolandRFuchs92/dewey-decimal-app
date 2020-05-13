@@ -26,11 +26,15 @@ import {
   TableBooksOutSchema,
   BooksOverdueModel,
   ScansModel,
-  RecentlyCheckoutModel
+  RecentlyCheckoutModel,
+  BooksOutSchema
 } from './Booksout.type';
 import { CountObj } from 'types/generic.type';
 
-const repo = repoBase<TableBooksOutSchema>(`books_out`, 'books_out_id');
+const repo = repoBase<BooksOutSchema, TableBooksOutSchema>(
+  `books_out`,
+  'books_out_id'
+);
 repo.getAll = async () => {
   const result = await all<TableBooksOutSchema>(getAllQuery);
   return result;
