@@ -1,0 +1,22 @@
+{
+  "result": [
+    {
+      "student_name": "Roland Fuchs",
+      "book_name": "Moby Dick",
+      "author_name": "Rahl Dah L",
+      "return_on": "2020-05-08"
+    },
+    {
+      "student_name": "Roland Fuchs",
+      "book_name": "a",
+      "author_name": "Roland Robert Fuchs",
+      "return_on": "2020-05-12"
+    },
+    {
+      "student_name": "Ayaboo Stark",
+      "book_name": "a",
+      "author_name": "Roland Robert Fuchs",
+      "return_on": "2020-05-12"
+    }
+  ]
+}

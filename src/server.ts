@@ -4,6 +4,7 @@ import https from 'https';
 import express, { Request, Response } from 'express';
 import bodyParser from 'body-parser';
 import cors from 'cors';
+import { production, development } from 'endpoints.json';
 
 import studentController from 'pages/student/Student.controller';
 import homeController from 'pages/home/Home.controller';
@@ -53,10 +54,10 @@ if (process.env.NODE_ENV === 'production')
       },
       app
     )
-    .listen(3001, () => {
-      console.log(`https://localhost:3001`);
+    .listen(production.port, () => {
+      console.log(`${production.uri}:${production.port}`);
     });
 else
-  app.listen(3001, () => {
-    console.log(`http://localhost:3001`);
+  app.listen(development.port, () => {
+    console.log(`${development.uri}:${development.port}`);
   });

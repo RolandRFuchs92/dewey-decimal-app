@@ -57,6 +57,7 @@ export type HomePageTileProps = {
   title: string;
   children: JSX.Element | JSX.Element[];
   indicator: JSX.Element;
+  cy: string;
 };
 
 export type HomeProps = {

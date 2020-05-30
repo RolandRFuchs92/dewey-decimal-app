@@ -1,0 +1,12 @@
+{
+  "result": [
+    {
+      "birthdate": "1992-05-15",
+      "class_name": "A",
+      "first_name": "Roland",
+      "grade": 1,
+      "last_name": "Fuchs",
+      "teacher": "Abigail Fuchs"
+    }
+  ]
+}

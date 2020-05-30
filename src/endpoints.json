@@ -1,6 +1,12 @@
 {
-  "developmentHost": "http://localhost:3001",
-  "productionHost": "",
+  "development": {
+    "uri": "http://localhost",
+    "port": 3001
+  },
+  "production": {
+    "uri": "http://localhost",
+    "port": 333
+  },
   "booksout": {
     "getall": {
       "uri": "booksout",

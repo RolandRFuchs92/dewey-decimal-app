@@ -1,0 +1,22 @@
+{
+  "result": [
+    {
+      "teacher": "Abigail Fuchs",
+      "class": "1A",
+      "book": "The Book Number 2",
+      "author": "Dick King Smith",
+      "student": "Roland Fuchs",
+      "check_in_date": "2020-05-16",
+      "check_out_date": "2020-05-10"
+    },
+    {
+      "teacher": "Abigail Fuchs",
+      "class": "1A",
+      "book": "The Book Number 2",
+      "author": "Dick King Smith",
+      "student": "Roland Fuchs",
+      "check_in_date": null,
+      "check_out_date": "2020-05-16"
+    }
+  ]
+}
