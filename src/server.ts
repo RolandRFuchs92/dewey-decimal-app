@@ -5,6 +5,7 @@ import express, { Request, Response } from 'express';
 import bodyParser from 'body-parser';
 import cors from 'cors';
 import { production, development } from 'endpoints.json';
+import InitializeDatabase from 'db/initializeDb';
 
 import studentController from 'pages/student/Student.controller';
 import homeController from 'pages/home/Home.controller';
@@ -19,11 +20,10 @@ import summary2Controller from 'pages/deweySystem/summary2/Summary2.controller';
 import summary3Controller from 'pages/deweySystem/summary3/Summary3.controller';
 
 const app = express();
-
 // TODO add whitelist for dynamic ip allocation... probably
+InitializeDatabase();
 
 app.use(express.static(path.join(process.cwd(), 'build')));
-
 app.get('/', (req, res) => {
   const appLocation = path.join(process.cwd(), 'build', 'index.html');
   res.sendFile(appLocation);

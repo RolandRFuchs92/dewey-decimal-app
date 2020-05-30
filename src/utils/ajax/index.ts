@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-import { developmentHost, productionHost } from 'endpoints.json';
+import { development, production } from 'endpoints.json';
 import { Result } from 'types/generic.type';
 
 const {
@@ -20,7 +20,7 @@ const requiredHeaders = {
 };
 
 const baseUri =
-  process.env.NODE_ENV === 'development' ? developmentHost : productionHost;
+  process.env.NODE_ENV === 'development' ? development.url : production.url;
 
 export type AxiosErrorModel<T> = {
   response: T;
