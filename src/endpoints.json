@@ -7,7 +7,7 @@
   "production": {
     "url": "",
     "uri": "http://localhost",
-    "port": 333
+    "port": 8001
   },
   "booksout": {
     "getall": {

@@ -23,10 +23,14 @@ const app = express();
 // TODO add whitelist for dynamic ip allocation... probably
 InitializeDatabase();
 
-app.use(express.static(path.join(process.cwd(), 'build')));
+var dirname = __dirname;
+console.log(__dirname);
+const pathToIndexHtml = path.resolve(dirname, 'build', 'index.html');
+console.log(pathToIndexHtml);
+
+app.use(express.static(path.join(dirname, 'build')));
 app.get('/', (req, res) => {
-  const appLocation = path.join(process.cwd(), 'build', 'index.html');
-  res.sendFile(appLocation);
+  res.sendFile(pathToIndexHtml);
 });
 
 app.options('*', cors());
@@ -46,17 +50,17 @@ app.use('/dewey_summary_2', summary2Controller);
 app.use('/dewey_summary_3', summary3Controller);
 
 if (process.env.NODE_ENV === 'production')
-  https
-    .createServer(
-      {
-        key: fs.readFileSync(path.resolve('./cert/key.pem')),
-        cert: fs.readFileSync(path.resolve('./cert/cert.pem'))
-      },
-      app
-    )
-    .listen(production.port, () => {
-      console.log(`${production.uri}:${production.port}`);
-    });
+  // https
+  //   .createServer(
+  //     {
+  //       key: fs.readFileSync(path.resolve('./cert/key.pem')),
+  //       cert: fs.readFileSync(path.resolve('./cert/cert.pem'))
+  //     },
+  //     app
+  //   )
+  app.listen(production.port, () => {
+    console.log(`${production.uri}:${production.port}`);
+  });
 else
   app.listen(development.port, () => {
     console.log(`${development.uri}:${development.port}`);

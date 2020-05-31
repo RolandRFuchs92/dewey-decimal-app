@@ -70,7 +70,8 @@
     "test": "react-app-rewired test --runInBand",
     "eject": "react-app-rewired eject",
     "cypress:open": "cypress open",
-    "exp:wpk": "webpack --config ./webpack.config.js",
+    "exp:wpk": "webpack --config ./webpack.dev.js",
+    "exp:build": "set NODE_ENV=production&&webpack --config ./webpack.prod.js",
     "exp:run": "nodemon --inspect --harmony dist/server.bundle.js"
   },
   "eslintConfig": {

@@ -3,8 +3,8 @@ import { trim } from 'lodash';
 import { format, parse } from 'date-fns';
 // import log from 'utils/logger';
 import { ProcessErrorLogResultModel } from './ErrorReport.type';
+import fs from 'fs';
 
-const fs = window.require('fs');
 const {
   formatDate: {
     errorLog: { from, to }
@@ -13,6 +13,7 @@ const {
 
 export const processErrorLog = async (): Promise<ProcessErrorLogResultModel[]> => {
   return new Promise((res, rej) => {
+    // @ts-ignore
     fs.readFile(`dewey.error.log`, 'utf8', (err: Error, data: string) => {
       if (err) {
         // log.error(err.toString());

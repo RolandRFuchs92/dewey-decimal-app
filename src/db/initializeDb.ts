@@ -1,4 +1,5 @@
 import { endsWith } from 'lodash';
+import path from 'path';
 
 import {
   loadSingleFileFromDbFolder,
@@ -40,7 +41,7 @@ const createDatabase = async () => {
   try {
     log.info(`Initializing Database.`);
     const createDbScript = await loadSingleFileFromDbFolder(
-      `${deweySqlRoot}\\${appSettings.databaseScriptName}`
+      appSettings.databaseScriptName
     );
     await exec(createDbScript);
     log.info(`Database successfully initialized.`);
@@ -106,14 +107,12 @@ const getScriptsInFolder = async (
   folderInDbFolder: string
 ): Promise<string[]> => {
   const filesInDbFolder = (
-    await getAllFilesInFolder(`${deweySqlRoot}\\${folderInDbFolder}`)
+    await getAllFilesInFolder(folderInDbFolder)
   ).filter((i: string) => endsWith(i, '.sql'));
 
   return await Promise.all(
     filesInDbFolder.map((fileName: string) =>
-      loadSingleFileFromDbFolder(
-        `${deweySqlRoot}\\${folderInDbFolder}\\${fileName}`
-      )
+      loadSingleFileFromDbFolder(path.join(folderInDbFolder, fileName))
     )
   );
 };
