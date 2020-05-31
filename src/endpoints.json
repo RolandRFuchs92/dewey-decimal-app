@@ -1,11 +1,11 @@
 {
   "development": {
-    "url": "http://localhost:3001",
+    "url": "http://localhost:3001/api",
     "uri": "http://localhost",
     "port": 3001
   },
   "production": {
-    "url": "",
+    "url": "/api",
     "uri": "http://localhost",
     "port": 8001
   },

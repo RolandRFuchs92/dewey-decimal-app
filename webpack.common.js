@@ -7,6 +7,9 @@ module.exports = {
   externals: {
     sqlite3: 'commonjs2 sqlite3'
   },
+  node: {
+    __dirname: false
+  },
   module: {
     rules: [
       {

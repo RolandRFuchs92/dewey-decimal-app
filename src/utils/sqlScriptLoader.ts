@@ -1,7 +1,16 @@
 import log from 'utils/logger';
 import fs from 'fs';
 import path from 'path';
-const scriptsLocation = path.join(__dirname, 'src', 'db', 'deweySystemScripts');
+const scriptsLocation = path.resolve(
+  __dirname,
+  '..',
+  'src',
+  'db',
+  'sql',
+  'deweySystemScripts'
+);
+
+log.info(`Db scripts will be looked for at ${scriptsLocation}`);
 
 export const loadSingleFileFromDbFolder = (fileFromDbSqlFolder: string) => {
   return new Promise<string>((res, rej) => {
