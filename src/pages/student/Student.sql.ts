@@ -74,7 +74,7 @@ export const getAllQuery = `
         c.grade
     FROM
         student s
-    JOIN
+    LEFT JOIN
         class c
         on s.class_id = c.class_id
 `;

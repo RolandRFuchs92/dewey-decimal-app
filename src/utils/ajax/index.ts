@@ -43,6 +43,7 @@ function getParamsHeader<T>(data: T | {}) {
 }
 
 async function get<P, R>(uri: string, params: P | {} = {}) {
+  console.log(uri);
   const config = getParamsHeader<P>(params);
   const result = await axiosGet(`${baseUri}/${uri}`, config);
   return result.data as Result<R>;
