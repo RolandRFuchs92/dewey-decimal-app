@@ -30,6 +30,7 @@
     "adm-zip": "^0.4.14",
     "aws-sdk": "^2.663.0",
     "axios": "^0.19.2",
+    "bcrypt": "^4.0.1",
     "body-parser": "^1.19.0",
     "cors": "^2.8.5",
     "cross-env": "^6.0.3",
@@ -71,7 +72,7 @@
     "eject": "react-app-rewired eject",
     "cypress:open": "cypress open",
     "exp:wpk": "webpack --config ./webpack.dev.js",
-    "exp:build": "set NODE_ENV=production&&webpack --config ./webpack.prod.js",
+    "exp:build": "set NODE_ENV=production&&webpack --mode production --config ./webpack.prod.js",
     "exp:run": "nodemon --inspect --harmony dist/server.bundle.js"
   },
   "eslintConfig": {

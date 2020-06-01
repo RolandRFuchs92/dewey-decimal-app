@@ -1,5 +1,4 @@
 import path from 'path';
-import https from 'https';
 import express, { Request, Response } from 'express';
 import bodyParser from 'body-parser';
 import cors from 'cors';
@@ -24,27 +23,22 @@ log.info(`Static files location will be looked for at ${pathToIndexHtml}`);
 app.get('*', express.static(pathToIndexHtml));
 
 app.options('*', cors());
+app.get('*', async (req, res, next) => {
+  const clientIp =
+    req.headers['x-forwarded-for'] || req.connection.remoteAddress;
+  log.info(`Request received from ${clientIp}`);
+  next();
+});
 app.use(cors());
 app.use(bodyParser.json());
 
 app.use('/api', routes);
 
-app.get('*', function(req, res) {
+app.get('*', function(req, res, next) {
   res.sendFile(path.resolve(pathToIndexHtml, 'index.html'));
 });
-// app.get('*', (req, res) => {
-//   res.sendFile(path.resolve(pathToIndexHtml, 'index.html'));
-// });
 
 if (process.env.NODE_ENV === 'production')
-  // https
-  //   .createServer(
-  //     {
-  //       key: fs.readFileSync(path.resolve('./cert/key.pem')),
-  //       cert: fs.readFileSync(path.resolve('./cert/cert.pem'))
-  //     },
-  //     app
-  //   )
   app.listen(production.port, () => {
     console.log(`listening on ${production.uri}:${production.port}`);
   });
