@@ -24,13 +24,13 @@ import Authors from 'pages/authors';
 import Books from 'pages/books';
 import BooksOut from 'pages/booksOut';
 import Admin from 'pages/admin';
+import Login from 'pages/login';
 
 import { drawerWidth, smDrawerWidth } from 'layout.json';
 import { ScannerToggleAction } from 'pages/scan/Scanner.action';
 import Icons from 'components/icons';
 import { RootReducerModel } from 'utils/redux/rootReducer.type';
 import { toggleThemeAction } from 'components/theme/Theme.action';
-import { getScans } from 'pages/booksOut/Booksout.service';
 
 import Drawer from './drawer';
 import { PermanentDrawerLeftModel } from './Layout.type';
@@ -105,72 +105,80 @@ export function PermanentDrawerLeft({ pageTitle }: PermanentDrawerLeftModel) {
   };
 
   return (
-    <div className={classes.root}>
-      <CssBaseline />
-      <AppBar position="fixed" className={classes.appBar}>
-        <Toolbar>
-          <div className={classes.toolbarRoot}>
-            <Typography variant="h5" noWrap className={classes.toolbarCenter}>
-              {pageTitle}
-            </Typography>
-            <div className={classes.toggleMode}>
-              <IconButton
-                aria-label="Checkin/out"
-                className={classes.iconText}
-                onClick={() => toggleScan()}
-              >
-                {Icons.Barcode}
-              </IconButton>
-              <IconButton
-                aria-label="Toggle light/dark mode"
-                onClick={toggleTheme}
-                className={classes.iconText}
-              >
-                {Icons.DarkLight}
-              </IconButton>
-            </div>
+    <Router>
+      <Switch>
+        <Route strict path="/login">
+          <Login />
+        </Route>
+        <Route path="/">
+          <div className={classes.root}>
+            <CssBaseline />
+            <AppBar position="fixed" className={classes.appBar}>
+              <Toolbar>
+                <div className={classes.toolbarRoot}>
+                  <Typography
+                    variant="h5"
+                    noWrap
+                    className={classes.toolbarCenter}
+                  >
+                    {pageTitle}
+                  </Typography>
+                  <div className={classes.toggleMode}>
+                    <IconButton
+                      aria-label="Checkin/out"
+                      className={classes.iconText}
+                      onClick={() => toggleScan()}
+                    >
+                      {Icons.Barcode}
+                    </IconButton>
+                    <IconButton
+                      aria-label="Toggle light/dark mode"
+                      onClick={toggleTheme}
+                      className={classes.iconText}
+                    >
+                      {Icons.DarkLight}
+                    </IconButton>
+                  </div>
+                </div>
+              </Toolbar>
+            </AppBar>
+            <Drawer />
+            <main className={classes.content}>
+              <div className={classes.toolbar} />
+              <Switch>
+                <Route exact path="/home">
+                  <Home />
+                </Route>
+                <Route exact path="/students">
+                  <Student />
+                </Route>
+                <Route exact path="/school/class">
+                  <Class />
+                </Route>
+                <Route exact path="/school/teacher">
+                  <Teacher />
+                </Route>
+                <Route exact path="/library/dewey">
+                  <DeweySystem />
+                </Route>
+                <Route exact path="/library/author">
+                  <Authors />
+                </Route>
+                <Route exact path="/library/books">
+                  <Books />
+                </Route>
+                <Route exact path="/library/booksout">
+                  <BooksOut />
+                </Route>
+                <Route exact path="/admin">
+                  <Admin />
+                </Route>
+              </Switch>
+            </main>
           </div>
-        </Toolbar>
-      </AppBar>
-      <Router>
-        <Drawer />
-        <main className={classes.content}>
-          <div className={classes.toolbar} />
-          <Switch>
-            <Route exact path="/">
-              <Redirect to="/home" />
-            </Route>
-            <Route exact path="/home">
-              <Home />
-            </Route>
-            <Route exact path="/students">
-              <Student />
-            </Route>
-            <Route exact path="/school/class">
-              <Class />
-            </Route>
-            <Route exact path="/school/teacher">
-              <Teacher />
-            </Route>
-            <Route exact path="/library/dewey">
-              <DeweySystem />
-            </Route>
-            <Route exact path="/library/author">
-              <Authors />
-            </Route>
-            <Route exact path="/library/books">
-              <Books />
-            </Route>
-            <Route exact path="/library/booksout">
-              <BooksOut />
-            </Route>
-            <Route exact path="/admin">
-              <Admin />
-            </Route>
-          </Switch>
-        </main>
-      </Router>
-    </div>
+        </Route>
+      </Switch>
+    </Router>
   );
 }
 
